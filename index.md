@@ -1,7 +1,7 @@
-# Welcome to my personal homepage
+# Hi, My name is Ali
 
 ## About me
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+My name is Ali Naderi Parizi. I'm studying at Iran University of Science and Technology, Master of Artificial intelligence and robotics. I was born in Rafsanjan. I live in Tehran. I love computers and computer science. My intents are Machine learning, reverse engineering, embedded system design, and security. I love to build things, learn new things, solve challenging problems and teach my knowledge to others.
 
 ### Projects
 
