@@ -1,15 +1,15 @@
-title: Atlas Jekyll Theme
+title: MrAliNp
 desciption: >
-  A jekyll theme for personal website.
-email: yourusername@gmail.com
+  Welcome to my personal website
+email: alinaderiparizi@gmail.com
 baseurl: "/" # the subpath of your site, e.g. /blog
 #replace nrdybhu1.github.io with your domainname.com
 url: "https://nrdybhu1.github.io" # the base hostname & protocol for your site
-twitter_username: jekyllrb
-github_username:  Jekyll
+twitter_username: mralinp
+github_username:  mralinp
 markdown: kramdown
 page_excerpts: true
-favicon: "/img/atlas.png"
+favicon: "https://avatars.githubusercontent.com/u/19627147?v=4"
 collections:
   posts:
     permalink: "/blog/:title:output_ext"
