@@ -20,7 +20,7 @@ defaults:
 - scope:
     path: ''
   values:
-    image: "/img/preview.png"
+    image: "https://avatars.githubusercontent.com/u/19627147?v=4"
 plugins:
 - jekyll-avatar
 - jekyll-feed
