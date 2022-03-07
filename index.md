@@ -19,9 +19,12 @@ Building a GSM/GPRS module to be embedded inside a company product with the capa
 ## Education
 - Iran university of science and technology, Tehran, Tehran, Iran— Master of Artificial intelligence.
 Sep 2020 - Present
+
 - Shiraz university, Shiraz, Fars, Iran— Bachelor of Computer engineering Sep 2015 - Sep 2020
+
 - National Organization for Development of Exceptional Talents, Sirjan, Kerman, Iran— High School
 Sep 2011 - Sep 2015
+
 ## Projects
 
 ## Research and publications
