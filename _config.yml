@@ -24,11 +24,11 @@ defaults:
   values:
     image: "https://avatars.githubusercontent.com/u/19627147?v=4"
 plugins:
-  - jekyll-avatar
-  - jekyll-feed
-  - jekyll-redirect-from
-  - jemoji
-  - jekyll-paginate
+- jekyll-avatar
+- jekyll-feed
+- jekyll-redirect-from
+- jemoji
+- jekyll-paginate
 
 paginate: 5
 paginate_path: "/blog/page-:num/"
