@@ -6,6 +6,8 @@ baseurl: / # the subpath of your site, e.g. /blog
 url: "https://alinaderiparizi.ir" # the base hostname & protocol for your site
 twitter_username: mralinp
 github_username:  mralinp
+github: https://github.com/mralinp/mralinp.github.io/
+
 markdown: kramdown
 page_excerpts: true
 favicon: "https://avatars.githubusercontent.com/u/19627147?v=4"
