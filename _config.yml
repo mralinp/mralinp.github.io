@@ -1,34 +1,32 @@
-title: MrAliNp
-desciption: >
-  Welcome to my personal website
+title: mralinp
 email: alinaderiparizi@gmail.com
-baseurl: / # the subpath of your site, e.g. /blog
-url: "https://alinaderiparizi.ir" # the base hostname & protocol for your site
-twitter_username: mralinp
+description: >- # this means to ignore newlines until "baseurl:"
+  My awesome blog
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "alinaderiparizi.ir" # the base hostname & protocol for your site, e.g. http://example.com
+twitter_username: alinaderiparizi
 github_username:  mralinp
-github: https://github.com/mralinp/mralinp.github.io/
 
-markdown: kramdown
-page_excerpts: true
-favicon: "https://avatars.githubusercontent.com/u/19627147?v=4"
-collections:
-  posts:
-    permalink: "/blog/:title:output_ext"
-    output: true
-defaults:
-- scope:
-    path: _posts
-    type: posts
-- scope:
-    path: ''
-  values:
-    image: "https://avatars.githubusercontent.com/u/19627147?v=4"
+# Build settings
 plugins:
-- jekyll-avatar
-- jekyll-feed
-- jekyll-redirect-from
-- jemoji
-- jekyll-paginate
+  - jekyll-feed
 
-paginate: 5
-paginate_path: "/blog/page-:num/"
+# Exclude from processing.
+# The following items will not be processed, by default.
+# Any item listed under the `exclude:` key here will be automatically added to
+# the internal "default list".
+#
+# Excluded items can be processed by explicitly listing the directories or
+# their entries' file path in the `include:` list.
+#
+# exclude:
+#   - .sass-cache/
+#   - .jekyll-cache/
+#   - gemfiles/
+#   - Gemfile
+#   - Gemfile.lock
+#   - node_modules/
+#   - vendor/bundle/
+#   - vendor/cache/
+#   - vendor/gems/
+#   - vendor/ruby/
