@@ -1,0 +1,58 @@
+I"z
+<div class="container">
+    <div class="col-md-12 col-lg-12">
+
+        <article class="post vt-post">
+            <div class="row">
+                <div class="col-xs-12 col-sm-5 col-md-5 col-lg-4">
+                    <div class="post-type post-img">
+                        <a href="/jekyll/update/2022/03/20/making-awesome-blog.html"><img src="./assets/images/me.jpg" width="300px" height="300px" class="img-responsive" alt="image post" /></a>
+                    </div>
+                    <div class="author-info author-info-2">
+                        <ul class="list-inline">
+                            <li>
+                                <div class="info">
+                                    <span>
+                                    <i class="fas fa-calendar"></i> 
+                                    Posted at: 20 March 2022
+                                    </span>
+                                    <br />
+                                    <span>
+                                    Categories: 
+                                    
+                                        jekyll,
+                                    
+                                        update,
+                                    
+                                    </span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-7 col-md-7 col-lg-8">
+                    <div class="caption">
+                        <h3 class="md-heading"><a href="/jekyll/update/2022/03/20/making-awesome-blog.html">Making awesome blog</a></h3>
+                        <p>You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes...</p>
+                        <a class="btn btn-default" href="/jekyll/update/2022/03/20/making-awesome-blog.html" role="button">Read More</a> </div>
+                </div>
+            </div>
+        </article>
+
+   
+        
+        <div class="pagination-wrap">
+            <nav aria-label="Page navigation example">
+              <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+              </ul>
+            </nav>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+:ET
