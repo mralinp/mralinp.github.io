@@ -1,0 +1,11 @@
+---
+layout: post
+title:  "Hello, world!"
+author: "Ali N. Parizi"
+img: "/assets/images/hello-world.png"
+date:   2022-03-20 20:02:05 +0330
+categories: blog
+---
+This is my first post on the blog on first day of the new century (1401-01-01 00:00:00 +330).
+
+`Hello, world!`

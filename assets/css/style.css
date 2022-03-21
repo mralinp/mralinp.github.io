@@ -182,7 +182,7 @@ a.article:hover {
     #content.active {
         width: calc(100% - 250px);
     }
-    #sidebarCollapse span {
+    #sidebarCollapse {
         display: none;
     }
 }
