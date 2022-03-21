@@ -1,0 +1,31 @@
+---
+layout: main
+---
+
+<div class="container pb50">
+    <div class="row">
+            <article>
+                    <img src="{{ page.img }}" alt="page.title" class="img-fluid mb30" width='100%'>
+                <div class="post-content">
+                <br>
+                    <h2>{{ page.title }}</h2>
+                    <ul class="post-meta list-inline">
+                        <li class="list-inline-item">
+                            <i class="fa fa-user-circle-o"></i> {{ page.author }}
+                        </li>
+                        <li class="list-inline-item">
+                            <i class="fa fa-calendar-o"></i> {{ page.date | date: "%-d %B %Y" }}
+                        </li>
+                        <li class="list-inline-item">
+                            <i class="fa fa-tags"></i>
+                                {{ page.categories.first }}
+                                {% for cat in page.categories offset: 1 %}
+                                    -> {{ cat }}
+                                {% endfor %}
+                        </li>
+                    </ul>
+                    <div class="line"></div>
+                    {{page.content}}
+            </article>
+            <!-- post article-->
+</div>
