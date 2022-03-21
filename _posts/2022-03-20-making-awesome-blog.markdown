@@ -2,7 +2,7 @@
 layout: post
 title:  "Making awesome blog"
 author: "Ali N. Parizi"
-img: "https://images.unsplash.com/photo-1455734729978-db1ae4f687fc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80"
+img: "/assets/images/simple-snake.png"
 date:   2022-03-20 20:02:05 +0330
 categories: web-development static-website jekyll
 ---

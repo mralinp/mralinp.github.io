@@ -37,13 +37,13 @@
                     <a href="/"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
                 </li>
                 <li>
+                    <a href="/blog"><i class="fa fa-rss" aria-hidden="true"></i> Blog</a>
+                </li>
+                <li>
                     <a href="/projects"><i class="fa fa-flask" aria-hidden="true"></i> Projects</a>
                 </li>
                 <li>
                     <a href="/publications"><i class="fa fa-book" aria-hidden="true"></i> Publications</a>
-                </li>
-                <li>
-                    <a href="/blog"><i class="fa fa-rss" aria-hidden="true"></i> Blog</a>
                 </li>
                 <li>
                     <a href="/about"><i class="fa fa-info" aria-hidden="true"></i> About me</a>
@@ -97,7 +97,12 @@
             <div class="container pb50">
     <div class="row">
             <article>
-                    <img src="/assets/images/khiarware.png" alt="page.title" class="img-fluid mb30" width='100%'>
+                    <div class="image-wrapper text-center">
+                    <a class="image-wrapper image-zoom cboxElement" href="">
+                    <img src="/assets/images/khiarware.png" class="img-thumbnail rounded mx-auto" width="100%"  alt="Photo of Blog">
+                    <div class="image-overlay"></div> 
+                    </a>
+            </div>
                 <div class="post-content">
                 <br>
                     <h2>Khiar ware: sample csgo cheat</h2>
@@ -125,8 +130,6 @@
 This project is just for educational porpuses and i’m not responsible for any other subversive applications.<br />
 As you know game hacking in online games is not allowed owing to annoying some other people. Normal players who just want to have fun with games, don’t want to face a demon hacker in their fun times, so game developers will respond if you do somthing to annoy other players. In other words cheating in online games will cause your account be <strong>banned</strong> (e.g VACation on steam platform).<br /></p>
 
-<p><img src="/assets/images/khiarware.png" alt="menu image" /></p>
-
 <p>If you want to run the codes above, compile them with visual studio(i used 2019 edition), and be careful, i don’t guarantee if you are getting banned or not. To be safe while testing and running this code in game, just run the game in <strong>insecure mode</strong>. That turns off the Valve anti-cheat when running the game, but you can’t join any VAC secure servers while launching the game on this mode. To do this just look at <a href="#insecure-mode">Insecure Mode</a>.</p>
 
 <h1 id="how-to-use-this-code">How to use this code</h1>
@@ -136,13 +139,13 @@ As you know game hacking in online games is not allowed owing to annoying some o
 <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">foo@bar~:$</span><span class="w"> </span>git clone https://github.com/mralinp/KhiarWare.git  
 </code></pre></div></div>
 
-<p>Then run <code class="language-plaintext highlighter-rouge">updater.py</code>, this will automatically update offset values into <code class="language-plaintext highlighter-rouge">Source/Offsets.h</code> file and you have to have <code class="language-plaintext highlighter-rouge">requests</code> library installed to run this as well:</p>
+<p>Then run <em>updater.py</em>, this will automatically update offset values into <em>Source/Offsets.h</em> file and you have to have <em>requests</em> library installed to run this as well:</p>
 
 <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">foo@bar~:$</span><span class="w"> </span>pip <span class="nb">install </span>requests
 <span class="gp">foo@bar~:$</span><span class="w"> </span>python updater.py
 </code></pre></div></div>
 
-<p>Finally create an empty visual studio project and add all of the source codes into the project (files with <code class="language-plaintext highlighter-rouge">.h</code> to <code class="language-plaintext highlighter-rouge">Headers</code> and the <code class="language-plaintext highlighter-rouge">.cpp</code> files into the <code class="language-plaintext highlighter-rouge">Sources</code>). Now you are all set, press <code class="language-plaintext highlighter-rouge">run/debug</code> button to execute, enjoy!</p>
+<p>Finally create an empty visual studio project and add all of the source codes into the project (files with .h to Headers and the .cpp files into the Sources). Now you are all set, press run/debug button to execute, enjoy!</p>
 
 <h2 id="insecure-mode">Insecure Mode</h2>
 <h3 id="for-those-who-doesnt-want-to-risk-and-its-recommened-by-me">For those who doesn’t want to risk and it’s recommened by me.</h3>

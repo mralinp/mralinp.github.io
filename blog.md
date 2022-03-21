@@ -3,18 +3,19 @@ layout: main
 title: Blog 
 --- 
 
+<h1>Welcome to my blog</h1>
+<div class="line"></div>
 <div class="container bootstrap snippets bootdey">
-    <h1>Welcome to my blog</h1>
-    <div class="line"></div>
         {% for post in site.posts %}
         <div class="panel blog-container">
             <div class="panel-body">
-            <div class="image-wrapper">
+            <div class="image-wrapper text-center">
                 <a class="image-wrapper image-zoom cboxElement" href="{{post.url}}">
-                <img src="{{post.img}}" width="100%" alt="Photo of Blog">
+                <img src="{{post.img}}" class="img-thumbnail rounded" width="100%"  alt="Photo of Blog">
                 <div class="image-overlay"></div> 
                 </a>
             </div>
+            <br>
             <a href="{{post.url}}"><h4>{{post.title}}</h4></a>
             <ul class="post-meta list-inline">
                         <li class="list-inline-item">
@@ -37,6 +38,6 @@ title: Blog
             <a href="{{post.url}}" class="btn btn-primary"><i class="fa fa-angle-double-right"></i> Continue reading</a>
         </div>
         <div class="line"></div>
-        {% endfor %}
     </div>
+    {% endfor %}
 </div>  

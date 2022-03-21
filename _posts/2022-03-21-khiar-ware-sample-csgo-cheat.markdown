@@ -13,9 +13,6 @@ This project is an example of game hacking, and it's created to share the person
 This project is just for educational porpuses and i'm not responsible for any other subversive applications.<br/>
 As you know game hacking in online games is not allowed owing to annoying some other people. Normal players who just want to have fun with games, don't want to face a demon hacker in their fun times, so game developers will respond if you do somthing to annoy other players. In other words cheating in online games will cause your account be **banned** (e.g VACation on steam platform).<br/>
 
-![menu image](/assets/images/khiarware.png)
-
-
 If you want to run the codes above, compile them with visual studio(i used 2019 edition), and be careful, i don't guarantee if you are getting banned or not. To be safe while testing and running this code in game, just run the game in **insecure mode**. That turns off the Valve anti-cheat when running the game, but you can't join any VAC secure servers while launching the game on this mode. To do this just look at [Insecure Mode](#insecure-mode).
 
 # How to use this code
@@ -26,14 +23,14 @@ First of all download the source codes:
 foo@bar~:$ git clone https://github.com/mralinp/KhiarWare.git  
 ```
 
-Then run `updater.py`, this will automatically update offset values into `Source/Offsets.h` file and you have to have `requests` library installed to run this as well:
+Then run *updater.py*, this will automatically update offset values into *Source/Offsets.h* file and you have to have *requests* library installed to run this as well:
 
 ```console
 foo@bar~:$ pip install requests
 foo@bar~:$ python updater.py
 ```
 
-Finally create an empty visual studio project and add all of the source codes into the project (files with `.h` to `Headers` and the `.cpp` files into the `Sources`). Now you are all set, press `run/debug` button to execute, enjoy!
+Finally create an empty visual studio project and add all of the source codes into the project (files with .h to Headers and the .cpp files into the Sources). Now you are all set, press run/debug button to execute, enjoy!
 
 
 ## Insecure Mode

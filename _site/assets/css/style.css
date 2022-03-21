@@ -79,7 +79,7 @@ a:focus {
 
 #sidebar ul.components {
     padding: 20px 0;
-    border-bottom: 1px solid #47748b;
+    border-bottom: 1px solid #fca311;
 }
 
 #sidebar ul p {
@@ -185,4 +185,10 @@ a.article:hover {
     #sidebarCollapse span {
         display: none;
     }
+}
+
+.image-wrapper {
+    position: relative;
+    display: block;
+    overflow: hidden;
 }

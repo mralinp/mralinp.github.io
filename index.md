@@ -2,58 +2,18 @@
 layout: main 
 title: Home 
 --- 
-# Most recent posts
 
+# Welcome to my personal website
 <div class="line"></div>
+Dear visitor,
 
-<div class="container">
-    <div class="col-md-12 col-lg-12">
-        {% for post in site.posts limit: 5 offset: site.page %}
-        <article class="post vt-post">
-            <div class="row">
-                <div class="col-xs-12 col-sm-5 col-md-5 col-lg-4">
-                    <div class="post-type post-img">
-                        <a href="{{post.url}}"><img src="{{ post.img }}" width="200px" height="200px" class="img-responsive" alt="image post"></a>
-                    </div>
-                    <br>
-                    <div class="author-info author-info-2">
-                        <ul class="list-inline">
-                            <li>
-                                <div class="info">
-                                    <span>Posted at: {{ post.date | date: "%-d %B %Y" }}</span>
-                                    <br>
-                                    <span>Categories:
-                                        {{ post.categories.first }}
-                                    </span>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-7 col-md-7 col-lg-8">
-                    <div class="caption">
-                        <h3 class="md-heading"><a href="{{post.url}}">{{ post.title }}</a></h3>
-                        <p>{{ post.content | strip_html | truncatewords: 50 }}</p>
-                        <a class="btn btn-primary" href="{{post.url}}" role="button">Read More</a>
-                    </div>
-                </div>
-            </div>
-        </article>
-        <div class="line"></div>
+Hello, this is me speaking. I'm thrilled that you are reading this message. It is my personal blog. Here I share everything I learned in my career. I felt that I owe all the people who share their information and teach and help others learn new things and get their jobs done. I decided to build my blog and share my experiences with others. 
 
-        {% endfor %}
+At First, I thought, "bro, you are too Noob to write something useful for other people; there are plenty of people whose knowledge is way better than you!". But on the other hand, the best way of learning deep concepts is by teaching other people. Indeed, there are many people whose knowledge is much better than mine, but I may know something that other people are searching for. As I've used others' experiences to learn things, I think my experiences could become helpful to some people.
 
-        <div class="pagination-wrap">
-            <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                </ul>
-            </nav>
-        </div>
-        <div class="clearfix"></div>
-    </div>
-</div>
+Feel free to look at my blog posts, projects, and publications to see if you can find something interesting.
+
+Regards, <br>
+Ali N. Parizi
+
+

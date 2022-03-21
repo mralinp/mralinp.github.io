@@ -2,24 +2,43 @@
 title: Projects
 layout: main
 ---
+<h1> Projects and experiences </h1>
+<div class="line"></div>
 <div class="container bootstrap snippets bootdey">
-    <h1>Welcome to my blog</h1>
-    <div class="line"></div>
+        {% for post in site.posts %}
+        {% if post.categories.first == 'project' %}
         <div class="panel blog-container">
             <div class="panel-body">
-            <div class="image-wrapper">
-                <a class="image-wrapper image-zoom cboxElement" href="#">
-                <img src="https://via.placeholder.com/700x250/00CED1/000000" width="100%" alt="Photo of Blog">
+            <div class="image-wrapper text-center">
+                <a class="image-wrapper image-zoom cboxElement" href="{{post.url}}">
+                <img src="{{post.img}}" class="img-thumbnail rounded" width="100%"  alt="Photo of Blog">
                 <div class="image-overlay"></div> 
                 </a>
             </div>
-            <h4>Bootstrap 3.0</h4>
-            <small class="text-muted">By <a href="#"><strong> John Doe</strong></a> |  Post on Jan 8, 2013  | 58 comments</small>
+            <br>
+            <a href="{{post.url}}"><h4>{{post.title}}</h4></a>
+            <ul class="post-meta list-inline">
+                        <li class="list-inline-item">
+                            <i class="fa fa-user-circle-o"></i> {{ post.author }}
+                        </li>
+                        <li class="list-inline-item">
+                            <i class="fa fa-calendar-o"></i> {{ post.date | date: "%-d %B %Y" }}
+                        </li>
+                        <li class="list-inline-item">
+                            <i class="fa fa-tags"></i>
+                                {{ post.categories.first }}
+                                {% for cat in post.categories offset: 1 %}
+                                    -> {{ cat }}
+                                {% endfor %}
+                        </li>
+                    </ul>
             <p class="m-top-sm m-bottom-sm">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eros nibh, viverra a dui a, gravida varius velit. Nunc vel tempor nisi. Aenean id pellentesque mi, non placerat mi. Integer luctus accumsan tellus. Vivamus quis elit sit amet nibh lacinia suscipit eu quis purus. Vivamus tristique est non ipsum dapibus lacinia sed nec metus.
+                {{ post.content | strip_html | truncatewords: 50 }}
             </p>
-            <a href="single_post.html" class="btn btn-primary"><i class="fa fa-angle-double-right"></i> Continue reading</a>
-            </div>
-        </div>  
-        <div class="line"></div>  
-</div>
+            <a href="{{post.url}}" class="btn btn-primary"><i class="fa fa-angle-double-right"></i> Continue reading</a>
+        </div>
+        <div class="line"></div>
+    </div>
+     {% endif %}
+    {% endfor %}
+</div>  

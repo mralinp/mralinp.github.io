@@ -5,7 +5,12 @@ layout: main
 <div class="container pb50">
     <div class="row">
             <article>
-                    <img src="{{ page.img }}" alt="page.title" class="img-fluid mb30" width='100%'>
+                    <div class="image-wrapper text-center">
+                    <a class="image-wrapper image-zoom cboxElement" href="{{post.url}}">
+                    <img src="{{page.img}}" class="img-thumbnail rounded mx-auto" width="100%"  alt="Photo of Blog">
+                    <div class="image-overlay"></div> 
+                    </a>
+            </div>
                 <div class="post-content">
                 <br>
                     <h2>{{ page.title }}</h2>
