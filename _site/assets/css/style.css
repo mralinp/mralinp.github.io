@@ -186,12 +186,3 @@ a.article:hover {
         display: none;
     }
 }
-
-.post-header span {
-    color: #aaa
-}
-
-.main {
-    height: 100vh;
-    border: 1px solid red;
-}

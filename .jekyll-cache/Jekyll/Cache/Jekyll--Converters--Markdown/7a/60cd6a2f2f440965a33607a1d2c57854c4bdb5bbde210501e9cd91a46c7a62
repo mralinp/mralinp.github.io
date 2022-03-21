@@ -1,0 +1,50 @@
+I"×<div class="container bootstrap snippets bootdey">
+    <div class="row">
+        <h1>Welcome to my blog</h1>
+        <hr />
+    </div>
+    <div class="row">
+        <!-- posts -->
+            <div class="panel blog-container">
+              <div class="panel-body">
+                <div class="image-wrapper">
+                  <a class="image-wrapper image-zoom cboxElement" href="#">
+                    <img src="https://via.placeholder.com/700x250/00CED1/000000" width="100%" alt="Photo of Blog" />
+                    <div class="image-overlay"></div> 
+                  </a>
+                </div>
+                <h4>Bootstrap 3.0</h4>
+                <small class="text-muted">By <a href="#"><strong> John Doe</strong></a> |  Post on Jan 8, 2013  | 58 comments</small>
+                <p class="m-top-sm m-bottom-sm">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eros nibh, viverra a dui a, gravida varius velit. Nunc vel tempor nisi. Aenean id pellentesque mi, non placerat mi. Integer luctus accumsan tellus. Vivamus quis elit sit amet nibh lacinia suscipit eu quis purus. Vivamus tristique est non ipsum dapibus lacinia sed nec metus.
+                </p>
+                <a href="single_post.html"><i class="fa fa-angle-double-right"></i> Continue reading</a>
+                <span class="post-like text-muted tooltip-test" data-toggle="tooltip" data-original-title="I like this post!">
+                  <i class="fa fa-heart"></i> <span class="like-count">25</span>
+                </span>
+              </div>
+            </div>  
+            <div class="panel blog-container">
+              <div class="panel-body">
+                <div class="image-wrapper">
+                  <a class="image-wrapper image-zoom cboxElement" href="#">
+                    <img src="https://via.placeholder.com/700x250/FF69B4/000000" alt="Photo of Blog" />
+                    <div class="image-overlay"></div> 
+                  </a>
+                </div>
+                
+                <h4>Bootstrap 3.0</h4>
+                <small class="text-muted">By <a href="#"><strong> John Doe</strong></a> |  Post on Jan 8, 2013  | 58 comments</small>
+                
+                <p class="m-top-sm m-bottom-sm">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eros nibh, viverra a dui a, gravida varius velit. Nunc vel tempor nisi. Aenean id pellentesque mi, non placerat mi. Integer luctus accumsan tellus. Vivamus quis elit sit amet nibh lacinia suscipit eu quis purus. Vivamus tristique est non ipsum dapibus lacinia sed nec metus.
+                </p>
+                <a href="single_post.html"><i class="fa fa-angle-double-right"></i> Continue reading</a>
+                <span class="post-like text-muted tooltip-test" data-toggle="tooltip" data-original-title="I like this post!">
+                  <i class="fa fa-heart"></i> <span class="like-count">25</span>
+                </span>
+              </div>
+            </div>          
+  </div>
+</div>
+:ET

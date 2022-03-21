@@ -1,0 +1,148 @@
+I" <h1 id="most-recent-posts">Most recent posts</h1>
+
+<div class="container bootstrap snippets bootdey">
+    <h1>Welcome to my blog</h1>
+    <div class="line"></div>
+        
+        <div class="panel blog-container">
+            <div class="panel-body">
+            <div class="image-wrapper">
+                <a class="image-wrapper image-zoom cboxElement" href="/software/security/game-hacking/2022/03/21/khiar-ware-sample-csgo-cheat.html">
+                <img src="/assets/images/khiarware.png" width="100%" alt="Photo of Blog" />
+                <div class="image-overlay"></div> 
+                </a>
+            </div>
+            <h4>Khiar ware: sample csgo cheat</h4>
+            <ul class="post-meta list-inline">
+                        <li class="list-inline-item">
+                            <i class="fa fa-user-circle-o"></i> Ali N. Parizi
+                        </li>
+                        <li class="list-inline-item">
+                            <i class="fa fa-calendar-o"></i> 21 March 2022
+                        </li>
+                        <li class="list-inline-item">
+                            <i class="fa fa-tags"></i>
+                                software
+                                
+                                    -&gt; security
+                                
+                                    -&gt; game-hacking
+                                
+                        </li>
+                    </ul>
+            <p class="m-top-sm m-bottom-sm">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eros nibh, viverra a dui a, gravida varius velit. Nunc vel tempor nisi. Aenean id pellentesque mi, non placerat mi. Integer luctus accumsan tellus. Vivamus quis elit sit amet nibh lacinia suscipit eu quis purus. Vivamus tristique est non ipsum dapibus lacinia sed nec metus.
+            </p>
+            <a href="single_post.html" class="btn btn-primary"><i class="fa fa-angle-double-right"></i> Continue reading</a>
+            </div>
+        </div>  
+        <div class="line"></div>  
+
+
+
+
+        <article class="post vt-post">
+            <div class="row">
+                <div class="col-xs-12 col-sm-5 col-md-5 col-lg-4">
+                    <div class="post-type post-img">
+                        <a href="/software/security/game-hacking/2022/03/21/khiar-ware-sample-csgo-cheat.html"><img src="/assets/images/khiarware.png" width="200px" height="200px" class="img-responsive" alt="image post" /></a>
+                    </div>
+                    <br />
+                    <div class="author-info author-info-2">
+                        <ul class="list-inline">
+                            <li>
+                                <div class="info">
+                                    <span>Posted at: 21 March 2022</span>
+                                    <br />
+                                    <span>Categories:
+                                        software
+                                    </span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-7 col-md-7 col-lg-8">
+                    <div class="caption">
+                        <h3 class="md-heading"><a href="/software/security/game-hacking/2022/03/21/khiar-ware-sample-csgo-cheat.html">Khiar ware: sample csgo cheat</a></h3>
+                        <p>KhiarWare(Windows Version) WallHack + TriggerBot + RadarHack + AutoBhop This project is an example of game hacking, and it’s created to share the personal experience with other enthusiasts in this branch of software security. This project is just for educational porpuses and i’m not responsible for any other subversive applications....</p>
+                        <a class="btn btn-primary" href="/software/security/game-hacking/2022/03/21/khiar-ware-sample-csgo-cheat.html" role="button">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <div class="line"></div>
+
+        
+        <div class="panel blog-container">
+            <div class="panel-body">
+            <div class="image-wrapper">
+                <a class="image-wrapper image-zoom cboxElement" href="/web-development/static-website/jekyll/2022/03/20/making-awesome-blog.html">
+                <img src="https://images.unsplash.com/photo-1455734729978-db1ae4f687fc?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80" width="100%" alt="Photo of Blog" />
+                <div class="image-overlay"></div> 
+                </a>
+            </div>
+            <h4>Making awesome blog</h4>
+            <ul class="post-meta list-inline">
+                        <li class="list-inline-item">
+                            <i class="fa fa-user-circle-o"></i> Ali N. Parizi
+                        </li>
+                        <li class="list-inline-item">
+                            <i class="fa fa-calendar-o"></i> 20 March 2022
+                        </li>
+                        <li class="list-inline-item">
+                            <i class="fa fa-tags"></i>
+                                web-development
+                                
+                                    -&gt; static-website
+                                
+                                    -&gt; jekyll
+                                
+                        </li>
+                    </ul>
+            <p class="m-top-sm m-bottom-sm">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eros nibh, viverra a dui a, gravida varius velit. Nunc vel tempor nisi. Aenean id pellentesque mi, non placerat mi. Integer luctus accumsan tellus. Vivamus quis elit sit amet nibh lacinia suscipit eu quis purus. Vivamus tristique est non ipsum dapibus lacinia sed nec metus.
+            </p>
+            <a href="single_post.html" class="btn btn-primary"><i class="fa fa-angle-double-right"></i> Continue reading</a>
+            </div>
+        </div>  
+        <div class="line"></div>  
+
+
+
+
+        <article class="post vt-post">
+            <div class="row">
+                <div class="col-xs-12 col-sm-5 col-md-5 col-lg-4">
+                    <div class="post-type post-img">
+                        <a href="/web-development/static-website/jekyll/2022/03/20/making-awesome-blog.html"><img src="https://images.unsplash.com/photo-1455734729978-db1ae4f687fc?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80" width="200px" height="200px" class="img-responsive" alt="image post" /></a>
+                    </div>
+                    <br />
+                    <div class="author-info author-info-2">
+                        <ul class="list-inline">
+                            <li>
+                                <div class="info">
+                                    <span>Posted at: 20 March 2022</span>
+                                    <br />
+                                    <span>Categories:
+                                        web-development
+                                    </span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-7 col-md-7 col-lg-8">
+                    <div class="caption">
+                        <h3 class="md-heading"><a href="/web-development/static-website/jekyll/2022/03/20/making-awesome-blog.html">Making awesome blog</a></h3>
+                        <p>You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when...</p>
+                        <a class="btn btn-primary" href="/web-development/static-website/jekyll/2022/03/20/making-awesome-blog.html" role="button">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <div class="line"></div>
+
+        
+</div>
+:ET

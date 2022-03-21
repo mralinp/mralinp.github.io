@@ -2,58 +2,41 @@
 layout: main 
 title: Blog 
 --- 
-# Most recent posts
 
-<div class="line"></div>
-
-<div class="container">
-    <div class="col-md-12 col-lg-12">
-        {% for post in site.posts limit: 5 offset: site.page %}
-        <article class="post vt-post">
-            <div class="row">
-                <div class="col-xs-12 col-sm-5 col-md-5 col-lg-4">
-                    <div class="post-type post-img">
-                        <a href="{{post.url}}"><img src="{{ post.img }}" width="200px" height="200px" class="img-responsive" alt="image post"></a>
-                    </div>
-                    <br>
-                    <div class="author-info author-info-2">
-                        <ul class="list-inline">
-                            <li>
-                                <div class="info">
-                                    <span>Posted at: {{ post.date | date: "%-d %B %Y" }}</span>
-                                    <br>
-                                    <span>Categories:
-                                        {{ post.categories.first }}
-                                    </span>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-7 col-md-7 col-lg-8">
-                    <div class="caption">
-                        <h3 class="md-heading"><a href="{{post.url}}">{{ post.title }}</a></h3>
-                        <p>{{ post.content | strip_html | truncatewords: 50 }}</p>
-                        <a class="btn btn-primary" href="{{post.url}}" role="button">Read More</a>
-                    </div>
-                </div>
+<div class="container bootstrap snippets bootdey">
+    <h1>Welcome to my blog</h1>
+    <div class="line"></div>
+        {% for post in site.posts %}
+        <div class="panel blog-container">
+            <div class="panel-body">
+            <div class="image-wrapper">
+                <a class="image-wrapper image-zoom cboxElement" href="{{post.url}}">
+                <img src="{{post.img}}" width="100%" alt="Photo of Blog">
+                <div class="image-overlay"></div> 
+                </a>
             </div>
-        </article>
-        <div class="line"></div>
-
-        {% endfor %}
-
-        <div class="pagination-wrap">
-            <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                </ul>
-            </nav>
+            <a href="{{post.url}}"><h4>{{post.title}}</h4></a>
+            <ul class="post-meta list-inline">
+                        <li class="list-inline-item">
+                            <i class="fa fa-user-circle-o"></i> {{ post.author }}
+                        </li>
+                        <li class="list-inline-item">
+                            <i class="fa fa-calendar-o"></i> {{ post.date | date: "%-d %B %Y" }}
+                        </li>
+                        <li class="list-inline-item">
+                            <i class="fa fa-tags"></i>
+                                {{ post.categories.first }}
+                                {% for cat in post.categories offset: 1 %}
+                                    -> {{ cat }}
+                                {% endfor %}
+                        </li>
+                    </ul>
+            <p class="m-top-sm m-bottom-sm">
+                {{ post.content | strip_html | truncatewords: 50 }}
+            </p>
+            <a href="{{post.url}}" class="btn btn-primary"><i class="fa fa-angle-double-right"></i> Continue reading</a>
         </div>
-        <div class="clearfix"></div>
+        <div class="line"></div>
+        {% endfor %}
     </div>
-</div>
+</div>  
