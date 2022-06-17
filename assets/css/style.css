@@ -192,3 +192,7 @@ a.article:hover {
     display: block;
     overflow: hidden;
 }
+
+body img {
+    width: 100%;
+}

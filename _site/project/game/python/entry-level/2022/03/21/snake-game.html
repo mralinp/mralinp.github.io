@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title> Snake game </title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+    <!-- Font awesome -->
+    <script src="https://kit.fontawesome.com/40a6ec6105.js" crossorigin="anonymous"></script>
+    <!-- Prism CSS -->
+    <link rel="stylesheet" href="/assets/css/prism.css">
+    <!-- Prism JS -->
+    <script src="/assets/js/prism.js"></script>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3><a href="/">Ali N. Parizi</a></h3>
+            </div>
+
+            <ul class="list-unstyled components">
+                <p>Welcome to my blog</p>
+                <li>
+                    <a href="/"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+                </li>
+                <li>
+                    <a href="/blog"><i class="fa fa-rss" aria-hidden="true"></i> Blog</a>
+                </li>
+                <li>
+                    <a href="/projects"><i class="fa fa-flask" aria-hidden="true"></i> Projects</a>
+                </li>
+                <li>
+                    <a href="/publications"><i class="fa fa-book" aria-hidden="true"></i> Publications</a>
+                </li>
+                <li>
+                    <a href="/about"><i class="fa fa-info" aria-hidden="true"></i> About me</a>
+                </li>
+            </ul>
+
+            <ul class="list-unstyled CTAs">
+                <li>
+                    <a href="/assets/resume/ali-naderi-parizi-cv.pdf" class="download"> <i class="fas fa-file"></i> Download resume</a>
+                </li>
+                <li>
+                    <a href="https://github.com/mralinp" class="article"> <i class="fab fa-github"></i> Github profile
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content">
+            <!-- Navbar -->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <span>Menu</span>
+                    </button>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/assets/resume/ali-naderi-parizi-cv.pdf">Resume</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/blog">Blog</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/about">About me</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="container">
+    <article>
+        <div class="image-wrapper text-center">
+            <a class="image-wrapper image-zoom cboxElement" href="">
+            <img src="/assets/images/snake-game.jpeg" class="img-thumbnail rounded mx-auto" width="100%"  alt="Photo of Blog">
+            <div class="image-overlay"></div> 
+            </a>
+        </div>
+        <br>
+        <div class="post-content">
+            <h2>Snake game</h2>
+            <ul class="post-meta list-inline">
+                <li class="list-inline-item">
+                    <i class="fa fa-user-circle-o"></i> Ali N. Parizi
+                </li>
+                <li class="list-inline-item">
+                    <i class="fa fa-calendar-o"></i> 21 March 2022
+                </li>
+                <li class="list-inline-item">
+                    <i class="fa fa-tags"></i>
+                        project
+                        
+                            -> game
+                        
+                            -> python
+                        
+                            -> entry-level
+                        
+                </li>
+            </ul>
+            <div class="line"></div>
+            <h1 id="1-into">1. Into</h1>
+<p>Hello there, this is Ali speaking. When i started studying computer engineering at Shiraz university, CSE101 was the very primarly course that we should take to get familiar with the basic concepts of programming. They introduced <strong>python</strong> to us for the first time. Python is a very cool programming language that have very waste practical areas in almost any majors such as Data science, machine learning, web-development, game development, etc.</p>
+
+<p>Now i’m using python on almost my every day of my academic career. So it was a good choice to begin programming and get familiar with the concepts of programming. On the other hand, in the first year of high-school i learned <strong>C</strong> programming as my first language. I was using C to solve mathematic problems and only for fun because I didn’t have any other source to learn, except our computer teacher and a very old resource which was based on <strong>Borland C++</strong> and was running on <strong>MS-DOS</strong>. That days we didn’t have the access to the internet on our home or school so the only way of learning things was reading books and asking questions. So to me the course CSE101 was the easiest course of my life. I never studied anything about the course silabuses but I was just learning everything possible about python that could found. <strong>Our final project was making a very simple snake game (like old school Nokia phones game) without using advanced libraries such as pyGame or other alternatives.</strong></p>
+
+<h2 id="11-problem-statement">1.1 Problem statement:</h2>
+
+<p>Develop a straightforward snake game such as the one on old-school Nokia phones. A single snake moves around the game world. Users can control the snake using arrows keys or W, A, S, and D to move UP, LEFT, DOWN, and RIGHT.</p>
+
+<p>After a random time, it will be deployed an apple on a random spot on the map. If the snake eats the apple, its tail extends, and the player receives 100 points. The map can contain some walls or obstacles. If the snake hits a block or its tail, the game will be finished, and the player will lose the game.</p>
+
+<p>By pressing the Esc key, the game pauses. You have to make the ability to store the highest score after the game finishes.</p>
+
+<p>Any creative ideas and implementation that improve performance, game experience, and game appearance considers as bonuses.</p>
+
+<h1 id="2-solution">2. Solution</h1>
+<p>Did you read <strong><a href="#11-problem-statement">part 1.1</a></strong> carefully? As it could be found from the problem statement. We can break the problem into some parts and levels. First is to implement a moving object on the 2D game board which actually is our snake. As the game world is console and no graphical libraries are allowed here we need to think and consider about a simple world of char games. In this world, all objects in the game are nothing but characters. For example snake head can be displayed as the character ‘@’, its tail segments can be displayed with ‘o’ and Apples are displayed with ‘A’. At the end walls could be represented as ‘#’. First, we try to implement the basics of the game. The challenge here is how to print a character on a specific position of the screen.</p>
+
+<h1 id="3-implementation">3. Implementation</h1>
+
+<h1 id="4-final-words">4. Final words</h1>
+
+    </article>
+</div>
+
+
+        </div>
+    </div>
+
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous">
+    </script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous">
+    </script>
+    <!-- jQuery Custom Scroller CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js">
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#sidebar").mCustomScrollbar({
+                theme: "minimal"
+            });
+
+            $('#sidebarCollapse').on('click', function() {
+                $('#sidebar, #content').toggleClass('active');
+                $('.collapse.in').toggleClass('in');
+                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+            });
+        });
+    </script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML">
+    </script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']], processEscapes: true}, jax: ["input/TeX","input/MathML","input/AsciiMath","output/CommonHTML"], extensions: ["tex2jax.js","mml2jax.js","asciimath2jax.js","MathMenu.js","MathZoom.js","AssistiveMML.js",
+        "[Contrib]/a11y/accessibility-menu.js"], TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"], equationNumbers: { autoNumber: "AMS" } } });
+    </script>
+
+</body>
+
+</html>
