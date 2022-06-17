@@ -3,7 +3,7 @@ layout: main
 title: Blog 
 --- 
 
-<h1>Welcome to my blog</h1>
+<h1>Blog posts</h1>
 <div class="line"></div>
 <div class="container bootstrap snippets bootdey">
         {% for post in site.posts %}
@@ -11,7 +11,7 @@ title: Blog
             <div class="panel-body">
             <div class="image-wrapper text-center">
                 <a class="image-wrapper image-zoom cboxElement" href="{{post.url}}">
-                <img src="{{post.img}}" class="img-thumbnail rounded" width="100%"  alt="Photo of Blog">
+                <img src="{{post.img}}" class="img-thumbnail rounded" alt="Photo of Blog">
                 <div class="image-overlay"></div> 
                 </a>
             </div>

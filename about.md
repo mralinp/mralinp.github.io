@@ -12,13 +12,13 @@ permalink: /about
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex flex-column align-items-center text-center">
-                            <img src="/assets/images/me.jpg" alt="Admin" class="rounded-circle" width="150" height="150" />
+                            <img src="/assets/images/me.jpg" alt="Admin" class="about-me-img img-thumbnail rounded"/>
                             <div class="mt-3">
                                 <h4>Ali N. Parizi</h4>
                                 <p class="text-secondary mb-1">Computer engineer</p>
                                 <p class="text-muted font-size-sm">Tehran, Iran</p>
-                                <a class="btn btn-outline-primary"><i class="fa fa-linkedin"></i> LinkedIn</a>
-                                <a class="btn btn-outline-primary"><i class="fa fa-twitter"></i> Tweeter</a>
+                                <a class="btn btn-outline-primary" href="https://www.linkedin.com/in/ali-naderi-parizi-5a0a74107/"><i class="fa fa-linkedin"></i> LinkedIn</a>
+                                <a class="btn btn-outline-primary" href="https://twitter.com/alinaderiparizi"><i class="fa fa-twitter"></i> Tweeter</a>
                             </div>
                         </div>
                     </div>
@@ -49,42 +49,93 @@ permalink: /about
                 <!-- Skill levels -->
                 <div class="card mt-3">
                     <div class="card-body">
-                        <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Skills level</i>Experimental and academics</h6>
-                        <small>Computer vision (Half way)</small>
+                        <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Skill points</i></h6>
+                        <small>Computer vision <i class="fas fa-star"></i></small>
                         <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
-                        <small>Web-development (Expert)</small>
+                        <small>Web-development</small>
                         <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 65%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar bg-primary" role="progressbar" style="width: 70%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
-                        <small>Algorithms (Expert)</small>
+                        <small>Algorithms</small>
                         <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 70%" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar bg-primary" role="progressbar" style="width: 65%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
-                        <small>Reverse engineering (Half way)</small>
+                        <small>Reverse engineering <i class="fas fa-star"></i></small>
                         <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar bg-primary" role="progressbar" style="width: 40%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
-                        <small>Arduino and Microcontrollers (Expert)</small>
+                        <small>Robotics <i class="fas fa-star"></i></small>
                         <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 70%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
-                        <small>C/C++ and kernel development (Junior)</small>
+                        <small>c/c++ system programming <i class="fas fa-star"></i></small>
                         <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 40%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar bg-primary" role="progressbar" style="width: 70%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
-                        <small>Research (I Never give up)</small>
+                        <small>Research</small>
                         <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 65%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
-                        <small>Block chain (Noob)</small>
+                        <small>Machine-learning</small>
                         <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 30%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>
                 </div>
                 <!-- End skill level -->
+                <!-- Programming languages -->
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Programming languages</i></h6>
+                        <small>c/c++<i class="fas fa-star"></i></small>
+                        <div class="progress mb-3" style="height: 5px">
+                            <div class="progress-bar bg-primary" role="progressbar" style="width: 70%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <small>Python <i class="fas fa-star"></i></small>
+                        <div class="progress mb-3" style="height: 5px">
+                            <div class="progress-bar bg-primary" role="progressbar" style="width: 90%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <small>JavaScript/TypeScript <i class="fas fa-star"></i></small>
+                        <div class="progress mb-3" style="height: 5px">
+                            <div class="progress-bar bg-primary" role="progressbar" style="width: 75%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <small>Java</small>
+                        <div class="progress mb-3" style="height: 5px">
+                            <div class="progress-bar bg-primary" role="progressbar" style="width: 60%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <small>c#</small>
+                        <div class="progress mb-3" style="height: 5px">
+                            <div class="progress-bar bg-primary" role="progressbar" style="width: 60%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <small>Php</small>
+                        <div class="progress mb-3" style="height: 5px">
+                            <div class="progress-bar bg-primary" role="progressbar" style="width: 70%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <small>Ruby</small>
+                        <div class="progress mb-3" style="height: 5px">
+                            <div class="progress-bar bg-primary" role="progressbar" style="width: 30%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <small>Rust</small>
+                        <div class="progress mb-3" style="height: 5px">
+                            <div class="progress-bar bg-primary" role="progressbar" style="width: 40%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <small>Go</small>
+                        <div class="progress mb-3" style="height: 5px">
+                            <div class="progress-bar bg-primary" role="progressbar" style="width: 40%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <small>X80_86 assembly</small>
+                        <div class="progress mb-3" style="height: 5px">
+                            <div class="progress-bar bg-primary" role="progressbar" style="width: 30%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <small>Matlab/Octave</small>
+                        <div class="progress mb-3" style="height: 5px">
+                            <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End of programming languages -->
             </div>
             <div class="col-md-8">
                 <!-- Experiences -->
@@ -92,28 +143,28 @@ permalink: /about
                     <div class="card-body">
                         <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Experiences</i></h6>
                         <div class="col text-secondary">
-                            IDmelon Technologies Inc, Vancouver, BC, Canada — Developer (remote)
+                            IDmelon Technologies Inc, Vancouver, BC, Canada — Software engineer (part-time)
                             <br>
                             <small>Mar 2022 - Present</small>
                             <br>
                         </div>
                         <hr>
                         <div class="col text-secondary">
-                            Dadeh Afzar Arman (DAA), Tehran, Tehran, Iran — Developer (part-time)
+                            Dadeh Afzar Arman (DAA), Tehran, Tehran, Iran — Software engineer (part-time)
                             <br>
                             <small>Nov 2020 - Jan 2022</small>
                             <br>
                         </div>
                         <hr>
                         <div class="col text-secondary">
-                            System Inteligizer (Sico), Shiraz, Fars, Iran — Research and development (part-time)
+                            System Inteligizer (Sico), Shiraz, Fars, Iran — Research and development Eng. (part-time)
                             <br>
                             <small>Aug 2019 - Dec 2019</small>
                             <br>
                         </div>
                         <hr>
                         <div class="col text-secondary">
-                            System Inteligizer (Sico), Shiraz, Fars, Iran — Research and development (intern)
+                            System Inteligizer (Sico), Shiraz, Fars, Iran — Research and development Eng. (intern)
                             <br>
                             <small>Jul 2018 - Sep 2018</small>
                             <br>

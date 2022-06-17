@@ -119,7 +119,10 @@ a[data-toggle="collapse"] {
 ul ul a {
     font-size: 0.9em !important;
     padding-left: 30px !important;
-    background: #000000;
+}
+
+ul a:hover {
+    color: #fca311;
 }
 
 ul.CTAs {
@@ -139,10 +142,14 @@ a.download {
     color: #000;
 }
 
-a.article,
-a.article:hover {
+a.article {
+    background: #FCA311 !important;
+    color: #000 !important;
+}
+
+li a:hover {
     background: #000 !important;
-    color: #fca311 !important;
+    color: #FCA311 !important;
 }
 
 
@@ -195,4 +202,9 @@ a.article:hover {
 
 body img {
     width: 100%;
+}
+
+.about-me-img {
+    width: 80%;
+    height: 80%;
 }
