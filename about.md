@@ -171,7 +171,7 @@ permalink: /about
                         </div>
                         <hr>
                         <div class="col text-secondary">
-                            Developing an SOB                            
+                            Developing a Systom On Board (SOB)                            
                             <br>
                             <small>Building a system on board with the capability of reading analog video signals and booting a Linux kernel. This board is capable of image processing purposes in IoT devices, such as CCTVs, home security systems, or automated farming systems.</small>
                             <br>
