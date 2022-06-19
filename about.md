@@ -9,10 +9,10 @@ permalink: /about
         <div class="row gutters-sm">
             <div class="col-md-4 mb-3">
                 <!-- Profile -->
-                <div class="card">
+                <div class="card first-block">
                     <div class="card-body">
                         <div class="d-flex flex-column align-items-center text-center">
-                            <img src="/assets/images/me.jpg" alt="Admin" class="about-me-img img-thumbnail rounded"/>
+                            <img src="/assets/images/me.jpg" alt="Admin" class="about-me-img rounded"/>
                             <div class="mt-3">
                                 <h4>Ali N. Parizi</h4>
                                 <p class="text-secondary mb-1">Computer engineer</p>
@@ -49,7 +49,7 @@ permalink: /about
                 <!-- Skill levels -->
                 <div class="card mt-3">
                     <div class="card-body">
-                        <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Skill points</i></h6>
+                        <h6 class="d-flex align-items-center mb-3"><i class="material-icons mr-2">Skill points</i></h6>
                         <small>Computer vision <i class="fas fa-star"></i></small>
                         <div class="progress mb-3" style="height: 5px">
                         <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
@@ -88,7 +88,7 @@ permalink: /about
                 <!-- Programming languages -->
                 <div class="card mt-3">
                     <div class="card-body">
-                        <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Programming languages</i></h6>
+                        <h6 class="d-flex align-items-center mb-3"><i class="material-icons mr-2">Programming languages</i></h6>
                         <small>c/c++<i class="fas fa-star"></i></small>
                         <div class="progress mb-3" style="height: 5px">
                             <div class="progress-bar bg-primary" role="progressbar" style="width: 70%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
@@ -141,7 +141,7 @@ permalink: /about
                 <!-- Experiences -->
                 <div class="card md-3">
                     <div class="card-body">
-                        <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Experiences</i></h6>
+                        <h6 class="d-flex align-items-center mb-3"><i class="material-icons mr-2">Experiences</i></h6>
                         <div class="col text-secondary">
                             IDmelon Technologies Inc, Vancouver, BC, Canada — Software engineer (part-time)
                             <br>
@@ -176,7 +176,7 @@ permalink: /about
                 <!-- Education -->
                 <div class="card md-3">
                     <div class="card-body">
-                        <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Education</i></h6>
+                        <h6 class="d-flex align-items-center mb-3"><i class="material-icons mr-2">Education</i></h6>
                         <div class="col text-secondary">
                             Iran university of science and technology, Tehran, Tehran, Iran — Master of Artificial intelligence.
                             <br>
@@ -204,7 +204,7 @@ permalink: /about
                 <!-- Projects -->
                 <div class="card md-3">
                     <div class="card-body">
-                        <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Projects</i></h6>
+                        <h6 class="d-flex align-items-center mb-3"><i class="material-icons mr-2">Projects</i></h6>
                         <div class="col text-secondary">
                             Enhancing object detection runtime using Knowledge Distillation 
                             <br>
@@ -248,7 +248,7 @@ permalink: /about
                 <!-- Research and publications -->
                  <div class="card md-3">
                     <div class="card-body">
-                        <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Research and publications</i></h6>
+                        <h6 class="d-flex align-items-center mb-3"><i class="material-icons mr-2">Research and publications</i></h6>
                         <div class="col text-secondary">
                             Deep anomaly detection for image processing: A survey
                             <br>

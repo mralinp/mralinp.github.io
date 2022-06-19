@@ -7,7 +7,7 @@ date:   2022-03-21  18:15:32 +0330
 categories: project game python entry-level
 ---
 
-# 1. Into
+# 1. Intro
 Hello there, this is Ali speaking. When i started studying computer engineering at Shiraz university, CSE101 was the very primarly course that we should take to get familiar with the basic concepts of programming. They introduced **python** to us for the first time. Python is a very cool programming language that have very waste practical areas in almost any majors such as Data science, machine learning, web-development, game development, etc.
 
 Now i'm using python on almost my every day of my academic career. So it was a good choice to begin programming and get familiar with the concepts of programming. On the other hand, in the first year of high-school i learned **C** programming as my first language. I was using C to solve mathematic problems and only for fun because I didn't have any other source to learn, except our computer teacher and a very old resource which was based on **Borland C++** and was running on **MS-DOS**. That days we didn't have the access to the internet on our home or school so the only way of learning things was reading books and asking questions. So to me the course CSE101 was the easiest course of my life. I never studied anything about the course silabuses but I was just learning everything possible about python that could found. **Our final project was making a very simple snake game (like old school Nokia phones game) without using advanced libraries such as pyGame or other alternatives.**

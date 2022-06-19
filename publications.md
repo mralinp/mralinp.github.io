@@ -2,43 +2,38 @@
 title: Projects
 layout: main
 ---
-<h1> Research and publications </h1>
-<div class="line"></div>
-<div class="container bootstrap snippets bootdey">
-    {% for post in site.posts %}
-        {% if post.categories.first == 'publication' %}
-            <div class="panel blog-container">
-                <div class="panel-body">
-                    <div class="image-wrapper text-center">
-                        <a class="image-wrapper image-zoom cboxElement" href="{{post.url}}">
-                        <img src="{{post.img}}" class="img-thumbnail rounded" width="100%"  alt="Photo of Blog">
-                        <div class="image-overlay"></div> 
-                        </a>
-                    </div>
-                    <br>
-                    <a href="{{post.url}}"><h4>{{post.title}}</h4></a>
-                    <ul class="post-meta list-inline">
-                        <li class="list-inline-item">
-                            <i class="fa fa-user-circle-o"></i> {{ post.author }}
-                        </li>
-                        <li class="list-inline-item">
-                            <i class="fa fa-calendar-o"></i> {{ post.date | date: "%-d %B %Y" }}
-                        </li>
-                        <li class="list-inline-item">
-                            <i class="fa fa-tags"></i>
-                                {{ post.categories.first }}
-                                {% for cat in post.categories offset: 1 %}
-                                    -> {{ cat }}
-                                {% endfor %}
-                        </li>
-                    </ul>
-                    <p class="m-top-sm m-bottom-sm">
-                        {{ post.content | strip_html | truncatewords: 50 }}
-                    </p>
-                    <a href="{{post.url}}" class="btn btn-primary"><i class="fa fa-angle-double-right"></i> Continue reading</a>
+<section>
+    <div class="text-center mb-5">
+        <h2 class="display-20 display-md-18 display-lg-16"> Research and publications </h2>
+    </div>
+    <div class="line"></div>
+    <div class="row">
+        {% for post in site.posts %}
+            {% if post.categories.first == 'research' %}
+                <div class="col-lg-4 col-md-6 mb-2-6">
+                    <article class="card card-style2">
+                        <div class="card-img">
+                        <div class="fill">
+                            <a class="image-wrapper image-zoom cboxElement" href="{{post.url}}">
+                                <img src="{{post.img}}" class="rounded-top" alt="Photo of Blog">
+                            </a>
+                        </div>
+                            <div class="date"><span>{{ post.date | date: "%d" }}</span>{{ post.date | date: "%b" }}</div>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="h5"><a href="{{post.url}}"><h4>{{post.title}}</h4></a></h3>
+                            <p class="display-30">{{ post.content | strip_html | truncatewords: 20 }}</p>
+                            <a href="{{post.url}}" class="btn"><i class="fa fa-angle-double-right"></i> Read more</a>
+                        </div>
+                        <div class="card-footer">
+                            <ul>
+                            <li><i class="fa fa-user-circle-o"></i> {{ post.author }}</li>                            
+                            <li><i class="fa fa-tags"></i>{{ post.categories.first }}</li>
+                            </ul>
+                        </div>
+                    </article>
                 </div>
-            <div class="line"></div>
-            </div>
-        {% endif %}
-    {% endfor %}
-</div>  
+            {% endif %}
+        {% endfor %}
+    </div>
+</section>
