@@ -48,6 +48,16 @@ a:focus {
     border-radius: 0.25rem;
 }
 
+li span {
+    padding-left: 1px;
+    padding-right: 1px;
+    border: 2px solid #fca311;
+    border-radius: 0.25rem;
+    margin-right: 5px;
+    color: black;
+    background: #FCA311;
+}
+
 
 /* ---------------------------------------------------
     SIDEBAR STYLE
@@ -203,9 +213,10 @@ li a:hover {
     overflow: hidden;
 }
 
-body img {
+
+/* body img {
     width: 100%;
-}
+} */
 
 .about-me-img {
     width: 80%;
@@ -249,6 +260,7 @@ body img {
 
 .fill img {
     flex-shrink: 0;
+    width: 100%;
     min-width: 100%;
     min-height: 100%
 }

@@ -1,4 +1,133 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-06-20T13:47:48+04:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">mralinp</title><subtitle>My awesome blog</subtitle><entry><title type="html">What is an AutoEncoder?</title><link href="http://localhost:4000/ai/machine-learning/deep-learning/2022/06/19/auto-encoder.html" rel="alternate" type="text/html" title="What is an AutoEncoder?" /><published>2022-06-19T13:21:13+04:30</published><updated>2022-06-19T13:21:13+04:30</updated><id>http://localhost:4000/ai/machine-learning/deep-learning/2022/06/19/auto-encoder</id><content type="html" xml:base="http://localhost:4000/ai/machine-learning/deep-learning/2022/06/19/auto-encoder.html"><![CDATA[<h1 id="1-intro">1. Intro</h1>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title> What is an AutoEncoder? </title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+    <!-- Font awesome -->
+    <script src="https://kit.fontawesome.com/40a6ec6105.js" crossorigin="anonymous"></script>
+    <!-- Prism CSS -->
+    <link rel="stylesheet" href="/assets/css/prism.css">
+    <!-- Prism JS -->
+    <script src="/assets/js/prism.js"></script>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3><a href="/">Ali N. Parizi</a></h3>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li>
+                    <a href="/"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+                </li>
+                <li>
+                    <a href="/blog"><i class="fa fa-rss" aria-hidden="true"></i> Blog</a>
+                </li>
+                <li>
+                    <a href="/projects"><i class="fa fa-flask" aria-hidden="true"></i> Projects</a>
+                </li>
+                <li>
+                    <a href="/publications"><i class="fa fa-book" aria-hidden="true"></i> Publications</a>
+                </li>
+                <li>
+                    <a href="/about"><i class="fa fa-info" aria-hidden="true"></i> About me</a>
+                </li>
+            </ul>
+
+            <ul class="list-unstyled CTAs">
+                <li>
+                    <a href="/assets/resume/ali-naderi-parizi-cv.pdf" class="download"> <i class="fas fa-file"></i> Download resume</a>
+                </li>
+                <li>
+                    <a href="https://github.com/mralinp" class="article"> <i class="fab fa-github"></i> Github profile
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content">
+            <!-- Navbar -->
+            <nav class="navbar navbar-expand-lg">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <span>Menu</span>
+                    </button>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/assets/resume/ali-naderi-parizi-cv.pdf">Resume</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/blog">Blog</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/about">About me</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <div class="container">
+                <article>
+    <div class="image-wrapper text-center">
+        <a class="image-wrapper image-zoom cboxElement" href="">
+        <img src="/assets/images/auto-encoder/mushroom-ae.png" class="rounded mx-auto" width="100%"  alt="Photo of Blog">
+        <div class="image-overlay"></div> 
+        </a>
+    </div>
+    <br>
+    <div class="post-content">
+        <h2>What is an AutoEncoder?</h2>
+        <ul class="post-meta list-inline">
+            <li class="list-inline-item">
+                <i class="fa fa-user-circle-o"></i> Ali N. Parizi
+            </li>
+            <li class="list-inline-item">
+                <i class="fa fa-calendar-o"></i> 19 June 2022
+            </li>
+            <li class="list-inline-item">
+                <i class="fa fa-tags"></i>
+                    <span>
+                    ai
+                    </span>
+                    
+                         <span>
+                         machine-learning
+                         </span>
+                    
+                         <span>
+                         deep-learning
+                         </span>
+                    
+            </li>
+        </ul>
+        <div class="line"></div>
+        <h1 id="1-intro">1. Intro</h1>
 <p>AutoEncoder is an unsupervised artificial neural network that learns how to efficiently compress and encode data then learns how to reconstruct the data back from the reduced encoded representation to a representation that is as close to the original input as possible.
 AutoEncoder, by design, reduces data dimensions by learning how to ignore the noise in the data.
 Here is an example of the input/output image from the MNIST dataset to an AutoEncoder.</p>
@@ -173,137 +302,49 @@ Epoch 10/10
 
 <p>If you scale the ConvNet above, you can use it to denoise any type of images, audio or scanned documents.</p>
 
-<p>In this part of the article, I covered two important use cases for autoencoders and I build two different neural network architectures — CNN and FeedForward. In part 2, I will cover another 2 important use cases for Autoencoders. The first one will be how to use autoencoder with a sequence of data by building an LSTM network and the second use case is a called Variational Autoencoder (VAE) which is mainly used in Generative Models and generating data or images. Stay tuned!</p>]]></content><author><name>Ali N. Parizi</name></author><category term="ai" /><category term="machine-learning" /><category term="deep-learning" /><summary type="html"><![CDATA[1. Intro AutoEncoder is an unsupervised artificial neural network that learns how to efficiently compress and encode data then learns how to reconstruct the data back from the reduced encoded representation to a representation that is as close to the original input as possible. AutoEncoder, by design, reduces data dimensions by learning how to ignore the noise in the data. Here is an example of the input/output image from the MNIST dataset to an AutoEncoder.]]></summary></entry><entry><title type="html">Adversarial attacks in deep learning</title><link href="http://localhost:4000/ai/machine-learning/deep-learning/2022/06/16/adverserial-attack.html" rel="alternate" type="text/html" title="Adversarial attacks in deep learning" /><published>2022-06-16T21:02:05+04:30</published><updated>2022-06-16T21:02:05+04:30</updated><id>http://localhost:4000/ai/machine-learning/deep-learning/2022/06/16/adverserial-attack</id><content type="html" xml:base="http://localhost:4000/ai/machine-learning/deep-learning/2022/06/16/adverserial-attack.html"><![CDATA[<h1 id="1-intro">1. Intro</h1>
-<p>Big Data powered machine learning and deep learning has yielded impressive advances in many fields. One example is the release of ImageNet consisting of more than 15 million labelled high-resolution images of 22,000 categories which revolutionized the field of computer vision. State-of-the-art models have already achieved a 98% top-five accuracy on the ImageNet dataset, so it seems as though these models are foolproof and that nothing can go wrong.</p>
+<p>In this part of the article, I covered two important use cases for autoencoders and I build two different neural network architectures — CNN and FeedForward. In part 2, I will cover another 2 important use cases for Autoencoders. The first one will be how to use autoencoder with a sequence of data by building an LSTM network and the second use case is a called Variational Autoencoder (VAE) which is mainly used in Generative Models and generating data or images. Stay tuned!</p>
 
-<p>However, recent advances in adversarial training have found that this is an illusion. A good model misbehaves frequently when faced with adversarial examples. The image below illustrates the problem:</p>
+    </div>
+</article>
 
-<p><img src="/assets/images/adversarial-attack/1.png" alt="image" /></p>
+            </div>
+        </div>
+    </div>
 
-<p>The model initially classifies the panda picture correctly, but when some noise, imperceptible to human beings, is injected into the picture, the resulting prediction of the model is changed to another animal, gibbon, even with such a high confidence. To us, it appears as if the initial and altered images are the same, although it is radically different to the model. This illustrates the threat these adversarial attacks pose — we may not perceive the difference so we cannot tell an adversarial attack as happened. Hence, although the output of the model may be altered, we cannot tell if the output is correct or incorrect.</p>
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous">
+    </script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous">
+    </script>
+    <!-- jQuery Custom Scroller CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js">
+    </script>
 
-<p>This formed the motivation behind the talk for Professor Ling Liu’s keynote speech at the 2019 IEEE Big Data Conference, where she touched on types of adversarial attacks, how adversarial examples are generated, and how to combat against these attacks. Without further ado, I will get into the contents of her speech.</p>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#sidebar").mCustomScrollbar({
+                theme: "minimal"
+            });
 
-<h1 id="table-of-contents">Table of contents</h1>
-<ul>
-  <li><a href="#1-intro">1. Introduction</a></li>
-  <li><a href="#2-types-of-adversarial-attacks">2. Types of adversarial attacks</a></li>
-  <li><a href="#3-how-are-adversarial-examples-generated">3. How are adversarial examples generated</a></li>
-  <li><a href="#4-adversarial-perturbation">4. Adversarial perturbation</a></li>
-  <li><a href="#5-black-box-vs-white-box-attacks">5. Black Box VS White Box Attacks</a>
-    <ul>
-      <li><a href="#51-black-box-attacks">5.1 Black box attacks</a></li>
-      <li><a href="#52-white-box-attacks">5.2 White box attacks</a></li>
-      <li><a href="#53-physical-attacks">5.3 Physical Attacks</a></li>
-    </ul>
-  </li>
-</ul>
+            $('#sidebarCollapse').on('click', function() {
+                $('#sidebar, #content').toggleClass('active');
+                $('.collapse.in').toggleClass('in');
+                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+            });
+        });
+    </script>
 
-<h1 id="2-types-of-adversarial-attacks">2. Types of adversarial attacks</h1>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML">
+    </script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']], processEscapes: true}, jax: ["input/TeX","input/MathML","input/AsciiMath","output/CommonHTML"], extensions: ["tex2jax.js","mml2jax.js","asciimath2jax.js","MathMenu.js","MathZoom.js","AssistiveMML.js",
+        "[Contrib]/a11y/accessibility-menu.js"], TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"], equationNumbers: { autoNumber: "AMS" } } });
+    </script>
 
-<p>Adversarial attacks are classified into two categories — targeted attacks and untargeted attacks.</p>
+</body>
 
-<p>The targeted attack has a target class, Y, that it wants the target model, M, to classify the image I of class X as. Hence, the goal of the targeted attack is to make M misclassify by predicting the adversarial example, I, as the intended target class Y instead of the true class X. On the other hand, the untargeted attack does not have a target class which it wants the model to classify the image as. Instead, the goal is simply to make the target model misclassify by predicting the adversarial example, I, as a class, other than the original class, X.
-Researchers have found that in general, although untargeted attacks are not as good as targeted attacks, they take much less time. Targeted attacks, although more successful in altering the predictions of the model, come at a cost (time).</p>
-
-<h1 id="3-how-are-adversarial-examples-generated">3. How are Adversarial Examples Generated</h1>
-
-<p>Having understood the difference between targeted and untargeted attacks, we now come to the question of how these adversarial attacks are carried out. In a benign machine learning system, the training process seeks to minimize the loss between the target label and the predicted label, formulated mathematically as such:</p>
-
-<!-- Image -->
-
-<p>During the testing phase, the learned model is tested to determine how well it can predict the predicted label. Error is then calculated by the sum of the loss between the target label and the predicted label, formulated mathematically as such:
-<!-- Image -->
-In adversarial attacks, the following 2 steps are taken:</p>
-<ol>
-  <li>The query input is changed from the benign input x to \(x^\prime\).</li>
-  <li>An attack goal is set such that the prediction outcome, \(H(x)\) is no longer \(y\). The loss is changed from \(L(H(x_i), y_i)\) to \(L(H(x_i), y^{\prime}_i)\) where \(y^{\prime}_i  \ne y_i\).</li>
-</ol>
-
-<h1 id="4-adversarial-perturbation">4. Adversarial Perturbation</h1>
-<p>One way the query input is changed from x to x’ is through the method called “adversarial perturbation”, where the perturbation is computed such that the prediction will not be the same as the original label. For images, this can come in the form of pixel noise as we saw above with the panda example. Untargeted attacks have the single goal of maximizing the loss between H(x) and H(x’) until the prediction outcome is not y (the real label). Targeted attacks have an additional goal of not only maximizing the loss between H(x) and H(x’) but also to minimize the loss between H(x’) and y’ until H(x’) = y’ instead of y.</p>
-
-<p>Adversarial perturbation can then be categorized into one-step and multi-step perturbation. As the names imply, the one-step perturbation only involves a single stage — add noise once and that is it. On the other hand, the multi-step perturbation is an iterative attack that makes small modifications to the input each time. Therefore, the one-step attack is fast but excessive noise may be added, hence making it easier for humans to detect the changes. Furthermore, it places more weight on the objective of maximizing loss between H(x) and H(x’) and less on minimizing the amount of perturbation. Conversely, the multi-step attack is more strategic as it introduces small amounts of perturbation at each time. However, this also means such an attack is computationally more expensive.</p>
-
-<h1 id="5-black-box-vs-white-box-attacks">5. Black Box VS White Box Attacks</h1>
-<p>Now that we have looked at how adversarial attacks are generated, some astute readers may realize one fundamental assumption these attacks take on — that the attack target prediction model, H, is known to the adversary. Only when the targeted model is known can it be compromised to generate adversarial examples by changing the input. However, attackers do not always know or have access to the targeted model. This may sound like a surefire way to ward off these adversarial attackers, but the truth is that black box attacks are also highly effective.
-Black box attacks are based on the notion of transferability of adversarial examples — the phenomenon whereby adversarial examples, although generated to attack a surrogate model G, can achieve impressive results when attacking another model H. The steps taken are as follows:</p>
-<ol>
-  <li>The attack target prediction model H is privately trained and unknown to the adversary.</li>
-  <li>A surrogate model G, which mimics H, is used to generate adversarial examples.</li>
-  <li>By using the transferability of adversarial examples, black box attacks can be launched to attack H.</li>
-</ol>
-
-<p>This attack can be launched either with the training dataset being known or unknown. In the case where the dataset is known to the adversary, the model G can be trained on the same dataset as model H to mimic H.</p>
-
-<p>When the training dataset is unknown however, adversaries can leverage on Membership Inference Attacks, whereby an attack model whose purpose is to distinguish the target model’s behavior on the training inputs from its behavior on the inputs that it did not encounter during training is trained. In essence, this turns into a classification problem to recognize differences in the target model’s predictions on the inputs that it trained on versus the inputs that it did not train on. This enables the adversary to obtain a better sense of the training dataset D which model H was trained on, enabling the attacker to generate a shadow dataset S on the basis of the true training dataset so as to train the surrogate model G. Having trained G on S where G mimics H and S mimics D, black box attacks can then be launched on H.</p>
-
-<h2 id="51-black-box-attacks">5.1 Black Box Attacks</h2>
-<p>Now that we have seen how black box attacks vary from white box attacks in that the target model H is unknown to the adversary, we will cover the various tactics used in black box attacks.</p>
-
-<h2 id="52-white-box-attacks">5.2 White Box Attacks</h2>
-
-<h2 id="53-physical-attacks">5.3 Physical Attacks</h2>
-<p>One simple way in which the query input is changed from x to x’ is by simply adding something physically (eg. bright colour) to disturb the model. One example is how researchers at CMU added eyeglasses to a person in an attack against facial recognition models. The image below illustrates the attack:</p>
-
-<p><img src="/assets/images/adversarial-attack/2.png" alt="image" /></p>
-
-<p>The first row of images correspond to the original image modified by adding the eyeglasses, and the second row of images correspond to the impersonation targets, which are the intended misclassification targets. Just by adding the eyeglasses onto the original image, the facial recognition model was tricked into classifying the images on the top row as the images in the bottom row.</p>
-
-<p>Another example comes from researchers at Google who added stickers to the input image to change the classification of the image, as illustrated by the image below:
-<img src="/assets/images/adversarial-attack/3.png" alt="image" /></p>
-
-<p>These examples show how effective such physical attacks can be.</p>
-
-<h1 id="out-of-distribution-ood-attack">Out of Distribution (OOD) Attack</h1>
-<p>Another way in which black box attacks are carried out is through out-of-distribution (OOD) attacks. The traditional assumption in machine learning is that all train and test examples are drawn independently from the same distribution. In an OOD attack, this assumption is exploited by providing images of a different distribution from the training dataset to the model, for example feeding TinyImageNet data into a CIFAR-10 classifier which would lead to an incorrect prediction with high confidence.</p>
-
-<h1 id="how-can-we-trust-machine-learning">How Can We Trust Machine Learning?</h1>
-<p>Now that we have taken a look at the various types of adversarial attacks, a natural question then comes — how can we trust our machine learning models if they are so susceptible to adversarial attacks?</p>
-
-<p>One possible approach has been proposed by Chow et al. in 2019 in the paper titled “Denoising and Verification Cross-Layer Ensemble Against Black-box Adversarial Attacks”. The approach is centred around enabling machine learning systems to automatically detect adversarial attacks and then automatically repair them through the use of denoising and verification ensembles.</p>
-
-<h1 id="denoising-ensembles">Denoising Ensembles</h1>
-<p>First, input images have to pass through denoising ensembles that attempt different methods to remove any added noise to the image, for example adding Gaussian noise. Since the specific noise added to the image by the adversary is unknown to the defender, there is a need for an ensemble of denoisers to each attempt to remove each type of noise.</p>
-
-<p>The image below shows the training process for the denoising autoencoder — the original image is injected with some noise that the attacker might inject, and the autoencoder tries to reconstruct the original uncorrupted image. In the training process, the objective is to reduce the reconstruction error between the reconstructed image and the original image.</p>
-
-<p><img src="/assets/images/adversarial-attack/4.png" alt="image" /></p>
-
-<p>By developing an ensemble of these autoencoders each trained to remove a specific type of noise, the hope is that the corrupted images would be sufficiently denoised such that it is close to the original uncorrupted image to allow for image classification.</p>
-
-<h2 id="verification-ensemble">Verification Ensemble</h2>
-<p>After the images have been denoised, they then go through a verification ensemble which reviews every denoised image produced by each denoiser and then classifies the denoised image. Each classifier in the verification ensemble classifies each denoised image, and the ensemble then votes to determine the final category the image belongs to. This means that although some images may not have been denoised the correct way in the denoising step, the verification ensemble votes on all the denoised images, thereby increasing the likelihood of making a more accurate prediction.</p>
-
-<h2 id="diversity">Diversity</h2>
-<p>Diversity of the denoisers and verifiers have found to be very important because firstly, adversarial attackers will get better at altering images so there is a need for a diverse group of denoisers that can handle a variety of corrupted images. Following this, there is also a need for verifiers to be diverse so they can generate a variety of classifications so that it would be difficult adversarial attackers to manipulate them just as how they have managed to manipulate normal classifiers that we trust and use so frequently in machine learning.</p>
-
-<p>This remains an open problem because, after all these decisions by the various verifiers, there is still a final decision maker that needs to decide whose opinion to listen to. The final decision maker would need to preserve the diversity present in the ensemble, which is not an easy task to tackle.</p>
-
-<h1 id="conclusion">Conclusion</h1>
-<p>We have taken a look at various types of adversarial attacks as well as a promising method to defend against these attacks. This is definitely something to keep in mind when we implement machine learning models. Instead of blindly trusting the models to produce the correct results, we need to guard against these adversarial attacks and always think twice before we accept the decisions made by these models.</p>
-
-<p>A huge thanks to Professor Liu for this enlightening keynote on this pressing problem in machine learning!</p>]]></content><author><name>Ali N. Parizi</name></author><category term="ai" /><category term="machine-learning" /><category term="deep-learning" /><summary type="html"><![CDATA[1. Intro Big Data powered machine learning and deep learning has yielded impressive advances in many fields. One example is the release of ImageNet consisting of more than 15 million labelled high-resolution images of 22,000 categories which revolutionized the field of computer vision. State-of-the-art models have already achieved a 98% top-five accuracy on the ImageNet dataset, so it seems as though these models are foolproof and that nothing can go wrong.]]></summary></entry><entry><title type="html">Snake game</title><link href="http://localhost:4000/project/game/python/entry-level/2022/03/21/snake-game.html" rel="alternate" type="text/html" title="Snake game" /><published>2022-03-21T18:15:32+03:30</published><updated>2022-03-21T18:15:32+03:30</updated><id>http://localhost:4000/project/game/python/entry-level/2022/03/21/snake-game</id><content type="html" xml:base="http://localhost:4000/project/game/python/entry-level/2022/03/21/snake-game.html"><![CDATA[<h1 id="1-intro">1. Intro</h1>
-<p>Hello there, this is Ali speaking. When i started studying computer engineering at Shiraz university, CSE101 was the very primarly course that we should take to get familiar with the basic concepts of programming. They introduced <strong>python</strong> to us for the first time. Python is a very cool programming language that have very waste practical areas in almost any majors such as Data science, machine learning, web-development, game development, etc.</p>
-
-<p>Now i’m using python on almost my every day of my academic career. So it was a good choice to begin programming and get familiar with the concepts of programming. On the other hand, in the first year of high-school i learned <strong>C</strong> programming as my first language. I was using C to solve mathematic problems and only for fun because I didn’t have any other source to learn, except our computer teacher and a very old resource which was based on <strong>Borland C++</strong> and was running on <strong>MS-DOS</strong>. That days we didn’t have the access to the internet on our home or school so the only way of learning things was reading books and asking questions. So to me the course CSE101 was the easiest course of my life. I never studied anything about the course silabuses but I was just learning everything possible about python that could found. <strong>Our final project was making a very simple snake game (like old school Nokia phones game) without using advanced libraries such as pyGame or other alternatives.</strong></p>
-
-<h2 id="11-problem-statement">1.1 Problem statement:</h2>
-
-<p>Develop a straightforward snake game such as the one on old-school Nokia phones. A single snake moves around the game world. Users can control the snake using arrows keys or W, A, S, and D to move UP, LEFT, DOWN, and RIGHT.</p>
-
-<p>After a random time, it will be deployed an apple on a random spot on the map. If the snake eats the apple, its tail extends, and the player receives 100 points. The map can contain some walls or obstacles. If the snake hits a block or its tail, the game will be finished, and the player will lose the game.</p>
-
-<p>By pressing the Esc key, the game pauses. You have to make the ability to store the highest score after the game finishes.</p>
-
-<p>Any creative ideas and implementation that improve performance, game experience, and game appearance considers as bonuses.</p>
-
-<h1 id="2-solution">2. Solution</h1>
-<p>Did you read <strong><a href="#11-problem-statement">part 1.1</a></strong> carefully? As it could be found from the problem statement. We can break the problem into some parts and levels. First is to implement a moving object on the 2D game board which actually is our snake. As the game world is console and no graphical libraries are allowed here we need to think and consider about a simple world of char games. In this world, all objects in the game are nothing but characters. For example snake head can be displayed as the character ‘@’, its tail segments can be displayed with ‘o’ and Apples are displayed with ‘A’. At the end walls could be represented as ‘#’. First, we try to implement the basics of the game. The challenge here is how to print a character on a specific position of the screen.</p>
-
-<h1 id="3-implementation">3. Implementation</h1>
-
-<h1 id="4-final-words">4. Final words</h1>]]></content><author><name>Ali N. Parizi</name></author><category term="project" /><category term="game" /><category term="python" /><category term="entry-level" /><summary type="html"><![CDATA[1. Intro Hello there, this is Ali speaking. When i started studying computer engineering at Shiraz university, CSE101 was the very primarly course that we should take to get familiar with the basic concepts of programming. They introduced python to us for the first time. Python is a very cool programming language that have very waste practical areas in almost any majors such as Data science, machine learning, web-development, game development, etc.]]></summary></entry><entry><title type="html">Hello, world!</title><link href="http://localhost:4000/blog/2022/03/20/hello-world.html" rel="alternate" type="text/html" title="Hello, world!" /><published>2022-03-20T20:02:05+03:30</published><updated>2022-03-20T20:02:05+03:30</updated><id>http://localhost:4000/blog/2022/03/20/hello-world</id><content type="html" xml:base="http://localhost:4000/blog/2022/03/20/hello-world.html"><![CDATA[<p>This is my first post on the blog on the first day of the new century (1401-01-01 00:00:00 +330).</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">echo</span> <span class="s2">"Hello, world!"</span>
-</code></pre></div></div>]]></content><author><name>Ali N. Parizi</name></author><category term="blog" /><summary type="html"><![CDATA[This is my first post on the blog on the first day of the new century (1401-01-01 00:00:00 +330).]]></summary></entry></feed>
+</html>
