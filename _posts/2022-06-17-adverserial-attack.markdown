@@ -4,7 +4,7 @@ title:  "Adversarial attacks in deep learning"
 author: "Ali N. Parizi"
 img: "/assets/images/adversarial-attack/adversarial-10.jpeg"
 date:   2022-06-16 20:02:05 +0330
-categories:  ai machine-learning deep-learning 
+categories:  blog ai machine-learning deep-learning 
 ---
 # 1. Intro
 Big Data powered machine learning and deep learning has yielded impressive advances in many fields. One example is the release of ImageNet consisting of more than 15 million labelled high-resolution images of 22,000 categories which revolutionized the field of computer vision. State-of-the-art models have already achieved a 98% top-five accuracy on the ImageNet dataset, so it seems as though these models are foolproof and that nothing can go wrong.

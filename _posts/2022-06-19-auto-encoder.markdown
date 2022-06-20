@@ -4,7 +4,7 @@ title: "What is an AutoEncoder?"
 author: "Ali N. Parizi"
 img: "/assets/images/auto-encoder/mushroom-ae.png"
 date:   2022-06-19 12:21:13 +0330
-categories: ai machine-learning deep-learning
+categories: blog ai machine-learning deep-learning
 ---
 
 # 1. Intro
