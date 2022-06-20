@@ -165,6 +165,12 @@ li a:hover {
     color: #FCA311 !important;
 }
 
+.info-span {
+    color: #000;
+    background: #fff;
+    border: 0;
+}
+
 
 /* ---------------------------------------------------
     CONTENT STYLE
@@ -370,6 +376,7 @@ section .btn:hover {
 
 .card {
     border: 2px dotted rgba(0, 0, 0, 0.30);
+    overflow: hidden;
 }
 
 
@@ -411,5 +418,10 @@ section .btn:hover {
     }
     .line {
         border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
+    }
+    .info-span {
+        color: #eee;
+        background: #000;
+        border: 0;
     }
 }
