@@ -52,7 +52,7 @@ body img {
     border-radius: 0.25rem;
 }
 
-li span {
+.category {
     padding-left: 1px;
     padding-right: 1px;
     border: 2px solid #fca311;
@@ -208,12 +208,16 @@ li a:hover {
     }
     #content {
         width: 100%;
+        padding: 0;
     }
     #content.active {
         width: calc(100% - 250px);
     }
     #sidebarCollapse {
         display: none;
+    }
+    .container {
+        max-width: 100%;
     }
 }
 

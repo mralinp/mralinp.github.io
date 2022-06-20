@@ -21,11 +21,11 @@ layout: main
             </li>
             <li class="list-inline-item">
                 <i class="fa fa-tags"></i>
-                    <span>
+                    <span class="category">
                     {{ page.categories.first }}
                     </span>
                     {% for cat in page.categories offset: 1 %}
-                         <span>
+                         <span class="category">
                          {{ cat }}
                          </span>
                     {% endfor %}

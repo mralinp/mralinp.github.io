@@ -28,7 +28,7 @@ title: Blog
                     <div class="card-footer">
                         <ul>
                         <li><i class="fa fa-user-circle-o"></i> {{ post.author }}</li>                            
-                        <li><i class="fa fa-tags"></i> <span> {{ post.categories.first }} </span> </li>
+                        <li><i class="fa fa-tags"></i> <span class="category"> {{ post.categories.first }} </span> </li>
                         </ul>
                     </div>
                 </article>
