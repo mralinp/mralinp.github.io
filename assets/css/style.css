@@ -28,6 +28,10 @@ a:focus {
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
 
+body img {
+    max-width: 100%;
+}
+
 .navbar-btn {
     box-shadow: none;
     outline: none !important;
@@ -195,7 +199,7 @@ li a:hover {
     MEDIAQUERIES
 ----------------------------------------------------- */
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     #sidebar {
         margin-left: -250px;
     }
