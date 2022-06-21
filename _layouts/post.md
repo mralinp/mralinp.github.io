@@ -31,6 +31,7 @@ layout: main
                     {% endfor %}
             </li>
         </ul>
+        <p class="text-secondary"> {{page.brief}} <p>
         <div class="line"></div>
         {{page.content}}
     </div>

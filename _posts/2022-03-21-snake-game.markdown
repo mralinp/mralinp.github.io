@@ -5,6 +5,7 @@ author: "Ali N. Parizi"
 img:    "/assets/images/snake-game/snake-game.jpeg"
 date:   2022-03-21  18:15:32 +0330
 categories: project game python entry-level
+brief: "Snake game is a very cool and informative mini project for beginners, in this post we are going to implement a simple snake game from scratch using python."
 ---
 
 # 1. Intro
