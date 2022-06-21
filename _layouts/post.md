@@ -4,7 +4,7 @@ layout: main
 
 <article>
     <div class="image-wrapper text-center">
-        <a class="image-wrapper image-zoom cboxElement" href="{{post.url}}">
+        <a class="image-zoom cboxElement" href="{{post.url}}">
         <img src="{{page.img}}" class="rounded mx-auto" width="100%"  alt="Photo of Blog">
         <div class="image-overlay"></div> 
         </a>

@@ -53,11 +53,12 @@ body img {
 }
 
 .category {
-    padding-left: 1px;
-    padding-right: 1px;
-    border: 2px solid #fca311;
+    padding-left: 5px;
+    padding-right: 5px;
+    border: 1px solid #fca311;
     border-radius: 0.25rem;
     margin-right: 5px;
+    margin-left: 5px;
     color: black;
     background: #FCA311;
 }
@@ -95,7 +96,7 @@ body img {
 }
 
 #sidebar ul.components {
-    border-bottom: 2px dotted #fca311;
+    border-bottom: 1px solid #fca311;
 }
 
 #sidebar ul p {
@@ -152,15 +153,12 @@ ul.CTAs a {
 .sidebar-btn {
     background: #fca311;
     color: #000;
+    border-radius: 0.25rem;
 }
 
 .sidebar-btn:hover {
     background: #000;
     color: #FCA311;
-}
-
-.resume-btn {
-    padding: 15px;
 }
 
 li a:hover {
@@ -171,6 +169,12 @@ li a:hover {
     color: #000;
     background: #fff;
     border: 0;
+}
+
+nav button {
+    color: #000 !important;
+    background: #FCA311 !important;
+    border: 0 !important;
 }
 
 
@@ -242,6 +246,9 @@ th {
     .container {
         max-width: 100%;
     }
+    nav {
+        border-radius: 0 !important;
+    }
 }
 
 .image-wrapper {
@@ -250,11 +257,6 @@ th {
     overflow: hidden;
 }
 
-
-/* body img {
-    width: 100%;
-} */
-
 .about-me-img {
     width: 80%;
     height: 80%;
@@ -262,12 +264,6 @@ th {
 
 .first-block p {
     max-height: 3ch;
-}
-
-.image-wrapper img {
-    border: 2px dotted rgba(0, 0, 0, 0.09);
-    border-radius: 00.25rem;
-    padding: 2px;
 }
 
 
@@ -280,7 +276,6 @@ th {
     display: block;
     background: #000;
     overflow: hidden;
-    border-radius: 0.25rem;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
     border: 0;
@@ -364,7 +359,7 @@ th {
 }
 
 .card-style2 .card-footer {
-    border-top: 2px dotted rgba(0, 0, 0, 0.30);
+    border-top: 2px dashed rgba(0, 0, 0, 0.30);
     background: transparent;
     padding-right: 2rem;
     padding-left: 2rem;
@@ -406,7 +401,8 @@ section .btn:hover {
 }
 
 .card {
-    border: 2px dotted rgba(0, 0, 0, 0.30);
+    border: 2px dashed rgba(0, 0, 0, 0.30);
+    border-radius: 1.0rem;
     overflow: hidden;
 }
 
@@ -421,7 +417,7 @@ section .btn:hover {
         color: #eee;
     }
     .card {
-        border: 2px dotted rgba(255, 255, 255, 0.30);
+        border-color: rgba(255, 255, 255, 0.30);
         background: #000;
         color: #eee;
     }
@@ -431,12 +427,7 @@ section .btn:hover {
     .card-style2 .card-footer {
         background: #000;
         color: #eee;
-        border-top: 2px dotted rgba(255, 255, 255, 0.30);
-    }
-    .image-wrapper img {
-        border: 2px dotted rgba(255, 255, 255, 0.30);
-        border-radius: 00.25rem;
-        padding: 2px;
+        border-color: rgba(255, 255, 255, 0.30);
     }
     .card img {
         border: 0;

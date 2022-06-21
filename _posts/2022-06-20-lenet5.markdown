@@ -263,6 +263,6 @@ plt.legend()
 plt.show()
 ```
 
-You can see the complete project code in my [**github repo**](https://github.com/mralinp/cnn-networks/tree/main/lenet5)
+You can see the complete project code in my github repo from [**here**](https://github.com/mralinp/cnn-networks/tree/main/lenet5).
 
 I hope you found the article useful.
