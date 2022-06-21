@@ -2,7 +2,7 @@
 layout: post
 title:  "Snake game"
 author: "Ali N. Parizi"
-img:    "/assets/images/snake-game.jpeg"
+img:    "/assets/images/snake-game/snake-game.jpeg"
 date:   2022-03-21  18:15:32 +0330
 categories: project game python entry-level
 ---

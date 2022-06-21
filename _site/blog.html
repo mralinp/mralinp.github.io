@@ -32,30 +32,30 @@
             </div>
 
             <ul class="list-unstyled components">
-                <li>
+                <li class="sidebar-item">
                     <a href="/"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
                 </li>
-                <li>
+                <li class="sidebar-item">
                     <a href="/blog"><i class="fa fa-rss" aria-hidden="true"></i> Blog</a>
                 </li>
-                <li>
+                <li class="sidebar-item">
                     <a href="/projects"><i class="fa fa-flask" aria-hidden="true"></i> Projects</a>
                 </li>
-                <li>
+                <li class="sidebar-item">
                     <a href="/publications"><i class="fa fa-book" aria-hidden="true"></i> Publications</a>
                 </li>
-                <li>
+                <li class="sidebar-item">
                     <a href="/about"><i class="fa fa-info" aria-hidden="true"></i> About me</a>
                 </li>
             </ul>
 
             <ul class="list-unstyled CTAs">
-                <li>
-                    <a href="/assets/resume/ali-naderi-parizi-cv.pdf" class="download"> <i class="fas fa-file"></i> Download resume</a>
-                </li>
-                <li>
-                    <a href="https://github.com/mralinp" class="article"> <i class="fab fa-github"></i> Github profile
+                <li class="sidebar-btn">
+                    <a href="https://github.com/mralinp"> <i class="fab fa-github"></i> Github profile
                     </a>
+                </li>
+                <li class="sidebar-btn resume-btn">
+                    <a href="/assets/resume/ali-naderi-parizi-cv.pdf"> <i class="fas fa-file"></i> Download resume</a>
                 </li>
             </ul>
         </nav>
@@ -104,6 +104,30 @@
                 <article class="card card-style2">
                     <div class="card-img">
                     <div class="fill">
+                        <a class="image-wrapper image-zoom cboxElement" href="/blog/ai/machine-learning/deep-learning/2022/06/21/lenet5.html">
+                            <img src="/assets/images/lenet5/mnist-dataset-1.png" class="rounded-top" alt="Photo of Blog" />
+                        </a>
+                    </div>
+                        <div class="date"><span>Jun</span>2022</div>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="h4"><a href="/blog/ai/machine-learning/deep-learning/2022/06/21/lenet5.html">Lenet5 from scratch</a></h3>
+                        <p class="display-30">In this article, we perform image classification on the MNIST dataset with custom implemented LeNet-5 neural network architecture.</p>
+                        <a href="/blog/ai/machine-learning/deep-learning/2022/06/21/lenet5.html" class="btn"><i class="fa fa-angle-double-right"></i> Read more</a>
+                    </div>
+                    <div class="card-footer">
+                        <ul>
+                        <li><i class="fa fa-user-circle-o"></i> Ali N. Parizi</li>                            
+                        <li><i class="fa fa-tags"></i> <span class="category"> blog </span> </li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+        
+            <div class="col-lg-4 col-md-6 mb-2-6">
+                <article class="card card-style2">
+                    <div class="card-img">
+                    <div class="fill">
                         <a class="image-wrapper image-zoom cboxElement" href="/blog/ai/machine-learning/deep-learning/2022/06/19/auto-encoder.html">
                             <img src="/assets/images/auto-encoder/mushroom-ae.png" class="rounded-top" alt="Photo of Blog" />
                         </a>
@@ -112,7 +136,7 @@
                     </div>
                     <div class="card-body">
                         <h3 class="h4"><a href="/blog/ai/machine-learning/deep-learning/2022/06/19/auto-encoder.html">What is an AutoEncoder?</a></h3>
-                        <p class="display-30">1. Intro AutoEncoder is an unsupervised artificial neural network that learns how to efficiently compress and encode data then learns...</p>
+                        <p class="display-30">This tutorial introduces autoencoders with three examples: the basics, image denoising, and anomaly detection.</p>
                         <a href="/blog/ai/machine-learning/deep-learning/2022/06/19/auto-encoder.html" class="btn"><i class="fa fa-angle-double-right"></i> Read more</a>
                     </div>
                     <div class="card-footer">
@@ -136,7 +160,7 @@
                     </div>
                     <div class="card-body">
                         <h3 class="h4"><a href="/blog/ai/machine-learning/deep-learning/2022/06/16/adverserial-attack.html">Adversarial attacks in deep learning</a></h3>
-                        <p class="display-30">1. Intro Big Data powered machine learning and deep learning has yielded impressive advances in many fields. One example is...</p>
+                        <p class="display-30">Are the machine learning models we use intrinsically flawed?</p>
                         <a href="/blog/ai/machine-learning/deep-learning/2022/06/16/adverserial-attack.html" class="btn"><i class="fa fa-angle-double-right"></i> Read more</a>
                     </div>
                     <div class="card-footer">
@@ -153,14 +177,14 @@
                     <div class="card-img">
                     <div class="fill">
                         <a class="image-wrapper image-zoom cboxElement" href="/project/game/python/entry-level/2022/03/21/snake-game.html">
-                            <img src="/assets/images/snake-game.jpeg" class="rounded-top" alt="Photo of Blog" />
+                            <img src="/assets/images/snake-game/snake-game.jpeg" class="rounded-top" alt="Photo of Blog" />
                         </a>
                     </div>
                         <div class="date"><span>Mar</span>2022</div>
                     </div>
                     <div class="card-body">
                         <h3 class="h4"><a href="/project/game/python/entry-level/2022/03/21/snake-game.html">Snake game</a></h3>
-                        <p class="display-30">1. Intro Hello there, this is Ali speaking. When i started studying computer engineering at Shiraz university, CSE101 was the...</p>
+                        <p class="display-30"></p>
                         <a href="/project/game/python/entry-level/2022/03/21/snake-game.html" class="btn"><i class="fa fa-angle-double-right"></i> Read more</a>
                     </div>
                     <div class="card-footer">
@@ -177,14 +201,14 @@
                     <div class="card-img">
                     <div class="fill">
                         <a class="image-wrapper image-zoom cboxElement" href="/blog/2022/03/20/hello-world.html">
-                            <img src="/assets/images/2560px-HelloWorld.svg.png" class="rounded-top" alt="Photo of Blog" />
+                            <img src="/assets/images/hello-world/2560px-HelloWorld.svg.png" class="rounded-top" alt="Photo of Blog" />
                         </a>
                     </div>
                         <div class="date"><span>Mar</span>2022</div>
                     </div>
                     <div class="card-body">
                         <h3 class="h4"><a href="/blog/2022/03/20/hello-world.html">Hello, world!</a></h3>
-                        <p class="display-30">This is my first post on the blog on the first day of the new century (1401-01-01 00:00:00 +330). $...</p>
+                        <p class="display-30"></p>
                         <a href="/blog/2022/03/20/hello-world.html" class="btn"><i class="fa fa-angle-double-right"></i> Read more</a>
                     </div>
                     <div class="card-footer">

@@ -80,7 +80,7 @@ body img {
     height: 100vh;
     z-index: 999;
     background: #14213d;
-    color: #ffffff;
+    color: #eee;
     transition: all 0.3s;
 }
 
@@ -95,12 +95,11 @@ body img {
 }
 
 #sidebar ul.components {
-    padding: 20px 0;
     border-bottom: 2px dotted #fca311;
 }
 
 #sidebar ul p {
-    color: #e5e5e5;
+    color: #eee;
     padding: 10px;
 }
 
@@ -110,9 +109,9 @@ body img {
     display: block;
 }
 
-#sidebar ul li a:hover {
+.sidebar-item:hover {
     color: #fca311;
-    background: #fff;
+    background: #000;
 }
 
 #sidebar ul li.active>a,
@@ -138,10 +137,6 @@ ul ul a {
     padding-left: 30px !important;
 }
 
-ul a:hover {
-    color: #fca311;
-}
-
 ul.CTAs {
     padding: 20px;
 }
@@ -154,18 +149,21 @@ ul.CTAs a {
     margin-bottom: 5px;
 }
 
-a.download {
+.sidebar-btn {
     background: #fca311;
     color: #000;
 }
 
-a.article {
-    background: #FCA311 !important;
-    color: #000 !important;
+.sidebar-btn:hover {
+    background: #000;
+    color: #FCA311;
+}
+
+.resume-btn {
+    padding: 15px;
 }
 
 li a:hover {
-    background: #000 !important;
     color: #FCA311 !important;
 }
 
@@ -190,8 +188,33 @@ li a:hover {
     right: 0;
 }
 
+#content article table {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#content article table td,
+th {
+    border: 1px solid #000;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#content article table tr:hover {
+    color: #FCA311;
+    background: #000;
+}
+
+#content article table th:hover {
+    color: #FCA311;
+}
+
 #content.active {
     width: 100%;
+}
+
+#content a:hover {
+    color: #FCA311;
 }
 
 
@@ -431,5 +454,12 @@ section .btn:hover {
         color: #eee;
         background: #000;
         border: 0;
+    }
+    #content article table td,
+    th {
+        border: 1px solid #eee;
+    }
+    #content article table th {
+        color: #FCA311;
     }
 }

@@ -2,7 +2,7 @@
 layout: post
 title:  "Hello, world!"
 author: "Ali N. Parizi"
-img: "/assets/images/2560px-HelloWorld.svg.png"
+img: "/assets/images/hello-world/2560px-HelloWorld.svg.png"
 date:   2022-03-20 20:02:05 +0330
 categories: blog
 ---
