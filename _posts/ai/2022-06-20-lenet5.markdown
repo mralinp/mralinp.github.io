@@ -15,6 +15,8 @@ LeNet was introduced in the research paper “Gradient-Based Learning Applied To
 <!-- Image -->
 This article will introduce the LeNet-5 CNN architecture as described in the original paper, along with the implementation of the architecture using TensorFlow 2.0.
 
+<p align="center"><a href="https://www.tensorflow.org"><img width=100 src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Tensorflow_logo.svg/1200px-Tensorflow_logo.svg.png"/></a></p>
+
 This article will then conclude with the utilization of the implemented LeNet-5 CNN for the classification of images from the MNIST dataset.
 
 What to find in this article:
@@ -200,7 +202,6 @@ During training, we’ll also validate our model after every epoch with the valu
 
 ```python
 history = leNet5.fit(xTrain, yTrain, validation_data=(xTest,yTest), batch_size=64, epochs=10)
-leNet5.evaluate(xTest, yTest)
 ```
 ```output
 Epoch 1/10
@@ -224,10 +225,15 @@ Epoch 9/10
 Epoch 10/10
 938/938 [==============================] - 9s 10ms/step - loss: 0.0265 - accuracy: 0.9913 - val_loss: 0.0729 - val_accuracy: 0.9835
 313/313 [==============================] - 1s 3ms/step - loss: 0.0729 - accuracy: 0.9835
-
-[0.07292196899652481, 0.9835000038146973]
 ```
 After training, you will notice that your model achieves a validation accuracy of over 90%. But for a more explicit verification of the performance of the model on an unseen dataset, we will evaluate the trained model on the test dataset partition created earlier.
+
+```python
+leNet5.evaluate(xTest, yTest)
+```
+```output
+[0.07292196899652481, 0.9835000038146973]
+```
 
 After training my model, I was able to achieve 98% accuracy on the test dataset, which is quite useful for such a simple network.
 

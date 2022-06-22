@@ -1,10 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-06-22T02:11:18+04:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">mralinp</title><subtitle>My awesome blog</subtitle><entry><title type="html">Lenet5 from scratch</title><link href="http://localhost:4000/blog/ai/machine-learning/deep-learning/2022/06/21/lenet5.html" rel="alternate" type="text/html" title="Lenet5 from scratch" /><published>2022-06-21T00:02:23+04:30</published><updated>2022-06-21T00:02:23+04:30</updated><id>http://localhost:4000/blog/ai/machine-learning/deep-learning/2022/06/21/lenet5</id><content type="html" xml:base="http://localhost:4000/blog/ai/machine-learning/deep-learning/2022/06/21/lenet5.html"><![CDATA[<h1 id="1-intro">1. Intro</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-06-22T11:11:59+04:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">mralinp</title><subtitle>My awesome blog</subtitle><entry><title type="html">Lenet5 from scratch</title><link href="http://localhost:4000/blog/ai/machine-learning/deep-learning/2022/06/21/lenet5.html" rel="alternate" type="text/html" title="Lenet5 from scratch" /><published>2022-06-21T00:02:23+04:30</published><updated>2022-06-21T00:02:23+04:30</updated><id>http://localhost:4000/blog/ai/machine-learning/deep-learning/2022/06/21/lenet5</id><content type="html" xml:base="http://localhost:4000/blog/ai/machine-learning/deep-learning/2022/06/21/lenet5.html"><![CDATA[<h1 id="1-intro">1. Intro</h1>
 <p>LeNet was introduced in the research paper “Gradient-Based Learning Applied To Document Recognition” in the year 1998 by Yann LeCun, Leon Bottou, Yoshua Bengio, and Patrick Haffner. Many of the listed authors of the paper have gone on to provide several significant academic contributions to the field of deep learning.</p>
 <p align="center">
     <img src="/assets/images/lenet5/authors.png" />
 </p>
 <!-- Image -->
 <p>This article will introduce the LeNet-5 CNN architecture as described in the original paper, along with the implementation of the architecture using TensorFlow 2.0.</p>
+
+<p align="center"><a href="https://www.tensorflow.org"><img width="100" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Tensorflow_logo.svg/1200px-Tensorflow_logo.svg.png" /></a></p>
 
 <p>This article will then conclude with the utilization of the implemented LeNet-5 CNN for the classification of images from the MNIST dataset.</p>
 
@@ -265,7 +267,6 @@ Non-trainable params: 0
 <p>During training, we’ll also validate our model after every epoch with the valuation dataset partition created earlier</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">history</span> <span class="o">=</span> <span class="n">leNet5</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">xTrain</span><span class="p">,</span> <span class="n">yTrain</span><span class="p">,</span> <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">xTest</span><span class="p">,</span><span class="n">yTest</span><span class="p">),</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">leNet5</span><span class="p">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">xTest</span><span class="p">,</span> <span class="n">yTest</span><span class="p">)</span>
 </code></pre></div></div>
 <pre><code class="language-output">Epoch 1/10
 938/938 [==============================] - 10s 10ms/step - loss: 1.1559 - accuracy: 0.7988 - val_loss: 0.1056 - val_accuracy: 0.9681
@@ -288,10 +289,13 @@ Epoch 9/10
 Epoch 10/10
 938/938 [==============================] - 9s 10ms/step - loss: 0.0265 - accuracy: 0.9913 - val_loss: 0.0729 - val_accuracy: 0.9835
 313/313 [==============================] - 1s 3ms/step - loss: 0.0729 - accuracy: 0.9835
-
-[0.07292196899652481, 0.9835000038146973]
 </code></pre>
 <p>After training, you will notice that your model achieves a validation accuracy of over 90%. But for a more explicit verification of the performance of the model on an unseen dataset, we will evaluate the trained model on the test dataset partition created earlier.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">leNet5</span><span class="p">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">xTest</span><span class="p">,</span> <span class="n">yTest</span><span class="p">)</span>
+</code></pre></div></div>
+<pre><code class="language-output">[0.07292196899652481, 0.9835000038146973]
+</code></pre>
 
 <p>After training my model, I was able to achieve 98% accuracy on the test dataset, which is quite useful for such a simple network.</p>
 

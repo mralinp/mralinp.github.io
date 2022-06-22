@@ -89,6 +89,11 @@
                                 <a class="nav-link" href="/about">About me</a>
                             </li>
                         </ul>
+                        <form class="form-inline my-2 my-lg-0" method="get" action="http://www.google.com/search" target="_blank">
+                            <input type="hidden" name="sitesearch" value="alinaderiparizi.ir" />
+                            <input class="form-control mr-sm-2" type="text" name="q" maxlength="255" placeholder="Search" />
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>
                     </div>
                 </div>
             </nav>
@@ -139,6 +144,8 @@
 </p>
 <!-- Image -->
 <p>This article will introduce the LeNet-5 CNN architecture as described in the original paper, along with the implementation of the architecture using TensorFlow 2.0.</p>
+
+<p align="center"><a href="https://www.tensorflow.org"><img width="100" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Tensorflow_logo.svg/1200px-Tensorflow_logo.svg.png" /></a></p>
 
 <p>This article will then conclude with the utilization of the implemented LeNet-5 CNN for the classification of images from the MNIST dataset.</p>
 
@@ -399,7 +406,6 @@ Non-trainable params: 0
 <p>During training, we’ll also validate our model after every epoch with the valuation dataset partition created earlier</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">history</span> <span class="o">=</span> <span class="n">leNet5</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">xTrain</span><span class="p">,</span> <span class="n">yTrain</span><span class="p">,</span> <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">xTest</span><span class="p">,</span><span class="n">yTest</span><span class="p">),</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">leNet5</span><span class="p">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">xTest</span><span class="p">,</span> <span class="n">yTest</span><span class="p">)</span>
 </code></pre></div></div>
 <pre><code class="language-output">Epoch 1/10
 938/938 [==============================] - 10s 10ms/step - loss: 1.1559 - accuracy: 0.7988 - val_loss: 0.1056 - val_accuracy: 0.9681
@@ -422,10 +428,13 @@ Epoch 9/10
 Epoch 10/10
 938/938 [==============================] - 9s 10ms/step - loss: 0.0265 - accuracy: 0.9913 - val_loss: 0.0729 - val_accuracy: 0.9835
 313/313 [==============================] - 1s 3ms/step - loss: 0.0729 - accuracy: 0.9835
-
-[0.07292196899652481, 0.9835000038146973]
 </code></pre>
 <p>After training, you will notice that your model achieves a validation accuracy of over 90%. But for a more explicit verification of the performance of the model on an unseen dataset, we will evaluate the trained model on the test dataset partition created earlier.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">leNet5</span><span class="p">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">xTest</span><span class="p">,</span> <span class="n">yTest</span><span class="p">)</span>
+</code></pre></div></div>
+<pre><code class="language-output">[0.07292196899652481, 0.9835000038146973]
+</code></pre>
 
 <p>After training my model, I was able to achieve 98% accuracy on the test dataset, which is quite useful for such a simple network.</p>
 
