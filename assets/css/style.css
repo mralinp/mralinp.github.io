@@ -221,24 +221,31 @@ th {
     color: #FCA311;
 }
 
+#navbarLinks {
+    display: none;
+}
+
+#brand {
+    display: none;
+    color: #FCA311;
+}
+
 
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
 
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
     #sidebar {
         margin-left: -250px;
-    }
-    #sidebar.active {
-        margin-left: 0;
+        display: none;
     }
     #content {
         width: 100%;
         padding: 0;
     }
     #content.active {
-        width: calc(100% - 250px);
+        width: 100%;
     }
     #sidebarCollapse {
         display: none;
@@ -248,6 +255,12 @@ th {
     }
     nav {
         border-radius: 0 !important;
+    }
+    #navbarLinks {
+        display: flex;
+    }
+    #brand {
+        display: flex;
     }
 }
 
