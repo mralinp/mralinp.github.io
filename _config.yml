@@ -2,7 +2,7 @@ title: mralinp
 email: alinaderiparizi@gmail.com
 description: My awesome blog
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "alinaderiparizi.ir" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://alinaderiparizi.ir" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: alinaderiparizi
 github_username:  mralinp
 
@@ -12,3 +12,4 @@ paginate_path: "/blog/page:num/"
 # Build settings
 plugins:
   - jekyll-feed
+  - jekyll-sitemap
