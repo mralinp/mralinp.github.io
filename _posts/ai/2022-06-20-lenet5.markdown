@@ -4,7 +4,7 @@ title:  "Lenet5 from scratch"
 author: "Ali N. Parizi"
 img: "/assets/images/lenet5/mnist-dataset-1.png"
 date:   2022-06-20 23:02:23 +0330
-categories: blog ai machine-learning deep-learning
+categories: ai machine-learning deep-learning
 brief: "In this article, we perform image classification on the MNIST dataset with custom implemented LeNet-5 neural network architecture."
 ---
 # 1. Intro

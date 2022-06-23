@@ -22,13 +22,13 @@ layout: main
                         </div>
                         <div class="card-body">
                             <h3 class="h5"><a href="{{post.url}}"><h4>{{post.title}}</h4></a></h3>
-                            <p class="display-30">{{ post.content | strip_html | truncatewords: 20 }}</p>
+                            <p class="display-30">{{ post.brief | strip_html | truncatewords: 20 }}</p>
                             <a href="{{post.url}}" class="btn"><i class="fa fa-angle-double-right"></i> Read more</a>
                         </div>
                         <div class="card-footer">
                             <ul>
                             <li><i class="fa fa-user-circle-o"></i> {{ post.author }}</li>                            
-                            <li><i class="fa fa-tags"></i>{{ post.categories.first }}</li>
+                            <li ><i class="fa fa-tags"></i><span class="category">{{ post.categories.first }}</span></li>
                             </ul>
                         </div>
                     </article>

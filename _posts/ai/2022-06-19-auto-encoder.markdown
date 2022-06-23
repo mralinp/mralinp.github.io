@@ -2,9 +2,9 @@
 layout: post
 title: "What is an AutoEncoder?"
 author: "Ali N. Parizi"
-img: "/assets/images/auto-encoder/mushroom-ae.png"
+img: "/assets/images/auto-encoder/title.png"
 date:   2022-06-19 12:21:13 +0330
-categories: blog ai machine-learning deep-learning
+categories: ai machine-learning deep-learning
 brief: "This tutorial introduces autoencoders with three examples: the basics, image denoising, and anomaly detection."
 ---
 

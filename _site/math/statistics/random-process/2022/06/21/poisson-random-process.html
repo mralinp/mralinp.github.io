@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title> Projects </title>
+    <title> The Poisson random process </title>
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
@@ -98,51 +98,57 @@
                 </div>
             </nav>
             <div class="container">
-                <section>
-    <div class="text-center mb-5">
-        <h2 class="display-20 display-md-18 display-lg-16">Projects and experiences</h2>
+                <article>
+    <div class="image-wrapper text-center">
+        <a class="image-zoom cboxElement" href="">
+        <img src="/assets/images/poisson/title.png" class="rounded mx-auto" width="100%"  alt="Photo of Blog">
+        <div class="image-overlay"></div> 
+        </a>
     </div>
-    <div class="line"></div>
-    <div class="row">
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-                <div class="col-lg-4 col-md-6 mb-2-6">
-                    <article class="card card-style2">
-                        <div class="card-img">
-                        <div class="fill">
-                            <a class="image-wrapper image-zoom cboxElement" href="/project/game/python/entry-level/2022/03/21/snake-game.html">
-                                <img src="/assets/images/snake-game/snake-game.jpeg" class="rounded-top" alt="Photo of Blog" />
-                            </a>
-                        </div>
-                            <div class="date"><span>Mar</span>2022</div>
-                        </div>
-                        <div class="card-body">
-                            <h3 class="h5"><a href="/project/game/python/entry-level/2022/03/21/snake-game.html"><h4>Snake game</h4></a></h3>
-                            <p class="display-30">Snake game is a very cool and informative mini project for beginners, in this post we are going to implement...</p>
-                            <a href="/project/game/python/entry-level/2022/03/21/snake-game.html" class="btn"><i class="fa fa-angle-double-right"></i> Read more</a>
-                        </div>
-                        <div class="card-footer">
-                            <ul>
-                            <li><i class="fa fa-user-circle-o"></i> Ali N. Parizi</li>                            
-                            <li><i class="fa fa-tags"></i><span class="category">project</span></li>
-                            </ul>
-                        </div>
-                    </article>
-                </div>
-            
-        
-            
-        
+    <br>
+    <div class="post-content">
+        <h2>The Poisson random process</h2>
+        <ul class="post-meta list-inline">
+            <li class="list-inline-item">
+                <i class="fa fa-user-circle-o"></i> Ali N. Parizi
+            </li>
+            <li class="list-inline-item">
+                <i class="fa fa-calendar-o"></i> 21 June 2022
+            </li>
+            <li class="list-inline-item">
+                <i class="fa fa-tags"></i>
+                    <span class="category">
+                    math
+                    </span>
+                    
+                         <span class="category">
+                         statistics
+                         </span>
+                    
+                         <span class="category">
+                         random-process
+                         </span>
+                    
+            </li>
+        </ul>
+        <p class="text-secondary"> A straightforward walk-through of a useful statistical concept, the 'Poisson random process' <p>
+        <div class="line"></div>
+        <h1 id="1-intro">1. Intro</h1>
+<p>A tragedy of statistics in most schools is how dull it’s made. Teachers spend hours wading through derivations, equations, and theorems, and, when you finally get to the best part — applying concepts to actual numbers — it’s with irrelevant, unimaginative examples like rolling dice. This is a shame as stats can be enjoyable if you skip the derivations (which you’ll likely never need) and focus on using the ideas to solve interesting problems.</p>
+
+<p>In this article, we’ll cover Poisson Processes and the Poisson distribution, two important probability concepts. After highlighting only the relevant theory, we’ll work through a real-world example, showing equations and graphs to put the ideas in a proper context.</p>
+
+<h1 id="2-poisson-process">2. Poisson Process</h1>
+<p>A Poisson Process is a model for a series of discrete event where the average time between events is known, but the exact timing of events is random. The arrival of an event is independent of the event before (waiting time between events is memoryless). For example, suppose we own a website which our content delivery network (CDN) tells us goes down on average once per 60 days, but one failure doesn’t affect the probability of the next. All we know is the average time between failures. This is a Poisson process that looks like:</p>
+
+<!-- Image -->
+
+<p>The important point is we know the average time between events but they are randomly spaced (stochastic). We might have back-to-back failures, but we could also go years between failures due to the randomness of the process.</p>
+
+<p>A Poisson Process meets the following criteria (in reality many phenomena modeled as Poisson processes don’t meet these exactly):</p>
+
     </div>
-</section>
+</article>
 
             </div>
         </div>

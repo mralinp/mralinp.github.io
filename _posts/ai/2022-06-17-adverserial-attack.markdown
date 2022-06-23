@@ -2,18 +2,18 @@
 layout: post
 title:  "Adversarial attacks in deep learning"
 author: "Ali N. Parizi"
-img: "/assets/images/adversarial-attack/adversarial-10.jpeg"
+img: "/assets/images/adversarial-attack/title.png"
 date:   2022-06-16 20:02:05 +0330
-categories:  blog ai machine-learning deep-learning
+categories:  ai machine-learning deep-learning
 brief: "Are the machine learning models we use intrinsically flawed?"
 ---
 # 1. Intro
 Big Data powered machine learning and deep learning has yielded impressive advances in many fields. One example is the release of ImageNet consisting of more than 15 million labelled high-resolution images of 22,000 categories which revolutionized the field of computer vision. State-of-the-art models have already achieved a 98% top-five accuracy on the ImageNet dataset, so it seems as though these models are foolproof and that nothing can go wrong.
 
 However, recent advances in adversarial training have found that this is an illusion. A good model misbehaves frequently when faced with adversarial examples. The image below illustrates the problem:
-
-![image](/assets/images/adversarial-attack/1.png)
-
+<p align="center">
+ <img src="/assets/images/adversarial-attack/1.png"/>
+</p>
 The model initially classifies the panda picture correctly, but when some noise, imperceptible to human beings, is injected into the picture, the resulting prediction of the model is changed to another animal, gibbon, even with such a high confidence. To us, it appears as if the initial and altered images are the same, although it is radically different to the model. This illustrates the threat these adversarial attacks pose — we may not perceive the difference so we cannot tell an adversarial attack as happened. Hence, although the output of the model may be altered, we cannot tell if the output is correct or incorrect.
 
 This formed the motivation behind the talk for Professor Ling Liu’s keynote speech at the 2019 IEEE Big Data Conference, where she touched on types of adversarial attacks, how adversarial examples are generated, and how to combat against these attacks. Without further ado, I will get into the contents of her speech.
@@ -109,3 +109,11 @@ This remains an open problem because, after all these decisions by the various v
 We have taken a look at various types of adversarial attacks as well as a promising method to defend against these attacks. This is definitely something to keep in mind when we implement machine learning models. Instead of blindly trusting the models to produce the correct results, we need to guard against these adversarial attacks and always think twice before we accept the decisions made by these models.
 
 A huge thanks to Professor Liu for this enlightening keynote on this pressing problem in machine learning!
+
+# References
+1. [I. J. Goodfellow, J. Shlens, και C. Szegedy, "Explaining and Harnessing Adversarial Examples". arXiv, 2014.](https://arxiv.org/abs/1805.07984)
+2. [Tensorflow blog tutorials](https://www.tensorflow.org/tutorials/generative/adversarial_fgsm)
+3. [Adverserial Machine Learning](https://en.wikipedia.org/wiki/Adversarial_machine_learning)
+4. [Attacking Machine Learning
+with Adversarial Examples](https://openai.com/blog/adversarial-example-research/)
+5. [Breaking neural networks with adversarial attacks](https://towardsdatascience.com/breaking-neural-networks-with-adversarial-attacks-f4290a9a45aa)
