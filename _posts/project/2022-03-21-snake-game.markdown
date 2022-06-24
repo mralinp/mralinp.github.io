@@ -9,23 +9,38 @@ brief: "Snake game is a very cool and informative mini project for beginners, in
 ---
 
 # 1. Intro
-Hello there, this is Ali speaking. When i started studying computer engineering at Shiraz university, CSE101 was the very primarly course that we should take to get familiar with the basic concepts of programming. They introduced **python** to us for the first time. Python is a very cool programming language that have very waste practical areas in almost any majors such as Data science, machine learning, web-development, game development, etc.
+Hello there, this is Ali speaking. When I started studying computer engineering at Shiraz University, CSE101 was the introductory course we should take to familiarize ourselves with basic programming concepts. There, I have introduced to the **python** programming language for the first time. Python is a very cool programming language that wastes practical areas in almost any major, such as data science, machine learning, web development, game development, etc.
 
-Now i'm using python on almost my every day of my academic career. So it was a good choice to begin programming and get familiar with the concepts of programming. On the other hand, in the first year of high-school i learned **C** programming as my first language. I was using C to solve mathematic problems and only for fun because I didn't have any other source to learn, except our computer teacher and a very old resource which was based on **Borland C++** and was running on **MS-DOS**. That days we didn't have the access to the internet on our home or school so the only way of learning things was reading books and asking questions. So to me the course CSE101 was the easiest course of my life. I never studied anything about the course silabuses but I was just learning everything possible about python that could found. **Our final project was making a very simple snake game (like old school Nokia phones game) without using advanced libraries such as pyGame or other alternatives.**
+<br>
+<div align="center">
+    <img src="/assets/images/snake-game/python-logo.png" width="200px">
+</div>
+<br>
 
-## 1.1 Problem statement:
+Now, I'm using python almost every day of my academic career. So it was an excellent choice to begin programming and get familiar with programming concepts. On the other hand, in the first year of high school, I learned **C** programming as my first programming language. I was using C to solve mathematic problems and only for fun because I had no other source to learn except our computer teacher and an ancient resource based on **Borland C++** and running on **MS-DOS**. Those days we didn't have access to the internet in our home or school, so the only way of learning things was by reading books and asking questions. To me, CSE101 was the most straightforward course of my life. I never studied anything about the course syllabuses; I just learned everything possible about python that I could find on the internet. The course's final project was **"Making a Very Simple Snake Game"** (like old school Nokia phones game) without using advanced libraries or frameworks such as PyGame or other alternatives.
 
-Develop a straightforward snake game such as the one on old-school Nokia phones. A single snake moves around the game world. Users can control the snake using arrows keys or W, A, S, and D to move UP, LEFT, DOWN, and RIGHT.
+In this article, we are about to implement a **Very Simple Snake Game**. The problem statement is available in the next section.
 
-After a random time, it will be deployed an apple on a random spot on the map. If the snake eats the apple, its tail extends, and the player receives 100 points. The map can contain some walls or obstacles. If the snake hits a block or its tail, the game will be finished, and the player will lose the game.
+# Table Of Contents
+- [1. Intro](#1-intro)
+- [2. Problem Statement](#2-problem-statement)
+- [3. Challenges of The Project](#3-Challenges of The Project)
+- [4. Solution and Design](#4.solution-and-design)
+- [5. Implementation](#5-implementation)
+- [6. Final words](#6-final-words)
 
-By pressing the Esc key, the game pauses. You have to make the ability to store the highest score after the game finishes.
+# 2. Problem Statement:
 
-Any creative ideas and implementation that improve performance, game experience, and game appearance considers as bonuses.
+Develop a straightforward snake game such as the one on old-school Nokia phones. A single snake moves around the game world. You can control the snake using arrow keys or `W`, `A`, `S`, and `D` to move `UP`, `LEFT`, `DOWN`, and `RIGHT`. Meanwhile, at any random time, it could be deployed an apple (or food) on a random spot on the map. If the snake eats the food, its tail extends by a unit, and the player receives 100 points. The map can contain some walls or obstacles. The player loses the game if the snake hits a block or its tail. Pressing the `Esc` key pauses and unpauses the game. You have to make the ability to store the achieved score after each game.
+> Note: Any creative ideas and implementations that improve performance, game experience, and appearance will be considered as bonuses.
 
 # 2. Solution
-Did you read **[part 1.1](#11-problem-statement)** carefully? As it could be found from the problem statement. We can break the problem into some parts and levels. First is to implement a moving object on the 2D game board which actually is our snake. As the game world is console and no graphical libraries are allowed here we need to think and consider about a simple world of char games. In this world, all objects in the game are nothing but characters. For example snake head can be displayed as the character '@', its tail segments can be displayed with 'o' and Apples are displayed with 'A'. At the end walls could be represented as '#'. First, we try to implement the basics of the game. The challenge here is how to print a character on a specific position of the screen. 
+Did you read the **[problem statement](#11-problem-statement)** section carefully? As it could be found from the problem statement. We can break the problem into some parts and levels. First is to implement a moving object on the 2D game board which actually is our snake. As the game world is console and no graphical libraries are allowed here we need to think and consider about a simple world of char games. In this world, all objects in the game are nothing but characters. For example snake head can be displayed as the character `@`, its tail segments can be displayed with `o` and Apples are displayed with `A`. At the end walls could be represented as `#`. First, we try to implement the basics of the game. The challenge here is how to print a character on a specific position of the screen. 
 
-# 3. Implementation
+# 3. Challenges of The Project
 
-# 4. Final words
+# 4. Solution and Design
+
+# 5. Implementation
+
+# 6. Final words
