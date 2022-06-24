@@ -25,10 +25,14 @@
 <lastmod>2022-06-21T15:32:35+04:30</lastmod>
 </url>
 <url>
+<loc>http://localhost:4000/project/ai/computer-vision/deep-learning/2022/06/23/saffron-cutting-machine.html</loc>
+<lastmod>2022-06-23T18:50:22+04:30</lastmod>
+</url>
+<url>
 <loc>http://localhost:4000/about</loc>
 </url>
 <url>
-<loc>http://localhost:4000/blog.html</loc>
+<loc>http://localhost:4000/blog/</loc>
 </url>
 <url>
 <loc>http://localhost:4000/</loc>
@@ -38,6 +42,9 @@
 </url>
 <url>
 <loc>http://localhost:4000/publications.html</loc>
+</url>
+<url>
+<loc>http://localhost:4000/blog/page2/</loc>
 </url>
 <url>
 <loc>http://localhost:4000/assets/resume/ali-naderi-parizi-cv.pdf</loc>

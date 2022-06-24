@@ -1,4 +1,5 @@
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
 body {
     font-family: 'Poppins', sans-serif;
 }
@@ -41,7 +42,7 @@ body img {
 .line {
     width: 100%;
     height: 1px;
-    border-bottom: 1px dashed rgba(0, 0, 0, 0.3);
+    border-bottom: 2px dashed rgba(0, 0, 0, 0.3);
     margin: 40px 0;
 }
 
@@ -279,6 +280,17 @@ th {
     max-height: 3ch;
 }
 
+.main-header {
+    border: 2px dashed rgba(0, 0, 0, 0.3);
+    border-radius: 1rem;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.main-header h1 {
+    margin: 0;
+    padding: 0;
+}
 
 /* ---------------------------------------------------
     blog body
@@ -292,6 +304,7 @@ th {
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
     border: 0;
+    margin: 0;
 }
 
 .fill {
@@ -300,7 +313,7 @@ th {
     height: 250px;
     justify-content: center;
     align-items: center;
-    overflow: hidden
+    overflow: hidden;
 }
 
 .fill img {
@@ -421,12 +434,39 @@ section .btn:hover {
 
 
 /* ---------------------------------------------------
+    Paginator styles
+----------------------------------------------------- */
+#PageNav ul {
+    margin: 0;
+}
+
+#PageNav {
+    padding: 10px;
+}
+
+#PageNav ul li a {
+    background: #FCA311;
+    color: #000;
+    border-color: #000;
+}
+
+#PageNav ul li a:hover{
+        background: #000;
+}
+
+#PageNav .active span {
+    background: #1b1b1b !important;
+    border-color: #1b1b1b;
+}
+
+
+/* ---------------------------------------------------
     Dark mode
 ----------------------------------------------------- */
 
 @media (prefers-color-scheme: dark) {
     body {
-        background-color: black;
+        background-color: #000;
         color: #eee;
     }
     .card {
@@ -452,7 +492,7 @@ section .btn:hover {
         color: #fca311;
     }
     .line {
-        border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
+        border-color: rgba(255, 255, 255, 0.3);
     }
     .info-span {
         color: #eee;
@@ -465,5 +505,8 @@ section .btn:hover {
     }
     #content article table th {
         color: #FCA311;
+    }
+    .main-header {
+        border-color: rgba(255,255,255,0.3);
     }
 }
