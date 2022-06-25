@@ -232,6 +232,13 @@ th {
 }
 
 
+p code {
+    color: #333 !important;
+    background: rgba(0,0,0,0.1) !important;
+    margin: 0 !important;
+}
+
+
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
@@ -508,5 +515,9 @@ section .btn:hover {
     }
     .main-header {
         border-color: rgba(255,255,255,0.3);
+    }
+    p code {
+        color: #eee !important;
+        background: rgba(255,255,255,0.3) !important;
     }
 }
