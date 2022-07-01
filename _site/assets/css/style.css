@@ -47,7 +47,7 @@ body img {
 }
 
 #sidebarCollapse {
-    background-color: #FCA311;
+    background-color: #ffab00;
     color: #14213D;
     border: none;
     border-radius: 0.25rem;
@@ -56,12 +56,12 @@ body img {
 .category {
     padding-left: 5px;
     padding-right: 5px;
-    border: 1px solid #fca311;
+    border: 1px solid #ffab00;
     border-radius: 0.25rem;
     margin-right: 5px;
     margin-left: 5px;
     color: black;
-    background: #FCA311;
+    background: #ffab00;
 }
 
 
@@ -92,12 +92,12 @@ body img {
 
 #sidebar .sidebar-header {
     padding: 20px;
-    background: #fca311;
+    background: #ffab00;
     color: #14213D;
 }
 
 #sidebar ul.components {
-    border-bottom: 1px solid #fca311;
+    border-bottom: 1px solid #ffab00;
 }
 
 #sidebar ul p {
@@ -112,7 +112,7 @@ body img {
 }
 
 .sidebar-item:hover {
-    color: #fca311;
+    color: #ffab00;
     background: #000;
 }
 
@@ -147,18 +147,18 @@ ul.CTAs a {
 }
 
 .sidebar-btn {
-    background: #fca311;
+    background: #ffab00;
     color: #000;
     border-radius: 0.25rem;
 }
 
 .sidebar-btn:hover {
     background: #000;
-    color: #FCA311;
+    color: #ffab00;
 }
 
 li a:hover {
-    color: #FCA311 !important;
+    color: #ffab00 !important;
 }
 
 .info-span {
@@ -169,7 +169,7 @@ li a:hover {
 
 nav button {
     color: #000 !important;
-    background: #FCA311 !important;
+    background: #ffab00 !important;
     border: 0 !important;
 }
 
@@ -201,7 +201,7 @@ th {
 }
 
 #content article table tr:hover {
-    color: #FCA311;
+    color: #ffab00;
 }
 
 #content article table thead tr:hover {
@@ -213,7 +213,7 @@ th {
 }
 
 #content a:hover {
-    color: #FCA311;
+    color: #ffab00;
 }
 
 #navbarLinks {
@@ -222,7 +222,7 @@ th {
 
 #brand {
     display: none;
-    color: #FCA311;
+    color: #ffab00;
 }
 
 
@@ -347,7 +347,7 @@ p code {
     right: 10px;
     top: 10px;
     z-index: 1;
-    color: #FCA311;
+    color: #ffab00;
     overflow: hidden;
     padding-bottom: 10px;
     line-height: 24px;
@@ -366,7 +366,7 @@ p code {
     text-align: center;
     padding: 10px;
     margin-bottom: 5px;
-    background-color: #FCA311;
+    background-color: #ffab00;
     color: #000;
     border-radius: 0.25rem;
 }
@@ -382,7 +382,7 @@ p code {
 }
 
 .card-style2 .card-body h3 a:hover {
-    color: #fca311;
+    color: #ffab00;
 }
 
 .card-style2 .card-footer {
@@ -418,13 +418,13 @@ p code {
 }
 
 section .btn {
-    background: #FCA311;
+    background: #ffab00;
     color: #000;
 }
 
 section .btn:hover {
     background: #000;
-    color: #FCA311;
+    color: #ffab00;
 }
 
 .card {
@@ -446,7 +446,7 @@ section .btn:hover {
 }
 
 #PageNav ul li a {
-    background: #FCA311;
+    background: #ffab00;
     color: #000;
     border-color: #000;
 }
@@ -490,7 +490,7 @@ section .btn:hover {
         background: #1b1b1b;
     }
     .card h6 {
-        color: #fca311;
+        color: #ffab00;
     }
     .line {
         border-color: rgba(255, 255, 255, 0.3);
@@ -505,7 +505,7 @@ section .btn:hover {
         border: 1px solid #eee;
     }
     #content article table th {
-        color: #FCA311;
+        color: #ffab00;
     }
     .main-header {
         border-color: rgba(255,255,255,0.3);
