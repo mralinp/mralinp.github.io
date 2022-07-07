@@ -17,8 +17,8 @@ permalink: /about
                                 <h4>Ali N. Parizi</h4>
                                 <p class="text-secondary mb-1">Computer engineer</p>
                                 <p class="text-muted font-size-sm">Tehran, Iran</p>
-                                <a class="btn btn-outline-primary" href="https://www.linkedin.com/in/ali-naderi-parizi-5a0a74107/"><i class="fa fa-linkedin"></i> LinkedIn</a>
-                                <a class="btn btn-outline-primary" href="https://twitter.com/alinaderiparizi"><i class="fa fa-twitter"></i> Tweeter</a>
+                                <a class="btn btn-outline-primary" style="margin: 2px" href="https://www.linkedin.com/in/ali-naderi-parizi-5a0a74107/"><i class="fa fa-linkedin"></i> LinkedIn</a>
+                                <a class="btn btn-outline-primary" style="margin: 2px" href="https://twitter.com/alinaderiparizi"><i class="fa fa-twitter"></i> Tweeter</a>
                             </div>
                         </div>
                     </div>

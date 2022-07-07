@@ -11,6 +11,26 @@ p {
     line-height: 1.7em;
 }
 
+highlighter-rouge {
+    border-radius: 1rem;
+}
+
+blockquote p {
+    border: 2px dashed;
+    border-color: rgba(0, 0, 0, 0.3);
+    background: #eee;
+    border-radius: 1rem;
+    padding:10px 20px 10px 20px;
+}
+
+strong {
+    font-weight: bold;
+}
+
+a strong:hover {
+    color: #ffab00;
+}
+
 a,
 a:hover,
 a:focus {
@@ -514,4 +534,10 @@ section .btn:hover {
         color: #eee !important;
         background: rgba(255,255,255,0.3) !important;
     }
+    
+    blockquote p {
+        border-color: rgba(255, 255, 255, 0.3);
+        background: #222;
+    }
+
 }
