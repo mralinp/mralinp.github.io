@@ -1,16 +1,258 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-07-07T21:12:37+04:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">mralinp</title><subtitle>My awesome blog</subtitle><entry><title type="html">Saffron cutting machine</title><link href="http://localhost:4000/project/ai/computer-vision/deep-learning/2022/06/23/saffron-cutting-machine.html" rel="alternate" type="text/html" title="Saffron cutting machine" /><published>2022-06-23T18:50:22+04:30</published><updated>2022-06-23T18:50:22+04:30</updated><id>http://localhost:4000/project/ai/computer-vision/deep-learning/2022/06/23/saffron-cutting-machine</id><content type="html" xml:base="http://localhost:4000/project/ai/computer-vision/deep-learning/2022/06/23/saffron-cutting-machine.html"><![CDATA[]]></content><author><name>Ali N. Parizi</name></author><category term="project" /><category term="ai" /><category term="computer-vision" /><category term="deep-learning" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">The Poisson random process</title><link href="http://localhost:4000/math/statistics/random-process/2022/06/21/poisson-random-process.html" rel="alternate" type="text/html" title="The Poisson random process" /><published>2022-06-21T15:32:35+04:30</published><updated>2022-06-21T15:32:35+04:30</updated><id>http://localhost:4000/math/statistics/random-process/2022/06/21/poisson-random-process</id><content type="html" xml:base="http://localhost:4000/math/statistics/random-process/2022/06/21/poisson-random-process.html"><![CDATA[<h1 id="1-intro">1. Intro</h1>
-<p>A tragedy of statistics in most schools is how dull it’s made. Teachers spend hours wading through derivations, equations, and theorems, and, when you finally get to the best part — applying concepts to actual numbers — it’s with irrelevant, unimaginative examples like rolling dice. This is a shame as stats can be enjoyable if you skip the derivations (which you’ll likely never need) and focus on using the ideas to solve interesting problems.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-07-20T00:59:16+04:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">mralinp</title><subtitle>My awesome blog</subtitle><entry><title type="html">The Poisson Distribution</title><link href="http://localhost:4000/math/statistics/random-process/2022/07/14/the-poisson-process.html" rel="alternate" type="text/html" title="The Poisson Distribution" /><published>2022-07-14T12:32:35+04:30</published><updated>2022-07-14T12:32:35+04:30</updated><id>http://localhost:4000/math/statistics/random-process/2022/07/14/the-poisson-process</id><content type="html" xml:base="http://localhost:4000/math/statistics/random-process/2022/07/14/the-poisson-process.html"><![CDATA[<h1 id="1-intro">1. Intro</h1>
+<p>Knowing statistics for a computer engineer, a data scientist, or a machine-learning engineer is a unique need in their professional career. We learn about statistics in most universities more like learning differential equations or calculus instead. We know so many mathematical basics for statistics that we will never use in the future. That prevents us from seeing the use of statistics and what we can do with these concepts in the real world.</p>
 
-<p>In this article, we’ll cover Poisson Processes and the Poisson distribution, two important probability concepts. After highlighting only the relevant theory, we’ll work through a real-world example, showing equations and graphs to put the ideas in a proper context.</p>
+<p>In this article, we are about to learn two crucial statistics concepts, The Poisson Distribution and The Poisson Process, through solving a common problem in the concept of online website hosting.</p>
 
-<h1 id="2-poisson-process">2. Poisson Process</h1>
-<p>A Poisson Process is a model for a series of discrete event where the average time between events is known, but the exact timing of events is random. The arrival of an event is independent of the event before (waiting time between events is memoryless). For example, suppose we own a website which our content delivery network (CDN) tells us goes down on average once per 60 days, but one failure doesn’t affect the probability of the next. All we know is the average time between failures. This is a Poisson process that looks like:</p>
+<h1 id="2-what-poisson-distribution-or-poisson-process-is-about">2. What Poisson Distribution or Poisson Process is about?</h1>
+<p>Before we get started, let’s first ask our selves a simple question, “Why do we need Poisson?”</p>
 
-<!-- Image -->
+<p>The Poisson distribution helps us to o predict the probability of a given number of events occurring in a fixed interval of time, or just simply, to predict the number of events in the future.</p>
 
-<p>The important point is we know the average time between events but they are randomly spaced (stochastic). We might have back-to-back failures, but we could also go years between failures due to the randomness of the process.</p>
+<p>For example,</p>
+<ul>
+  <li>How many visitors do you get on your website in a day?</li>
+  <li>How many clicks do your ads get for the next month?</li>
+  <li>How many phone calls do you get during your shift?</li>
+  <li>How many people will die from covid-19 next year?</li>
+</ul>
 
-<p>A Poisson Process meets the following criteria (in reality many phenomena modeled as Poisson processes don’t meet these exactly):</p>]]></content><author><name>Ali N. Parizi</name></author><category term="math" /><category term="statistics" /><category term="random-process" /><summary type="html"><![CDATA[1. Intro A tragedy of statistics in most schools is how dull it’s made. Teachers spend hours wading through derivations, equations, and theorems, and, when you finally get to the best part — applying concepts to actual numbers — it’s with irrelevant, unimaginative examples like rolling dice. This is a shame as stats can be enjoyable if you skip the derivations (which you’ll likely never need) and focus on using the ideas to solve interesting problems.]]></summary></entry><entry><title type="html">Lenet5 from scratch</title><link href="http://localhost:4000/ai/machine-learning/deep-learning/2022/06/21/lenet5.html" rel="alternate" type="text/html" title="Lenet5 from scratch" /><published>2022-06-21T00:02:23+04:30</published><updated>2022-06-21T00:02:23+04:30</updated><id>http://localhost:4000/ai/machine-learning/deep-learning/2022/06/21/lenet5</id><content type="html" xml:base="http://localhost:4000/ai/machine-learning/deep-learning/2022/06/21/lenet5.html"><![CDATA[<h1 id="1-intro">1. Intro</h1>
+<p>Every week, on average, 17 people react to my blog posts via sending me emails. I’d like to predict the number of people who react to my blog posts next week because I have to consider some free time to answer them properly and planning is so critical for me.</p>
+
+<p>What is the probability that exactly 20 people (or 10, 30, 40, etc.) will react to my posts next week?</p>
+
+<p>To answer this question, if we knew some statistics, it would comes my our minds that we should be able to solve this problem using <strong>the Binomial distribution</strong>. Let’s first, look at the concept of Binomial distribution and solve the problem using it.</p>
+
+<h1 id="3-binomial-distribution">3. Binomial distribution</h1>
+<p>One way to solve this should be to start with the number of reads. Each person who reads the blog has some probability that they will really have a question or found some thing interesting to share with me.</p>
+
+<p>A binomial random variable is the number of successes \(x\) in \(n\) repeated trials. And we assume the probability of success \(p\) is constant over each trial. The Binomial distribution formula is:
+\begin{equation}
+P[X=x] = \binom{n}{x}p^x(1-p)^{n-x}
+\end{equation}</p>
+
+<p>However here, we are given only one piece of information, \(17 \frac{emails}{week}\), which is a rate. we don’t know any thing about the probability of receiving an email by an individual reader p, nor the number of blog visitors n. So, we use google analytics to retrieve this data from our blog history.</p>
+
+<p align="center"> <img src="/assets/images/poisson/website-stats.png" /><br /><span>Stats from google</span></p>
+
+<p>By looking to the stats we can say, in one year, A total of \(59k\) people read my blog. Out of \(59k\) people, \(888\) of them liked my post. Therefore, the number of people who read my blog per week (\(n\)) is \(\frac{59k}{52}=1134\). The number of people who liked my posts per week (\(x\)) is \(\frac{888}{52}=17\). So, the success probability p would be \(\frac{888}{59k} = 0.015\) or \(1.5\%\).</p>
+
+<p>Now Using Binomial PMF, we should be able to calculate the probability of getting 20 emails for next week as below:</p>
+
+\[P[X=20] = \binom{1134}{20}(0.015)^{20}(1-0.015)^{n-x} = 0.06962\]
+
+<p>We can use python or any other programming language to calculate the probability of getting emails with different values.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">binom</span>
+<span class="c1"># setting the values
+# of n, p and x
+</span><span class="n">n</span> <span class="o">=</span> <span class="mi">1134</span>
+<span class="n">p</span> <span class="o">=</span> <span class="mf">0.015</span>
+<span class="n">x_s</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">]</span>
+
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"x</span><span class="se">\t</span><span class="s">Binomial P(x, n, p)"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"----------------------------"</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">x_s</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s">:</span><span class="se">\t</span><span class="si">{</span><span class="n">binom</span><span class="p">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<pre><code class="language-output">x	Binomial P(x, n, p)
+----------------------------
+10:	0.022507172903122208
+17:	0.09701415708780352
+20:	0.06962037106916726
+30:	0.0012106250995813465
+40:	6.815731666708672e-07
+</code></pre>
+
+<p>As you can see, by using binomial distribution the probability of getting, 10, 17, 20, 30 and 40 emails per week would be as follows:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>x</th>
+      <th style="text-align: center">Binomial P(X=x)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>10</td>
+      <td style="text-align: center">0.02250</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td style="text-align: center">0.09701</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td style="text-align: center">0.06962</td>
+    </tr>
+    <tr>
+      <td>30</td>
+      <td style="text-align: center">0.00121</td>
+    </tr>
+    <tr>
+      <td>40</td>
+      <td style="text-align: center">&lt; 0.000001</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br /></p>
+
+<h1 id="4-shortcomings-of-the-binomial-distribution">4. Shortcomings of the Binomial Distribution</h1>
+
+<p>The very first problem with a binomial random variable is, “<strong>it being assumed to be binary (0 or 1)</strong>”. In the previous example, we have \(17 \frac{emails}{week}\). This means \(\frac{17}{7}=2.4\) people will send me emails per day, and \(\frac{17}{7*24}\) = 0.1 people send me email per hour.
+If we model the success probability by hour (0.1 email/hr) using binomial random variable, this means most of the hours get zero emails but some hours will get exactly 1 email. However, it is also very possible that certain hours will get more that 1 email (2,3,5 emails, etc.)
+The problem with binomial is that it cannot contain more than 1 event in the unit of time (in this case, 1 hr is the unit time). The unit of time can only have 0 or 1 event.</p>
+
+<p>How about dividing 1 hour into 60 minutes, and make unit time smaller, for example, a minute? If that so, then 1 hour can contain multiple events (Still, one minute will contain exactly one or zero events.). What if, during that one minute, we got multiple emails? (i.e someone shared your my blog post on Twitter and the traffic spiked at that minute.) Then what? We can divide a minute into seconds. then our time unit becomes a second and again a minute can contain multiple events. But this binary container problem will always exist for ever-smaller time units. The idea is, we can make the binomial random variable handle multiple events by dividing a unit time into smaller units. By using smaller divisions, we can make the original unit time contain more than one event. Mathematically, this means \(n\) goes to infinity. Since we assumed the rate is fixed, \(p\) must goes to zero. Because, when $n$ grows up to infinity,the number of intervals between the period becomes grows as $n$ and the probability of getting an email at each interval tends to be merely zero. In the other words, If $n$ goes to infinity, \(p\) should become zero, Other wise, \(np\), which is the number of events will blow up.</p>
+
+<p>The second problem with the binomial random variable is, “<strong>when we want to use the binomial distribution, the number of trails, \(n\), and the probability of success, \(p\), should be known</strong>”.
+If you use Binomial, you cannot calculate the success probability only with the rate (i.e \(17\frac{emails}{week}\)). You need more information \(n\) and \(p\), in order to use the binomial PMF.
+The Poisson Distribution, on the other hand, doesn’t require you to know \(n\) or \(p\). We are assuming \(n\) is infinitely large (\(n\rightarrow\infty\)) and \(p\) is infinitesimal (\(p\rightarrow 0\)).
+The only parameter of the Poisson distribution is the rate \(\lambda\). (In real life only knowing the rate is much more common than knowing both \(n\) and \(p\))</p>
+
+<h1 id="5-derive-the-poisson-formula-mathematically">5. Derive the poisson formula mathematically</h1>
+<p>Now, let’s deep dive into the binomial distribution formula with the assumption that we reached from the ideas of the previous section (<a href="#4-shortcomings-of-the-binomial-distribution">Section 4</a>). We find out that to solve the deal with the binary nature of the binomial random variable, we should increase the number of time units in our one week interval. Mathematically it means \(n\rightarrow\infty\):</p>
+
+\[P[X=x] = lim_{n\rightarrow\infty}\binom{n}{x}p^x(1-p)^{n-x}\]
+
+<p>If, \(n\rightarrow\infty\) and \(p\rightarrow 0\) then we can assume that:</p>
+
+\[p = \frac{\lambda}{n}\]
+
+<p>Then we have:</p>
+
+\[P[X=x] = lim_{n\rightarrow\infty}\binom{n}{x}(\frac{λ}{n})^x(1- (\frac{λ}{n}))^{n-x}\]
+
+\[\Rightarrow lim_{n\rightarrow\infty} \frac{n!}{(n-x)!x!}(\frac{λ}{n})^x(1- (\frac{λ}{n}))^{n-x}\]
+
+\[\Rightarrow lim_{n\rightarrow\infty} \frac{n!}{(n-x)!}\frac{1}{n^x}\frac{λ^x}{x!}(1-\frac{λ}{n})^n(1-\frac{λ}{n})^{-x}\]
+
+\[\Rightarrow lim_{n\rightarrow\infty} \frac{n!}{(n-x)!}\frac{1}{n^x}\frac{λ^x}{x!}e^{-λ}(1)\]
+
+<p>Because:</p>
+
+\[lim_{n\rightarrow\infty}\frac{n!}{(n-x)!}\frac{1}{n^x} = 1\]
+
+<p>We can say:</p>
+
+<p>\begin{equation}
+P[X=x] = e^{-λ}\frac{λ^{x}}{x!}
+\end{equation}</p>
+
+<p>Which is actually the Poisson random distribution formula.</p>
+
+<p>#6. Probability of events for a Poisson distribution</p>
+
+<p>An event can occur 0, 1, 2, … times in an interval. The average number of events in an interval is designated λ. λ is the event rate. also called the rate parameter. The probability of observing k events in an interval is given by the equation:</p>
+
+\[P[k\ events\ in\ interval] = e^{-λ}\frac{λ^{k}}{k!}\]
+
+<p>Where:</p>
+<ul>
+  <li>\(\lambda\) is the average number of events per interval</li>
+  <li>\(e\) is the number \(2.71828…\) (Euler’s number) the base of the natural logarithm</li>
+  <li>\(k\) takes values \(0, 1, 2, …\)</li>
+  <li>\(k! = k(k-1)(k-2)…(2)(1)\) is the factorial of \(k\)</li>
+</ul>
+
+<p>We calculate the probability of observing 10, 17, 20, 30 and 40 emails in the interval using the poisson distribution formula as below:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">poisson</span>
+
+<span class="c1">#calculate probability
+</span>
+<span class="c1"># setting the values
+# of lambda and x
+</span><span class="n">l</span> <span class="o">=</span> <span class="mi">17</span>
+<span class="n">x_s</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">]</span>
+
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"x</span><span class="se">\t</span><span class="s">Poisson P(x, lambda)"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"----------------------------"</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">x_s</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s">:</span><span class="se">\t</span><span class="si">{</span><span class="n">poisson</span><span class="p">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="n">l</span><span class="p">)</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div></div>
+<pre><code class="language-output">x	Poisson P(x, lambda)
+----------------------------
+10:	0.022999584406166312
+17:	0.09628462779844556
+20:	0.06915882695522822
+30:	0.001278796308921649
+40:	8.381188233781985e-07
+</code></pre>
+
+<p>As it can be observed, using the calculated probabilities using Poisson formula is very close to the values calculated using Binomial distribution formula, so we can conclude that the Poisson distribution in this situation is a really good approximation for our problem. Because of the simpler formula and lower and easy to obtain parameter of the poisson distribution, it would be come very useful to use this distribution to solve the problems of this kind.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>x</th>
+      <th style="text-align: center">Binomial P(X=x)</th>
+      <th style="text-align: center">Poisson P(X=x;lambda=17)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>10</td>
+      <td style="text-align: center">0.02250</td>
+      <td style="text-align: center">0.2300</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td style="text-align: center">0.09701</td>
+      <td style="text-align: center">0.09628</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td style="text-align: center">0.06962</td>
+      <td style="text-align: center">0.07595</td>
+    </tr>
+    <tr>
+      <td>30</td>
+      <td style="text-align: center">0.00121</td>
+      <td style="text-align: center">0.00340</td>
+    </tr>
+    <tr>
+      <td>40</td>
+      <td style="text-align: center">&lt; 0.000001</td>
+      <td style="text-align: center">&lt; 0.000001</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br /></p>
+
+<h1 id="7-some-notes-on-poisson-random-variable">7. Some notes on Poisson random variable</h1>
+<p>Even though the Poisson distribution models are rare events, the rate \(\lambda\) can me any number. It doesn’t always have to be small. The Poisson Distribution is asymmetric, it is always skewed toward the right. Because it is inhibited by the zero occurrence barrier (there is no such thing as minus one email) on the left and it is unlimited on the other side. As \(\lambda\) becomes bigger, the graph looks more like a normal distribution.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">poisson</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">x_s</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">5</span><span class="p">)]</span>
+<span class="n">plots</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">mus</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">mu</span> <span class="ow">in</span> <span class="n">mus</span><span class="p">:</span>
+  <span class="n">y_s</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">x_s</span><span class="p">:</span>
+    <span class="n">y_s</span> <span class="o">+=</span> <span class="p">[</span><span class="n">poisson</span><span class="p">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="n">mu</span><span class="p">)]</span>
+  <span class="n">plots</span> <span class="o">+=</span> <span class="p">[(</span><span class="n">x_s</span><span class="p">,</span> <span class="n">y_s</span><span class="p">)]</span>
+
+
+<span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">plots</span><span class="p">)):</span>
+  <span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">plots</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">plots</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s">"lambda = </span><span class="si">{</span><span class="n">mus</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="p">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s">'best'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p align="center"><img src="/assets/images/poisson/different-lambda.png" /><br /><span>Poisson distribution with different lambda's for our problem.</span></p>
+
+<p><strong>The average rate of events per unit time in poisson distribution is constant</strong>. This means the number of people who visit my blog per hour might not follow a Poisson Distribution, because the hourly rate is not constant (higher rate during the daytime, lower rate during the night-time). Using monthly rate for consumer/biological data would be just an approximation as well, since the seasonality effect is non-trivial in that domain.</p>
+
+<p><strong>In poisson random variable, Events are independent</strong>. The arrival of my blog visitors might not always be independent. For example, sometimes a large number of visitors come in a group because someone popular mentioned my blog, or my blog got featured on Medium’s first page, etc. the number of earthquakes per year in a country also might not follow a Poisson Distribution in one large earthquake increases the probability of aftershocks.</p>]]></content><author><name>Ali N. Parizi</name></author><category term="math" /><category term="statistics" /><category term="random-process" /><summary type="html"><![CDATA[1. Intro Knowing statistics for a computer engineer, a data scientist, or a machine-learning engineer is a unique need in their professional career. We learn about statistics in most universities more like learning differential equations or calculus instead. We know so many mathematical basics for statistics that we will never use in the future. That prevents us from seeing the use of statistics and what we can do with these concepts in the real world.]]></summary></entry><entry><title type="html">Saffron cutting machine</title><link href="http://localhost:4000/project/ai/computer-vision/deep-learning/2022/06/23/saffron-cutting-machine.html" rel="alternate" type="text/html" title="Saffron cutting machine" /><published>2022-06-23T18:50:22+04:30</published><updated>2022-06-23T18:50:22+04:30</updated><id>http://localhost:4000/project/ai/computer-vision/deep-learning/2022/06/23/saffron-cutting-machine</id><content type="html" xml:base="http://localhost:4000/project/ai/computer-vision/deep-learning/2022/06/23/saffron-cutting-machine.html"><![CDATA[]]></content><author><name>Ali N. Parizi</name></author><category term="project" /><category term="ai" /><category term="computer-vision" /><category term="deep-learning" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Lenet5 from scratch</title><link href="http://localhost:4000/ai/machine-learning/deep-learning/2022/06/21/lenet5.html" rel="alternate" type="text/html" title="Lenet5 from scratch" /><published>2022-06-21T00:02:23+04:30</published><updated>2022-06-21T00:02:23+04:30</updated><id>http://localhost:4000/ai/machine-learning/deep-learning/2022/06/21/lenet5</id><content type="html" xml:base="http://localhost:4000/ai/machine-learning/deep-learning/2022/06/21/lenet5.html"><![CDATA[<h1 id="1-intro">1. Intro</h1>
 <p>LeNet was introduced in the research paper “Gradient-Based Learning Applied To Document Recognition” in the year 1998 by Yann LeCun, Leon Bottou, Yoshua Bengio, and Patrick Haffner. Many of the listed authors of the paper have gone on to provide several significant academic contributions to the field of deep learning.</p>
 <p align="center">
     <img src="/assets/images/lenet5/authors.png" />

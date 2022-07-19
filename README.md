@@ -1,5 +1,5 @@
 # Run the project
-First, install rubby and gem.
+First, install ruby and gem.
 
 ```console
 $ gem install jekyll bundler
