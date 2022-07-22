@@ -132,7 +132,7 @@ P[X=x] = e^{-λ}\frac{λ^{x}}{x!}
 
 Which is actually the Poisson random distribution formula.
 
-#6. Probability of events for a Poisson distribution
+# 6. Probability of events for a Poisson distribution
 
 An event can occur 0, 1, 2, … times in an interval. The average number of events in an interval is designated λ. λ is the event rate. also called the rate parameter. The probability of observing k events in an interval is given by the equation:
 
