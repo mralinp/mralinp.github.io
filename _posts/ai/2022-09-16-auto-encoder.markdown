@@ -227,7 +227,7 @@ tensorboard_callback_loss = tf.keras.callbacks.TensorBoard(log_dir="./logs")
 
 ```
 
-# 3.2 Training the model
+## 3.2 Training the model
 Now, it's time to start training our model. I just hangup training the model after 25 epochs but, in code, I've defined the number of epochs to be 100. I hope continuing the training till 100 epochs will tend to a great convergence of the model.
 
 ```python
