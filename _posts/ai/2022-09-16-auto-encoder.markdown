@@ -43,7 +43,7 @@ For example here is a sample photo taken by my psychologist friend Reza Parizi (
 We can consider these kinds of texts which may be known by the name signature, sticker, or emoji as static noise in that picture. We can try to find a way or a set of filters to be applied to that image in order to remove that artifact. One of the main use cases of AutoEncoders is denoising, so let's solve this problem using AutoEncoders.
 
 # 2. Preparing the data:
-As you know for deep learning models the first thing we need is the data. For this problem, I used the popular Stanford cars dataset and I added the static text "Hot-Tube" to the images as the signature of the image. Let's say that the data is stored in a directory named `dataset\car` and the training data is located inside another directory called `train`. First, we import all required modules:
+As you know for deep learning models the first thing we need is the data. For this problem, I used the popular Stanford cars dataset and I added the static text "Hot-Tube" to the images as the signature of the image. Let's say that the data is stored in a directory named `datasets/car` and the training data is located inside another directory called `train`. First, we import all required modules:
 
 ```python
 import tensorflow as tf
