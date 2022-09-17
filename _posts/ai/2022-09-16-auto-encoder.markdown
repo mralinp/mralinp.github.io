@@ -158,6 +158,88 @@ model.compile(optimizer="adam", loss="mean_squared_error", metrics=['accuracy'])
 model.summary()
 ```
 ```output
+Model: "model"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ input_1 (InputLayer)        [(None, 256, 256, 3)]     0         
+                                                                 
+ conv2d_2 (Conv2D)           (None, 256, 256, 32)      896       
+                                                                 
+ max_pooling2d (MaxPooling2D  (None, 128, 128, 32)     0         
+ )                                                               
+                                                                 
+ bottle-neck (Conv2D)        (None, 128, 128, 8)       2312      
+                                                                 
+ up_sampling2d (UpSampling2D  (None, 256, 256, 8)      0         
+ )                                                               
+                                                                 
+ conv2d_3 (Conv2D)           (None, 256, 256, 32)      2336      
+                                                                 
+ conv2d_4 (Conv2D)           (None, 256, 256, 64)      18496     
+                                                                 
+ conv2d_5 (Conv2D)           (None, 256, 256, 128)     73856     
+                                                                 
+ conv2d_6 (Conv2D)           (None, 256, 256, 3)       387       
+                                                                 
+=================================================================
+Total params: 98,283
+Trainable params: 98,283
+Non-trainable params: 0
+_________________________________________________________________
+```
+
+## 3.1 Tensorboard
+To see how the training process is going on and monitor the training process, there is a useful option called Tensorboard developed by the TensorFlow team. Tensorboard is a background process that looks inside a directory (usually named "logs") and visualizes the training process logs such as training and validation accuracy and loss for us. It also is capable to display images that can be generated during the training process such as model predictions at the end of each epoch. It would be so handy to store the model prediction during the training process. It could help us to find out when to terminate the training process in an experimental way.
+
+To do so, we have to define a custom callback class to store model prediction on each epoch ended.
+
+```python
+class TensorBoardImageCallBack(keras.callbacks.Callback):
+    def __init__(self, log_dir, image, noisy_image):
+        super().__init__()
+        self.log_dir = log_dir
+        self.image = image
+        self.noisy_image = noisy_image
+
+    def set_model(self, model):
+        self.model = model
+        self.writer = tf.summary.create_file_writer(self.log_dir, filename_suffix='images')
+
+    def on_train_begin(self, _):
+        self.write_image(self.noisy_image, 'Noisy Image', 0)
+        self.write_image(self.image, 'Original Image', 0)
+
+    def on_train_end(self, _):
+        self.writer.close()
+
+    def write_image(self, image, tag, epoch):
+        image_to_write = np.copy(image)
+        with self.writer.as_default():
+            tf.summary.image(tag, image_to_write, step=epoch)
+
+    def on_epoch_end(self, epoch, logs={}):
+        denoised_image = self.model.predict_on_batch(self.noisy_image)
+        self.write_image(denoised_image, 'Denoised Image', epoch)
+        
+tensorboard_callback = TensorBoardImageCallBack('./logs', Y[1:2], X[1:2])
+tensorboard_callback_loss = tf.keras.callbacks.TensorBoard(log_dir="./logs")
+
+```
+
+# 3.2 Training the model
+Now, it's time to start training our model. I just hangup training the model after 25 epochs but, in code, I've defined the number of epochs to be 100. I hope continuing the training till 100 epochs will tend to a great convergence of the model.
+
+```python
+history = model.fit(
+            train_data_generator,
+            epochs=100,
+            validation_data=validation_data_generator,
+            callbacks=[tensorboard_callback, tensorboard_callback_loss]
+        )
+```
+
+```output
 ...
 502/502 [==============================] - 86s 171ms/step - loss: 6.6057e-04 - accuracy: 0.8184 - val_loss: 5.3678e-04 - val_accuracy: 0.8163
 ```
