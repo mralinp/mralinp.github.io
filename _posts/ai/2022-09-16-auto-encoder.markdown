@@ -31,7 +31,9 @@ Autoencoders consists of 4 main parts:
 
 The training then involves using back propagation in order to minimize the network’s reconstruction loss. You must be wondering why would I train a neural network just to output an image or data that is exactly the same as the input! This article will cover the most common use cases for Autoencoder. Let’s get started:
 
-$$ Loss = \lVert X - X^{\hat} \rVert_{2}^{2} $$
+
+$$ Loss = \lVert X - \hat{X} \rVert_{2}^{2} $$
+
 
 ## 1.2 Problem statement:
 The network architecture for AutoEncoders can vary between a simple FeedForward network, LSTM network or Convolutional Neural Network depending on the use case. This article will use CNN networks to solve a simple problem. The problem is to remove an annoying text from the given picture. You might have seen that many photographic websites or some famous photographers use some texts as a sign or a signature on their images. That would prevent other people from stealing their valuable artistic photos, paintings, etc. 

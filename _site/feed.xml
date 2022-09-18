@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-09-17T18:45:04+04:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">mralinp</title><subtitle>My awesome blog</subtitle><entry><title type="html">What is an AutoEncoder?</title><link href="http://localhost:4000/ai/machine-learning/deep-learning/2022/09/16/auto-encoder.html" rel="alternate" type="text/html" title="What is an AutoEncoder?" /><published>2022-09-16T13:21:13+04:30</published><updated>2022-09-16T13:21:13+04:30</updated><id>http://localhost:4000/ai/machine-learning/deep-learning/2022/09/16/auto-encoder</id><content type="html" xml:base="http://localhost:4000/ai/machine-learning/deep-learning/2022/09/16/auto-encoder.html"><![CDATA[<h1 id="1-intro">1. Intro</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-09-18T08:39:26+04:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">mralinp</title><subtitle>My awesome blog</subtitle><entry><title type="html">What is an AutoEncoder?</title><link href="http://localhost:4000/ai/machine-learning/deep-learning/2022/09/16/auto-encoder.html" rel="alternate" type="text/html" title="What is an AutoEncoder?" /><published>2022-09-16T13:21:13+04:30</published><updated>2022-09-16T13:21:13+04:30</updated><id>http://localhost:4000/ai/machine-learning/deep-learning/2022/09/16/auto-encoder</id><content type="html" xml:base="http://localhost:4000/ai/machine-learning/deep-learning/2022/09/16/auto-encoder.html"><![CDATA[<h1 id="1-intro">1. Intro</h1>
 <p>AutoEncoder is an unsupervised artificial neural network that learns how to efficiently compress and encode data then learns how to reconstruct the data back from the reduced encoded representation to a representation that is as close to the original input as possible.
 AutoEncoder, by design, reduces data dimensions by learning how to ignore the noise in the data.
 Here is an example of the input/output image from the MNIST dataset to an AutoEncoder.</p>
@@ -28,6 +28,8 @@ Here is an example of the input/output image from the MNIST dataset to an AutoEn
 
 <p>The training then involves using back propagation in order to minimize the network’s reconstruction loss. You must be wondering why would I train a neural network just to output an image or data that is exactly the same as the input! This article will cover the most common use cases for Autoencoder. Let’s get started:</p>
 
+\[Loss = \lVert X - \hat{X} \rVert_{2}^{2}\]
+
 <h2 id="12-problem-statement">1.2 Problem statement:</h2>
 <p>The network architecture for AutoEncoders can vary between a simple FeedForward network, LSTM network or Convolutional Neural Network depending on the use case. This article will use CNN networks to solve a simple problem. The problem is to remove an annoying text from the given picture. You might have seen that many photographic websites or some famous photographers use some texts as a sign or a signature on their images. That would prevent other people from stealing their valuable artistic photos, paintings, etc.</p>
 
@@ -40,7 +42,7 @@ Here is an example of the input/output image from the MNIST dataset to an AutoEn
 <p>We can consider these kinds of texts which may be known by the name signature, sticker, or emoji as static noise in that picture. We can try to find a way or a set of filters to be applied to that image in order to remove that artifact. One of the main use cases of AutoEncoders is denoising, so let’s solve this problem using AutoEncoders.</p>
 
 <h1 id="2-preparing-the-data">2. Preparing the data:</h1>
-<p>As you know for deep learning models the first thing we need is the data. For this problem, I used the popular Stanford cars dataset and I added the static text “Hot-Tube” to the images as the signature of the image. Let’s say that the data is stored in a directory named <code class="language-plaintext highlighter-rouge">dataset\car</code> and the training data is located inside another directory called <code class="language-plaintext highlighter-rouge">train</code>. First, we import all required modules:</p>
+<p>As you know for deep learning models the first thing we need is the data. For this problem, I used the popular Stanford cars dataset and I added the static text “Hot-Tube” to the images as the signature of the image. Let’s say that the data is stored in a directory named <code class="language-plaintext highlighter-rouge">datasets/car</code> and the training data is located inside another directory called <code class="language-plaintext highlighter-rouge">train</code>. First, we import all required modules:</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="n">tf</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
@@ -151,6 +153,85 @@ Here is an example of the input/output image from the MNIST dataset to an AutoEn
 <span class="n">model</span><span class="p">.</span><span class="nb">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s">"adam"</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s">"mean_squared_error"</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s">'accuracy'</span><span class="p">])</span>
 <span class="n">model</span><span class="p">.</span><span class="n">summary</span><span class="p">()</span>
 </code></pre></div></div>
+<pre><code class="language-output">Model: "model"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ input_1 (InputLayer)        [(None, 256, 256, 3)]     0         
+                                                                 
+ conv2d_2 (Conv2D)           (None, 256, 256, 32)      896       
+                                                                 
+ max_pooling2d (MaxPooling2D  (None, 128, 128, 32)     0         
+ )                                                               
+                                                                 
+ bottle-neck (Conv2D)        (None, 128, 128, 8)       2312      
+                                                                 
+ up_sampling2d (UpSampling2D  (None, 256, 256, 8)      0         
+ )                                                               
+                                                                 
+ conv2d_3 (Conv2D)           (None, 256, 256, 32)      2336      
+                                                                 
+ conv2d_4 (Conv2D)           (None, 256, 256, 64)      18496     
+                                                                 
+ conv2d_5 (Conv2D)           (None, 256, 256, 128)     73856     
+                                                                 
+ conv2d_6 (Conv2D)           (None, 256, 256, 3)       387       
+                                                                 
+=================================================================
+Total params: 98,283
+Trainable params: 98,283
+Non-trainable params: 0
+_________________________________________________________________
+</code></pre>
+
+<h2 id="31-tensorboard">3.1 Tensorboard</h2>
+<p>To see how the training process is going on and monitor the training process, there is a useful option called Tensorboard developed by the TensorFlow team. Tensorboard is a background process that looks inside a directory (usually named “logs”) and visualizes the training process logs such as training and validation accuracy and loss for us. It also is capable to display images that can be generated during the training process such as model predictions at the end of each epoch. It would be so handy to store the model prediction during the training process. It could help us to find out when to terminate the training process in an experimental way.</p>
+
+<p>To do so, we have to define a custom callback class to store model prediction on each epoch ended.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">TensorBoardImageCallBack</span><span class="p">(</span><span class="n">keras</span><span class="p">.</span><span class="n">callbacks</span><span class="p">.</span><span class="n">Callback</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">log_dir</span><span class="p">,</span> <span class="n">image</span><span class="p">,</span> <span class="n">noisy_image</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">().</span><span class="n">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">log_dir</span> <span class="o">=</span> <span class="n">log_dir</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">image</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">noisy_image</span> <span class="o">=</span> <span class="n">noisy_image</span>
+
+    <span class="k">def</span> <span class="nf">set_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">writer</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">summary</span><span class="p">.</span><span class="n">create_file_writer</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">log_dir</span><span class="p">,</span> <span class="n">filename_suffix</span><span class="o">=</span><span class="s">'images'</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">on_train_begin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">write_image</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">noisy_image</span><span class="p">,</span> <span class="s">'Noisy Image'</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">write_image</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">image</span><span class="p">,</span> <span class="s">'Original Image'</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">on_train_end</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">writer</span><span class="p">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">write_image</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image</span><span class="p">,</span> <span class="n">tag</span><span class="p">,</span> <span class="n">epoch</span><span class="p">):</span>
+        <span class="n">image_to_write</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">copy</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="p">.</span><span class="n">writer</span><span class="p">.</span><span class="n">as_default</span><span class="p">():</span>
+            <span class="n">tf</span><span class="p">.</span><span class="n">summary</span><span class="p">.</span><span class="n">image</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span> <span class="n">image_to_write</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="n">epoch</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">on_epoch_end</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">epoch</span><span class="p">,</span> <span class="n">logs</span><span class="o">=</span><span class="p">{}):</span>
+        <span class="n">denoised_image</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">model</span><span class="p">.</span><span class="n">predict_on_batch</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">noisy_image</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">write_image</span><span class="p">(</span><span class="n">denoised_image</span><span class="p">,</span> <span class="s">'Denoised Image'</span><span class="p">,</span> <span class="n">epoch</span><span class="p">)</span>
+        
+<span class="n">tensorboard_callback</span> <span class="o">=</span> <span class="n">TensorBoardImageCallBack</span><span class="p">(</span><span class="s">'./logs'</span><span class="p">,</span> <span class="n">Y</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">tensorboard_callback_loss</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">callbacks</span><span class="p">.</span><span class="n">TensorBoard</span><span class="p">(</span><span class="n">log_dir</span><span class="o">=</span><span class="s">"./logs"</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<h2 id="32-training-the-model">3.2 Training the model</h2>
+<p>Now, it’s time to start training our model. I just hangup training the model after 25 epochs but, in code, I’ve defined the number of epochs to be 100. I hope continuing the training till 100 epochs will tend to a great convergence of the model.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span>
+            <span class="n">train_data_generator</span><span class="p">,</span>
+            <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+            <span class="n">validation_data</span><span class="o">=</span><span class="n">validation_data_generator</span><span class="p">,</span>
+            <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">tensorboard_callback</span><span class="p">,</span> <span class="n">tensorboard_callback_loss</span><span class="p">]</span>
+        <span class="p">)</span>
+</code></pre></div></div>
+
 <pre><code class="language-output">...
 502/502 [==============================] - 86s 171ms/step - loss: 6.6057e-04 - accuracy: 0.8184 - val_loss: 5.3678e-04 - val_accuracy: 0.8163
 </code></pre>
