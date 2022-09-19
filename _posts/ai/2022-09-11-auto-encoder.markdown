@@ -3,7 +3,7 @@ layout: post
 title: "What is an AutoEncoder?"
 author: "Ali N. Parizi"
 img: "/assets/images/auto-encoder/title.png"
-date:   2022-06-19 12:21:13 +0330
+date:   2022-09-11 12:21:13 +0330
 categories: ai machine-learning deep-learning
 brief: "This tutorial introduces autoencoders with three examples: the basics, image denoising, and anomaly detection."
 ---
@@ -30,7 +30,7 @@ Autoencoders consists of 4 main parts:
 The training then involves using back propagation in order to minimize the network’s reconstruction loss. You must be wondering why would I train a neural network just to output an image or data that is exactly the same as the input! This article will cover the most common use cases for Autoencoder. Let’s get started:
 
 ## 1.2 AutoEncoder Architecture:
-The network architecture for autoencoders can vary between a simple FeedForward network, LSTM network or Convolutional Neural Network depending on the use case. We will explore some of those architectures in the new next few lines.
+The network architecture for autoencoders can vary between a simple FeedForward network, LSTM network or Convolutional Neural Network depending on the use case. In this article we focus on CNN architecture to implement an image denoising model which removes a specific noise from the input images.
 
 # 2. Autoencoder for Anomaly Detection:
 There are many ways and techniques to detect anomalies and outliers. However, if you have correlated input data, the autoencoder method will work very well because the encoding operation relies on the correlated features to compress the data.

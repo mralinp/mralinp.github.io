@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="google-site-verification" content="4-8jdtFeOSWDhx6RjXrSwNrvhvLyFdbACncYtB2Rjzc" />
     <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="mralinp" />
-    <title> Projects </title>
+    <title> Snake game </title>
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
@@ -99,26 +99,88 @@
                 </div>
             </nav>
             <div class="container">
-                <section>
-    <div class="text-center main-header">
-        <h1 class="display-20 display-md-18 display-lg-16">
-            Projects and experiences 
-        </h1>
+                <article>
+    <div class="image-wrapper text-center">
+        <a class="image-zoom cboxElement" href="">
+        <img src="/assets/images/snake-game/snake-game.jpeg" class="rounded mx-auto" width="100%"  alt="Photo of Blog">
+        <div class="image-overlay"></div> 
+        </a>
     </div>
-    <div class="row">
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
+    <br>
+    <div class="post-content">
+        <h2>Snake game</h2>
+        <ul class="post-meta list-inline">
+            <li class="list-inline-item">
+                <i class="fa fa-user-circle-o"></i> Ali N. Parizi
+            </li>
+            <li class="list-inline-item">
+                <i class="fa fa-calendar-o"></i> 21 March 2022
+            </li>
+            <li class="list-inline-item">
+                <i class="fa fa-tags"></i>
+                    <span class="category">
+                    project
+                    </span>
+                    
+                         <span class="category">
+                         game
+                         </span>
+                    
+                         <span class="category">
+                         python
+                         </span>
+                    
+                         <span class="category">
+                         entry-level
+                         </span>
+                    
+            </li>
+        </ul>
+        <p class="text-secondary"> Snake game is a very cool and informative mini project for beginners, in this post we are going to implement a simple snake game from scratch using python. <p>
+        <div class="line"></div>
+        <h1 id="1-intro">1. Intro</h1>
+<p>Hello there, this is Ali speaking. When I started studying computer engineering at Shiraz University, CSE101 was the introductory course we should take to familiarize ourselves with basic programming concepts. There, I have introduced to the <strong>python</strong> programming language for the first time. Python is a very cool programming language that wastes practical areas in almost any major, such as data science, machine learning, web development, game development, etc.</p>
+
+<p><br /></p>
+<div align="center">
+    <img src="/assets/images/snake-game/python-logo.png" width="200px" />
+</div>
+<p><br /></p>
+
+<p>Now, I’m using python almost every day of my academic career. So it was an excellent choice to begin programming and get familiar with programming concepts. On the other hand, in the first year of high school, I learned <strong>C</strong> programming as my first programming language. I was using C to solve mathematic problems and only for fun because I had no other source to learn except our computer teacher and an ancient resource based on <strong>Borland C++</strong> and running on <strong>MS-DOS</strong>. Those days we didn’t have access to the internet in our home or school, so the only way of learning things was by reading books and asking questions. To me, CSE101 was the most straightforward course of my life. I never studied anything about the course syllabuses; I just learned everything possible about python that I could find on the internet. The course’s final project was <strong>“Making a Very Simple Snake Game”</strong> (like old school Nokia phones game) without using advanced libraries or frameworks such as PyGame or other alternatives.</p>
+
+<p>In this article, we are about to implement a <strong>Very Simple Snake Game</strong>. The problem statement is available in the next section.</p>
+
+<h1 id="table-of-contents">Table Of Contents</h1>
+<ul>
+  <li><a href="#1-intro">1. Intro</a></li>
+  <li><a href="#2-problem-statement">2. Problem Statement</a></li>
+  <li><a href="#3-Challenges of The Project">3. Challenges of The Project</a></li>
+  <li><a href="#4.solution-and-design">4. Solution and Design</a></li>
+  <li><a href="#5-implementation">5. Implementation</a></li>
+  <li><a href="#6-final-words">6. Final words</a></li>
+</ul>
+
+<h1 id="2-problem-statement">2. Problem Statement:</h1>
+
+<p>Develop a straightforward snake game such as the one on old-school Nokia phones. A single snake moves around the game world. You can control the snake using arrow keys or <code class="language-plaintext highlighter-rouge">W</code>, <code class="language-plaintext highlighter-rouge">A</code>, <code class="language-plaintext highlighter-rouge">S</code>, and <code class="language-plaintext highlighter-rouge">D</code> to move <code class="language-plaintext highlighter-rouge">UP</code>, <code class="language-plaintext highlighter-rouge">LEFT</code>, <code class="language-plaintext highlighter-rouge">DOWN</code>, and <code class="language-plaintext highlighter-rouge">RIGHT</code>. Meanwhile, at any random time, it could be deployed an apple (or food) on a random spot on the map. If the snake eats the food, its tail extends by a unit, and the player receives 100 points. The map can contain some walls or obstacles. The player loses the game if the snake hits a block or its tail. Pressing the <code class="language-plaintext highlighter-rouge">Esc</code> key pauses and unpauses the game. You have to make the ability to store the achieved score after each game.</p>
+<blockquote>
+  <p>Note: Any creative ideas and implementations that improve performance, game experience, and appearance will be considered as bonuses.</p>
+</blockquote>
+
+<h1 id="2-solution">2. Solution</h1>
+<p>Did you read the <strong><a href="#11-problem-statement">problem statement</a></strong> section carefully? As it could be found from the problem statement. We can break the problem into some parts and levels. First is to implement a moving object on the 2D game board which actually is our snake. As the game world is console and no graphical libraries are allowed here we need to think and consider about a simple world of char games. In this world, all objects in the game are nothing but characters. For example snake head can be displayed as the character <code class="language-plaintext highlighter-rouge">@</code>, its tail segments can be displayed with <code class="language-plaintext highlighter-rouge">o</code> and Apples are displayed with <code class="language-plaintext highlighter-rouge">A</code>. At the end walls could be represented as <code class="language-plaintext highlighter-rouge">#</code>. First, we try to implement the basics of the game. The challenge here is how to print a character on a specific position of the screen.</p>
+
+<h1 id="3-challenges-of-the-project">3. Challenges of The Project</h1>
+
+<h1 id="4-solution-and-design">4. Solution and Design</h1>
+
+<h1 id="5-implementation">5. Implementation</h1>
+
+<h1 id="6-final-words">6. Final words</h1>
+
     </div>
-</section>
+</article>
 
             </div>
         </div>

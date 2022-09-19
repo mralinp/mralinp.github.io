@@ -135,38 +135,35 @@
         <p class="text-secondary"> In this article, we perform image classification on the MNIST dataset with custom implemented LeNet-5 neural network architecture. <p>
         <div class="line"></div>
         <h1 id="1-intro">1. Intro</h1>
-<p>LeNet was introduced in the research paper “Gradient-Based Learning Applied To Document Recognition” in the year 1998 by Yann LeCun, Leon Bottou, Yoshua Bengio, and Patrick Haffner. Many of the listed authors of the paper have gone on to provide several significant academic contributions to the field of deep learning.</p>
+<p>LeNet is a very first deep learning model that introduced in the research paper “Gradient-Based Learning Applied To Document Recognition” in the year 1998 by four legendary researchers, Yann LeCun, Leon Bottou, Yoshua Bengio, and Patrick Haffner. Many of the listed authors of the paper have gone on to provide several significant academic contributions to the field of deep learning.</p>
 <p align="center">
     <img src="/assets/images/lenet5/authors.png" />
     <br />
     <span>From left: Yann LeCun, Leon Bottou, Yoshua Bengio, and Patrick Haffner</span>
 </p>
 <!-- Image -->
-<p>This article will introduce the LeNet-5 CNN architecture as described in the original paper, along with the implementation of the architecture using TensorFlow 2.0.</p>
+<p>This article will introduce the LeNet-5 CNN architecture as described in the original paper, along with the implementation of the architecture using TensorFlow 2.0. Then conclude with the utilization of the implemented LeNet-5 CNN for the classification of images from the MNIST dataset.</p>
 
 <p align="center">
-    <a href="https://www.tensorflow.org">
-        <img width="100" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Tensorflow_logo.svg/1200px-Tensorflow_logo.svg.png" />
-    </a>
+    <img width="30%" src="/assets/images/lenet5/keras-and-tf.jpeg" />
 </p>
-
-<p>This article will then conclude with the utilization of the implemented LeNet-5 CNN for the classification of images from the MNIST dataset.</p>
 
 <p>What to find in this article:</p>
 <ul>
   <li>Understanding of components within a convolutional neural network</li>
   <li>Key definitions of terms commonly used in deep learning and machine learning</li>
-  <li>Understanding of LeNet-5 as presented in the original research paper</li>
+  <li>Understanding of LeNet-5 architecture as presented in the original research paper</li>
   <li>Implementation of a neural network using TensorFlow and Keras</li>
 </ul>
 
-<p>The content in this article is written for Deep learning and Machine Learning students of all levels. For those who are eager to get coding, scroll down to the ‘LeNet-5 TensorFlow Implementation’ section.</p>
+<p>The content in this article is written for Deep learning and Machine Learning students of all levels. For those who are eager to get coding, scroll down to the <a href="#implementation"><strong>Implementation section</strong></a>.</p>
 
 <h1 id="2-convolutional-neural-networks">2. Convolutional Neural Networks</h1>
-<p>Convolutional Neural Networks is the standard form of neural network architecture for solving tasks associated with images. Solutions for tasks such as object detection, face detection, pose estimation and more all have CNN architecture variants.</p>
+<p>Convolutional Neural Networks are a standard form of neural network architecture for solving tasks associated with images. Solutions for tasks such as object detection, face detection, pose estimation and more, usually have CNN architecture variants.</p>
 
-<p>A few characteristics of the CNN architecture makes them more favourable in several computer vision tasks. I have written previous articles that dive into each characteristic.</p>
+<p>A few characteristics of the CNN architecture makes them more favourable in several computer vision tasks. It would be good if we could introduce each characteristics before we get started on working with the LeNet-5 architecture.</p>
 
+<p>Some convolutional networks characteristics that we are interested in here:</p>
 <ul>
   <li>Local respective fields</li>
   <li>Sub-sampling</li>
