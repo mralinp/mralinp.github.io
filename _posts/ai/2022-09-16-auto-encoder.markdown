@@ -267,6 +267,8 @@ $$\frac{256 \times 256 \times 3}{128 \times 128 \times 8} = 1.5$$
   <span>Model loss per epoch</span>
 </p>
 
+> Note: In the figure above, red is validation loss and the blue one is training loss per epoch.
+
 Another use case of AutoEncoders is learning a data representation in lower dimensions which tends to data compression. Another cool use case is to enhance the quality of the picture which is called super-resolution which we can't see on our model but I'll do an experiment to implement super-resolution using AutoEncoders in another article.
 
 Finally, we removed a static noise from the input data which is another use case of auto encoders we were follow.
