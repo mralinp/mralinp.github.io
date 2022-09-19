@@ -193,6 +193,8 @@ Non-trainable params: 0
 _________________________________________________________________
 ```
 
+I used mean squared error (MSE) loss to train my model. Because I wanted the model's output to be the same as the original image. MSE should do the job for us perfectly but, we could use a different loss function that would compare the images from a regional point of view and would be better for high-resolution images and more general datasets. But, we are good with MSE on this task.
+
 ## 3.1 Tensorboard
 To see how the training process is going on and monitor the training process, there is a useful option called Tensorboard developed by the TensorFlow team. Tensorboard is a background process that looks inside a directory (usually named "logs") and visualizes the training process logs such as training and validation accuracy and loss for us. It also is capable to display images that can be generated during the training process such as model predictions at the end of each epoch. It would be so handy to store the model prediction during the training process. It could help us to find out when to terminate the training process in an experimental way.
 
