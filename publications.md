@@ -5,7 +5,7 @@ layout: main
 <section>
     <div class="text-center main-header">
         <h1 class="display-20 display-md-18 display-lg-16">
-            Projects and experiences 
+            Publications 
         </h1>
     </div>
     <div class="row">

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-09-19T22:40:48+04:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">mralinp</title><subtitle>My awesome blog</subtitle><entry><title type="html">What is an AutoEncoder?</title><link href="http://localhost:4000/ai/machine-learning/deep-learning/2022/09/16/auto-encoder.html" rel="alternate" type="text/html" title="What is an AutoEncoder?" /><published>2022-09-16T13:21:13+04:30</published><updated>2022-09-16T13:21:13+04:30</updated><id>http://localhost:4000/ai/machine-learning/deep-learning/2022/09/16/auto-encoder</id><content type="html" xml:base="http://localhost:4000/ai/machine-learning/deep-learning/2022/09/16/auto-encoder.html"><![CDATA[<h1 id="1-intro">1. Intro</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-09-19T23:48:39+04:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">mralinp</title><subtitle>My awesome blog</subtitle><entry><title type="html">What is an AutoEncoder?</title><link href="http://localhost:4000/ai/machine-learning/deep-learning/2022/09/16/auto-encoder.html" rel="alternate" type="text/html" title="What is an AutoEncoder?" /><published>2022-09-16T13:21:13+04:30</published><updated>2022-09-16T13:21:13+04:30</updated><id>http://localhost:4000/ai/machine-learning/deep-learning/2022/09/16/auto-encoder</id><content type="html" xml:base="http://localhost:4000/ai/machine-learning/deep-learning/2022/09/16/auto-encoder.html"><![CDATA[<h1 id="1-intro">1. Intro</h1>
 <p>AutoEncoder is an unsupervised artificial neural network that learns how to efficiently compress and encode data then learns how to reconstruct the data back from the reduced encoded representation to a representation that is as close to the original input as possible.
 AutoEncoder, by design, reduces data dimensions by learning how to ignore the noise in the data.
 Here is an example of the input/output image from the MNIST dataset to an AutoEncoder.</p>
@@ -184,6 +184,8 @@ Non-trainable params: 0
 _________________________________________________________________
 </code></pre>
 
+<p>I used mean squared error (MSE) loss to train my model. Because I wanted the model’s output to be the same as the original image. MSE should do the job for us perfectly but, we could use a different loss function that would compare the images from a regional point of view and would be better for high-resolution images and more general datasets. But, we are good with MSE on this task.</p>
+
 <h2 id="31-tensorboard">3.1 Tensorboard</h2>
 <p>To see how the training process is going on and monitor the training process, there is a useful option called Tensorboard developed by the TensorFlow team. Tensorboard is a background process that looks inside a directory (usually named “logs”) and visualizes the training process logs such as training and validation accuracy and loss for us. It also is capable to display images that can be generated during the training process such as model predictions at the end of each epoch. It would be so handy to store the model prediction during the training process. It could help us to find out when to terminate the training process in an experimental way.</p>
 
@@ -251,6 +253,10 @@ _________________________________________________________________
   <br />
   <span>Model loss per epoch</span>
 </p>
+
+<blockquote>
+  <p>Note: In the figure above, red is validation loss and the blue one is training loss per epoch.</p>
+</blockquote>
 
 <p>Another use case of AutoEncoders is learning a data representation in lower dimensions which tends to data compression. Another cool use case is to enhance the quality of the picture which is called super-resolution which we can’t see on our model but I’ll do an experiment to implement super-resolution using AutoEncoders in another article.</p>
 
