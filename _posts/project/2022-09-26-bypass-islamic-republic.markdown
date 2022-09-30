@@ -104,7 +104,7 @@ $ ufw enable  # start the firewall
 Now, run wireguard-ui using:
 
 ```console
-./wireguard-ui
+$ ./wireguard-ui
 ```
 > Note: If the above command failed, make sure that you gave the run access to that binary file using `$ chmod +x wireguard-ui`
 
@@ -148,7 +148,7 @@ Note your device’s name since you will add it to the iptables rules in the nex
 To add firewall rules to your WireGuard Server, open the /etc/wireguard/wg0.conf file with vim or your preferred editor again.
 
 ```console
-vim /etc/wireguard/wg0.conf
+$ vim /etc/wireguard/wg0.conf
 ```
 At the bottom of the file after the `SaveConfig = true` line, paste the following lines:
 
@@ -181,22 +181,22 @@ The last part of configuring the firewall on your WireGuard Server is to allow t
 In case you forgot to open the SSH port when following the prerequisite tutorial, add it here too:
 
 ```console
-ufw allow 51820/udp # The chosen VPN server port (you can change it to what ever you want)
-ufw allow OpenSSH   # To be able to connect the server using openSSH trough port 22
+$ ufw allow 51820/udp # The chosen VPN server port (you can change it to what ever you want)
+$ ufw allow OpenSSH   # To be able to connect the server using openSSH trough port 22
 ```
 
 > Note: If you are using a different firewall or have customized your UFW configuration, you may need to add additional firewall rules. For example, if you decide to tunnel all of your network traffic over the VPN connection, you will need to ensure that port 53 traffic is allowed for DNS requests, and ports like 80 and 443 for HTTP and HTTPS traffic respectively. If there are other protocols that you are using over the VPN then you will need to add rules for them as well.
 
 After adding those rules, disable and re-enable UFW to restart it and load the changes from all of the files you’ve modified:
 ```console
-ufw disable
-ufw enable
+$ ufw disable
+$ ufw enable
 ```
 
 You can confirm the rules are in place by running the ufw status command. Run it, and you should receive output like the following:
 
 ```console
-ufw status
+$ ufw status
 ```
 ```output
 Status: active
@@ -216,16 +216,16 @@ WireGuard can be configured to run as a systemd service using its built-in wg-qu
 
 Using a systemd service means that you can configure WireGuard to start up at boot so that you can connect to your VPN at any time as long as the server is running. To do this, enable the wg-quick service for the wg0 tunnel that you’ve defined by adding it to systemctl:
 ```terminal
-systemctl enable wg-quick@wg0
+$ systemctl enable wg-quick@wg0
 ```
 Now start the service:
 
 ```console
-systemctl start wg-quick@wg0
+$ systemctl start wg-quick@wg0
 ```
 Double check that the WireGuard service is active with the following command. You should see active (running) in the output:
 ```console
-systemctl status wg-quick@wg0.service
+$ systemctl status wg-quick@wg0.service
 ```
 ```output
 ● wg-quick@wg0.service - WireGuard via wg-quick(8) for wg0
