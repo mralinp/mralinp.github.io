@@ -7,7 +7,7 @@ twitter_username: alinaderiparizi
 github_username:  mralinp
 
 paginate: 6
-paginate_path: "/blog/page:num/"
+paginate_path: "/page:num/"
 
 # Build settings
 plugins:

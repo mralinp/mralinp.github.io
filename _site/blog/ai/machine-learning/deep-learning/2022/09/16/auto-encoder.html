@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="4-8jdtFeOSWDhx6RjXrSwNrvhvLyFdbACncYtB2Rjzc" />
+    <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="mralinp" />
+    <title> What is an AutoEncoder? </title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+    <!-- Font awesome -->
+    <script src="https://kit.fontawesome.com/40a6ec6105.js" crossorigin="anonymous"></script>
+    <!-- Prism CSS -->
+    <link rel="stylesheet" href="/assets/css/prism.css">
+    <!-- Prism JS -->
+    <script src="/assets/js/prism.js"></script>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3><a href="/">Ali N. Parizi</a></h3>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li class="sidebar-item">
+                    <a href="/"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="/blog"><i class="fa fa-rss" aria-hidden="true"></i> Blog</a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="/projects"><i class="fa fa-flask" aria-hidden="true"></i> Projects</a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="/library"><i class="fa fa-book" aria-hidden="true"></i> Library</a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="/about"><i class="fa fa-info" aria-hidden="true"></i> About me</a>
+                </li>
+            </ul>
+
+            <ul class="list-unstyled CTAs">
+                <li class="sidebar-btn">
+                    <a href="https://github.com/mralinp"> <i class="fab fa-github"></i> Github profile
+                    </a>
+                </li>
+                <li class="sidebar-btn">
+                    <a href="/assets/resume/ali-naderi-parizi-cv.pdf"> <i class="fas fa-file"></i> Download resume</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content">
+            <!-- Navbar -->
+            <nav class="navbar navbar-expand-lg">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="/" id="brand">Ali N. Parizi</a>
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <span>Menu</span>
+                    </button>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav mr-auto" id="navbarLinks">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/assets/resume/ali-naderi-parizi-cv.pdf">Resume</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/blog">Blog</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/about">About me</a>
+                            </li>
+                        </ul>
+                        <form class="form-inline ml-auto" method="get" action="http://www.google.com/search" target="_blank">
+                            <input type="hidden" name="sitesearch" value="alinaderiparizi.ir" />
+                            <input class="form-control mr-sm-2" type="text" name="q" maxlength="255" placeholder="Search" />
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+            <div class="container">
+                <article>
+    <div class="image-wrapper text-center">
+        <a class="image-zoom cboxElement" href="">
+        <img src="/assets/images/auto-encoder/title.png" class="rounded mx-auto" width="100%"  alt="Photo of Blog">
+        <div class="image-overlay"></div> 
+        </a>
+    </div>
+    <br>
+    <div class="post-content">
+        <h2>What is an AutoEncoder?</h2>
+        <ul class="post-meta list-inline">
+            <li class="list-inline-item">
+                <i class="fa fa-user-circle-o"></i> Ali N. Parizi
+            </li>
+            <li class="list-inline-item">
+                <i class="fa fa-calendar-o"></i> 16 September 2022
+            </li>
+            <li class="list-inline-item">
+                <i class="fa fa-tags"></i>
+                    <span class="category">
+                    blog
+                    </span>
+                    
+                         <span class="category">
+                         ai
+                         </span>
+                    
+                         <span class="category">
+                         machine-learning
+                         </span>
+                    
+                         <span class="category">
+                         deep-learning
+                         </span>
+                    
+            </li>
+        </ul>
+        <p class="text-secondary"> One of the most popular deep architectures is the variety of AutoEncoders. This article is a straightforward walkthrough to get familiar with AutoEncoders. <p>
+        <div class="line"></div>
+        <h1 id="1-intro">1. Intro</h1>
+<p>AutoEncoder is an unsupervised artificial neural network that learns how to efficiently compress and encode data then learns how to reconstruct the data back from the reduced encoded representation to a representation that is as close to the original input as possible.
+AutoEncoder, by design, reduces data dimensions by learning how to ignore the noise in the data.
+Here is an example of the input/output image from the MNIST dataset to an AutoEncoder.</p>
+
+<p align="center">
+  <img src="/assets/images/auto-encoder/ae-arch.jpeg" />
+    <br />
+    <span>a simple AutoEncoder</span>
+</p>
+
+<h2 id="11-autoencoder-components">1.1 AutoEncoder Components:</h2>
+<p>Autoencoders consists of 4 main parts:</p>
+<ol>
+  <li>
+    <p><strong>Encoder</strong>: In which the model learns how to reduce the input dimensions and compress the input data into an encoded representation.</p>
+  </li>
+  <li>
+    <p><strong>Bottleneck</strong>: which is the layer that contains the compressed representation of the input data. This is the lowest possible dimensions of the input data.</p>
+  </li>
+  <li>
+    <p><strong>Decoder</strong>: In which the model learns how to reconstruct the data from the encoded representation to be as close to the original input as possible.</p>
+  </li>
+  <li>
+    <p><strong>Reconstruction Loss</strong>: This is the method that measures measure how well the decoder is performing and how close the output is to the original input.</p>
+  </li>
+</ol>
+
+<p>The training then involves using back propagation in order to minimize the network’s reconstruction loss. You must be wondering why would I train a neural network just to output an image or data that is exactly the same as the input! This article will cover the most common use cases for Autoencoder. Let’s get started:</p>
+
+\[Loss = \lVert X - \hat{X} \rVert_{2}^{2}\]
+
+<h2 id="12-problem-statement">1.2 Problem statement:</h2>
+<p>The network architecture for AutoEncoders can vary between a simple FeedForward network, LSTM network or Convolutional Neural Network depending on the use case. This article will use CNN networks to solve a simple problem. The problem is to remove an annoying text from the given picture. You might have seen that many photographic websites or some famous photographers use some texts as a sign or a signature on their images. That would prevent other people from stealing their valuable artistic photos, paintings, etc.</p>
+
+<p>For example here is a sample photo taken by my psychologist friend Reza Parizi (<a href="https://www.instagram.com/reza__parizi/">reza__parizi</a>):</p>
+
+<p align="center">
+  <img width="70%" src="/assets/images/auto-encoder/reza-parizi.jpg" />
+</p>
+
+<p>We can consider these kinds of texts which may be known by the name <a href="https://en.wikipedia.org/wiki/Watermark"><strong>watermark</strong></a> as static noise in pictures. We can try to find a way or a set of filters to be applied to that image in order to remove that artifact. One of the main use cases of AutoEncoders is denoising, so let’s solve this problem using AutoEncoders.</p>
+
+<h1 id="2-preparing-the-data">2. Preparing the data:</h1>
+<p>As you know for deep learning models the first thing we need is the data. For this problem, I used the popular <a href="https://ai.stanford.edu/~jkrause/cars/car_dataset.html"><strong>Stanford cars</strong></a> dataset and I added the static text “Hot-Tube” to the images as the signature of the image. Let’s say that the data is stored in a directory named <code class="language-plaintext highlighter-rouge">datasets/car</code> and the training data is located inside another directory called <code class="language-plaintext highlighter-rouge">train</code>. First, we import all required modules:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="n">tf</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">keras</span>
+<span class="kn">import</span> <span class="nn">keras.layers</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">cv2</span>
+</code></pre></div></div>
+
+<p>Then we have to load the dataset:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">path_to_train_imgs</span> <span class="o">=</span> <span class="s">'./datasets/cars/train'</span>
+<span class="n">train_imgs_list</span> <span class="o">=</span> <span class="n">os</span><span class="p">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">path_to_train_imgs</span><span class="p">)</span>
+<span class="n">train_imgs_list</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s">"</span><span class="si">{</span><span class="n">path_to_train_imgs</span><span class="si">}</span><span class="s">/</span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s">"</span> <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">train_imgs_list</span><span class="p">]</span>
+</code></pre></div></div>
+<p>These images are the original images which considered the ground truth. To generate the input data we have 2 ways:</p>
+<ol>
+  <li>load all data into the memory and loop throw them adding the signature text.</li>
+  <li>Write a DataGenerator which adds the signature to each image while creating the batch.</li>
+</ol>
+
+<p>The first method is not always a good option, especially while working with images. because image data volumes are regularly high, loading this amount of data into the memory will cause the Out of memory problem and lead your programs to crash.</p>
+
+<p>DataGenerators will load only that part of the data which is needed for the training on each period of time and it prevents the out-of-memory problem. After knowing the need for DataGenerators let’s write a DataGenerator for our program.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">DataGenerator</span><span class="p">(</span><span class="n">keras</span><span class="p">.</span><span class="n">utils</span><span class="p">.</span><span class="n">Sequence</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image_list</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">image_list</span> <span class="o">=</span> <span class="n">image_list</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">batch_size</span> <span class="o">=</span> <span class="n">batch_size</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">shuffle</span> <span class="o">=</span> <span class="n">shuffle</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">on_epoch_end</span><span class="p">()</span>
+    
+    <span class="k">def</span> <span class="nf">load_img</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="p">:</span>
+        <span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="p">.</span><span class="n">imread</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+        <span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="p">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cv2</span><span class="p">.</span><span class="n">COLOR_BGR2RGB</span><span class="p">)</span>
+        <span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="p">(</span><span class="mi">256</span><span class="p">,</span><span class="mi">256</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">img</span>
+        
+    <span class="k">def</span> <span class="nf">on_epoch_end</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">indexes</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">image_list</span><span class="p">))</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="n">shuffle</span> <span class="o">==</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">shuffle</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">indexes</span><span class="p">)</span>
+        
+    <span class="k">def</span> <span class="nf">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">image_list</span><span class="p">)</span><span class="o">//</span><span class="bp">self</span><span class="p">.</span><span class="n">batch_size</span>
+    
+    <span class="k">def</span> <span class="nf">add_text</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">img</span><span class="p">:</span> <span class="n">np</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">cv2</span><span class="p">.</span><span class="n">putText</span><span class="p">(</span><span class="n">img</span><span class="o">=</span><span class="n">img</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s">'Hot-Tube'</span><span class="p">,</span> <span class="n">org</span><span class="o">=</span><span class="p">(</span><span class="mi">46</span><span class="p">,</span> <span class="mi">128</span><span class="p">),</span> <span class="n">fontFace</span><span class="o">=</span><span class="n">cv2</span><span class="p">.</span><span class="n">FONT_HERSHEY_SIMPLEX</span><span class="p">,</span> <span class="n">fontScale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">),</span> <span class="n">thickness</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+        <span class="n">indexes</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">indexes</span><span class="p">[</span><span class="n">index</span><span class="o">*</span><span class="bp">self</span><span class="p">.</span><span class="n">batch_size</span><span class="p">:</span> <span class="p">(</span><span class="n">index</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="bp">self</span><span class="p">.</span><span class="n">batch_size</span><span class="p">]</span>
+        <span class="n">img_paths</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="p">.</span><span class="n">image_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">indexes</span><span class="p">]</span>
+        
+        <span class="n">Y</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="p">.</span><span class="n">load_img</span><span class="p">(</span><span class="n">img_path</span><span class="p">)</span> <span class="k">for</span> <span class="n">img_path</span> <span class="ow">in</span> <span class="n">img_paths</span><span class="p">]</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="p">.</span><span class="n">add_text</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">img</span><span class="p">))</span> <span class="k">for</span> <span class="n">img</span> <span class="ow">in</span> <span class="n">Y</span><span class="p">]</span>
+        
+        <span class="k">return</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">/</span><span class="mi">255</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span><span class="o">/</span><span class="mi">255</span>
+</code></pre></div></div>
+<p>Let’s see how it works:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">plt_img</span><span class="p">(</span><span class="n">img</span><span class="p">:</span> <span class="n">np</span><span class="p">,</span> <span class="n">title</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="bp">None</span><span class="p">):</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">xticks</span><span class="p">([])</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">yticks</span><span class="p">([])</span>
+    <span class="k">if</span> <span class="n">title</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+
+<span class="n">validation_imgs</span><span class="p">,</span> <span class="n">train_imgs</span> <span class="o">=</span> <span class="n">train_imgs_list</span><span class="p">[:</span><span class="mi">100</span><span class="p">],</span> <span class="n">train_imgs_list</span><span class="p">[</span><span class="mi">100</span><span class="p">:]</span>
+<span class="n">train_data_generator</span> <span class="o">=</span> <span class="n">DataGenerator</span><span class="p">(</span><span class="n">image_list</span><span class="o">=</span><span class="n">train_imgs</span><span class="p">)</span>
+<span class="n">validation_data_generator</span> <span class="o">=</span> <span class="n">DataGenerator</span><span class="p">(</span><span class="n">image_list</span><span class="o">=</span><span class="n">validation_imgs</span><span class="p">)</span>
+
+<span class="c1"># Showing some sample images
+</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">validation_data_generator</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">cnt</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="n">cnt</span><span class="p">)</span>
+    <span class="n">plt_img</span><span class="p">(</span><span class="n">Y</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="s">"Original Image"</span><span class="p">)</span>
+    <span class="n">cnt</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">cnt</span><span class="p">)</span>
+    <span class="n">plt_img</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="s">"Augmented Image"</span><span class="p">)</span>
+    <span class="n">cnt</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<p align="center">
+  <img width="70%" src="/assets/images/auto-encoder/sample_data.png" />
+</p>
+
+<h1 id="3-building-the-model">3. Building the model</h1>
+
+<p>Let’s say that we have trained an autoencoder on the Cars dataset. Using a simple FeedForward neural network, we can achieve this by building a simple 9 layers network as below:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">inputs</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Input</span><span class="p">((</span><span class="mi">256</span><span class="p">,</span><span class="mi">256</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s">'same'</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">"relu"</span><span class="p">)(</span><span class="n">inputs</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s">'same'</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">"relu"</span><span class="p">)(</span><span class="n">inputs</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s">'same'</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">"relu"</span><span class="p">)(</span><span class="n">inputs</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">MaxPool2D</span><span class="p">()(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># 128x128
+</span><span class="n">x</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s">'same'</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">"relu"</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">"bottle-neck"</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># 128*128
+</span><span class="n">x</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">UpSampling2D</span><span class="p">()(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># 256x256
+</span><span class="n">x</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s">'same'</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s">'same'</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s">'same'</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s">'same'</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="p">)</span>
+<span class="n">model</span><span class="p">.</span><span class="nb">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s">"adam"</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s">"mean_squared_error"</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s">'accuracy'</span><span class="p">])</span>
+<span class="n">model</span><span class="p">.</span><span class="n">summary</span><span class="p">()</span>
+</code></pre></div></div>
+<pre><code class="language-output">Model: "model"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ input_1 (InputLayer)        [(None, 256, 256, 3)]     0         
+                                                                 
+ conv2d_2 (Conv2D)           (None, 256, 256, 32)      896       
+                                                                 
+ max_pooling2d (MaxPooling2D  (None, 128, 128, 32)     0         
+ )                                                               
+                                                                 
+ bottle-neck (Conv2D)        (None, 128, 128, 8)       2312      
+                                                                 
+ up_sampling2d (UpSampling2D  (None, 256, 256, 8)      0         
+ )                                                               
+                                                                 
+ conv2d_3 (Conv2D)           (None, 256, 256, 32)      2336      
+                                                                 
+ conv2d_4 (Conv2D)           (None, 256, 256, 64)      18496     
+                                                                 
+ conv2d_5 (Conv2D)           (None, 256, 256, 128)     73856     
+                                                                 
+ conv2d_6 (Conv2D)           (None, 256, 256, 3)       387       
+                                                                 
+=================================================================
+Total params: 98,283
+Trainable params: 98,283
+Non-trainable params: 0
+_________________________________________________________________
+</code></pre>
+
+<p>I used mean squared error (MSE) loss to train my model. Because I wanted the model’s output to be the same as the original image. MSE should do the job for us perfectly but, we could use a different loss function that would compare the images from a regional point of view and would be better for high-resolution images and more general datasets. But, we are good with MSE on this task.</p>
+
+<h2 id="31-tensorboard">3.1 Tensorboard</h2>
+<p>To see how the training process is going on and monitor the training process, there is a useful option called Tensorboard developed by the TensorFlow team. Tensorboard is a background process that looks inside a directory (usually named “logs”) and visualizes the training process logs such as training and validation accuracy and loss for us. It also is capable to display images that can be generated during the training process such as model predictions at the end of each epoch. It would be so handy to store the model prediction during the training process. It could help us to find out when to terminate the training process in an experimental way.</p>
+
+<p>To do so, we have to define a custom callback class to store model prediction on each epoch ended.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">TensorBoardImageCallBack</span><span class="p">(</span><span class="n">keras</span><span class="p">.</span><span class="n">callbacks</span><span class="p">.</span><span class="n">Callback</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">log_dir</span><span class="p">,</span> <span class="n">image</span><span class="p">,</span> <span class="n">noisy_image</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">().</span><span class="n">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">log_dir</span> <span class="o">=</span> <span class="n">log_dir</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">image</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">noisy_image</span> <span class="o">=</span> <span class="n">noisy_image</span>
+
+    <span class="k">def</span> <span class="nf">set_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">writer</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">summary</span><span class="p">.</span><span class="n">create_file_writer</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">log_dir</span><span class="p">,</span> <span class="n">filename_suffix</span><span class="o">=</span><span class="s">'images'</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">on_train_begin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">write_image</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">noisy_image</span><span class="p">,</span> <span class="s">'Noisy Image'</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">write_image</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">image</span><span class="p">,</span> <span class="s">'Original Image'</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">on_train_end</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">writer</span><span class="p">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">write_image</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image</span><span class="p">,</span> <span class="n">tag</span><span class="p">,</span> <span class="n">epoch</span><span class="p">):</span>
+        <span class="n">image_to_write</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">copy</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="p">.</span><span class="n">writer</span><span class="p">.</span><span class="n">as_default</span><span class="p">():</span>
+            <span class="n">tf</span><span class="p">.</span><span class="n">summary</span><span class="p">.</span><span class="n">image</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span> <span class="n">image_to_write</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="n">epoch</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">on_epoch_end</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">epoch</span><span class="p">,</span> <span class="n">logs</span><span class="o">=</span><span class="p">{}):</span>
+        <span class="n">denoised_image</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">model</span><span class="p">.</span><span class="n">predict_on_batch</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">noisy_image</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">write_image</span><span class="p">(</span><span class="n">denoised_image</span><span class="p">,</span> <span class="s">'Denoised Image'</span><span class="p">,</span> <span class="n">epoch</span><span class="p">)</span>
+        
+<span class="n">tensorboard_callback</span> <span class="o">=</span> <span class="n">TensorBoardImageCallBack</span><span class="p">(</span><span class="s">'./logs'</span><span class="p">,</span> <span class="n">Y</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">tensorboard_callback_loss</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">callbacks</span><span class="p">.</span><span class="n">TensorBoard</span><span class="p">(</span><span class="n">log_dir</span><span class="o">=</span><span class="s">"./logs"</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<h2 id="32-training-the-model">3.2 Training the model</h2>
+<p>Now, it’s time to start training our model. I just hangup training the model after 25 epochs but, in code, I’ve defined the number of epochs to be 100. I hope continuing the training till 100 epochs will tend to a great convergence of the model.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span>
+            <span class="n">train_data_generator</span><span class="p">,</span>
+            <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+            <span class="n">validation_data</span><span class="o">=</span><span class="n">validation_data_generator</span><span class="p">,</span>
+            <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">tensorboard_callback</span><span class="p">,</span> <span class="n">tensorboard_callback_loss</span><span class="p">]</span>
+        <span class="p">)</span>
+</code></pre></div></div>
+
+<pre><code class="language-output">...
+502/502 [==============================] - 86s 171ms/step - loss: 6.6057e-04 - accuracy: 0.8184 - val_loss: 5.3678e-04 - val_accuracy: 0.8163
+</code></pre>
+
+<p>As you can see in the output, which is the results of training for about 25 epochs, the last reconstruction loss/error for the validation set is 5.3678e-04 which is great but it can be better if you run this code for about 100 epochs. Now, if I pass a new image from the test dataset, the reconstruction loss will be very low BUT if I tried to pass any other different image (outlier or anomaly), we will get a high reconstruction loss value because the network failed to reconstruct the image/input that is considered an anomaly, which is another use case of autoencoders to detect outlier data points.</p>
+
+<p align="center">
+  <img width="70%" src="/assets/images/auto-encoder/sample_prediction.png" />
+</p>
+
+<p>Notice in the code above, you can use only the encoder part to compress some data or images and you can also only use the decoder part to decompress the data by loading the decoder layers. As you can see, we reduced the input image dimensions from \(256 \times 256 \times 3\) to \(128 \times 128 \times 8\) which is accessible in the bottle-neck layer’s output. storing the features of this layer instead of the original images lowers the space needed to store the images by a factor of 1.5. If it was a video of size 900MB, using this technique would lead the size of the video to be 600MB which is more efficient for data storage.</p>
+
+\[\frac{256 \times 256 \times 3}{128 \times 128 \times 8} = 1.5\]
+
+<p align="center">
+  <img src="/assets/images/auto-encoder/loss.png" />
+  <br />
+  <span>Model loss per epoch</span>
+</p>
+
+<blockquote>
+  <p>Note: In the figure above, red is validation loss and the blue one is training loss per epoch.</p>
+</blockquote>
+
+<p>Another use case of AutoEncoders is learning a data representation in lower dimensions which tends to data compression. Another cool use case is to enhance the quality of the picture which is called super-resolution which we can’t see on our model but I’ll do an experiment to implement super-resolution using AutoEncoders in another article.</p>
+
+<p>Finally, we removed a static noise from the input data which is another use case of auto encoders we were follow.
+I hope you enjoyed reading my article. Stay tuned!</p>
+
+<h1 id="references">References</h1>
+<ol>
+  <li><a href="https://paperswithcode.com/method/autoencoder"><em>G. E. Hinton, &amp; R. R. Salakhutdinov (2006). Reducing the Dimensionality of Data with Neural Networks. Science, 313(5786), 504-507.</em></a></li>
+</ol>
+
+
+    </div>
+</article>
+
+            </div>
+        </div>
+    </div>
+    
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous">
+    </script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous">
+    </script>
+    <!-- jQuery Custom Scroller CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js">
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#sidebar").mCustomScrollbar({
+                theme: "minimal"
+            });
+
+            $('#sidebarCollapse').on('click', function() {
+                $('#sidebar, #content').toggleClass('active');
+                $('.collapse.in').toggleClass('in');
+                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+            });
+        });
+    </script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML">
+    </script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']], processEscapes: true}, jax: ["input/TeX","input/MathML","input/AsciiMath","output/CommonHTML"], extensions: ["tex2jax.js","mml2jax.js","asciimath2jax.js","MathMenu.js","MathZoom.js","AssistiveMML.js",
+        "[Contrib]/a11y/accessibility-menu.js"], TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"], equationNumbers: { autoNumber: "AMS" } } });
+    </script>
+
+</body>
+
+</html>

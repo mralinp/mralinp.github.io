@@ -20,7 +20,13 @@ blockquote p {
     border-color: rgba(0, 0, 0, 0.3);
     background: #eee;
     border-radius: 1rem;
-    padding:10px 20px 10px 20px;
+    padding: 10px 20px 10px 20px;
+}
+
+blockquote {
+    margin: auto  !important;
+    width: 90%;
+    
 }
 
 strong {
@@ -250,6 +256,7 @@ p code {
     color: #333 !important;
     background: rgba(0,0,0,0.1) !important;
     margin: 0 !important;
+    padding: 0 5px 0 5px !important;
 }
 
 

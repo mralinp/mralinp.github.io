@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="4-8jdtFeOSWDhx6RjXrSwNrvhvLyFdbACncYtB2Rjzc" />
+    <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="mralinp" />
+    <title> The Poisson Distribution </title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+    <!-- Font awesome -->
+    <script src="https://kit.fontawesome.com/40a6ec6105.js" crossorigin="anonymous"></script>
+    <!-- Prism CSS -->
+    <link rel="stylesheet" href="/assets/css/prism.css">
+    <!-- Prism JS -->
+    <script src="/assets/js/prism.js"></script>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3><a href="/">Ali N. Parizi</a></h3>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li class="sidebar-item">
+                    <a href="/"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="/blog"><i class="fa fa-rss" aria-hidden="true"></i> Blog</a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="/projects"><i class="fa fa-flask" aria-hidden="true"></i> Projects</a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="/library"><i class="fa fa-book" aria-hidden="true"></i> Library</a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="/about"><i class="fa fa-info" aria-hidden="true"></i> About me</a>
+                </li>
+            </ul>
+
+            <ul class="list-unstyled CTAs">
+                <li class="sidebar-btn">
+                    <a href="https://github.com/mralinp"> <i class="fab fa-github"></i> Github profile
+                    </a>
+                </li>
+                <li class="sidebar-btn">
+                    <a href="/assets/resume/ali-naderi-parizi-cv.pdf"> <i class="fas fa-file"></i> Download resume</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content">
+            <!-- Navbar -->
+            <nav class="navbar navbar-expand-lg">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="/" id="brand">Ali N. Parizi</a>
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <span>Menu</span>
+                    </button>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav mr-auto" id="navbarLinks">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/assets/resume/ali-naderi-parizi-cv.pdf">Resume</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/blog">Blog</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/about">About me</a>
+                            </li>
+                        </ul>
+                        <form class="form-inline ml-auto" method="get" action="http://www.google.com/search" target="_blank">
+                            <input type="hidden" name="sitesearch" value="alinaderiparizi.ir" />
+                            <input class="form-control mr-sm-2" type="text" name="q" maxlength="255" placeholder="Search" />
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+            <div class="container">
+                <article>
+    <div class="image-wrapper text-center">
+        <a class="image-zoom cboxElement" href="">
+        <img src="/assets/images/poisson/title.png" class="rounded mx-auto" width="100%"  alt="Photo of Blog">
+        <div class="image-overlay"></div> 
+        </a>
+    </div>
+    <br>
+    <div class="post-content">
+        <h2>The Poisson Distribution</h2>
+        <ul class="post-meta list-inline">
+            <li class="list-inline-item">
+                <i class="fa fa-user-circle-o"></i> Ali N. Parizi
+            </li>
+            <li class="list-inline-item">
+                <i class="fa fa-calendar-o"></i> 14 July 2022
+            </li>
+            <li class="list-inline-item">
+                <i class="fa fa-tags"></i>
+                    <span class="category">
+                    blog
+                    </span>
+                    
+                         <span class="category">
+                         math
+                         </span>
+                    
+                         <span class="category">
+                         statistics
+                         </span>
+                    
+                         <span class="category">
+                         random-process
+                         </span>
+                    
+            </li>
+        </ul>
+        <p class="text-secondary"> A straightforward walk-through of a useful statistical concept, "The Poisson Distribution" <p>
+        <div class="line"></div>
+        <h1 id="1-intro">1. Intro</h1>
+<p>Knowing statistics for a computer engineer, a data scientist, or a machine-learning engineer is a unique need in their professional career. We learn about statistics in most universities more like learning differential equations or calculus instead. We know so many mathematical basics for statistics that we will never use in the future. That prevents us from seeing the use of statistics and what we can do with these concepts in the real world.</p>
+
+<p>In this article, we are about to learn two crucial statistics concepts, The Poisson Distribution and The Poisson Process, through solving a common problem in the concept of online website hosting.</p>
+
+<h1 id="2-what-poisson-distribution-or-poisson-process-is-about">2. What Poisson Distribution or Poisson Process is about?</h1>
+<p>Before we get started, let’s first ask our selves a simple question, “Why do we need Poisson?”</p>
+
+<p>The Poisson distribution helps us to o predict the probability of a given number of events occurring in a fixed interval of time, or just simply, to predict the number of events in the future.</p>
+
+<p>For example,</p>
+<ul>
+  <li>How many visitors do you get on your website in a day?</li>
+  <li>How many clicks do your ads get for the next month?</li>
+  <li>How many phone calls do you get during your shift?</li>
+  <li>How many people will die from covid-19 next year?</li>
+</ul>
+
+<p>Every week, on average, 17 people react to my blog posts via sending me emails. I’d like to predict the number of people who react to my blog posts next week because I have to consider some free time to answer them properly and planning is so critical for me.</p>
+
+<p>What is the probability that exactly 20 people (or 10, 30, 40, etc.) will react to my posts next week?</p>
+
+<p>To answer this question, if we knew some statistics, it would comes my our minds that we should be able to solve this problem using <strong>the Binomial distribution</strong>. Let’s first, look at the concept of Binomial distribution and solve the problem using it.</p>
+
+<h1 id="3-binomial-distribution">3. Binomial distribution</h1>
+<p>One way to solve this should be to start with the number of reads. Each person who reads the blog has some probability that they will really have a question or found some thing interesting to share with me.</p>
+
+<p>A binomial random variable is the number of successes \(x\) in \(n\) repeated trials. And we assume the probability of success \(p\) is constant over each trial. The Binomial distribution formula is:
+\begin{equation}
+P[X=x] = \binom{n}{x}p^x(1-p)^{n-x}
+\end{equation}</p>
+
+<p>However here, we are given only one piece of information, \(17 \frac{emails}{week}\), which is a rate. we don’t know any thing about the probability of receiving an email by an individual reader p, nor the number of blog visitors n. So, we use google analytics to retrieve this data from our blog history.</p>
+
+<p align="center"> <img src="/assets/images/poisson/website-stats.png" /><br /><span>Stats from google</span></p>
+
+<p>By looking to the stats we can say, in one year, A total of \(59k\) people read my blog. Out of \(59k\) people, \(888\) of them liked my post. Therefore, the number of people who read my blog per week (\(n\)) is \(\frac{59k}{52}=1134\). The number of people who liked my posts per week (\(x\)) is \(\frac{888}{52}=17\). So, the success probability p would be \(\frac{888}{59k} = 0.015\) or \(1.5\%\).</p>
+
+<p>Now Using Binomial PMF, we should be able to calculate the probability of getting 20 emails for next week as below:</p>
+
+\[P[X=20] = \binom{1134}{20}(0.015)^{20}(1-0.015)^{n-x} = 0.06962\]
+
+<p>We can use python or any other programming language to calculate the probability of getting emails with different values.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">binom</span>
+<span class="c1"># setting the values
+# of n, p and x
+</span><span class="n">n</span> <span class="o">=</span> <span class="mi">1134</span>
+<span class="n">p</span> <span class="o">=</span> <span class="mf">0.015</span>
+<span class="n">x_s</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">]</span>
+
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"x</span><span class="se">\t</span><span class="s">Binomial P(x, n, p)"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"----------------------------"</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">x_s</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s">:</span><span class="se">\t</span><span class="si">{</span><span class="n">binom</span><span class="p">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<pre><code class="language-output">x	Binomial P(x, n, p)
+----------------------------
+10:	0.022507172903122208
+17:	0.09701415708780352
+20:	0.06962037106916726
+30:	0.0012106250995813465
+40:	6.815731666708672e-07
+</code></pre>
+
+<p>As you can see, by using binomial distribution the probability of getting, 10, 17, 20, 30 and 40 emails per week would be as follows:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>x</th>
+      <th style="text-align: center">Binomial P(X=x)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>10</td>
+      <td style="text-align: center">0.02250</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td style="text-align: center">0.09701</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td style="text-align: center">0.06962</td>
+    </tr>
+    <tr>
+      <td>30</td>
+      <td style="text-align: center">0.00121</td>
+    </tr>
+    <tr>
+      <td>40</td>
+      <td style="text-align: center">&lt; 0.000001</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br /></p>
+
+<h1 id="4-shortcomings-of-the-binomial-distribution">4. Shortcomings of the Binomial Distribution</h1>
+
+<p>The very first problem with a binomial random variable is, “<strong>it being assumed to be binary (0 or 1)</strong>”. In the previous example, we have \(17 \frac{emails}{week}\). This means \(\frac{17}{7}=2.4\) people will send me emails per day, and \(\frac{17}{7*24}\) = 0.1 people send me email per hour.
+If we model the success probability by hour (0.1 email/hr) using binomial random variable, this means most of the hours get zero emails but some hours will get exactly 1 email. However, it is also very possible that certain hours will get more that 1 email (2,3,5 emails, etc.)
+The problem with binomial is that it cannot contain more than 1 event in the unit of time (in this case, 1 hr is the unit time). The unit of time can only have 0 or 1 event.</p>
+
+<p>How about dividing 1 hour into 60 minutes, and make unit time smaller, for example, a minute? If that so, then 1 hour can contain multiple events (Still, one minute will contain exactly one or zero events.). What if, during that one minute, we got multiple emails? (i.e someone shared your my blog post on Twitter and the traffic spiked at that minute.) Then what? We can divide a minute into seconds. then our time unit becomes a second and again a minute can contain multiple events. But this binary container problem will always exist for ever-smaller time units. The idea is, we can make the binomial random variable handle multiple events by dividing a unit time into smaller units. By using smaller divisions, we can make the original unit time contain more than one event. Mathematically, this means \(n\) goes to infinity. Since we assumed the rate is fixed, \(p\) must goes to zero. Because, when $n$ grows up to infinity,the number of intervals between the period becomes grows as $n$ and the probability of getting an email at each interval tends to be merely zero. In the other words, If $n$ goes to infinity, \(p\) should become zero, Other wise, \(np\), which is the number of events will blow up.</p>
+
+<p>The second problem with the binomial random variable is, “<strong>when we want to use the binomial distribution, the number of trails, \(n\), and the probability of success, \(p\), should be known</strong>”.
+If you use Binomial, you cannot calculate the success probability only with the rate (i.e \(17\frac{emails}{week}\)). You need more information \(n\) and \(p\), in order to use the binomial PMF.
+The Poisson Distribution, on the other hand, doesn’t require you to know \(n\) or \(p\). We are assuming \(n\) is infinitely large (\(n\rightarrow\infty\)) and \(p\) is infinitesimal (\(p\rightarrow 0\)).
+The only parameter of the Poisson distribution is the rate \(\lambda\). (In real life only knowing the rate is much more common than knowing both \(n\) and \(p\))</p>
+
+<h1 id="5-derive-the-poisson-formula-mathematically">5. Derive the poisson formula mathematically</h1>
+<p>Now, let’s deep dive into the binomial distribution formula with the assumption that we reached from the ideas of the previous section (<a href="#4-shortcomings-of-the-binomial-distribution">Section 4</a>). We find out that to solve the deal with the binary nature of the binomial random variable, we should increase the number of time units in our one week interval. Mathematically it means \(n\rightarrow\infty\):</p>
+
+\[P[X=x] = lim_{n\rightarrow\infty}\binom{n}{x}p^x(1-p)^{n-x}\]
+
+<p>If, \(n\rightarrow\infty\) and \(p\rightarrow 0\) then we can assume that:</p>
+
+\[p = \frac{\lambda}{n}\]
+
+<p>Then we have:</p>
+
+\[P[X=x] = lim_{n\rightarrow\infty}\binom{n}{x}(\frac{λ}{n})^x(1- (\frac{λ}{n}))^{n-x}\]
+
+\[\Rightarrow lim_{n\rightarrow\infty} \frac{n!}{(n-x)!x!}(\frac{λ}{n})^x(1- (\frac{λ}{n}))^{n-x}\]
+
+\[\Rightarrow lim_{n\rightarrow\infty} \frac{n!}{(n-x)!}\frac{1}{n^x}\frac{λ^x}{x!}(1-\frac{λ}{n})^n(1-\frac{λ}{n})^{-x}\]
+
+\[\Rightarrow lim_{n\rightarrow\infty} \frac{n!}{(n-x)!}\frac{1}{n^x}\frac{λ^x}{x!}e^{-λ}(1)\]
+
+<p>Because:</p>
+
+\[lim_{n\rightarrow\infty}\frac{n!}{(n-x)!}\frac{1}{n^x} = 1\]
+
+<p>We can say:</p>
+
+<p>\begin{equation}
+P[X=x] = e^{-λ}\frac{λ^{x}}{x!}
+\end{equation}</p>
+
+<p>Which is actually the Poisson random distribution formula.</p>
+
+<h1 id="6-probability-of-events-for-a-poisson-distribution">6. Probability of events for a Poisson distribution</h1>
+
+<p>An event can occur 0, 1, 2, … times in an interval. The average number of events in an interval is designated λ. λ is the event rate. also called the rate parameter. The probability of observing k events in an interval is given by the equation:</p>
+
+\[P[k\ events\ in\ interval] = e^{-λ}\frac{λ^{k}}{k!}\]
+
+<p>Where:</p>
+<ul>
+  <li>\(\lambda\) is the average number of events per interval</li>
+  <li>\(e\) is the number \(2.71828…\) (Euler’s number) the base of the natural logarithm</li>
+  <li>\(k\) takes values \(0, 1, 2, …\)</li>
+  <li>\(k! = k(k-1)(k-2)…(2)(1)\) is the factorial of \(k\)</li>
+</ul>
+
+<p>We calculate the probability of observing 10, 17, 20, 30 and 40 emails in the interval using the poisson distribution formula as below:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">poisson</span>
+
+<span class="c1">#calculate probability
+</span>
+<span class="c1"># setting the values
+# of lambda and x
+</span><span class="n">l</span> <span class="o">=</span> <span class="mi">17</span>
+<span class="n">x_s</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">]</span>
+
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"x</span><span class="se">\t</span><span class="s">Poisson P(x, lambda)"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"----------------------------"</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">x_s</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s">:</span><span class="se">\t</span><span class="si">{</span><span class="n">poisson</span><span class="p">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="n">l</span><span class="p">)</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div></div>
+<pre><code class="language-output">x	Poisson P(x, lambda)
+----------------------------
+10:	0.022999584406166312
+17:	0.09628462779844556
+20:	0.06915882695522822
+30:	0.001278796308921649
+40:	8.381188233781985e-07
+</code></pre>
+
+<p>As it can be observed, using the calculated probabilities using Poisson formula is very close to the values calculated using Binomial distribution formula, so we can conclude that the Poisson distribution in this situation is a really good approximation for our problem. Because of the simpler formula and lower and easy to obtain parameter of the poisson distribution, it would be come very useful to use this distribution to solve the problems of this kind.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>x</th>
+      <th style="text-align: center">Binomial P(X=x)</th>
+      <th style="text-align: center">Poisson P(X=x;lambda=17)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>10</td>
+      <td style="text-align: center">0.02250</td>
+      <td style="text-align: center">0.2300</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td style="text-align: center">0.09701</td>
+      <td style="text-align: center">0.09628</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td style="text-align: center">0.06962</td>
+      <td style="text-align: center">0.07595</td>
+    </tr>
+    <tr>
+      <td>30</td>
+      <td style="text-align: center">0.00121</td>
+      <td style="text-align: center">0.00340</td>
+    </tr>
+    <tr>
+      <td>40</td>
+      <td style="text-align: center">&lt; 0.000001</td>
+      <td style="text-align: center">&lt; 0.000001</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br /></p>
+
+<h1 id="7-some-notes-on-poisson-random-variable">7. Some notes on Poisson random variable</h1>
+<p>Even though the Poisson distribution models are rare events, the rate \(\lambda\) can me any number. It doesn’t always have to be small. The Poisson Distribution is asymmetric, it is always skewed toward the right. Because it is inhibited by the zero occurrence barrier (there is no such thing as minus one email) on the left and it is unlimited on the other side. As \(\lambda\) becomes bigger, the graph looks more like a normal distribution.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">poisson</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">x_s</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">5</span><span class="p">)]</span>
+<span class="n">plots</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">mus</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">mu</span> <span class="ow">in</span> <span class="n">mus</span><span class="p">:</span>
+  <span class="n">y_s</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">x_s</span><span class="p">:</span>
+    <span class="n">y_s</span> <span class="o">+=</span> <span class="p">[</span><span class="n">poisson</span><span class="p">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="n">mu</span><span class="p">)]</span>
+  <span class="n">plots</span> <span class="o">+=</span> <span class="p">[(</span><span class="n">x_s</span><span class="p">,</span> <span class="n">y_s</span><span class="p">)]</span>
+
+
+<span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">plots</span><span class="p">)):</span>
+  <span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">plots</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">plots</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s">"lambda = </span><span class="si">{</span><span class="n">mus</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="p">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s">'best'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p align="center"><img src="/assets/images/poisson/different-lambda.png" /><br /><span>Poisson distribution with different lambda's for our problem.</span></p>
+
+<p><strong>The average rate of events per unit time in poisson distribution is constant</strong>. This means the number of people who visit my blog per hour might not follow a Poisson Distribution, because the hourly rate is not constant (higher rate during the daytime, lower rate during the night-time). Using monthly rate for consumer/biological data would be just an approximation as well, since the seasonality effect is non-trivial in that domain.</p>
+
+<p><strong>In poisson random variable, Events are independent</strong>. The arrival of my blog visitors might not always be independent. For example, sometimes a large number of visitors come in a group because someone popular mentioned my blog, or my blog got featured on Medium’s first page, etc. the number of earthquakes per year in a country also might not follow a Poisson Distribution in one large earthquake increases the probability of aftershocks.</p>
+
+
+    </div>
+</article>
+
+            </div>
+        </div>
+    </div>
+    
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous">
+    </script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous">
+    </script>
+    <!-- jQuery Custom Scroller CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js">
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#sidebar").mCustomScrollbar({
+                theme: "minimal"
+            });
+
+            $('#sidebarCollapse').on('click', function() {
+                $('#sidebar, #content').toggleClass('active');
+                $('.collapse.in').toggleClass('in');
+                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+            });
+        });
+    </script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML">
+    </script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']], processEscapes: true}, jax: ["input/TeX","input/MathML","input/AsciiMath","output/CommonHTML"], extensions: ["tex2jax.js","mml2jax.js","asciimath2jax.js","MathMenu.js","MathZoom.js","AssistiveMML.js",
+        "[Contrib]/a11y/accessibility-menu.js"], TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"], equationNumbers: { autoNumber: "AMS" } } });
+    </script>
+
+</body>
+
+</html>

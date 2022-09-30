@@ -23,14 +23,14 @@ layout: main
                             <div class="date"><span>{{ post.date | date: "%b" }}</span>{{ post.date | date: "%Y" }}</div>
                         </div>
                         <div class="card-body">
-                            <h3 class="h5"><a href="{{post.url}}"><h4>{{post.title}}</h4></a></h3>
+                    <h3 class="h4"><a href="{{post.url}}" title="{{ post.title }}">{{post.title | strip_html | truncate: 35}}</a></h3>
                             <p class="display-30">{{ post.brief | strip_html | truncatewords: 20 }}</p>
                             <a href="{{post.url}}" class="btn"><i class="fa fa-angle-double-right"></i> Read more</a>
                         </div>
                         <div class="card-footer">
                             <ul>
                             <li><i class="fa fa-user-circle-o"></i> {{ post.author }}</li>                            
-                            <li ><i class="fa fa-tags"></i><span class="category">{{ post.categories.first }}</span></li>
+                            <li ><i class="fa fa-tags"></i><span class="category">{{ post.categories[1] }}</span></li>
                             </ul>
                         </div>
                     </article>

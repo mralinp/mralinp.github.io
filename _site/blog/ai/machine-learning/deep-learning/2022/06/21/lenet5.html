@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="4-8jdtFeOSWDhx6RjXrSwNrvhvLyFdbACncYtB2Rjzc" />
+    <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="mralinp" />
+    <title> LeNet-5 from scratch </title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+    <!-- Font awesome -->
+    <script src="https://kit.fontawesome.com/40a6ec6105.js" crossorigin="anonymous"></script>
+    <!-- Prism CSS -->
+    <link rel="stylesheet" href="/assets/css/prism.css">
+    <!-- Prism JS -->
+    <script src="/assets/js/prism.js"></script>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3><a href="/">Ali N. Parizi</a></h3>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li class="sidebar-item">
+                    <a href="/"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="/blog"><i class="fa fa-rss" aria-hidden="true"></i> Blog</a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="/projects"><i class="fa fa-flask" aria-hidden="true"></i> Projects</a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="/library"><i class="fa fa-book" aria-hidden="true"></i> Library</a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="/about"><i class="fa fa-info" aria-hidden="true"></i> About me</a>
+                </li>
+            </ul>
+
+            <ul class="list-unstyled CTAs">
+                <li class="sidebar-btn">
+                    <a href="https://github.com/mralinp"> <i class="fab fa-github"></i> Github profile
+                    </a>
+                </li>
+                <li class="sidebar-btn">
+                    <a href="/assets/resume/ali-naderi-parizi-cv.pdf"> <i class="fas fa-file"></i> Download resume</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content">
+            <!-- Navbar -->
+            <nav class="navbar navbar-expand-lg">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="/" id="brand">Ali N. Parizi</a>
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <span>Menu</span>
+                    </button>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav mr-auto" id="navbarLinks">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/assets/resume/ali-naderi-parizi-cv.pdf">Resume</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/blog">Blog</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/about">About me</a>
+                            </li>
+                        </ul>
+                        <form class="form-inline ml-auto" method="get" action="http://www.google.com/search" target="_blank">
+                            <input type="hidden" name="sitesearch" value="alinaderiparizi.ir" />
+                            <input class="form-control mr-sm-2" type="text" name="q" maxlength="255" placeholder="Search" />
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+            <div class="container">
+                <article>
+    <div class="image-wrapper text-center">
+        <a class="image-zoom cboxElement" href="">
+        <img src="/assets/images/lenet5/mnist-dataset-1.png" class="rounded mx-auto" width="100%"  alt="Photo of Blog">
+        <div class="image-overlay"></div> 
+        </a>
+    </div>
+    <br>
+    <div class="post-content">
+        <h2>LeNet-5 from scratch</h2>
+        <ul class="post-meta list-inline">
+            <li class="list-inline-item">
+                <i class="fa fa-user-circle-o"></i> Ali N. Parizi
+            </li>
+            <li class="list-inline-item">
+                <i class="fa fa-calendar-o"></i> 21 June 2022
+            </li>
+            <li class="list-inline-item">
+                <i class="fa fa-tags"></i>
+                    <span class="category">
+                    blog
+                    </span>
+                    
+                         <span class="category">
+                         ai
+                         </span>
+                    
+                         <span class="category">
+                         machine-learning
+                         </span>
+                    
+                         <span class="category">
+                         deep-learning
+                         </span>
+                    
+            </li>
+        </ul>
+        <p class="text-secondary"> In this article, we perform image classification on the MNIST dataset with custom implemented LeNet-5 neural network architecture. <p>
+        <div class="line"></div>
+        <h1 id="1-intro">1. Intro</h1>
+<p>LeNet is a very first deep learning model that introduced in the research paper “Gradient-Based Learning Applied To Document Recognition” in the year 1998 by four legendary researchers, Yann LeCun, Leon Bottou, Yoshua Bengio, and Patrick Haffner. Many of the listed authors of the paper have gone on to provide several significant academic contributions to the field of deep learning.</p>
+<p align="center">
+    <img src="/assets/images/lenet5/authors.png" />
+    <br />
+    <span>From left: Yann LeCun, Leon Bottou, Yoshua Bengio, and Patrick Haffner</span>
+</p>
+<!-- Image -->
+<p>This article will introduce the LeNet-5 CNN architecture as described in the original paper, along with the implementation of the architecture using TensorFlow 2.0. Then conclude with the utilization of the implemented LeNet-5 CNN for the classification of images from the MNIST dataset.</p>
+
+<p align="center">
+    <img width="30%" src="/assets/images/lenet5/keras-and-tf.jpeg" />
+</p>
+
+<p>What to find in this article:</p>
+<ul>
+  <li>Understanding of components within a convolutional neural network</li>
+  <li>Key definitions of terms commonly used in deep learning and machine learning</li>
+  <li>Understanding of LeNet-5 architecture as presented in the original research paper</li>
+  <li>Implementation of a neural network using TensorFlow and Keras</li>
+</ul>
+
+<p>The content in this article is written for Deep learning and Machine Learning students of all levels. For those who are eager to get coding, scroll down to the <a href="#implementation"><strong>Implementation section</strong></a>.</p>
+
+<h1 id="2-convolutional-neural-networks">2. Convolutional Neural Networks</h1>
+<p>Convolutional Neural Networks are a standard form of neural network architecture for solving tasks associated with images. Solutions for tasks such as object detection, face detection, pose estimation and more, usually have CNN architecture variants.</p>
+
+<p>A few characteristics of the CNN architecture makes them more favourable in several computer vision tasks. It would be good if we could introduce each characteristics before we get started on working with the LeNet-5 architecture.</p>
+
+<p>Some convolutional networks characteristics that we are interested in here:</p>
+<ul>
+  <li>Local respective fields</li>
+  <li>Sub-sampling</li>
+  <li>Weight sharing</li>
+</ul>
+
+<p>LeNet-5 CNN architecture is made up of 7 layers. The layer composition consists of 3 convolutional layers, 2 subsampling layers and 2 fully connected layers.</p>
+
+<p align="center">
+    <img src="/assets/images/lenet5/arch.png" />
+    <br />
+    <span>LeNet architecture</span>
+</p>
+
+<p>The diagram above shows a depiction of the LeNet-5 architecture, as illustrated in the original paper.</p>
+
+<p>The first layer is the input layer — this is generally not considered a layer of the network as nothing is learnt in this layer. The input layer is built to take in 32x32, and these are the dimensions of images that are passed into the next layer. Those who are familiar with the MNIST dataset will be aware that the MNIST dataset images have the dimensions 28x28. To get the MNIST images dimension to the meet the requirements of the input layer, the 28x28 images are padded.</p>
+
+<p>The grayscale images used in the research paper had their pixel values normalized from 0 to 255, to values between -0.1 and 1.175. The reason for normalization is to ensure that the batch of images have a mean of 0 and a standard deviation of 1, the benefits of this is seen in the reduction in the amount of training time. In the image classification with LeNet-5 example below, we’ll be normalizing the pixel values of the images to take on values between 0 to 1.</p>
+
+<p><strong>The LeNet-5 architecture utilizes two significant types of layer construct: convolutional layers and subsampling layers.</strong></p>
+
+<ul>
+  <li>Convolution layers</li>
+  <li>Sub-sampling layers</li>
+</ul>
+
+<p>Within the research paper and the image below, convolutional layers are identified with the ‘Cx’, and subsampling layers are identified with ‘Sx’, where ‘x’ is the sequential position of the layer within the architecture. ‘Fx’ is used to identify fully connected layers. This method of layer identification can be seen in the image above.</p>
+
+<p>The official first layer convolutional layer C1 produces as output 6 feature maps, and has a kernel size of 5x5. The kernel/filter is the name given to the window that contains the weight values that are utilized during the convolution of the weight values with the input values. 5x5 is also indicative of the local receptive field size each unit or neuron within a convolutional layer. The dimensions of the six feature maps the first convolution layer produces are 28x28.</p>
+
+<p>A subsampling layer ‘S2’ follows the ‘C1’ layer’. The ‘S2’ layer halves the dimension of the feature maps it receives from the previous layer; this is known commonly as downsampling.</p>
+
+<p>The ‘S2’ layer also produces 6 feature maps, each one corresponding to the feature maps passed as input from the previous layer. This link contains more information on subsampling layers.</p>
+
+<p>More information on the rest of the LeNet-5 layers is covered in the implementation section.
+Below is a table that summarises the key features of each layer:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Layer name</th>
+      <th style="text-align: center">Input</th>
+      <th style="text-align: center">Kernel size</th>
+      <th style="text-align: center">Output</th>
+      <th style="text-align: center">Activation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">Input</td>
+      <td style="text-align: center">28x28x1</td>
+      <td style="text-align: center">None</td>
+      <td style="text-align: center">28x28x1</td>
+      <td style="text-align: center">Relu</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Convolution 1</td>
+      <td style="text-align: center">28x28x1</td>
+      <td style="text-align: center">5x5</td>
+      <td style="text-align: center">24x24x6</td>
+      <td style="text-align: center">Relu</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Max pooling 1</td>
+      <td style="text-align: center">24x24x6</td>
+      <td style="text-align: center">2x2</td>
+      <td style="text-align: center">12x12x6</td>
+      <td style="text-align: center">Relu</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Convolution 2</td>
+      <td style="text-align: center">12x12x6</td>
+      <td style="text-align: center">5x5</td>
+      <td style="text-align: center">8x8x16</td>
+      <td style="text-align: center">Relu</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Max pooling 2</td>
+      <td style="text-align: center">8x8x16</td>
+      <td style="text-align: center">1x1</td>
+      <td style="text-align: center">4x4x16</td>
+      <td style="text-align: center">Relu</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Flatten</td>
+      <td style="text-align: center">4x4x16</td>
+      <td style="text-align: center">None</td>
+      <td style="text-align: center">256x1</td>
+      <td style="text-align: center">None</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Dense 1</td>
+      <td style="text-align: center">256x1</td>
+      <td style="text-align: center">None</td>
+      <td style="text-align: center">120x1</td>
+      <td style="text-align: center">Relu</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Dense 2</td>
+      <td style="text-align: center">120x1</td>
+      <td style="text-align: center">None</td>
+      <td style="text-align: center">84x1</td>
+      <td style="text-align: center">Relu</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Dense 3</td>
+      <td style="text-align: center">84x1</td>
+      <td style="text-align: center">None</td>
+      <td style="text-align: center">10x1</td>
+      <td style="text-align: center">Softmax</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br />
+We begin implementation by importing the libraries we will be utilizing:</p>
+
+<ul>
+  <li>TensorFlow: An open-source platform for the implementation, training, and deployment of machine learning models.</li>
+  <li>Keras: An open-source library used for the implementation of neural network architectures that run on both CPUs and GPUs.</li>
+  <li>Numpy: A library for numerical computation with n-dimensional arrays.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">from</span> <span class="nn">tensorflow</span> <span class="kn">import</span> <span class="n">keras</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras</span> <span class="kn">import</span> <span class="n">layers</span><span class="p">,</span> <span class="n">losses</span><span class="p">,</span> <span class="n">optimizers</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras.datasets</span> <span class="kn">import</span> <span class="n">mnist</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+</code></pre></div></div>
+<p>Next, we load the MNIST dataset using the Keras library. The Keras library has a suite of datasets readily available for use with easy accessibility.</p>
+
+<p>We are also required to partition the dataset into testing, validation and training. Here are some quick descriptions of each partition category.</p>
+
+<ul>
+  <li>Training Dataset: This is the group of our dataset used to train the neural network directly. Training data refers to the dataset partition exposed to the neural network during training.</li>
+  <li>Validation Dataset: This group of the dataset is utilized during training to assess the performance of the network at various iterations.</li>
+  <li>Test Dataset: This partition of the dataset evaluates the performance of our network after the completion of the training phase.</li>
+</ul>
+
+<p>It is also required that the pixel intensity of the images within the dataset are normalized from the value range 0–255 to 0–1.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">xTrain</span><span class="p">,</span> <span class="n">yTrain</span><span class="p">),</span> <span class="p">(</span><span class="n">xTest</span><span class="p">,</span> <span class="n">yTest</span><span class="p">)</span> <span class="o">=</span> <span class="n">mnist</span><span class="p">.</span><span class="n">load_data</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">indexes</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">xTrain</span><span class="p">),</span> <span class="mi">9</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">indexes</span><span class="p">)):</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">xTrain</span><span class="p">[</span><span class="n">indexes</span><span class="p">[</span><span class="n">i</span><span class="p">]])</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="n">yTrain</span><span class="p">[</span><span class="n">indexes</span><span class="p">[</span><span class="n">i</span><span class="p">]])</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<p>In the code snippet above, we expand the dimensions of the training and dataset. The reason we do this is that during the training and evaluation phases, the network expects the images to be presented within batches; the extra dimension is representative of the numbers of images in a batch.</p>
+
+<p>The code below is the main part where we implement the actual LeNet-5 based neural network. Keras provides tools required to implement the classification model. Keras presents a Sequential API for stacking layers of the neural network on top of each other.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">numClasses</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="n">inputs</span> <span class="o">=</span> <span class="n">layers</span><span class="p">.</span><span class="n">Input</span><span class="p">((</span><span class="mi">28</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="p">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">"relu"</span><span class="p">)(</span><span class="n">inputs</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="p">.</span><span class="n">MaxPool2D</span><span class="p">()(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="p">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">"relu"</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="p">.</span><span class="n">MaxPool2D</span><span class="p">()(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="p">.</span><span class="n">Flatten</span><span class="p">()(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="p">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">120</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">"relu"</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="p">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">84</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">"relu"</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">layers</span><span class="p">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">numClasses</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">leNet5</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="n">outputs</span><span class="p">)</span>
+<span class="n">leNet5</span><span class="p">.</span><span class="nb">compile</span><span class="p">(</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="n">losses</span><span class="p">.</span><span class="n">SparseCategoricalCrossentropy</span><span class="p">(</span><span class="n">from_logits</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">optimizers</span><span class="p">.</span><span class="n">Adam</span><span class="p">(),</span>
+    <span class="n">metrics</span> <span class="o">=</span> <span class="p">[</span><span class="s">"accuracy"</span><span class="p">]</span>
+<span class="p">)</span>
+<span class="n">leNet5</span><span class="p">.</span><span class="n">summary</span><span class="p">()</span>
+</code></pre></div></div>
+
+<pre><code class="language-output">Model: "model"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+input_1 (InputLayer)         [(None, 28, 28, 1)]       0         
+_________________________________________________________________
+conv2d (Conv2D)              (None, 24, 24, 6)         156       
+_________________________________________________________________
+max_pooling2d (MaxPooling2D) (None, 12, 12, 6)         0         
+_________________________________________________________________
+conv2d_1 (Conv2D)            (None, 8, 8, 16)          2416      
+_________________________________________________________________
+max_pooling2d_1 (MaxPooling2 (None, 4, 4, 16)          0         
+_________________________________________________________________
+flatten (Flatten)            (None, 256)               0         
+_________________________________________________________________
+dense (Dense)                (None, 120)               30840     
+_________________________________________________________________
+dense_1 (Dense)              (None, 84)                10164     
+_________________________________________________________________
+dense_2 (Dense)              (None, 10)                850       
+=================================================================
+Total params: 44,426
+Trainable params: 44,426
+Non-trainable params: 0
+</code></pre>
+
+<p>We first assign the variable <code class="language-plaintext highlighter-rouge">lenet_5_model</code> to an instance of the tf.keras.Sequential class constructor. Within the class constructor, we then proceed to define the layers within our model.</p>
+
+<p>The C1 layer is defined by the <code class="language-plaintext highlighter-rouge">linekeras.layers.Conv2D(6, kernel_size=5, strides=1, activation='tanh', input_shape=train_x[0].shape, padding='same')</code>. We are using the <code class="language-plaintext highlighter-rouge">tf.keras.layers.Conv2D</code> class to construct the convolutional layers within the network. We pass a couple of arguments which are described here.</p>
+
+<ul>
+  <li>Activation Function: A mathematical operation that transforms the result or signals of neurons into a normalized output. An activation function is a component of a neural network that introduces non-linearity within the network. The inclusion of the activation function enables the neural network to have greater representational power and solve complex functions.</li>
+</ul>
+
+<p>The rest of the convolutional layers follow the same layer definition as C1 with some different values entered for the arguments.</p>
+
+<p>In the original paper where the LeNet-5 architecture was introduced, subsampling layers were utilized. Within the subsampling layer the average of the pixel values that fall within the 2x2 pooling window was taken, after that, the value is multiplied with a coefficient value. A bias is added to the final result, and all this is done before the values are passed through the activation function.</p>
+
+<p>But in our implemented LeNet-5 neural network, we’re utilizing the tf.keras.layers.AveragePooling2D constructor. We don’ t pass any arguments into the constructor as some default values for the required arguments are initialized when the constructor is called. Remember that the pooling layer role within the network is to downsample the feature maps as they move through the network.</p>
+
+<p>There are two more types of layers within the network, the flatten layer and the dense layers.</p>
+
+<p>The flatten layer is created with the class constructor tf.keras.layers.Flatten.</p>
+
+<p>The purpose of this layer is to transform its input to a 1-dimensional array that can be fed into the subsequent dense layers.</p>
+
+<p>The dense layers have a specified number of units or neurons within each layer, F6 has 84, while the output layer has ten units.</p>
+
+<p>The last dense layer has ten units that correspond to the number of classes that are within the MNIST dataset. The activation function for the output layer is a softmax activation function.</p>
+
+<ul>
+  <li>Softmax: An activation function that is utilized to derive the probability distribution of a set of numbers within an input vector. The output of a softmax activation function is a vector in which its set of values represents the probability of an occurrence of a class/event. The values within the vector all add up to 1.</li>
+</ul>
+
+<p>Keras provides the ‘compile’ method through the model object we have instantiated earlier. The compile function enables the actual building of the model we have implemented behind the scene with some additional characteristics such as the loss function, optimizer, and metrics.</p>
+
+<p>To train the network, we utilize a loss function that calculates the difference between the predicted values provided by the network and actual values of the training data.</p>
+
+<p>The loss values accompanied by an optimization algorithm(Adam) facilitates the number of changes made to the weights within the network. Supporting factors such as momentum and learning rate schedule, provide the ideal environment to enable the network training to converge, herby getting the loss values as close to zero as possible.</p>
+
+<p>During training, we’ll also validate our model after every epoch with the valuation dataset partition created earlier</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">history</span> <span class="o">=</span> <span class="n">leNet5</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">xTrain</span><span class="p">,</span> <span class="n">yTrain</span><span class="p">,</span> <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">xTest</span><span class="p">,</span><span class="n">yTest</span><span class="p">),</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</code></pre></div></div>
+<pre><code class="language-output">Epoch 1/10
+938/938 [==============================] - 10s 10ms/step - loss: 1.1559 - accuracy: 0.7988 - val_loss: 0.1056 - val_accuracy: 0.9681
+Epoch 2/10
+938/938 [==============================] - 9s 10ms/step - loss: 0.0982 - accuracy: 0.9690 - val_loss: 0.0759 - val_accuracy: 0.9763
+Epoch 3/10
+938/938 [==============================] - 9s 10ms/step - loss: 0.0595 - accuracy: 0.9809 - val_loss: 0.0706 - val_accuracy: 0.9792
+Epoch 4/10
+938/938 [==============================] - 9s 10ms/step - loss: 0.0545 - accuracy: 0.9836 - val_loss: 0.0723 - val_accuracy: 0.9770
+Epoch 5/10
+938/938 [==============================] - 9s 10ms/step - loss: 0.0472 - accuracy: 0.9856 - val_loss: 0.0594 - val_accuracy: 0.9825
+Epoch 6/10
+938/938 [==============================] - 9s 10ms/step - loss: 0.0364 - accuracy: 0.9877 - val_loss: 0.0532 - val_accuracy: 0.9850
+Epoch 7/10
+938/938 [==============================] - 9s 10ms/step - loss: 0.0358 - accuracy: 0.9887 - val_loss: 0.0813 - val_accuracy: 0.9776
+Epoch 8/10
+938/938 [==============================] - 10s 10ms/step - loss: 0.0333 - accuracy: 0.9895 - val_loss: 0.0682 - val_accuracy: 0.9829
+Epoch 9/10
+938/938 [==============================] - 9s 10ms/step - loss: 0.0271 - accuracy: 0.9916 - val_loss: 0.0618 - val_accuracy: 0.9839
+Epoch 10/10
+938/938 [==============================] - 9s 10ms/step - loss: 0.0265 - accuracy: 0.9913 - val_loss: 0.0729 - val_accuracy: 0.9835
+313/313 [==============================] - 1s 3ms/step - loss: 0.0729 - accuracy: 0.9835
+</code></pre>
+<p>After training, you will notice that your model achieves a validation accuracy of over 90%. But for a more explicit verification of the performance of the model on an unseen dataset, we will evaluate the trained model on the test dataset partition created earlier.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">leNet5</span><span class="p">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">xTest</span><span class="p">,</span> <span class="n">yTest</span><span class="p">)</span>
+</code></pre></div></div>
+<pre><code class="language-output">[0.07292196899652481, 0.9835000038146973]
+</code></pre>
+
+<p>After training my model, I was able to achieve 98% accuracy on the test dataset, which is quite useful for such a simple network.</p>
+
+<h1 id="analyze-the-model-training-and-performance">Analyze the model training and performance</h1>
+
+<h2 id="confusion-matrix">Confusion matrix</h2>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">accuracy_score</span>
+
+<span class="n">yPred</span> <span class="o">=</span> <span class="n">leNet5</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">xTest</span><span class="p">)</span>
+<span class="n">yPred</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">yPred</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">conf</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">yTest</span><span class="p">,</span> <span class="n">yPred</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">yPred</span><span class="p">,</span> <span class="n">yTest</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Accuracy Score:"</span><span class="p">,</span> <span class="n">accuracy</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">conf</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="s">"Confusion matrix"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h2 id="accuracy-and-error-plots">Accuracy and error plots</h2>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">loss_train</span> <span class="o">=</span> <span class="n">history</span><span class="p">.</span><span class="n">history</span><span class="p">[</span><span class="s">'loss'</span><span class="p">]</span>
+<span class="n">loss_val</span> <span class="o">=</span> <span class="n">history</span><span class="p">.</span><span class="n">history</span><span class="p">[</span><span class="s">'val_loss'</span><span class="p">]</span>
+<span class="n">epochs</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">11</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">loss_train</span><span class="p">,</span> <span class="s">'g'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">'Training loss'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">loss_val</span><span class="p">,</span> <span class="s">'b'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">'validation loss'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Training and Validation loss'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'Epochs'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'Loss'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>You can see the complete project code in my github repo from <a href="https://github.com/mralinp/cnn-networks/tree/main/lenet5"><strong>here</strong></a>.</p>
+
+<p>I hope you found the article useful.</p>
+
+    </div>
+</article>
+
+            </div>
+        </div>
+    </div>
+    
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous">
+    </script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous">
+    </script>
+    <!-- jQuery Custom Scroller CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js">
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#sidebar").mCustomScrollbar({
+                theme: "minimal"
+            });
+
+            $('#sidebarCollapse').on('click', function() {
+                $('#sidebar, #content').toggleClass('active');
+                $('.collapse.in').toggleClass('in');
+                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+            });
+        });
+    </script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML">
+    </script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']], processEscapes: true}, jax: ["input/TeX","input/MathML","input/AsciiMath","output/CommonHTML"], extensions: ["tex2jax.js","mml2jax.js","asciimath2jax.js","MathMenu.js","MathZoom.js","AssistiveMML.js",
+        "[Contrib]/a11y/accessibility-menu.js"], TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"], equationNumbers: { autoNumber: "AMS" } } });
+    </script>
+
+</body>
+
+</html>
