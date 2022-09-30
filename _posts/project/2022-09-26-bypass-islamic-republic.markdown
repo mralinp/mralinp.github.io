@@ -342,7 +342,7 @@ As the Nginx docker image is available on the docker hub, you can use the Nginx 
     <img width="20%" src="/assets/images/blog/vpn-setup/docker-logo.png"/>
 </div>
 
-# 6. Final worlds
+# 6. Final words
 Some of you might have trouble using my solution for making your private network and you can read the article references and a little search on DuckDuckGo (Or google) to find the solution. I hope you find this article useful.
 
 for a better world,<br>
