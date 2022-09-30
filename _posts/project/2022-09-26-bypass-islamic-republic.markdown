@@ -349,7 +349,7 @@ for a better world,<br>
 Regards
 
 # References
-1. [https://www.digitalocean.com/community/tutorials/how-to-set-up-wireguard-on-ubuntu-20-04](https://www.digitalocean.com/community/tutorials/how-to-set-up-wireguard-on-ubuntu-20-04)
-2. [https://github.com/ngoduykhanh/wireguard-ui](https://github.com/ngoduykhanh/wireguard-ui)
-3. [https://ericiniguez.com/p/wireguard-vpn-and-nginx-reverse-proxy/](https://ericiniguez.com/p/wireguard-vpn-and-nginx-reverse-proxy/)
-4. [https://nginxproxymanager.com/guide/#project-goal](https://nginxproxymanager.com/guide/#project-goal)
+- [https://www.digitalocean.com/community/tutorials/how-to-set-up-wireguard-on-ubuntu-20-04](https://www.digitalocean.com/community/tutorials/how-to-set-up-wireguard-on-ubuntu-20-04)
+- [https://github.com/ngoduykhanh/wireguard-ui](https://github.com/ngoduykhanh/wireguard-ui)
+- [https://ericiniguez.com/p/wireguard-vpn-and-nginx-reverse-proxy/](https://ericiniguez.com/p/wireguard-vpn-and-nginx-reverse-proxy/)
+- [https://nginxproxymanager.com/guide/#project-goal](https://nginxproxymanager.com/guide/#project-goal)
