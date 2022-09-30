@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-09-30T16:20:24+03:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">mralinp</title><subtitle>My awesome blog</subtitle><entry><title type="html">How to bypass the ‘Islamic Republic’ internet filtering?</title><link href="http://localhost:4000/project/network/security/vpn/2022/09/26/bypass-islamic-republic.html" rel="alternate" type="text/html" title="How to bypass the ‘Islamic Republic’ internet filtering?" /><published>2022-09-26T17:50:22+03:30</published><updated>2022-09-26T17:50:22+03:30</updated><id>http://localhost:4000/project/network/security/vpn/2022/09/26/bypass-islamic-republic</id><content type="html" xml:base="http://localhost:4000/project/network/security/vpn/2022/09/26/bypass-islamic-republic.html"><![CDATA[<h1 id="1-intro">1. Intro</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-09-30T20:33:00+03:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">mralinp</title><subtitle>My awesome blog</subtitle><entry><title type="html">How to bypass the ‘Islamic Republic’ internet filtering?</title><link href="http://localhost:4000/project/network/security/vpn/2022/09/26/bypass-islamic-republic.html" rel="alternate" type="text/html" title="How to bypass the ‘Islamic Republic’ internet filtering?" /><published>2022-09-26T17:50:22+03:30</published><updated>2022-09-26T17:50:22+03:30</updated><id>http://localhost:4000/project/network/security/vpn/2022/09/26/bypass-islamic-republic</id><content type="html" xml:base="http://localhost:4000/project/network/security/vpn/2022/09/26/bypass-islamic-republic.html"><![CDATA[<h1 id="1-intro">1. Intro</h1>
 
 <p>Some days, we hear some stories around the world that governments argue with people about some wrong laws, opaque decisions, bad economic environment, financial corruption, and many other reasons. To control the situation, one of their solutions is to disconnect people from the world by forcing ISPs and top-tier provider companies to shut down their internet connections. Some of these countries are China, North Korea, And the Islamic Republic Of Iran. The people living in these countries may do their jobs with the internet and in other words, their life has a direct relation with the connectivity to online services. In this situation, some necessary jobs that are in scathe are Developers, online shops, reporters, and many more. As a developer, I can’t live without the internet and my professional life is mixed with this technology. So I have to solve this problem by myself and in this case, I can’t accept the government’s politics. Let’s begin.</p>
 
@@ -21,7 +21,7 @@
 <p>WireGuard is a communication protocol and free and open-source software that implements encrypted virtual private networks, and was designed with the goals of ease of use, high speed performance, and low attack surface. It aims for better performance and more power than IPsec and OpenVPN, two common tunneling protocols (<a href="https://en.wikipedia.org/wiki/WireGuard">Wikipedia</a>).</p>
 
 <div align="center">
-    <img width="25%" src="/assets/images/blog/vpn-setup/wg-logo.png" />
+    <img width="50%" src="/assets/images/blog/vpn-setup/wg-logo.png" />
 </div>
 
 <p>For this tutorial, I choose Wireguard as the VPN protocol of this article. Installation and configuration of the Wireguard VPN server are quite simple and easy to understand for those who are not quite familiar with some concepts of networking in Linux, in comparison with other protocols such as OpenVPN.</p>
@@ -86,8 +86,8 @@ $ ufw enable  # start the firewall
 
 <p>Now, run wireguard-ui using:</p>
 
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">./wireguard-ui
-</span></code></pre></div></div>
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>./wireguard-ui
+</code></pre></div></div>
 <blockquote>
   <p>Note: If the above command failed, make sure that you gave the run access to that binary file using <code class="language-plaintext highlighter-rouge">$ chmod +x wireguard-ui</code></p>
 </blockquote>
@@ -129,8 +129,8 @@ password: admin
 <p>Note your device’s name since you will add it to the iptables rules in the next step.
 To add firewall rules to your WireGuard Server, open the /etc/wireguard/wg0.conf file with vim or your preferred editor again.</p>
 
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">vim /etc/wireguard/wg0.conf
-</span></code></pre></div></div>
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>vim /etc/wireguard/wg0.conf
+</code></pre></div></div>
 <p>At the bottom of the file after the <code class="language-plaintext highlighter-rouge">SaveConfig = true</code> line, paste the following lines:</p>
 
 <pre><code class="language-txt">PostUp = ufw route allow in on wg0 out on eth0
@@ -166,8 +166,8 @@ PreDown = ip6tables -t nat -D POSTROUTING -o eth0 -j MASQUERADE
 
 <p>In case you forgot to open the SSH port when following the prerequisite tutorial, add it here too:</p>
 
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">ufw allow 51820/udp #</span><span class="w"> </span>The chosen VPN server port <span class="o">(</span>you can change it to what ever you want<span class="o">)</span>
-<span class="gp">ufw allow OpenSSH   #</span><span class="w"> </span>To be able to connect the server using openSSH trough port 22
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>ufw allow 51820/udp <span class="c"># The chosen VPN server port (you can change it to what ever you want)</span>
+<span class="gp">$</span><span class="w"> </span>ufw allow OpenSSH   <span class="c"># To be able to connect the server using openSSH trough port 22</span>
 </code></pre></div></div>
 
 <blockquote>
@@ -175,14 +175,14 @@ PreDown = ip6tables -t nat -D POSTROUTING -o eth0 -j MASQUERADE
 </blockquote>
 
 <p>After adding those rules, disable and re-enable UFW to restart it and load the changes from all of the files you’ve modified:</p>
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">ufw disable
-ufw enable
-</span></code></pre></div></div>
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>ufw disable
+<span class="gp">$</span><span class="w"> </span>ufw <span class="nb">enable</span>
+</code></pre></div></div>
 
 <p>You can confirm the rules are in place by running the ufw status command. Run it, and you should receive output like the following:</p>
 
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">ufw status
-</span></code></pre></div></div>
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>ufw status
+</code></pre></div></div>
 <pre><code class="language-output">Status: active
 
 To                         Action      From
@@ -199,15 +199,15 @@ To                         Action      From
 <p>WireGuard can be configured to run as a systemd service using its built-in wg-quick script. While you could manually use the wg command to create the tunnel every time you want to use the VPN, doing so is a manual process that becomes repetitive and error prone. Instead, you can use systemctl to manage the tunnel with the help of the wg-quick script.</p>
 
 <p>Using a systemd service means that you can configure WireGuard to start up at boot so that you can connect to your VPN at any time as long as the server is running. To do this, enable the wg-quick service for the wg0 tunnel that you’ve defined by adding it to systemctl:</p>
-<div class="language-terminal highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">systemctl enable wg-quick@wg0
-</span></code></pre></div></div>
+<div class="language-terminal highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>systemctl <span class="nb">enable </span>wg-quick@wg0
+</code></pre></div></div>
 <p>Now start the service:</p>
 
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">systemctl start wg-quick@wg0
-</span></code></pre></div></div>
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>systemctl start wg-quick@wg0
+</code></pre></div></div>
 <p>Double check that the WireGuard service is active with the following command. You should see active (running) in the output:</p>
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">systemctl status wg-quick@wg0.service
-</span></code></pre></div></div>
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>systemctl status wg-quick@wg0.service
+</code></pre></div></div>
 <pre><code class="language-output">● wg-quick@wg0.service - WireGuard via wg-quick(8) for wg0
      Loaded: loaded (/lib/systemd/system/wg-quick@.service; enabled; vendor preset: enabled)
      Active: active (exited) since Wed 2021-08-25 15:24:14 UTC; 5s ago
@@ -246,7 +246,7 @@ Aug 25 15:24:14 wg0 systemd[1]: Finished WireGuard via wg-quick(8) for wg0.
 <h2 id="51-nginx-reverse-proxy">5.1 Nginx Reverse Proxy</h2>
 <p>Nginx is a popular web-server application that is used to deploy various web applications and it has so many capabilities. One of the configurations that you can set for Nginx is to redirect incoming requests to a specific address by setting proxy routes. As we know that WireGuard traffic is a stream of data and its UDP. So, we have to set a stream proxy route for our purpose.</p>
 <div align="center">
-    <img width="20%" src="/assets/images/blog/vpn-setup/nginx-logo.png" />
+    <img width="50%" src="/assets/images/blog/vpn-setup/nginx-logo.png" />
 </div>
 <p><br /></p>
 
@@ -280,7 +280,7 @@ Aug 25 15:24:14 wg0 systemd[1]: Finished WireGuard via wg-quick(8) for wg0.
 </blockquote>
 
 <div align="center">
-    <img width="20%" src="/assets/images/blog/vpn-setup/wg-client.png" />
+    <img src="/assets/images/blog/vpn-setup/wg-client.png" />
 </div>
 <p><br /></p>
 
@@ -317,22 +317,22 @@ PersistentKeepalive = 15
 <h2 id="52-nginx-on-docker">5.2 Nginx on docker</h2>
 <p>As the Nginx docker image is available on the docker hub, you can use the Nginx container instead of installing Nginx on a separate VM. You can run your proxy server on the cloud which is cheaper cost beneficial than renting a virtual machine. Also, some proxy managers are available on docker-hub with a web-based interface such as the popular <a href="https://nginxproxymanager.com/guide/#project-goal"><strong>nginx-proxy-manager</strong></a>.</p>
 <div align="center">
-    <img width="20%" src="/assets/images/blog/vpn-setup/docker-logo.png" />
+    <img width="50%" src="/assets/images/blog/vpn-setup/docker-logo.png" />
 </div>
 
-<h1 id="6-final-worlds">6. Final worlds</h1>
+<h1 id="6-final-words">6. Final words</h1>
 <p>Some of you might have trouble using my solution for making your private network and you can read the article references and a little search on DuckDuckGo (Or google) to find the solution. I hope you find this article useful.</p>
 
 <p>for a better world,<br />
 Regards</p>
 
 <h1 id="references">References</h1>
-<ol>
+<ul>
   <li><a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-wireguard-on-ubuntu-20-04">https://www.digitalocean.com/community/tutorials/how-to-set-up-wireguard-on-ubuntu-20-04</a></li>
   <li><a href="https://github.com/ngoduykhanh/wireguard-ui">https://github.com/ngoduykhanh/wireguard-ui</a></li>
   <li><a href="https://ericiniguez.com/p/wireguard-vpn-and-nginx-reverse-proxy/">https://ericiniguez.com/p/wireguard-vpn-and-nginx-reverse-proxy/</a></li>
   <li><a href="https://nginxproxymanager.com/guide/#project-goal">https://nginxproxymanager.com/guide/#project-goal</a></li>
-</ol>]]></content><author><name>Ali N. Parizi</name></author><category term="project" /><category term="network" /><category term="security" /><category term="vpn" /><summary type="html"><![CDATA[1. Intro]]></summary></entry><entry><title type="html">What is an AutoEncoder?</title><link href="http://localhost:4000/blog/ai/machine-learning/deep-learning/2022/09/16/auto-encoder.html" rel="alternate" type="text/html" title="What is an AutoEncoder?" /><published>2022-09-16T13:21:13+04:30</published><updated>2022-09-16T13:21:13+04:30</updated><id>http://localhost:4000/blog/ai/machine-learning/deep-learning/2022/09/16/auto-encoder</id><content type="html" xml:base="http://localhost:4000/blog/ai/machine-learning/deep-learning/2022/09/16/auto-encoder.html"><![CDATA[<h1 id="1-intro">1. Intro</h1>
+</ul>]]></content><author><name>Ali N. Parizi</name></author><category term="project" /><category term="network" /><category term="security" /><category term="vpn" /><summary type="html"><![CDATA[1. Intro]]></summary></entry><entry><title type="html">What is an AutoEncoder?</title><link href="http://localhost:4000/blog/ai/machine-learning/deep-learning/2022/09/16/auto-encoder.html" rel="alternate" type="text/html" title="What is an AutoEncoder?" /><published>2022-09-16T13:21:13+04:30</published><updated>2022-09-16T13:21:13+04:30</updated><id>http://localhost:4000/blog/ai/machine-learning/deep-learning/2022/09/16/auto-encoder</id><content type="html" xml:base="http://localhost:4000/blog/ai/machine-learning/deep-learning/2022/09/16/auto-encoder.html"><![CDATA[<h1 id="1-intro">1. Intro</h1>
 <p>AutoEncoder is an unsupervised artificial neural network that learns how to efficiently compress and encode data then learns how to reconstruct the data back from the reduced encoded representation to a representation that is as close to the original input as possible.
 AutoEncoder, by design, reduces data dimensions by learning how to ignore the noise in the data.
 Here is an example of the input/output image from the MNIST dataset to an AutoEncoder.</p>

@@ -31,7 +31,7 @@ It provides access to resources that are inaccessible on the public network and 
 WireGuard is a communication protocol and free and open-source software that implements encrypted virtual private networks, and was designed with the goals of ease of use, high speed performance, and low attack surface. It aims for better performance and more power than IPsec and OpenVPN, two common tunneling protocols ([Wikipedia](https://en.wikipedia.org/wiki/WireGuard)). 
 
 <div align=center>
-    <img width="25%" src="/assets/images/blog/vpn-setup/wg-logo.png"/>
+    <img width="50%" src="/assets/images/blog/vpn-setup/wg-logo.png"/>
 </div>
 
 For this tutorial, I choose Wireguard as the VPN protocol of this article. Installation and configuration of the Wireguard VPN server are quite simple and easy to understand for those who are not quite familiar with some concepts of networking in Linux, in comparison with other protocols such as OpenVPN. 
@@ -264,7 +264,7 @@ Congratulations, till now, you have configured a Virtual private network for you
 ## 5.1 Nginx Reverse Proxy
 Nginx is a popular web-server application that is used to deploy various web applications and it has so many capabilities. One of the configurations that you can set for Nginx is to redirect incoming requests to a specific address by setting proxy routes. As we know that WireGuard traffic is a stream of data and its UDP. So, we have to set a stream proxy route for our purpose.
 <div align=center>
-    <img width="20%" src="/assets/images/blog/vpn-setup/nginx-logo.png"/>
+    <img width="50%" src="/assets/images/blog/vpn-setup/nginx-logo.png"/>
 </div>
 <br>
 
@@ -300,7 +300,7 @@ $ service nginx restart
 > Note: In the config above, I opened 51820 port on my middle server and redirected incoming requests through this port to the target VPN server which we have wireguard installed. The first port number on the config `51820` is the port that I want to open on my middle server and the other one is the port I chose for my VPN server. You have to change these numbers if you chose something else.
 
 <div align=center>
-    <img width="20%" src="/assets/images/blog/vpn-setup/wg-client.png"/>
+    <img src="/assets/images/blog/vpn-setup/wg-client.png"/>
 </div>
 <br>
 
@@ -339,7 +339,7 @@ PersistentKeepalive = 15
 ## 5.2 Nginx on docker
 As the Nginx docker image is available on the docker hub, you can use the Nginx container instead of installing Nginx on a separate VM. You can run your proxy server on the cloud which is cheaper cost beneficial than renting a virtual machine. Also, some proxy managers are available on docker-hub with a web-based interface such as the popular [**nginx-proxy-manager**](https://nginxproxymanager.com/guide/#project-goal).
 <div align=center>
-    <img width="20%" src="/assets/images/blog/vpn-setup/docker-logo.png"/>
+    <img width="50%" src="/assets/images/blog/vpn-setup/docker-logo.png"/>
 </div>
 
 # 6. Final words
