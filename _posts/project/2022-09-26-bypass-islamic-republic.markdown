@@ -34,9 +34,9 @@ WireGuard is a communication protocol and free and open-source software that imp
     <img width="50%" src="/assets/images/blog/vpn-setup/wg-logo.png"/>
 </div>
 
-For this tutorial, I choose Wireguard as the VPN protocol of this article. Installation and configuration of the Wireguard VPN server are quite simple and easy to understand for those who are not quite familiar with some concepts of networking in Linux, in comparison with other protocols such as OpenVPN. 
+For this tutorial, I choose Wireguard as the VPN protocol of this article. Installation and configuration of the Wireguard VPN server are quite simple and easy to understand for those who are not familiar with some concepts of networking in Linux in comparison with other protocols such as OpenVPN. 
 
-To get started, you need a Virtual Machine(VM) accessible through the internet via SSH. Let's assume my VM IP address is `77.222.67.140`, I can connect to that VM using SSH as below:
+To get started, you need a Virtual Machine(VM) accessible through the internet via SSH in outside world. Let's assume my VM IP address is `77.222.67.140`, I can connect to it using SSH as below:
 
 ```console
 $ ssh root@77.222.67.140
@@ -341,15 +341,162 @@ As the Nginx docker image is available on the docker hub, you can use the Nginx 
 <div align=center>
     <img width="50%" src="/assets/images/blog/vpn-setup/docker-logo.png"/>
 </div>
+<br>
 
-# 6. Final words
-Some of you might have trouble using my solution for making your private network and you can read the article references and a little search on DuckDuckGo (Or google) to find the solution. I hope you find this article useful.
+# 6. WireGuard Over TCP (Optional)
+Wireguard itself is working only on UDP because it aims to be as fast as possible but, some providers may block UDP packets using their firewalls. This will make us some problems and prevents WireGuard to work properly. To tackle this issue, we have to convert UDP packets into TCP packets and transfer them through the network after delivering the packets to the VPN server, revert the TCP packets into UDP and pass them to the WireGuard service. This goal can be reached using [**udptunnel**](http://www1.cs.columbia.edu/~lennox/udptunnel/). ([**udp2raw**]() is another popular UDP to TCP converter)
+
+> Note: Udptunnel does not support IPv6.
+
+Udptunnel is a simple application written in c and It should be run on two endpoints. On one end, it listens to incoming UDP packets on a specific port and converts them to TCP packets, then it transfers the TCP packet to the destination address which is running a udptunnel server on the other endpoint. In our case, the first endpoint is our middle server which is the local server inside the local intranet. Obviously, the second endpoint is our machine inside the outer world.
+
+<div align=center>
+    <img src="/assets/images/blog/vpn-setup/udp2raw.svg"/>
+</div>
+<br>
+
+
+Udptunnel can be run in two modes server mode and client mode. You have to run the first instance in client mode and the second one as the server. In server mode it listens for TCP packets and transfers them back into UDP and in client mode receives UDP packets and transfers them to TCP.
+
+Let's start with the server, the machine located in the open world. First, we have to download the source code of udptunnel:
+
+```console
+$ wget https://github.com/rfc1036/udptunnel/archive/refs/heads/master.zip
+```
+
+Then we have to build the source code using the build-essential **make** but before that, run the command below to be sure you have the required packages:
+
+```console
+$ sudo apt install build-essential pkg-config zip unzip -y
+```
+
+Let's unzip the downloaded source codes:
+```console
+$ unzip master.zip
+```
+
+And build the source files:
+
+```console
+$ cd udptunnle-master
+$ sudo make
+$ sudo make install 
+```
+
+Now let's pick a TCP port and open the port on the firewall (I chose port 8080):
+
+```console
+$ sudo ufw allow 8080/tcp
+$ sudo ufw disable
+$ sudo ufw enable
+```
+
+Then run the udptunnel as server:
+```console
+$ udptunnel --server 0.0.0.0:8080 --verbose 127.0.0.1:51820
+```
+It listens to the incoming TCP packets from everywhere converts the into UDP and passes them through port 51820 on the localhost which is the WireGuard server port.
+
+Now jump into the middle server and, download and build the udptunnel source codes:
+
+```console
+$ sudo apt install build-essential pkg-config zip unzip --yes
+$ wget https://github.com/rfc1036/udptunnel/archive/refs/heads/master.zip
+$ unzip master.zip
+$ cd udptunnle-master
+$ sudo make
+$ sudo make install 
+```
+
+Pick a udp port, (I chose 8080 again!)
+
+```console
+$ sudo ufw allow 8080
+$ sudo ufw disable
+$ sudo ufw enable
+```
+
+And run the udptunnel client on the middle server:
+
+```
+$ udptunnel  0.0.0.0:8080 77.222.67.140:8080
+```
+
+> Note: In the code above, `77.222.67.140` was the outer machine's address.
+
+That's it, go change the endpoint address to the new UDP port on the middle server:
+
+```txt
+[Interface]
+PrivateKey = [CLIENT_PRIVATE_KEY]
+Address = 10.252.1.1/32
+DNS = 1.1.1.1
+
+[Peer]
+PublicKey = [PUBLIC_KEY]
+PresharedKey = [PRE_SHARED_KEY]
+AllowedIPs = 0.0.0.0/0
+Endpoint = 192.168.0.1:51820 --> change this address to  YOUR_MIDDLE_SERVER_IP:8080
+PersistentKeepalive = 15
+```
+
+After editing the config file on the client's machines:
+
+```txt
+[Interface]
+PrivateKey = [CLIENT_PRIVATE_KEY]
+Address = 10.252.1.1/32
+DNS = 1.1.1.1
+
+[Peer]
+PublicKey = [PUBLIC_KEY]
+PresharedKey = [PRE_SHARED_KEY]
+AllowedIPs = 0.0.0.0/0
+Endpoint = 192.168.0.1:8080
+PersistentKeepalive = 15
+```
+
+That's it.
+
+> Note: udptunnel is not a background server which means you don't have to exit the ssh sessions (on middle and outer servers) while running this application. You can build a systemctl daemon, use [screen](https://linuxhint.com/linux-screen-command-tutorial/) or [tmux](https://en.wikipedia.org/wiki/Tmux) for running this application to prevent crashing of udptunnel after closing the session.
+
+And remember using WireGuard over TCP will affect your connection speed/bandwidth but some networks block or reduce the bandwidth for UDP connections and we have no other choices but running wire guard over TCP. Here is my experience using WireGuard over TCP:
+
+<p align=center>
+    <img src="/assets/images/blog/vpn-setup/speed-test-udp-no-filter.png"/>
+    <br>
+    <span>Bandwidth while using UDP and it's not restricted by government firewall</span>
+</p>
+
+<p align=center>
+    <img src="/assets/images/blog/vpn-setup/speed-test-udp.png"/>
+    <br>
+    <span>Bandwidth while using UDP and it's restricted by government's firewall</span>
+
+</p>
+
+<p align=center>
+    <img src="/assets/images/blog/vpn-setup/speed-test-tcp.png"/>
+    <br>
+    <span>Bandwidth while using WireGuard over TCP</span>
+
+</p>
+
+# 7. Final words
+Some of you might have trouble using my solution for making your private network because of port choosing filtered port numbers. If things were not working change the chosen port numbers and try again. In some cases, government firewalls might block UDP packets and you need to do the solution on [part 6](#6-wireguard-over-tcp-(optional)). 
+
+The reverse proxy could be done using some simple firewall (iptables) rules but I chose Nginx to not be confused with iptables complexities and concepts.
+
+WireGuard VPN server is the newest and best VPN protocol in the world till now, it is secure, fast, and easy to configure, and that's why I chose this protocol to go within this article, but in extreme cases, it can be detected and your servers could be blocked. 
+
+To prevent this, keep the number of your clients as low as possible to prevent high network traffic from going through these servers. Also, you can use other VPN protocols using this abstract solution and find the one which works for you (such as [**Shadowsocks**](https://shadowsocks.org/), [**Google Outline**](https://getoutline.org/), [**OpenVPN**](https://openvpn.net/), [**Softether**](https://www.softether.org/), [**V2ray**](https://www.v2ray.com/), etc.). If you have problems with this article reading the article references and a little search on DuckDuckGo (Or google) might help you to find the solution. I hope you find this article useful.
 
 for a better world,<br>
 Regards
 
 # References
-- [https://www.digitalocean.com/community/tutorials/how-to-set-up-wireguard-on-ubuntu-20-04](https://www.digitalocean.com/community/tutorials/how-to-set-up-wireguard-on-ubuntu-20-04)
-- [https://github.com/ngoduykhanh/wireguard-ui](https://github.com/ngoduykhanh/wireguard-ui)
-- [https://ericiniguez.com/p/wireguard-vpn-and-nginx-reverse-proxy/](https://ericiniguez.com/p/wireguard-vpn-and-nginx-reverse-proxy/)
-- [https://nginxproxymanager.com/guide/#project-goal](https://nginxproxymanager.com/guide/#project-goal)
+- [How to set up wireguard on ubuntu 20.04 (LTS)](https://www.digitalocean.com/community/tutorials/how-to-set-up-wireguard-on-ubuntu-20-04)
+- [Wireguard-ui](https://github.com/ngoduykhanh/wireguard-ui)
+- [Wireguard vpn and nginx reverse proxy](https://ericiniguez.com/p/wireguard-vpn-and-nginx-reverse-proxy/)
+- [Nginx proxy manager](https://nginxproxymanager.com/guide/#project-goal)
+- [WireGuard + udptunnel](https://www.oilandfish.com/posts/wireguard-udptunnel.html)

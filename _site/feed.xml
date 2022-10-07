@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-09-30T20:33:00+03:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">mralinp</title><subtitle>My awesome blog</subtitle><entry><title type="html">How to bypass the ‘Islamic Republic’ internet filtering?</title><link href="http://localhost:4000/project/network/security/vpn/2022/09/26/bypass-islamic-republic.html" rel="alternate" type="text/html" title="How to bypass the ‘Islamic Republic’ internet filtering?" /><published>2022-09-26T17:50:22+03:30</published><updated>2022-09-26T17:50:22+03:30</updated><id>http://localhost:4000/project/network/security/vpn/2022/09/26/bypass-islamic-republic</id><content type="html" xml:base="http://localhost:4000/project/network/security/vpn/2022/09/26/bypass-islamic-republic.html"><![CDATA[<h1 id="1-intro">1. Intro</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-10-07T21:29:36+03:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">mralinp</title><subtitle>My awesome blog</subtitle><entry><title type="html">How to bypass the ‘Islamic Republic’ internet filtering?</title><link href="http://localhost:4000/project/network/security/vpn/2022/09/26/bypass-islamic-republic.html" rel="alternate" type="text/html" title="How to bypass the ‘Islamic Republic’ internet filtering?" /><published>2022-09-26T17:50:22+03:30</published><updated>2022-09-26T17:50:22+03:30</updated><id>http://localhost:4000/project/network/security/vpn/2022/09/26/bypass-islamic-republic</id><content type="html" xml:base="http://localhost:4000/project/network/security/vpn/2022/09/26/bypass-islamic-republic.html"><![CDATA[<h1 id="1-intro">1. Intro</h1>
 
 <p>Some days, we hear some stories around the world that governments argue with people about some wrong laws, opaque decisions, bad economic environment, financial corruption, and many other reasons. To control the situation, one of their solutions is to disconnect people from the world by forcing ISPs and top-tier provider companies to shut down their internet connections. Some of these countries are China, North Korea, And the Islamic Republic Of Iran. The people living in these countries may do their jobs with the internet and in other words, their life has a direct relation with the connectivity to online services. In this situation, some necessary jobs that are in scathe are Developers, online shops, reporters, and many more. As a developer, I can’t live without the internet and my professional life is mixed with this technology. So I have to solve this problem by myself and in this case, I can’t accept the government’s politics. Let’s begin.</p>
 
@@ -24,9 +24,9 @@
     <img width="50%" src="/assets/images/blog/vpn-setup/wg-logo.png" />
 </div>
 
-<p>For this tutorial, I choose Wireguard as the VPN protocol of this article. Installation and configuration of the Wireguard VPN server are quite simple and easy to understand for those who are not quite familiar with some concepts of networking in Linux, in comparison with other protocols such as OpenVPN.</p>
+<p>For this tutorial, I choose Wireguard as the VPN protocol of this article. Installation and configuration of the Wireguard VPN server are quite simple and easy to understand for those who are not familiar with some concepts of networking in Linux in comparison with other protocols such as OpenVPN.</p>
 
-<p>To get started, you need a Virtual Machine(VM) accessible through the internet via SSH. Let’s assume my VM IP address is <code class="language-plaintext highlighter-rouge">77.222.67.140</code>, I can connect to that VM using SSH as below:</p>
+<p>To get started, you need a Virtual Machine(VM) accessible through the internet via SSH in outside world. Let’s assume my VM IP address is <code class="language-plaintext highlighter-rouge">77.222.67.140</code>, I can connect to it using SSH as below:</p>
 
 <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>ssh root@77.222.67.140
 </code></pre></div></div>
@@ -319,19 +319,160 @@ PersistentKeepalive = 15
 <div align="center">
     <img width="50%" src="/assets/images/blog/vpn-setup/docker-logo.png" />
 </div>
+<p><br /></p>
 
-<h1 id="6-final-words">6. Final words</h1>
-<p>Some of you might have trouble using my solution for making your private network and you can read the article references and a little search on DuckDuckGo (Or google) to find the solution. I hope you find this article useful.</p>
+<h1 id="6-wireguard-over-tcp-optional">6. WireGuard Over TCP (Optional)</h1>
+<p>Wireguard itself is working only on UDP because it aims to be as fast as possible but, some providers may block UDP packets using their firewalls. This will make us some problems and prevents WireGuard to work properly. To tackle this issue, we have to convert UDP packets into TCP packets and transfer them through the network after delivering the packets to the VPN server, revert the TCP packets into UDP and pass them to the WireGuard service. This goal can be reached using <a href="http://www1.cs.columbia.edu/~lennox/udptunnel/"><strong>udptunnel</strong></a>. (<a href=""><strong>udp2raw</strong></a> is another popular UDP to TCP converter)</p>
+
+<blockquote>
+  <p>Note: Udptunnel does not support IPv6.</p>
+</blockquote>
+
+<p>Udptunnel is a simple application written in c and It should be run on two endpoints. On one end, it listens to incoming UDP packets on a specific port and converts them to TCP packets, then it transfers the TCP packet to the destination address which is running a udptunnel server on the other endpoint. In our case, the first endpoint is our middle server which is the local server inside the local intranet. Obviously, the second endpoint is our machine inside the outer world.</p>
+
+<div align="center">
+    <img src="/assets/images/blog/vpn-setup/udp2raw.svg" />
+</div>
+<p><br /></p>
+
+<p>Udptunnel can be run in two modes server mode and client mode. You have to run the first instance in client mode and the second one as the server. In server mode it listens for TCP packets and transfers them back into UDP and in client mode receives UDP packets and transfers them to TCP.</p>
+
+<p>Let’s start with the server, the machine located in the open world. First, we have to download the source code of udptunnel:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>wget https://github.com/rfc1036/udptunnel/archive/refs/heads/master.zip
+</code></pre></div></div>
+
+<p>Then we have to build the source code using the build-essential <strong>make</strong> but before that, run the command below to be sure you have the required packages:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span><span class="nb">sudo </span>apt <span class="nb">install </span>build-essential pkg-config zip unzip <span class="nt">-y</span>
+</code></pre></div></div>
+
+<p>Let’s unzip the downloaded source codes:</p>
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>unzip master.zip
+</code></pre></div></div>
+
+<p>And build the source files:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span><span class="nb">cd </span>udptunnle-master
+<span class="gp">$</span><span class="w"> </span><span class="nb">sudo </span>make
+<span class="gp">$</span><span class="w"> </span><span class="nb">sudo </span>make <span class="nb">install</span> 
+</code></pre></div></div>
+
+<p>Now let’s pick a TCP port and open the port on the firewall (I chose port 8080):</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span><span class="nb">sudo </span>ufw allow 8080/tcp
+<span class="gp">$</span><span class="w"> </span><span class="nb">sudo </span>ufw disable
+<span class="gp">$</span><span class="w"> </span><span class="nb">sudo </span>ufw <span class="nb">enable</span>
+</code></pre></div></div>
+
+<p>Then run the udptunnel as server:</p>
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>udptunnel <span class="nt">--server</span> 0.0.0.0:8080 <span class="nt">--verbose</span> 127.0.0.1:51820
+</code></pre></div></div>
+<p>It listens to the incoming TCP packets from everywhere converts the into UDP and passes them through port 51820 on the localhost which is the WireGuard server port.</p>
+
+<p>Now jump into the middle server and, download and build the udptunnel source codes:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span><span class="nb">sudo </span>apt <span class="nb">install </span>build-essential pkg-config zip unzip <span class="nt">--yes</span>
+<span class="gp">$</span><span class="w"> </span>wget https://github.com/rfc1036/udptunnel/archive/refs/heads/master.zip
+<span class="gp">$</span><span class="w"> </span>unzip master.zip
+<span class="gp">$</span><span class="w"> </span><span class="nb">cd </span>udptunnle-master
+<span class="gp">$</span><span class="w"> </span><span class="nb">sudo </span>make
+<span class="gp">$</span><span class="w"> </span><span class="nb">sudo </span>make <span class="nb">install</span> 
+</code></pre></div></div>
+
+<p>Pick a udp port, (I chose 8080 again!)</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span><span class="nb">sudo </span>ufw allow 8080
+<span class="gp">$</span><span class="w"> </span><span class="nb">sudo </span>ufw disable
+<span class="gp">$</span><span class="w"> </span><span class="nb">sudo </span>ufw <span class="nb">enable</span>
+</code></pre></div></div>
+
+<p>And run the udptunnel client on the middle server:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ udptunnel  0.0.0.0:8080 77.222.67.140:8080
+</code></pre></div></div>
+
+<blockquote>
+  <p>Note: In the code above, <code class="language-plaintext highlighter-rouge">77.222.67.140</code> was the outer machine’s address.</p>
+</blockquote>
+
+<p>That’s it, go change the endpoint address to the new UDP port on the middle server:</p>
+
+<pre><code class="language-txt">[Interface]
+PrivateKey = [CLIENT_PRIVATE_KEY]
+Address = 10.252.1.1/32
+DNS = 1.1.1.1
+
+[Peer]
+PublicKey = [PUBLIC_KEY]
+PresharedKey = [PRE_SHARED_KEY]
+AllowedIPs = 0.0.0.0/0
+Endpoint = 192.168.0.1:51820 --&gt; change this address to  YOUR_MIDDLE_SERVER_IP:8080
+PersistentKeepalive = 15
+</code></pre>
+
+<p>After editing the config file on the client’s machines:</p>
+
+<pre><code class="language-txt">[Interface]
+PrivateKey = [CLIENT_PRIVATE_KEY]
+Address = 10.252.1.1/32
+DNS = 1.1.1.1
+
+[Peer]
+PublicKey = [PUBLIC_KEY]
+PresharedKey = [PRE_SHARED_KEY]
+AllowedIPs = 0.0.0.0/0
+Endpoint = 192.168.0.1:8080
+PersistentKeepalive = 15
+</code></pre>
+
+<p>That’s it.</p>
+
+<blockquote>
+  <p>Note: udptunnel is not a background server which means you don’t have to exit the ssh sessions (on middle and outer servers) while running this application. You can build a systemctl daemon, use <a href="https://linuxhint.com/linux-screen-command-tutorial/">screen</a> or <a href="https://en.wikipedia.org/wiki/Tmux">tmux</a> for running this application to prevent crashing of udptunnel after closing the session.</p>
+</blockquote>
+
+<p>And remember using WireGuard over TCP will affect your connection speed/bandwidth but some networks block or reduce the bandwidth for UDP connections and we have no other choices but running wire guard over TCP. Here is my experience using WireGuard over TCP:</p>
+
+<p align="center">
+    <img src="/assets/images/blog/vpn-setup/speed-test-udp-no-filter.png" />
+    <br />
+    <span>Bandwidth while using UDP and it's not restricted by government firewall</span>
+</p>
+
+<p align="center">
+    <img src="/assets/images/blog/vpn-setup/speed-test-udp.png" />
+    <br />
+    <span>Bandwidth while using UDP and it's restricted by government's firewall</span>
+
+</p>
+
+<p align="center">
+    <img src="/assets/images/blog/vpn-setup/speed-test-tcp.png" />
+    <br />
+    <span>Bandwidth while using WireGuard over TCP</span>
+
+</p>
+
+<h1 id="7-final-words">7. Final words</h1>
+<p>Some of you might have trouble using my solution for making your private network because of port choosing filtered port numbers. If things were not working change the chosen port numbers and try again. In some cases, government firewalls might block UDP packets and you need to do the solution on <a href="#6-wireguard-over-tcp-(optional)">part 6</a>.</p>
+
+<p>The reverse proxy could be done using some simple firewall (iptables) rules but I chose Nginx to not be confused with iptables complexities and concepts.</p>
+
+<p>WireGuard VPN server is the newest and best VPN protocol in the world till now, it is secure, fast, and easy to configure, and that’s why I chose this protocol to go within this article, but in extreme cases, it can be detected and your servers could be blocked.</p>
+
+<p>To prevent this, keep the number of your clients as low as possible to prevent high network traffic from going through these servers. Also, you can use other VPN protocols using this abstract solution and find the one which works for you (such as <a href="https://shadowsocks.org/"><strong>Shadowsocks</strong></a>, <a href="https://getoutline.org/"><strong>Google Outline</strong></a>, <a href="https://openvpn.net/"><strong>OpenVPN</strong></a>, <a href="https://www.softether.org/"><strong>Softether</strong></a>, <a href="https://www.v2ray.com/"><strong>V2ray</strong></a>, etc.). If you have problems with this article reading the article references and a little search on DuckDuckGo (Or google) might help you to find the solution. I hope you find this article useful.</p>
 
 <p>for a better world,<br />
 Regards</p>
 
 <h1 id="references">References</h1>
 <ul>
-  <li><a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-wireguard-on-ubuntu-20-04">https://www.digitalocean.com/community/tutorials/how-to-set-up-wireguard-on-ubuntu-20-04</a></li>
-  <li><a href="https://github.com/ngoduykhanh/wireguard-ui">https://github.com/ngoduykhanh/wireguard-ui</a></li>
-  <li><a href="https://ericiniguez.com/p/wireguard-vpn-and-nginx-reverse-proxy/">https://ericiniguez.com/p/wireguard-vpn-and-nginx-reverse-proxy/</a></li>
-  <li><a href="https://nginxproxymanager.com/guide/#project-goal">https://nginxproxymanager.com/guide/#project-goal</a></li>
+  <li><a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-wireguard-on-ubuntu-20-04">How to set up wireguard on ubuntu 20.04 (LTS)</a></li>
+  <li><a href="https://github.com/ngoduykhanh/wireguard-ui">Wireguard-ui</a></li>
+  <li><a href="https://ericiniguez.com/p/wireguard-vpn-and-nginx-reverse-proxy/">Wireguard vpn and nginx reverse proxy</a></li>
+  <li><a href="https://nginxproxymanager.com/guide/#project-goal">Nginx proxy manager</a></li>
+  <li><a href="https://www.oilandfish.com/posts/wireguard-udptunnel.html">WireGuard + udptunnel</a></li>
 </ul>]]></content><author><name>Ali N. Parizi</name></author><category term="project" /><category term="network" /><category term="security" /><category term="vpn" /><summary type="html"><![CDATA[1. Intro]]></summary></entry><entry><title type="html">What is an AutoEncoder?</title><link href="http://localhost:4000/blog/ai/machine-learning/deep-learning/2022/09/16/auto-encoder.html" rel="alternate" type="text/html" title="What is an AutoEncoder?" /><published>2022-09-16T13:21:13+04:30</published><updated>2022-09-16T13:21:13+04:30</updated><id>http://localhost:4000/blog/ai/machine-learning/deep-learning/2022/09/16/auto-encoder</id><content type="html" xml:base="http://localhost:4000/blog/ai/machine-learning/deep-learning/2022/09/16/auto-encoder.html"><![CDATA[<h1 id="1-intro">1. Intro</h1>
 <p>AutoEncoder is an unsupervised artificial neural network that learns how to efficiently compress and encode data then learns how to reconstruct the data back from the reduced encoded representation to a representation that is as close to the original input as possible.
 AutoEncoder, by design, reduces data dimensions by learning how to ignore the noise in the data.
