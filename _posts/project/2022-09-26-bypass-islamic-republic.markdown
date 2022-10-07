@@ -489,7 +489,7 @@ The reverse proxy could be done using some simple firewall (iptables) rules but 
 
 WireGuard VPN server is the newest and best VPN protocol in the world till now, it is secure, fast, and easy to configure, and that's why I chose this protocol to go within this article, but in extreme cases, it can be detected and your servers could be blocked. 
 
-To prevent this, keep the number of your clients as low as possible to prevent high network traffic from going through these servers. Also, you can use other VPN protocols using this abstract solution and find the one which works for you (such as [**Shadowsocks**](https://shadowsocks.org/), [**Google Outline**](https://getoutline.org/), [**OpenVPN**](https://openvpn.net/), [**Softether**](https://www.softether.org/), [**V2ray**](https://www.v2ray.com/), etc.). If you have problems with this article reading the article's references and a little search on DuckDuckGo (Or google) might help you to find the solution. I hope you find this article useful.
+To tackle this, keep the number of your clients as low as possible to prevent high network traffic from going through these servers. Also, you can use other VPN protocols using this abstract solution and find the one which works for you (such as [**Shadowsocks**](https://shadowsocks.org/), [**Google Outline**](https://getoutline.org/), [**OpenVPN**](https://openvpn.net/), [**Softether**](https://www.softether.org/), [**V2ray**](https://www.v2ray.com/), etc.). If you have problems with this article reading the article's references and a little search on DuckDuckGo (Or google) might help you to find the solution. I hope you find this article useful.
 
 for a better world,<br>
 Regards
