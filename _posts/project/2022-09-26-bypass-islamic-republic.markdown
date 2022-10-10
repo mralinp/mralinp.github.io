@@ -21,7 +21,7 @@ If we could successfully be connected to the world via a machine in the local da
 A virtual private network extends a private network across a public network and enables users to send and receive data across shared or public networks as if their computing devices were directly connected to the private network. The benefits of a VPN include increases in functionality, security, and management of the private network. 
 
 <div align=center>
-    <img width="70%" src="/assets/images/blog/vpn-setup/vpn-schema.png"/>
+    <img src="/assets/images/blog/vpn-setup/vpn-schema.png"/>
 </div>
 <br>
 
@@ -264,7 +264,7 @@ Congratulations, till now, you have configured a Virtual private network for you
 ## 5.1 Nginx Reverse Proxy
 Nginx is a popular web-server application that is used to deploy various web applications and it has so many capabilities. One of the configurations that you can set for Nginx is to redirect incoming requests to a specific address by setting proxy routes. As we know that WireGuard traffic is a stream of data and its UDP. So, we have to set a stream proxy route for our purpose.
 <div align=center>
-    <img width="50%" src="/assets/images/blog/vpn-setup/nginx-logo.png"/>
+    <img width="60%" src="/assets/images/blog/vpn-setup/nginx-logo.png"/>
 </div>
 <br>
 
