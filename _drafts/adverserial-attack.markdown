@@ -3,7 +3,7 @@ layout: post
 title:  "Adversarial attacks in deep learning"
 author: "Ali N. Parizi"
 img: "/assets/images/adversarial-attack/title.png"
-date:   2022-06-16 20:02:05 +0330
+date:   2022-08-16 20:02:05 +0330
 categories:  blog ai machine-learning deep-learning
 brief: "Are the machine learning models we use intrinsically flawed?"
 ---
