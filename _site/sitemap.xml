@@ -25,10 +25,6 @@
 <lastmod>2022-08-16T21:02:05+04:30</lastmod>
 </url>
 <url>
-<loc>http://localhost:4000/blog/ai/machine-learning/deep-learning/2022/08/17/vae-intro.html</loc>
-<lastmod>2022-08-17T13:21:13+04:30</lastmod>
-</url>
-<url>
 <loc>http://localhost:4000/blog/ai/machine-learning/deep-learning/2022/09/16/auto-encoder.html</loc>
 <lastmod>2022-09-16T13:21:13+04:30</lastmod>
 </url>
@@ -67,6 +63,10 @@
 <url>
 <loc>http://localhost:4000/project/security/cracking/game-hacking/2022/10/09/csgo-cheat.html</loc>
 <lastmod>2022-10-09T12:21:13+03:30</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/blog/ai/machine-learning/deep-learning/2022/10/11/vae-intro.html</loc>
+<lastmod>2022-10-11T08:24:05+03:30</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/about</loc>

@@ -83,7 +83,6 @@ Below is a table that summarises the key features of each layer:
 | Dense 2         |  120x1  |      None     |  84x1    |     Relu     |
 | Dense 3         |  84x1   |      None     |  10x1    |     Softmax  |
 
-
 <br>
 We begin implementation by importing the libraries we will be utilizing:
 

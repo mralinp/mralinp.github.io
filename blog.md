@@ -26,7 +26,7 @@ title: Blog
                 </div>
                 <div class="card-body">
                     <h3 class="h4"><a href="{{post.url}}" title="{{ post.title }}">{{post.title | strip_html | truncate: 50}}</a></h3>
-                    <p class="display-30">{{ post.brief | strip_html | truncatewords: 23 }}</p>
+                    <p class="display-30">{{ post.brief | strip_html | truncate: 130 }}</p>
                     <a href="{{post.url}}" class="btn"><i class="fa fa-angle-double-right"></i> Read more</a>
                 </div>
                 <div class="card-footer">
