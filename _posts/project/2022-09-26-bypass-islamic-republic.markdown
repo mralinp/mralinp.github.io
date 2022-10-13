@@ -81,7 +81,7 @@ Now your WireGuard Server will be able to forward incoming traffic from the virt
 However, before traffic can be routed via your server correctly, you will need to configure some firewall rules. These rules will ensure that traffic to and from your WireGuard Server and Peers flows properly.
 
 ## 3.1 Wireguard UI
-[**Wireguard UI**](https://github.com/ngoduykhanh/wireguard-ui) is a web-based config generator for wireguard server. If you've seen the DigitalOcean tutorial for running WireGurad server on ubuntu 20.04 which i pasted some parts of their tutorial here(Or other popular tutorials), they use the command line to generate configurations for clients which is called **adding peers** for wireguard server. Using command line interface and using wireguard-tool is quite hard to manage clients if you are making a network for co-workers, family or friends. Wireguard-ui is a web-based interface to generate client profiles, and manage them for the server and is written with go-lang which means that if you use its binary files which are available in [**releases page**](https://github.com/ngoduykhanh/wireguard-ui/releases) on their github, it should run without any problems. To use wireguard-ui, you have to download the binary files first:
+[**Wireguard UI**](https://github.com/ngoduykhanh/wireguard-ui) is a web-based config generator for wireguard server. If you've seen the DigitalOcean tutorial for running WireGurad server on ubuntu 20.04 which i pasted some parts of their tutorial here(Or other popular tutorials), they use the command line to generate configurations for clients which is called **adding peers** for wireguard server. Using command line interface and using wireguard-tool is quite hard to manage clients if you are making a network for your co-workers, family or friends. Wireguard-ui is a web-based interface for generating and managing client profiles and it's written with go-lang which means that if you use its binary files which are available on their [**releases page**](https://github.com/ngoduykhanh/wireguard-ui/releases), You don't have to worry about running the application and it should work without any problems. To use wireguard-ui, you have to download the binary files first:
 
 ```console
 $ wget https://github.com/ngoduykhanh/wireguard-ui/releases/download/v0.3.7/wireguard-ui-v0.3.7-linux-amd64.tar.gz
@@ -122,7 +122,7 @@ Login to the panel and make as many client as you want, then download the config
 
 <br>
 
-> Note: Before making user clients, I recommend you to first change the server port (then press `apply config`) and then begin creating profiles.
+> Note: Before making user clients, I recommend you to first change the server's default port (then press `apply config`) and then begin creating profiles.
 
 Wireguard-ui should generate a configuration file and place it inside `/etc/wireguard/wg0.conf`. After terminating wireguard-ui, no further configurations are needed for adding clients and you can give the downloaded config files to your clients. To run the server there are two more steps to go with. One is configuring the server's firewall and the other one is running wireguard server as a background service which is available in the next sections. 
 
@@ -465,7 +465,7 @@ And remember using WireGuard over TCP will affect your connection speed/bandwidt
 <p align=center>
     <img src="/assets/images/blog/vpn-setup/speed-test-udp-no-filter.png"/>
     <br>
-    <span>Bandwidth while using UDP and it's not restricted by government firewall</span>
+    <span>Bandwidth while using UDP and it's not restricted by government's firewall</span>
 </p>
 
 <p align=center>

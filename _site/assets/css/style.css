@@ -95,6 +95,15 @@ body img {
     SIDEBAR STYLE
 ----------------------------------------------------- */
 
+.rss-button {
+    padding: 5px;
+    font-size: 36px;
+}
+
+.rss-button:hover {
+    color: #ffab00;
+}
+
 .wrapper {
     display: flex;
     width: 100%;
