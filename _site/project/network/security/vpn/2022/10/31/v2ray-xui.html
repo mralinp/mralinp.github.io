@@ -118,7 +118,7 @@
                 <i class="fa fa-user-circle-o"></i> Ali N. Parizi
             </li>
             <li class="list-inline-item">
-                <i class="fa fa-calendar-o"></i> 28 October 2022
+                <i class="fa fa-calendar-o"></i> 31 October 2022
             </li>
             <li class="list-inline-item">
                 <i class="fa fa-tags"></i>
@@ -143,11 +143,11 @@
         <p class="text-secondary"> When the situation is challenging, UDP-based VPN protocols might not work and we have to use something else to be able to bypass this madness. This tutorial is about installing and configuring the popular Chinese VPN protocol V2Ray on a ubuntu server using a web-based control panel called X-UI. <p>
         <div class="line"></div>
         <h1 id="1-intro">1. Intro</h1>
-<p>Last time, I wrote an article about bypassing God’s government restrictions to be able to access the outside world. Now the base solution still stands, but the protocol we used to implement that solution no longer works. We can clap our hands to the government priests for upgrading their knowledge about VPN protocols and say bravo in chinese “<a href="#0" title="Kose na na ton!">高丝纳纳顿</a>”.</p>
+<p>Last time, I wrote an article about bypassing God’s government restrictions to be able to access the outside world. Now the base solution still stands, but the protocol we used to implement that solution no longer works. We can clap our hands to the government priests for upgrading their knowledge about VPN protocols and say bravo in chinese “<a href="https://translate.google.com/?sl=zh-CN&amp;tl=en&amp;text=%E9%AB%98%E4%B8%9D%E7%BA%B3%E7%BA%B3%E9%A1%BF&amp;op=translate" title="Kose na na ton!">高丝纳纳顿</a>”.</p>
 
 <p>As our government and Chinese folks are each other’s besties and in the same bed! we can conclude that any protocol that works on the great firewall of china, should work for the evils firewall of the Islamic Republic!</p>
 
-<p>V2Ray is a VPN protocol written with love by some free Chinese people to help their people to reach the world wide web. It works on the application layer and its traffic looks like working with an actual web-site and it’s less prone to detect. The problem with V2Ray is the english language support, documentations and weak client software which can easily be improved if their community decided to share their information and issues in english not in fucking chinees!</p>
+<p>V2Ray is a VPN protocol written with love by some free Chinese people. It works on the application layer and its traffic looks like working with an actual web-site and it’s less prone to detect. The problem with V2Ray is the english language support, documentations and weak client software which can easily be improved if their community decided to share their information and issues in english not in fucking chinees!</p>
 
 <p>For this article we consider you have access to a Virtual Machine in the outside world. You can access that machine using SSH or you can easily install a cockpit to be able to access your Linux machine through the browser.</p>
 
@@ -170,7 +170,7 @@
 Username and password of cockpit panel are the same as your vm user for example:</p>
 
 <pre><code class="language-txt">username: root
-password :123456
+password: 123456
 </code></pre>
 
 <p align="center">
@@ -180,7 +180,7 @@ password :123456
 <h1 id="2-installing-v2ray-using-x-ui">2. Installing V2ray using X-UI</h1>
 <p>To install V2ray you can easily install X-UI panel on your machine and this will automatically install all necessary things for you. X-UI documentation could be found here: <a href="https://seakfind.github.io/2021/10/10/X-UI/"><strong>seakfind</strong></a></p>
 
-<p>The installation process is quiet easy, just connect to your machine and install socat first:</p>
+<p>The installation process is pretty easy, just connect to your machine and install <code class="language-plaintext highlighter-rouge">socat</code> first:</p>
 
 <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>apt <span class="nb">install </span>curl socat <span class="nt">-y</span>
 </code></pre></div></div>
@@ -189,12 +189,12 @@ password :123456
 
 <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>bash &lt;<span class="o">(</span>curl <span class="nt">-Ls</span> https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh<span class="o">)</span>
 </code></pre></div></div>
-<p>Then it will ask you to type <code class="language-plaintext highlighter-rouge">yes|no</code>, you type yes and press enter on any chinees message prompt it shows to you. That’s it, you can start the panel by typing:</p>
+<p>Then it will ask you to type <code class="language-plaintext highlighter-rouge">yes|no</code>, you type yes and press enter on any chinese message prompt it shows to you. That’s it, you can start  the panel by typing:</p>
 
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">x-ui start
-</span></code></pre></div></div>
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>x-ui start
+</code></pre></div></div>
 
-<p>And it will start the X-UI panel on the port <code class="language-plaintext highlighter-rouge">54321</code> of server. Open a browser and type <code class="language-plaintext highlighter-rouge">YOUR_VM_IP:54321</code> in the address bar to see the panel. Default username and password are:</p>
+<p>It starts the X-UI panel on the port <code class="language-plaintext highlighter-rouge">54321</code> of server. Open a browser and type <code class="language-plaintext highlighter-rouge">YOUR_VM_IP:54321</code> in the address bar to see the panel. Default username and password are:</p>
 
 <pre><code class="language-txt">username: admin
 password: admin
@@ -212,23 +212,37 @@ password: admin
     <img width="80%" src="/assets/images/projects/v2ray/x-ui-1.png" />
 </p>
 
-<p>Now go to inbound list from the sidebar and press add to create a new VPN configuration. For example you can select VMess or VLess protocol under Websocket(ws) as you can see on the picture below. If you choose VLess be aware of that VLess has now encryption and VMess is a better choice.</p>
+<p>Now go to inbound list from the sidebar and press add for creating a new VPN configuration. For example you can select VMess or VLess protocol under Websocket(ws) as you can see on the picture below. If you choose VLess be aware of that VLess has no encryption and VMess is a better choice.</p>
 
 <blockquote>
-  <p>Note: You can go and search for other V2Ray configurations but VMess is good enough for your article.</p>
+  <p>Note: You can go and search for other V2Ray configurations but VMess is good enough for our article.</p>
 </blockquote>
 
 <p align="center">
     <img width="80%" src="/assets/images/projects/v2ray/xui-u.png" />
 </p>
 
-<p>Now you are all set, You can see the QR code or press copy share link to copy the share link to the clip board and send it to your clients.</p>
+<p>Now, you are all set, you can scan the QR code or press copy share link to copy the share link to the clip board and send it to your clients.</p>
 
 <p align="center">
     <img width="80%" src="/assets/images/projects/v2ray/x-ui-2.png" />
 </p>
 
 <h1 id="3-clients-setup-for-using-v2ray">3. Clients setup for using V2Ray</h1>
+<p>To connect to the V2Ray server you have to install the proper client application on your devices. Here is a list of application clients for different devices and operating systems:</p>
+
+<ul>
+  <li><strong>Android</strong>: <a href="https://play.google.com/store/apps/details?id=com.v2ray.ang">V2rayNG (Google play)</a></li>
+  <li><strong>IOS</strong>: <a href="https://apps.apple.com/us/app/napsternetv/id1629465476">NapsternetV (App Store)</a></li>
+  <li><strong>Windows</strong>: <a href="https://github.com/Qv2ray/Qv2ray/releases/download/v2.7.0/Qv2ray-v2.7.0-Windows-Installer.exe">Qv2ray-v2.7.0-Windows-Installer.exe</a></li>
+  <li><strong>Mac OSX</strong>: <a href="https://github.com/Qv2ray/Qv2ray/releases/download/v2.7.0/Qv2ray-v2.7.0-macOS-x64.dmg">Qv2ray-v2.7.0-macOS-x64.dmg</a></li>
+  <li><strong>Linux</strong>: <a href="https://github.com/Qv2ray/Qv2ray/releases/download/v2.7.0/Qv2ray-v2.7.0-linux-x64.AppImage">Qv2ray-v2.7.0-linux-x64.AppImage</a></li>
+</ul>
+
+<h1 id="references">References</h1>
+<ul>
+  <li><a href="https://seakfind.github.io/2021/10/10/X-UI/">https://seakfind.github.io/2021/10/10/X-UI/</a></li>
+</ul>
 
 
     </div>

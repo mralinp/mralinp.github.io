@@ -3,17 +3,17 @@ layout: post
 title: "Bypass The Islamic Republic Again: Installing V2ray + XUI"
 author: "Ali N. Parizi"
 img: "/assets/images/projects/v2ray/title.png"
-date:   2022-10-28 08:53:21 +0330
+date:   2022-10-31 13:10:23 +0330
 categories: project network security vpn
 brief: "When the situation is challenging, UDP-based VPN protocols might not work and we have to use something else to be able to bypass this madness. This tutorial is about installing and configuring the popular Chinese VPN protocol V2Ray on a ubuntu server using a web-based control panel called X-UI."
 ---
 
 # 1. Intro
-Last time, I wrote an article about bypassing God's government restrictions to be able to access the outside world. Now the base solution still stands, but the protocol we used to implement that solution no longer works. We can clap our hands to the government priests for upgrading their knowledge about VPN protocols and say bravo in chinese "[高丝纳纳顿](#0 "Kose na na ton!")". 
+Last time, I wrote an article about bypassing God's government restrictions to be able to access the outside world. Now the base solution still stands, but the protocol we used to implement that solution no longer works. We can clap our hands to the government priests for upgrading their knowledge about VPN protocols and say bravo in chinese "[高丝纳纳顿](https://translate.google.com/?sl=zh-CN&tl=en&text=%E9%AB%98%E4%B8%9D%E7%BA%B3%E7%BA%B3%E9%A1%BF&op=translate "Kose na na ton!")". 
 
 As our government and Chinese folks are each other's besties and in the same bed! we can conclude that any protocol that works on the great firewall of china, should work for the evils firewall of the Islamic Republic!
 
-V2Ray is a VPN protocol written with love by some free Chinese people to help their people to reach the world wide web. It works on the application layer and its traffic looks like working with an actual web-site and it's less prone to detect. The problem with V2Ray is the english language support, documentations and weak client software which can easily be improved if their community decided to share their information and issues in english not in fucking chinees!
+V2Ray is a VPN protocol written with love by some free Chinese people. It works on the application layer and its traffic looks like working with an actual web-site and it's less prone to detect. The problem with V2Ray is the english language support, documentations and weak client software which can easily be improved if their community decided to share their information and issues in english not in fucking chinees!
 
 For this article we consider you have access to a Virtual Machine in the outside world. You can access that machine using SSH or you can easily install a cockpit to be able to access your Linux machine through the browser.
 
@@ -39,7 +39,7 @@ Username and password of cockpit panel are the same as your vm user for example:
 
 ```txt
 username: root
-password :123456
+password: 123456
 ```
 
 <p align=center>
@@ -49,7 +49,7 @@ password :123456
 # 2. Installing V2ray using X-UI
 To install V2ray you can easily install X-UI panel on your machine and this will automatically install all necessary things for you. X-UI documentation could be found here: [**seakfind**](https://seakfind.github.io/2021/10/10/X-UI/)
 
-The installation process is quiet easy, just connect to your machine and install socat first:
+The installation process is pretty easy, just connect to your machine and install `socat` first:
 
 ```console
 $ apt install curl socat -y
@@ -60,13 +60,13 @@ Then you can skip obtaining certificate steps and directly jump on installing th
 ```console
 $ bash <(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)
 ```
-Then it will ask you to type `yes|no`, you type yes and press enter on any chinees message prompt it shows to you. That's it, you can start the panel by typing:
+Then it will ask you to type `yes|no`, you type yes and press enter on any chinese message prompt it shows to you. That's it, you can start  the panel by typing:
 
 ```console
-x-ui start
+$ x-ui start
 ```
 
-And it will start the X-UI panel on the port `54321` of server. Open a browser and type `YOUR_VM_IP:54321` in the address bar to see the panel. Default username and password are:
+It starts the X-UI panel on the port `54321` of server. Open a browser and type `YOUR_VM_IP:54321` in the address bar to see the panel. Default username and password are:
 
 ```txt
 username: admin
@@ -85,23 +85,32 @@ After login, you have to go and change the default username and password of the 
     <img width="80%" src="/assets/images/projects/v2ray/x-ui-1.png">
 </p>
 
-Now go to inbound list from the sidebar and press add to create a new VPN configuration. For example you can select VMess or VLess protocol under Websocket(ws) as you can see on the picture below. If you choose VLess be aware of that VLess has now encryption and VMess is a better choice. 
+Now go to inbound list from the sidebar and press add for creating a new VPN configuration. For example you can select VMess or VLess protocol under Websocket(ws) as you can see on the picture below. If you choose VLess be aware of that VLess has no encryption and VMess is a better choice.
 
-> Note: You can go and search for other V2Ray configurations but VMess is good enough for your article.
+> Note: You can go and search for other V2Ray configurations but VMess is good enough for our article.
 
 <p align=center>
     <img width="80%" src="/assets/images/projects/v2ray/xui-u.png">
 </p>
 
-
-
-Now you are all set, You can see the QR code or press copy share link to copy the share link to the clip board and send it to your clients.
+Now, you are all set, you can scan the QR code or press copy share link to copy the share link to the clip board and send it to your clients.
 
 <p align=center>
     <img width="80%" src="/assets/images/projects/v2ray/x-ui-2.png">
 </p>
 
 # 3. Clients setup for using V2Ray
+To connect to the V2Ray server you have to install the proper client application on your devices. Here is a list of application clients for different devices and operating systems:
+
+- **Android**: [V2rayNG (Google play)](https://play.google.com/store/apps/details?id=com.v2ray.ang)
+- **IOS**: [NapsternetV (App Store)](https://apps.apple.com/us/app/napsternetv/id1629465476)
+- **Windows**: [Qv2ray-v2.7.0-Windows-Installer.exe](https://github.com/Qv2ray/Qv2ray/releases/download/v2.7.0/Qv2ray-v2.7.0-Windows-Installer.exe)
+- **Mac OSX**: [Qv2ray-v2.7.0-macOS-x64.dmg](https://github.com/Qv2ray/Qv2ray/releases/download/v2.7.0/Qv2ray-v2.7.0-macOS-x64.dmg)
+- **Linux**: [Qv2ray-v2.7.0-linux-x64.AppImage](https://github.com/Qv2ray/Qv2ray/releases/download/v2.7.0/Qv2ray-v2.7.0-linux-x64.AppImage)
+
+# References
+- [https://seakfind.github.io/2021/10/10/X-UI/](https://seakfind.github.io/2021/10/10/X-UI/)
+
 
 
  
