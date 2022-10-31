@@ -1,0 +1,107 @@
+---
+layout: post
+title: "Bypass The Islamic Republic Again: Installing V2ray + XUI"
+author: "Ali N. Parizi"
+img: "/assets/images/projects/v2ray/title.png"
+date:   2022-10-28 08:53:21 +0330
+categories: project network security vpn
+brief: "When the situation is challenging, UDP-based VPN protocols might not work and we have to use something else to be able to bypass this madness. This tutorial is about installing and configuring the popular Chinese VPN protocol V2Ray on a ubuntu server using a web-based control panel called X-UI."
+---
+
+# 1. Intro
+Last time, I wrote an article about bypassing God's government restrictions to be able to access the outside world. Now the base solution still stands, but the protocol we used to implement that solution no longer works. We can clap our hands to the government priests for upgrading their knowledge about VPN protocols and say bravo in chinese "[高丝纳纳顿](#0 "Kose na na ton!")". 
+
+As our government and Chinese folks are each other's besties and in the same bed! we can conclude that any protocol that works on the great firewall of china, should work for the evils firewall of the Islamic Republic!
+
+V2Ray is a VPN protocol written with love by some free Chinese people to help their people to reach the world wide web. It works on the application layer and its traffic looks like working with an actual web-site and it's less prone to detect. The problem with V2Ray is the english language support, documentations and weak client software which can easily be improved if their community decided to share their information and issues in english not in fucking chinees!
+
+For this article we consider you have access to a Virtual Machine in the outside world. You can access that machine using SSH or you can easily install a cockpit to be able to access your Linux machine through the browser.
+
+## 1.1 Installing Cockpit (Optional)
+To install Cockpit, connect to your machine using ssh and use the aptitude package manager to install cockpit:
+
+```console
+$ sudo apt update --yes
+$ sudo apt upgrade --yes
+$ sudo apt install cockpit --yes
+```
+
+This should install the cockpit and dose all the configurations for you. The cockpit is a web-based control panel and it will run on port 9090 of the server so, you have to allow connecting this port if your firewall is enabled:
+
+```console
+$ sudo ufw allow 9090
+$ sudo ufw disable
+$ sudo ufw enable
+```
+
+Then open a browser and type the address `YOUR_VM_IP:9090` to see the cockpit panel.
+Username and password of cockpit panel are the same as your vm user for example:
+
+```txt
+username: root
+password :123456
+```
+
+<p align=center>
+    <img width="80%" src="/assets/images/projects/v2ray/cockpit.png">
+</p>
+
+# 2. Installing V2ray using X-UI
+To install V2ray you can easily install X-UI panel on your machine and this will automatically install all necessary things for you. X-UI documentation could be found here: [**seakfind**](https://seakfind.github.io/2021/10/10/X-UI/)
+
+The installation process is quiet easy, just connect to your machine and install socat first:
+
+```console
+$ apt install curl socat -y
+```
+
+Then you can skip obtaining certificate steps and directly jump on installing the x-ui using its script:
+
+```console
+$ bash <(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)
+```
+Then it will ask you to type `yes|no`, you type yes and press enter on any chinees message prompt it shows to you. That's it, you can start the panel by typing:
+
+```console
+x-ui start
+```
+
+And it will start the X-UI panel on the port `54321` of server. Open a browser and type `YOUR_VM_IP:54321` in the address bar to see the panel. Default username and password are:
+
+```txt
+username: admin
+password: admin
+```
+
+<p align=center>
+    <img width="80%" src="/assets/images/projects/v2ray/xui.png">
+</p>
+
+Default language of x-ui is chaines, i use Google chrome and Google translate to translate its contexts to english and i recommend you to do so.
+
+After login, you have to go and change the default username and password of the panel (You can change the default port as well). From the sidebar panel select the third option, then select the second tab. Now type the old username and password on first two fields the new ones on the next two. Press `Revise` to save the changes.
+
+<p align=center>
+    <img width="80%" src="/assets/images/projects/v2ray/x-ui-1.png">
+</p>
+
+Now go to inbound list from the sidebar and press add to create a new VPN configuration. For example you can select VMess or VLess protocol under Websocket(ws) as you can see on the picture below. If you choose VLess be aware of that VLess has now encryption and VMess is a better choice. 
+
+> Note: You can go and search for other V2Ray configurations but VMess is good enough for your article.
+
+<p align=center>
+    <img width="80%" src="/assets/images/projects/v2ray/xui-u.png">
+</p>
+
+
+
+Now you are all set, You can see the QR code or press copy share link to copy the share link to the clip board and send it to your clients.
+
+<p align=center>
+    <img width="80%" src="/assets/images/projects/v2ray/x-ui-2.png">
+</p>
+
+# 3. Clients setup for using V2Ray
+
+
+ 

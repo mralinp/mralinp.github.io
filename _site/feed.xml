@@ -1,4 +1,90 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-10-13T23:16:50+03:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">mralinp</title><subtitle>My awesome blog</subtitle><entry><title type="html">Variational AutoEncoders: An Introduction</title><link href="http://localhost:4000/blog/ai/machine-learning/deep-learning/2022/10/11/vae-intro.html" rel="alternate" type="text/html" title="Variational AutoEncoders: An Introduction" /><published>2022-10-11T08:24:05+03:30</published><updated>2022-10-11T08:24:05+03:30</updated><id>http://localhost:4000/blog/ai/machine-learning/deep-learning/2022/10/11/vae-intro</id><content type="html" xml:base="http://localhost:4000/blog/ai/machine-learning/deep-learning/2022/10/11/vae-intro.html"><![CDATA[<h1 id="1-intro">1. Intro</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-10-30T21:09:08+03:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">mralinp</title><subtitle>My awesome blog</subtitle><entry><title type="html">Bypass The Islamic Republic Again: Installing V2ray + XUI</title><link href="http://localhost:4000/project/network/security/vpn/2022/10/28/v2ray-xui.html" rel="alternate" type="text/html" title="Bypass The Islamic Republic Again: Installing V2ray + XUI" /><published>2022-10-28T08:53:21+03:30</published><updated>2022-10-28T08:53:21+03:30</updated><id>http://localhost:4000/project/network/security/vpn/2022/10/28/v2ray-xui</id><content type="html" xml:base="http://localhost:4000/project/network/security/vpn/2022/10/28/v2ray-xui.html"><![CDATA[<h1 id="1-intro">1. Intro</h1>
+<p>Last time, I wrote an article about bypassing God’s government restrictions to be able to access the outside world. Now the base solution still stands, but the protocol we used to implement that solution no longer works. We can clap our hands to the government priests for upgrading their knowledge about VPN protocols and say bravo in chinese “<a href="#0" title="Kose na na ton!">高丝纳纳顿</a>”.</p>
+
+<p>As our government and Chinese folks are each other’s besties and in the same bed! we can conclude that any protocol that works on the great firewall of china, should work for the evils firewall of the Islamic Republic!</p>
+
+<p>V2Ray is a VPN protocol written with love by some free Chinese people to help their people to reach the world wide web. It works on the application layer and its traffic looks like working with an actual web-site and it’s less prone to detect. The problem with V2Ray is the english language support, documentations and weak client software which can easily be improved if their community decided to share their information and issues in english not in fucking chinees!</p>
+
+<p>For this article we consider you have access to a Virtual Machine in the outside world. You can access that machine using SSH or you can easily install a cockpit to be able to access your Linux machine through the browser.</p>
+
+<h2 id="11-installing-cockpit-optional">1.1 Installing Cockpit (Optional)</h2>
+<p>To install Cockpit, connect to your machine using ssh and use the aptitude package manager to install cockpit:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span><span class="nb">sudo </span>apt update <span class="nt">--yes</span>
+<span class="gp">$</span><span class="w"> </span><span class="nb">sudo </span>apt upgrade <span class="nt">--yes</span>
+<span class="gp">$</span><span class="w"> </span><span class="nb">sudo </span>apt <span class="nb">install </span>cockpit <span class="nt">--yes</span>
+</code></pre></div></div>
+
+<p>This should install the cockpit and dose all the configurations for you. The cockpit is a web-based control panel and it will run on port 9090 of the server so, you have to allow connecting this port if your firewall is enabled:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span><span class="nb">sudo </span>ufw allow 9090
+<span class="gp">$</span><span class="w"> </span><span class="nb">sudo </span>ufw disable
+<span class="gp">$</span><span class="w"> </span><span class="nb">sudo </span>ufw <span class="nb">enable</span>
+</code></pre></div></div>
+
+<p>Then open a browser and type the address <code class="language-plaintext highlighter-rouge">YOUR_VM_IP:9090</code> to see the cockpit panel.
+Username and password of cockpit panel are the same as your vm user for example:</p>
+
+<pre><code class="language-txt">username: root
+password :123456
+</code></pre>
+
+<p align="center">
+    <img width="80%" src="/assets/images/projects/v2ray/cockpit.png" />
+</p>
+
+<h1 id="2-installing-v2ray-using-x-ui">2. Installing V2ray using X-UI</h1>
+<p>To install V2ray you can easily install X-UI panel on your machine and this will automatically install all necessary things for you. X-UI documentation could be found here: <a href="https://seakfind.github.io/2021/10/10/X-UI/"><strong>seakfind</strong></a></p>
+
+<p>The installation process is quiet easy, just connect to your machine and install socat first:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>apt <span class="nb">install </span>curl socat <span class="nt">-y</span>
+</code></pre></div></div>
+
+<p>Then you can skip obtaining certificate steps and directly jump on installing the x-ui using its script:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>bash &lt;<span class="o">(</span>curl <span class="nt">-Ls</span> https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh<span class="o">)</span>
+</code></pre></div></div>
+<p>Then it will ask you to type <code class="language-plaintext highlighter-rouge">yes|no</code>, you type yes and press enter on any chinees message prompt it shows to you. That’s it, you can start the panel by typing:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">x-ui start
+</span></code></pre></div></div>
+
+<p>And it will start the X-UI panel on the port <code class="language-plaintext highlighter-rouge">54321</code> of server. Open a browser and type <code class="language-plaintext highlighter-rouge">YOUR_VM_IP:54321</code> in the address bar to see the panel. Default username and password are:</p>
+
+<pre><code class="language-txt">username: admin
+password: admin
+</code></pre>
+
+<p align="center">
+    <img width="80%" src="/assets/images/projects/v2ray/xui.png" />
+</p>
+
+<p>Default language of x-ui is chaines, i use Google chrome and Google translate to translate its contexts to english and i recommend you to do so.</p>
+
+<p>After login, you have to go and change the default username and password of the panel (You can change the default port as well). From the sidebar panel select the third option, then select the second tab. Now type the old username and password on first two fields the new ones on the next two. Press <code class="language-plaintext highlighter-rouge">Revise</code> to save the changes.</p>
+
+<p align="center">
+    <img width="80%" src="/assets/images/projects/v2ray/x-ui-1.png" />
+</p>
+
+<p>Now go to inbound list from the sidebar and press add to create a new VPN configuration. For example you can select VMess or VLess protocol under Websocket(ws) as you can see on the picture below. If you choose VLess be aware of that VLess has now encryption and VMess is a better choice.</p>
+
+<blockquote>
+  <p>Note: You can go and search for other V2Ray configurations but VMess is good enough for your article.</p>
+</blockquote>
+
+<p align="center">
+    <img width="80%" src="/assets/images/projects/v2ray/xui-u.png" />
+</p>
+
+<p>Now you are all set, You can see the QR code or press copy share link to copy the share link to the clip board and send it to your clients.</p>
+
+<p align="center">
+    <img width="80%" src="/assets/images/projects/v2ray/x-ui-2.png" />
+</p>
+
+<h1 id="3-clients-setup-for-using-v2ray">3. Clients setup for using V2Ray</h1>]]></content><author><name>Ali N. Parizi</name></author><category term="project" /><category term="network" /><category term="security" /><category term="vpn" /><summary type="html"><![CDATA[1. Intro Last time, I wrote an article about bypassing God’s government restrictions to be able to access the outside world. Now the base solution still stands, but the protocol we used to implement that solution no longer works. We can clap our hands to the government priests for upgrading their knowledge about VPN protocols and say bravo in chinese “高丝纳纳顿”.]]></summary></entry><entry><title type="html">Variational AutoEncoders: An Introduction</title><link href="http://localhost:4000/blog/ai/machine-learning/deep-learning/2022/10/11/vae-intro.html" rel="alternate" type="text/html" title="Variational AutoEncoders: An Introduction" /><published>2022-10-11T08:24:05+03:30</published><updated>2022-10-11T08:24:05+03:30</updated><id>http://localhost:4000/blog/ai/machine-learning/deep-learning/2022/10/11/vae-intro</id><content type="html" xml:base="http://localhost:4000/blog/ai/machine-learning/deep-learning/2022/10/11/vae-intro.html"><![CDATA[<h1 id="1-intro">1. Intro</h1>
 <p>In machine learning, a Variational AutoEncoder, is an artificial neural network architecture introduced by Diederik P. Kingma and Max Welling, belonging to the families of probabilistic graphical models and variational Bayesian methods. Variational autoencoders are often associated with the autoencoder model because of its architectural affinity, but with significant differences in the goal and mathematical formulation. Variational autoencoders allow statistical inference problems to be rewritten as statistical optimization problems. They are meant to map the input variable to a multivariate latent distribution. Although this type of model was initially designed for unsupervised learning, its effectiveness has been proven for semi-supervised learning and supervised learning (<a href="https://en.wikipedia.org/wiki/Variational_autoencoder">Wikipedia</a>).</p>
 
 <div align="center">
@@ -498,4 +584,4 @@ Regards</p>
   <li><a href="https://ericiniguez.com/p/wireguard-vpn-and-nginx-reverse-proxy/">Wireguard vpn and nginx reverse proxy</a></li>
   <li><a href="https://nginxproxymanager.com/guide/#project-goal">Nginx proxy manager</a></li>
   <li><a href="https://www.oilandfish.com/posts/wireguard-udptunnel.html">WireGuard + udptunnel</a></li>
-</ul>]]></content><author><name>Ali N. Parizi</name></author><category term="project" /><category term="network" /><category term="security" /><category term="vpn" /><summary type="html"><![CDATA[1. Intro]]></summary></entry><entry><title type="html">Smart Card: An Introduction to smart card development</title><link href="http://localhost:4000/blog/hardware/iot/device/crypto-graphic/smart-card/2022/09/24/smart-card-intro.html" rel="alternate" type="text/html" title="Smart Card: An Introduction to smart card development" /><published>2022-09-24T12:21:13+03:30</published><updated>2022-09-24T12:21:13+03:30</updated><id>http://localhost:4000/blog/hardware/iot/device/crypto-graphic/smart-card/2022/09/24/smart-card-intro</id><content type="html" xml:base="http://localhost:4000/blog/hardware/iot/device/crypto-graphic/smart-card/2022/09/24/smart-card-intro.html"><![CDATA[]]></content><author><name>Ali N. Parizi</name></author><category term="blog" /><category term="hardware" /><category term="iot" /><category term="device" /><category term="crypto-graphic" /><category term="smart-card" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Computer vision: Algorithms and applications</title><link href="http://localhost:4000/book/programming/engineering/management/ethical/2022/09/24/computer-visoin.html" rel="alternate" type="text/html" title="Computer vision: Algorithms and applications" /><published>2022-09-24T12:21:13+03:30</published><updated>2022-09-24T12:21:13+03:30</updated><id>http://localhost:4000/book/programming/engineering/management/ethical/2022/09/24/computer-visoin</id><content type="html" xml:base="http://localhost:4000/book/programming/engineering/management/ethical/2022/09/24/computer-visoin.html"><![CDATA[]]></content><author><name>Ali N. Parizi</name></author><category term="book" /><category term="programming" /><category term="engineering" /><category term="management" /><category term="ethical" /><summary type="html"><![CDATA[]]></summary></entry></feed>
+</ul>]]></content><author><name>Ali N. Parizi</name></author><category term="project" /><category term="network" /><category term="security" /><category term="vpn" /><summary type="html"><![CDATA[1. Intro]]></summary></entry><entry><title type="html">Smart Card: An Introduction to smart card development</title><link href="http://localhost:4000/blog/hardware/iot/device/crypto-graphic/smart-card/2022/09/24/smart-card-intro.html" rel="alternate" type="text/html" title="Smart Card: An Introduction to smart card development" /><published>2022-09-24T12:21:13+03:30</published><updated>2022-09-24T12:21:13+03:30</updated><id>http://localhost:4000/blog/hardware/iot/device/crypto-graphic/smart-card/2022/09/24/smart-card-intro</id><content type="html" xml:base="http://localhost:4000/blog/hardware/iot/device/crypto-graphic/smart-card/2022/09/24/smart-card-intro.html"><![CDATA[]]></content><author><name>Ali N. Parizi</name></author><category term="blog" /><category term="hardware" /><category term="iot" /><category term="device" /><category term="crypto-graphic" /><category term="smart-card" /><summary type="html"><![CDATA[]]></summary></entry></feed>
