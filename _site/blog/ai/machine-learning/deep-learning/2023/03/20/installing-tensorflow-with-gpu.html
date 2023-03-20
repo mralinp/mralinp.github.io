@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="4-8jdtFeOSWDhx6RjXrSwNrvhvLyFdbACncYtB2Rjzc" />
+    <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="mralinp" />
+    <title> Installing Tensorflow with GPU Support </title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+    <!-- Font awesome -->
+    <script src="https://kit.fontawesome.com/40a6ec6105.js" crossorigin="anonymous"></script>
+    <!-- Prism CSS -->
+    <link rel="stylesheet" href="/assets/css/prism.css">
+    <!-- Prism JS -->
+    <script src="/assets/js/prism.js"></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3><a href="/">Ali N. Parizi</a></h3>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li class="sidebar-item">
+                    <a href="/"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="/blog"><i class="fa fa-rss" aria-hidden="true"></i> Blog</a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="/projects"><i class="fa fa-flask" aria-hidden="true"></i> Projects</a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="/library"><i class="fa fa-book" aria-hidden="true"></i> Library</a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="/about"><i class="fa fa-info" aria-hidden="true"></i> About me</a>
+                </li>
+            </ul>
+
+            <ul class="list-unstyled CTAs">
+                <li class="sidebar-btn">
+                    <a href="https://github.com/mralinp"> <i class="fab fa-github"></i> Github profile
+                    </a>
+                </li>
+                <li class="sidebar-btn">
+                    <a href="/assets/resume/ali-naderi-parizi-cv.pdf"> <i class="fas fa-file"></i> Download resume</a>
+                </li>
+            </ul>
+            <footer class="footer" style="text-align: center;">
+                <div class="container">
+                    <span class="text-muted">Powered by <br> <i class="fab fa-github"></i> Github</span>
+                </div>
+            </footer>
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content">
+            <!-- Navbar -->
+            <nav class="navbar navbar-expand-lg">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="/" id="brand">Ali N. Parizi</a>
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <span>Menu</span>
+                    </button>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav mr-auto" id="navbarLinks">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/assets/resume/ali-naderi-parizi-cv.pdf">Resume</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/blog">Blog</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/about">About me</a>
+                            </li>
+                        </ul>
+                        <form class="form-inline ml-auto" method="get" action="http://www.google.com/search" target="_blank">
+                            <input type="hidden" name="sitesearch" value="alinaderiparizi.ir" />
+                            <input class="form-control mr-sm-2" type="text" name="q" maxlength="255" placeholder="Search" />
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+            <div class="container">
+                <article>
+    <div class="image-wrapper text-center">
+        <a class="image-zoom cboxElement" href="">
+        <img src="/assets/images/posts/installing-tensorflow-gpu/title.webp" class="rounded mx-auto" width="100%"  alt="Photo of Blog">
+        <div class="image-overlay"></div> 
+        </a>
+    </div>
+    <br>
+    <div class="post-content">
+        <h2>Installing Tensorflow with GPU Support</h2>
+        <ul class="post-meta list-inline">
+            <li class="list-inline-item">
+                <i class="fa fa-user-circle-o"></i> Ali N. Parizi
+            </li>
+            <li class="list-inline-item">
+                <i class="fa fa-calendar-o"></i> 20 March 2023
+            </li>
+            <li class="list-inline-item">
+                <i class="fa fa-tags"></i>
+                    <span class="category">
+                    blog
+                    </span>
+                    
+                         <span class="category">
+                         ai
+                         </span>
+                    
+                         <span class="category">
+                         machine-learning
+                         </span>
+                    
+                         <span class="category">
+                         deep-learning
+                         </span>
+                    
+            </li>
+        </ul>
+        <p class="text-secondary"> The Ultimate Guide To Install The Latest Version Of TensorFlow on your Ubuntu 22.04 With GPU Support. <p>
+        <div class="line"></div>
+        <h1 id="1-intro">1. Intro</h1>
+
+<p>The rise to prominence of deep learning over the past decade is spectacular. From dominating in almost every single competition with its innovative and groundbreaking technologies, it has also led to several new types of research and training methods. One of the most popular ways to handle deep learning models to solve complex computational problems is with the help of deep frameworks.</p>
+
+<p>One such popular deep learning library to build and construct models to find solutions to numerous tasks is TensorFlow. TensorFlow is regarded as one of the best libraries to solve almost any question related to neural networks and deep learning. While this library performs effectively with most smaller and simpler datasets to achieve tasks on a CPU, its true power lies in the utilization of the Graphics Processing Unit (GPU).</p>
+
+<p>The GPU improvises the performance of this deep learning framework to reach new heights and peaks. However, one of the most annoying issues that deep learning programmers, developers, and enthusiasts face is the trouble of CUDA errors. This experience is rather frustrating for most individuals because it is a common occurrence while dealing with deep learning models.</p>
+
+<p>In this article, we will explore how to get the latest version of TensorFlow and stay updated with modern technology.</p>
+
+<p>We will use Anacoda because it’s almost the best python environment for machine-learning operations. To get started, let’s install anacoda on your computer. You can skip this step if you already have installed Anacoda on your Ubuntu machine.</p>
+
+<h1 id="2-anaconda">2. Anaconda</h1>
+<p>Anaconda is a distribution of the Python and R programming languages for scientific computing (data science, machine learning applications, large-scale data processing, predictive analytics, etc.), that aims to simplify package management and deployment. The distribution includes data-science packages suitable for Windows, Linux, and macOS. It is developed and maintained by Anaconda, Inc., which was founded by Peter Wang and Travis Oliphant in 2012. As an Anaconda, Inc. product, it is also known as Anaconda Distribution or Anaconda Individual Edition, while other products from the company are Anaconda Team Edition and Anaconda Enterprise Edition, both of which are not free. For me and probably you and almost 90% of people, the free version is good and does the job well for us. Installing anaconda requires installing For Debian based distros (such as Ubuntu) run the command below:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span><span class="nb">sudo </span>apt <span class="nb">install </span>libgl1-mesa-glx libegl1-mesa libxrandr2 libxrandr2 libxss1 libxcursor1 libxcomposite1 libasound2 libxi6 libxtst6
+</code></pre></div></div>
+<p>For installing Anaconda you can visit its official website <a href="https://www.anaconda.com/products/distribution">anaconda.com</a> and download the latest installer version or Run the command below:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>curl https://repo.anaconda.com/archive/Anaconda3-2022.10-Linux-x86_64.sh | /bin/bash
+</code></pre></div></div>
+
+<p>Then follow the installation process to complete it. Close and re-open your terminal window for the installation to take effect, or enter the command source ~/.bashrc (or ~/.zshrc if you are using zsh) to refresh the terminal.</p>
+
+<blockquote>
+  <p><strong>Note</strong>: The installer prompts you to choose whether to initialize Anaconda Distribution by running <code class="language-plaintext highlighter-rouge">conda init</code>. Anaconda recommends entering “yes”. If you enter “no”, then conda will not modify your shell scripts at all. To initialize after the installation process is done, first run source [PATH TO CONDA]/bin/activate and then run <code class="language-plaintext highlighter-rouge">conda init</code>.</p>
+</blockquote>
+
+<h2 id="21-creating-conda-environment">2.1 Creating Conda Environment</h2>
+
+<p>Create a new conda environment named tf with the following command.</p>
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>conda create <span class="nt">--name</span> tf <span class="nv">python</span><span class="o">=</span>3.9
+</code></pre></div></div>
+<p>You can deactivate and activate it with the following commands.</p>
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>conda deactivate
+<span class="gp">$</span><span class="w"> </span>conda activate tf
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>Note</strong>: After installing Anaconda, the default conda environment will automatically activated when you open a new terminal. I personally prefer not to activate the environment automatically. You can turn off this feature running <code class="language-plaintext highlighter-rouge">$ conda config --set auto_activate_base False</code>.</p>
+</blockquote>
+
+<h1 id="4-nvidia-driver-cuda-and-cudnn">4. Nvidia Driver, CUDA and cuDNN</h1>
+<p>It is required you to install a proper Nvidia driver on your machine. If you haven’t installed the Nvidia driver on your machine use the command below to install the driver:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span><span class="nb">sudo </span>apt <span class="nb">install </span>nvidia-driver-515
+</code></pre></div></div>
+
+<p>To confirm that it is installed properly run the command bellow:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>nvidia-smi
+</code></pre></div></div>
+
+<pre><code class="language-output">Mon Mar 20 12:19:49 2023       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 515.86.01    Driver Version: 515.86.01    CUDA Version: 11.7     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  NVIDIA GeForce ...  Off  | 00000000:65:00.0  On |                  N/A |
+|  0%   47C    P8    44W / 340W |   1325MiB / 10240MiB |      4%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|    0   N/A  N/A      1876      G   /usr/lib/xorg/Xorg                940MiB |
+|    0   N/A  N/A      2034      G   /usr/bin/gnome-shell               48MiB |
+|    0   N/A  N/A      3396      G   ...1/usr/lib/firefox/firefox      161MiB |
+|    0   N/A  N/A      4658      G   ...816051303568945556,131072       42MiB |
+|    0   N/A  N/A      4797      G   ...RendererForSitePerProcess      130MiB |
++-----------------------------------------------------------------------------+
+</code></pre>
+
+<p>Then install CUDA and cuDNN:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">(tf) $</span><span class="w"> </span>conda <span class="nb">install</span> <span class="nt">-c</span> conda-forge <span class="nv">cudatoolkit</span><span class="o">=</span>11.2.2 <span class="nv">cudnn</span><span class="o">=</span>8.1.0
+</code></pre></div></div>
+<p>Configure the system paths. You can do it with the following command every time you start a new terminal after activating your conda environment.</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">(tf) $</span><span class="w"> </span><span class="nb">export </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$LD_LIBRARY_PATH</span>:<span class="nv">$CONDA_PREFIX</span>/lib/
+</code></pre></div></div>
+
+<p>For your convenience it is recommended that you automate it with the following commands. The system paths will be automatically configured when you activate this conda environment.</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">(tf) $</span><span class="w"> </span><span class="nb">mkdir</span> <span class="nt">-p</span> <span class="nv">$CONDA_PREFIX</span>/etc/conda/activate.d
+<span class="gp">(tf) $</span><span class="w"> </span><span class="nb">echo</span> <span class="s1">'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CONDA_PREFIX/lib/'</span> <span class="o">&gt;</span> <span class="nv">$CONDA_PREFIX</span>/etc/conda/activate.d/env_vars.sh
+</code></pre></div></div>
+
+<p>In Ubuntu 22.04, we have to install NVCC as well:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">#</span><span class="w"> </span>Install NVCC
+<span class="gp">(tf) $</span><span class="w"> </span>conda <span class="nb">install</span> <span class="nt">-c</span> nvidia cuda-nvcc<span class="o">=</span>11.3.58
+<span class="gp">#</span><span class="w"> </span>Configure the XLA cuda directory
+<span class="gp">(tf) $</span><span class="w"> </span><span class="nb">mkdir</span> <span class="nt">-p</span> <span class="nv">$CONDA_PREFIX</span>/etc/conda/activate.d
+<span class="gp">(tf) $</span><span class="w"> </span><span class="nb">printf</span> <span class="s1">'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CONDA_PREFIX/lib/\nexport XLA_FLAGS=--xla_gpu_cuda_data_dir=$CONDA_PREFIX/lib/\n'</span> <span class="o">&gt;</span> <span class="nv">$CONDA_PREFIX</span>/etc/conda/activate.d/env_vars.sh
+<span class="gp">(tf) $</span><span class="w"> </span><span class="nb">source</span> <span class="nv">$CONDA_PREFIX</span>/etc/conda/activate.d/env_vars.sh
+<span class="gp">#</span><span class="w"> </span>Copy libdevice file to the required path
+<span class="gp">(tf) $</span><span class="w"> </span><span class="nb">mkdir</span> <span class="nt">-p</span> <span class="nv">$CONDA_PREFIX</span>/lib/nvvm/libdevice
+<span class="gp">(tf) $</span><span class="w"> </span><span class="nb">cp</span> <span class="nv">$CONDA_PREFIX</span>/lib/libdevice.10.bc <span class="nv">$CONDA_PREFIX</span>/lib/nvvm/libdevice/
+</code></pre></div></div>
+
+<h1 id="5-installing-tensorflow">5. Installing Tensorflow</h1>
+<p>TensorFlow requires a recent version of pip, so upgrade your pip installation to be sure you’re running the latest version.</p>
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">(tf) $</span><span class="w"> </span>pip <span class="nb">install</span> <span class="nt">--upgrade</span> pip
+<span class="gp">(tf) $</span><span class="w"> </span>pip <span class="nb">install </span>tensorflow
+</code></pre></div></div>
+<p>Verify the GPU setup:</p>
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">(tf) $</span><span class="w"> </span>python3 <span class="nt">-c</span> <span class="s2">"import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))"</span>
+</code></pre></div></div>
+<p>If a list of GPU devices is returned, you’ve installed TensorFlow successfully.</p>
+
+<pre><code class="language-output">[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]
+</code></pre>
+
+<h1 id="references">References</h1>
+<ul>
+  <li><a href="https://docs.anaconda.com/anaconda/install/index.html"><em>Installing Anaconda (anaconda.com)</em></a></li>
+  <li><a href="https://www.tensorflow.org/install/pip"><em>Install TensorFlow with pip (tensorflow.org)</em></a></li>
+</ul>
+
+
+    </div>
+</article>
+
+            </div>
+        </div>
+    </div>
+
+    
+    
+
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous">
+    </script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous">
+    </script>
+    <!-- jQuery Custom Scroller CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js">
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#sidebar").mCustomScrollbar({
+                theme: "minimal"
+            });
+
+            $('#sidebarCollapse').on('click', function() {
+                $('#sidebar, #content').toggleClass('active');
+                $('.collapse.in').toggleClass('in');
+                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+            });
+        });
+    </script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML">
+    </script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']], processEscapes: true}, jax: ["input/TeX","input/MathML","input/AsciiMath","output/CommonHTML"], extensions: ["tex2jax.js","mml2jax.js","asciimath2jax.js","MathMenu.js","MathZoom.js","AssistiveMML.js",
+        "[Contrib]/a11y/accessibility-menu.js"], TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"], equationNumbers: { autoNumber: "AMS" } } });
+    </script>
+
+</body>
+
+</html>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>http://localhost:4000/blog/2022/03/20/hello-world.html</loc>
+<loc>http://localhost:4000/blog/hello-world/2022/03/20/hello-world.html</loc>
 <lastmod>2022-03-20T20:02:05+03:30</lastmod>
 </url>
 <url>
@@ -37,7 +37,7 @@
 <lastmod>2022-09-24T12:21:13+03:30</lastmod>
 </url>
 <url>
-<loc>http://localhost:4000/project/network/security/vpn/2022/09/26/bypass-islamic-republic.html</loc>
+<loc>http://localhost:4000/blog/network/vpn/2022/09/26/bypass-islamic-republic.html</loc>
 <lastmod>2022-09-26T17:50:22+03:30</lastmod>
 </url>
 <url>
@@ -69,8 +69,12 @@
 <lastmod>2022-10-11T08:24:05+03:30</lastmod>
 </url>
 <url>
-<loc>http://localhost:4000/project/network/security/vpn/2022/10/31/v2ray-xui.html</loc>
+<loc>http://localhost:4000/blog/network/vpn/2022/10/31/v2ray-xui.html</loc>
 <lastmod>2022-10-31T13:10:23+03:30</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/blog/ai/machine-learning/deep-learning/2023/03/20/installing-tensorflow-with-gpu.html</loc>
+<lastmod>2023-03-20T12:19:43+03:30</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/about</loc>
@@ -94,7 +98,10 @@
 <loc>http://localhost:4000/page3/</loc>
 </url>
 <url>
+<loc>http://localhost:4000/page4/</loc>
+</url>
+<url>
 <loc>http://localhost:4000/assets/resume/ali-naderi-parizi-cv.pdf</loc>
-<lastmod>2022-06-17T16:57:24+04:30</lastmod>
+<lastmod>2023-02-19T14:49:03+03:30</lastmod>
 </url>
 </urlset>

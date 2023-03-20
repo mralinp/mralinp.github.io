@@ -4,7 +4,7 @@ title:      "How to bypass the 'Islamic Republic' internet filtering?"
 author:     "Ali N. Parizi"
 img:        "/assets/images/blog/vpn-setup/title.png"
 date:       2022-09-26  17:50:22 +0330
-categories: project network security vpn 
+categories: blog network vpn 
 brief:      "An introduction to virtual private networks(VPN), tunnels, proxies, and a straightforward walkthrough for running a WireGuard VPN server."
 ---
 

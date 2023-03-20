@@ -33,10 +33,6 @@ strong {
     font-weight: bold;
 }
 
-a strong:hover {
-    color: #ffab00;
-}
-
 a,
 a:hover,
 a:focus {
@@ -192,7 +188,7 @@ ul.CTAs a {
     color: #ffab00;
 }
 
-li a:hover {
+nav li a:hover {
     color: #ffab00 !important;
 }
 
@@ -247,10 +243,6 @@ th {
     width: 100%;
 }
 
-#content a:hover {
-    color: #ffab00;
-}
-
 #navbarLinks {
     display: none;
 }
@@ -266,6 +258,14 @@ p code {
     background: rgba(0,0,0,0.1) !important;
     margin: 0 !important;
     padding: 0 5px 0 5px !important;
+}
+
+.container a {
+    color: #ffab00;
+}
+
+.container a:hover {
+    color: #000;
 }
 
 
@@ -453,6 +453,10 @@ p code {
     /* border: 1px solid rgba(0, 0, 0, 0.30); */
 }
 
+.card-body h3 a {
+    color: #000;
+}
+
 section .btn {
     background: #ffab00;
     color: #000;
@@ -501,6 +505,7 @@ section .btn:hover {
 /* ---------------------------------------------------
     Paginator styles
 ----------------------------------------------------- */
+
 #PageNav ul {
     margin: 0;
 }
@@ -582,6 +587,10 @@ section .btn:hover {
     blockquote p {
         border-color: rgba(255, 255, 255, 0.3);
         background: #222;
+    }
+
+    .container a:hover {
+        color: #eee;
     }
 
 }
