@@ -3,7 +3,7 @@ layout: post
 title:  "Installing Tensorflow with GPU Support"
 author: "Ali N. Parizi"
 img: "/assets/images/posts/installing-tensorflow-gpu/title.webp"
-date:   2023-03-20 12:19:43 +0330
+date:   2023-03-19 12:19:43 +0330
 categories:  blog ai machine-learning deep-learning
 brief: "The Ultimate Guide To Install The Latest Version Of TensorFlow on your Ubuntu 22.04 With GPU Support."
 ---
@@ -64,7 +64,7 @@ $ nvidia-smi
 ```
 
 ```output
-Mon Mar 20 12:19:49 2023       
+Mon Mar 19 12:19:49 2023       
 +-----------------------------------------------------------------------------+
 | NVIDIA-SMI 515.86.01    Driver Version: 515.86.01    CUDA Version: 11.7     |
 |-------------------------------+----------------------+----------------------+
