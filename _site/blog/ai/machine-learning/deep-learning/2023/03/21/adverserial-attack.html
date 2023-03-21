@@ -118,7 +118,7 @@
                 <i class="fa fa-user-circle-o"></i> Ali N. Parizi
             </li>
             <li class="list-inline-item">
-                <i class="fa fa-calendar-o"></i> 16 August 2022
+                <i class="fa fa-calendar-o"></i> 21 March 2023
             </li>
             <li class="list-inline-item">
                 <i class="fa fa-tags"></i>
@@ -152,21 +152,6 @@
 <p>The model initially classifies the panda picture correctly, but when some noise, imperceptible to human beings, is injected into the picture, the resulting prediction of the model is changed to another animal, gibbon, even with such a high confidence. To us, it appears as if the initial and altered images are the same, although it is radically different to the model. This illustrates the threat these adversarial attacks pose — we may not perceive the difference so we cannot tell an adversarial attack as happened. Hence, although the output of the model may be altered, we cannot tell if the output is correct or incorrect.</p>
 
 <p>This formed the motivation behind the talk for Professor Ling Liu’s keynote speech at the 2019 IEEE Big Data Conference, where she touched on types of adversarial attacks, how adversarial examples are generated, and how to combat against these attacks. Without further ado, I will get into the contents of her speech.</p>
-
-<h1 id="table-of-contents">Table of contents</h1>
-<ul>
-  <li><a href="#1-intro">1. Introduction</a></li>
-  <li><a href="#2-types-of-adversarial-attacks">2. Types of adversarial attacks</a></li>
-  <li><a href="#3-how-are-adversarial-examples-generated">3. How are adversarial examples generated</a></li>
-  <li><a href="#4-adversarial-perturbation">4. Adversarial perturbation</a></li>
-  <li><a href="#5-black-box-vs-white-box-attacks">5. Black Box VS White Box Attacks</a>
-    <ul>
-      <li><a href="#51-black-box-attacks">5.1 Black box attacks</a></li>
-      <li><a href="#52-white-box-attacks">5.2 White box attacks</a></li>
-      <li><a href="#53-physical-attacks">5.3 Physical Attacks</a></li>
-    </ul>
-  </li>
-</ul>
 
 <h1 id="2-types-of-adversarial-attacks">2. Types of adversarial attacks</h1>
 
@@ -224,15 +209,15 @@ Black box attacks are based on the notion of transferability of adversarial exam
 
 <p>These examples show how effective such physical attacks can be.</p>
 
-<h1 id="out-of-distribution-ood-attack">Out of Distribution (OOD) Attack</h1>
+<h2 id="54-out-of-distribution-ood-attack">5.4 Out of Distribution (OOD) Attack</h2>
 <p>Another way in which black box attacks are carried out is through out-of-distribution (OOD) attacks. The traditional assumption in machine learning is that all train and test examples are drawn independently from the same distribution. In an OOD attack, this assumption is exploited by providing images of a different distribution from the training dataset to the model, for example feeding TinyImageNet data into a CIFAR-10 classifier which would lead to an incorrect prediction with high confidence.</p>
 
-<h1 id="how-can-we-trust-machine-learning">How Can We Trust Machine Learning?</h1>
+<h1 id="6-how-can-we-trust-machine-learning">6. How Can We Trust Machine Learning?</h1>
 <p>Now that we have taken a look at the various types of adversarial attacks, a natural question then comes — how can we trust our machine learning models if they are so susceptible to adversarial attacks?</p>
 
 <p>One possible approach has been proposed by Chow et al. in 2019 in the paper titled “Denoising and Verification Cross-Layer Ensemble Against Black-box Adversarial Attacks”. The approach is centred around enabling machine learning systems to automatically detect adversarial attacks and then automatically repair them through the use of denoising and verification ensembles.</p>
 
-<h1 id="denoising-ensembles">Denoising Ensembles</h1>
+<h1 id="7-denoising-ensembles">7. Denoising Ensembles</h1>
 <p>First, input images have to pass through denoising ensembles that attempt different methods to remove any added noise to the image, for example adding Gaussian noise. Since the specific noise added to the image by the adversary is unknown to the defender, there is a need for an ensemble of denoisers to each attempt to remove each type of noise.</p>
 
 <p>The image below shows the training process for the denoising autoencoder — the original image is injected with some noise that the attacker might inject, and the autoencoder tries to reconstruct the original uncorrupted image. In the training process, the objective is to reduce the reconstruction error between the reconstructed image and the original image.</p>
@@ -241,15 +226,15 @@ Black box attacks are based on the notion of transferability of adversarial exam
 
 <p>By developing an ensemble of these autoencoders each trained to remove a specific type of noise, the hope is that the corrupted images would be sufficiently denoised such that it is close to the original uncorrupted image to allow for image classification.</p>
 
-<h2 id="verification-ensemble">Verification Ensemble</h2>
+<h2 id="71-verification-ensemble">7.1 Verification Ensemble</h2>
 <p>After the images have been denoised, they then go through a verification ensemble which reviews every denoised image produced by each denoiser and then classifies the denoised image. Each classifier in the verification ensemble classifies each denoised image, and the ensemble then votes to determine the final category the image belongs to. This means that although some images may not have been denoised the correct way in the denoising step, the verification ensemble votes on all the denoised images, thereby increasing the likelihood of making a more accurate prediction.</p>
 
-<h2 id="diversity">Diversity</h2>
+<h2 id="72-diversity">7.2 Diversity</h2>
 <p>Diversity of the denoisers and verifiers have found to be very important because firstly, adversarial attackers will get better at altering images so there is a need for a diverse group of denoisers that can handle a variety of corrupted images. Following this, there is also a need for verifiers to be diverse so they can generate a variety of classifications so that it would be difficult adversarial attackers to manipulate them just as how they have managed to manipulate normal classifiers that we trust and use so frequently in machine learning.</p>
 
 <p>This remains an open problem because, after all these decisions by the various verifiers, there is still a final decision maker that needs to decide whose opinion to listen to. The final decision maker would need to preserve the diversity present in the ensemble, which is not an easy task to tackle.</p>
 
-<h1 id="conclusion">Conclusion</h1>
+<h1 id="8-conclusion">8. Conclusion</h1>
 <p>We have taken a look at various types of adversarial attacks as well as a promising method to defend against these attacks. This is definitely something to keep in mind when we implement machine learning models. Instead of blindly trusting the models to produce the correct results, we need to guard against these adversarial attacks and always think twice before we accept the decisions made by these models.</p>
 
 <p>A huge thanks to Professor Liu for this enlightening keynote on this pressing problem in machine learning!</p>
