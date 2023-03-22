@@ -2,13 +2,6 @@
 layout: main
 title: Blog
 ---
-
-
-<div class="text-center main-header">
-    <h1 class="display-20 display-md-18 display-lg-16">
-        Blog posts
-    </h1>
-</div>
 <section>
     <div class="row">
         {% for post in site.posts %}

@@ -318,8 +318,8 @@ p code {
 }
 
 .main-header {
-    border: 2px dashed rgba(0, 0, 0, 0.3);
-    border-radius: 1rem;
+    /* border: 2px dashed rgba(0, 0, 0, 0.3);
+    border-radius: 1rem; */
     padding: 10px;
     margin-bottom: 20px;
 }

@@ -1,4 +1,96 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-03-21T16:04:56+03:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">mralinp</title><subtitle>My awesome blog</subtitle><entry><title type="html">Adversarial attacks in deep learning</title><link href="http://localhost:4000/blog/ai/machine-learning/deep-learning/2023/03/21/adverserial-attack.html" rel="alternate" type="text/html" title="Adversarial attacks in deep learning" /><published>2023-03-21T16:01:02+03:30</published><updated>2023-03-21T16:01:02+03:30</updated><id>http://localhost:4000/blog/ai/machine-learning/deep-learning/2023/03/21/adverserial-attack</id><content type="html" xml:base="http://localhost:4000/blog/ai/machine-learning/deep-learning/2023/03/21/adverserial-attack.html"><![CDATA[<h1 id="1-intro">1. Intro</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-03-22T21:12:02+03:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">mralinp</title><subtitle>My awesome blog</subtitle><entry><title type="html">PyTorch Tutorial</title><link href="http://localhost:4000/project/ai/machine-learning/deep-learning/python/2023/03/22/pytorch-tutorial.html" rel="alternate" type="text/html" title="PyTorch Tutorial" /><published>2023-03-22T10:07:17+03:30</published><updated>2023-03-22T10:07:17+03:30</updated><id>http://localhost:4000/project/ai/machine-learning/deep-learning/python/2023/03/22/pytorch-tutorial</id><content type="html" xml:base="http://localhost:4000/project/ai/machine-learning/deep-learning/python/2023/03/22/pytorch-tutorial.html"><![CDATA[<h1 id="0-intro">0. Intro</h1>
+
+<p>PyTorch is a fully featured framework for building deep learning models, which is a type of machine learning that’s commonly used in applications like image recognition and language processing. Written in Python, it’s relatively easy for most machine learning developers to learn and use. PyTorch is distinctive for its excellent support for GPUs and its use of reverse-mode auto-differentiation, which enables computation graphs to be modified on the fly. This makes it a popular choice for fast experimentation and prototyping.</p>
+
+<p>PyTorch is a machine learning framework based on the Torch library, used for applications such as computer vision and natural language processing, originally developed by Meta AI and now part of the Linux Foundation umbrella. It is free and open-source software released under the modified BSD license.</p>
+
+<p>PyTorch is the work of developers at Facebook AI Research and several other labs. The framework combines the efficient and flexible GPU-accelerated backend libraries from Torch with an intuitive Python frontend that focuses on rapid prototyping, readable code, and support for the widest possible variety of deep learning models. Pytorch lets developers use the familiar imperative programming approach, but still output to graphs.  It was released to open source in 2017, and its Python roots have made it a favorite with machine learning developers.</p>
+
+<p>Significantly, PyTorch adopted a Chainer innovation called reverse-mode automatic differentiation. Essentially, it’s like a tape recorder that records completed operations and then replays backward to compute gradients. This makes PyTorch relatively simple to debug and well-adapted to certain applications such as dynamic neural networks. It’s popular for prototyping because every iteration can be different.</p>
+
+<p>PyTorch is especially popular with Python developers because it’s written in Python and uses that language’s imperative, define-by-run eager execution mode in which operations are executed as they are called from Python. As the popularity of the Python programming language persists, a survey identified a growing focus on AI and machine learning tasks and, with them, greater adoption of related PyTorch. This makes PyTorch a good choice for Python developers who are new to deep learning, and a growing library of deep learning courses are based on PyTorch. The API has remained consistent from early releases, meaning that the code is relatively easy for experienced Python developers to understand.</p>
+
+<p>PyTorch’s particular strength is in rapid prototyping and smaller projects. Its ease of use and flexibility also makes it a favorite for academic and research communities.</p>
+
+<p>Facebook developers have been working hard to improve PyTorch’s productive applications. Recent releases have provided enhancements like support for Google’s TensorBoard visualization tool, and just-in-time compilation. It has also expanded support for ONNX (Open Neural Network Exchange), which enables developers to match with deep learning frameworks or runtimes that work best for their applications.</p>
+
+<h1 id="1-installing-pytorch">1. Installing PyTorch</h1>
+
+<p>You can folow this tutorial using some online platforms such as <a href="https://colab.research.google.com">Google Colab</a> or <a href="https://kaggle.com">Kaggle</a> which give you a python environment via a jupyter note book and a proper GPU to meet your needs during learning process and even doing small projects and homeworks. If you prefer using these platforms you can skip this section but if you want to use pythorch on your local machine and use your own GPU here is the installation steps that you should folow.</p>
+
+<h2 id="11-installing-nvidia-driver">1.1 Installing Nvidia driver</h2>
+<p>If you have a gpu on your machine (most of us use Nvidia GPSs) you have to install a proper driver on your system. This tutorial is based on Ubuntu 22.04 if you have Windows machine or other linux distros its on your own to find the alternatives of the following steps to complete the installation process. Install Nvidia Driver using:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span><span class="nb">sudo </span>apt <span class="nb">install </span>nvidia-driver-515
+</code></pre></div></div>
+
+<h2 id="12-installing-pytorch">1.2 Installing PyTorch</h2>
+
+<p>You can folow the steps on PyTorch official website <a href="https://pytorch.org/get-started/locally/">pytorch.org</a> to install it locally or stay with me.</p>
+
+<p>If you haven’t installed Anaconda on your machine download and install anaconda then create a conda environment:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>conda create <span class="nt">--name</span> torch <span class="nv">python</span><span class="o">=</span>3.9
+</code></pre></div></div>
+
+<p>After creating the environment activate it using:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>conda activate torch
+</code></pre></div></div>
+
+<p>Then use pip to install PyTorch:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>pip <span class="nb">install </span>torch torchvision torchaudio
+</code></pre></div></div>
+
+<p>It will take some time but will install pytorch and all gpu requirements on your machine.</p>
+
+<p>to test that if gpu is supported, open a python file and run the code below:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
+<span class="k">print</span> <span class="p">(</span><span class="sa">f</span><span class="s">"Is GPU supported? </span><span class="si">{</span><span class="s">'Yes'</span> <span class="k">if</span> <span class="n">torch</span><span class="p">.</span><span class="n">cuda</span><span class="p">.</span><span class="n">is_avaiable</span><span class="p">()</span> <span class="k">else</span> <span class="s">'No'</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<pre><code class="language-output">Is GPU supported? Yes
+</code></pre>
+
+<p>Well done, you have installed PyTorch on your computer and ready to go through this tutorial.</p>
+
+<h1 id="2-tensor-basics">2. Tensor basics</h1>
+<p>In pytorch every thing is based on tensor operations. Tensor looks like a multi dimentional array in python which contains numeric data on each of its elements.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
+<span class="n">tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">empty</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># this will create a 2*2 tensor with random values
+</span><span class="k">print</span> <span class="p">(</span><span class="n">tensor</span><span class="p">)</span>
+</code></pre></div></div>
+
+<pre><code class="language-output"> tensor([[0.12, 0.19], 
+         [0.09, 0.82]])
+</code></pre>
+
+<h2 id="21-gradiant-calculation">2.1 Gradiant calculation</h2>
+
+<h2 id="22-optimizers">2.2 Optimizers</h2>
+
+<h2 id="23-gradian-decent">2.3 Gradian Decent</h2>
+
+<h1 id="3-datasets-dataloaders-and-transformers">3. Datasets, Dataloaders and Transformers</h1>
+
+<h1 id="4-nural-network">4. Nural Network</h1>
+
+<h1 id="5-convolutional-nural-network">5. Convolutional Nural Network</h1>
+
+<h1 id="6-recurrent-nural-network-lstm-and-gru">6. Recurrent Nural Network, LSTM and GRU</h1>
+
+<h1 id="9">9.</h1>
+
+<h1 id="10">10.</h1>
+
+<h1 id="11">11.</h1>
+
+<h1 id="references">References</h1>
+
+<h1 id="6">6.</h1>]]></content><author><name>Ali N. Parizi</name></author><category term="project" /><category term="ai" /><category term="machine-learning" /><category term="deep-learning" /><category term="python" /><summary type="html"><![CDATA[0. Intro]]></summary></entry><entry><title type="html">Adversarial attacks in deep learning</title><link href="http://localhost:4000/blog/ai/machine-learning/deep-learning/2023/03/21/adverserial-attack.html" rel="alternate" type="text/html" title="Adversarial attacks in deep learning" /><published>2023-03-21T16:01:02+03:30</published><updated>2023-03-21T16:01:02+03:30</updated><id>http://localhost:4000/blog/ai/machine-learning/deep-learning/2023/03/21/adverserial-attack</id><content type="html" xml:base="http://localhost:4000/blog/ai/machine-learning/deep-learning/2023/03/21/adverserial-attack.html"><![CDATA[<h1 id="1-intro">1. Intro</h1>
 <p>Big Data powered machine learning and deep learning has yielded impressive advances in many fields. One example is the release of ImageNet consisting of more than 15 million labelled high-resolution images of 22,000 categories which revolutionized the field of computer vision. State-of-the-art models have already achieved a 98% top-five accuracy on the ImageNet dataset, so it seems as though these models are foolproof and that nothing can go wrong.</p>
 
 <p>However, recent advances in adversarial training have found that this is an illusion. A good model misbehaves frequently when faced with adversarial examples. The image below illustrates the problem:</p>
@@ -324,6 +416,21 @@ password: admin
   <li><strong>Linux</strong>: <a href="https://github.com/Qv2ray/Qv2ray/releases/download/v2.7.0/Qv2ray-v2.7.0-linux-x64.AppImage">Qv2ray-v2.7.0-linux-x64.AppImage</a></li>
 </ul>
 
+<h1 id="4-using-tls-optional-but-recommended">4. Using TLS (Optional but, recommended.)</h1>
+
+<p>To make the clients connection more secure and safer, we need to use TLS on our server.</p>
+<h2 id="41-what-is-transport-layer-security-tls">4.1 What is Transport Layer Security (TLS)?</h2>
+
+<p>Transport Layer Security, or TLS, is a widely adopted security protocol designed to facilitate privacy and data security for communications over the Internet. A primary use case of TLS is encrypting the communication between web applications and servers, such as web browsers loading a website. TLS can also be used to encrypt other communications such as email, messaging, and voice over IP (VoIP). In this article we will focus on the role of TLS in web application security.</p>
+
+<p>TLS was proposed by the Internet Engineering Task Force (IETF), an international standards organization, and the first version of the protocol was published in 1999. The most recent version is TLS 1.3, which was published in 2018.</p>
+
+<h1 id="42-buy-a-domain">4.2 Buy a domain</h1>
+
+<h1 id="43-generating-a-new-certificate-using-cert-bot">4.3 Generating a new certificate using <code class="language-plaintext highlighter-rouge">cert-bot</code></h1>
+
+<h1 id="45-activating-cdn-optional-but-recommended">4.5 Activating CDN (Optional but recommended)</h1>
+
 <h1 id="references">References</h1>
 <ul>
   <li><a href="https://seakfind.github.io/2021/10/10/X-UI/">https://seakfind.github.io/2021/10/10/X-UI/</a></li>
@@ -350,4 +457,4 @@ password: admin
 </ul>]]></content><author><name>Ali N. Parizi</name></author><category term="blog" /><category term="ai" /><category term="machine-learning" /><category term="deep-learning" /><summary type="html"><![CDATA[1. Intro In machine learning, a Variational AutoEncoder, is an artificial neural network architecture introduced by Diederik P. Kingma and Max Welling, belonging to the families of probabilistic graphical models and variational Bayesian methods. Variational autoencoders are often associated with the autoencoder model because of its architectural affinity, but with significant differences in the goal and mathematical formulation. Variational autoencoders allow statistical inference problems to be rewritten as statistical optimization problems. They are meant to map the input variable to a multivariate latent distribution. Although this type of model was initially designed for unsupervised learning, its effectiveness has been proven for semi-supervised learning and supervised learning (Wikipedia).]]></summary></entry><entry><title type="html">Getting started with game hacking: Making a CS:GO cheat</title><link href="http://localhost:4000/project/security/cracking/game-hacking/2022/10/09/csgo-cheat.html" rel="alternate" type="text/html" title="Getting started with game hacking: Making a CS:GO cheat" /><published>2022-10-09T12:21:13+03:30</published><updated>2022-10-09T12:21:13+03:30</updated><id>http://localhost:4000/project/security/cracking/game-hacking/2022/10/09/csgo-cheat</id><content type="html" xml:base="http://localhost:4000/project/security/cracking/game-hacking/2022/10/09/csgo-cheat.html"><![CDATA[<h1 id="intro">Intro</h1>
 <p>This project is an example of game hacking, and it’s created to share the personal experience with other enthusiasts in this branch of software security.
 This project is just for educational proposes and i’m not responsible for any other subversive applications.
-As you know game hacking in online games is not allowed owing to annoying some other people. Normal players who just want to have fun with games, don’t want to face a demon hacker in their fun times, so game developers will respond if you do something to annoy other players. In other words cheating in online games will cause your account be banned (e.g VACation on steam platform).</p>]]></content><author><name>Ali N. Parizi</name></author><category term="project" /><category term="security" /><category term="cracking" /><category term="game-hacking" /><summary type="html"><![CDATA[Intro This project is an example of game hacking, and it’s created to share the personal experience with other enthusiasts in this branch of software security. This project is just for educational proposes and i’m not responsible for any other subversive applications. As you know game hacking in online games is not allowed owing to annoying some other people. Normal players who just want to have fun with games, don’t want to face a demon hacker in their fun times, so game developers will respond if you do something to annoy other players. In other words cheating in online games will cause your account be banned (e.g VACation on steam platform).]]></summary></entry><entry><title type="html">Design patterns: Building Extensible and Maintainable Object-Oriented Software</title><link href="http://localhost:4000/book/programming/design/design-pattern/2022/10/09/design-patterns.html" rel="alternate" type="text/html" title="Design patterns: Building Extensible and Maintainable Object-Oriented Software" /><published>2022-10-09T03:21:13+03:30</published><updated>2022-10-09T03:21:13+03:30</updated><id>http://localhost:4000/book/programming/design/design-pattern/2022/10/09/design-patterns</id><content type="html" xml:base="http://localhost:4000/book/programming/design/design-pattern/2022/10/09/design-patterns.html"><![CDATA[]]></content><author><name>Ali N. Parizi</name></author><category term="book" /><category term="programming" /><category term="design" /><category term="design-pattern" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Clean code: A handbook of agile software craftsmanship</title><link href="http://localhost:4000/book/programming/engineering/management/ethical-engineering/2022/10/09/clean-code.html" rel="alternate" type="text/html" title="Clean code: A handbook of agile software craftsmanship" /><published>2022-10-09T02:22:17+03:30</published><updated>2022-10-09T02:22:17+03:30</updated><id>http://localhost:4000/book/programming/engineering/management/ethical-engineering/2022/10/09/clean-code</id><content type="html" xml:base="http://localhost:4000/book/programming/engineering/management/ethical-engineering/2022/10/09/clean-code.html"><![CDATA[]]></content><author><name>Ali N. Parizi</name></author><category term="book" /><category term="programming" /><category term="engineering" /><category term="management" /><category term="ethical-engineering" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">When: The scientific secrets of perfect timing</title><link href="http://localhost:4000/book/self-help/focus/study-lessens/2022/10/09/when.html" rel="alternate" type="text/html" title="When: The scientific secrets of perfect timing" /><published>2022-10-09T01:21:12+03:30</published><updated>2022-10-09T01:21:12+03:30</updated><id>http://localhost:4000/book/self-help/focus/study-lessens/2022/10/09/when</id><content type="html" xml:base="http://localhost:4000/book/self-help/focus/study-lessens/2022/10/09/when.html"><![CDATA[]]></content><author><name>Ali N. Parizi</name></author><category term="book" /><category term="self-help" /><category term="focus" /><category term="study-lessens" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Deep work: Rules for focused success in a distracted world</title><link href="http://localhost:4000/book/self-help/focus/study-lessens/2022/10/07/deep-work.html" rel="alternate" type="text/html" title="Deep work: Rules for focused success in a distracted world" /><published>2022-10-07T13:11:32+03:30</published><updated>2022-10-07T13:11:32+03:30</updated><id>http://localhost:4000/book/self-help/focus/study-lessens/2022/10/07/deep-work</id><content type="html" xml:base="http://localhost:4000/book/self-help/focus/study-lessens/2022/10/07/deep-work.html"><![CDATA[]]></content><author><name>Ali N. Parizi</name></author><category term="book" /><category term="self-help" /><category term="focus" /><category term="study-lessens" /><summary type="html"><![CDATA[]]></summary></entry></feed>
+As you know game hacking in online games is not allowed owing to annoying some other people. Normal players who just want to have fun with games, don’t want to face a demon hacker in their fun times, so game developers will respond if you do something to annoy other players. In other words cheating in online games will cause your account be banned (e.g VACation on steam platform).</p>]]></content><author><name>Ali N. Parizi</name></author><category term="project" /><category term="security" /><category term="cracking" /><category term="game-hacking" /><summary type="html"><![CDATA[Intro This project is an example of game hacking, and it’s created to share the personal experience with other enthusiasts in this branch of software security. This project is just for educational proposes and i’m not responsible for any other subversive applications. As you know game hacking in online games is not allowed owing to annoying some other people. Normal players who just want to have fun with games, don’t want to face a demon hacker in their fun times, so game developers will respond if you do something to annoy other players. In other words cheating in online games will cause your account be banned (e.g VACation on steam platform).]]></summary></entry><entry><title type="html">Design patterns: Building Extensible and Maintainable Object-Oriented Software</title><link href="http://localhost:4000/book/programming/design/design-pattern/2022/10/09/design-patterns.html" rel="alternate" type="text/html" title="Design patterns: Building Extensible and Maintainable Object-Oriented Software" /><published>2022-10-09T03:21:13+03:30</published><updated>2022-10-09T03:21:13+03:30</updated><id>http://localhost:4000/book/programming/design/design-pattern/2022/10/09/design-patterns</id><content type="html" xml:base="http://localhost:4000/book/programming/design/design-pattern/2022/10/09/design-patterns.html"><![CDATA[]]></content><author><name>Ali N. Parizi</name></author><category term="book" /><category term="programming" /><category term="design" /><category term="design-pattern" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Clean code: A handbook of agile software craftsmanship</title><link href="http://localhost:4000/book/programming/engineering/management/ethical-engineering/2022/10/09/clean-code.html" rel="alternate" type="text/html" title="Clean code: A handbook of agile software craftsmanship" /><published>2022-10-09T02:22:17+03:30</published><updated>2022-10-09T02:22:17+03:30</updated><id>http://localhost:4000/book/programming/engineering/management/ethical-engineering/2022/10/09/clean-code</id><content type="html" xml:base="http://localhost:4000/book/programming/engineering/management/ethical-engineering/2022/10/09/clean-code.html"><![CDATA[]]></content><author><name>Ali N. Parizi</name></author><category term="book" /><category term="programming" /><category term="engineering" /><category term="management" /><category term="ethical-engineering" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">When: The scientific secrets of perfect timing</title><link href="http://localhost:4000/book/self-help/focus/study-lessens/2022/10/09/when.html" rel="alternate" type="text/html" title="When: The scientific secrets of perfect timing" /><published>2022-10-09T01:21:12+03:30</published><updated>2022-10-09T01:21:12+03:30</updated><id>http://localhost:4000/book/self-help/focus/study-lessens/2022/10/09/when</id><content type="html" xml:base="http://localhost:4000/book/self-help/focus/study-lessens/2022/10/09/when.html"><![CDATA[]]></content><author><name>Ali N. Parizi</name></author><category term="book" /><category term="self-help" /><category term="focus" /><category term="study-lessens" /><summary type="html"><![CDATA[]]></summary></entry></feed>
