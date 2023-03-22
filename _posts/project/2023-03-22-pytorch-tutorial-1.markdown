@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "PyTorch Tutorial"
+title:  "PyTorch Tutorial, Part 1: Installation and The basics"
 author: "Ali N. Parizi"
 img: "/assets/images/projects/pytorch-tutorial/title.png"
 date:   2023-03-22 10:07:17 +0330
@@ -9,7 +9,7 @@ brief: "PyTorch is the most popular deep-learning framework which is used by man
 ---
 
 
-# 0. Intro
+# 1. Intro
 
 PyTorch is a fully featured framework for building deep learning models, which is a type of machine learning that’s commonly used in applications like image recognition and language processing. Written in Python, it’s relatively easy for most machine learning developers to learn and use. PyTorch is distinctive for its excellent support for GPUs and its use of reverse-mode auto-differentiation, which enables computation graphs to be modified on the fly. This makes it a popular choice for fast experimentation and prototyping.
 
@@ -25,18 +25,18 @@ PyTorch’s particular strength is in rapid prototyping and smaller projects. It
 
 Facebook developers have been working hard to improve PyTorch’s productive applications. Recent releases have provided enhancements like support for Google’s TensorBoard visualization tool, and just-in-time compilation. It has also expanded support for ONNX (Open Neural Network Exchange), which enables developers to match with deep learning frameworks or runtimes that work best for their applications.
 
-# 1. Installing PyTorch
+# 2. Installing PyTorch
 
 You can folow this tutorial using some online platforms such as [Google Colab](https://colab.research.google.com) or [Kaggle](https://kaggle.com) which give you a python environment via a jupyter note book and a proper GPU to meet your needs during learning process and even doing small projects and homeworks. If you prefer using these platforms you can skip this section but if you want to use pythorch on your local machine and use your own GPU here is the installation steps that you should folow. 
 
-## 1.1 Installing Nvidia driver
+## 2.1 Installing Nvidia driver
 If you have a gpu on your machine (most of us use Nvidia GPSs) you have to install a proper driver on your system. This tutorial is based on Ubuntu 22.04 if you have Windows machine or other linux distros its on your own to find the alternatives of the following steps to complete the installation process. Install Nvidia Driver using:
 
 ```console
 $ sudo apt install nvidia-driver-515
 ```
 
-## 1.2 Installing PyTorch
+## 2.2 Installing PyTorch
 
 You can folow the steps on PyTorch official website [pytorch.org](https://pytorch.org/get-started/locally/) to install it locally or stay with me. 
 
@@ -73,7 +73,7 @@ Is GPU supported? Yes
 
 Well done, you have installed PyTorch on your computer and ready to go through this tutorial.
 
-# 2. Tensor basics
+# 3. Tensor basics
 In pytorch every thing is based on tensor operations. Tensor looks like a multi dimentional array in python which contains numeric data on each of its elements.
 
 ```python
@@ -87,26 +87,11 @@ print (tensor)
          [0.09, 0.82]])
 ```
 
-## 2.1 Gradiant calculation
+## 3.1 Gradiant calculation
 
-## 2.2 Optimizers 
+## 3.2 Optimizers 
 
-## 2.3 Gradian Decent
-
-# 3. Datasets, Dataloaders and Transformers
-
-# 4. Nural Network
-
-# 5. Convolutional Nural Network
-
-# 6. Recurrent Nural Network, LSTM and GRU
-
-# 9. 
-
-# 10.
-
-# 11. 
+## 3.3 Gradian Decent
 
 # References
-
-# 6. 
+ 

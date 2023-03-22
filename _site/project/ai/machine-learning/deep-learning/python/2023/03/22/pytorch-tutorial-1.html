@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="google-site-verification" content="4-8jdtFeOSWDhx6RjXrSwNrvhvLyFdbACncYtB2Rjzc" />
     <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="mralinp" />
-    <title> PyTorch Tutorial </title>
+    <title> PyTorch Tutorial, Part 1: Installation and The basics </title>
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
@@ -112,7 +112,7 @@
     </div>
     <br>
     <div class="post-content">
-        <h2>PyTorch Tutorial</h2>
+        <h2>PyTorch Tutorial, Part 1: Installation and The basics</h2>
         <ul class="post-meta list-inline">
             <li class="list-inline-item">
                 <i class="fa fa-user-circle-o"></i> Ali N. Parizi
@@ -146,7 +146,7 @@
         </ul>
         <p class="text-secondary"> PyTorch is the most popular deep-learning framework which is used by many researchers on the feild of machine learning and deep learning. I thing any body on this field shoud know this framework and use it on their implimentations. <p>
         <div class="line"></div>
-        <h1 id="0-intro">0. Intro</h1>
+        <h1 id="1-intro">1. Intro</h1>
 
 <p>PyTorch is a fully featured framework for building deep learning models, which is a type of machine learning that’s commonly used in applications like image recognition and language processing. Written in Python, it’s relatively easy for most machine learning developers to learn and use. PyTorch is distinctive for its excellent support for GPUs and its use of reverse-mode auto-differentiation, which enables computation graphs to be modified on the fly. This makes it a popular choice for fast experimentation and prototyping.</p>
 
@@ -162,17 +162,17 @@
 
 <p>Facebook developers have been working hard to improve PyTorch’s productive applications. Recent releases have provided enhancements like support for Google’s TensorBoard visualization tool, and just-in-time compilation. It has also expanded support for ONNX (Open Neural Network Exchange), which enables developers to match with deep learning frameworks or runtimes that work best for their applications.</p>
 
-<h1 id="1-installing-pytorch">1. Installing PyTorch</h1>
+<h1 id="2-installing-pytorch">2. Installing PyTorch</h1>
 
 <p>You can folow this tutorial using some online platforms such as <a href="https://colab.research.google.com">Google Colab</a> or <a href="https://kaggle.com">Kaggle</a> which give you a python environment via a jupyter note book and a proper GPU to meet your needs during learning process and even doing small projects and homeworks. If you prefer using these platforms you can skip this section but if you want to use pythorch on your local machine and use your own GPU here is the installation steps that you should folow.</p>
 
-<h2 id="11-installing-nvidia-driver">1.1 Installing Nvidia driver</h2>
+<h2 id="21-installing-nvidia-driver">2.1 Installing Nvidia driver</h2>
 <p>If you have a gpu on your machine (most of us use Nvidia GPSs) you have to install a proper driver on your system. This tutorial is based on Ubuntu 22.04 if you have Windows machine or other linux distros its on your own to find the alternatives of the following steps to complete the installation process. Install Nvidia Driver using:</p>
 
 <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span><span class="nb">sudo </span>apt <span class="nb">install </span>nvidia-driver-515
 </code></pre></div></div>
 
-<h2 id="12-installing-pytorch">1.2 Installing PyTorch</h2>
+<h2 id="22-installing-pytorch">2.2 Installing PyTorch</h2>
 
 <p>You can folow the steps on PyTorch official website <a href="https://pytorch.org/get-started/locally/">pytorch.org</a> to install it locally or stay with me.</p>
 
@@ -204,7 +204,7 @@
 
 <p>Well done, you have installed PyTorch on your computer and ready to go through this tutorial.</p>
 
-<h1 id="2-tensor-basics">2. Tensor basics</h1>
+<h1 id="3-tensor-basics">3. Tensor basics</h1>
 <p>In pytorch every thing is based on tensor operations. Tensor looks like a multi dimentional array in python which contains numeric data on each of its elements.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
@@ -216,29 +216,14 @@
          [0.09, 0.82]])
 </code></pre>
 
-<h2 id="21-gradiant-calculation">2.1 Gradiant calculation</h2>
+<h2 id="31-gradiant-calculation">3.1 Gradiant calculation</h2>
 
-<h2 id="22-optimizers">2.2 Optimizers</h2>
+<h2 id="32-optimizers">3.2 Optimizers</h2>
 
-<h2 id="23-gradian-decent">2.3 Gradian Decent</h2>
-
-<h1 id="3-datasets-dataloaders-and-transformers">3. Datasets, Dataloaders and Transformers</h1>
-
-<h1 id="4-nural-network">4. Nural Network</h1>
-
-<h1 id="5-convolutional-nural-network">5. Convolutional Nural Network</h1>
-
-<h1 id="6-recurrent-nural-network-lstm-and-gru">6. Recurrent Nural Network, LSTM and GRU</h1>
-
-<h1 id="9">9.</h1>
-
-<h1 id="10">10.</h1>
-
-<h1 id="11">11.</h1>
+<h2 id="33-gradian-decent">3.3 Gradian Decent</h2>
 
 <h1 id="references">References</h1>
 
-<h1 id="6">6.</h1>
 
     </div>
 </article>
