@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-03-22T21:33:50+03:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">mralinp</title><subtitle>My awesome blog</subtitle><entry><title type="html">The Subtle Art of Not Giving a Fuck</title><link href="http://localhost:4000/book/self-help/focus/study-lessens/2023/03/22/the-art-of-dont-giving-a-fuck.html" rel="alternate" type="text/html" title="The Subtle Art of Not Giving a Fuck" /><published>2023-03-22T13:11:32+03:30</published><updated>2023-03-22T13:11:32+03:30</updated><id>http://localhost:4000/book/self-help/focus/study-lessens/2023/03/22/the-art-of-dont-giving-a-fuck</id><content type="html" xml:base="http://localhost:4000/book/self-help/focus/study-lessens/2023/03/22/the-art-of-dont-giving-a-fuck.html"><![CDATA[<h1 id="1-intro">1. Intro</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-03-25T02:57:12+03:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">mralinp</title><subtitle>My awesome blog</subtitle><entry><title type="html">The Subtle Art of Not Giving a Fuck</title><link href="http://localhost:4000/book/self-help/focus/study-lessens/2023/03/22/the-art-of-dont-giving-a-fuck.html" rel="alternate" type="text/html" title="The Subtle Art of Not Giving a Fuck" /><published>2023-03-22T13:11:32+03:30</published><updated>2023-03-22T13:11:32+03:30</updated><id>http://localhost:4000/book/self-help/focus/study-lessens/2023/03/22/the-art-of-dont-giving-a-fuck</id><content type="html" xml:base="http://localhost:4000/book/self-help/focus/study-lessens/2023/03/22/the-art-of-dont-giving-a-fuck.html"><![CDATA[<h1 id="1-intro">1. Intro</h1>
 
 <p>There’s nothing subtle about Mark Manson. He’s crude, vulgar and doesn’t give a f*ck.
 But like anything of true value in life, dig a little deeper and you’ll find treasure worthy of any explorer willing to look below the surface.</p>
@@ -67,13 +67,7 @@ But like anything of true value in life, dig a little deeper and you’ll find t
 
 <p>You can folow this tutorial using some online platforms such as <a href="https://colab.research.google.com">Google Colab</a> or <a href="https://kaggle.com">Kaggle</a> which give you a python environment via a jupyter note book and a proper GPU to meet your needs during learning process and even doing small projects and homeworks. If you prefer using these platforms you can skip this section but if you want to use pythorch on your local machine and use your own GPU here is the installation steps that you should folow.</p>
 
-<h2 id="21-installing-nvidia-driver">2.1 Installing Nvidia driver</h2>
-<p>If you have a gpu on your machine (most of us use Nvidia GPSs) you have to install a proper driver on your system. This tutorial is based on Ubuntu 22.04 if you have Windows machine or other linux distros its on your own to find the alternatives of the following steps to complete the installation process. Install Nvidia Driver using:</p>
-
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span><span class="nb">sudo </span>apt <span class="nb">install </span>nvidia-driver-515
-</code></pre></div></div>
-
-<h2 id="22-installing-pytorch">2.2 Installing PyTorch</h2>
+<h2 id="21-installing-pytorch">2.1 Installing PyTorch</h2>
 
 <p>You can folow the steps on PyTorch official website <a href="https://pytorch.org/get-started/locally/">pytorch.org</a> to install it locally or stay with me.</p>
 
@@ -106,24 +100,545 @@ But like anything of true value in life, dig a little deeper and you’ll find t
 <p>Well done, you have installed PyTorch on your computer and ready to go through this tutorial.</p>
 
 <h1 id="3-tensor-basics">3. Tensor basics</h1>
-<p>In pytorch every thing is based on tensor operations. Tensor looks like a multi dimentional array in python which contains numeric data on each of its elements.</p>
+<p>The very basic class in PyTorch library is the tensor class. almost Every variable and operation in PyTorch is represented by a tensor. You can look at the tensor as just like a numpy array or a multi-dimensional python list.
+Because of the mathematical nature of Machine Learning operations which are performed on lineralgebra, we need such a class to implement and use the calculations in python.</p>
+
+<p>Tensor can be used in CPU or GPU. Using GPU makes the calculations so much fater. To move the tensor to GPU, you have to use  <code class="language-plaintext highlighter-rouge">tensor.to('cuda')</code> or <code class="language-plaintext highlighter-rouge">tensor.to(device)</code> function.</p>
+
+<p>Creating tensors:</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
-<span class="n">tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">empty</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># this will create a 2*2 tensor with random values
-</span><span class="k">print</span> <span class="p">(</span><span class="n">tensor</span><span class="p">)</span>
+
+<span class="c1"># Createing a tensor
+</span><span class="n">sample_tensor</span>   <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">random_tensor</span>   <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">zero_tensor</span>     <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">one_tensor</span>      <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
 </code></pre></div></div>
 
-<pre><code class="language-output"> tensor([[0.12, 0.19], 
-         [0.09, 0.82]])
+<p>Moving tensors to GPU:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">cuda</span><span class="p">.</span><span class="n">getDevice</span><span class="p">(</span><span class="s">'cuda'</span><span class="p">)</span>
+
+<span class="n">sample_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+
+<span class="c1"># Send tensor to GPU
+</span><span class="n">sample_tensor</span><span class="p">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>You can reshape the tensors using the <code class="language-plaintext highlighter-rouge">view</code> function. This function as very similar to the <code class="language-plaintext highlighter-rouge">reshape</code> function in numpy.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sample_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>   <span class="mi">3</span><span class="p">,</span>   <span class="mi">4</span> <span class="p">],</span> 
+                              <span class="p">[</span><span class="mi">5</span><span class="p">,</span>  <span class="mi">6</span><span class="p">,</span>   <span class="mi">7</span><span class="p">,</span>   <span class="mi">8</span> <span class="p">],</span> 
+                              <span class="p">[</span><span class="mi">9</span><span class="p">,</span>  <span class="mi">10</span><span class="p">,</span>  <span class="mi">11</span><span class="p">,</span>  <span class="mi">12</span><span class="p">],</span> 
+                              <span class="p">[</span><span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span>  <span class="mi">15</span><span class="p">,</span>  <span class="mi">16</span><span class="p">]])</span>
+
+<span class="c1"># turn into 1 D tensor ([1, 2, 3, ..., 16])
+</span><span class="n">one_dimention_tensor</span> <span class="o">=</span> <span class="n">sample_tensor</span><span class="p">.</span><span class="n">view</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div></div>
+<h2 id="31-operations-and-gradian-calculation">3.1 Operations and gradian calculation</h2>
+<p>In PyTorch every calculation is represented by a cumputation graph. For example, if we say \(y = x + 2\) this will build a graph as below:</p>
+
+<p align="center">
+<img src="/assets/images/projects/pytorch-tutorial/graph.png" width="30%" />
+<br />
+<span>Figure-1: Computarion graph for Y = X + 2</span>
+</p>
+
+<p>This is due to the ace of the gradient calculation. The gradients are required for optimization of the model weights. This computation graphs used in coputing the gradients based on the chain rule and Jacobian matrix method. The gradient calculation can be automatically done using the <code class="language-plaintext highlighter-rouge">backward</code> function. If you want to compute the gradient of a tensor, you have to set the <code class="language-plaintext highlighter-rouge">require_gradients</code> parameter to true while defining the tensor.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">require_gradients</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="p">).</span><span class="nb">sum</span><span class="p">()</span>
+
+<span class="n">y</span><span class="p">.</span><span class="n">backward</span><span class="p">()</span>
+
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"dy/dx: </span><span class="si">{</span><span class="n">y</span><span class="p">.</span><span class="n">grad</span><span class="p">()</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h1 id="4-linear-regression">4. Linear regression</h1>
+<p>Learning by doing a real project is a perfect way to gain some kinds of skills specially programming. To undrestand the basics of using the framework, it’s recommended to implement a simple mini project step by step from scratch. We choose linear regression as the training example and will gothrough the implementations from scrach and with out using pythorch. Then we will convert the code into using PyTorch and advanced functions.</p>
+
+<h2 id="41-problem-statement">4.1 Problem statement</h2>
+
+<p>Simple linear regression is used to estimate the relationship between two quantitative variables. You can use simple linear regression when you want to know:</p>
+
+<ol>
+  <li>How strong the relationship is between two variables (e.g., the relationship between rainfall and soil erosion).</li>
+  <li>The value of the dependent variable at a certain value of the independent variable (e.g., the amount of soil erosion at a certain level of rainfall).</li>
+</ol>
+
+<p>Regression models describe the relationship between variables by fitting a line to the observed data. Linear regression models use a straight line, while logistic and nonlinear regression models use a curved line. Regression allows you to estimate how a dependent variable changes as the independent variable(s) change.</p>
+
+<p>The formula for a simple linear regression is:</p>
+
+\[y = \beta_{0} + \beta_{1} . X + \epsilon\]
+
+<ul>
+  <li><strong>\(y\)</strong> is the predicted value of the dependent variable (\(y\)) for any given value of the independent variable (\(x\)).</li>
+  <li><strong>\(\beta_0\)</strong> is the intercept, the predicted value of \(y\) when the \(x\) is \(0\).</li>
+  <li><strong>\(\beta_1\)</strong> is the regression coefficient – how much we expect \(y\) to change as \(x\) increases.</li>
+  <li><strong>\(x\)</strong> is the independent variable ( the variable we expect is influencing \(y\)).</li>
+  <li><strong>\(\epsilon\)</strong> is the error of the estimate, or how much variation there is in our estimate of the regression coefficient.</li>
+</ul>
+
+<p>Linear regression finds the line of best fit line through your data by searching for the regression coefficient (B1) that minimizes the total error (e) of the model.</p>
+
+<p>The loss function or error function in linear regression is determined by <strong>M</strong>ean <strong>S</strong>quared <strong>E</strong>rror or MSE.</p>
+
+\[L = \frac{1}{N} \sum_{i=1}^{N} (\hat{Y}_{i} - Y_{i})^2\]
+
+<p>To minimize the error, we have to update the regression coefficients by computing the gradient with respect to the dependent variables (Model weights). And update the regression coefficients as below:</p>
+
+\[w = w - \alpha.\frac{dJ}{dw}\]
+
+<p>Which:</p>
+
+\[\frac{dJ}{dw} = \frac{1}{N} . 2x . (\hat{y}-y)\]
+
+<p>For this example we define a simple training set which is a set of 2D points \((x,y)\) such that \(y = 2 \times x\).</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>x</th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>12</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>We pick \(x=6\) as the test point and the rest as training data. Here is the implementation:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+
+<span class="c1"># Training Data
+</span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="p">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">10</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="p">.</span><span class="n">float32</span><span class="p">)</span>
+
+<span class="c1"># Test Data
+</span><span class="n">x_test</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">6</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="p">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">12</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="p">.</span><span class="n">float32</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>The network will have a single nuron that has a single parameter $w$ which is randonly evaluated.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Weights: A single nuron (no baias is considered)
+</span><span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">rand</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>In PyTorch the forward pass in callcuating the layer output is done by calling the forward function which, represents the forward pass of the network. In conclution, we will call the model output function, the forward function.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Forward pass:
+# Predict the output of the network on the input data.
+</span><span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">weights</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="n">weights</span>
+</code></pre></div></div>
+
+<p>Then we have to define the loss function of the network which is the MSE loss function:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Model loss function:
+# MSE = 1/N * sum((y_i - y_hat_i)^2)
+</span><span class="k">def</span> <span class="nf">mse</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">y_pred</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">square</span><span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="n">y_pred</span><span class="p">))</span>
+
+<span class="k">print</span> <span class="p">(</span><span class="sa">f</span><span class="s">'prediction before training f(</span><span class="si">{</span><span class="n">x_test</span><span class="si">}</span><span class="s">): </span><span class="si">{</span><span class="n">forward</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">weights</span><span class="p">)</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>    
+</code></pre></div></div>
+<p>Finally, we will need a function to calculate the gradient of the network coefficients, which in pytorch is called the backward function.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Calculating gradiants: 
+# dJ/dw = 1/N * 2x *(w*x-y) // w*x = y_pred
+</span><span class="k">def</span> <span class="nf">backward</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="n">w</span><span class="o">*</span><span class="n">x</span><span class="o">-</span><span class="n">y</span><span class="p">)).</span><span class="n">mean</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>Finally, here is the training loop:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.01</span> <span class="c1"># Alpha
+</span><span class="n">num_epochs</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">):</span>
+    <span class="c1"># Forward pass: Compute predicted y by passing x to the model
+</span>    <span class="n">Y_pred</span> <span class="o">=</span> <span class="n">forward</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+
+    <span class="c1"># Compute and print loss
+</span>    <span class="n">loss</span> <span class="o">=</span> <span class="n">mse</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">Y_pred</span><span class="p">)</span>
+
+    <span class="c1"># Backward pass: Compute gradient of the loss with respect to model parameters
+</span>    <span class="n">dw</span> <span class="o">=</span> <span class="n">backward</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">w</span><span class="p">)</span>
+
+    <span class="c1"># Update parameters
+</span>    <span class="n">w</span> <span class="o">=</span> <span class="n">w</span> <span class="o">-</span> <span class="n">learning_rate</span> <span class="o">*</span> <span class="n">dw</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">epoch</span><span class="p">)</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Epoch: </span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s"> loss=</span><span class="si">{</span><span class="n">loss</span><span class="si">:</span><span class="mf">0.3</span><span class="n">f</span><span class="si">}</span><span class="s">, weights=</span><span class="si">{</span><span class="p">[</span><span class="n">w</span><span class="p">]</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+        
+<span class="k">print</span> <span class="p">(</span><span class="sa">f</span><span class="s">"Model prediction for x=6 is: </span><span class="si">{</span><span class="n">forward</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">weights</span><span class="p">)</span><span class="si">:</span><span class="p">.</span><span class="mi">3</span><span class="n">f</span><span class="si">}</span><span class="s">)
+
+</span></code></pre></div></div>
+
+<pre><code class="language-output">Epoch: 0 loss=24.130, weights=[2.14810945503594]
+Epoch: 10 loss=0.000, weights=[2.0000000976789147]
+Epoch: 20 loss=0.000, weights=[2.0000000976789147]
+Epoch: 30 loss=0.000, weights=[2.0000000976789147]
+Epoch: 40 loss=0.000, weights=[2.0000000976789147]
+Epoch: 50 loss=0.000, weights=[2.0000000976789147]
+Epoch: 60 loss=0.000, weights=[2.0000000976789147]
+Epoch: 70 loss=0.000, weights=[2.0000000976789147]
+Epoch: 80 loss=0.000, weights=[2.0000000976789147]
+Epoch: 90 loss=0.000, weights=[2.0000000976789147]
+Model prediction for x=6 is: [12.]
+</code></pre>
+<p>As you can see, the model converged after 100 iterations and successfully predicted the expected value for \(x=6\) which is \(y=12\).</p>
+
+<h2 id="42-including-pytorch">4.2 Including PyTorch</h2>
+
+<p>We implemented a simple linear regression model from scratch and only using numpy. Now it’s time to include PyTorch in our code. First, we have to turn every variable (\(x\), \(y\) and \(w\)) into a tensor instead of numpy arrays.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
+
+<span class="c1"># Training Data
+</span><span class="n">X</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">10</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">float32</span><span class="p">)</span>
+
+<span class="c1"># Test Data
+</span><span class="n">x_test</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">6</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">12</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">float32</span><span class="p">)</span>
+
+<span class="c1"># Weights: A single nuron
+</span><span class="n">w</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">float32</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>In the above code, while defining the weight parameter, we said that it requires tracking the gradiant calculation for this tensor by setting the <code class="language-plaintext highlighter-rouge">require_grad</code> parameter to <code class="language-plaintext highlighter-rouge">True</code>. If we don’t set this parameter to <code class="language-plaintext highlighter-rouge">True</code>, while calling the backward function, it will throw an exception because it doesn not stored the gradients in the computation graph. So, be careful when defining a tensor which is requred to calculate the gradients.</p>
+
+<p>Next, we have to define the forward and loss function for the model.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Forward pass:
+# Predict the output of the network on the input data.
+</span><span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">weights</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="n">weights</span>
+
+<span class="c1"># Model loss function:
+# MSE = 1/N * sum((y_i - y_hat_i)^2)
+</span><span class="k">def</span> <span class="nf">mse</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">y_pred</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">((</span><span class="n">y</span><span class="o">-</span><span class="n">y_pred</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">).</span><span class="n">mean</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>As we said in the previous section, gradients can be calculated by calling the backward function. For this reason, there is no need to define the backward function. While calling the backward function, the calculated gradients will remain in the computation graph until you free its memory. and this could be done by calling <code class="language-plaintext highlighter-rouge">tensor.grad.zero_()</code> function. So, be carefull while calling the backward function and make sure that you free the memory associated with the gradients (you can see this in the code below).</p>
+
+<p>Here is the training loop:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.01</span>
+<span class="n">num_epochs</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">):</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">forward</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">weights</span><span class="p">)</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="n">mse</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+    <span class="n">loss</span><span class="p">.</span><span class="n">backward</span><span class="p">()</span>
+    <span class="k">with</span> <span class="n">torch</span><span class="p">.</span><span class="n">no_grad</span><span class="p">():</span>
+        <span class="n">w</span> <span class="o">-=</span> <span class="n">learning_rate</span> <span class="o">*</span> <span class="n">w</span><span class="p">.</span><span class="n">grad</span>
+    <span class="c1"># You have to zero the gradients before calling the backward function in the next step
+</span>    <span class="n">w</span><span class="p">.</span><span class="n">grad</span><span class="p">.</span><span class="n">zero_</span><span class="p">()</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="n">epoch</span><span class="p">)</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Epoch: </span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s"> loss=</span><span class="si">{</span><span class="n">loss</span><span class="si">:</span><span class="mf">0.3</span><span class="n">f</span><span class="si">}</span><span class="s">, weights=</span><span class="si">{</span><span class="n">w</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+        
+<span class="k">print</span> <span class="p">(</span><span class="sa">f</span><span class="s">"Model prediction for x=6 is: </span><span class="si">{</span><span class="n">forward</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span><span class="si">:</span><span class="p">.</span><span class="mi">3</span><span class="n">f</span><span class="si">}</span><span class="s">)
+</span></code></pre></div></div>
+<pre><code class="language-output">Epoch: 0 loss=49.172, weights=tensor([0.9472], requires_grad=True)
+Epoch: 10 loss=0.139, weights=tensor([1.9122], requires_grad=True)
+Epoch: 20 loss=0.001, weights=tensor([1.9927], requires_grad=True)
+Epoch: 30 loss=0.000, weights=tensor([1.9994], requires_grad=True)
+Epoch: 40 loss=0.000, weights=tensor([1.9999], requires_grad=True)
+Epoch: 50 loss=0.000, weights=tensor([2.0000], requires_grad=True)
+Epoch: 60 loss=0.000, weights=tensor([2.0000], requires_grad=True)
+Epoch: 70 loss=0.000, weights=tensor([2.0000], requires_grad=True)
+Epoch: 80 loss=0.000, weights=tensor([2.0000], requires_grad=True)
+Epoch: 90 loss=0.000, weights=tensor([2.0000], requires_grad=True)
+Model prediction for x=6 is: tensor([12.0000], grad_fn=&lt;MulBackward0&gt;)
 </code></pre>
 
-<h2 id="31-gradiant-calculation">3.1 Gradiant calculation</h2>
+<h2 id="43-more-including-pytorch">4.3 More including PyTorch</h2>
+<p>Now, let’s use the built-in PyTorch optimizer and loss function as well as the built-in forward function. First change that we should make is to remove the loss function that we where using and use the built-in MSELoss instead. Then, instead of manually updating the model parameters, we can use the built-in optimizers such as <strong>S</strong>tochastic <strong>G</strong>radient <strong>D</strong>escent (SGD), Adam or etc.</p>
 
-<h2 id="32-optimizers">3.2 Optimizers</h2>
+<p>As we know, this model is a single linear nuron which can be represented by <code class="language-plaintext highlighter-rouge">torch.nn.linear(input_size, output_size)</code>. This layer has its own parameters which means it’s not required to define the weights parameter \(w\) any more.</p>
 
-<h2 id="33-gradian-decent">3.3 Gradian Decent</h2>
+<p>While using optimizers, calling <code class="language-plaintext highlighter-rouge">optimizer.step()</code> will automatically update the model parameters and <code class="language-plaintext highlighter-rouge">optimizer.zero_grad()</code> will automatically free the gradients memory.</p>
 
-<h1 id="references">References</h1>]]></content><author><name>Ali N. Parizi</name></author><category term="project" /><category term="ai" /><category term="machine-learning" /><category term="deep-learning" /><category term="python" /><summary type="html"><![CDATA[1. Intro]]></summary></entry><entry><title type="html">Adversarial attacks in deep learning</title><link href="http://localhost:4000/blog/ai/machine-learning/deep-learning/2023/03/21/adverserial-attack.html" rel="alternate" type="text/html" title="Adversarial attacks in deep learning" /><published>2023-03-21T16:01:02+03:30</published><updated>2023-03-21T16:01:02+03:30</updated><id>http://localhost:4000/blog/ai/machine-learning/deep-learning/2023/03/21/adverserial-attack</id><content type="html" xml:base="http://localhost:4000/blog/ai/machine-learning/deep-learning/2023/03/21/adverserial-attack.html"><![CDATA[<h1 id="1-intro">1. Intro</h1>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
+
+<span class="c1"># Training Data
+</span><span class="n">X</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">],[</span><span class="mi">2</span><span class="p">],[</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">],[</span><span class="mi">5</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">2</span><span class="p">],[</span><span class="mi">4</span><span class="p">],[</span><span class="mi">6</span><span class="p">],[</span><span class="mi">8</span><span class="p">],[</span><span class="mi">10</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">float32</span><span class="p">)</span>
+
+<span class="c1"># Test Data
+</span><span class="n">x_test</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">6</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">12</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">float32</span><span class="p">)</span>
+
+<span class="n">n_samples</span><span class="p">,</span> <span class="n">n_features</span> <span class="o">=</span> <span class="n">X</span><span class="p">.</span><span class="n">shape</span>
+
+<span class="n">input_size</span> <span class="o">=</span> <span class="n">n_features</span>
+<span class="n">output_size</span> <span class="o">=</span> <span class="n">n_features</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">input_size</span><span class="p">,</span> <span class="n">output_size</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="p">(</span><span class="sa">f</span><span class="s">'prediction before training f(</span><span class="si">{</span><span class="n">x_test</span><span class="si">}</span><span class="s">): </span><span class="si">{</span><span class="n">model</span><span class="p">(</span><span class="n">x_test</span><span class="p">).</span><span class="n">item</span><span class="p">()</span><span class="si">:</span><span class="p">.</span><span class="mi">3</span><span class="n">f</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>    
+
+<span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.01</span>
+<span class="n">num_epochs</span> <span class="o">=</span> <span class="mi">2000</span>
+
+<span class="c1"># using built-in SGD optimizer
+</span><span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">optim</span><span class="p">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">model</span><span class="p">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">)</span>
+<span class="c1"># using built-in MSE loss function
+</span><span class="n">loss</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="n">MSELoss</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">):</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+    <span class="n">l</span> <span class="o">=</span> <span class="n">loss</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+    <span class="n">l</span><span class="p">.</span><span class="n">backward</span><span class="p">()</span>
+    <span class="n">optimizer</span><span class="p">.</span><span class="n">step</span><span class="p">()</span>
+    <span class="n">optimizer</span><span class="p">.</span><span class="n">zero_grad</span><span class="p">()</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="n">epoch</span><span class="p">)</span> <span class="o">%</span> <span class="mi">500</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Epoch: </span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s"> loss=</span><span class="si">{</span><span class="n">l</span><span class="p">.</span><span class="n">item</span><span class="p">()</span><span class="si">:</span><span class="mf">0.5</span><span class="n">f</span><span class="si">}</span><span class="s">, weights=</span><span class="si">{</span><span class="n">weights</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">item</span><span class="p">()</span><span class="si">:</span><span class="mf">0.5</span><span class="n">f</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="p">(</span><span class="sa">f</span><span class="s">"</span><span class="si">{</span><span class="n">model</span><span class="p">(</span><span class="n">x_test</span><span class="p">).</span><span class="n">item</span><span class="p">()</span><span class="si">:</span><span class="mf">0.3</span><span class="n">f</span><span class="si">}</span><span class="s">"</span><span class="p">)</span> 
+</code></pre></div></div>
+<pre><code class="language-output">prediction before training f(tensor([6.])): 0.314
+Epoch: 0 loss=45.60832, weights=0.29675
+Epoch: 500 loss=0.00051, weights=0.29675
+Epoch: 1000 loss=0.00002, weights=0.29675
+Epoch: 1500 loss=0.00000, weights=0.29675
+12.000
+</code></pre>
+
+<h2 id="44-turning-model-into-a-torch-module">4.4 Turning model into a Torch module</h2>
+
+<p>We can define blocks of layers as modules in PyTorch which are called <strong>modules</strong>. To do so, we have to define a class which inherits from the base <code class="language-plaintext highlighter-rouge">torch.nn.Module</code> class and implement the forward function for that module.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Model</span><span class="p">(</span><span class="n">torch</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="n">Module</span><span class="p">):</span>
+    
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Model</span><span class="p">,</span> <span class="bp">self</span><span class="p">).</span><span class="n">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">ll_1</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">ll_1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Now we can instantiate and use this model instead of defining a single fully connected layer as our model.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">mport</span> <span class="n">torch</span>
+
+<span class="c1"># Training Data
+</span><span class="n">X</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">],[</span><span class="mi">2</span><span class="p">],[</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">],[</span><span class="mi">5</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">2</span><span class="p">],[</span><span class="mi">4</span><span class="p">],[</span><span class="mi">6</span><span class="p">],[</span><span class="mi">8</span><span class="p">],[</span><span class="mi">10</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">float32</span><span class="p">)</span>
+
+<span class="c1"># Test Data
+</span><span class="n">x_test</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">6</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">12</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">float32</span><span class="p">)</span>
+
+<span class="n">n_samples</span><span class="p">,</span> <span class="n">n_features</span> <span class="o">=</span> <span class="n">X</span><span class="p">.</span><span class="n">shape</span>
+
+<span class="n">input_size</span> <span class="o">=</span> <span class="n">n_features</span>
+<span class="n">output_size</span> <span class="o">=</span> <span class="n">n_features</span>
+
+<span class="k">class</span> <span class="nc">Model</span><span class="p">(</span><span class="n">torch</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="n">Module</span><span class="p">):</span>
+    
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_size</span><span class="p">,</span> <span class="n">output_size</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Model</span><span class="p">,</span> <span class="bp">self</span><span class="p">).</span><span class="n">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">ll_1</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">input_size</span><span class="p">,</span> <span class="n">output_size</span><span class="p">)</span>
+        
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">ll_1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="n">input_size</span><span class="p">,</span> <span class="n">output_size</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="p">(</span><span class="sa">f</span><span class="s">'prediction before training f(</span><span class="si">{</span><span class="n">x_test</span><span class="si">}</span><span class="s">): </span><span class="si">{</span><span class="n">model</span><span class="p">(</span><span class="n">x_test</span><span class="p">).</span><span class="n">item</span><span class="p">()</span><span class="si">:</span><span class="p">.</span><span class="mi">3</span><span class="n">f</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>    
+
+<span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.01</span>
+<span class="n">num_epochs</span> <span class="o">=</span> <span class="mi">2000</span>
+
+<span class="c1"># using built-in SGD optimizer
+</span><span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">optim</span><span class="p">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">model</span><span class="p">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">)</span>
+<span class="c1"># using built-in MSE loss function
+</span><span class="n">loss</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="n">MSELoss</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">):</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+    <span class="n">l</span> <span class="o">=</span> <span class="n">loss</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+    <span class="n">l</span><span class="p">.</span><span class="n">backward</span><span class="p">()</span>
+    <span class="n">optimizer</span><span class="p">.</span><span class="n">step</span><span class="p">()</span>
+    <span class="n">optimizer</span><span class="p">.</span><span class="n">zero_grad</span><span class="p">()</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="n">epoch</span><span class="p">)</span> <span class="o">%</span> <span class="mi">500</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Epoch: </span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s"> loss=</span><span class="si">{</span><span class="n">l</span><span class="p">.</span><span class="n">item</span><span class="p">()</span><span class="si">:</span><span class="mf">0.5</span><span class="n">f</span><span class="si">}</span><span class="s">, weights=</span><span class="si">{</span><span class="n">weights</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">item</span><span class="p">()</span><span class="si">:</span><span class="mf">0.5</span><span class="n">f</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="p">(</span><span class="sa">f</span><span class="s">"</span><span class="si">{</span><span class="n">model</span><span class="p">(</span><span class="n">x_test</span><span class="p">).</span><span class="n">item</span><span class="p">()</span><span class="si">:</span><span class="mf">0.3</span><span class="n">f</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h1 id="45-more-realistic-example">4.5 More realistic example</h1>
+<p>Now lets use a more realistic data and plot the results with matplotlib.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">datasets</span><span class="p">.</span><span class="n">make_regression</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">n_features</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">noise</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">float32</span><span class="p">)),</span> <span class="n">torch</span><span class="p">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">float32</span><span class="p">))</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">Y</span><span class="p">.</span><span class="n">view</span><span class="p">(</span><span class="n">Y</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">n_samples</span><span class="p">,</span> <span class="n">n_features</span> <span class="o">=</span> <span class="n">X</span><span class="p">.</span><span class="n">shape</span>
+
+<span class="k">class</span> <span class="nc">Model</span><span class="p">(</span><span class="n">torch</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Model</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="n">input_size</span><span class="p">,</span> <span class="n">output_size</span><span class="p">).</span><span class="n">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">ll_1</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">ll_1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">ll_1</span><span class="p">.</span><span class="n">parameters</span><span class="p">()</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="n">n_features</span><span class="p">,</span> <span class="n">n_features</span><span class="p">)</span>
+
+<span class="n">criterion</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="n">MSELoss</span><span class="p">()</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">optim</span><span class="p">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">model</span><span class="p">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+
+<span class="n">num_epochs</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">):</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
+    <span class="n">loss</span><span class="p">.</span><span class="n">backward</span><span class="p">()</span>
+    <span class="n">optimizer</span><span class="p">.</span><span class="n">step</span><span class="p">()</span>
+    <span class="n">optimizer</span><span class="p">.</span><span class="n">zero_grad</span><span class="p">()</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'Epoch: </span><span class="si">{</span><span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s">, Loss: </span><span class="si">{</span><span class="n">loss</span><span class="p">.</span><span class="n">item</span><span class="p">()</span><span class="si">:</span><span class="p">.</span><span class="mi">4</span><span class="n">f</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
+
+<span class="n">prediction</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X</span><span class="p">).</span><span class="n">detach</span><span class="p">().</span><span class="n">numpy</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">.</span><span class="n">detach</span><span class="p">().</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">Y</span><span class="p">.</span><span class="n">detach</span><span class="p">().</span><span class="n">numpy</span><span class="p">(),</span> <span class="s">'ro'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">.</span><span class="n">detach</span><span class="p">().</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">prediction</span><span class="p">,</span> <span class="s">'b'</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<p align="center">
+    <img src="/assets/images/projects/pytorch-tutorial/plot.png" />
+    <br />
+    <span>Figure-2: Regression results</span>
+</p>
+
+<h1 id="5-logistic-regression">5. Logistic regression</h1>
+
+<p>Here is a classification example using the breast cancer dataset from scikit-learn library. To recap, the problem statement is, we want to classify patients into two classes, having and not having the breast cancer using a single nuron as the previous examples.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">sklearn</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">sklearn</span><span class="p">.</span><span class="n">datasets</span><span class="p">.</span><span class="n">load_breast_cancer</span><span class="p">()</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">.</span><span class="n">data</span><span class="p">,</span> <span class="n">dataset</span><span class="p">.</span><span class="n">target</span>
+
+<span class="n">n_samples</span><span class="p">,</span> <span class="n">n_features</span> <span class="o">=</span> <span class="n">X</span><span class="p">.</span><span class="n">shape</span>
+
+<span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">sklearn</span><span class="p">.</span><span class="n">preprocessing</span><span class="p">.</span><span class="n">StandardScaler</span><span class="p">()</span>
+
+<span class="n">x_train</span> <span class="o">=</span> <span class="n">scaler</span><span class="p">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">x_train</span><span class="p">)</span>
+<span class="n">x_test</span> <span class="o">=</span> <span class="n">scaler</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
+
+<span class="n">x_train</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">x_train</span><span class="p">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">float32</span><span class="p">))</span>
+<span class="n">x_test</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">x_test</span><span class="p">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">float32</span><span class="p">))</span>
+
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">y_train</span><span class="p">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">float32</span><span class="p">))</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">y_test</span><span class="p">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">float32</span><span class="p">))</span>
+
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">y_train</span><span class="p">.</span><span class="n">view</span><span class="p">(</span><span class="n">y_train</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">y_test</span><span class="p">.</span><span class="n">view</span><span class="p">(</span><span class="n">y_test</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">LogisticRegression</span><span class="p">(</span><span class="n">torch</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="n">Module</span><span class="p">):</span>
+    
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_features</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">LogisticRegression</span><span class="p">,</span> <span class="bp">self</span><span class="p">).</span><span class="n">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">linear</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">num_features</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">y_pred</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">linear</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">y_pred</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">n_features</span><span class="p">)</span>
+
+<span class="n">criterion</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="n">BCELoss</span><span class="p">()</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">optim</span><span class="p">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">model</span><span class="p">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">x_train</span><span class="p">)</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="n">loss</span><span class="p">.</span><span class="n">backward</span><span class="p">()</span>
+    <span class="n">optimizer</span><span class="p">.</span><span class="n">step</span><span class="p">()</span>
+    <span class="n">optimizer</span><span class="p">.</span><span class="n">zero_grad</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">epoch</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="c1"># Prevent tracking gradients during the below calculation
+</span>        <span class="k">with</span> <span class="n">torch</span><span class="p">.</span><span class="n">no_grad</span><span class="p">():</span>
+            <span class="n">prediction</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">x_test</span><span class="p">).</span><span class="nb">round</span><span class="p">()</span>
+            <span class="n">accuracy</span> <span class="o">=</span> <span class="n">prediction</span><span class="p">.</span><span class="n">eq</span><span class="p">(</span><span class="n">y_test</span><span class="p">).</span><span class="nb">sum</span><span class="p">().</span><span class="n">item</span><span class="p">()</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span>
+            <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'epoch: </span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s">, loss: </span><span class="si">{</span><span class="n">loss</span><span class="p">.</span><span class="n">item</span><span class="p">()</span><span class="si">:</span><span class="p">.</span><span class="mi">03</span><span class="n">f</span><span class="si">}</span><span class="s">, accuracy: </span><span class="si">{</span><span class="n">accuracy</span><span class="si">:</span><span class="p">.</span><span class="mi">03</span><span class="n">f</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>    
+</code></pre></div></div>
+
+<p>As you can see, in the code, when we want to compute the accuracy of the model, we dont need to to keep track of calculated gradients of the calculation. To prevent this to affect our training and calculations, we have to turn this tracking off. This can be done by calling <code class="language-plaintext highlighter-rouge">torch.no_grad()</code> in a <code class="language-plaintext highlighter-rouge">with</code> block or making a detached copy of the variables directly by calling the <code class="language-plaintext highlighter-rouge">tensor.detach()</code> function of that tensor and then atthatch it agin.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">a_copy</span> <span class="o">=</span> <span class="n">a</span><span class="p">.</span><span class="n">detach</span><span class="p">()</span>
+<span class="c1"># now use a_copy to compute the accuracy...
+</span></code></pre></div></div>
+
+<pre><code class="language-output">epoch: 0, loss: 0.892, accuracy: 0.281
+epoch: 10, loss: 0.650, accuracy: 0.667
+epoch: 20, loss: 0.515, accuracy: 0.860
+epoch: 30, loss: 0.433, accuracy: 0.939
+epoch: 40, loss: 0.380, accuracy: 0.947
+epoch: 50, loss: 0.342, accuracy: 0.965
+epoch: 60, loss: 0.315, accuracy: 0.965
+epoch: 70, loss: 0.293, accuracy: 0.965
+epoch: 80, loss: 0.276, accuracy: 0.965
+epoch: 90, loss: 0.262, accuracy: 0.965
+</code></pre>
+<h1 id="6-conclusion">6. Conclusion</h1>
+<p>In this section we learned what is PyTorch, Tensors and the computation graph deffinition. Then, we implemented a simple linear regression from scratch using numpy which helped us to better undrestanding the problem and how to solve the problem by implemenation. After that, we turned the calculations from numpy into PyTorch tensors. Finally, we completed the implementation using built-in PyTorch optimizers and loss functions and some examples.</p>]]></content><author><name>Ali N. Parizi</name></author><category term="project" /><category term="ai" /><category term="machine-learning" /><category term="deep-learning" /><category term="python" /><summary type="html"><![CDATA[1. Intro]]></summary></entry><entry><title type="html">Adversarial attacks in deep learning</title><link href="http://localhost:4000/blog/ai/machine-learning/deep-learning/2023/03/21/adverserial-attack.html" rel="alternate" type="text/html" title="Adversarial attacks in deep learning" /><published>2023-03-21T16:01:02+03:30</published><updated>2023-03-21T16:01:02+03:30</updated><id>http://localhost:4000/blog/ai/machine-learning/deep-learning/2023/03/21/adverserial-attack</id><content type="html" xml:base="http://localhost:4000/blog/ai/machine-learning/deep-learning/2023/03/21/adverserial-attack.html"><![CDATA[<h1 id="1-intro">1. Intro</h1>
 <p>Big Data powered machine learning and deep learning has yielded impressive advances in many fields. One example is the release of ImageNet consisting of more than 15 million labelled high-resolution images of 22,000 categories which revolutionized the field of computer vision. State-of-the-art models have already achieved a 98% top-five accuracy on the ImageNet dataset, so it seems as though these models are foolproof and that nothing can go wrong.</p>
 
 <p>However, recent advances in adversarial training have found that this is an illusion. A good model misbehaves frequently when faced with adversarial examples. The image below illustrates the problem:</p>
