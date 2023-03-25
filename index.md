@@ -1,6 +1,6 @@
 ---
 layout: main
-Title: Home
+title: Home
 ---
 
 <style>
