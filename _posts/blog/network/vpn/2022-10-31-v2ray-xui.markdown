@@ -3,6 +3,7 @@ layout: post
 title: "Bypass The Islamic Republic Again: Installing V2ray + XUI"
 author: "Ali N. Parizi"
 img: "/assets/images/projects/v2ray/title.png"
+cover-img: "/assets/images/projects/v2ray/cover.jpeg"
 date:   2022-10-31 13:10:23 +0330
 categories: blog network vpn
 brief: "When the situation is challenging, UDP-based VPN protocols might not work and we have to use something else to be able to bypass this madness. This tutorial is about installing and configuring the popular Chinese VPN protocol V2Ray on a ubuntu server using a web-based control panel called X-UI."

@@ -8,6 +8,8 @@
     <meta name="google-site-verification" content="4-8jdtFeOSWDhx6RjXrSwNrvhvLyFdbACncYtB2Rjzc" />
     <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="mralinp" />
     <title> Hello, world! </title>
+     <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
@@ -21,6 +23,10 @@
     <link rel="stylesheet" href="/assets/css/prism.css">
     <!-- Prism JS -->
     <script src="/assets/js/prism.js"></script>
+    <!-- Vendor -->
+    <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -58,61 +64,67 @@
                     <a href="/assets/resume/ali-naderi-parizi-cv.pdf"> <i class="fas fa-file"></i> Download resume</a>
                 </li>
             </ul>
-            <footer class="footer" style="text-align: center;">
+            <div class="footer" style="text-align: center;">
                 <div class="container">
                     <span class="text-muted">Powered by <br> <i class="fab fa-github"></i> Github</span>
                 </div>
-            </footer>
+            </div>
         </nav>
 
         <!-- Page Content  -->
-        <div id="content">
-            <!-- Navbar -->
-            <nav class="navbar navbar-expand-lg">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="/" id="brand">Ali N. Parizi</a>
-                    <button type="button" id="sidebarCollapse" class="btn btn-info">
-                        <i class="fas fa-align-left"></i>
-                        <span>Menu</span>
-                    </button>
-                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="fas fa-align-justify"></i>
-                    </button>
+        <div class="content-container">
+            <div id="content">
+                <!-- Navbar -->
+                <nav class="navbar navbar-expand-lg">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="/" id="brand">Ali N. Parizi</a>
+                        <button type="button" id="sidebarCollapse" class="btn btn-info">
+                            <i class="fas fa-align-left"></i>
+                            <span>Menu</span>
+                        </button>
+                        <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <i class="fas fa-align-justify"></i>
+                        </button>
 
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="nav navbar-nav mr-auto" id="navbarLinks">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="/">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/assets/resume/ali-naderi-parizi-cv.pdf">Resume</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/blog">Blog</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/about">About me</a>
-                            </li>
-                        </ul>
-                        <form class="form-inline ml-auto" method="get" action="http://www.google.com/search" target="_blank">
-                            <input type="hidden" name="sitesearch" value="alinaderiparizi.com" />
-                            <input class="form-control mr-sm-2" type="text" name="q" maxlength="255" placeholder="Search" />
-                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                        </form>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="nav navbar-nav mr-auto" id="navbarLinks">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="/">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/assets/resume/ali-naderi-parizi-cv.pdf">Resume</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/blog">Blog</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/about">About me</a>
+                                </li>
+                            </ul>
+                            <form class="form-inline ml-auto" method="get" action="http://www.google.com/search" target="_blank">
+                                <input type="hidden" name="sitesearch" value="alinaderiparizi.com" />
+                                <input class="form-control mr-sm-2" type="text" name="q" maxlength="255" placeholder="Search" />
+                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                            </form>
+                        </div>
                     </div>
-                </div>
-            </nav>
-            <div class="container">
-                <article>
+                </nav>
+                <div class="container">
+                    <style>
+
+    
+</style>
+
+<article>
     <div class="image-wrapper text-center">
         <a class="image-zoom cboxElement" href="">
-        <img src="/assets/images/hello-world/2560px-HelloWorld.svg.png" class="rounded mx-auto" width="100%"  alt="Photo of Blog">
+        <img src="/assets/images/hello-world/2560px-HelloWorld.svg.png" class="rounded mx-auto" width="100%">
         <div class="image-overlay"></div> 
         </a>
     </div>
     <br>
     <div class="post-content">
-        <h2>Hello, world!</h2>
+        <h1>Hello, world!</h1>
         <ul class="post-meta list-inline">
             <li class="list-inline-item">
                 <i class="fa fa-user-circle-o"></i> Ali N. Parizi
@@ -182,13 +194,11 @@
     })
 </script>
 
+                </div>
+    
             </div>
         </div>
     </div>
-
-    
-    
-
     <!-- jQuery CDN - Slim version (=without AJAX) -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
     </script>
@@ -201,6 +211,17 @@
     <!-- jQuery Custom Scroller CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js">
     </script>
+
+        <!-- Vendor JS Files -->
+    <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="assets/vendor/typed.js/typed.min.js"></script>
+    <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function() {

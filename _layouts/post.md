@@ -2,16 +2,29 @@
 layout: main
 ---
 
+<style>
+
+    {% if page.cover-img %}
+    body 
+    {
+        background: url("{{page.cover-img}}") center no-repeat;
+        background-size: cover;
+        background-color: #1b1b1b;
+    }
+
+    {% endif %}
+</style>
+
 <article>
     <div class="image-wrapper text-center">
         <a class="image-zoom cboxElement" href="{{post.url}}">
-        <img src="{{page.img}}" class="rounded mx-auto" width="100%"  alt="Photo of Blog">
+        <img src="{{page.img}}" class="rounded mx-auto" width="100%">
         <div class="image-overlay"></div> 
         </a>
     </div>
     <br>
     <div class="post-content">
-        <h2>{{ page.title }}</h2>
+        <h1>{{ page.title }}</h1>
         <ul class="post-meta list-inline">
             <li class="list-inline-item">
                 <i class="fa fa-user-circle-o"></i> {{ page.author }}

@@ -1,7 +1,20 @@
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 
 body {
+    background: url("/assets/hero2.jpg") center no-repeat;
+    background-size: cover;
     font-family: 'Poppins', sans-serif;
+    width: 100%;
+    height: 100vh;
+    background-color: #1b1b1b;
+    color: #eee;
+} 
+
+footer {
+    background-color: #000;
+    color: #eee;
+    bottom: 0;
+    position: static !important;
 }
 
 p {
@@ -26,7 +39,6 @@ blockquote p {
 blockquote {
     margin: auto  !important;
     width: 90%;
-    
 }
 
 strong {
@@ -210,13 +222,28 @@ nav button {
 ----------------------------------------------------- */
 
 #content {
-    width: calc(100% - 250px);
     padding: 40px;
     min-height: 100vh;
-    transition: all 0.3s;
+}
+
+.content-container {
+    width: calc(100% - 250px);
     position: absolute;
     top: 0;
     right: 0;
+    transition: all 0.3s;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+
+.row {
+    overflow-x: hidden !important;
+}
+
+#content .post-content {
+    padding: 20px;
+    background-color: rgba(27, 27, 27, 0.9);
 }
 
 #content article table {
@@ -278,10 +305,14 @@ p code {
         margin-left: -250px;
         display: none;
     }
-    #content {
+    .content-container {
         width: 100%;
+    }
+
+    #content {
         padding: 0;
     }
+
     #content.active {
         width: 100%;
     }
@@ -333,10 +364,19 @@ p code {
     blog body
 ----------------------------------------------------- */
 
+.card-style2 {
+    background: rgba(27,27,27, 0.8) !important;
+}
+
+.card {
+    background: rgba(27,27,27, 0.8) !important;
+    border-color: rgba(255, 255, 255, 0.30);
+    color: #eee;
+}
+
 .card-style2 .card-img {
     position: relative;
     display: block;
-    background: #000;
     overflow: hidden;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
@@ -529,73 +569,142 @@ section .btn:hover {
     border-color: #1b1b1b;
 }
 
+.card-body h3 a {
+    color: #eee;
+}
 
-/* ---------------------------------------------------
-    Dark mode
------------------------------------------------------ */
+.card-style2 .card-footer {
+    background: #1b1b1b;
+    color: #eee;
+    border-color: rgba(255, 255, 255, 0.30);
+}
+.card img {
+    border: 0;
+}
+.card ul li {
+    background: #1b1b1b;
+}
+.card h6 {
+    color: #ffab00;
+}
+.line {
+    border-color: rgba(255, 255, 255, 0.3);
+}
+.info-span {
+    color: #eee;
+    background: #1b1b1b;
+    border: 0;
+}
+#content article table td,
+th {
+    border: 1px solid #eee;
+}
+#content article table th {
+    color: #ffab00;
+}
+.main-header {
+    border-color: rgba(255,255,255,0.3);
+}
+p code {
+    color: #eee !important;
+    background: rgba(255,255,255,0.3) !important;
+}
 
-@media (prefers-color-scheme: dark) {
-    body {
-        background-color: #1b1b1b;
-        color: #eee;
-    }
-    .card {
-        border-color: rgba(255, 255, 255, 0.30);
-        background: #1b1b1b;
-        color: #eee;
-    }
-    .card-body h3 a {
-        color: #eee;
-    }
-    .card-style2 .card-footer {
-        background: #1b1b1b;
-        color: #eee;
-        border-color: rgba(255, 255, 255, 0.30);
-    }
-    .card img {
-        border: 0;
-    }
-    .card ul li {
-        background: #1b1b1b;
-    }
-    .card h6 {
-        color: #ffab00;
-    }
-    .line {
-        border-color: rgba(255, 255, 255, 0.3);
-    }
-    .info-span {
-        color: #eee;
-        background: #1b1b1b;
-        border: 0;
-    }
-    #content article table td,
-    th {
-        border: 1px solid #eee;
-    }
-    #content article table th {
-        color: #ffab00;
-    }
-    .main-header {
-        border-color: rgba(255,255,255,0.3);
-    }
-    p code {
-        color: #eee !important;
-        background: rgba(255,255,255,0.3) !important;
-    }
-    
-    blockquote p {
-        border-color: rgba(255, 255, 255, 0.3);
-        background: #222;
-    }
+blockquote p {
+    border-color: rgba(255, 255, 255, 0.3);
+    background: #222;
+}
 
-    .container a:hover {
-        color: #eee;
-    }
-
+.container a:hover {
+    color: #eee;
 }
 
 button {
     background: #ffab00 !important;
     color: #000 !important;
 }
+
+/* Scroll bars */
+
+ /* width */
+ ::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #14213D;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #ffab00;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #ffab00;
+  } 
+
+  /*--------------------------------------------------------------
+  # Hero Section
+  --------------------------------------------------------------*/
+
+#hero {
+    background-color: rgba(27, 27, 27, 0.6);
+    margin-top: 15%;
+    height: 50vh;
+    background-size: cover;
+    position: relative;
+    text-align: center;
+}
+
+
+#hero p {
+    font-size: 32px;
+}
+
+
+#hero:before {
+    content: "";
+    position: absolute;
+    
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+#hero h1 {
+    margin: 0;
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 56px;
+}
+
+#hero p {
+    font-size: 26px;
+    font-family: "Poppins", sans-serif;
+}
+
+#hero p span {
+    letter-spacing: 1px;
+}
+
+@media (max-width: 1200px) {
+    #hero {
+      text-align: center;
+      margin-top: 10%;
+    }
+  
+    #hero h1 {
+      font-size: 32px;
+      line-height: 36px;
+    }
+  
+    #hero p {
+      margin-top: 10px;
+      font-size: 20px;
+      line-height: 24px;
+    }
+  }

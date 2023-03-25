@@ -6,8 +6,8 @@ url: "https://alinaderiparizi.ir" # the base hostname & protocol for your site, 
 twitter_username: alinaderiparizi
 github_username:  mralinp
 
-paginate: 6
-paginate_path: "/page:num/"
+paginate: 3
+paginate_path: "/blog/page:num/"
 
 # Build settings
 plugins:
