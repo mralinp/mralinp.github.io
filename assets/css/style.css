@@ -594,3 +594,8 @@ section .btn:hover {
     }
 
 }
+
+button {
+    background: #ffab00 !important;
+    color: #000 !important;
+}
