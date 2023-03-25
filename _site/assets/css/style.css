@@ -224,17 +224,16 @@ nav button {
 #content {
     padding: 40px;
     min-height: 100vh;
-}
-
-.content-container {
     width: calc(100% - 250px);
     position: absolute;
     top: 0;
     right: 0;
     transition: all 0.3s;
     height: 100vh;
-    padding: 0;
-    margin: 0;
+}
+
+.content-container {
+    
 }
 
 .row {
@@ -267,6 +266,10 @@ th {
 }
 
 #content.active {
+    width: 100%;
+}
+
+.content-container.active {
     width: 100%;
 }
 
