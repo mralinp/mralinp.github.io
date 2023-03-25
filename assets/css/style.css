@@ -308,11 +308,8 @@ p code {
         margin-left: -250px;
         display: none;
     }
-    .content-container {
-        width: 100%;
-    }
-
     #content {
+        width: 100%;
         padding: 0;
     }
 
