@@ -35,7 +35,9 @@ layout: main
         <div class="line"></div>
         {{page.content}}
     </div>
-    <div class="commentbox"></div>
+</article>
+
+<div class="commentbox"></div>
     <script src="https://unpkg.com/commentbox.io/dist/commentBox.min.js"></script>
     <script>
         function arrToHex(arr) {
@@ -64,4 +66,3 @@ layout: main
             textColor: arrToHex(rgb),
         })
     </script>
-</article>
