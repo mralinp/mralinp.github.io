@@ -272,7 +272,33 @@
     </div>
     <div class="commentbox"></div>
     <script src="https://unpkg.com/commentbox.io/dist/commentBox.min.js"></script>
-    <script>commentBox('5649421849067520-proj')</script>
+    <script>
+        function arrToHex(arr) {
+            let s = '#';
+            for (let i = 0; i < arr.length; i++) {
+                s += ((arr[i] / 16) | 0).toString(16);
+                s += ((arr[i] % 16) | 0).toString(16);
+            }
+            return s;
+        }
+        var element = document.body;
+        var style;
+        var color = "black";
+        if (window.getComputedStyle) {
+            style = window.getComputedStyle(element);
+        } else {
+            style = element.currentStyle;
+        }
+        if (!style) {
+            // ...seriously old browser...
+        } else {
+            color = style.color;
+        }
+        rgb = color.match(/\d+/g);
+        commentBox('5649421849067520-proj', {
+            textColor: arrToHex(rgb),
+        })
+    </script>
 </article>
 
             </div>
