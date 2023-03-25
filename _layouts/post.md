@@ -62,7 +62,7 @@ layout: main
             color = style.color;
         }
         rgb = color.match(/\d+/g);
-        commentBox('5649421849067520-proj', {
+        commentBox('5076933226266624-proj', {
             textColor: arrToHex(rgb),
         })
     </script>
