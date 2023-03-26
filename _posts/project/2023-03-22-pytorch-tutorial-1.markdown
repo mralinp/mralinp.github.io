@@ -112,7 +112,7 @@ In PyTorch every calculation is represented by a cumputation graph. For example,
 
 
 <p align="center">
-<img src="/assets/images/projects/pytorch-tutorial/graph.png" width="30%"/>
+<img class="img-light-bg" src="/assets/images/projects/pytorch-tutorial/graph.png" width="30%"/>
 <br>
 <span>Figure-1: Computarion graph for Y = X + 2</span>
 </p>

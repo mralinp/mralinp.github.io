@@ -5,7 +5,7 @@ layout: main
 <style>
 
     {% if page.cover-img %}
-    body 
+    #content 
     {
         background: url("{{page.cover-img}}") center no-repeat;
         background-size: cover;
@@ -51,7 +51,6 @@ layout: main
 </article>
 
 <div class="line"></div>
-
 <div class="commentbox"></div>
 <script src="https://unpkg.com/commentbox.io/dist/commentBox.min.js"></script>
 <script>

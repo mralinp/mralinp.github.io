@@ -20,6 +20,10 @@ In this article, we will explore how to get the latest version of TensorFlow and
 
 We will use Anacoda because it's almost the best python environment for machine-learning operations. To get started, let's install anacoda on your computer. You can skip this step if you already have installed Anacoda on your Ubuntu machine. 
 
+<p align="center">
+    <img class="img-light-bg" src="/assets/images/posts/installing-tensorflow-gpu/keras-logo.png" width="40%"/>
+</p>
+
 # 2. Anaconda
 Anaconda is a distribution of the Python and R programming languages for scientific computing (data science, machine learning applications, large-scale data processing, predictive analytics, etc.), that aims to simplify package management and deployment. The distribution includes data-science packages suitable for Windows, Linux, and macOS. It is developed and maintained by Anaconda, Inc., which was founded by Peter Wang and Travis Oliphant in 2012. As an Anaconda, Inc. product, it is also known as Anaconda Distribution or Anaconda Individual Edition, while other products from the company are Anaconda Team Edition and Anaconda Enterprise Edition, both of which are not free. For me and probably you and almost 90% of people, the free version is good and does the job well for us. Installing anaconda requires installing For Debian based distros (such as Ubuntu) run the command below:
 

@@ -4,7 +4,7 @@ title: Home
 ---
 
 <style>
-    body 
+    #content 
     {
         background: url("/assets/hero2.jpg") center no-repeat;
         background-size: cover;
@@ -12,12 +12,14 @@ title: Home
     }
 
     @media (prefers-color-scheme: dark) {
-    body {
+    #content 
+    {
         background-color: #1b1b1b;
     }
 
     @media (prefers-color-scheme: light) {
-    body {
+    #content 
+    {
         background-color: #fff;
     }
 }
