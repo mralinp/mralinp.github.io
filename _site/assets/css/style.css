@@ -619,7 +619,8 @@ button {
 
  /* width */
  ::-webkit-scrollbar {
-    width: 5px;
+    width: 4px;
+    height: 4px;
   }
   
   /* Track */
