@@ -15,7 +15,7 @@ layout: main
                             </a>
                             <div class="hovercap">{{ post.title }}</div>
                         </div>
-                            <div class="date"><span>{{ post.date | date: "%d" }}</span>{{ post.date | date: "%b" }}</div>
+                            <div class="date"><span>{{ post.date | date: "%b" }}</span>{{ post.date | date: "%Y" }}</div>
                         </div>
                         <div class="card-body">
                             <h3 class="h4"><a href="{{post.url}}" title="{{ post.title }}">{{post.title | strip_html | truncate: 35}}</a></h3>
