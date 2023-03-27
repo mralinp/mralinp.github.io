@@ -2,7 +2,7 @@
 layout: post
 title:  "Adversarial attacks in deep learning"
 author: "Ali N. Parizi"
-img: "/assets/images/adversarial-attack/title.png"
+img: "/assets/images/posts/blog/adversarial-attack/title.png"
 date:   2023-03-21 16:01:02 +0330
 categories:  blog ai machine-learning deep-learning
 brief: "Are the machine learning models we use intrinsically flawed?"
@@ -12,7 +12,7 @@ Big Data powered machine learning and deep learning has yielded impressive advan
 
 However, recent advances in adversarial training have found that this is an illusion. A good model misbehaves frequently when faced with adversarial examples. The image below illustrates the problem:
 <p align="center">
- <img src="/assets/images/adversarial-attack/1.png"/>
+ <img src="/assets/images/posts/blog/adversarial-attack/1.png"/>
 </p>
 The model initially classifies the panda picture correctly, but when some noise, imperceptible to human beings, is injected into the picture, the resulting prediction of the model is changed to another animal, gibbon, even with such a high confidence. To us, it appears as if the initial and altered images are the same, although it is radically different to the model. This illustrates the threat these adversarial attacks pose — we may not perceive the difference so we cannot tell an adversarial attack as happened. Hence, although the output of the model may be altered, we cannot tell if the output is correct or incorrect.
 
@@ -61,12 +61,12 @@ Now that we have seen how black box attacks vary from white box attacks in that 
 ## 5.3 Physical Attacks
 One simple way in which the query input is changed from x to x’ is by simply adding something physically (eg. bright colour) to disturb the model. One example is how researchers at CMU added eyeglasses to a person in an attack against facial recognition models. The image below illustrates the attack:
 
-![image](/assets/images/adversarial-attack/2.png)
+![image](/assets/images/posts/blog/adversarial-attack/2.png)
 
 The first row of images correspond to the original image modified by adding the eyeglasses, and the second row of images correspond to the impersonation targets, which are the intended misclassification targets. Just by adding the eyeglasses onto the original image, the facial recognition model was tricked into classifying the images on the top row as the images in the bottom row.
 
 Another example comes from researchers at Google who added stickers to the input image to change the classification of the image, as illustrated by the image below:
-![image](/assets/images/adversarial-attack/3.png)
+![image](/assets/images/posts/blog/adversarial-attack/3.png)
 
 These examples show how effective such physical attacks can be.
 
@@ -83,7 +83,7 @@ First, input images have to pass through denoising ensembles that attempt differ
 
 The image below shows the training process for the denoising autoencoder — the original image is injected with some noise that the attacker might inject, and the autoencoder tries to reconstruct the original uncorrupted image. In the training process, the objective is to reduce the reconstruction error between the reconstructed image and the original image.
 
-![image](/assets/images/adversarial-attack/4.png)
+![image](/assets/images/posts/blog/adversarial-attack/4.png)
 
 By developing an ensemble of these autoencoders each trained to remove a specific type of noise, the hope is that the corrupted images would be sufficiently denoised such that it is close to the original uncorrupted image to allow for image classification.
 

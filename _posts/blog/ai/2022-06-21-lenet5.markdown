@@ -2,7 +2,7 @@
 layout: post
 title:  "LeNet-5 from scratch"
 author: "Ali N. Parizi"
-img: "/assets/images/lenet5/mnist-dataset-1.png"
+img: "/assets/images/posts/blog/lenet5/mnist-dataset-1.png"
 date:   2022-06-20 23:02:23 +0330
 categories: blog ai machine-learning deep-learning
 brief: "In this article, we perform image classification on the MNIST dataset with custom implemented LeNet-5 neural network architecture."
@@ -10,7 +10,7 @@ brief: "In this article, we perform image classification on the MNIST dataset wi
 # 1. Intro
 LeNet is a very first deep learning model that introduced in the research paper “Gradient-Based Learning Applied To Document Recognition” in the year 1998 by four legendary researchers, Yann LeCun, Leon Bottou, Yoshua Bengio, and Patrick Haffner. Many of the listed authors of the paper have gone on to provide several significant academic contributions to the field of deep learning.
 <p align="center">
-    <img src="/assets/images/lenet5/authors.png">
+    <img src="/assets/images/posts/blog/lenet5/authors.png">
     <br>
     <span>From left: Yann LeCun, Leon Bottou, Yoshua Bengio, and Patrick Haffner</span>
 </p>
@@ -19,7 +19,7 @@ This article will introduce the LeNet-5 CNN architecture as described in the ori
 
 
 <p align="center">
-    <img width="30%" src="/assets/images/lenet5/keras-and-tf.jpeg"/>
+    <img class="img-light-bg" width="30%" src="/assets/images/posts/blog/lenet5/keras-logo.png"/>
 </p>
 
 What to find in this article:
@@ -43,7 +43,7 @@ Some convolutional networks characteristics that we are interested in here:
 LeNet-5 CNN architecture is made up of 7 layers. The layer composition consists of 3 convolutional layers, 2 subsampling layers and 2 fully connected layers.
 
 <p align="center">
-    <img src="/assets/images/lenet5/arch.png"/>
+    <img src="/assets/images/posts/blog/lenet5/arch.png"/>
     <br>
     <span>LeNet architecture</span>
 </p>

@@ -2,7 +2,7 @@
 layout: post
 title:  "The Poisson Distribution"
 author: "Ali N. Parizi"
-img: "/assets/images/poisson/title.png"
+img: "/assets/images/posts/blog/poisson/title.png"
 date:   2022-07-14 11:32:35 +0330
 categories: blog math statistics random-process
 brief: 'A straightforward walk-through of a useful statistical concept, "The Poisson Distribution"'
@@ -41,7 +41,7 @@ P[X=x] = \binom{n}{x}p^x(1-p)^{n-x}
 
 However here, we are given only one piece of information, $$17 \frac{emails}{week}$$, which is a rate. we don’t know any thing about the probability of receiving an email by an individual reader p, nor the number of blog visitors n. So, we use google analytics to retrieve this data from our blog history.
 
-<p align="center"> <img src="/assets/images/poisson/website-stats.png"/><br><span>Stats from google</span></p>
+<p align="center"> <img src="/assets/images/posts/blog/poisson/website-stats.png"/><br><span>Stats from google</span></p>
 
 By looking to the stats we can say, in one year, A total of $$59k$$ people read my blog. Out of $$59k$$ people, $$888$$ of them liked my post. Therefore, the number of people who read my blog per week ($$n$$) is $$\frac{59k}{52}=1134$$. The number of people who liked my posts per week ($$x$$) is $$\frac{888}{52}=17$$. So, the success probability p would be $$\frac{888}{59k} = 0.015$$ or $$1.5\%$$.
 
@@ -212,7 +212,7 @@ plt.show()
 ```
 
 
-<p align="center"><img src="/assets/images/poisson/different-lambda.png"/><br><span>Poisson distribution with different lambda's for our problem.</span></p>
+<p align="center"><img src="/assets/images/posts/blog/poisson/different-lambda.png"/><br><span>Poisson distribution with different lambda's for our problem.</span></p>
 
 **The average rate of events per unit time in poisson distribution is constant**. This means the number of people who visit my blog per hour might not follow a Poisson Distribution, because the hourly rate is not constant (higher rate during the daytime, lower rate during the night-time). Using monthly rate for consumer/biological data would be just an approximation as well, since the seasonality effect is non-trivial in that domain.
 

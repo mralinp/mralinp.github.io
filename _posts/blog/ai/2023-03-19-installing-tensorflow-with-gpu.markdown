@@ -2,7 +2,7 @@
 layout: post
 title:  "Installing Tensorflow with GPU Support"
 author: "Ali N. Parizi"
-img: "/assets/images/posts/installing-tensorflow-gpu/title.webp"
+img: "/assets/images/posts/blog/installing-tensorflow-gpu/title.webp"
 date:   2023-03-19 12:19:43 +0330
 categories:  blog ai machine-learning deep-learning
 brief: "The Ultimate Guide To Install The Latest Version Of TensorFlow on your Ubuntu 22.04 With GPU Support."
@@ -21,7 +21,7 @@ In this article, we will explore how to get the latest version of TensorFlow and
 We will use Anacoda because it's almost the best python environment for machine-learning operations. To get started, let's install anacoda on your computer. You can skip this step if you already have installed Anacoda on your Ubuntu machine. 
 
 <p align="center">
-    <img class="img-light-bg" src="/assets/images/posts/installing-tensorflow-gpu/keras-logo.png" width="40%"/>
+    <img class="img-light-bg" src="/assets/images/posts/blog/installing-tensorflow-gpu/keras-logo.png" width="40%"/>
 </p>
 
 # 2. Anaconda

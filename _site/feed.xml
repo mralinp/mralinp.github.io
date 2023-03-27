@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-03-26T17:40:24+04:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">mralinp</title><subtitle>My awesome blog</subtitle><entry><title type="html">The Subtle Art of Not Giving a Fuck</title><link href="http://localhost:4000/book/self-help/focus/study-lessens/2023/03/22/the-art-of-dont-giving-a-fuck.html" rel="alternate" type="text/html" title="The Subtle Art of Not Giving a Fuck" /><published>2023-03-22T14:11:32+04:30</published><updated>2023-03-22T14:11:32+04:30</updated><id>http://localhost:4000/book/self-help/focus/study-lessens/2023/03/22/the-art-of-dont-giving-a-fuck</id><content type="html" xml:base="http://localhost:4000/book/self-help/focus/study-lessens/2023/03/22/the-art-of-dont-giving-a-fuck.html"><![CDATA[<h1 id="1-intro">1. Intro</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-03-27T17:40:51+04:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">mralinp</title><subtitle>My awesome blog</subtitle><entry><title type="html">The Subtle Art of Not Giving a Fuck</title><link href="http://localhost:4000/book/self-help/focus/study-lessens/2023/03/22/the-art-of-dont-giving-a-fuck.html" rel="alternate" type="text/html" title="The Subtle Art of Not Giving a Fuck" /><published>2023-03-22T14:11:32+04:30</published><updated>2023-03-22T14:11:32+04:30</updated><id>http://localhost:4000/book/self-help/focus/study-lessens/2023/03/22/the-art-of-dont-giving-a-fuck</id><content type="html" xml:base="http://localhost:4000/book/self-help/focus/study-lessens/2023/03/22/the-art-of-dont-giving-a-fuck.html"><![CDATA[<h1 id="1-intro">1. Intro</h1>
 
 <p>There’s nothing subtle about Mark Manson. He’s crude, vulgar and doesn’t give a f*ck.
 But like anything of true value in life, dig a little deeper and you’ll find treasure worthy of any explorer willing to look below the surface.</p>
@@ -141,7 +141,7 @@ Because of the mathematical nature of Machine Learning operations which are perf
 <p>In PyTorch every calculation is represented by a cumputation graph. For example, if we say \(y = x + 2\) this will build a graph as below:</p>
 
 <p align="center">
-<img class="img-light-bg" src="/assets/images/projects/pytorch-tutorial/graph.png" width="30%" />
+<img class="img-light-bg" src="/assets/images/posts/projects/pytorch-tutorial/graph.png" width="30%" />
 <br />
 <span>Figure-1: Computarion graph for Y = X + 2</span>
 </p>
@@ -554,7 +554,7 @@ Epoch: 1500 loss=0.00000, weights=0.29675
 </code></pre></div></div>
 
 <p align="center">
-    <img src="/assets/images/projects/pytorch-tutorial/plot.png" />
+    <img src="/assets/images/posts/projects/pytorch-tutorial/plot.png" />
     <br />
     <span>Figure-2: Regression results</span>
 </p>
@@ -643,7 +643,7 @@ epoch: 90, loss: 0.262, accuracy: 0.965
 
 <p>However, recent advances in adversarial training have found that this is an illusion. A good model misbehaves frequently when faced with adversarial examples. The image below illustrates the problem:</p>
 <p align="center">
- <img src="/assets/images/adversarial-attack/1.png" />
+ <img src="/assets/images/posts/blog/adversarial-attack/1.png" />
 </p>
 <p>The model initially classifies the panda picture correctly, but when some noise, imperceptible to human beings, is injected into the picture, the resulting prediction of the model is changed to another animal, gibbon, even with such a high confidence. To us, it appears as if the initial and altered images are the same, although it is radically different to the model. This illustrates the threat these adversarial attacks pose — we may not perceive the difference so we cannot tell an adversarial attack as happened. Hence, although the output of the model may be altered, we cannot tell if the output is correct or incorrect.</p>
 
@@ -696,12 +696,12 @@ Black box attacks are based on the notion of transferability of adversarial exam
 <h2 id="53-physical-attacks">5.3 Physical Attacks</h2>
 <p>One simple way in which the query input is changed from x to x’ is by simply adding something physically (eg. bright colour) to disturb the model. One example is how researchers at CMU added eyeglasses to a person in an attack against facial recognition models. The image below illustrates the attack:</p>
 
-<p><img src="/assets/images/adversarial-attack/2.png" alt="image" /></p>
+<p><img src="/assets/images/posts/blog/adversarial-attack/2.png" alt="image" /></p>
 
 <p>The first row of images correspond to the original image modified by adding the eyeglasses, and the second row of images correspond to the impersonation targets, which are the intended misclassification targets. Just by adding the eyeglasses onto the original image, the facial recognition model was tricked into classifying the images on the top row as the images in the bottom row.</p>
 
 <p>Another example comes from researchers at Google who added stickers to the input image to change the classification of the image, as illustrated by the image below:
-<img src="/assets/images/adversarial-attack/3.png" alt="image" /></p>
+<img src="/assets/images/posts/blog/adversarial-attack/3.png" alt="image" /></p>
 
 <p>These examples show how effective such physical attacks can be.</p>
 
@@ -718,7 +718,7 @@ Black box attacks are based on the notion of transferability of adversarial exam
 
 <p>The image below shows the training process for the denoising autoencoder — the original image is injected with some noise that the attacker might inject, and the autoencoder tries to reconstruct the original uncorrupted image. In the training process, the objective is to reduce the reconstruction error between the reconstructed image and the original image.</p>
 
-<p><img src="/assets/images/adversarial-attack/4.png" alt="image" /></p>
+<p><img src="/assets/images/posts/blog/adversarial-attack/4.png" alt="image" /></p>
 
 <p>By developing an ensemble of these autoencoders each trained to remove a specific type of noise, the hope is that the corrupted images would be sufficiently denoised such that it is close to the original uncorrupted image to allow for image classification.</p>
 
@@ -756,7 +756,7 @@ with Adversarial Examples</a></li>
 <p>We will use Anacoda because it’s almost the best python environment for machine-learning operations. To get started, let’s install anacoda on your computer. You can skip this step if you already have installed Anacoda on your Ubuntu machine.</p>
 
 <p align="center">
-    <img class="img-light-bg" src="/assets/images/posts/installing-tensorflow-gpu/keras-logo.png" width="40%" />
+    <img class="img-light-bg" src="/assets/images/posts/blog/installing-tensorflow-gpu/keras-logo.png" width="40%" />
 </p>
 
 <h1 id="2-anaconda">2. Anaconda</h1>
@@ -903,7 +903,7 @@ password: 123456
 </code></pre>
 
 <p align="center">
-    <img width="80%" src="/assets/images/blog/v2ray/cockpit.png" />
+    <img width="80%" src="/assets/images/posts/blog/v2ray/cockpit.png" />
 </p>
 
 <h1 id="2-installing-v2ray-using-x-ui">2. Installing V2ray using X-UI</h1>
@@ -930,7 +930,7 @@ password: admin
 </code></pre>
 
 <p align="center">
-    <img width="80%" src="/assets/images/blog/v2ray/xui.png" />
+    <img width="80%" src="/assets/images/posts/blog/v2ray/xui.png" />
 </p>
 
 <p>Default language of x-ui is chaines, i use Google chrome and Google translate to translate its contexts to english and i recommend you to do so.</p>
@@ -938,7 +938,7 @@ password: admin
 <p>After login, you have to go and change the default username and password of the panel (You can change the default port as well). From the sidebar panel select the third option, then select the second tab. Now type the old username and password on first two fields the new ones on the next two. Press <code class="language-plaintext highlighter-rouge">Revise</code> to save the changes.</p>
 
 <p align="center">
-    <img width="80%" src="/assets/images/blog/v2ray/x-ui-1.png" />
+    <img width="80%" src="/assets/images/posts/blog/v2ray/x-ui-1.png" />
 </p>
 
 <p>Now go to inbound list from the sidebar and press add for creating a new VPN configuration. For example you can select VMess or VLess protocol under Websocket(ws) as you can see on the picture below. If you choose VLess be aware of that VLess has no encryption and VMess is a better choice.</p>
@@ -948,13 +948,13 @@ password: admin
 </blockquote>
 
 <p align="center">
-    <img width="80%" src="/assets/images/blog/v2ray/xui-u.png" />
+    <img width="80%" src="/assets/images/posts/blog/v2ray/xui-u.png" />
 </p>
 
 <p>Now, you are all set, you can scan the QR code or press copy share link to copy the share link to the clip board and send it to your clients.</p>
 
 <p align="center">
-    <img width="80%" src="/assets/images/blog/v2ray/x-ui-2.png" />
+    <img width="80%" src="/assets/images/posts/blog/v2ray/x-ui-2.png" />
 </p>
 
 <h1 id="3-clients-setup-for-using-v2ray">3. Clients setup for using V2Ray</h1>

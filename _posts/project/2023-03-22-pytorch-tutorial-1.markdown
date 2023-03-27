@@ -2,7 +2,7 @@
 layout: post
 title:  "PyTorch Tutorial, Part 1: Installation and The basics"
 author: "Ali N. Parizi"
-img: "/assets/images/projects/pytorch-tutorial/title.png"
+img: "/assets/images/posts/projects/pytorch-tutorial/title.png"
 date:   2023-03-22 10:07:17 +0330
 categories:  project ai machine-learning deep-learning python
 brief: "PyTorch is the most popular deep-learning framework which is used by many researchers on the feild of machine learning and deep learning. I thing any body on this field shoud know this framework and use it on their implimentations."
@@ -112,7 +112,7 @@ In PyTorch every calculation is represented by a cumputation graph. For example,
 
 
 <p align="center">
-<img class="img-light-bg" src="/assets/images/projects/pytorch-tutorial/graph.png" width="30%"/>
+<img class="img-light-bg" src="/assets/images/posts/projects/pytorch-tutorial/graph.png" width="30%"/>
 <br>
 <span>Figure-1: Computarion graph for Y = X + 2</span>
 </p>
@@ -514,7 +514,7 @@ plt.plot(X.detach().numpy(), prediction, 'b')
 ```
 
 <p align="center">
-    <img src="/assets/images/projects/pytorch-tutorial/plot.png"/>
+    <img src="/assets/images/posts/projects/pytorch-tutorial/plot.png"/>
     <br>
     <span>Figure-2: Regression results</span>
 </p>

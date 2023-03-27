@@ -2,7 +2,8 @@
 layout: post
 title:  "Snake game"
 author: "Ali N. Parizi"
-img:    "/assets/images/snake-game/snake-game.jpeg"
+img:    "/assets/images/posts/projects/snake-game/snake-game.jpeg"
+cover-img: "/assets/images/posts/projects/snake-game/cover.png"
 date:   2022-03-21  18:15:32 +0330
 categories: project game python entry-level
 brief: "Snake game is a very cool and informative mini project for beginners, in this post we are going to implement a simple snake game from scratch using python."
@@ -13,7 +14,7 @@ Hello there, this is Ali speaking. When I started studying computer engineering 
 
 <br>
 <div align="center">
-    <img src="/assets/images/snake-game/python-logo.png" width="200px">
+    <img src="/assets/images/posts/projects/snake-game/python-logo.png" width="200px">
 </div>
 <br>
 
