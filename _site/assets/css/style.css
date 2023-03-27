@@ -511,7 +511,6 @@ section .btn:hover {
 
 .card img {
     border: 0;
-    height: 250px;
 }
 .card ul li {
     background: rgba(0,0,0, 0.8);

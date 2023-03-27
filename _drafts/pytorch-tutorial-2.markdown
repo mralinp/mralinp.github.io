@@ -2,7 +2,7 @@
 layout: post
 title:  "PyTorch Tutorial, Part 1: Installation and The basics"
 author: "Ali N. Parizi"
-img: "/assets/images/posts/projects/pytorch-tutorial/part-1/title.png"
+img: "/assets/images/posts/projects/pytorch-tutorial/part-2/title.png"
 date:   2023-03-27 17:15:23 +0330
 categories:  project ai machine-learning deep-learning python
 brief: "PyTorch is the most popular deep-learning framework which is used by many researchers on the field of machine learning and deep learning. I thing any body on this field should know this framework and use it on their implementations."
