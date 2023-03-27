@@ -64,11 +64,19 @@
                     <a href="/assets/resume/ali-naderi-parizi-cv.pdf"> <i class="fas fa-file"></i> Download resume</a>
                 </li>
             </ul>
-            <div class="footer" style="text-align: center;">
-                <div class="container">
-                    <span class="text-muted">Powered by <br> <i class="fab fa-github"></i> Github</span>
-                </div>
+            <div height="200px">
             </div>
+
+            <footer id="footer">
+                <div class="container">
+                  <div class="copyright">
+                    © Copyright <strong><span>Ali N. Parizi</span></strong>
+                  </div>
+                  <div class="credits">
+                    Powered by <a href="https://github.com/"><i class="fab fa-github"></i> Github.com</a>
+                  </div>
+                </div>
+            </footer>
         </nav>
 
         <!-- Page Content  -->
@@ -298,6 +306,8 @@ with Adversarial Examples</a></li>
 
             </div>
 
+            
+
         </div>
         
     </div>
@@ -332,7 +342,7 @@ with Adversarial Examples</a></li>
             });
 
             $('#sidebarCollapse').on('click', function() {
-                $('#sidebar, #content').toggleClass('active');
+                $('#sidebar, #content, #footer').toggleClass('active');
                 $('.collapse.in').toggleClass('in');
                 $('a[aria-expanded=true]').attr('aria-expanded', 'false');
             });

@@ -10,13 +10,6 @@ body {
     color: #eee;
 } 
 
-footer {
-    background-color: #000;
-    color: #eee;
-    bottom: 0;
-    position: static !important;
-}
-
 p {
     font-family: 'Poppins', sans-serif;
     font-size: 1.1em;
@@ -300,6 +293,17 @@ p code {
         margin-left: -250px;
         display: none;
     }
+
+    #footer {
+        margin-left: -250px;
+        display: none;
+    }
+
+    #footer .active {
+        margin-left: -250px;
+        display: none;
+    }
+
     #content {
         width: 100%;
         padding: 0;
@@ -618,29 +622,29 @@ button {
 /* Scroll bars */
 
  /* width */
- ::-webkit-scrollbar {
-    width: 4px;
-    height: 4px;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: #14213D;
-  }
-  
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: #ffab00;
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: #ffab00;
-  } 
+::-webkit-scrollbar {
+width: 4px;
+height: 4px;
+}
 
-  /*--------------------------------------------------------------
-  # Hero Section
-  --------------------------------------------------------------*/
+/* Track */
+::-webkit-scrollbar-track {
+background: #14213D;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+background: #ffab00;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+background: #ffab00;
+} 
+
+/*--------------------------------------------------------------
+# Hero Section
+--------------------------------------------------------------*/
 
 #hero {
     background-color: rgba(27, 27, 27, 0.6);
@@ -699,4 +703,35 @@ button {
       font-size: 20px;
       line-height: 24px;
     }
-  }
+}
+
+
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+#footer {
+    padding: 15px;
+    color: #f4f6fd;
+    font-size: 14px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 250px;
+    z-index: 9999;
+    transition: all 0.3s;
+}
+
+#footer .copyright {
+    text-align: center;
+}
+
+#footer .credits {
+    padding-top: 5px;
+    text-align: center;
+    font-size: 13px;
+    color: #eaebf0;
+}
+
+#footer.active {
+    margin-left: -250px;
+}
