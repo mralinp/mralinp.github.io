@@ -7,9 +7,11 @@ date:   2023-03-27 17:15:23 +0330
 categories:  project ai machine-learning deep-learning python
 brief: "PyTorch is the most popular deep-learning framework which is used by many researchers on the field of machine learning and deep learning. I thing any body on this field should know this framework and use it on their implementations."
 ---
-
-
 # 1. Intro
+
+<p align="center">
+    <img class= "img-light-bg" width="60%" src="/assets/images/posts/projects/pytorch-tutorial/logo.png"/>
+</p>
 
 PyTorch is a fully featured framework for building deep learning models, which is a type of machine learning that’s commonly used in applications like image recognition and language processing. Written in Python, it’s relatively easy for most machine learning developers to learn and use. PyTorch is distinctive for its excellent support for GPUs and its use of reverse-mode auto-differentiation, which enables computation graphs to be modified on the fly. This makes it a popular choice for fast experimentation and prototyping.
 
