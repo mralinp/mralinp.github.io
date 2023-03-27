@@ -703,6 +703,10 @@ background: #ffab00;
         padding: 0;
     }
 
+    #content .post-content{
+        padding: 0;
+    }
+
     #content.active {
         width: 100%;
     }
