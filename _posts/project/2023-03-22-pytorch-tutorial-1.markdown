@@ -2,16 +2,18 @@
 layout: post
 title:  "PyTorch Tutorial, Part 1: Installation and The basics"
 author: "Ali N. Parizi"
-img: "/assets/images/projects/pytorch-tutorial/title.png"
-date:   2023-03-22 10:07:17 +0330
+img: "/assets/images/posts/projects/pytorch-tutorial/part-1/title.png"
+date:   2023-03-27 17:15:23 +0330
 categories:  project ai machine-learning deep-learning python
-brief: "PyTorch is the most popular deep-learning framework which is used by many researchers on the feild of machine learning and deep learning. I thing any body on this field shoud know this framework and use it on their implimentations."
+brief: "PyTorch is the most popular deep-learning framework which is used by many researchers on the field of machine learning and deep learning. I thing any body on this field should know this framework and use it on their implementations."
 ---
-
-
 # 1. Intro
 
 PyTorch is a fully featured framework for building deep learning models, which is a type of machine learning that’s commonly used in applications like image recognition and language processing. Written in Python, it’s relatively easy for most machine learning developers to learn and use. PyTorch is distinctive for its excellent support for GPUs and its use of reverse-mode auto-differentiation, which enables computation graphs to be modified on the fly. This makes it a popular choice for fast experimentation and prototyping.
+
+<p align="center">
+    <img class= "img-light-bg" width="60%" src="/assets/images/posts/projects/pytorch-tutorial/logo.png"/>
+</p>
 
 PyTorch is a machine learning framework based on the Torch library, used for applications such as computer vision and natural language processing, originally developed by Meta AI and now part of the Linux Foundation umbrella. It is free and open-source software released under the modified BSD license.
 
@@ -27,11 +29,11 @@ Facebook developers have been working hard to improve PyTorch’s productive app
 
 # 2. Installing PyTorch
 
-You can folow this tutorial using some online platforms such as [Google Colab](https://colab.research.google.com) or [Kaggle](https://kaggle.com) which give you a python environment via a jupyter note book and a proper GPU to meet your needs during learning process and even doing small projects and homeworks. If you prefer using these platforms you can skip this section but if you want to use pythorch on your local machine and use your own GPU here is the installation steps that you should folow. 
+You can follow this tutorial using some online platforms such as [Google Colab](https://colab.research.google.com) or [Kaggle](https://kaggle.com) which give you a python environment via a jupyter note book and a proper GPU to meet your needs during learning process and even doing small projects and homeworks. If you prefer using these platforms you can skip this section but if you want to use pytorch on your local machine and use your own GPU, here are the installation steps you should follow. 
 
 ## 2.1 Installing PyTorch
 
-You can folow the steps on PyTorch official website [pytorch.org](https://pytorch.org/get-started/locally/) to install it locally or stay with me. 
+You can follow the steps on PyTorch official website [pytorch.org](https://pytorch.org/get-started/locally/) to install it locally or stay with me. 
 
 If you haven't installed Anaconda on your machine download and install anaconda then create a conda environment:
 
@@ -57,7 +59,7 @@ to test that if gpu is supported, open a python file and run the code below:
 
 ```python
 import torch
-print (f"Is GPU supported? {'Yes' if torch.cuda.is_avaiable() else 'No'}")
+print (f"Is GPU supported? {'Yes' if torch.cuda.is_available() else 'No'}")
 ```
 
 ```output
@@ -68,9 +70,9 @@ Well done, you have installed PyTorch on your computer and ready to go through t
 
 # 3. Tensor basics
 The very basic class in PyTorch library is the tensor class. almost Every variable and operation in PyTorch is represented by a tensor. You can look at the tensor as just like a numpy array or a multi-dimensional python list.
-Because of the mathematical nature of Machine Learning operations which are performed on lineralgebra, we need such a class to implement and use the calculations in python.
+Because of the mathematical nature of Machine Learning operations which are performed on linear-algebra, we need such a class to implement and use the calculations in python.
 
-Tensor can be used in CPU or GPU. Using GPU makes the calculations so much fater. To move the tensor to GPU, you have to use  `tensor.to('cuda')` or `tensor.to(device)` function.
+Tensor can be used in CPU or GPU. Using GPU makes the calculations so much faster. To move the tensor to GPU, you have to use  `tensor.to('cuda')` or `tensor.to(device)` function.
 
 Creating tensors:
 
@@ -105,19 +107,19 @@ sample_tensor = torch.tensor([[1,  2,   3,   4 ],
                               [13, 14,  15,  16]])
 
 # turn into 1 D tensor ([1, 2, 3, ..., 16])
-one_dimention_tensor = sample_tensor.view(16,1)
+one_dimension_tensor = sample_tensor.view(16,1)
 ```
-## 3.1 Operations and gradian calculation
-In PyTorch every calculation is represented by a cumputation graph. For example, if we say $$ y = x + 2 $$ this will build a graph as below:
+## 3.1 Operations and gradient calculation
+In PyTorch every calculation is represented by a computation graph. For example, if we say $$ y = x + 2 $$ this will build a graph as below:
 
 
 <p align="center">
-<img src="/assets/images/projects/pytorch-tutorial/graph.png" width="30%"/>
+<img class="img-light-bg" src="/assets/images/posts/projects/pytorch-tutorial/graph.png" width="30%"/>
 <br>
-<span>Figure-1: Computarion graph for Y = X + 2</span>
+<span>Figure-1: Computational graph for Y = X + 2</span>
 </p>
 
-This is due to the ace of the gradient calculation. The gradients are required for optimization of the model weights. This computation graphs used in coputing the gradients based on the chain rule and Jacobian matrix method. The gradient calculation can be automatically done using the `backward` function. If you want to compute the gradient of a tensor, you have to set the `require_gradients` parameter to true while defining the tensor.
+This is due to the ace of the gradient calculation. The gradients are required for optimization of the model weights. This computation graphs used for computing the gradients based on the chain rule and Jacobian matrix method. The gradient calculation can be automatically done using the `backward` function. If you want to compute the gradient of a tensor, you have to set the `require_gradients` parameter to true while defining the tensor.
 
 ```python
 x = torch.tensor([1,2,3,4])
@@ -130,7 +132,7 @@ print(f"dy/dx: {y.grad()}")
 ```
 
 # 4. Linear regression
-Learning by doing a real project is a perfect way to gain some kinds of skills specially programming. To undrestand the basics of using the framework, it's recommended to implement a simple mini project step by step from scratch. We choose linear regression as the training example and will gothrough the implementations from scrach and with out using pythorch. Then we will convert the code into using PyTorch and advanced functions.
+Learning by doing a real project is a perfect way to gain some kinds of skills specially programming. To understand the basics of using the framework, it's recommended to implement a simple mini project step by step from scratch. We choose linear regression as the training example and will go through the implementations from scratch and with out using pytorch. Then we will convert the code into using PyTorch and advanced functions.
 
 ## 4.1 Problem statement
 
@@ -192,14 +194,14 @@ x_test = np.array([6], dtype=np.float32)
 y_test = np.array([12], dtype=np.float32)
 ```
 
-The network will have a single nuron that has a single parameter $w$ which is randonly evaluated.
+The network will have a single node that has a single parameter $w$ which is randomly evaluated.
 
 ```python
-# Weights: A single nuron (no baias is considered)
+# Weights: A single node (no bias is considered)
 w = np.random.rand()
 ```
 
-In PyTorch the forward pass in callcuating the layer output is done by calling the forward function which, represents the forward pass of the network. In conclution, we will call the model output function, the forward function.
+In PyTorch the forward pass in calculating the layer output is done by calling the forward function which, represents the forward pass of the network. In conclusion, we will call the model output function, the forward function.
 
 ```python
 # Forward pass:
@@ -221,7 +223,7 @@ print (f'prediction before training f({x_test}): {forward(x_test, weights)}')
 Finally, we will need a function to calculate the gradient of the network coefficients, which in pytorch is called the backward function.
 
 ```python
-# Calculating gradiants: 
+# Calculating gradients: 
 # dJ/dw = 1/N * 2x *(w*x-y) // w*x = y_pred
 def backward(x, y, w):
     return np.dot(2*x, (w*x-y)).mean()
@@ -287,7 +289,7 @@ y_test = torch.tensor([12], dtype=torch.float32)
 w = torch.randn(1, requires_grad=True, dtype=torch.float32)
 ```
 
-In the above code, while defining the weight parameter, we said that it requires tracking the gradiant calculation for this tensor by setting the `require_grad` parameter to `True`. If we don't set this parameter to `True`, while calling the backward function, it will throw an exception because it doesn not stored the gradients in the computation graph. So, be careful when defining a tensor which is requred to calculate the gradients.
+In the above code, while defining the weight parameter, we said that it requires tracking the gradient calculation for this tensor by setting the `require_grad` parameter to `True`. If we don't set this parameter to `True`, while calling the backward function, it will throw an exception because it doesn't store the gradients in the computation graph. So, be careful when defining a tensor which is required to calculate the gradients.
 
 Next, we have to define the forward and loss function for the model.
 
@@ -303,7 +305,7 @@ def mse(y,y_pred):
     return ((y-y_pred)**2).mean()
 ```
 
-As we said in the previous section, gradients can be calculated by calling the backward function. For this reason, there is no need to define the backward function. While calling the backward function, the calculated gradients will remain in the computation graph until you free its memory. and this could be done by calling `tensor.grad.zero_()` function. So, be carefull while calling the backward function and make sure that you free the memory associated with the gradients (you can see this in the code below).
+As we said in the previous section, gradients can be calculated by calling the backward function. For this reason, there is no need to define the backward function. While calling the backward function, the calculated gradients will remain in the computation graph until you free its memory. and this could be done by calling `tensor.grad.zero_()` function. So, be careful while calling the backward function and make sure that you free the memory associated with the gradients (you can see this in the code below).
 
 Here is the training loop:
 
@@ -514,7 +516,7 @@ plt.plot(X.detach().numpy(), prediction, 'b')
 ```
 
 <p align="center">
-    <img src="/assets/images/projects/pytorch-tutorial/plot.png"/>
+    <img src="/assets/images/posts/projects/pytorch-tutorial/plot.png"/>
     <br>
     <span>Figure-2: Regression results</span>
 </p>
@@ -580,7 +582,7 @@ for epoch in range(100):
             print(f'epoch: {epoch}, loss: {loss.item():.03f}, accuracy: {accuracy:.03f}')    
 ```
 
-As you can see, in the code, when we want to compute the accuracy of the model, we dont need to to keep track of calculated gradients of the calculation. To prevent this to affect our training and calculations, we have to turn this tracking off. This can be done by calling `torch.no_grad()` in a `with` block or making a detached copy of the variables directly by calling the `tensor.detach()` function of that tensor and then atthatch it agin.
+As you can see, in the code, when we want to compute the accuracy of the model, we dont need to to keep track of calculated gradients of the calculation. To prevent this to affect our training and calculations, we have to turn this tracking off. This can be done by calling `torch.no_grad()` in a `with` block or making a detached copy of the variables directly by calling the `tensor.detach()` function of that tensor which returns a detached copy of that tensor and work with the returned value instead of the main tensor.
 
 ```python
 a = torch.tensor([1,2,3])
@@ -601,6 +603,6 @@ epoch: 80, loss: 0.276, accuracy: 0.965
 epoch: 90, loss: 0.262, accuracy: 0.965
 ```
 # 6. Conclusion
-In this section we learned what is PyTorch, Tensors and the computation graph deffinition. Then, we implemented a simple linear regression from scratch using numpy which helped us to better undrestanding the problem and how to solve the problem by implemenation. After that, we turned the calculations from numpy into PyTorch tensors. Finally, we completed the implementation using built-in PyTorch optimizers and loss functions and some examples.
+In this section we learned what is PyTorch, Tensors and the computation graph definition. Then, we implemented a simple linear regression from scratch using numpy which helped us to better understanding the problem and how to solve the problem by implementation. After that, we turned the calculations from numpy into PyTorch tensors. Finally, we completed the implementation using built-in PyTorch optimizers and loss functions and some examples.
 
  

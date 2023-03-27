@@ -1,12 +1,10 @@
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 
 body {
-    background: url("/assets/hero2.jpg") center no-repeat;
-    background-size: cover;
     font-family: 'Poppins', sans-serif;
     width: 100%;
     height: 100vh;
-    background-color: #1b1b1b;
+    background-color: black;
     color: #eee;
 } 
 
@@ -58,6 +56,12 @@ a:focus {
 
 body img {
     max-width: 100%;
+    max-height: 720px;
+}
+
+.img-light-bg {
+    background-color: rgba(255,255,255, 0.9); 
+    padding: 10px;
 }
 
 .navbar-btn {
@@ -81,12 +85,10 @@ body img {
 }
 
 .category {
-    padding-left: 5px;
-    padding-right: 5px;
-    border: 1px solid #ffab00;
+    padding-left: 2px;
+    padding-right: 2px;
     border-radius: 0.25rem;
-    margin-right: 5px;
-    margin-left: 5px;
+    margin: 2px;
     color: black;
     background: #ffab00;
 }
@@ -221,7 +223,11 @@ nav button {
     top: 0;
     right: 0;
     transition: all 0.3s;
-    height: 80%;
+    height: 100%;
+    background: url("/assets/hero2.jpg") center no-repeat;
+    background-size: cover;
+    background-color: #1b1b1b;
+    color: #eee;
 }
 
 .row {
@@ -229,8 +235,8 @@ nav button {
 }
 
 #content .post-content {
-    padding: 20px;
-    background-color: rgba(27, 27, 27, 0.9);
+    padding: 40px;
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
 #content article table {
@@ -345,8 +351,6 @@ p code {
 }
 
 .main-header {
-    /* border: 2px dashed rgba(0, 0, 0, 0.3);
-    border-radius: 1rem; */
     padding: 10px;
     margin-bottom: 20px;
 }
@@ -357,16 +361,57 @@ p code {
 }
 
 /* ---------------------------------------------------
-    blog body
+    BLOG STYLES
+----------------------------------------------------- */
+
+section .btn {
+    background: #ffab00;
+    color: #000;
+}
+
+section .btn:hover {
+    background: #000;
+    color: #ffab00;
+}
+
+.hoverwrap {
+  position: relative; 
+  max-width: 500px;
+}
+
+.hoverwrap img { width: 100%; }
+
+.hovercap {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10px;
+ 
+  position: absolute;
+  bottom: 0; left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+}
+
+
+.hovercap {
+  visibility: none; opacity: 0;
+  transition: opacity 0.3s;
+}
+.hoverwrap:hover .hovercap {
+  visibility: visible; opacity: 1;
+}
+
+/* ---------------------------------------------------
+    CARD STYLES
 ----------------------------------------------------- */
 
 .card-style2 {
-    background: rgba(27,27,27, 0.8) !important;
+    background: rgba(0,0,0, 0.8) !important;
     border: 0;
 }
 
 .card {
-    background: rgba(27,27,27, 0.8) !important;
+    background: rgba(0,0,0, 0.8) !important;
     border: 0;
     overflow: hidden;
     border-radius: 0.5rem;
@@ -463,8 +508,10 @@ p code {
 }
 
 .card-style2 .card-footer {
-    border-top: 2px dashed rgba(0, 0, 0, 0.30);
-    background: transparent;
+    background: inherit;
+    color: inherit;
+    border-top: 2px dashed rgba(255, 255, 255, 0.40);
+    background: inherit;
     padding-right: 2rem;
     padding-left: 2rem;
     -ms-flex-align: end;
@@ -491,54 +538,28 @@ p code {
 
 .card-style2 {
     margin-bottom: 25px;
-    /* border: 1px solid rgba(0, 0, 0, 0.30); */
 }
 
 .card-body h3 a {
     color: #000;
 }
 
-section .btn {
-    background: #ffab00;
-    color: #000;
+.card-body h3 a {
+    color: #eee;
 }
 
-section .btn:hover {
-    background: #000;
+.card img {
+    border: 0;
+}
+.card ul li {
+    background: rgba(0,0,0, 0.8);
+}
+.card h6 {
     color: #ffab00;
 }
 
-.hoverwrap {
-  position: relative; 
-  max-width: 500px;
-}
-
-.hoverwrap img { width: 100%; }
-
-.hovercap {
-  box-sizing: border-box;
-  width: 100%;
-  padding: 10px;
- 
-  position: absolute;
-  bottom: 0; left: 0;
- 
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-}
-
-
-.hovercap {
-  visibility: none; opacity: 0;
-  transition: opacity 0.3s;
-}
-.hoverwrap:hover .hovercap {
-  visibility: visible; opacity: 1;
-}
-
-
 /* ---------------------------------------------------
-    Paginator styles
+    PAGINATOR STYLES
 ----------------------------------------------------- */
 
 #PageNav ul {
@@ -564,30 +585,12 @@ section .btn:hover {
     border-color: #1b1b1b;
 }
 
-.card-body h3 a {
-    color: #eee;
-}
-
-.card-style2 .card-footer {
-    background: #1b1b1b;
-    color: #eee;
-    border-color: rgba(255, 255, 255, 0.30);
-}
-.card img {
-    border: 0;
-}
-.card ul li {
-    background: #1b1b1b;
-}
-.card h6 {
-    color: #ffab00;
-}
 .line {
     border-color: rgba(255, 255, 255, 0.3);
 }
 .info-span {
-    color: #eee;
-    background: #1b1b1b;
+    color: inherit;
+    background: inherit;
     border: 0;
 }
 #content article table td,
@@ -619,7 +622,9 @@ button {
     color: #000 !important;
 }
 
-/* Scroll bars */
+/*--------------------------------------------------------------
+    SCROLL BARS
+--------------------------------------------------------------*/
 
  /* width */
 ::-webkit-scrollbar {
@@ -647,7 +652,7 @@ background: #ffab00;
 --------------------------------------------------------------*/
 
 #hero {
-    background-color: rgba(27, 27, 27, 0.6);
+    background-color: rgba(0, 0, 0, 0.8);
     margin-top: 15%;
     height: 50vh;
     background-size: cover;
@@ -655,16 +660,13 @@ background: #ffab00;
     text-align: center;
 }
 
-
 #hero p {
     font-size: 32px;
 }
 
-
 #hero:before {
     content: "";
     position: absolute;
-    
     bottom: 0;
     top: 0;
     left: 0;
@@ -687,7 +689,39 @@ background: #ffab00;
     letter-spacing: 1px;
 }
 
+/* ---------------------------------------------------
+    MEDIA QUERIES
+----------------------------------------------------- */
+
 @media (max-width: 1200px) {
+    #sidebar {
+        margin-left: -250px;
+        display: none;
+    }
+    #content {
+        width: 100%;
+        padding: 0;
+    }
+
+    #content.active {
+        width: 100%;
+    }
+    #sidebarCollapse {
+        display: none;
+    }
+    .container {
+        max-width: 100%;
+    }
+    nav {
+        border-radius: 0 !important;
+    }
+    #navbarLinks {
+        display: flex;
+    }
+    #brand {
+        display: flex;
+    }
+
     #hero {
       text-align: center;
       margin-top: 10%;

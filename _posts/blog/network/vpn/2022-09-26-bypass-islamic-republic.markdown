@@ -2,7 +2,8 @@
 layout:     post
 title:      "How to bypass the 'Islamic Republic' internet filtering?"
 author:     "Ali N. Parizi"
-img:        "/assets/images/blog/vpn-setup/title.png"
+img:        "/assets/images/posts/blog/vpn-setup/title.png"
+cover-img: "/assets/images/posts/blog/vpn-setup/azadi.jpg"
 date:       2022-09-26  17:50:22 +0330
 categories: blog network vpn 
 brief:      "An introduction to virtual private networks(VPN), tunnels, proxies, and a straightforward walkthrough for running a WireGuard VPN server."
@@ -21,7 +22,7 @@ If we could successfully be connected to the world via a machine in the local da
 A virtual private network extends a private network across a public network and enables users to send and receive data across shared or public networks as if their computing devices were directly connected to the private network. The benefits of a VPN include increases in functionality, security, and management of the private network. 
 
 <div align=center>
-    <img src="/assets/images/blog/vpn-setup/vpn-schema.png"/>
+    <img src="/assets/images/posts/blog/vpn-setup/vpn-schema.png"/>
 </div>
 <br>
 
@@ -31,7 +32,7 @@ It provides access to resources that are inaccessible on the public network and 
 WireGuard is a communication protocol and free and open-source software that implements encrypted virtual private networks, and was designed with the goals of ease of use, high speed performance, and low attack surface. It aims for better performance and more power than IPsec and OpenVPN, two common tunneling protocols ([Wikipedia](https://en.wikipedia.org/wiki/WireGuard)). 
 
 <div align=center>
-    <img width="50%" src="/assets/images/blog/vpn-setup/wg-logo.png"/>
+    <img width="50%" src="/assets/images/posts/blog/vpn-setup/wg-logo.png"/>
 </div>
 
 For this tutorial, I choose Wireguard as the VPN protocol of this article. Installation and configuration of the Wireguard VPN server are quite simple and easy to understand for those who are not familiar with some concepts of networking in Linux in comparison with other protocols such as OpenVPN. 
@@ -119,7 +120,7 @@ password: admin
 Login to the panel and make as many client as you want, then download the configuration files or save the qr code for each client. After you finished your job, press `apply config` and go back to your vm, terminate the wireguard-ui by pressing `ctrl + c`. 
 
 <div align=center>
-    <img src="/assets/images/blog/vpn-setup/wireguard-ui.png"/>
+    <img src="/assets/images/posts/blog/vpn-setup/wireguard-ui.png"/>
 </div>
 
 <br>
@@ -266,7 +267,7 @@ Congratulations, till now, you have configured a Virtual private network for you
 ## 5.1 Nginx Reverse Proxy
 Nginx is a popular web-server application that is used to deploy various web applications and it has so many capabilities. One of the configurations that you can set for Nginx is to redirect incoming requests to a specific address by setting proxy routes. As we know that WireGuard traffic is a stream of data and its UDP. So, we have to set a stream proxy route for our purpose.
 <div align=center>
-    <img width="60%" src="/assets/images/blog/vpn-setup/nginx-logo.png"/>
+    <img width="60%" src="/assets/images/posts/blog/vpn-setup/nginx-logo.png"/>
 </div>
 <br>
 
@@ -302,7 +303,7 @@ $ service nginx restart
 > Note: In the config above, I opened 51820 port on my middle server and redirected incoming requests through this port to the target VPN server which we have wireguard installed. The first port number on the config `51820` is the port that I want to open on my middle server and the other one is the port I chose for my VPN server. You have to change these numbers if you chose something else.
 
 <div align=center>
-    <img src="/assets/images/blog/vpn-setup/wg-client.png"/>
+    <img src="/assets/images/posts/blog/vpn-setup/wg-client.png"/>
 </div>
 <br>
 
@@ -341,7 +342,7 @@ PersistentKeepalive = 15
 ## 5.2 Nginx on docker
 As the Nginx docker image is available on the docker hub, you can use the Nginx container instead of installing Nginx on a separate VM. You can run your proxy server on the cloud which is cheaper cost beneficial than renting a virtual machine. Also, some proxy managers are available on docker-hub with a web-based interface such as the popular [**nginx-proxy-manager**](https://nginxproxymanager.com/guide/#project-goal).
 <div align=center>
-    <img width="50%" src="/assets/images/blog/vpn-setup/docker-logo.png"/>
+    <img width="50%" src="/assets/images/posts/blog/vpn-setup/docker-logo.png"/>
 </div>
 <br>
 
@@ -353,7 +354,7 @@ Wireguard itself is working only on UDP because it aims to be as fast as possibl
 Udptunnel is a simple application written in c and It should be run on two endpoints. On one end, it listens to incoming UDP packets on a specific port and converts them to TCP packets, then it transfers the TCP packet to the destination address which is running a udptunnel server on the other endpoint. In our case, the first endpoint is our middle server which is the local server inside the local intranet. Obviously, the second endpoint is our machine inside the outer world.
 
 <div align=center>
-    <img src="/assets/images/blog/vpn-setup/udp2raw.svg"/>
+    <img src="/assets/images/posts/blog/vpn-setup/udp2raw.svg"/>
 </div>
 <br>
 
@@ -465,20 +466,20 @@ That's it.
 And remember using WireGuard over TCP will affect your connection speed/bandwidth but some networks block or reduce the bandwidth for UDP connections and we have no other choices but running wire guard over TCP. Here is my experience using WireGuard over TCP:
 
 <p align=center>
-    <img src="/assets/images/blog/vpn-setup/speed-test-udp-no-filter.png"/>
+    <img src="/assets/images/posts/blog/vpn-setup/speed-test-udp-no-filter.png"/>
     <br>
     <span>Bandwidth while using UDP and it's not restricted by government's firewall</span>
 </p>
 
 <p align=center>
-    <img src="/assets/images/blog/vpn-setup/speed-test-udp.png"/>
+    <img src="/assets/images/posts/blog/vpn-setup/speed-test-udp.png"/>
     <br>
     <span>Bandwidth while using UDP and it's restricted by government's firewall</span>
 
 </p>
 
 <p align=center>
-    <img src="/assets/images/blog/vpn-setup/speed-test-tcp.png"/>
+    <img src="/assets/images/posts/blog/vpn-setup/speed-test-tcp.png"/>
     <br>
     <span>Bandwidth while using WireGuard over TCP</span>
 

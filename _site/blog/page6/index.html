@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="4-8jdtFeOSWDhx6RjXrSwNrvhvLyFdbACncYtB2Rjzc" />
+    <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="mralinp" />
+    <title> Blog </title>
+     <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+    <!-- Font awesome -->
+    <script src="https://kit.fontawesome.com/40a6ec6105.js" crossorigin="anonymous"></script>
+    <!-- Prism CSS -->
+    <link rel="stylesheet" href="/assets/css/prism.css">
+    <!-- Prism JS -->
+    <script src="/assets/js/prism.js"></script>
+    <!-- Vendor -->
+    <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3><a href="/">Ali N. Parizi</a></h3>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li class="sidebar-item">
+                    <a href="/"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="/blog"><i class="fa fa-rss" aria-hidden="true"></i> Blog</a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="/projects"><i class="fa fa-flask" aria-hidden="true"></i> Projects</a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="/library"><i class="fa fa-book" aria-hidden="true"></i> Library</a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="/about"><i class="fa fa-info" aria-hidden="true"></i> About me</a>
+                </li>
+            </ul>
+
+            <ul class="list-unstyled CTAs">
+                <li class="sidebar-btn">
+                    <a href="https://github.com/mralinp"> <i class="fab fa-github"></i> Github profile
+                    </a>
+                </li>
+                <li class="sidebar-btn">
+                    <a href="/assets/resume/ali-naderi-parizi-cv.pdf"> <i class="fas fa-file"></i> Download resume</a>
+                </li>
+            </ul>
+            <div class="footer" style="text-align: center;">
+                <div class="container">
+                    <span class="text-muted">Powered by <br> <i class="fab fa-github"></i> Github</span>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content">
+            <!-- Navbar -->
+            <nav class="navbar navbar-expand-lg">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="/" id="brand">Ali N. Parizi</a>
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <span>Menu</span>
+                    </button>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav mr-auto" id="navbarLinks">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/assets/resume/ali-naderi-parizi-cv.pdf">Resume</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/blog">Blog</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/about">About me</a>
+                            </li>
+                        </ul>
+                        <form class="form-inline ml-auto" method="get" action="http://www.google.com/search" target="_blank">
+                            <input type="hidden" name="sitesearch" value="alinaderiparizi.com" />
+                            <input class="form-control mr-sm-2" type="text" name="q" maxlength="255" placeholder="Search" />
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+            <div class="container">
+                <style>
+
+    #content {
+        height: 100%;
+    }
+
+</style>
+
+<section>
+    <div class="row">
+        
+        <div class="col-lg-4 col-md-6 mb-2-6">
+            <article class="card card-style2">
+                <div class="card-img">
+                    <div class="fill hoverwrap">
+                        <a class="image-wrapper image-zoom cboxElement" href="/blog/ai/machine-learning/deep-learning/2022/09/16/auto-encoder.html">
+                            <img src="/assets/images/posts/blog/auto-encoder/title.png" class="rounded-top" alt="Photo of Blog">
+                        </a>
+                        <div class="hovercap">What is an AutoEncoder?</div>
+                    </div>
+                    <div class="date"><span>Sep</span>2022</div>
+                </div>
+                <div class="card-body">
+                    <h3 class="h4"><a href="/blog/ai/machine-learning/deep-learning/2022/09/16/auto-encoder.html" title="What is an AutoEncoder?">What is an AutoEncoder?</a></h3>
+                    <p class="display-30">One of the most popular deep architectures is the variety of AutoEncoders. This article is a straightforward walkthrough to get...</p>
+                    <a href="/blog/ai/machine-learning/deep-learning/2022/09/16/auto-encoder.html" class="btn"><i class="fa fa-angle-double-right"></i> Read more</a>
+                </div>
+                <div class="card-footer">
+                    <ul>
+                        <li><i class="fa fa-user-circle-o"></i> Ali N. Parizi</li>
+                        <li><i class="fa fa-tags"></i> <span class="category"> ai </span> </li>
+                    </ul>
+                </div>
+            </article>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 mb-2-6">
+            <article class="card card-style2">
+                <div class="card-img">
+                    <div class="fill hoverwrap">
+                        <a class="image-wrapper image-zoom cboxElement" href="/blog/math/statistics/random-process/2022/07/14/the-poisson-distribution.html">
+                            <img src="/assets/images/posts/blog/poisson/title.png" class="rounded-top" alt="Photo of Blog">
+                        </a>
+                        <div class="hovercap">The Poisson Distribution</div>
+                    </div>
+                    <div class="date"><span>Jul</span>2022</div>
+                </div>
+                <div class="card-body">
+                    <h3 class="h4"><a href="/blog/math/statistics/random-process/2022/07/14/the-poisson-distribution.html" title="The Poisson Distribution">The Poisson Distribution</a></h3>
+                    <p class="display-30">A straightforward walk-through of a useful statistical concept, "The Poisson Distribution"</p>
+                    <a href="/blog/math/statistics/random-process/2022/07/14/the-poisson-distribution.html" class="btn"><i class="fa fa-angle-double-right"></i> Read more</a>
+                </div>
+                <div class="card-footer">
+                    <ul>
+                        <li><i class="fa fa-user-circle-o"></i> Ali N. Parizi</li>
+                        <li><i class="fa fa-tags"></i> <span class="category"> math </span> </li>
+                    </ul>
+                </div>
+            </article>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 mb-2-6">
+            <article class="card card-style2">
+                <div class="card-img">
+                    <div class="fill hoverwrap">
+                        <a class="image-wrapper image-zoom cboxElement" href="/project/ai/computer-vision/deep-learning/2022/07/02/saffron-cutting-machine.html">
+                            <img src="/assets/images/saffron-cut/saffron.png" class="rounded-top" alt="Photo of Blog">
+                        </a>
+                        <div class="hovercap">Saffron cutting machine</div>
+                    </div>
+                    <div class="date"><span>Jul</span>2022</div>
+                </div>
+                <div class="card-body">
+                    <h3 class="h4"><a href="/project/ai/computer-vision/deep-learning/2022/07/02/saffron-cutting-machine.html" title="Saffron cutting machine">Saffron cutting machine</a></h3>
+                    <p class="display-30">In this project, we are after to build an AI for detecting the Saffron flower tail to tell our cutting machine to cut that end-...</p>
+                    <a href="/project/ai/computer-vision/deep-learning/2022/07/02/saffron-cutting-machine.html" class="btn"><i class="fa fa-angle-double-right"></i> Read more</a>
+                </div>
+                <div class="card-footer">
+                    <ul>
+                        <li><i class="fa fa-user-circle-o"></i> Ali N. Parizi</li>
+                        <li><i class="fa fa-tags"></i> <span class="category"> ai </span> </li>
+                    </ul>
+                </div>
+            </article>
+        </div>
+        
+    </div>
+    
+        <nav aria-label="Page navigation" id="PageNav">
+            <ul class="pagination justify-content-center">
+                
+                    <li class="page-item">
+                        <a class="page-link" href="/blog/page5/" tabindex="-1">Previous</a>
+                    </li>
+                
+                
+                    
+                        
+                            <li class="page-item"><a class="page-link" href="/blog">1</a></li>
+                        
+                    
+                
+                    
+                        
+                            <li class="page-item"><a class="page-link" href="/blog/page2/">2</a></li>
+                        
+                    
+                
+                    
+                        
+                            <li class="page-item"><a class="page-link" href="/blog/page3/">3</a></li>
+                        
+                    
+                
+                    
+                        
+                            <li class="page-item"><a class="page-link" href="/blog/page4/">4</a></li>
+                        
+                    
+                
+                    
+                        
+                            <li class="page-item"><a class="page-link" href="/blog/page5/">5</a></li>
+                        
+                    
+                
+                    
+                        <li class="page-item active">
+                            <span class="page-link">
+                                6
+                            </span>
+                        </li>
+                    
+                
+                    
+                        
+                            <li class="page-item"><a class="page-link" href="/blog/page7/">7</a></li>
+                        
+                    
+                
+                
+                    <li class="page-item">
+                            <a class="page-link" page-link href="/blog/page7/">Next</a>
+                    </li>
+                    
+            </ul>
+        </nav>
+    
+</section>
+
+
+
+
+    
+            </div>
+
+        </div>
+        
+    </div>
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous">
+    </script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous">
+    </script>
+    <!-- jQuery Custom Scroller CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js">
+    </script>
+
+        <!-- Vendor JS Files -->
+    <script src="/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="/assets/vendor/aos/aos.js"></script>
+    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="/assets/vendor/typed.js/typed.min.js"></script>
+    <script src="/assets/vendor/waypoints/noframework.waypoints.js"></script>
+    <script src="/assets/vendor/php-email-form/validate.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#sidebar").mCustomScrollbar({
+                theme: "minimal"
+            });
+
+            $('#sidebarCollapse').on('click', function() {
+                $('#sidebar, #content').toggleClass('active');
+                $('.collapse.in').toggleClass('in');
+                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+            });
+        });
+    </script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML">
+    </script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']], processEscapes: true}, jax: ["input/TeX","input/MathML","input/AsciiMath","output/CommonHTML"], extensions: ["tex2jax.js","mml2jax.js","asciimath2jax.js","MathMenu.js","MathZoom.js","AssistiveMML.js",
+        "[Contrib]/a11y/accessibility-menu.js"], TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"], equationNumbers: { autoNumber: "AMS" } } });
+    </script>
+    <script src="/assets/js/main.js" crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -2,7 +2,7 @@
 layout: post
 title: "What is an AutoEncoder?"
 author: "Ali N. Parizi"
-img: "/assets/images/auto-encoder/title.png"
+img: "/assets/images/posts/blog/auto-encoder/title.png"
 date:   2022-09-16 12:21:13 +0330
 categories: blog ai machine-learning deep-learning
 brief: "One of the most popular deep architectures is the variety of AutoEncoders. This article is a straightforward walkthrough to get familiar with AutoEncoders."
@@ -14,7 +14,7 @@ AutoEncoder, by design, reduces data dimensions by learning how to ignore the no
 Here is an example of the input/output image from the MNIST dataset to an AutoEncoder. 
 
 <p align="center">
-  <img src="/assets/images/auto-encoder/ae-arch.jpeg" />
+  <img src="/assets/images/posts/blog/auto-encoder/ae-arch.jpeg" />
     <br>
     <span>a simple AutoEncoder</span>
 </p>
@@ -41,7 +41,7 @@ The network architecture for AutoEncoders can vary between a simple FeedForward 
 For example here is a sample photo taken by my psychologist friend Reza Parizi ([reza__parizi](https://www.instagram.com/reza__parizi/)):
 
 <p align="center">
-  <img width="70%" src="/assets/images/auto-encoder/reza-parizi.jpg" />
+  <img width="70%" src="/assets/images/posts/blog/auto-encoder/reza-parizi.jpg" />
 </p>
 
 We can consider these kinds of texts which may be known by the name [**watermark**](https://en.wikipedia.org/wiki/Watermark) as static noise in pictures. We can try to find a way or a set of filters to be applied to that image in order to remove that artifact. One of the main use cases of AutoEncoders is denoising, so let's solve this problem using AutoEncoders.
@@ -137,7 +137,7 @@ for i in range(3):
 plt.show()
 ```
 <p align="center">
-  <img width="70%" src="/assets/images/auto-encoder/sample_data.png" />
+  <img width="70%" src="/assets/images/posts/blog/auto-encoder/sample_data.png" />
 </p>
 
 # 3. Building the model
@@ -253,7 +253,7 @@ history = model.fit(
 As you can see in the output, which is the results of training for about 25 epochs, the last reconstruction loss/error for the validation set is 5.3678e-04 which is great but it can be better if you run this code for about 100 epochs. Now, if I pass a new image from the test dataset, the reconstruction loss will be very low BUT if I tried to pass any other different image (outlier or anomaly), we will get a high reconstruction loss value because the network failed to reconstruct the image/input that is considered an anomaly, which is another use case of autoencoders to detect outlier data points.
 
 <p align="center">
-  <img width="70%" src="/assets/images/auto-encoder/sample_prediction.png" />
+  <img width="70%" src="/assets/images/posts/blog/auto-encoder/sample_prediction.png" />
 </p>
 
 Notice in the code above, you can use only the encoder part to compress some data or images and you can also only use the decoder part to decompress the data by loading the decoder layers. As you can see, we reduced the input image dimensions from $$256 \times 256 \times 3$$ to $$128 \times 128 \times 8$$ which is accessible in the bottle-neck layer's output. storing the features of this layer instead of the original images lowers the space needed to store the images by a factor of 1.5. If it was a video of size 900MB, using this technique would lead the size of the video to be 600MB which is more efficient for data storage.
@@ -262,7 +262,7 @@ Notice in the code above, you can use only the encoder part to compress some dat
 $$\frac{256 \times 256 \times 3}{128 \times 128 \times 8} = 1.5$$
 
 <p align="center">
-  <img src="/assets/images/auto-encoder/loss.png" />
+  <img class="img-light-bg" src="/assets/images/posts/blog/auto-encoder/loss.png" />
   <br>
   <span>Model loss per epoch</span>
 </p>
