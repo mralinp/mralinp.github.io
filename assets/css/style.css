@@ -743,6 +743,28 @@ background: #ffab00;
     }
 }
 
+@media (max-width: 600px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.25rem;
+    }
+    
+    h3 {
+        font-size: 1.0rem
+    }
+
+    h4 {
+        font-size: 0.75rem;
+    }
+
+    #content .post-content {
+        padding: 5px;
+    }
+}
+
 
 /*--------------------------------------------------------------
 # Footer

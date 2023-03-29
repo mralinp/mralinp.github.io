@@ -703,6 +703,10 @@ background: #ffab00;
         padding: 0;
     }
 
+    #content .post-content{
+        padding: 0;
+    }
+
     #content.active {
         width: 100%;
     }
@@ -736,6 +740,28 @@ background: #ffab00;
       margin-top: 10px;
       font-size: 20px;
       line-height: 24px;
+    }
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.25rem;
+    }
+    
+    h3 {
+        font-size: 1.0rem
+    }
+
+    h4 {
+        font-size: 0.75rem;
+    }
+
+    #content .post-content {
+        padding: 5px;
     }
 }
 
