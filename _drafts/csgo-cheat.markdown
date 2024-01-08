@@ -2,7 +2,7 @@
 layout: post
 title: "Getting started with game hacking: Making a CS:GO cheat"
 author: "Ali N. Parizi"
-img: "/assets/images/projects/csgo-cheat/csgo-logo-d.jpg"
+img: "/assets/images/posts/projects/csgo-cheat/csgo-logo-d.jpg"
 date:   2022-10-09 12:21:13 +0330
 categories: project security cracking game-hacking
 brief: "It's an example of game hacking, and it's created to share the personal experience with other enthusiasts in this branch of software security."

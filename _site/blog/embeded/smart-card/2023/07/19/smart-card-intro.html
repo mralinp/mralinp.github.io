@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="4-8jdtFeOSWDhx6RjXrSwNrvhvLyFdbACncYtB2Rjzc" />
+    <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="mralinp" />
+    <title> Smart Card: An Introduction to smart card development </title>
+     <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+    <!-- Font awesome -->
+    <script src="https://kit.fontawesome.com/40a6ec6105.js" crossorigin="anonymous"></script>
+    <!-- Prism CSS -->
+    <link rel="stylesheet" href="/assets/css/prism.css">
+    <!-- Prism JS -->
+    <script src="/assets/js/prism.js"></script>
+    <!-- Vendor -->
+    <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3><a href="/">Ali N. Parizi</a></h3>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li class="sidebar-item">
+                    <a href="/"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="/blog"><i class="fa fa-rss" aria-hidden="true"></i> Blog</a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="/projects"><i class="fa fa-flask" aria-hidden="true"></i> Projects</a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="/library"><i class="fa fa-book" aria-hidden="true"></i> Library</a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="/about"><i class="fa fa-info" aria-hidden="true"></i> About me</a>
+                </li>
+            </ul>
+
+            <ul class="list-unstyled CTAs">
+                <li class="sidebar-btn">
+                    <a href="https://github.com/mralinp"> <i class="fab fa-github"></i> Github profile
+                    </a>
+                </li>
+                <li class="sidebar-btn">
+                    <a href="/assets/resume/ali-naderi-parizi-cv.pdf"> <i class="fas fa-file"></i> Download resume</a>
+                </li>
+            </ul>
+            <div height="200px">
+            </div>
+
+            <footer id="footer">
+                <div class="container">
+                  <div class="copyright">
+                    © Copyright <strong><span>Ali N. Parizi</span></strong>
+                  </div>
+                  <div class="credits">
+                    Powered by <a href="https://github.com/"><i class="fab fa-github"></i> Github.com</a>
+                  </div>
+                </div>
+            </footer>
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content">
+            <!-- Navbar -->
+            <nav class="navbar navbar-expand-lg">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="/" id="brand">Ali N. Parizi</a>
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <span>Menu</span>
+                    </button>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav mr-auto" id="navbarLinks">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/assets/resume/ali-naderi-parizi-cv.pdf">Resume</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/blog">Blog</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/about">About me</a>
+                            </li>
+                        </ul>
+                        <form class="form-inline ml-auto" method="get" action="http://www.google.com/search" target="_blank">
+                            <input type="hidden" name="sitesearch" value="alinaderiparizi.com" />
+                            <input class="form-control mr-sm-2" type="text" name="q" maxlength="255" placeholder="Search" />
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+            <div class="container">
+                <style>
+
+    
+</style>
+
+<article>
+    <div class="image-wrapper text-center">
+        <a class="image-zoom cboxElement" href="">
+        <img src="/assets/images/posts/blog/smart-card/title.png" class="rounded mx-auto" width="100%">
+        <div class="image-overlay"></div> 
+        </a>
+    </div>
+    <br>
+    <div class="post-content">
+        <h1>Smart Card: An Introduction to smart card development</h1>
+        <ul class="post-meta list-inline">
+            <li class="list-inline-item">
+                <i class="fa fa-user-circle-o"></i> Ali N. Parizi
+            </li>
+            <li class="list-inline-item">
+                <i class="fa fa-calendar-o"></i> 19 July 2023
+            </li>
+            <li class="list-inline-item">
+                <i class="fa fa-tags"></i>
+                    <span class="category">
+                    blog
+                    </span>
+                    
+                         <span class="category">
+                         embeded
+                         </span>
+                    
+                         <span class="category">
+                         smart-card
+                         </span>
+                    
+            </li>
+        </ul>
+        <p class="text-secondary"> Smart cards are small, pocket-sized cards that contain an embedded microprocessor and memory chip. These cards are often made of plastic, and they look similar to traditional credit or debit cards, but they possess advanced technology that sets them apart. Smart cards are designed to securely store and process data, making them a powerful tool for various applications in today's digital world. <p>
+        <div class="line"></div>
+        <h1 id="0-introduction">0. Introduction</h1>
+
+<p>Smart cards are small, pocket-sized cards that contain an embedded microprocessor and memory chip. These cards are often made of plastic, and they look similar to traditional credit or debit cards, but they possess advanced technology that sets them apart. Smart cards are designed to securely store and process data, making them a powerful tool for various applications in today’s digital world.</p>
+
+<p>There are two main types of smart cards:</p>
+
+<ul>
+  <li>
+    <p><strong>Contact Smart Cards</strong>: These cards have gold-plated contact pads on their surface, which need to physically touch a card reader to establish communication. When inserted into a card reader or terminal, the contacts establish an electrical connection, enabling data transfer between the card and the reader. The data exchange can involve tasks such as authentication, data storage, and cryptographic operations.</p>
+  </li>
+  <li>
+    <p><strong>Contactless Smart Cards</strong>: In contrast to contact smart cards, contactless smart cards do not require physical contact with a card reader. Instead, they use radio frequency identification (RFID) technology to communicate wirelessly with compatible card readers or terminals. This communication occurs when the card is placed within close proximity to the reader, making contactless smart cards particularly convenient and efficient for quick transactions.</p>
+  </li>
+</ul>
+
+<p>Smart cards find applications in a wide range of industries and use cases, including:</p>
+
+<ul>
+  <li><strong>Financial Transactions</strong>: They are commonly used for secure payments in credit/debit cards, prepaid cards, and electronic wallets.</li>
+  <li><strong>Access Control and Security</strong>: Smart cards are used for secure building access, network authentication, and data protection.</li>
+  <li><strong>Healthcare</strong>: They facilitate secure access to electronic health records, patient identification, and prescription management.</li>
+  <li><strong>Transportation</strong>: Smart cards are utilized in fare collection systems for public transport, allowing for seamless ticketing and fare management.</li>
+  <li><strong>Government Identification</strong>: National ID cards, driver’s licenses, and electronic passports often incorporate smart card technology for enhanced security features.</li>
+</ul>
+
+<p>The ability of smart cards to securely store sensitive data, perform cryptographic operations, and communicate with various systems has made them an indispensable component of modern technology, ensuring safer and more efficient transactions and interactions in numerous domains.</p>
+
+<p>Smart cards are equipped with a microprocessor and a specialized operating system, which sets them apart from traditional magnetic stripe cards. The presence of these components enables smart cards to perform more sophisticated functions and offer enhanced security features.</p>
+
+<ol>
+  <li>
+    <p><strong>Microprocessor</strong>:
+The microprocessor is the brain of the smart card, responsible for executing commands and processing data. It is a small integrated circuit that can perform complex calculations and cryptographic operations. The microprocessor allows the card to interact intelligently with card readers or terminals, enabling secure data exchange and executing specific tasks according to the applications it supports.</p>
+  </li>
+  <li>
+    <p><strong>Operating System</strong>:
+The operating system (OS) of a smart card is a specialized software that manages the card’s functions, controls access to its resources, and provides a standardized interface for applications to interact with the card’s hardware and data. The operating system facilitates communication with the outside world, ensuring that commands and data sent to the card are processed correctly and securely.</p>
+  </li>
+</ol>
+
+<p>The presence of a microprocessor and an operating system on smart cards allows for several important capabilities:</p>
+
+<ol>
+  <li>
+    <p><strong>Security Features</strong>:
+Smart cards use their microprocessors to perform encryption and decryption operations, making them highly secure for sensitive transactions and data storage. The operating system plays a crucial role in managing cryptographic keys and ensuring secure access to the card’s data.</p>
+  </li>
+  <li>
+    <p><strong>Secure Application Execution</strong>:
+The operating system provides a secure environment for applications running on the smart card. It isolates different applications from one another, preventing unauthorized access and ensuring that one application’s activities cannot compromise the security of others on the same card.</p>
+  </li>
+  <li>
+    <p><strong>Multiple Applications</strong>:
+Smart cards have the ability to support multiple applications simultaneously. For example, a single smart card can be used for electronic payments, access control, and healthcare records. The operating system facilitates seamless execution and switching between these applications.</p>
+  </li>
+  <li>
+    <p><strong>Dynamic Updates</strong>:
+The operating system can be updated or patched to address security vulnerabilities or add new features to the smart card without replacing the physical card itself.</p>
+  </li>
+</ol>
+
+<p>Due to these advanced features, smart cards have become a reliable and secure tool for various applications, such as financial transactions, secure access control, healthcare, and more. The combination of a microprocessor and an operating system empowers smart cards to deliver enhanced functionality, robust security, and unparalleled convenience in the digital age.</p>
+
+<p>In the context of smart cards, an applet refers to a small, specialized software application that runs on the smart card’s microprocessor and is managed by the card’s operating system. These applets are designed to perform specific functions or provide particular services on the smart card. They enable the smart card to support various applications and perform tasks relevant to the cardholder’s needs.</p>
+
+<h1 id="1-applets">1. Applets</h1>
+
+<p>Applets on smart cards are comparable to apps on a smartphone. Each applet functions as a self-contained program with a defined set of functionalities, and multiple applets can coexist on the same smart card without interfering with each other. This modularity and isolation of applets are essential for maintaining security and ensuring that sensitive data from one application remains isolated from others.</p>
+
+<p>The key characteristics of applets on smart cards include:</p>
+
+<ol>
+  <li>
+    <p><strong>Security</strong>:
+Applets are designed with security in mind, ensuring that the data and operations they perform remain protected from unauthorized access. The smart card’s operating system enforces strict access controls to prevent unauthorized applets from interfering with sensitive data or executing malicious operations.</p>
+  </li>
+  <li>
+    <p><strong>Isolation</strong>:
+Each applet runs within its own secure execution environment, isolated from other applets on the smart card. This isolation prevents one applet from accessing data or resources belonging to another, ensuring a high level of data privacy and integrity.</p>
+  </li>
+  <li>
+    <p><strong>Flexibility</strong>:
+Applets can be added, removed, or updated on the smart card without replacing the physical card itself. This flexibility allows card issuers to introduce new services or applications to the card without disrupting existing functionalities.</p>
+  </li>
+  <li>
+    <p><strong>Common Criteria Compliance</strong>:
+Applets are typically developed following the Common Criteria standard, which defines security requirements for evaluating and certifying the security of IT products, including smart cards.</p>
+  </li>
+</ol>
+
+<p>Examples of applets on smart cards include:</p>
+
+<ul>
+  <li><strong>Payment Applet</strong>: Enables secure financial transactions and management of funds on the smart card, allowing it to be used as a debit or credit card.</li>
+  <li><strong>Identity Applet</strong>: Stores and manages personal identification information for government-issued identification cards or electronic passports.</li>
+  <li><strong>Health Applet</strong>: Manages electronic health records and provides secure access to patient information for healthcare applications.</li>
+  <li><strong>Access Control Applet</strong>: Facilitates secure access to buildings, computer systems, or networks by providing authentication and authorization services.</li>
+</ul>
+
+<p>Overall, applets on smart cards play a crucial role in extending the card’s capabilities, enhancing security, and enabling multiple applications to coexist on a single card while maintaining data privacy and integrity.</p>
+
+<h1 id="2-developing-applets">2. Developing Applets</h1>
+
+<p>Writing applets for smart cards requires specialized skills and knowledge of smart card technology, microcontroller programming, and the specific programming language supported by the smart card’s microprocessor. Most smart cards use the Java Card platform, which allows developers to write applets in Java Card language.</p>
+
+<p>Here are the general steps to write applets for smart cards:</p>
+
+<ol>
+  <li>
+    <p><strong>Set Up Development Environment</strong>:
+First, you need to set up the development environment for smart card applet development. This involves installing the necessary software development kit (SDK) provided by the smart card manufacturer or Java Card platform.</p>
+  </li>
+  <li>
+    <p><strong>Learn Java Card Programming</strong>:
+Familiarize yourself with Java Card programming, which is a subset of the Java programming language tailored for smart card development. Understand the limitations and specific features of Java Card, as it differs from regular Java programming.</p>
+  </li>
+  <li>
+    <p><strong>Define Applet Functionality</strong>:
+Determine the functionality you want your applet to provide. Identify the specific tasks the applet should perform on the smart card, such as handling financial transactions, managing access control, or storing and retrieving sensitive data.</p>
+  </li>
+  <li>
+    <p><strong>Develop the Applet Code</strong>:
+Write the applet code in Java Card language. This code will define the behavior and operations of the applet on the smart card. Ensure that the applet code adheres to the security requirements and best practices for smart card development.</p>
+  </li>
+  <li>
+    <p><strong>Compile and Convert to CAP File</strong>:
+After writing the applet code, compile it using the Java Card compiler to produce a .cap file (CAP stands for “Converted Applet”). This file contains the binary representation of the applet code, ready for installation on the smart card.</p>
+  </li>
+  <li>
+    <p><strong>Load the Applet onto the Smart Card</strong>:
+Use the appropriate tools or APIs provided by the smart card manufacturer or Java Card platform to load the .cap file onto the smart card. This process is known as “applet installation.”</p>
+  </li>
+  <li>
+    <p><strong>Test and Debug</strong>:
+Test the applet on the smart card to ensure that it functions as expected. Debug any issues that may arise during testing, making necessary adjustments to the applet code if needed.</p>
+  </li>
+  <li>
+    <p><strong>Deploy and Distribute</strong>:
+Once the applet is thoroughly tested and verified, it can be deployed on the desired smart cards or distributed to end-users through card issuers or service providers.</p>
+  </li>
+</ol>
+
+<p>Please note that writing applets for smart cards requires expertise in smart card development and may vary depending on the specific smart card’s capabilities and the programming language supported by its microprocessor. It’s essential to refer to the smart card manufacturer’s documentation and Java Card specifications for detailed guidelines and best practices when developing applets for smart cards.</p>
+
+<p>Next time i prepare an article about developing an applet and playing around with this old technology, stay tuned…</p>
+
+    </div>
+</article>
+
+<div class="line"></div>
+<div class="commentbox"></div>
+<script src="https://unpkg.com/commentbox.io/dist/commentBox.min.js"></script>
+<script>
+    function arrToHex(arr) {
+        let s = '#';
+        for (let i = 0; i < arr.length; i++) {
+            s += ((arr[i] / 16) | 0).toString(16);
+            s += ((arr[i] % 16) | 0).toString(16);
+        }
+        return s;
+    }
+    var element = document.body;
+    var style;
+    var color = "black";
+    if (window.getComputedStyle) {
+        style = window.getComputedStyle(element);
+    } else {
+        style = element.currentStyle;
+    }
+    if (!style) {
+        // ...seriously old browser...
+    } else {
+        color = style.color;
+    }
+    rgb = color.match(/\d+/g);
+    commentBox('5076933226266624-proj', {
+        textColor: arrToHex(rgb),
+        subtextColor: arrToHex(rgb),
+    })
+</script>
+
+            </div>
+
+            
+
+        </div>
+        
+    </div>
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous">
+    </script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous">
+    </script>
+    <!-- jQuery Custom Scroller CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js">
+    </script>
+
+        <!-- Vendor JS Files -->
+    <script src="/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="/assets/vendor/aos/aos.js"></script>
+    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="/assets/vendor/typed.js/typed.min.js"></script>
+    <script src="/assets/vendor/waypoints/noframework.waypoints.js"></script>
+    <script src="/assets/vendor/php-email-form/validate.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#sidebar").mCustomScrollbar({
+                theme: "minimal"
+            });
+
+            $('#sidebarCollapse').on('click', function() {
+                $('#sidebar, #content, #footer').toggleClass('active');
+                $('.collapse.in').toggleClass('in');
+                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+            });
+        });
+    </script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML">
+    </script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']], processEscapes: true}, jax: ["input/TeX","input/MathML","input/AsciiMath","output/CommonHTML"], extensions: ["tex2jax.js","mml2jax.js","asciimath2jax.js","MathMenu.js","MathZoom.js","AssistiveMML.js",
+        "[Contrib]/a11y/accessibility-menu.js"], TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"], equationNumbers: { autoNumber: "AMS" } } });
+    </script>
+    <script src="/assets/js/main.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
