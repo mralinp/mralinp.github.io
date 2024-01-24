@@ -1,4 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-10-15T08:44:51+03:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">mralinp</title><subtitle>My awesome blog</subtitle><entry><title type="html">UNet: One of the most simple networks for segmentation</title><link href="http://localhost:4000/blog/ai/machine-learning/deep-learning/2023/08/20/unet.html" rel="alternate" type="text/html" title="UNet: One of the most simple networks for segmentation" /><published>2023-08-20T23:02:23+03:30</published><updated>2023-08-20T23:02:23+03:30</updated><id>http://localhost:4000/blog/ai/machine-learning/deep-learning/2023/08/20/unet</id><content type="html" xml:base="http://localhost:4000/blog/ai/machine-learning/deep-learning/2023/08/20/unet.html"><![CDATA[<h1 id="1-intro">1. Intro</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-01-24T20:42:50+03:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">mralinp</title><subtitle>My awesome blog</subtitle><entry><title type="html">Bypass The Islamic Republic: V2Ray on Clouds</title><link href="http://localhost:4000/blog/network/vpn/2024/01/23/v2ray-cf-worker.html" rel="alternate" type="text/html" title="Bypass The Islamic Republic: V2Ray on Clouds" /><published>2024-01-23T18:10:23+03:30</published><updated>2024-01-23T18:10:23+03:30</updated><id>http://localhost:4000/blog/network/vpn/2024/01/23/v2ray-cf-worker</id><content type="html" xml:base="http://localhost:4000/blog/network/vpn/2024/01/23/v2ray-cf-worker.html"><![CDATA[<h1 id="0-intro">0. Intro</h1>
+
+<p align="center">
+<img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2KfOnCxEoRIFcSZjL5r6BY/768f898d3af1bb682823bc10e521a8a7/Cloudflare-logo.png" width="50%" />
+</p>
+
+<h1 id="1-installing-the-panel-3x-ui">1. Installing the panel (3X-UI)</h1>
+
+<h2 id="11-enabling-tls">1.1 Enabling TLS</h2>
+
+<h2 id="112-creating-vless-config">1.1.2 Creating VLess Config</h2>
+
+<h1 id="2-come-up-to-the-clouds">2. Come up to the clouds</h1>
+<h2 id="21-workers">2.1 Workers</h2>
+
+<h1 id="3-optional-but-recommended-be-clean-use-a-clean-ip-address">3. (Optional but recommended) Be Clean (Use a clean IP address)</h1>
+
+<h1 id="4-references">4. References</h1>]]></content><author><name>Ali N. Parizi</name></author><category term="blog" /><category term="network" /><category term="vpn" /><summary type="html"><![CDATA[0. Intro]]></summary></entry><entry><title type="html">UNet: One of the most simple networks for segmentation</title><link href="http://localhost:4000/blog/ai/machine-learning/deep-learning/2023/08/20/unet.html" rel="alternate" type="text/html" title="UNet: One of the most simple networks for segmentation" /><published>2023-08-20T23:02:23+03:30</published><updated>2023-08-20T23:02:23+03:30</updated><id>http://localhost:4000/blog/ai/machine-learning/deep-learning/2023/08/20/unet</id><content type="html" xml:base="http://localhost:4000/blog/ai/machine-learning/deep-learning/2023/08/20/unet.html"><![CDATA[<h1 id="1-intro">1. Intro</h1>
 <p>The u-net is convolutional network architecture for fast and precise segmentation of images. Up to now it has outperformed the prior best method (a sliding-window convolutional network) on the ISBI challenge for segmentation of neuronal structures in electron microscopic stacks. It has won the Grand Challenge for Computer-Automated Detection of Caries in Bitewing Radiography at ISBI 2015, and it has won the Cell Tracking Challenge at ISBI 2015 on the two most challenging transmitted light microscopy categories (Phase contrast and DIC microscopy) by a large margin.</p>
 
 <p>UNet is a convolutional neural network (CNN) architecture used for image segmentation tasks. It was introduced by researchers Olaf Ronneberger, Philipp Fischer, and Thomas Brox in 2015. The name “UNet” comes from its U-shaped architecture, which consists of a contracting path (left side) and an expansive path (right side), connected by a central bottleneck.</p>
@@ -26,7 +43,8 @@
     <img src="/assets/images/posts/blog/unet/arch.png" />
     <br />
     <span>architecture (example for 32x32 pixels in the lowest resolution). Each blue box corresponds to a multi-channel feature map. The number of channels is denoted on top of the box. The x-y-size is provided at the lower left edge of the box. White boxes represent copied feature maps. The arrows denote the different operations.</span>
-</p>]]></content><author><name>Ali N. Parizi</name></author><category term="blog" /><category term="ai" /><category term="machine-learning" /><category term="deep-learning" /><summary type="html"><![CDATA[1. Intro The u-net is convolutional network architecture for fast and precise segmentation of images. Up to now it has outperformed the prior best method (a sliding-window convolutional network) on the ISBI challenge for segmentation of neuronal structures in electron microscopic stacks. It has won the Grand Challenge for Computer-Automated Detection of Caries in Bitewing Radiography at ISBI 2015, and it has won the Cell Tracking Challenge at ISBI 2015 on the two most challenging transmitted light microscopy categories (Phase contrast and DIC microscopy) by a large margin.]]></summary></entry><entry><title type="html">Smart Card: An Introduction to smart card development</title><link href="http://localhost:4000/blog/embeded/smart-card/2023/07/19/smart-card-intro.html" rel="alternate" type="text/html" title="Smart Card: An Introduction to smart card development" /><published>2023-07-19T20:50:01+03:30</published><updated>2023-07-19T20:50:01+03:30</updated><id>http://localhost:4000/blog/embeded/smart-card/2023/07/19/smart-card-intro</id><content type="html" xml:base="http://localhost:4000/blog/embeded/smart-card/2023/07/19/smart-card-intro.html"><![CDATA[<h1 id="0-introduction">0. Introduction</h1>
+</p>]]></content><author><name>Ali N. Parizi</name></author><category term="blog" /><category term="ai" /><category term="machine-learning" /><category term="deep-learning" /><summary type="html"><![CDATA[1. Intro The u-net is convolutional network architecture for fast and precise segmentation of images. Up to now it has outperformed the prior best method (a sliding-window convolutional network) on the ISBI challenge for segmentation of neuronal structures in electron microscopic stacks. It has won the Grand Challenge for Computer-Automated Detection of Caries in Bitewing Radiography at ISBI 2015, and it has won the Cell Tracking Challenge at ISBI 2015 on the two most challenging transmitted light microscopy categories (Phase contrast and DIC microscopy) by a large margin.]]></summary></entry><entry><title type="html">Smart Card: An Introduction to smart card development (Part II)</title><link href="http://localhost:4000/blog/embeded/smart-card/2023/07/19/smart-card-dev.html" rel="alternate" type="text/html" title="Smart Card: An Introduction to smart card development (Part II)" /><published>2023-07-19T20:50:01+03:30</published><updated>2023-07-19T20:50:01+03:30</updated><id>http://localhost:4000/blog/embeded/smart-card/2023/07/19/smart-card-dev</id><content type="html" xml:base="http://localhost:4000/blog/embeded/smart-card/2023/07/19/smart-card-dev.html"><![CDATA[<h1 id="0-intro">0. Intro</h1>
+<p>Ayo,</p>]]></content><author><name>Ali N. Parizi</name></author><category term="blog" /><category term="embeded" /><category term="smart-card" /><summary type="html"><![CDATA[0. Intro Ayo,]]></summary></entry><entry><title type="html">Smart Card: An Introduction to smart card development</title><link href="http://localhost:4000/blog/embeded/smart-card/2023/07/19/smart-card-intro.html" rel="alternate" type="text/html" title="Smart Card: An Introduction to smart card development" /><published>2023-07-19T20:50:01+03:30</published><updated>2023-07-19T20:50:01+03:30</updated><id>http://localhost:4000/blog/embeded/smart-card/2023/07/19/smart-card-intro</id><content type="html" xml:base="http://localhost:4000/blog/embeded/smart-card/2023/07/19/smart-card-intro.html"><![CDATA[<h1 id="0-introduction">0. Introduction</h1>
 
 <p>Smart cards are small, pocket-sized cards that contain an embedded microprocessor and memory chip. These cards are often made of plastic, and they look similar to traditional credit or debit cards, but they possess advanced technology that sets them apart. Smart cards are designed to securely store and process data, making them a powerful tool for various applications in today’s digital world.</p>
 
@@ -170,8 +188,7 @@ Once the applet is thoroughly tested and verified, it can be deployed on the des
 
 <p>Please note that writing applets for smart cards requires expertise in smart card development and may vary depending on the specific smart card’s capabilities and the programming language supported by its microprocessor. It’s essential to refer to the smart card manufacturer’s documentation and Java Card specifications for detailed guidelines and best practices when developing applets for smart cards.</p>
 
-<p>Next time i prepare an article about developing an applet and playing around with this old technology, stay tuned…</p>]]></content><author><name>Ali N. Parizi</name></author><category term="blog" /><category term="embeded" /><category term="smart-card" /><summary type="html"><![CDATA[0. Introduction]]></summary></entry><entry><title type="html">Smart Card: An Introduction to smart card development (Part II)</title><link href="http://localhost:4000/blog/embeded/smart-card/2023/07/19/smart-card-dev.html" rel="alternate" type="text/html" title="Smart Card: An Introduction to smart card development (Part II)" /><published>2023-07-19T20:50:01+03:30</published><updated>2023-07-19T20:50:01+03:30</updated><id>http://localhost:4000/blog/embeded/smart-card/2023/07/19/smart-card-dev</id><content type="html" xml:base="http://localhost:4000/blog/embeded/smart-card/2023/07/19/smart-card-dev.html"><![CDATA[<h1 id="0-intro">0. Intro</h1>
-<p>Ayo,</p>]]></content><author><name>Ali N. Parizi</name></author><category term="blog" /><category term="embeded" /><category term="smart-card" /><summary type="html"><![CDATA[0. Intro Ayo,]]></summary></entry><entry><title type="html">Git Flow: A reposotery management heirachy</title><link href="http://localhost:4000/software/git/2023/03/28/git-flow.html" rel="alternate" type="text/html" title="Git Flow: A reposotery management heirachy" /><published>2023-03-28T01:21:12+03:30</published><updated>2023-03-28T01:21:12+03:30</updated><id>http://localhost:4000/software/git/2023/03/28/git-flow</id><content type="html" xml:base="http://localhost:4000/software/git/2023/03/28/git-flow.html"><![CDATA[<h1 id="1-intro">1. Intro</h1>
+<p>Next time i prepare an article about developing an applet and playing around with this old technology, stay tuned…</p>]]></content><author><name>Ali N. Parizi</name></author><category term="blog" /><category term="embeded" /><category term="smart-card" /><summary type="html"><![CDATA[0. Introduction]]></summary></entry><entry><title type="html">Git Flow: A reposotery management heirachy</title><link href="http://localhost:4000/software/git/2023/03/28/git-flow.html" rel="alternate" type="text/html" title="Git Flow: A reposotery management heirachy" /><published>2023-03-28T01:21:12+03:30</published><updated>2023-03-28T01:21:12+03:30</updated><id>http://localhost:4000/software/git/2023/03/28/git-flow</id><content type="html" xml:base="http://localhost:4000/software/git/2023/03/28/git-flow.html"><![CDATA[<h1 id="1-intro">1. Intro</h1>
 
 <p>Gitflow is a legacy Git workflow that was originally a disruptive and novel strategy for managing Git branches. Gitflow has fallen in popularity in favor of trunk-based workflows, which are now considered best practices for modern continuous software development and DevOps practices. Gitflow also can be challenging to use with CI/CD. This post details Gitflow for historical purposes.</p>
 
@@ -1206,119 +1223,4 @@ with Adversarial Examples</a></li>
 <ul>
   <li><a href="https://docs.anaconda.com/anaconda/install/index.html"><em>Installing Anaconda (anaconda.com)</em></a></li>
   <li><a href="https://www.tensorflow.org/install/pip"><em>Install TensorFlow with pip (tensorflow.org)</em></a></li>
-</ul>]]></content><author><name>Ali N. Parizi</name></author><category term="blog" /><category term="ai" /><category term="machine-learning" /><category term="deep-learning" /><summary type="html"><![CDATA[1. Intro]]></summary></entry><entry><title type="html">Bypass The Islamic Republic Again: Installing V2ray + XUI</title><link href="http://localhost:4000/blog/network/vpn/2022/10/31/v2ray-xui.html" rel="alternate" type="text/html" title="Bypass The Islamic Republic Again: Installing V2ray + XUI" /><published>2022-10-31T13:10:23+03:30</published><updated>2022-10-31T13:10:23+03:30</updated><id>http://localhost:4000/blog/network/vpn/2022/10/31/v2ray-xui</id><content type="html" xml:base="http://localhost:4000/blog/network/vpn/2022/10/31/v2ray-xui.html"><![CDATA[<h1 id="1-intro">1. Intro</h1>
-<p>Last time, I wrote an article about bypassing God’s government restrictions to be able to access the outside world. Now the base solution still stands, but the protocol we used to implement that solution no longer works. We can clap our hands to the government priests for upgrading their knowledge about VPN protocols and say bravo in chinese “<a href="https://translate.google.com/?sl=zh-CN&amp;tl=en&amp;text=%E9%AB%98%E4%B8%9D%E7%BA%B3%E7%BA%B3%E9%A1%BF&amp;op=translate" title="Kose na na ton!">高丝纳纳顿</a>”.</p>
-
-<p>As our government and Chinese folks are each other’s besties and in the same bed! we can conclude that any protocol that works on the great firewall of china, should work for the evils firewall of the Islamic Republic!</p>
-
-<p>V2Ray is a VPN protocol written with love by some free Chinese people. It works on the application layer and its traffic looks like working with an actual web-site and it’s less prone to detect. The problem with V2Ray is the english language support, documentations and weak client software which can easily be improved if their community decided to share their information and issues in english not in fucking chinees!</p>
-
-<p>For this article we consider you have access to a Virtual Machine in the outside world. You can access that machine using SSH or you can easily install a cockpit to be able to access your Linux machine through the browser.</p>
-
-<h2 id="11-installing-cockpit-optional">1.1 Installing Cockpit (Optional)</h2>
-<p>To install Cockpit, connect to your machine using ssh and use the aptitude package manager to install cockpit:</p>
-
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span><span class="nb">sudo </span>apt update <span class="nt">--yes</span>
-<span class="gp">$</span><span class="w"> </span><span class="nb">sudo </span>apt upgrade <span class="nt">--yes</span>
-<span class="gp">$</span><span class="w"> </span><span class="nb">sudo </span>apt <span class="nb">install </span>cockpit <span class="nt">--yes</span>
-</code></pre></div></div>
-
-<p>This should install the cockpit and dose all the configurations for you. The cockpit is a web-based control panel and it will run on port 9090 of the server so, you have to allow connecting this port if your firewall is enabled:</p>
-
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span><span class="nb">sudo </span>ufw allow 9090
-<span class="gp">$</span><span class="w"> </span><span class="nb">sudo </span>ufw disable
-<span class="gp">$</span><span class="w"> </span><span class="nb">sudo </span>ufw <span class="nb">enable</span>
-</code></pre></div></div>
-
-<p>Then open a browser and type the address <code class="language-plaintext highlighter-rouge">YOUR_VM_IP:9090</code> to see the cockpit panel.
-Username and password of cockpit panel are the same as your vm user for example:</p>
-
-<pre><code class="language-txt">username: root
-password: 123456
-</code></pre>
-
-<p align="center">
-    <img width="80%" src="/assets/images/posts/blog/v2ray/cockpit.png" />
-</p>
-
-<h1 id="2-installing-v2ray-using-x-ui">2. Installing V2ray using X-UI</h1>
-<p>To install V2ray you can easily install X-UI panel on your machine and this will automatically install all necessary things for you. X-UI documentation could be found here: <a href="https://seakfind.github.io/2021/10/10/X-UI/"><strong>seakfind</strong></a></p>
-
-<p>The installation process is pretty easy, just connect to your machine and install <code class="language-plaintext highlighter-rouge">socat</code> first:</p>
-
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>apt <span class="nb">install </span>curl socat <span class="nt">-y</span>
-</code></pre></div></div>
-
-<p>Then you can skip obtaining certificate steps and directly jump on installing the x-ui using its script:</p>
-
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>bash &lt;<span class="o">(</span>curl <span class="nt">-Ls</span> https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh<span class="o">)</span>
-</code></pre></div></div>
-<p>Then it will ask you to type <code class="language-plaintext highlighter-rouge">yes|no</code>, you type yes and press enter on any chinese message prompt it shows to you. That’s it, you can start  the panel by typing:</p>
-
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>x-ui start
-</code></pre></div></div>
-
-<p>It starts the X-UI panel on the port <code class="language-plaintext highlighter-rouge">54321</code> of server. Open a browser and type <code class="language-plaintext highlighter-rouge">YOUR_VM_IP:54321</code> in the address bar to see the panel. Default username and password are:</p>
-
-<pre><code class="language-txt">username: admin
-password: admin
-</code></pre>
-
-<p align="center">
-    <img width="80%" src="/assets/images/posts/blog/v2ray/xui.png" />
-</p>
-
-<p>Default language of x-ui is chaines, i use Google chrome and Google translate to translate its contexts to english and i recommend you to do so.</p>
-
-<p>After login, you have to go and change the default username and password of the panel (You can change the default port as well). From the sidebar panel select the third option, then select the second tab. Now type the old username and password on first two fields the new ones on the next two. Press <code class="language-plaintext highlighter-rouge">Revise</code> to save the changes.</p>
-
-<p align="center">
-    <img width="80%" src="/assets/images/posts/blog/v2ray/x-ui-1.png" />
-</p>
-
-<p>Now go to inbound list from the sidebar and press add for creating a new VPN configuration. For example you can select VMess or VLess protocol under Websocket(ws) as you can see on the picture below. If you choose VLess be aware of that VLess has no encryption and VMess is a better choice.</p>
-
-<blockquote>
-  <p>Note: You can go and search for other V2Ray configurations but VMess is good enough for our article.</p>
-</blockquote>
-
-<p align="center">
-    <img width="80%" src="/assets/images/posts/blog/v2ray/xui-u.png" />
-</p>
-
-<p>Now, you are all set, you can scan the QR code or press copy share link to copy the share link to the clip board and send it to your clients.</p>
-
-<p align="center">
-    <img width="80%" src="/assets/images/posts/blog/v2ray/x-ui-2.png" />
-</p>
-
-<h1 id="3-clients-setup-for-using-v2ray">3. Clients setup for using V2Ray</h1>
-<p>To connect to the V2Ray server you have to install the proper client application on your devices. Here is a list of application clients for different devices and operating systems:</p>
-
-<ul>
-  <li><strong>Android</strong>: <a href="https://play.google.com/store/apps/details?id=com.v2ray.ang">V2rayNG (Google play)</a></li>
-  <li><strong>IOS</strong>: <a href="https://apps.apple.com/us/app/napsternetv/id1629465476">NapsternetV (App Store)</a></li>
-  <li><strong>Windows</strong>: <a href="https://github.com/Qv2ray/Qv2ray/releases/download/v2.7.0/Qv2ray-v2.7.0-Windows-Installer.exe">Qv2ray-v2.7.0-Windows-Installer.exe</a></li>
-  <li><strong>Mac OSX</strong>: <a href="https://github.com/Qv2ray/Qv2ray/releases/download/v2.7.0/Qv2ray-v2.7.0-macOS-x64.dmg">Qv2ray-v2.7.0-macOS-x64.dmg</a></li>
-  <li><strong>Linux</strong>: <a href="https://github.com/Qv2ray/Qv2ray/releases/download/v2.7.0/Qv2ray-v2.7.0-linux-x64.AppImage">Qv2ray-v2.7.0-linux-x64.AppImage</a></li>
-</ul>
-
-<h1 id="4-using-tls-optional-but-recommended">4. Using TLS (Optional but, recommended.)</h1>
-
-<p>To make the clients connection more secure and safer, we need to use TLS on our server.</p>
-<h2 id="41-what-is-transport-layer-security-tls">4.1 What is Transport Layer Security (TLS)?</h2>
-
-<p>Transport Layer Security, or TLS, is a widely adopted security protocol designed to facilitate privacy and data security for communications over the Internet. A primary use case of TLS is encrypting the communication between web applications and servers, such as web browsers loading a website. TLS can also be used to encrypt other communications such as email, messaging, and voice over IP (VoIP). In this article we will focus on the role of TLS in web application security.</p>
-
-<p>TLS was proposed by the Internet Engineering Task Force (IETF), an international standards organization, and the first version of the protocol was published in 1999. The most recent version is TLS 1.3, which was published in 2018.</p>
-
-<h1 id="42-buy-a-domain">4.2 Buy a domain</h1>
-
-<h1 id="43-generating-a-new-certificate-using-cert-bot">4.3 Generating a new certificate using <code class="language-plaintext highlighter-rouge">cert-bot</code></h1>
-
-<h1 id="45-activating-cdn-optional-but-recommended">4.5 Activating CDN (Optional but recommended)</h1>
-
-<h1 id="references">References</h1>
-<ul>
-  <li><a href="https://seakfind.github.io/2021/10/10/X-UI/">https://seakfind.github.io/2021/10/10/X-UI/</a></li>
-</ul>]]></content><author><name>Ali N. Parizi</name></author><category term="blog" /><category term="network" /><category term="vpn" /><summary type="html"><![CDATA[1. Intro Last time, I wrote an article about bypassing God’s government restrictions to be able to access the outside world. Now the base solution still stands, but the protocol we used to implement that solution no longer works. We can clap our hands to the government priests for upgrading their knowledge about VPN protocols and say bravo in chinese “高丝纳纳顿”.]]></summary></entry></feed>
+</ul>]]></content><author><name>Ali N. Parizi</name></author><category term="blog" /><category term="ai" /><category term="machine-learning" /><category term="deep-learning" /><summary type="html"><![CDATA[1. Intro]]></summary></entry></feed>
