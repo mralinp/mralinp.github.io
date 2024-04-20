@@ -1,3 +1,4 @@
+![example workflow](https://github.com/mralinp/mralinp.github.io/actions/workflows/pages/pages-build-deployment/badge.svg)
 # My personal website repo
 My personal homepage which is also my blog and home page. It's created using [Jekyll](https://jekyllrb.com/) and [Bootstrap](https://getbootstrap.com/) and hosted on [Github-Pages](https://pages.github.com/).
 ## Requirements
