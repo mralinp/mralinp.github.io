@@ -46,7 +46,7 @@ x_sample, y_sample = dataset[0]
 print (f"x:{ x_sample}, y: {y_sample}")
 ```
 
-```output
+```txt
 x:tensor([1.4230e+01, 1.7100e+00, 2.4300e+00, 1.5600e+01, 1.2700e+02, 2.8000e+00,
         3.0600e+00, 2.8000e-01, 2.2900e+00, 5.6400e+00, 1.0400e+00, 3.9200e+00,
         1.0650e+03]), y: tensor([1.])
@@ -65,7 +65,7 @@ x, y = data
 print (x, y)
 ```
 
-```output
+```txt
 Output exceeds the size limit. Open the full output data in a text editor
 tensor([[1.3740e+01, 1.6700e+00, 2.2500e+00, 1.6400e+01, 1.1800e+02, 2.6000e+00,
          2.9000e+00, 2.1000e-01, 1.6200e+00, 5.8500e+00, 9.2000e-01, 3.2000e+00,
@@ -154,7 +154,7 @@ x_sample, y_sample = dataset[0]
 print (f"x:{ x_sample}, y: {y_sample}")
 ```
 
-```output
+```txt
 (tensor([1.4230e+02, 1.7100e+01, 2.4300e+01, 1.5600e+02, 1.2700e+03, 2.8000e+01,
         3.0600e+01, 2.8000e+00, 2.2900e+01, 5.6400e+01, 1.0400e+01, 3.9200e+01,
         1.0650e+04]), tensor([1.]))
