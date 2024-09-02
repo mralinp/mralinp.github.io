@@ -143,14 +143,28 @@ permalink: /about
                     <div class="card-body">
                         <h6 class="d-flex align-items-center mb-3"><i class="material-icons mr-2">Experiences</i></h6>
                         <div class="col">
-                            IDmelon Technologies Inc, Vancouver, BC, Canada — Software engineer (part-time)
+                            Cyber-Design Nordic Inc. , Stockholm, Stockholm, Sweden — Software engineer
                             <br>
-                            <small>Mar 2022 - Present</small>
+                            <small>Jul 2024 - Present</small>
                             <br>
                         </div>
                         <hr>
                         <div class="col">
-                            Dadeh Afzar Arman (DAA), Tehran, Tehran, Iran — Software engineer (part-time)
+                            RSA , Tehran, Tehran, Iran — Technical Consultant
+                            <br>
+                            <small>Sep 2024 - Present </small>
+                            <br>
+                        </div>
+                        <hr>
+                        <div class="col">
+                            IDmelon Technologies Inc, Vancouver, BC, Canada — Software engineer
+                            <br>
+                            <small>Mar 2022 - Jan 2024 </small>
+                            <br>
+                        </div>
+                        <hr>
+                        <div class="col">
+                            Dadeh Afzar Arman (DAA), Tehran, Tehran, Iran — Software engineer
                             <br>
                             <small>Nov 2020 - Jan 2022</small>
                             <br>
@@ -249,6 +263,24 @@ permalink: /about
                  <div class="card md-3">
                     <div class="card-body">
                         <h6 class="d-flex align-items-center mb-3"><i class="material-icons mr-2">Research and publications</i></h6>
+                        <div class="col">
+                            Indoor positioning systems for Smartphones
+                            <br>
+                            <small>
+                            Building An indoor navigation system based on smartphone embedded sensors with the approximate accuracy of one meter.
+                            </small>
+                            <br>
+                        </div>
+                        <hr>
+                        <div class="col">
+                            Classification of breast tumors in 3D Automated Breast Ultrasound Images (3D-ABUS)
+                            <br>
+                            <small>
+                            Classification of human breast cancer in 3D-ABUS by exploring various features,traditional models and Deep models. The study proved the boundary is the most important part of breast tumors which should be considered for classification.
+                            </small>
+                            <br>
+                        </div>
+                        <hr>
                         <div class="col">
                             Deep anomaly detection for image processing: A survey
                             <br>
