@@ -150,13 +150,6 @@ permalink: /about
                         </div>
                         <hr>
                         <div class="col">
-                            RSA , Tehran, Tehran, Iran — Technical Consultant
-                            <br>
-                            <small>Sep 2024 - Present </small>
-                            <br>
-                        </div>
-                        <hr>
-                        <div class="col">
                             IDmelon Technologies Inc, Vancouver, BC, Canada — Software engineer
                             <br>
                             <small>Mar 2022 - Jan 2024 </small>
