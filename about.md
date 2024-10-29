@@ -187,7 +187,7 @@ permalink: /about
                         <div class="col">
                             Iran university of science and technology, Tehran, Tehran, Iran — Master of Artificial intelligence.
                             <br>
-                            <small>Sep 2020 - Present</small>
+                            <small>Sep 2020 - Sep 2023</small>
                             <br>
                         </div>
                         <hr>
