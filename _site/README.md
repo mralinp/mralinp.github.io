@@ -16,10 +16,10 @@ $ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/
 $ brew install chruby ruby-install xz
 ```
 
-Install the latest stable version of Ruby (supported by Jekyll):
+Install Ruby `3.2.6`:
 
 ```console
-$ ruby-install ruby 3.1.3
+$ ruby-install ruby 3.2.6
 ```
 
 This will take a few minutes, and once it’s done, configure your shell to automatically use chruby:
@@ -27,7 +27,7 @@ This will take a few minutes, and once it’s done, configure your shell to auto
 ```console
 $ echo "source $(brew --prefix)/opt/chruby/share/chruby/chruby.sh" >> ~/.zshrc
 $ echo "source $(brew --prefix)/opt/chruby/share/chruby/auto.sh" >> ~/.zshrc
-$ echo "chruby ruby-3.1.3" >> ~/.zshrc # run 'chruby' to see actual version
+$ echo "chruby ruby-3.2.6" >> ~/.zshrc # run 'chruby' to see actual version
 ```
 
 Quit and relaunch Terminal, then check that everything is working:
@@ -62,9 +62,91 @@ Finally, install gem packages using bundle:
 $ bundle install
 ```
 
+### Linux (Arch/Manjaro)
+
+This project works well on Arch-based systems using `rbenv`.
+
+Install dependencies and Ruby tools:
+```console
+$ sudo pacman -Syu
+$ sudo pacman -S --needed base-devel git zlib openssl libffi libyaml gmp readline rbenv ruby-build
+```
+
+Enable `rbenv` in your shell:
+```console
+$ echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.zshrc
+$ echo 'eval "$(rbenv init - zsh)"' >> ~/.zshrc
+$ exec zsh
+```
+
+Install and select Ruby `3.2.6`:
+```console
+$ rbenv install 3.2.6
+$ rbenv global 3.2.6
+$ ruby -v
+```
+
+Install Bundler version used by this repository and install gems:
+```console
+$ gem install bundler -v 2.3.18
+$ cd /home/ozma/Source/alinaderiparizi.com/mralinp.github.io
+$ bundle _2.3.18_ install
+```
+
 ## Run the project
 First, install ruby and gem.
 
 ```console
-$ bundle exec jekyll serve --watch --drafts
+$ bundle exec jekyll serve --watch --drafts --host 127.0.0.1 --port 4000
 ```
+
+Then open <http://127.0.0.1:4000>.
+
+## Troubleshooting
+
+### `ruby: command not found`
+
+If you use `rbenv`, make sure your shell is initialized:
+
+```console
+$ echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.zshrc
+$ echo 'eval "$(rbenv init - zsh)"' >> ~/.zshrc
+$ exec zsh
+```
+
+### `Liquid Exception ... tainted?`
+
+On Ruby `3.2.x`, `liquid 4.0.3` can fail. This repo pins Liquid to a compatible version (`>= 4.0.4`), so run:
+
+```console
+$ bundle _2.3.18_ update liquid
+$ bundle _2.3.18_ install
+```
+
+## Content workflow
+
+This repository is organized for three markdown-first content types:
+
+- Blog posts: `_posts/`
+- Notes: `_notes/`
+- About/Resume page: `about.md`
+
+### Create a new blog post
+
+1. Copy `_templates/blog-post.markdown` to `_posts/` with a date prefix.
+2. Example filename: `_posts/blog/2026-03-27-my-post.markdown`
+3. Commit and push to your branch.
+
+### Create a new note
+
+1. Copy `_templates/note.markdown` to `_notes/` with a date prefix.
+2. Example filename: `_notes/2026-03-27-learning-note.markdown`
+3. Commit and push to your branch.
+
+### Update about/resume
+
+Edit `about.md` directly in markdown.
+
+## Deploy flow
+
+Push changes to your branch and merge into `main`. GitHub Actions builds and deploys the site to GitHub Pages automatically.

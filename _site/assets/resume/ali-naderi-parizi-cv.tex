@@ -1,0 +1,340 @@
+\documentclass[10pt, letterpaper]{article}
+
+% Packages:
+\usepackage[
+    ignoreheadfoot,
+    top=2 cm,
+    bottom=2 cm,
+    left=2 cm,
+    right=2 cm,
+    footskip=1.0 cm,
+]{geometry}
+\usepackage[explicit]{titlesec}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage[dvipsnames]{xcolor}
+\definecolor{primaryColor}{RGB}{0, 79, 144}
+\usepackage{enumitem}
+\usepackage{fontawesome5}
+\usepackage{amsmath}
+\usepackage{etoolbox}
+\usepackage[
+    pdftitle={Ali Naderi Parizi's CV},
+    pdfauthor={Ali Naderi Parizi},
+    pdfcreator={LaTeX},
+    colorlinks=true,
+    urlcolor=primaryColor
+]{hyperref}
+\usepackage{url}
+\urlstyle{same}
+\usepackage[pscoord]{eso-pic}
+\usepackage{calc}
+\usepackage{bookmark}
+\usepackage{lastpage}
+\usepackage{changepage}
+\usepackage{paracol}
+\usepackage{ifthen}
+\usepackage{needspace}
+\usepackage{iftex}
+
+% Machine-readable text
+\ifPDFTeX
+    \IfFileExists{glyphtounicode.tex}{\input{glyphtounicode}\pdfgentounicode=1}{}
+    \usepackage[T1]{fontenc}
+    \usepackage[utf8]{inputenc}
+\fi
+
+\usepackage[default, type1]{sourcesanspro}
+
+% Layout settings
+\AtBeginEnvironment{adjustwidth}{\partopsep0pt}
+\pagestyle{empty}
+\setcounter{secnumdepth}{0}
+\setlength{\parindent}{0pt}
+\setlength{\topskip}{0pt}
+\setlength{\columnsep}{0.15cm}
+\makeatletter
+\let\ps@customFooterStyle\ps@plain
+\patchcmd{\ps@customFooterStyle}{\thepage}{
+    \color{gray}\textit{\small Ali Naderi Parizi - Page \thepage{} of \pageref*{LastPage}}
+}{}{}
+\makeatother
+\pagestyle{customFooterStyle}
+
+\titleformat{\section}{
+    \needspace{4\baselineskip}
+    \Large\color{primaryColor}
+}{
+}{
+}{
+    \textbf{#1}\hspace{0.15cm}\titlerule[0.8pt]\hspace{-0.1cm}
+}[]
+\titlespacing{\section}{-1pt}{0.3 cm}{0.2 cm}
+
+\newenvironment{highlights}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=0.4 cm + 10pt
+    ]
+}{
+    \end{itemize}
+}
+
+\newenvironment{onecolentry}{
+    \begin{adjustwidth}{0.2 cm}{0.2 cm}
+}{
+    \end{adjustwidth}
+}
+
+\newenvironment{twocolentry}[2][]{
+    \onecolentry
+    \def\secondColumn{#2}
+    \setcolumnwidth{\fill, 4.5 cm}
+    \begin{paracol}{2}
+}{
+    \switchcolumn \raggedleft \secondColumn
+    \end{paracol}
+    \endonecolentry
+}
+
+\newenvironment{threecolentry}[3][]{
+    \onecolentry
+    \def\thirdColumn{#3}
+    \setcolumnwidth{1 cm, \fill, 4.5 cm}
+    \begin{paracol}{3}
+    {\raggedright #2} \switchcolumn
+}{
+    \switchcolumn \raggedleft \thirdColumn
+    \end{paracol}
+    \endonecolentry
+}
+
+\newenvironment{header}{
+    \setlength{\topsep}{0pt}\par\kern\topsep\centering\color{primaryColor}\linespread{1.5}
+}{
+    \par\kern\topsep
+}
+
+% Hyperlink formatting
+\let\hrefWithoutArrow\href
+\renewcommand{\href}[2]{\hrefWithoutArrow{#1}{\ifthenelse{\equal{#2}{}}{ }{#2 }\raisebox{.15ex}{\footnotesize \faExternalLink*}}}
+
+\begin{document}
+    \begin{header}
+        \fontsize{20 pt}{20 pt}
+        \textbf{Ali Naderi Parizi}
+
+        \vspace{0.15 cm}
+        \normalsize
+        Machine Learning Researcher | Generative Models | Medical Imaging
+
+        \vspace{0.3 cm}
+
+        \normalsize
+        \mbox{\hrefWithoutArrow{tel:+989103070625}{{\footnotesize\faPhone*}\hspace*{0.13cm}+98 910-307-0625}}%
+        \kern 0.25 cm%
+        \mbox{\hrefWithoutArrow{mailto:alinaderiparizi@gmail.com}{{\footnotesize\faEnvelope[regular]}\hspace*{0.13cm}alinaderiparizi@gmail.com}}%
+        \kern 0.25 cm%
+        \mbox{\hrefWithoutArrow{https://alinaderiparizi.com}{{\footnotesize\faGlobe}\hspace*{0.13cm}alinaderiparizi.com}}%
+        \kern 0.25 cm%
+        \mbox{\hrefWithoutArrow{https://www.linkedin.com/in/ali-naderi-parizi-5a0a74107}{{\footnotesize\faLinkedinIn}\hspace*{0.13cm}linkedin.com/in/ali-naderi-parizi}}%
+        \kern 0.25 cm%
+        \mbox{\hrefWithoutArrow{https://github.com/mralinp}{{\footnotesize\faGithub}\hspace*{0.13cm}@mralinp}}%
+    \end{header}
+
+    \vspace{0.2 cm}
+
+    \section{Research Interests}
+    \begin{onecolentry}
+        Generative Modeling, Probabilistic Machine Learning, 3D Medical Image Analysis, Computational Biology, Representation Learning, High-Dimensional Data Modeling
+    \end{onecolentry}
+
+    \section{Education}
+    \begin{threecolentry}{\textbf{MSc}}{2020--2023}
+        \textbf{Iran University of Science and Technology (IUST)},
+        Artificial Intelligence and Robotics
+        \begin{highlights}
+            \item \textbf{Thesis:} Classification of Human Breast Cancer Lesions in 3D Automated Breast Ultrasound (3D-ABUS) Images
+            \item Focus on deep learning methods for medical image analysis and volumetric biomedical data
+            \item Relevant coursework: Machine Learning, Deep Learning, Computer Vision, Image Processing, Stochastic Processes
+        \end{highlights}
+    \end{threecolentry}
+
+    \begin{threecolentry}{\textbf{BSc}}{2015--2020}
+        \textbf{Shiraz University},
+        Computer Engineering
+        \begin{highlights}
+            \item \textbf{Project:} Designed and implemented a System-on-Board capable of running the Linux kernel and processing analog video signals for embedded vision systems
+        \end{highlights}
+    \end{threecolentry}
+
+    \section{Publications}
+    \begin{twocolentry}{2026}
+        \textbf{Spherical Shape-Based Features for Classification of Breast Tumors in 3D-ABUS Images} \\
+        A. Naderiparizi, S. Barekat, E. Kozegar, M. Soryani \\
+        \textit{IEEE Transactions in Medical Imaging (not-published yet)}
+    \end{twocolentry}
+
+    \begin{twocolentry}{2025}
+        \textbf{Breast Mass Classification in 3D ABUS based on Laplace-Beltrami Spectra and Dual Path CNN} \\
+        S. Barekat, A. Naderiparizi, E. Kozegar, M. Soryani \\
+        \textit{Expert Systems with Applications}
+    \end{twocolentry}
+
+    \section{Academic Service}
+    \begin{twocolentry}{2026}
+        \textbf{Peer Reviewer}, Journal of Imaging Informatics in Medicine
+        \begin{highlights}
+            \item Reviewed a manuscript on breast tumor classification using medical imaging. Provided feedback on experimental design, model evaluation, and methodology.
+        \end{highlights}
+    \end{twocolentry}
+
+    \begin{twocolentry}{2026}
+        \textbf{Judge -- AI Research Challenge}, Scientific Information Database (SID) and IranDoc
+        \begin{highlights}
+            \item Selected as a judge for a national AI challenge on developing machine learning models for scientific literature analysis. Evaluated systems for: constructing knowledge graphs from papers, extracting references and narrative structure, hierarchical topic clustering, identifying research trends, and automatically extracting key scientific terms in Persian and English with semantic equivalence, including extraction of key sections for supporting PhD thesis and research publications.
+        \end{highlights}
+    \end{twocolentry}
+
+    \section{Teaching Experience}
+    \begin{twocolentry}{Tehran, Iran \\ 2022}
+        \textbf{Teaching Assistant -- Computer Vision}, Dr. Mohsen Soryani, Iran University of Science and Technology
+        \begin{highlights}
+            \item Assisted graduate students in Computer Vision courses and supervised lab sessions. Introduced a 3D tumor classification project aligned with my MSc thesis, where students built 3D meshes from tumor segmentations and applied techniques to enhance mesh resolution for classification. The project emphasized detecting fine tumor surface details such as spiculations and narrow protrusions, critical for accurate malignancy assessment using deep learning pipelines.
+        \end{highlights}
+    \end{twocolentry}
+
+    \begin{twocolentry}{Shiraz, Iran \\ 2017}
+        \textbf{Teaching Assistant -- Data Structures and Algorithm Design}, Dr. Korush Zyarati
+        \begin{highlights}
+            \item Held quizzes, defined homework assignments, graded student submissions, and designed midterm and final projects. Guided students to understand real-world challenges in algorithm design and problem solving, ensuring comprehension of both theoretical concepts and practical applications.
+        \end{highlights}
+    \end{twocolentry}
+
+    \begin{twocolentry}{Shiraz, Iran \\ 2016-2017}
+        \textbf{ACM ICPC Association Representative}, Shiraz University
+    \begin{highlights}
+    \item Elected as the representative of the university's ACM ICPC association, responsible for organizing competitive programming contests, conducting problem-solving courses, and mentoring students and high school participants. Coordinated workshops, training sessions, and competitions to foster algorithmic thinking and prepare participants for national and international contests.
+    \end{highlights}
+    \end{twocolentry}
+
+    \begin{twocolentry}{Shiraz, Iran \\ 2016}
+        \textbf{Teaching Assistant -- Competitive Programming}, Dr. Mohammad Taheri
+        \begin{highlights}
+            \item Assisted undergraduate students in competitive programming courses, organized problem-solving sessions, and provided guidance on algorithmic challenges and coding practices. Supported students in developing efficient solutions and preparing for ACM ICPC competitions.
+        \end{highlights}
+    \end{twocolentry}
+
+    \begin{twocolentry}{Shiraz \\ 2016}
+        \textbf{Instructor -- Computer Science Olympiad (IOI) Preparation}, Dastgheyb High School (Sampad)
+        \begin{highlights}
+            \item Taught high school students preparation courses for the International Olympiad in Informatics (IOI). Guided students in problem-solving strategies, algorithm design, and competitive programming techniques to strengthen their performance in national and international competitions.
+        \end{highlights}
+    \end{twocolentry}
+
+    \section{Research Projects}
+    \begin{twocolentry}{2026}
+        \textbf{Persian Text-to-Speech System with Single-Shot Voice Cloning}
+        \begin{highlights}
+            \item Developed a transformer-based generative text-to-speech system capable of producing fluent Persian speech and performing single-shot voice cloning.
+            \item Adapted modern neural TTS architectures to Persian through dataset construction, large-scale data cleaning, and linguistic preprocessing.
+            \item Designed data pipelines for training and fine-tuning models, implemented preprocessing and post-training techniques to improve pronunciation and fluency in Persian speech generation.
+            \item Project demo: \href{https://tts.jome-farmer.ir}{tts.jome-farmer.ir}
+        \end{highlights}
+    \end{twocolentry}
+
+    \begin{twocolentry}{2025}
+        \textbf{Ez-Crawl: Agentic Web Crawler}
+        \begin{highlights}
+            \item LLM-based intelligent web crawler designed to extract structured information from raw HTML using prompt-guided extraction. Supports local and cloud-based LLMs and automated browsing pipelines.
+        \end{highlights}
+    \end{twocolentry}
+
+    \begin{twocolentry}{2024}
+        \textbf{TDSC-ABUS2023 PyTorch Dataset Toolkit}
+        \begin{highlights}
+            \item Developed and released an open-source PyTorch toolkit for the TDSC2023 Grand Challenge on 3D Automated Breast Ultrasound (ABUS) analysis.
+            \item Standardized dataset loaders, preprocessing utilities, and training interfaces for classification and segmentation tasks on volumetric breast ultrasound data.
+            \item Published as both a GitHub repository and a PyPI package. Repository: \href{https://github.com/mralinp/tdsc-abus2023-pytorch}{github.com/mralinp/tdsc-abus2023-pytorch}
+        \end{highlights}
+    \end{twocolentry}
+
+    \begin{twocolentry}{2020}
+        \textbf{Robotic Vision for Agricultural Automation}
+        \begin{highlights}
+            \item Designed a computer vision system to detect optimal cutting points of saffron flowers for automated harvesting.
+        \end{highlights}
+    \end{twocolentry}
+
+    \section{Professional Experience}
+    \begin{twocolentry}{Tehran, Iran \\ 2025--Present}
+        \textbf{Iran Tech Innovation Hub}, Chief Technology Officer (AI)
+        \begin{highlights}
+            \item Providing technical evaluation and mentorship for early-stage AI startups. Supporting development of machine learning systems and AI-based products.
+        \end{highlights}
+    \end{twocolentry}
+
+    \begin{twocolentry}{Stockholm, Sweden \\ 2024--2025}
+        \textbf{CyberDesign Nordic AB}, Software Engineer (AI)
+        \begin{highlights}
+            \item Developed machine learning systems for indoor positioning using mobile sensor data. Built backend APIs and data pipelines supporting ML model training and deployment.
+        \end{highlights}
+    \end{twocolentry}
+
+    \begin{twocolentry}{Vancouver, Canada \\ 2022--2024}
+        \textbf{IDmelon Technologies Inc}, Software Engineer
+        \begin{highlights}
+            \item Designed secure authentication systems and distributed cloud services. Worked on system-level development, data processing pipelines, and API architectures.
+        \end{highlights}
+    \end{twocolentry}
+
+    \begin{twocolentry}{Tehran, Iran \\ 2020--2022}
+        \textbf{Dadeh Afzar Arman}, Software Engineer (Backend)
+        \begin{highlights}
+            \item Developed scalable backend services and microservice architectures for large-scale data processing systems.
+        \end{highlights}
+    \end{twocolentry}
+
+    \section{Skills \& Technologies}
+    \begin{onecolentry}
+        \textbf{Programming:} Python, C/C++, Java, C\#, JavaScript/TypeScript
+    \end{onecolentry}
+    \begin{onecolentry}
+        \textbf{Machine Learning:} PyTorch, TensorFlow, PyTorch Lightning, HuggingFace Transformers, YOLO
+    \end{onecolentry}
+    \begin{onecolentry}
+        \textbf{Scientific Computing:} NumPy, SciPy, Linux
+    \end{onecolentry}
+    \begin{onecolentry}
+        \textbf{Data Systems:} MongoDB, PostgreSQL, MySQL, Docker
+    \end{onecolentry}
+
+    \section{References}
+    \vspace{0.2 cm}
+
+    \begin{twocolentry}{
+        Iran University of Science and Technology, Tehran \\
+        Email: \href{mailto:soryani@iust.ac.ir}{soryani@iust.ac.ir}
+    }
+        \textbf{Dr. Mohsen Soryani}
+        \begin{highlights}
+            \item Primary Thesis Advisor, MSc in Artificial Intelligence
+        \end{highlights}
+    \end{twocolentry}
+
+    \vspace{0.2 cm}
+
+    \begin{twocolentry}{
+        Guilan University, Tehran \\
+        Email: \href{mailto:kozegar@guilan.ac.ir}{kozegar@guilan.ac.ir}
+    }
+        \textbf{Dr. Ehsan Kozegar}
+        \begin{highlights}
+            \item Second Thesis Supervisor, MSc in Artificial Intelligence
+        \end{highlights}
+    \end{twocolentry}
+
+\end{document}

@@ -1,121 +1,73 @@
 <!DOCTYPE html>
-<html>
+<html class="scroll-smooth dark" lang="en">
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="google-site-verification" content="4-8jdtFeOSWDhx6RjXrSwNrvhvLyFdbACncYtB2Rjzc" />
+    <meta name="google-site-verification" content="4-8jdtFeOSWDhx6RjXrSwNrvhvLyFdbACncYtB2Rjzc">
     <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="mralinp" />
-    <title> About </title>
-     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-    <!-- Bootstrap CSS CDN -->
+    <title>About</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,300,0,0&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-    <!-- Our Custom CSS -->
     <link rel="stylesheet" href="/assets/css/style.css">
-    <!-- Scrollbar Custom CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
-    <!-- Font awesome -->
     <script src="https://kit.fontawesome.com/40a6ec6105.js" crossorigin="anonymous"></script>
-    <!-- Prism CSS -->
     <link rel="stylesheet" href="/assets/css/prism.css">
-    <!-- Vendor -->
-    <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-
 </head>
 
-<body>
-    <div class="wrapper">
-        <!-- Sidebar  -->
-        <nav id="sidebar">
-            <div class="sidebar-header">
+<body class="theme-body">
+    <header class="mobile-header">
+        <h1 class="mobile-title">A. N. PARIZI</h1>
+        <button id="mobileMenuToggle" class="mobile-menu-btn" type="button" aria-label="Toggle menu">
+            <span class="material-symbols-outlined">menu</span>
+        </button>
+    </header>
+
+    <div class="site-shell">
+        <nav id="sidebar" class="site-sidebar">
+            <div class="site-brand-block">
                 <h3><a href="/">Ali N. Parizi</a></h3>
+                <p>SYSTEMS ARCHITECTURE</p>
             </div>
 
-            <ul class="list-unstyled components">
-                <li class="sidebar-item">
-                    <a href="/"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
-                </li>
-                <li class="sidebar-item">
-                    <a href="/blog"><i class="fa fa-rss" aria-hidden="true"></i> Blog</a>
-                </li>
-                <li class="sidebar-item">
-                    <a href="/projects"><i class="fa fa-flask" aria-hidden="true"></i> Projects</a>
-                </li>
-                <li class="sidebar-item">
-                    <a href="/library"><i class="fa fa-book" aria-hidden="true"></i> Library</a>
-                </li>
-                <li class="sidebar-item">
-                    <a href="/about"><i class="fa fa-info" aria-hidden="true"></i> About me</a>
-                </li>
+            <ul class="components">
+                <li class="sidebar-item"><a href="/"><span class="material-symbols-outlined">grid_view</span> <span>Home</span></a></li>
+                <li class="sidebar-item"><a href="/blog"><span class="material-symbols-outlined">rss_feed</span> <span>Blog</span></a></li>
+                <li class="sidebar-item"><a href="/projects"><span class="material-symbols-outlined">account_tree</span> <span>Projects</span></a></li>
+                <li class="sidebar-item"><a href="/library"><span class="material-symbols-outlined">folder_open</span> <span>Library</span></a></li>
+                <li class="sidebar-item"><a href="/about"><span class="material-symbols-outlined">sensors</span> <span>About</span></a></li>
             </ul>
 
-            <ul class="list-unstyled CTAs">
-                <li class="sidebar-btn">
-                    <a href="https://github.com/mralinp"> <i class="fab fa-github"></i> Github profile
-                    </a>
-                </li>
-                <li class="sidebar-btn">
-                    <a href="/assets/resume/ali-naderi-parizi-cv.pdf"> <i class="fas fa-file"></i> Download resume</a>
-                </li>
+            <ul class="CTAs">
+                <li><a href="https://github.com/mralinp"><i class="fab fa-github"></i> Github profile</a></li>
+                <li><a href="/assets/resume/ali-naderi-parizi-cv.pdf"><i class="fas fa-file"></i> Curriculum vitae</a></li>
             </ul>
-            <div height="200px">
-            </div>
 
             <footer id="footer">
-                <div class="container">
-                  <div class="copyright">
-                    © Copyright <strong><span>Ali N. Parizi</span></strong>
-                  </div>
-                  <div class="credits">
-                    Powered by <a href="https://github.com/"><i class="fab fa-github"></i> Github.com</a>
-                  </div>
-                </div>
+                <div class="copyright">© 2026 ALI N. PARIZI</div>
+                <div class="credits">Powered by <a href="https://github.com/">Github</a></div>
             </footer>
         </nav>
 
-        <!-- Page Content  -->
-        <div id="content">
-            <!-- Navbar -->
-            <nav class="navbar navbar-expand-lg">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="/" id="brand">Ali N. Parizi</a>
-                    <button type="button" id="sidebarCollapse" class="btn btn-info">
-                        <i class="fas fa-align-left"></i>
-                        <span>Menu</span>
-                    </button>
-                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="fas fa-align-justify"></i>
-                    </button>
-
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="nav navbar-nav mr-auto" id="navbarLinks">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="/">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/assets/resume/ali-naderi-parizi-cv.pdf">Resume</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/blog">Blog</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/about">About me</a>
-                            </li>
-                        </ul>
-                        <form class="form-inline ml-auto" method="get" action="http://www.google.com/search" target="_blank">
-                            <input type="hidden" name="sitesearch" value="alinaderiparizi.com" />
-                            <input class="form-control mr-sm-2" type="text" name="q" maxlength="255" placeholder="Search" />
-                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                        </form>
-                    </div>
+        <main class="site-main">
+            <header class="topbar">
+                <div class="search-wrap">
+                    <form class="search-form" method="get" action="https://www.google.com/search" target="_blank">
+                        <span class="material-symbols-outlined">search</span>
+                        <input type="hidden" name="sitesearch" value="alinaderiparizi.com">
+                        <input type="text" name="q" maxlength="255" placeholder="INITIATE SEARCH_QUERIES...">
+                    </form>
                 </div>
-            </nav>
-            <div class="container">
-                <div class="container">
+                <div class="system-status">
+                    <span>SYSTEM_STATUS</span>
+                    <strong>NOMINAL // 100%</strong>
+                </div>
+            </header>
+
+            <div id="content" class="page-shell">
+                <div class="content-frame">
+                    <div class="container">
     <div class="main-body">
         <div class="row gutters-sm">
             <div class="col-md-4 mb-3">
@@ -123,10 +75,10 @@
                 <div class="card first-block">
                     <div class="card-body">
                         <div class="d-flex flex-column align-items-center text-center">
-                            <img src="/assets/images/me.jpg" alt="Admin" class="about-me-img rounded" />
+                            <img src="/assets/images/me-space.png" alt="Admin" class="about-me-img rounded" />
                             <div class="mt-3">
                                 <h4>Ali N. Parizi</h4>
-                                <p class="text-secondary mb-1">Computer engineer</p>
+                                <p class="text-secondary mb-1">Machine Learning Researcher</p>
                                 <p class="text-muted font-size-sm">Tehran, Iran</p>
                                 <a class="btn btn-outline-primary" style="margin: 2px" href="https://www.linkedin.com/in/ali-naderi-parizi-5a0a74107/"><i class="fa fa-linkedin"></i> LinkedIn</a>
                                 <a class="btn btn-outline-primary" style="margin: 2px" href="https://twitter.com/alinaderiparizi"><i class="fa fa-twitter"></i> Twitter</a>
@@ -144,7 +96,7 @@
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                         <h6 class="mb-0"><i class="fas fa-globe"></i> Website</h6>
-                        <span class="info-span">alinaderiparizi.ir</span>
+                        <span class="info-span">alinaderiparizi.com</span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                         <h6 class="mb-0"><i class="fab fa-github"></i> Github</h6>
@@ -160,38 +112,35 @@
                 <!-- Skill levels -->
                 <div class="card mt-3">
                     <div class="card-body">
-                        <h6 class="d-flex align-items-center mb-3"><i class="material-icons mr-2">Skill points</i></h6>
-                        <small>Computer vision <i class="fas fa-star"></i></small>
-                        <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                        <h6 class="d-flex align-items-center mb-3"><i class="material-icons mr-2">Skills stack</i></h6>
+                        <small class="d-block mb-2">Programming languages</small>
+                        <div class="mb-3">
+                            <span class="category d-inline-block mr-1 mb-1">Python</span>
+                            <span class="category d-inline-block mr-1 mb-1">C/C++</span>
+                            <span class="category d-inline-block mr-1 mb-1">Java</span>
+                            <span class="category d-inline-block mr-1 mb-1">C#</span>
+                            <span class="category d-inline-block mr-1 mb-1">JavaScript</span>
+                            <span class="category d-inline-block mr-1 mb-1">TypeScript</span>
                         </div>
-                        <small>Web-development</small>
-                        <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 70%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+
+                        <small class="d-block mb-2">Frameworks and ML libraries</small>
+                        <div class="mb-3">
+                            <span class="category d-inline-block mr-1 mb-1">PyTorch</span>
+                            <span class="category d-inline-block mr-1 mb-1">TensorFlow</span>
+                            <span class="category d-inline-block mr-1 mb-1">PyTorch Lightning</span>
+                            <span class="category d-inline-block mr-1 mb-1">HuggingFace</span>
+                            <span class="category d-inline-block mr-1 mb-1">YOLO</span>
                         </div>
-                        <small>Algorithms</small>
-                        <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 65%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <small>Reverse engineering <i class="fas fa-star"></i></small>
-                        <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 40%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <small>Robotics <i class="fas fa-star"></i></small>
-                        <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <small>c/c++ system programming <i class="fas fa-star"></i></small>
-                        <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 70%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <small>Research</small>
-                        <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <small>Machine-learning</small>
-                        <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+
+                        <small class="d-block mb-2">Technologies and tools</small>
+                        <div>
+                            <span class="category d-inline-block mr-1 mb-1">Linux</span>
+                            <span class="category d-inline-block mr-1 mb-1">Docker</span>
+                            <span class="category d-inline-block mr-1 mb-1">MongoDB</span>
+                            <span class="category d-inline-block mr-1 mb-1">PostgreSQL</span>
+                            <span class="category d-inline-block mr-1 mb-1">MySQL</span>
+                            <span class="category d-inline-block mr-1 mb-1">NumPy</span>
+                            <span class="category d-inline-block mr-1 mb-1">SciPy</span>
                         </div>
                     </div>
                 </div>
@@ -199,50 +148,21 @@
                 <!-- Programming languages -->
                 <div class="card mt-3">
                     <div class="card-body">
-                        <h6 class="d-flex align-items-center mb-3"><i class="material-icons mr-2">Programming languages</i></h6>
-                        <small>c/c++<i class="fas fa-star"></i></small>
-                        <div class="progress mb-3" style="height: 5px">
-                            <div class="progress-bar bg-primary" role="progressbar" style="width: 70%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                        <h6 class="d-flex align-items-center mb-3"><i class="material-icons mr-2">Languages and other</i></h6>
+                        <small class="d-block mb-2">Languages I speak</small>
+                        <div class="mb-3">
+                            <span class="category d-inline-block mr-1 mb-1">Persian (Native)</span>
+                            <span class="category d-inline-block mr-1 mb-1">English (Professional)</span>
                         </div>
-                        <small>Python <i class="fas fa-star"></i></small>
-                        <div class="progress mb-3" style="height: 5px">
-                            <div class="progress-bar bg-primary" role="progressbar" style="width: 90%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <small>JavaScript/TypeScript <i class="fas fa-star"></i></small>
-                        <div class="progress mb-3" style="height: 5px">
-                            <div class="progress-bar bg-primary" role="progressbar" style="width: 75%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <small>Java</small>
-                        <div class="progress mb-3" style="height: 5px">
-                            <div class="progress-bar bg-primary" role="progressbar" style="width: 60%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <small>c#</small>
-                        <div class="progress mb-3" style="height: 5px">
-                            <div class="progress-bar bg-primary" role="progressbar" style="width: 60%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <small>Php</small>
-                        <div class="progress mb-3" style="height: 5px">
-                            <div class="progress-bar bg-primary" role="progressbar" style="width: 70%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <small>Ruby</small>
-                        <div class="progress mb-3" style="height: 5px">
-                            <div class="progress-bar bg-primary" role="progressbar" style="width: 30%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <small>Rust</small>
-                        <div class="progress mb-3" style="height: 5px">
-                            <div class="progress-bar bg-primary" role="progressbar" style="width: 40%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <small>Go</small>
-                        <div class="progress mb-3" style="height: 5px">
-                            <div class="progress-bar bg-primary" role="progressbar" style="width: 40%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <small>X80_86 assembly</small>
-                        <div class="progress mb-3" style="height: 5px">
-                            <div class="progress-bar bg-primary" role="progressbar" style="width: 30%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <small>Matlab/Octave</small>
-                        <div class="progress mb-3" style="height: 5px">
-                            <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+
+                        <small class="d-block mb-2">Other focus areas</small>
+                        <div>
+                            <span class="category d-inline-block mr-1 mb-1">Generative Models</span>
+                            <span class="category d-inline-block mr-1 mb-1">Medical Imaging</span>
+                            <span class="category d-inline-block mr-1 mb-1">3D Image Analysis</span>
+                            <span class="category d-inline-block mr-1 mb-1">Computational Biology</span>
+                            <span class="category d-inline-block mr-1 mb-1">Representation Learning</span>
+                            <span class="category d-inline-block mr-1 mb-1">Probabilistic ML</span>
                         </div>
                     </div>
                 </div>
@@ -254,44 +174,30 @@
                     <div class="card-body">
                         <h6 class="d-flex align-items-center mb-3"><i class="material-icons mr-2">Experiences</i></h6>
                         <div class="col">
-                            Cyber-Design Nordic Inc. , Stockholm, Stockholm, Sweden — Software engineer
+                            Iran Tech Innovation Hub, Tehran, Iran — Chief Technology Officer (AI)
                             <br />
-                            <small>Jul 2024 - Present</small>
-                            <br />
-                        </div>
-                        <hr />
-                        <div class="col">
-                            RSA , Tehran, Tehran, Iran — Technical Consultant
-                            <br />
-                            <small>Sep 2024 - Present </small>
+                            <small>2025 - Present</small>
                             <br />
                         </div>
                         <hr />
                         <div class="col">
-                            IDmelon Technologies Inc, Vancouver, BC, Canada — Software engineer
+                            CyberDesign Nordic AB, Stockholm, Sweden — Software Engineer (AI)
                             <br />
-                            <small>Mar 2022 - Jan 2024 </small>
-                            <br />
-                        </div>
-                        <hr />
-                        <div class="col">
-                            Dadeh Afzar Arman (DAA), Tehran, Tehran, Iran — Software engineer
-                            <br />
-                            <small>Nov 2020 - Jan 2022</small>
+                            <small>2024 - 2025</small>
                             <br />
                         </div>
                         <hr />
                         <div class="col">
-                            System Inteligizer (Sico), Shiraz, Fars, Iran — Research and development Eng. (part-time)
+                            IDmelon Technologies Inc, Vancouver, Canada — Software Engineer
                             <br />
-                            <small>Aug 2019 - Dec 2019</small>
+                            <small>2022 - 2024</small>
                             <br />
                         </div>
                         <hr />
                         <div class="col">
-                            System Inteligizer (Sico), Shiraz, Fars, Iran — Research and development Eng. (intern)
+                            Dadeh Afzar Arman, Tehran, Iran — Software Engineer (Backend)
                             <br />
-                            <small>Jul 2018 - Sep 2018</small>
+                            <small>2020 - 2022</small>
                             <br />
                         </div>
                     </div>
@@ -303,23 +209,16 @@
                     <div class="card-body">
                         <h6 class="d-flex align-items-center mb-3"><i class="material-icons mr-2">Education</i></h6>
                         <div class="col">
-                            Iran university of science and technology, Tehran, Tehran, Iran — Master of Artificial intelligence.
+                            Iran University of Science and Technology (IUST), Tehran, Iran — MSc in Artificial Intelligence and Robotics
                             <br />
-                            <small>Sep 2020 - Present</small>
-                            <br />
-                        </div>
-                        <hr />
-                        <div class="col">
-                            Shiraz university, Shiraz, Fars, Iran — Bachelor of Computer engineering
-                            <br />
-                            <small>Sep 2015 - Sep 2020</small>
+                            <small>2020 - 2023 | Thesis: Classification of Human Breast Cancer Lesions in 3D-ABUS Images</small>
                             <br />
                         </div>
                         <hr />
                         <div class="col">
-                            National Organization for Development of Exceptional Talents, Sirjan, Kerman, Iran— High School
+                            Shiraz University, Shiraz, Iran — BSc in Computer Engineering
                             <br />
-                            <small>Sep 2011 - Sep 2015</small>
+                            <small>2015 - 2020 | Project: Linux-capable System-on-Board for embedded vision processing</small>
                             <br />
                         </div>
                     </div>
@@ -329,41 +228,32 @@
                 <!-- Projects -->
                 <div class="card md-3">
                     <div class="card-body">
-                        <h6 class="d-flex align-items-center mb-3"><i class="material-icons mr-2">Projects</i></h6>
+                        <h6 class="d-flex align-items-center mb-3"><i class="material-icons mr-2">Research Projects</i></h6>
                         <div class="col">
-                            Enhancing object detection runtime using Knowledge Distillation 
+                            Persian Text-to-Speech System with Single-Shot Voice Cloning
                             <br />
-                            <small>Assuming Faster-RCNN as a basement, the performance is improved using knowledge distillation methods. A novel approach is invented to make it more accurate.
-                            </small>
+                            <small>2026 | Transformer-based generative TTS for fluent Persian speech with single-shot voice cloning.</small>
                             <br />
                         </div>
                         <hr />
                         <div class="col">
-                            Detecting Saffron flower cut points
+                            Ez-Crawl: Agentic Web Crawler
                             <br />
-                            <small>Using RefineDet network as a base object detector, detecting cut point of Saffron Flower endpoint and calculating the angle to cut. This project had to be used in a robotic arm that helps farmers with their productions.
-                            </small>
-                            <br />
-                        </div>
-                        <hr />
-                        <div class="col">
-                            Developing a Systom On Board (SOB)                            
-                            <br />
-                            <small>Building a system on board with the capability of reading analog video signals and booting a Linux kernel. This board is capable of image processing purposes in IoT devices, such as CCTVs, home security systems, or automated farming systems.</small>
+                            <small>2025 | LLM-based crawler for prompt-guided structured extraction from raw HTML.</small>
                             <br />
                         </div>
                         <hr />
                         <div class="col">
-                            GSM/GPRS module                            
+                            TDSC-ABUS2023 PyTorch Dataset Toolkit
                             <br />
-                            <small>Redesigning a GSM/GPRS module to be embedded inside a company product and adding some extra features such as DTMF detector and communicating data over the mobile network, the device has been used in a farming automation IOT device called ‘Sirab’.</small>
+                            <small>2024 | Open-source toolkit for 3D ABUS challenge workflows (classification and segmentation).</small>
                             <br />
                         </div>
                         <hr />
                         <div class="col">
-                            Developing ‘pwclan.ir’ website(currently down)                            
+                            Robotic Vision for Agricultural Automation
                             <br />
-                            <small>fully programmed back-end and front-end, it was a gaming website.</small>
+                            <small>2020 | Computer vision system to detect optimal saffron flower cutting points.</small>
                             <br />
                         </div>
                     </div>
@@ -373,30 +263,32 @@
                 <!-- Research and publications -->
                  <div class="card md-3">
                     <div class="card-body">
-                        <h6 class="d-flex align-items-center mb-3"><i class="material-icons mr-2">Research and publications</i></h6>
+                        <h6 class="d-flex align-items-center mb-3"><i class="material-icons mr-2">Publications and Academic Service</i></h6>
                         <div class="col">
-                            Indoor positioning systems for Smartphones
+                            Spherical Shape-Based Features for Classification of Breast Tumors in 3D-ABUS Images
                             <br />
-                            <small>
-                            Building An indoor navigation system based on smartphone embedded sensors with the approximate accuracy of one meter.
-                            </small>
+                            <small>A. Naderiparizi, S. Barekat, E. Kozegar, M. Soryani — IEEE Transactions in Medical Imaging (not-published yet), 2026.</small>
                             <br />
                         </div>
                         <hr />
                         <div class="col">
-                            Classification of breast tumors in 3D Automated Breast Ultrasound Images (3D-ABUS)
+                            Breast Mass Classification in 3D ABUS based on Laplace-Beltrami Spectra and Dual Path CNN
                             <br />
-                            <small>
-                            Classification of human breast cancer in 3D-ABUS by exploring various features,traditional models and Deep models. The study proved the boundary is the most important part of breast tumors which should be considered for classification.
-                            </small>
+                            <small>S. Barekat, A. Naderiparizi, E. Kozegar, M. Soryani — Expert Systems with Applications, 2025.</small>
                             <br />
                         </div>
                         <hr />
                         <div class="col">
-                            Deep anomaly detection for image processing: A survey
+                            Peer Reviewer — Journal of Imaging Informatics in Medicine
                             <br />
-                            <small>A survey of deep learning-based anomaly detection techniques used for detection of anomalies in images and videos.
-                            </small>
+                            <small>2026 | Reviewed a manuscript on breast tumor classification with feedback on methodology and evaluation.</small>
+                            <br />
+                        </div>
+                        <hr />
+                        <div class="col">
+                            Judge — AI Research Challenge (SID and IranDoc)
+                            <br />
+                            <small>2026 | Evaluated ML systems for scientific literature analysis, knowledge graphs, topic clustering, and key-term extraction.</small>
                             <br />
                         </div>
                     </div>
@@ -405,61 +297,180 @@
             </div>
         </div>
     </div>
+
 </div>
 
+                </div>
             </div>
-
-            
-
-        </div>
-        
+        </main>
     </div>
-    <!-- jQuery CDN - Slim version (=without AJAX) -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-    </script>
-    <!-- Popper.JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous">
-    </script>
-    <!-- Bootstrap JS -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous">
-    </script>
-    <!-- jQuery Custom Scroller CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js">
-    </script>
 
-        <!-- Vendor JS Files -->
-    <script src="/assets/vendor/purecounter/purecounter_vanilla.js"></script>
-    <script src="/assets/vendor/aos/aos.js"></script>
-    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="/assets/vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="/assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script>
+        (function () {
+            var root = document.getElementById("content");
+            if (!root) return;
+
+            var canvas = document.createElement("canvas");
+            canvas.className = "space-webgl-layer";
+            root.insertBefore(canvas, root.firstChild);
+
+            function initFallback2d() {
+                var ctx = canvas.getContext("2d");
+                if (!ctx) return;
+                var dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+                function resize() {
+                    var w = root.clientWidth;
+                    var h = root.clientHeight;
+                    canvas.width = Math.floor(w * dpr);
+                    canvas.height = Math.floor(h * dpr);
+                    canvas.style.width = w + "px";
+                    canvas.style.height = h + "px";
+                    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+                }
+
+                function glow(x, y, r, color, alpha) {
+                    var g = ctx.createRadialGradient(x, y, 0, x, y, r);
+                    g.addColorStop(0, "rgba(" + color + "," + alpha + ")");
+                    g.addColorStop(1, "rgba(" + color + ",0)");
+                    return g;
+                }
+
+                function frame(t) {
+                    var w = root.clientWidth;
+                    var h = root.clientHeight;
+                    var time = (t || 0) * 0.00025;
+                    ctx.clearRect(0, 0, w, h);
+
+                    var x1 = w * (0.22 + 0.05 * Math.sin(time * 1.9));
+                    var y1 = h * (0.2 + 0.06 * Math.cos(time * 1.3));
+                    var x2 = w * (0.78 + 0.06 * Math.cos(time * 1.4));
+                    var y2 = h * (0.28 + 0.04 * Math.sin(time * 1.7));
+                    var x3 = w * (0.5 + 0.07 * Math.sin(time * 0.9));
+                    var y3 = h * (0.78 + 0.05 * Math.cos(time * 1.1));
+
+                    ctx.globalCompositeOperation = "lighter";
+                    ctx.fillStyle = glow(x1, y1, Math.max(w, h) * 0.48, "110,85,255", 0.2);
+                    ctx.fillRect(0, 0, w, h);
+                    ctx.fillStyle = glow(x2, y2, Math.max(w, h) * 0.45, "255,120,80", 0.16);
+                    ctx.fillRect(0, 0, w, h);
+                    ctx.fillStyle = glow(x3, y3, Math.max(w, h) * 0.42, "75,165,255", 0.14);
+                    ctx.fillRect(0, 0, w, h);
+                    ctx.globalCompositeOperation = "source-over";
+
+                    requestAnimationFrame(frame);
+                }
+
+                window.addEventListener("resize", resize);
+                resize();
+                frame();
+            }
+
+            var gl = canvas.getContext("webgl", { antialias: true, alpha: true });
+            if (!gl) {
+                initFallback2d();
+                return;
+            }
+
+            var vertexSrc =
+                "attribute vec2 aPos;" +
+                "void main(){ gl_Position = vec4(aPos, 0.0, 1.0); }";
+
+            var fragSrc =
+                "precision mediump float;" +
+                "uniform vec2 uRes;" +
+                "uniform float uTime;" +
+                "void main(){" +
+                "  vec2 uv = gl_FragCoord.xy / uRes;" +
+                "  vec2 p = uv * 2.0 - 1.0;" +
+                "  float vignette = 1.0 - smoothstep(0.15, 1.15, length(p));" +
+                "  vec3 col = vec3(0.015, 0.02, 0.06) * vignette;" +
+                "  vec2 c1 = vec2(0.22 + 0.05*sin(uTime*0.22), 0.20 + 0.05*cos(uTime*0.16));" +
+                "  vec2 c2 = vec2(0.78 + 0.06*cos(uTime*0.18), 0.30 + 0.04*sin(uTime*0.19));" +
+                "  vec2 c3 = vec2(0.50 + 0.04*sin(uTime*0.12), 0.78 + 0.05*cos(uTime*0.14));" +
+                "  float g1 = smoothstep(0.62, 0.0, length(uv - c1));" +
+                "  float g2 = smoothstep(0.58, 0.0, length(uv - c2));" +
+                "  float g3 = smoothstep(0.70, 0.0, length(uv - c3));" +
+                "  col += vec3(0.30, 0.20, 0.62) * g1 * 0.55;" +
+                "  col += vec3(0.62, 0.30, 0.20) * g2 * 0.42;" +
+                "  col += vec3(0.12, 0.35, 0.65) * g3 * 0.35;" +
+                "  gl_FragColor = vec4(col, 0.9);" +
+                "}";
+
+            function compile(type, source) {
+                var shader = gl.createShader(type);
+                gl.shaderSource(shader, source);
+                gl.compileShader(shader);
+                if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) return null;
+                return shader;
+            }
+
+            var vs = compile(gl.VERTEX_SHADER, vertexSrc);
+            var fs = compile(gl.FRAGMENT_SHADER, fragSrc);
+            if (!vs || !fs) {
+                initFallback2d();
+                return;
+            }
+
+            var prog = gl.createProgram();
+            gl.attachShader(prog, vs);
+            gl.attachShader(prog, fs);
+            gl.linkProgram(prog);
+            if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) {
+                initFallback2d();
+                return;
+            }
+
+            var buffer = gl.createBuffer();
+            gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+            gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([
+                -1, -1,
+                 1, -1,
+                -1,  1,
+                -1,  1,
+                 1, -1,
+                 1,  1
+            ]), gl.STATIC_DRAW);
+
+            var posLoc = gl.getAttribLocation(prog, "aPos");
+            var resLoc = gl.getUniformLocation(prog, "uRes");
+            var timeLoc = gl.getUniformLocation(prog, "uTime");
+            var dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+            function resize() {
+                var w = root.clientWidth;
+                var h = root.clientHeight;
+                canvas.width = Math.floor(w * dpr);
+                canvas.height = Math.floor(h * dpr);
+                canvas.style.width = w + "px";
+                canvas.style.height = h + "px";
+                gl.viewport(0, 0, canvas.width, canvas.height);
+            }
+
+            function render(t) {
+                gl.clearColor(0, 0, 0, 0);
+                gl.clear(gl.COLOR_BUFFER_BIT);
+                gl.useProgram(prog);
+                gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+                gl.enableVertexAttribArray(posLoc);
+                gl.vertexAttribPointer(posLoc, 2, gl.FLOAT, false, 0, 0);
+                gl.uniform2f(resLoc, canvas.width, canvas.height);
+                gl.uniform1f(timeLoc, t * 0.001);
+                gl.drawArrays(gl.TRIANGLES, 0, 6);
+                requestAnimationFrame(render);
+            }
+
+            window.addEventListener("resize", resize);
+            resize();
+            requestAnimationFrame(render);
+        })();
+    </script>
     <script src="/assets/vendor/typed.js/typed.min.js"></script>
-    <script src="/assets/vendor/waypoints/noframework.waypoints.js"></script>
-    <script src="/assets/vendor/php-email-form/validate.js"></script>
-
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $("#sidebar").mCustomScrollbar({
-                theme: "minimal"
-            });
-
-            $('#sidebarCollapse').on('click', function() {
-                $('#sidebar, #content, #footer').toggleClass('active');
-                $('.collapse.in').toggleClass('in');
-                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
-            });
-        });
-    </script>
-
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML">
-    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML"></script>
     <script type="text/x-mathjax-config">
-        MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']], processEscapes: true}, jax: ["input/TeX","input/MathML","input/AsciiMath","output/CommonHTML"], extensions: ["tex2jax.js","mml2jax.js","asciimath2jax.js","MathMenu.js","MathZoom.js","AssistiveMML.js",
-        "[Contrib]/a11y/accessibility-menu.js"], TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"], equationNumbers: { autoNumber: "AMS" } } });
+        MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']], processEscapes: true}, jax: ["input/TeX","input/MathML","input/AsciiMath","output/CommonHTML"], extensions: ["tex2jax.js","mml2jax.js","asciimath2jax.js","MathMenu.js","MathZoom.js","AssistiveMML.js", "[Contrib]/a11y/accessibility-menu.js"], TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"], equationNumbers: { autoNumber: "AMS" } } });
     </script>
     <script src="/assets/js/main.js" crossorigin="anonymous"></script>
-    <!-- Prism JS -->
     <script src="/assets/js/prism.js" crossorigin="anonymous"></script>
 </body>
 

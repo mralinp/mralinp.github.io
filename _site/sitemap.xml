@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://localhost:4000/notes/2026-03-27-welcome-note/</loc>
+<lastmod>2026-03-27T03:30:00+03:30</lastmod>
+</url>
+<url>
 <loc>http://localhost:4000/blog/hello-world/2022/03/20/hello-world.html</loc>
 <lastmod>2022-03-20T20:02:05+03:30</lastmod>
 </url>
@@ -128,19 +132,11 @@
 <loc>http://localhost:4000/blog/page5/</loc>
 </url>
 <url>
-<loc>http://localhost:4000/blog/page6/</loc>
-</url>
-<url>
-<loc>http://localhost:4000/blog/page7/</loc>
-</url>
-<url>
-<loc>http://localhost:4000/blog/page8/</loc>
-</url>
-<url>
-<loc>http://localhost:4000/blog/page9/</loc>
-</url>
-<url>
 <loc>http://localhost:4000/assets/resume/ali-naderi-parizi-cv.pdf</loc>
-<lastmod>2024-08-27T14:57:31+03:30</lastmod>
+<lastmod>2026-03-28T18:52:31+03:30</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/sample.html</loc>
+<lastmod>2026-03-27T22:21:51+03:30</lastmod>
 </url>
 </urlset>
