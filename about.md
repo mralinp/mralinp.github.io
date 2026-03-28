@@ -12,10 +12,10 @@ permalink: /about
                 <div class="card first-block">
                     <div class="card-body">
                         <div class="d-flex flex-column align-items-center text-center">
-                            <img src="/assets/images/me.jpg" alt="Admin" class="about-me-img rounded"/>
+                            <img src="/assets/images/me-space.png" alt="Admin" class="about-me-img rounded"/>
                             <div class="mt-3">
                                 <h4>Ali N. Parizi</h4>
-                                <p class="text-secondary mb-1">Computer engineer</p>
+                                <p class="text-secondary mb-1">Machine Learning Researcher</p>
                                 <p class="text-muted font-size-sm">Tehran, Iran</p>
                                 <a class="btn btn-outline-primary" style="margin: 2px" href="https://www.linkedin.com/in/ali-naderi-parizi-5a0a74107/"><i class="fa fa-linkedin"></i> LinkedIn</a>
                                 <a class="btn btn-outline-primary" style="margin: 2px" href="https://twitter.com/alinaderiparizi"><i class="fa fa-twitter"></i> Twitter</a>
@@ -33,7 +33,7 @@ permalink: /about
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                         <h6 class="mb-0"><i class="fas fa-globe"></i> Website</h6>
-                        <span class="info-span">alinaderiparizi.ir</span>
+                        <span class="info-span">alinaderiparizi.com</span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                         <h6 class="mb-0"><i class="fab fa-github"></i> Github</h6>
@@ -49,38 +49,35 @@ permalink: /about
                 <!-- Skill levels -->
                 <div class="card mt-3">
                     <div class="card-body">
-                        <h6 class="d-flex align-items-center mb-3"><i class="material-icons mr-2">Skill points</i></h6>
-                        <small>Computer vision <i class="fas fa-star"></i></small>
-                        <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                        <h6 class="d-flex align-items-center mb-3"><i class="material-icons mr-2">Skills stack</i></h6>
+                        <small class="d-block mb-2">Programming languages</small>
+                        <div class="mb-3">
+                            <span class="category d-inline-block mr-1 mb-1">Python</span>
+                            <span class="category d-inline-block mr-1 mb-1">C/C++</span>
+                            <span class="category d-inline-block mr-1 mb-1">Java</span>
+                            <span class="category d-inline-block mr-1 mb-1">C#</span>
+                            <span class="category d-inline-block mr-1 mb-1">JavaScript</span>
+                            <span class="category d-inline-block mr-1 mb-1">TypeScript</span>
                         </div>
-                        <small>Web-development</small>
-                        <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 70%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+
+                        <small class="d-block mb-2">Frameworks and ML libraries</small>
+                        <div class="mb-3">
+                            <span class="category d-inline-block mr-1 mb-1">PyTorch</span>
+                            <span class="category d-inline-block mr-1 mb-1">TensorFlow</span>
+                            <span class="category d-inline-block mr-1 mb-1">PyTorch Lightning</span>
+                            <span class="category d-inline-block mr-1 mb-1">HuggingFace</span>
+                            <span class="category d-inline-block mr-1 mb-1">YOLO</span>
                         </div>
-                        <small>Algorithms</small>
-                        <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 65%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <small>Reverse engineering <i class="fas fa-star"></i></small>
-                        <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 40%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <small>Robotics <i class="fas fa-star"></i></small>
-                        <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <small>c/c++ system programming <i class="fas fa-star"></i></small>
-                        <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 70%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <small>Research</small>
-                        <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <small>Machine-learning</small>
-                        <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+
+                        <small class="d-block mb-2">Technologies and tools</small>
+                        <div>
+                            <span class="category d-inline-block mr-1 mb-1">Linux</span>
+                            <span class="category d-inline-block mr-1 mb-1">Docker</span>
+                            <span class="category d-inline-block mr-1 mb-1">MongoDB</span>
+                            <span class="category d-inline-block mr-1 mb-1">PostgreSQL</span>
+                            <span class="category d-inline-block mr-1 mb-1">MySQL</span>
+                            <span class="category d-inline-block mr-1 mb-1">NumPy</span>
+                            <span class="category d-inline-block mr-1 mb-1">SciPy</span>
                         </div>
                     </div>
                 </div>
@@ -88,50 +85,21 @@ permalink: /about
                 <!-- Programming languages -->
                 <div class="card mt-3">
                     <div class="card-body">
-                        <h6 class="d-flex align-items-center mb-3"><i class="material-icons mr-2">Programming languages</i></h6>
-                        <small>c/c++<i class="fas fa-star"></i></small>
-                        <div class="progress mb-3" style="height: 5px">
-                            <div class="progress-bar bg-primary" role="progressbar" style="width: 70%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                        <h6 class="d-flex align-items-center mb-3"><i class="material-icons mr-2">Languages and other</i></h6>
+                        <small class="d-block mb-2">Languages I speak</small>
+                        <div class="mb-3">
+                            <span class="category d-inline-block mr-1 mb-1">Persian (Native)</span>
+                            <span class="category d-inline-block mr-1 mb-1">English (Professional)</span>
                         </div>
-                        <small>Python <i class="fas fa-star"></i></small>
-                        <div class="progress mb-3" style="height: 5px">
-                            <div class="progress-bar bg-primary" role="progressbar" style="width: 90%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <small>JavaScript/TypeScript <i class="fas fa-star"></i></small>
-                        <div class="progress mb-3" style="height: 5px">
-                            <div class="progress-bar bg-primary" role="progressbar" style="width: 75%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <small>Java</small>
-                        <div class="progress mb-3" style="height: 5px">
-                            <div class="progress-bar bg-primary" role="progressbar" style="width: 60%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <small>c#</small>
-                        <div class="progress mb-3" style="height: 5px">
-                            <div class="progress-bar bg-primary" role="progressbar" style="width: 60%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <small>Php</small>
-                        <div class="progress mb-3" style="height: 5px">
-                            <div class="progress-bar bg-primary" role="progressbar" style="width: 70%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <small>Ruby</small>
-                        <div class="progress mb-3" style="height: 5px">
-                            <div class="progress-bar bg-primary" role="progressbar" style="width: 30%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <small>Rust</small>
-                        <div class="progress mb-3" style="height: 5px">
-                            <div class="progress-bar bg-primary" role="progressbar" style="width: 40%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <small>Go</small>
-                        <div class="progress mb-3" style="height: 5px">
-                            <div class="progress-bar bg-primary" role="progressbar" style="width: 40%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <small>X80_86 assembly</small>
-                        <div class="progress mb-3" style="height: 5px">
-                            <div class="progress-bar bg-primary" role="progressbar" style="width: 30%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <small>Matlab/Octave</small>
-                        <div class="progress mb-3" style="height: 5px">
-                            <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+
+                        <small class="d-block mb-2">Other focus areas</small>
+                        <div>
+                            <span class="category d-inline-block mr-1 mb-1">Generative Models</span>
+                            <span class="category d-inline-block mr-1 mb-1">Medical Imaging</span>
+                            <span class="category d-inline-block mr-1 mb-1">3D Image Analysis</span>
+                            <span class="category d-inline-block mr-1 mb-1">Computational Biology</span>
+                            <span class="category d-inline-block mr-1 mb-1">Representation Learning</span>
+                            <span class="category d-inline-block mr-1 mb-1">Probabilistic ML</span>
                         </div>
                     </div>
                 </div>
@@ -143,37 +111,30 @@ permalink: /about
                     <div class="card-body">
                         <h6 class="d-flex align-items-center mb-3"><i class="material-icons mr-2">Experiences</i></h6>
                         <div class="col">
-                            Cyber-Design Nordic Inc. , Stockholm, Stockholm, Sweden — Software engineer
+                            Iran Tech Innovation Hub, Tehran, Iran — Chief Technology Officer (AI)
                             <br>
-                            <small>Jul 2024 - Present</small>
-                            <br>
-                        </div>
-                        <hr>
-                        <div class="col">
-                            IDmelon Technologies Inc, Vancouver, BC, Canada — Software engineer
-                            <br>
-                            <small>Mar 2022 - Jan 2024 </small>
+                            <small>2025 - Present</small>
                             <br>
                         </div>
                         <hr>
                         <div class="col">
-                            Dadeh Afzar Arman (DAA), Tehran, Tehran, Iran — Software engineer
+                            CyberDesign Nordic AB, Stockholm, Sweden — Software Engineer (AI)
                             <br>
-                            <small>Nov 2020 - Jan 2022</small>
-                            <br>
-                        </div>
-                        <hr>
-                        <div class="col">
-                            System Inteligizer (Sico), Shiraz, Fars, Iran — Research and development Eng. (part-time)
-                            <br>
-                            <small>Aug 2019 - Dec 2019</small>
+                            <small>2024 - 2025</small>
                             <br>
                         </div>
                         <hr>
                         <div class="col">
-                            System Inteligizer (Sico), Shiraz, Fars, Iran — Research and development Eng. (intern)
+                            IDmelon Technologies Inc, Vancouver, Canada — Software Engineer
                             <br>
-                            <small>Jul 2018 - Sep 2018</small>
+                            <small>2022 - 2024</small>
+                            <br>
+                        </div>
+                        <hr>
+                        <div class="col">
+                            Dadeh Afzar Arman, Tehran, Iran — Software Engineer (Backend)
+                            <br>
+                            <small>2020 - 2022</small>
                             <br>
                         </div>
                     </div>
@@ -185,23 +146,16 @@ permalink: /about
                     <div class="card-body">
                         <h6 class="d-flex align-items-center mb-3"><i class="material-icons mr-2">Education</i></h6>
                         <div class="col">
-                            Iran university of science and technology, Tehran, Tehran, Iran — Master of Artificial intelligence.
+                            Iran University of Science and Technology (IUST), Tehran, Iran — MSc in Artificial Intelligence and Robotics
                             <br>
-                            <small>Sep 2020 - Sep 2023</small>
-                            <br>
-                        </div>
-                        <hr>
-                        <div class="col">
-                            Shiraz university, Shiraz, Fars, Iran — Bachelor of Computer engineering
-                            <br>
-                            <small>Sep 2015 - Sep 2020</small>
+                            <small>2020 - 2023 | Thesis: Classification of Human Breast Cancer Lesions in 3D-ABUS Images</small>
                             <br>
                         </div>
                         <hr>
                         <div class="col">
-                            National Organization for Development of Exceptional Talents, Sirjan, Kerman, Iran— High School
+                            Shiraz University, Shiraz, Iran — BSc in Computer Engineering
                             <br>
-                            <small>Sep 2011 - Sep 2015</small>
+                            <small>2015 - 2020 | Project: Linux-capable System-on-Board for embedded vision processing</small>
                             <br>
                         </div>
                     </div>
@@ -211,41 +165,32 @@ permalink: /about
                 <!-- Projects -->
                 <div class="card md-3">
                     <div class="card-body">
-                        <h6 class="d-flex align-items-center mb-3"><i class="material-icons mr-2">Projects</i></h6>
+                        <h6 class="d-flex align-items-center mb-3"><i class="material-icons mr-2">Research Projects</i></h6>
                         <div class="col">
-                            Enhancing object detection runtime using Knowledge Distillation 
+                            Persian Text-to-Speech System with Single-Shot Voice Cloning
                             <br>
-                            <small>Assuming Faster-RCNN as a basement, the performance is improved using knowledge distillation methods. A novel approach is invented to make it more accurate.
-                            </small>
+                            <small>2026 | Transformer-based generative TTS for fluent Persian speech with single-shot voice cloning.</small>
                             <br>
                         </div>
                         <hr>
                         <div class="col">
-                            Detecting Saffron flower cut points
+                            Ez-Crawl: Agentic Web Crawler
                             <br>
-                            <small>Using RefineDet network as a base object detector, detecting cut point of Saffron Flower endpoint and calculating the angle to cut. This project had to be used in a robotic arm that helps farmers with their productions.
-                            </small>
-                            <br>
-                        </div>
-                        <hr>
-                        <div class="col">
-                            Developing a Systom On Board (SOB)                            
-                            <br>
-                            <small>Building a system on board with the capability of reading analog video signals and booting a Linux kernel. This board is capable of image processing purposes in IoT devices, such as CCTVs, home security systems, or automated farming systems.</small>
+                            <small>2025 | LLM-based crawler for prompt-guided structured extraction from raw HTML.</small>
                             <br>
                         </div>
                         <hr>
                         <div class="col">
-                            GSM/GPRS module                            
+                            TDSC-ABUS2023 PyTorch Dataset Toolkit
                             <br>
-                            <small>Redesigning a GSM/GPRS module to be embedded inside a company product and adding some extra features such as DTMF detector and communicating data over the mobile network, the device has been used in a farming automation IOT device called ‘Sirab’.</small>
+                            <small>2024 | Open-source toolkit for 3D ABUS challenge workflows (classification and segmentation).</small>
                             <br>
                         </div>
                         <hr>
                         <div class="col">
-                            Developing ‘pwclan.ir’ website(currently down)                            
+                            Robotic Vision for Agricultural Automation
                             <br>
-                            <small>fully programmed back-end and front-end, it was a gaming website.</small>
+                            <small>2020 | Computer vision system to detect optimal saffron flower cutting points.</small>
                             <br>
                         </div>
                     </div>
@@ -255,30 +200,32 @@ permalink: /about
                 <!-- Research and publications -->
                  <div class="card md-3">
                     <div class="card-body">
-                        <h6 class="d-flex align-items-center mb-3"><i class="material-icons mr-2">Research and publications</i></h6>
+                        <h6 class="d-flex align-items-center mb-3"><i class="material-icons mr-2">Publications and Academic Service</i></h6>
                         <div class="col">
-                            Indoor positioning systems for Smartphones
+                            Spherical Shape-Based Features for Classification of Breast Tumors in 3D-ABUS Images
                             <br>
-                            <small>
-                            Building An indoor navigation system based on smartphone embedded sensors with the approximate accuracy of one meter.
-                            </small>
+                            <small>A. Naderiparizi, S. Barekat, E. Kozegar, M. Soryani — IEEE Transactions in Medical Imaging (not-published yet), 2026.</small>
                             <br>
                         </div>
                         <hr>
                         <div class="col">
-                            Classification of breast tumors in 3D Automated Breast Ultrasound Images (3D-ABUS)
+                            Breast Mass Classification in 3D ABUS based on Laplace-Beltrami Spectra and Dual Path CNN
                             <br>
-                            <small>
-                            Classification of human breast cancer in 3D-ABUS by exploring various features,traditional models and Deep models. The study proved the boundary is the most important part of breast tumors which should be considered for classification.
-                            </small>
+                            <small>S. Barekat, A. Naderiparizi, E. Kozegar, M. Soryani — Expert Systems with Applications, 2025.</small>
                             <br>
                         </div>
                         <hr>
                         <div class="col">
-                            Deep anomaly detection for image processing: A survey
+                            Peer Reviewer — Journal of Imaging Informatics in Medicine
                             <br>
-                            <small>A survey of deep learning-based anomaly detection techniques used for detection of anomalies in images and videos.
-                            </small>
+                            <small>2026 | Reviewed a manuscript on breast tumor classification with feedback on methodology and evaluation.</small>
+                            <br>
+                        </div>
+                        <hr>
+                        <div class="col">
+                            Judge — AI Research Challenge (SID and IranDoc)
+                            <br>
+                            <small>2026 | Evaluated ML systems for scientific literature analysis, knowledge graphs, topic clustering, and key-term extraction.</small>
                             <br>
                         </div>
                     </div>
@@ -287,4 +234,5 @@ permalink: /about
             </div>
         </div>
     </div>
+
 </div>

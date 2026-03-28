@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Ali N. Parizi | Astra Kinetic Portfolio</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,300,0,0&amp;display=swap"
+        rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#ff5a00", // Aerospace Orange accent
+                        background: "#000000",
+                        "surface": "#0a0a0a",
+                        "border-dim": "#1a1a1a",
+                        "border-bright": "#333333",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                        mono: ["JetBrains Mono", "monospace"],
+                    },
+                    borderRadius: {
+                        none: "0px",
+                        DEFAULT: "2px",
+                    },
+                },
+            },
+        };
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+        .sidebar-active {
+            border-left: 2px solid #ff5a00;
+            background: rgba(255, 90, 0, 0.05);
+            color: #ffffff;
+        }
+
+        .contribution-cell {
+            width: 10px;
+            height: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .tech-border {
+            border: 1px solid #1a1a1a;
+        }
+
+        .tech-border-bright {
+            border: 1px solid #333333;
+        }
+
+        .glass-header {
+            backdrop-filter: blur(12px);
+            background: rgba(0, 0, 0, 0.8);
+        }
+    </style>
+</head>
+
+<body class="bg-background text-slate-100 transition-colors duration-200 selection:bg-primary selection:text-black">
+    <header
+        class="lg:hidden flex items-center justify-between p-4 border-b border-border-dim glass-header sticky top-0 z-50">
+        <h1 class="text-lg font-bold tracking-tighter uppercase">A. N. PARIZI</h1>
+        <button class="p-2">
+            <span class="material-symbols-outlined">menu</span>
+        </button>
+    </header>
+    <div class="flex min-h-screen">
+        <!-- Sidebar -->
+        <aside class="hidden lg:flex flex-col w-64 bg-black border-r border-border-dim sticky top-0 h-screen">
+            <div class="p-8">
+                <h1 class="text-xl font-bold tracking-widest uppercase border-b border-primary pb-2 inline-block">Ali N.
+                    Parizi</h1>
+                <p class="text-[10px] text-slate-500 font-mono mt-2 tracking-widest uppercase">Systems Architecture</p>
+            </div>
+            <nav class="flex-1 mt-4 px-4 space-y-1">
+                <a class="flex items-center gap-3 px-4 py-2.5 text-slate-500 hover:text-white hover:bg-white/5 transition-all text-sm font-medium uppercase tracking-wider"
+                    href="#">
+                    <span class="material-symbols-outlined text-lg">grid_view</span>
+                    <span>Home</span>
+                </a>
+                <a class="flex items-center gap-3 px-4 py-2.5 text-slate-500 hover:text-white hover:bg-white/5 transition-all text-sm font-medium uppercase tracking-wider"
+                    href="#">
+                    <span class="material-symbols-outlined text-lg">terminal</span>
+                    <span>Logs</span>
+                </a>
+                <a class="flex items-center gap-3 px-4 py-2.5 sidebar-active text-sm font-medium uppercase tracking-wider"
+                    href="#">
+                    <span class="material-symbols-outlined text-lg">account_tree</span>
+                    <span>Projects</span>
+                </a>
+                <a class="flex items-center gap-3 px-4 py-2.5 text-slate-500 hover:text-white hover:bg-white/5 transition-all text-sm font-medium uppercase tracking-wider"
+                    href="#">
+                    <span class="material-symbols-outlined text-lg">folder_open</span>
+                    <span>Library</span>
+                </a>
+                <a class="flex items-center gap-3 px-4 py-2.5 text-slate-500 hover:text-white hover:bg-white/5 transition-all text-sm font-medium uppercase tracking-wider"
+                    href="#">
+                    <span class="material-symbols-outlined text-lg">sensors</span>
+                    <span>About</span>
+                </a>
+            </nav>
+            <div class="p-6 border-t border-border-dim space-y-2">
+                <a class="flex items-center justify-center gap-2 w-full py-2 bg-white text-black text-xs font-bold uppercase tracking-widest hover:bg-slate-200 transition-colors"
+                    href="#">
+                    Github Profile
+                </a>
+                <a class="flex items-center justify-center gap-2 w-full py-2 border border-border-bright text-white text-xs font-bold uppercase tracking-widest hover:bg-white/5 transition-colors"
+                    href="#">
+                    Curriculum Vitae
+                </a>
+                <div class="pt-6 text-[10px] text-slate-600 font-mono text-center uppercase tracking-tighter">
+                    <p>© 2024 Kinetic-OS</p>
+                </div>
+            </div>
+        </aside>
+        <!-- Main Content -->
+        <main class="flex-1 min-w-0 overflow-y-auto">
+            <header
+                class="sticky top-0 z-10 flex items-center justify-between px-8 py-4 glass-header border-b border-border-dim">
+                <div class="flex items-center gap-4 w-full max-w-xl">
+                    <div class="relative w-full">
+                        <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-500">
+                            <span class="material-symbols-outlined text-sm">search</span>
+                        </span>
+                        <input
+                            class="block w-full pl-10 pr-3 py-1.5 border border-border-dim bg-surface text-slate-100 text-sm font-mono focus:outline-none focus:border-primary transition-colors"
+                            placeholder="INITIATE SEARCH_QUERIES..." type="text" />
+                    </div>
+                </div>
+                <div class="flex items-center gap-6">
+                    <div class="hidden md:flex flex-col items-end font-mono">
+                        <span class="text-[10px] text-primary leading-none">SYSTEM_STATUS</span>
+                        <span class="text-[10px] text-emerald-500 leading-none mt-1">NOMINAL // 100%</span>
+                    </div>
+                    <button class="p-2 text-slate-400 hover:text-white">
+                        <span class="material-symbols-outlined">notifications</span>
+                    </button>
+                </div>
+            </header>
+            <div class="p-8 space-y-12 max-w-7xl mx-auto">
+                <!-- Activity Section -->
+                <section class="bg-surface border border-border-dim p-8 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-2 opacity-10">
+                        <span class="material-symbols-outlined text-9xl">analytics</span>
+                    </div>
+                    <div
+                        class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-12 relative z-10">
+                        <div class="space-y-4">
+                            <div>
+                                <h2 class="text-xs font-mono text-primary uppercase tracking-[0.3em] mb-1">Operational
+                                    Metrics</h2>
+                                <h3 class="text-3xl font-bold uppercase tracking-tight">Open Source Impact</h3>
+                            </div>
+                            <p class="text-slate-400 text-sm max-w-md leading-relaxed">Systematic monitoring of
+                                repository deployment and community engagement vectors across global networks.</p>
+                            <div class="flex gap-10 pt-4">
+                                <div>
+                                    <p class="text-2xl font-bold font-mono">124</p>
+                                    <p class="text-[10px] text-slate-500 uppercase tracking-widest font-bold">REPOS</p>
+                                </div>
+                                <div>
+                                    <p class="text-2xl font-bold font-mono">1.2K</p>
+                                    <p class="text-[10px] text-slate-500 uppercase tracking-widest font-bold">STARS</p>
+                                </div>
+                                <div>
+                                    <p class="text-2xl font-bold font-mono text-primary">850+</p>
+                                    <p class="text-[10px] text-slate-500 uppercase tracking-widest font-bold">COMMITS
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex-1 w-full max-w-xl">
+                            <div
+                                class="flex justify-between items-center mb-4 text-[10px] font-mono text-slate-500 uppercase tracking-widest">
+                                <span>Global Contribution Grid</span>
+                                <span class="text-emerald-500">Live Feedback Loop</span>
+                            </div>
+                            <div class="bg-black/40 border border-border-dim p-4">
+                                <div class="flex flex-wrap gap-1 content-start">
+                                    <script>
+                                        for (let i = 0; i < 160; i++) {
+                                            const levels = ['bg-neutral-900', 'bg-emerald-950', 'bg-emerald-800', 'bg-emerald-600', 'bg-emerald-400'];
+                                            const levelClass = levels[Math.floor(Math.random() * levels.length)];
+                                            document.write(`<div class="contribution-cell ${levelClass}"></div>`);
+                                        }
+                                    </script>
+                                </div>
+                                <div
+                                    class="flex justify-between mt-4 text-[9px] text-slate-600 font-mono uppercase tracking-[0.2em]">
+                                    <span>Q1_START</span><span>Q2_PHASE</span><span>Q3_TRANSIT</span><span>Q4_END</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Projects Section -->
+                <section class="space-y-8">
+                    <div
+                        class="flex flex-col md:flex-row items-start md:items-end justify-between border-b border-border-dim pb-4 gap-4">
+                        <div>
+                            <h3 class="text-xs font-mono text-primary uppercase tracking-[0.3em] mb-1">Portfolio Matrix
+                            </h3>
+                            <h4 class="text-2xl font-bold uppercase tracking-tight">Project Deployments</h4>
+                        </div>
+                        <div class="flex gap-1 bg-surface border border-border-dim p-1">
+                            <button
+                                class="px-4 py-1 text-[10px] font-bold uppercase bg-primary text-black transition-colors">ALL_UNITS</button>
+                            <button
+                                class="px-4 py-1 text-[10px] font-bold uppercase text-slate-400 hover:text-white hover:bg-white/5 transition-colors">PYTHON</button>
+                            <button
+                                class="px-4 py-1 text-[10px] font-bold uppercase text-slate-400 hover:text-white hover:bg-white/5 transition-colors">REACT</button>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+                        <!-- Project 1 -->
+                        <div
+                            class="group bg-surface border border-border-dim flex flex-col hover:border-primary transition-colors duration-500">
+                            <div class="h-40 bg-black relative overflow-hidden border-b border-border-dim">
+                                <img alt="NeuralStack"
+                                    class="w-full h-full object-cover grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-60 transition-all duration-700"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCl23i1K39-ji2WT3oUpJBBCZgIPsHS9g7_X0WsvLxziztNzEKvac7aCrt1ZA0jNoqREiuDabt8n28G2ZFldo-vpRjtNDcFm8GUA8V_1PQZPQyG7fg06-gD_IVkTt5T2JQA8r9apjKrad9R6QUuB8sBqilU_7lihbOHs2wrCqyRZi3TJyK6x96cvbrd5CQDQQvhR2eva5gkqFmdYiGL3WDDLgvcl5SWFtarSfXTrwUI4IUaqQsXh9pIA2U0nuAOrfXmHHiBi2Xu3MM" />
+                                <div class="absolute top-4 left-4">
+                                    <span
+                                        class="px-2 py-0.5 text-[9px] font-mono font-bold uppercase tracking-widest bg-emerald-500 text-black">ACTIVE_SYSTEM</span>
+                                </div>
+                                <div
+                                    class="absolute bottom-4 right-4 text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <span class="material-symbols-outlined">north_east</span>
+                                </div>
+                            </div>
+                            <div class="p-6 flex-1 flex flex-col">
+                                <div class="flex items-start justify-between mb-2">
+                                    <h4
+                                        class="text-lg font-bold uppercase tracking-tight group-hover:text-primary transition-colors">
+                                        NeuralStack AI</h4>
+                                    <span class="text-[11px] font-mono text-slate-500">STARS // 452</span>
+                                </div>
+                                <p class="text-slate-400 text-sm font-light leading-relaxed mb-6 line-clamp-3">
+                                    A distributed deep learning framework optimized for edge computing devices using
+                                    PyTorch and WebAssembly. Features low-latency inference and federated learning
+                                    capabilities.
+                                </p>
+                                <div class="flex flex-wrap gap-2 mb-8">
+                                    <span
+                                        class="px-2 py-0.5 text-[10px] font-mono text-slate-500 border border-border-dim uppercase tracking-tighter">PYTHON</span>
+                                    <span
+                                        class="px-2 py-0.5 text-[10px] font-mono text-slate-500 border border-border-dim uppercase tracking-tighter">PYTORCH</span>
+                                    <span
+                                        class="px-2 py-0.5 text-[10px] font-mono text-slate-500 border border-border-dim uppercase tracking-tighter">RUST</span>
+                                </div>
+                                <div class="mt-auto grid grid-cols-2 gap-2">
+                                    <a class="flex items-center justify-center gap-2 py-2 bg-primary text-black text-[10px] font-bold uppercase tracking-widest hover:bg-orange-600 transition-colors"
+                                        href="#">
+                                        Source
+                                    </a>
+                                    <a class="flex items-center justify-center gap-2 py-2 border border-border-bright text-white text-[10px] font-bold uppercase tracking-widest hover:bg-white/5 transition-colors"
+                                        href="#">
+                                        Uplink
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Project 2 -->
+                        <div
+                            class="group bg-surface border border-border-dim flex flex-col hover:border-primary transition-colors duration-500">
+                            <div class="h-40 bg-black relative overflow-hidden border-b border-border-dim">
+                                <img alt="AdminFlow"
+                                    class="w-full h-full object-cover grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-60 transition-all duration-700"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3JDEe_ytyyWQdWzX-QPoB-zvQpTmoG-KZpiKbFbQfs50CMgmcjKIXRAKKYn_1aK6KHlnyYN88PQDm67cb5HLPxQCwGC_2Q9QRE9rxdhk5rs-Ns9NwJHrLlSshOGobZz0j3ItCSUQRa7VmxFxyqcYMMqJpkvRwKuVHlPpvFZS0FwoweguU8pzeO0pcm8iuX9duEE5y6GozjDMT161qDMiL8y5R-BnF8wxHz9u6CYqjM5ErxPnKPej3Cgwc4OGUKKYBR6zlHDHSZ8g" />
+                                <div class="absolute top-4 left-4">
+                                    <span
+                                        class="px-2 py-0.5 text-[9px] font-mono font-bold uppercase tracking-widest bg-blue-500 text-black">STABLE_RELEASE</span>
+                                </div>
+                                <div
+                                    class="absolute bottom-4 right-4 text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <span class="material-symbols-outlined">north_east</span>
+                                </div>
+                            </div>
+                            <div class="p-6 flex-1 flex flex-col">
+                                <div class="flex items-start justify-between mb-2">
+                                    <h4
+                                        class="text-lg font-bold uppercase tracking-tight group-hover:text-primary transition-colors">
+                                        AdminFlow Dashboard</h4>
+                                    <span class="text-[11px] font-mono text-slate-500">STARS // 2.1K</span>
+                                </div>
+                                <p class="text-slate-400 text-sm font-light leading-relaxed mb-6 line-clamp-3">
+                                    A high-performance React-based administration panel template built with Tailwind
+                                    CSS. Includes 50+ customizable components and full RTL support.
+                                </p>
+                                <div class="flex flex-wrap gap-2 mb-8">
+                                    <span
+                                        class="px-2 py-0.5 text-[10px] font-mono text-slate-500 border border-border-dim uppercase tracking-tighter">REACT</span>
+                                    <span
+                                        class="px-2 py-0.5 text-[10px] font-mono text-slate-500 border border-border-dim uppercase tracking-tighter">TYPESCRIPT</span>
+                                    <span
+                                        class="px-2 py-0.5 text-[10px] font-mono text-slate-500 border border-border-dim uppercase tracking-tighter">TAILWIND</span>
+                                </div>
+                                <div class="mt-auto grid grid-cols-2 gap-2">
+                                    <a class="flex items-center justify-center gap-2 py-2 bg-primary text-black text-[10px] font-bold uppercase tracking-widest hover:bg-orange-600 transition-colors"
+                                        href="#">
+                                        Source
+                                    </a>
+                                    <a class="flex items-center justify-center gap-2 py-2 border border-border-bright text-white text-[10px] font-bold uppercase tracking-widest hover:bg-white/5 transition-colors"
+                                        href="#">
+                                        Uplink
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Project 3 -->
+                        <div
+                            class="group bg-surface border border-border-dim flex flex-col hover:border-primary transition-colors duration-500">
+                            <div class="h-40 bg-black relative overflow-hidden border-b border-border-dim">
+                                <img alt="CryptoLink"
+                                    class="w-full h-full object-cover grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-60 transition-all duration-700"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-NA3Y3MgJse0fZzvbxrwi6oV6mdz77aDwjwHShb3t-Ly4jqoad4xnY9sdNo62W4XvWv-EeuyPsLJ111PBBGxBHtXxPyX7rYxlUoOuXnJ6Ds81B6MZNUion330w5VViFQhW9Ruan8oFwkGXOj63Fk-jDo1zZ6DOELyHHgVga_JVPNedHLGRLeokblQ8l3x7Gbm2LIYDJjw3AtRhfprD15EJbvAQhuTvfuA3N54m3pHwKdXQ4HMbg5ZXgr3Fy6D2COfGAKjVkkV-HM" />
+                                <div class="absolute top-4 left-4">
+                                    <span
+                                        class="px-2 py-0.5 text-[9px] font-mono font-bold uppercase tracking-widest bg-primary text-black">V2.0_ORBIT</span>
+                                </div>
+                                <div
+                                    class="absolute bottom-4 right-4 text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <span class="material-symbols-outlined">north_east</span>
+                                </div>
+                            </div>
+                            <div class="p-6 flex-1 flex flex-col">
+                                <div class="flex items-start justify-between mb-2">
+                                    <h4
+                                        class="text-lg font-bold uppercase tracking-tight group-hover:text-primary transition-colors">
+                                        CryptoLink SDK</h4>
+                                    <span class="text-[11px] font-mono text-slate-500">STARS // 890</span>
+                                </div>
+                                <p class="text-slate-400 text-sm font-light leading-relaxed mb-6 line-clamp-3">
+                                    Universal blockchain connection layer supporting Ethereum, Solana, and Polkadot.
+                                    Simplifies wallet integration for decentralized applications.
+                                </p>
+                                <div class="flex flex-wrap gap-2 mb-8">
+                                    <span
+                                        class="px-2 py-0.5 text-[10px] font-mono text-slate-500 border border-border-dim uppercase tracking-tighter">GO</span>
+                                    <span
+                                        class="px-2 py-0.5 text-[10px] font-mono text-slate-500 border border-border-dim uppercase tracking-tighter">WEB3</span>
+                                    <span
+                                        class="px-2 py-0.5 text-[10px] font-mono text-slate-500 border border-border-dim uppercase tracking-tighter">SOLIDITY</span>
+                                </div>
+                                <div class="mt-auto grid grid-cols-2 gap-2">
+                                    <a class="flex items-center justify-center gap-2 py-2 bg-primary text-black text-[10px] font-bold uppercase tracking-widest hover:bg-orange-600 transition-colors"
+                                        href="#">
+                                        Source
+                                    </a>
+                                    <a class="flex items-center justify-center gap-2 py-2 border border-border-bright text-white text-[10px] font-bold uppercase tracking-widest hover:bg-white/5 transition-colors"
+                                        href="#">
+                                        Uplink
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pt-12 flex justify-center">
+                        <button
+                            class="flex items-center gap-4 px-10 py-3 border border-border-bright text-white text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black hover:border-white transition-all">
+                            Expand System Archives
+                            <span class="material-symbols-outlined text-sm">expand_more</span>
+                        </button>
+                    </div>
+                </section>
+            </div>
+            <footer class="mt-20 p-12 border-t border-border-dim text-center">
+                <div class="text-[10px] font-mono text-slate-600 uppercase tracking-widest">
+                    <p>TRANSMISSION_COMPLETE // ASTRA_KINETIC_CORE</p>
+                    <p class="mt-2">INFRASTRUCTURE BY <a class="text-primary hover:underline"
+                            href="#">GITHUB_NETWORKS</a></p>
+                </div>
+            </footer>
+        </main>
+    </div>
+</body>
+
+</html>

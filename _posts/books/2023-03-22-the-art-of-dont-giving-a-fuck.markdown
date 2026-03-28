@@ -6,6 +6,15 @@ img: "/assets/images/posts/books/the-art-of-dont-give-a-fuck/title.png"
 date:   2023-03-22 13:11:32 +0330
 categories: book self-help focus study-lessens
 brief: "A Counterintuitive Approach to Living a Good Life is a 2016 nonfiction self-help book by American blogger and author Mark Manson. The book covers Manson's belief that life's struggles give it meaning and argues that typical self-help books offer meaningless positivity which is neither practical nor helpful, thus improperly approaching the problems many individuals face. It was a New York Times and Globe and Mail bestseller."
+book_rating: 4
+book_review: "A direct, practical, and sometimes harsh read that helped me rethink value systems and where attention should go. Strong on mindset reset, lighter on tactical frameworks."
+book_resources:
+  - title: "My reading notes (Markdown)"
+    url: "/notes/"
+    type: "notes"
+  - title: "Official book page"
+    url: "https://markmanson.net/books/subtle-art"
+    type: "reference"
 ---            
 # 1. Intro
 
