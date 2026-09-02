@@ -11,12 +11,21 @@
 
 * {
     box-sizing: border-box;
+    min-width: 0;
 }
 
-html,
+html {
+    overflow-x: hidden;
+}
+
 body {
     margin: 0;
     padding: 0;
+    max-width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
 }
 
 body.theme-body {
@@ -24,6 +33,12 @@ body.theme-body {
     color: var(--text);
     font-family: "Inter", sans-serif;
     min-height: 100vh;
+}
+
+p,
+li,
+.post-brief {
+    overflow-wrap: break-word;
 }
 
 a {
@@ -315,6 +330,8 @@ p {
 .post-content h2,
 .post-content h3,
 .post-content h4,
+.post-content h5,
+.post-content h6,
 .container h1,
 .container h2,
 .container h3,
@@ -322,6 +339,46 @@ p {
     color: #fff;
     text-transform: uppercase;
     letter-spacing: 0.03em;
+}
+
+.post-content h1 {
+    font-size: 1.6rem;
+    line-height: 1.3;
+    margin: 1.8rem 0 0.8rem;
+}
+
+.post-content h2 {
+    font-size: 1.35rem;
+    line-height: 1.35;
+    margin: 1.6rem 0 0.7rem;
+}
+
+.post-content h3 {
+    font-size: 1.15rem;
+    line-height: 1.4;
+    margin: 1.4rem 0 0.6rem;
+}
+
+.post-content h4 {
+    font-size: 1.02rem;
+    line-height: 1.45;
+    margin: 1.2rem 0 0.5rem;
+}
+
+.post-content h5 {
+    font-size: 0.92rem;
+    line-height: 1.5;
+    margin: 1rem 0 0.45rem;
+}
+
+.post-content h6 {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin: 0.9rem 0 0.4rem;
+}
+
+.post-content > *:first-child {
+    margin-top: 0;
 }
 
 .post-meta,
@@ -362,10 +419,161 @@ pre[class*="language-"] {
     border: 1px solid var(--border-dim);
 }
 
+#content article .highlighter-rouge {
+    max-width: 100%;
+}
+
+#content article pre {
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    background: #0d0d0d;
+    color: #d4d4d8;
+    border: 1px solid var(--border-dim);
+    border-radius: 2px;
+    padding: 1rem;
+    line-height: 1.6;
+    font-size: 0.86rem;
+}
+
+#content article code {
+    overflow-wrap: break-word;
+    font-family: "JetBrains Mono", "Consolas", monospace;
+}
+
+/* Rouge syntax token colors, tuned to the site's dark + orange palette */
+.highlight .c,
+.highlight .c1,
+.highlight .cm,
+.highlight .cs,
+.highlight .cp {
+    color: #6b7280;
+    font-style: italic;
+}
+
+.highlight .err {
+    color: #f87171;
+}
+
+.highlight .k,
+.highlight .kc,
+.highlight .kd,
+.highlight .kn,
+.highlight .kp,
+.highlight .kr,
+.highlight .kt,
+.highlight .ow {
+    color: #ff8a44;
+    font-weight: 600;
+}
+
+.highlight .o {
+    color: var(--primary);
+}
+
+.highlight .s,
+.highlight .s1,
+.highlight .s2,
+.highlight .sb,
+.highlight .sc,
+.highlight .sd,
+.highlight .se,
+.highlight .sh,
+.highlight .si,
+.highlight .sx,
+.highlight .sr,
+.highlight .ss,
+.highlight .dl {
+    color: #7ec699;
+}
+
+.highlight .m,
+.highlight .mf,
+.highlight .mh,
+.highlight .mi,
+.highlight .mo,
+.highlight .il {
+    color: #60a5fa;
+}
+
+.highlight .n,
+.highlight .nv,
+.highlight .vc,
+.highlight .vg,
+.highlight .vi {
+    color: #e5e7eb;
+}
+
+.highlight .nb,
+.highlight .bp {
+    color: #93c5fd;
+}
+
+.highlight .nc,
+.highlight .no,
+.highlight .nd,
+.highlight .na {
+    color: #fbbf24;
+}
+
+.highlight .nf {
+    color: #60a5fa;
+}
+
+.highlight .nn {
+    color: #e5e7eb;
+}
+
+.highlight .nt {
+    color: #f87171;
+}
+
+.highlight .ni,
+.highlight .ne {
+    color: #f87171;
+}
+
+.highlight .p {
+    color: #9ca3af;
+}
+
+.highlight .gd {
+    color: #f87171;
+}
+
+.highlight .gi {
+    color: #7ec699;
+}
+
+.highlight .gh,
+.highlight .gu {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.highlight .ge {
+    font-style: italic;
+}
+
+.highlight .gs {
+    font-weight: 600;
+}
+
+#content article table {
+    display: block;
+    width: max-content;
+    max-width: 100%;
+    margin: 0 auto;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-collapse: collapse;
+}
+
 #content article table td,
 #content article table th {
     border: 1px solid var(--border-bright);
     padding: 0.45rem 0.65rem;
+    white-space: nowrap;
 }
 
 #content article table th {
@@ -625,5 +833,16 @@ section .btn:hover {
 
     .fill {
         height: 190px;
+    }
+
+    #content article pre {
+        padding: 0.7rem !important;
+        font-size: 0.8rem;
+    }
+
+    #content article table td,
+    #content article table th {
+        padding: 0.35rem 0.5rem;
+        font-size: 0.82rem;
     }
 }

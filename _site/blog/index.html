@@ -6,7 +6,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="google-site-verification" content="4-8jdtFeOSWDhx6RjXrSwNrvhvLyFdbACncYtB2Rjzc">
-    <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="mralinp" />
+    <link type="application/atom+xml" rel="alternate" href="http://0.0.0.0:4000/feed.xml" title="mralinp" />
     <title>Blog</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,300,0,0&display=swap" rel="stylesheet">
@@ -35,6 +35,7 @@
                 <li class="sidebar-item"><a href="/"><span class="material-symbols-outlined">grid_view</span> <span>Home</span></a></li>
                 <li class="sidebar-item"><a href="/blog"><span class="material-symbols-outlined">rss_feed</span> <span>Blog</span></a></li>
                 <li class="sidebar-item"><a href="/projects"><span class="material-symbols-outlined">account_tree</span> <span>Projects</span></a></li>
+                <li class="sidebar-item"><a href="/research"><span class="material-symbols-outlined">science</span> <span>Research</span></a></li>
                 <li class="sidebar-item"><a href="/library"><span class="material-symbols-outlined">folder_open</span> <span>Library</span></a></li>
                 <li class="sidebar-item"><a href="/about"><span class="material-symbols-outlined">sensors</span> <span>About</span></a></li>
             </ul>
@@ -289,9 +290,10 @@
         </div>
         <span class="blog-matrix-status">Feed status: live</span>
     </div>
-    <div class="row">
+    
+    <div class="row" id="blogGrid">
         
-        <div class="col-lg-4 col-md-6 mb-4">
+        <div class="col-lg-4 col-md-6 mb-4 js-page-item">
             <article class="blog-card">
                 <div class="blog-card-media">
                     <a href="/blog/network/vpn/2024/01/23/v2ray-cf-worker.html">
@@ -324,7 +326,7 @@
             </article>
         </div>
         
-        <div class="col-lg-4 col-md-6 mb-4">
+        <div class="col-lg-4 col-md-6 mb-4 js-page-item">
             <article class="blog-card">
                 <div class="blog-card-media">
                     <a href="/blog/ai/machine-learning/deep-learning/2023/08/20/unet.html">
@@ -357,7 +359,7 @@
             </article>
         </div>
         
-        <div class="col-lg-4 col-md-6 mb-4">
+        <div class="col-lg-4 col-md-6 mb-4 js-page-item">
             <article class="blog-card">
                 <div class="blog-card-media">
                     <a href="/blog/embeded/smart-card/2023/07/19/smart-card-intro.html">
@@ -390,7 +392,7 @@
             </article>
         </div>
         
-        <div class="col-lg-4 col-md-6 mb-4">
+        <div class="col-lg-4 col-md-6 mb-4 js-page-item">
             <article class="blog-card">
                 <div class="blog-card-media">
                     <a href="/blog/embeded/smart-card/2023/07/19/smart-card-dev.html">
@@ -423,57 +425,26 @@
             </article>
         </div>
         
-        <div class="col-lg-4 col-md-6 mb-4">
+        <div class="col-lg-4 col-md-6 mb-4 js-page-item">
             <article class="blog-card">
                 <div class="blog-card-media">
-                    <a href="/software/git/2023/03/28/git-flow.html">
+                    <a href="/blog/ai/machine-learning/deep-learning/2023/03/21/adverserial-attack.html">
                         
-                        <img src="/assets/images/posts/blog/git-flow/title.jpeg" alt="Git Flow: A reposotery management heirachy">
+                        <img src="/assets/images/posts/blog/adversarial-attack/title.png" alt="Adversarial attacks in deep learning">
                         
                     </a>
-                    <span class="blog-card-badge">SOFTWARE</span>
+                    <span class="blog-card-badge">BLOG</span>
                     <span class="blog-card-open material-symbols-outlined">north_east</span>
                 </div>
                 <div class="blog-card-content">
                     <div class="blog-card-top">
-                        <h3 class="blog-card-title"><a href="/software/git/2023/03/28/git-flow.html" title="Git Flow: A reposotery management heirachy">Git Flow: A reposotery management heirachy</a></h3>
+                        <h3 class="blog-card-title"><a href="/blog/ai/machine-learning/deep-learning/2023/03/21/adverserial-attack.html" title="Adversarial attacks in deep learning">Adversarial attacks in deep learning</a></h3>
                         <span class="blog-card-date">Mar 2023</span>
                     </div>
-                    <p>Gitflow is a legacy Git workflow that was originally a disruptive and novel strategy for managing Git branches. Gitflow has fal...</p>
+                    <p>Are the machine learning models we use intrinsically flawed?</p>
                     <div class="blog-card-tags">
                         
-                        <span>software</span>
-                        
-                        <span>git</span>
-                        
-                    </div>
-                    <div class="blog-card-actions">
-                        <a href="/software/git/2023/03/28/git-flow.html" class="blog-card-btn primary">Read more</a>
-                    </div>
-                </div>
-            </article>
-        </div>
-        
-        <div class="col-lg-4 col-md-6 mb-4">
-            <article class="blog-card">
-                <div class="blog-card-media">
-                    <a href="/project/ai/machine-learning/deep-learning/python/2023/03/27/pytorch-tutorial-2.html">
-                        
-                        <img src="/assets/images/posts/projects/pytorch-tutorial/part-2/title.png" alt="PyTorch Tutorial, Part 2: Datasets and Dataloaders">
-                        
-                    </a>
-                    <span class="blog-card-badge">PROJECT</span>
-                    <span class="blog-card-open material-symbols-outlined">north_east</span>
-                </div>
-                <div class="blog-card-content">
-                    <div class="blog-card-top">
-                        <h3 class="blog-card-title"><a href="/project/ai/machine-learning/deep-learning/python/2023/03/27/pytorch-tutorial-2.html" title="PyTorch Tutorial, Part 2: Datasets and Dataloaders">PyTorch Tutorial, Part 2: Datasets and Dataloaders</a></h3>
-                        <span class="blog-card-date">Mar 2023</span>
-                    </div>
-                    <p>In this part we will learn how to make custom Datasets and use DataLoader in PyTorch.</p>
-                    <div class="blog-card-tags">
-                        
-                        <span>project</span>
+                        <span>blog</span>
                         
                         <span>ai</span>
                         
@@ -481,63 +452,329 @@
                         
                     </div>
                     <div class="blog-card-actions">
-                        <a href="/project/ai/machine-learning/deep-learning/python/2023/03/27/pytorch-tutorial-2.html" class="blog-card-btn primary">Read more</a>
+                        <a href="/blog/ai/machine-learning/deep-learning/2023/03/21/adverserial-attack.html" class="blog-card-btn primary">Read more</a>
+                    </div>
+                </div>
+            </article>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 mb-4 js-page-item">
+            <article class="blog-card">
+                <div class="blog-card-media">
+                    <a href="/blog/ai/machine-learning/deep-learning/2023/03/19/installing-tensorflow-with-gpu.html">
+                        
+                        <img src="/assets/images/posts/blog/installing-tensorflow-gpu/title.webp" alt="Installing Tensorflow with GPU Support">
+                        
+                    </a>
+                    <span class="blog-card-badge">BLOG</span>
+                    <span class="blog-card-open material-symbols-outlined">north_east</span>
+                </div>
+                <div class="blog-card-content">
+                    <div class="blog-card-top">
+                        <h3 class="blog-card-title"><a href="/blog/ai/machine-learning/deep-learning/2023/03/19/installing-tensorflow-with-gpu.html" title="Installing Tensorflow with GPU Support">Installing Tensorflow with GPU Support</a></h3>
+                        <span class="blog-card-date">Mar 2023</span>
+                    </div>
+                    <p>The Ultimate Guide To Install The Latest Version Of TensorFlow on your Ubuntu 22.04 With GPU Support.</p>
+                    <div class="blog-card-tags">
+                        
+                        <span>blog</span>
+                        
+                        <span>ai</span>
+                        
+                        <span>machine-learning</span>
+                        
+                    </div>
+                    <div class="blog-card-actions">
+                        <a href="/blog/ai/machine-learning/deep-learning/2023/03/19/installing-tensorflow-with-gpu.html" class="blog-card-btn primary">Read more</a>
+                    </div>
+                </div>
+            </article>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 mb-4 js-page-item">
+            <article class="blog-card">
+                <div class="blog-card-media">
+                    <a href="/blog/network/vpn/2022/10/31/v2ray-xui.html">
+                        
+                        <img src="/assets/images/posts/blog/v2ray/title.png" alt="Bypass The Islamic Republic Again: Installing V2ray + XUI">
+                        
+                    </a>
+                    <span class="blog-card-badge">BLOG</span>
+                    <span class="blog-card-open material-symbols-outlined">north_east</span>
+                </div>
+                <div class="blog-card-content">
+                    <div class="blog-card-top">
+                        <h3 class="blog-card-title"><a href="/blog/network/vpn/2022/10/31/v2ray-xui.html" title="Bypass The Islamic Republic Again: Installing V2ray + XUI">Bypass The Islamic Republic Again: Installing V2ray + XUI</a></h3>
+                        <span class="blog-card-date">Oct 2022</span>
+                    </div>
+                    <p>When the situation is challenging, UDP-based VPN protocols might not work and we have to use something else to be able to bypas...</p>
+                    <div class="blog-card-tags">
+                        
+                        <span>blog</span>
+                        
+                        <span>network</span>
+                        
+                        <span>vpn</span>
+                        
+                    </div>
+                    <div class="blog-card-actions">
+                        <a href="/blog/network/vpn/2022/10/31/v2ray-xui.html" class="blog-card-btn primary">Read more</a>
+                    </div>
+                </div>
+            </article>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 mb-4 js-page-item">
+            <article class="blog-card">
+                <div class="blog-card-media">
+                    <a href="/blog/ai/machine-learning/deep-learning/2022/10/11/vae-intro.html">
+                        
+                        <img src="/assets/images/posts/blog/vae/title.png" alt="Variational AutoEncoders: An Introduction">
+                        
+                    </a>
+                    <span class="blog-card-badge">BLOG</span>
+                    <span class="blog-card-open material-symbols-outlined">north_east</span>
+                </div>
+                <div class="blog-card-content">
+                    <div class="blog-card-top">
+                        <h3 class="blog-card-title"><a href="/blog/ai/machine-learning/deep-learning/2022/10/11/vae-intro.html" title="Variational AutoEncoders: An Introduction">Variational AutoEncoders: An Introduction</a></h3>
+                        <span class="blog-card-date">Oct 2022</span>
+                    </div>
+                    <p>Variational AutoEncoders are very popular extention of autoencoders which try to map the input data into a probablistic distrib...</p>
+                    <div class="blog-card-tags">
+                        
+                        <span>blog</span>
+                        
+                        <span>ai</span>
+                        
+                        <span>machine-learning</span>
+                        
+                    </div>
+                    <div class="blog-card-actions">
+                        <a href="/blog/ai/machine-learning/deep-learning/2022/10/11/vae-intro.html" class="blog-card-btn primary">Read more</a>
+                    </div>
+                </div>
+            </article>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 mb-4 js-page-item">
+            <article class="blog-card">
+                <div class="blog-card-media">
+                    <a href="/blog/network/vpn/2022/09/26/bypass-islamic-republic.html">
+                        
+                        <img src="/assets/images/posts/blog/vpn-setup/title.png" alt="How to bypass the &#39;Islamic Republic&#39; internet filtering?">
+                        
+                    </a>
+                    <span class="blog-card-badge">BLOG</span>
+                    <span class="blog-card-open material-symbols-outlined">north_east</span>
+                </div>
+                <div class="blog-card-content">
+                    <div class="blog-card-top">
+                        <h3 class="blog-card-title"><a href="/blog/network/vpn/2022/09/26/bypass-islamic-republic.html" title="How to bypass the 'Islamic Republic' internet filtering?">How to bypass the 'Islamic Republic' internet filtering?</a></h3>
+                        <span class="blog-card-date">Sep 2022</span>
+                    </div>
+                    <p>An introduction to virtual private networks(VPN), tunnels, proxies, and a straightforward walkthrough for running a WireGuard V...</p>
+                    <div class="blog-card-tags">
+                        
+                        <span>blog</span>
+                        
+                        <span>network</span>
+                        
+                        <span>vpn</span>
+                        
+                    </div>
+                    <div class="blog-card-actions">
+                        <a href="/blog/network/vpn/2022/09/26/bypass-islamic-republic.html" class="blog-card-btn primary">Read more</a>
+                    </div>
+                </div>
+            </article>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 mb-4 js-page-item">
+            <article class="blog-card">
+                <div class="blog-card-media">
+                    <a href="/blog/ai/machine-learning/deep-learning/2022/09/16/auto-encoder.html">
+                        
+                        <img src="/assets/images/posts/blog/auto-encoder/title.png" alt="What is an AutoEncoder?">
+                        
+                    </a>
+                    <span class="blog-card-badge">BLOG</span>
+                    <span class="blog-card-open material-symbols-outlined">north_east</span>
+                </div>
+                <div class="blog-card-content">
+                    <div class="blog-card-top">
+                        <h3 class="blog-card-title"><a href="/blog/ai/machine-learning/deep-learning/2022/09/16/auto-encoder.html" title="What is an AutoEncoder?">What is an AutoEncoder?</a></h3>
+                        <span class="blog-card-date">Sep 2022</span>
+                    </div>
+                    <p>One of the most popular deep architectures is the variety of AutoEncoders. This article is a straightforward walkthrough to get...</p>
+                    <div class="blog-card-tags">
+                        
+                        <span>blog</span>
+                        
+                        <span>ai</span>
+                        
+                        <span>machine-learning</span>
+                        
+                    </div>
+                    <div class="blog-card-actions">
+                        <a href="/blog/ai/machine-learning/deep-learning/2022/09/16/auto-encoder.html" class="blog-card-btn primary">Read more</a>
+                    </div>
+                </div>
+            </article>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 mb-4 js-page-item">
+            <article class="blog-card">
+                <div class="blog-card-media">
+                    <a href="/blog/math/statistics/random-process/2022/07/14/the-poisson-distribution.html">
+                        
+                        <img src="/assets/images/posts/blog/poisson/title.png" alt="The Poisson Distribution">
+                        
+                    </a>
+                    <span class="blog-card-badge">BLOG</span>
+                    <span class="blog-card-open material-symbols-outlined">north_east</span>
+                </div>
+                <div class="blog-card-content">
+                    <div class="blog-card-top">
+                        <h3 class="blog-card-title"><a href="/blog/math/statistics/random-process/2022/07/14/the-poisson-distribution.html" title="The Poisson Distribution">The Poisson Distribution</a></h3>
+                        <span class="blog-card-date">Jul 2022</span>
+                    </div>
+                    <p>A straightforward walk-through of a useful statistical concept, "The Poisson Distribution"</p>
+                    <div class="blog-card-tags">
+                        
+                        <span>blog</span>
+                        
+                        <span>math</span>
+                        
+                        <span>statistics</span>
+                        
+                    </div>
+                    <div class="blog-card-actions">
+                        <a href="/blog/math/statistics/random-process/2022/07/14/the-poisson-distribution.html" class="blog-card-btn primary">Read more</a>
+                    </div>
+                </div>
+            </article>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 mb-4 js-page-item">
+            <article class="blog-card">
+                <div class="blog-card-media">
+                    <a href="/blog/ai/machine-learning/deep-learning/2022/06/21/lenet5.html">
+                        
+                        <img src="/assets/images/posts/blog/lenet5/mnist-dataset-1.png" alt="LeNet-5 from scratch">
+                        
+                    </a>
+                    <span class="blog-card-badge">BLOG</span>
+                    <span class="blog-card-open material-symbols-outlined">north_east</span>
+                </div>
+                <div class="blog-card-content">
+                    <div class="blog-card-top">
+                        <h3 class="blog-card-title"><a href="/blog/ai/machine-learning/deep-learning/2022/06/21/lenet5.html" title="LeNet-5 from scratch">LeNet-5 from scratch</a></h3>
+                        <span class="blog-card-date">Jun 2022</span>
+                    </div>
+                    <p>In this article, we perform image classification on the MNIST dataset with custom implemented LeNet-5 neural network architecture.</p>
+                    <div class="blog-card-tags">
+                        
+                        <span>blog</span>
+                        
+                        <span>ai</span>
+                        
+                        <span>machine-learning</span>
+                        
+                    </div>
+                    <div class="blog-card-actions">
+                        <a href="/blog/ai/machine-learning/deep-learning/2022/06/21/lenet5.html" class="blog-card-btn primary">Read more</a>
+                    </div>
+                </div>
+            </article>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 mb-4 js-page-item">
+            <article class="blog-card">
+                <div class="blog-card-media">
+                    <a href="/blog/hello-world/2022/03/20/hello-world.html">
+                        
+                        <img src="/assets/images/posts/blog/hello-world/2560px-HelloWorld.svg.png" alt="Hello, world!">
+                        
+                    </a>
+                    <span class="blog-card-badge">BLOG</span>
+                    <span class="blog-card-open material-symbols-outlined">north_east</span>
+                </div>
+                <div class="blog-card-content">
+                    <div class="blog-card-top">
+                        <h3 class="blog-card-title"><a href="/blog/hello-world/2022/03/20/hello-world.html" title="Hello, world!">Hello, world!</a></h3>
+                        <span class="blog-card-date">Mar 2022</span>
+                    </div>
+                    <p>This is my first post on the blog on the first day of the new century. Happy nowrooz to all people around the world!</p>
+                    <div class="blog-card-tags">
+                        
+                        <span>blog</span>
+                        
+                        <span>hello-world</span>
+                        
+                    </div>
+                    <div class="blog-card-actions">
+                        <a href="/blog/hello-world/2022/03/20/hello-world.html" class="blog-card-btn primary">Read more</a>
                     </div>
                 </div>
             </article>
         </div>
         
     </div>
-    
-        <nav aria-label="Page navigation" id="PageNav">
-            <ul class="pagination justify-content-center">
-                
-                    <li class="page-item disabled">
-                        <a class="page-link" href="" tabindex="-1">Previous</a>
-                    </li>
-                
-                
-                    
-                        <li class="page-item active">
-                            <span class="page-link">
-                                1
-                            </span>
-                        </li>
-                    
-                
-                    
-                        
-                            <li class="page-item"><a class="page-link" href="/blog/page2/">2</a></li>
-                        
-                    
-                
-                    
-                        
-                            <li class="page-item"><a class="page-link" href="/blog/page3/">3</a></li>
-                        
-                    
-                
-                    
-                        
-                            <li class="page-item"><a class="page-link" href="/blog/page4/">4</a></li>
-                        
-                    
-                
-                    
-                        
-                            <li class="page-item"><a class="page-link" href="/blog/page5/">5</a></li>
-                        
-                    
-                
-                
-                    <li class="page-item">
-                            <a class="page-link" page-link href="/blog/page2/">Next</a>
-                    </li>
-                    
-            </ul>
-        </nav>
-    
+    <nav aria-label="Page navigation" id="PageNav">
+        <ul class="pagination justify-content-center" id="blogPager"></ul>
+    </nav>
 </section>
+
+<script>
+    (function () {
+        var perPage = 6;
+        var items = Array.prototype.slice.call(document.querySelectorAll("#blogGrid .js-page-item"));
+        var pager = document.getElementById("blogPager");
+        if (!items.length || !pager) return;
+        var totalPages = Math.ceil(items.length / perPage);
+        var current = 1;
+
+        function renderPage(page) {
+            current = Math.max(1, Math.min(totalPages, page));
+            var start = (current - 1) * perPage;
+            var end = start + perPage;
+            for (var i = 0; i < items.length; i += 1) {
+                items[i].style.display = i >= start && i < end ? "" : "none";
+            }
+            renderPager();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+
+        function pageLink(label, page, disabled, active) {
+            var li = document.createElement("li");
+            li.className = "page-item" + (disabled ? " disabled" : "") + (active ? " active" : "");
+            var a = document.createElement(active ? "span" : "a");
+            a.className = "page-link";
+            a.textContent = label;
+            if (!disabled && !active) {
+                a.href = "#";
+                a.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    renderPage(page);
+                });
+            }
+            li.appendChild(a);
+            return li;
+        }
+
+        function renderPager() {
+            pager.innerHTML = "";
+            pager.appendChild(pageLink("Previous", current - 1, current === 1, false));
+            for (var p = 1; p <= totalPages; p += 1) {
+                pager.appendChild(pageLink(String(p), p, false, p === current));
+            }
+            pager.appendChild(pageLink("Next", current + 1, current === totalPages, false));
+        }
+
+        renderPage(1);
+    })();
+</script>
 
 
 

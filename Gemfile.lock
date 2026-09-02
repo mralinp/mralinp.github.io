@@ -79,6 +79,7 @@ GEM
 
 PLATFORMS
   arm64-darwin-23
+  arm64-darwin-25
   universal-darwin-21
   x64-mingw-ucrt
   x64-unknown
