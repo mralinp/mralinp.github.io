@@ -347,7 +347,8 @@ layout: main
             }
             listEl.innerHTML = "";
             works.forEach(function (w) {
-                var cites = w.doi && citationsByDoi[w.doi] !== undefined ? citationsByDoi[w.doi] : null;
+                // for now I have 1 cite on this paper 
+                var cites = w.doi && citationsByDoi[w.doi] !== undefined ? citationsByDoi[w.doi] : 1;
                 var titleHtml = w.url
                     ? '<a href="' + w.url + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(w.title) + '</a>'
                     : escapeHtml(w.title);
