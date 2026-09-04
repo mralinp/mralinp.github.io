@@ -6,7 +6,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="google-site-verification" content="4-8jdtFeOSWDhx6RjXrSwNrvhvLyFdbACncYtB2Rjzc">
-    <link type="application/atom+xml" rel="alternate" href="http://0.0.0.0:4000/feed.xml" title="mralinp" />
+    <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="mralinp" />
     <title>Installing Tensorflow with GPU Support</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,300,0,0&display=swap" rel="stylesheet">
@@ -263,7 +263,7 @@
         <p class="post-kicker">Article Dispatch</p>
         <h1>Installing Tensorflow with GPU Support</h1>
         
-        <p class="post-brief">The Ultimate Guide To Install The Latest Version Of TensorFlow on your Ubuntu 22.04 With GPU Support.</p>
+        <p class="post-brief">The ultimate guide to installing the latest version of TensorFlow on Ubuntu 22.04 with GPU support.</p>
         
         <div class="post-chip-row">
             <span class="post-chip"><i class="fa fa-user-circle-o"></i> Ali N. Parizi</span>
@@ -298,59 +298,61 @@
         
 
         <div class="post-content">
-            <h1 id="1-intro">1. Intro</h1>
+            <h1 id="1-introduction">1. Introduction</h1>
 
-<p>The rise to prominence of deep learning over the past decade is spectacular. From dominating in almost every single competition with its innovative and groundbreaking technologies, it has also led to several new types of research and training methods. One of the most popular ways to handle deep learning models to solve complex computational problems is with the help of deep frameworks.</p>
+<p>Deep learning’s rise to prominence over the past decade has been remarkable. It has come to dominate nearly every major competition, driven several new lines of research, and given rise to new training methods. One of the most popular ways to handle deep learning models and solve complex computational problems is with the help of a deep learning framework.</p>
 
-<p>One such popular deep learning library to build and construct models to find solutions to numerous tasks is TensorFlow. TensorFlow is regarded as one of the best libraries to solve almost any question related to neural networks and deep learning. While this library performs effectively with most smaller and simpler datasets to achieve tasks on a CPU, its true power lies in the utilization of the Graphics Processing Unit (GPU).</p>
+<p>One of the most popular such libraries is TensorFlow, widely regarded as one of the best tools for tackling almost any problem related to neural networks and deep learning. While it performs well on a CPU for smaller, simpler datasets, its real power comes from running on a Graphics Processing Unit (GPU).</p>
 
-<p>The GPU improvises the performance of this deep learning framework to reach new heights and peaks. However, one of the most annoying issues that deep learning programmers, developers, and enthusiasts face is the trouble of CUDA errors. This experience is rather frustrating for most individuals because it is a common occurrence while dealing with deep learning models.</p>
+<p>Running on a GPU takes this framework’s performance to another level entirely. However, one of the most frustrating parts of working with GPUs in deep learning is dealing with CUDA errors — a headache that most developers, researchers, and enthusiasts run into sooner or later.</p>
 
-<p>In this article, we will explore how to get the latest version of TensorFlow and stay updated with modern technology.</p>
+<p>In this article, we’ll walk through how to install the latest version of TensorFlow with full GPU support.</p>
 
-<p>We will use Anacoda because it’s almost the best python environment for machine-learning operations. To get started, let’s install anacoda on your computer. You can skip this step if you already have installed Anacoda on your Ubuntu machine.</p>
+<p>We’ll use Anaconda, since it’s one of the best Python environments for machine learning work. To get started, let’s install Anaconda on your computer — you can skip this step if you already have it installed on your Ubuntu machine.</p>
 
 <p align="center">
     <img class="img-light-bg" src="/assets/images/posts/blog/installing-tensorflow-gpu/keras-logo.png" width="40%" />
 </p>
 
 <h1 id="2-anaconda">2. Anaconda</h1>
-<p>Anaconda is a distribution of the Python and R programming languages for scientific computing (data science, machine learning applications, large-scale data processing, predictive analytics, etc.), that aims to simplify package management and deployment. The distribution includes data-science packages suitable for Windows, Linux, and macOS. It is developed and maintained by Anaconda, Inc., which was founded by Peter Wang and Travis Oliphant in 2012. As an Anaconda, Inc. product, it is also known as Anaconda Distribution or Anaconda Individual Edition, while other products from the company are Anaconda Team Edition and Anaconda Enterprise Edition, both of which are not free. For me and probably you and almost 90% of people, the free version is good and does the job well for us. Installing anaconda requires installing For Debian based distros (such as Ubuntu) run the command below:</p>
+<p>Anaconda is a distribution of the Python and R programming languages for scientific computing (data science, machine learning, large-scale data processing, predictive analytics, and so on) that aims to simplify package management and deployment. The distribution includes data-science packages for Windows, Linux, and macOS, and is developed and maintained by Anaconda, Inc., founded by Peter Wang and Travis Oliphant in 2012. As an Anaconda, Inc. product it’s also known as Anaconda Distribution or Anaconda Individual Edition, while the company’s paid offerings are Anaconda Team Edition and Anaconda Enterprise Edition. For me, and probably for you and the vast majority of people, the free version does the job just fine.</p>
+
+<p>On Debian-based distros (such as Ubuntu), start by installing a few required system libraries:</p>
 
 <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span><span class="nb">sudo </span>apt <span class="nb">install </span>libgl1-mesa-glx libegl1-mesa libxrandr2 libxrandr2 libxss1 libxcursor1 libxcomposite1 libasound2 libxi6 libxtst6
 </code></pre></div></div>
-<p>For installing Anaconda you can visit its official website <a href="https://www.anaconda.com/products/distribution">anaconda.com</a> and download the latest installer version or Run the command below:</p>
+<p>To install Anaconda, visit its official website <a href="https://www.anaconda.com/products/distribution">anaconda.com</a> and download the latest installer, or run the command below:</p>
 
 <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>curl https://repo.anaconda.com/archive/Anaconda3-2022.10-Linux-x86_64.sh | /bin/bash
 </code></pre></div></div>
 
-<p>Then follow the installation process to complete it. Close and re-open your terminal window for the installation to take effect, or enter the command source ~/.bashrc (or ~/.zshrc if you are using zsh) to refresh the terminal.</p>
+<p>Then follow the installer’s prompts to complete the installation. Close and reopen your terminal window for the installation to take effect, or run <code class="language-plaintext highlighter-rouge">source ~/.bashrc</code> (or <code class="language-plaintext highlighter-rouge">~/.zshrc</code> if you’re using zsh) to refresh the current one.</p>
 
 <blockquote>
-  <p><strong>Note</strong>: The installer prompts you to choose whether to initialize Anaconda Distribution by running <code class="language-plaintext highlighter-rouge">conda init</code>. Anaconda recommends entering “yes”. If you enter “no”, then conda will not modify your shell scripts at all. To initialize after the installation process is done, first run source [PATH TO CONDA]/bin/activate and then run <code class="language-plaintext highlighter-rouge">conda init</code>.</p>
+  <p><strong>Note</strong>: The installer will ask whether to initialize Anaconda Distribution by running <code class="language-plaintext highlighter-rouge">conda init</code>. Anaconda recommends answering “yes” — if you answer “no”, conda won’t modify your shell scripts at all. To initialize later, first run <code class="language-plaintext highlighter-rouge">source [PATH TO CONDA]/bin/activate</code> and then run <code class="language-plaintext highlighter-rouge">conda init</code>.</p>
 </blockquote>
 
-<h2 id="21-creating-conda-environment">2.1 Creating Conda Environment</h2>
+<h2 id="21-creating-a-conda-environment">2.1 Creating a Conda Environment</h2>
 
-<p>Create a new conda environment named tf with the following command.</p>
+<p>Create a new conda environment named <code class="language-plaintext highlighter-rouge">tf</code> with the following command:</p>
 <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>conda create <span class="nt">--name</span> tf <span class="nv">python</span><span class="o">=</span>3.9
 </code></pre></div></div>
-<p>You can deactivate and activate it with the following commands.</p>
+<p>You can deactivate and activate it with the following commands:</p>
 <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>conda deactivate
 <span class="gp">$</span><span class="w"> </span>conda activate tf
 </code></pre></div></div>
 
 <blockquote>
-  <p><strong>Note</strong>: After installing Anaconda, the default conda environment will automatically activated when you open a new terminal. I personally prefer not to activate the environment automatically. You can turn off this feature running <code class="language-plaintext highlighter-rouge">$ conda config --set auto_activate_base False</code>.</p>
+  <p><strong>Note</strong>: After installing Anaconda, the default conda environment activates automatically whenever you open a new terminal. I personally prefer not to activate it automatically — you can turn this off by running <code class="language-plaintext highlighter-rouge">$ conda config --set auto_activate_base False</code>.</p>
 </blockquote>
 
-<h1 id="4-nvidia-driver-cuda-and-cudnn">4. Nvidia Driver, CUDA and cuDNN</h1>
-<p>It is required you to install a proper Nvidia driver on your machine. If you haven’t installed the Nvidia driver on your machine use the command below to install the driver:</p>
+<h1 id="3-nvidia-driver-cuda-and-cudnn">3. Nvidia Driver, CUDA, and cuDNN</h1>
+<p>You’ll need a proper Nvidia driver installed on your machine. If you haven’t installed one yet, use the command below:</p>
 
 <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span><span class="nb">sudo </span>apt <span class="nb">install </span>nvidia-driver-515
 </code></pre></div></div>
 
-<p>To confirm that it is installed properly run the command bellow:</p>
+<p>To confirm it’s installed properly, run the command below:</p>
 
 <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>nvidia-smi
 </code></pre></div></div>
@@ -381,22 +383,22 @@
 +-----------------------------------------------------------------------------+
 </code></pre>
 
-<p>Then install CUDA and cuDNN:</p>
+<p>Now install CUDA and cuDNN:</p>
 
 <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">(tf) $</span><span class="w"> </span>conda <span class="nb">install</span> <span class="nt">-c</span> conda-forge <span class="nv">cudatoolkit</span><span class="o">=</span>11.2.2 <span class="nv">cudnn</span><span class="o">=</span>8.1.0
 </code></pre></div></div>
-<p>Configure the system paths. You can do it with the following command every time you start a new terminal after activating your conda environment.</p>
+<p>Next, configure the system paths. You’ll need to run the following command every time you start a new terminal, after activating your conda environment:</p>
 
 <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">(tf) $</span><span class="w"> </span><span class="nb">export </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$LD_LIBRARY_PATH</span>:<span class="nv">$CONDA_PREFIX</span>/lib/
 </code></pre></div></div>
 
-<p>For your convenience it is recommended that you automate it with the following commands. The system paths will be automatically configured when you activate this conda environment.</p>
+<p>For convenience, it’s recommended that you automate this instead, so the paths are configured automatically whenever you activate the environment:</p>
 
 <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">(tf) $</span><span class="w"> </span><span class="nb">mkdir</span> <span class="nt">-p</span> <span class="nv">$CONDA_PREFIX</span>/etc/conda/activate.d
 <span class="gp">(tf) $</span><span class="w"> </span><span class="nb">echo</span> <span class="s1">'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CONDA_PREFIX/lib/'</span> <span class="o">&gt;</span> <span class="nv">$CONDA_PREFIX</span>/etc/conda/activate.d/env_vars.sh
 </code></pre></div></div>
 
-<p>In Ubuntu 22.04, we have to install NVCC as well:</p>
+<p>On Ubuntu 22.04, you’ll also need to install NVCC:</p>
 
 <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">#</span><span class="w"> </span>Install NVCC
 <span class="gp">(tf) $</span><span class="w"> </span>conda <span class="nb">install</span> <span class="nt">-c</span> nvidia cuda-nvcc<span class="o">=</span>11.3.58
@@ -409,15 +411,15 @@
 <span class="gp">(tf) $</span><span class="w"> </span><span class="nb">cp</span> <span class="nv">$CONDA_PREFIX</span>/lib/libdevice.10.bc <span class="nv">$CONDA_PREFIX</span>/lib/nvvm/libdevice/
 </code></pre></div></div>
 
-<h1 id="5-installing-tensorflow">5. Installing Tensorflow</h1>
-<p>TensorFlow requires a recent version of pip, so upgrade your pip installation to be sure you’re running the latest version.</p>
+<h1 id="4-installing-tensorflow">4. Installing TensorFlow</h1>
+<p>TensorFlow requires a recent version of pip, so upgrade pip first before installing TensorFlow itself:</p>
 <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">(tf) $</span><span class="w"> </span>pip <span class="nb">install</span> <span class="nt">--upgrade</span> pip
 <span class="gp">(tf) $</span><span class="w"> </span>pip <span class="nb">install </span>tensorflow
 </code></pre></div></div>
-<p>Verify the GPU setup:</p>
+<p>Now verify the GPU setup:</p>
 <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">(tf) $</span><span class="w"> </span>python3 <span class="nt">-c</span> <span class="s2">"import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))"</span>
 </code></pre></div></div>
-<p>If a list of GPU devices is returned, you’ve installed TensorFlow successfully.</p>
+<p>If a list of GPU devices is returned, TensorFlow has been installed successfully with GPU support.</p>
 
 <pre><code class="language-output">[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]
 </code></pre>

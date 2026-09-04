@@ -1,4 +1,224 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" /><updated>2026-09-03T03:07:09+03:30</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">mralinp</title><subtitle>My awesome blog</subtitle><entry><title type="html">Bypass The Islamic Republic: V2Ray on Clouds</title><link href="http://0.0.0.0:4000/blog/network/vpn/2024/01/23/v2ray-cf-worker.html" rel="alternate" type="text/html" title="Bypass The Islamic Republic: V2Ray on Clouds" /><published>2024-01-23T18:10:23+03:30</published><updated>2024-01-23T18:10:23+03:30</updated><id>http://0.0.0.0:4000/blog/network/vpn/2024/01/23/v2ray-cf-worker</id><content type="html" xml:base="http://0.0.0.0:4000/blog/network/vpn/2024/01/23/v2ray-cf-worker.html"><![CDATA[<h1 id="0-intro">0. Intro</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2026-09-04T07:59:16+03:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">mralinp</title><subtitle>My awesome blog</subtitle><entry><title type="html">Smart Card: Building Your First Applet with jCardSim</title><link href="http://localhost:4000/blog/embeded/smart-card/2026/09/04/smart-card-dev.html" rel="alternate" type="text/html" title="Smart Card: Building Your First Applet with jCardSim" /><published>2026-09-04T07:50:01+03:30</published><updated>2026-09-04T07:50:01+03:30</updated><id>http://localhost:4000/blog/embeded/smart-card/2026/09/04/smart-card-dev</id><content type="html" xml:base="http://localhost:4000/blog/embeded/smart-card/2026/09/04/smart-card-dev.html"><![CDATA[<h1 id="0-recap-and-the-goal">0. Recap and the goal</h1>
+
+<p>In the <a href="/blog/embeded/smart-card/2023/07/19/smart-card-intro.html">previous post</a> we talked about what smart cards are, how they work, and what an applet is in the Java Card world: a small, isolated program that runs inside the card’s secure microprocessor and talks to the outside world through APDU commands.</p>
+
+<p>That post ended with a promise: it’s time to actually write one.</p>
+
+<p>But I also want to be upfront about <em>why</em> I’m going down this path. The real target of this series is not “print hello world on a card.” It’s building a hardware security token, a smart card that can act as a <strong>FIDO/U2F security key</strong>. FIDO keys (like a YubiKey) are, under the hood, exactly this kind of device: a secure element running an applet that generates and stores key pairs, signs authentication challenges, and never lets the private key leave the chip. Java Card gives us the same building blocks: isolated applet execution, on-card cryptography, and a well-defined command/response protocol over APDUs.</p>
+
+<p>Before we touch real hardware, cryptography, or the FIDO protocol though, we need to get comfortable with the basics: writing an applet, installing it, and exchanging APDUs with it. And we’re going to do all of that <strong>without a physical smart card or reader</strong>, using a simulator called jCardSim.</p>
+
+<h1 id="1-why-simulate-the-card-first">1. Why simulate the card first</h1>
+
+<p>Real Java Card smart cards are cheap, but the development loop around them is not fun:</p>
+
+<ul>
+  <li>You need a physical card, a compatible reader, and often a card that accepts your own applets (many bank/SIM cards are locked down).</li>
+  <li>Every test cycle means: compile, convert to a <code class="language-plaintext highlighter-rouge">.cap</code> file, load it onto the card over a reader, run it, and if something’s wrong, erase and repeat.</li>
+  <li>Debugging is close to impossible. There’s no breakpoint, no stack trace, just a status word telling you something went wrong.</li>
+</ul>
+
+<p>That’s a painful way to learn a new, restricted dialect of Java. This is exactly the gap <strong>jCardSim</strong> fills.</p>
+
+<h1 id="2-what-is-jcardsim">2. What is jCardSim</h1>
+
+<p><a href="https://github.com/licel/jcardsim">jCardSim</a> is an open source, pure-Java simulator for the Java Card runtime environment (JCRE). It implements enough of the Java Card API (<code class="language-plaintext highlighter-rouge">javacard.framework</code>, <code class="language-plaintext highlighter-rouge">javacard.security</code>, and friends) to load and run real applet code, the same <code class="language-plaintext highlighter-rouge">.class</code> files you’d eventually convert into a <code class="language-plaintext highlighter-rouge">.cap</code> file for a physical card, entirely inside a JVM on your laptop.</p>
+
+<p>A few things that make it genuinely useful, not just a toy:</p>
+
+<ul>
+  <li><strong>No hardware required.</strong> You write an applet, install it into a simulated card object, and start sending it APDUs immediately.</li>
+  <li><strong>It speaks the same language as <code class="language-plaintext highlighter-rouge">javax.smartcardio</code>.</strong> jCardSim exposes a <code class="language-plaintext highlighter-rouge">CardSimulator</code> that you drive with the standard Java smart card I/O API (<code class="language-plaintext highlighter-rouge">CommandAPDU</code> / <code class="language-plaintext highlighter-rouge">ResponseAPDU</code>), the exact same classes you’d use to talk to a real card through a PC/SC reader. That means code you write against the simulator is structurally the same code you’d use against real hardware later.</li>
+  <li><strong>It’s fast enough for real unit testing.</strong> We used it on real projects to write automated tests for applet logic (state machines, PIN verification, data encoding) in a normal CI pipeline, no reader, no lab, no flaky USB drivers.</li>
+  <li><strong>It’s a stepping stone, not a replacement.</strong> The simulator doesn’t emulate every timing quirk or memory constraint of a real chip, so the last mile of testing on actual hardware still matters. But it removes 90% of the friction from the early development loop.</li>
+</ul>
+
+<p>For prototyping something like a FIDO applet, where you’ll be iterating a lot on command parsing, state handling, and cryptographic flows, this is exactly the tool you want before you ever plug in a real card.</p>
+
+<h1 id="3-setting-up-the-project">3. Setting up the project</h1>
+
+<p>A minimal Java Card + jCardSim project needs two sets of dependencies:</p>
+
+<ol>
+  <li>The <strong>Java Card Classic API</strong> (<code class="language-plaintext highlighter-rouge">javacard.framework</code>, etc.), just to compile against the applet interfaces. jCardSim ships an implementation of these on the classpath, so for a simulation-only project you don’t need Oracle/Global Platform’s official Java Card Development Kit at all.</li>
+  <li><strong>jCardSim</strong> itself, to get <code class="language-plaintext highlighter-rouge">CardSimulator</code>, <code class="language-plaintext highlighter-rouge">AIDUtil</code>, and the simulated runtime classes.</li>
+</ol>
+
+<p>With Maven, a <code class="language-plaintext highlighter-rouge">pom.xml</code> for a small sandbox project looks roughly like this:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;dependencies&gt;</span>
+    <span class="nt">&lt;dependency&gt;</span>
+        <span class="nt">&lt;groupId&gt;</span>com.licel<span class="nt">&lt;/groupId&gt;</span>
+        <span class="nt">&lt;artifactId&gt;</span>jcardsim<span class="nt">&lt;/artifactId&gt;</span>
+        <span class="nt">&lt;version&gt;</span>3.0.5-SNAPSHOT<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;/dependency&gt;</span>
+<span class="nt">&lt;/dependencies&gt;</span>
+</code></pre></div></div>
+
+<p>The exact coordinates and available versions have moved around over the years (the project isn’t always on Maven Central), so if that dependency doesn’t resolve, grab the jar directly from the <a href="https://github.com/licel/jcardsim">jCardSim GitHub releases</a> or build it from source with the repo’s own instructions, and install it into your local <code class="language-plaintext highlighter-rouge">.m2</code> repository. Either way, once the jar is on your classpath you’re ready to write the applet itself.</p>
+
+<h1 id="4-our-first-applet-generate-a-key-pair-and-sign-a-challenge">4. Our first applet: generate a key pair and sign a challenge</h1>
+
+<p>A “Hello World” applet wouldn’t really tell us anything about the road ahead, so let’s skip straight to the thing a security key actually does: <strong>generate a key pair on the card, keep the private key locked inside it forever, and sign whatever challenge it’s asked to sign.</strong> That’s the entire trust model behind FIDO/U2F, register a public key once, then prove possession of the matching private key on every login, and it’s a handful of calls into <code class="language-plaintext highlighter-rouge">javacard.security</code>.</p>
+
+<p>Every Java Card applet has the same shape: an <code class="language-plaintext highlighter-rouge">install()</code> factory method the JCRE calls when the applet is loaded, and a <code class="language-plaintext highlighter-rouge">process()</code> method the JCRE calls for every APDU sent to it. Ours generates its key pair once, at install time, and exposes two instructions: one to read back the public key, one to sign a challenge with the private key.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.mralinp.simplesign</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javacard.framework.APDU</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javacard.framework.Applet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javacard.framework.ISO7816</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javacard.framework.ISOException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javacard.security.KeyBuilder</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javacard.security.KeyPair</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javacard.security.RSAPublicKey</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javacard.security.Signature</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SimpleSignApplet</span> <span class="kd">extends</span> <span class="nc">Applet</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">byte</span> <span class="no">INS_SIGN</span> <span class="o">=</span> <span class="o">(</span><span class="kt">byte</span><span class="o">)</span> <span class="mh">0x01</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">byte</span> <span class="no">INS_GET_PUBLIC_KEY</span> <span class="o">=</span> <span class="o">(</span><span class="kt">byte</span><span class="o">)</span> <span class="mh">0x02</span><span class="o">;</span>
+
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">KeyPair</span> <span class="n">keyPair</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">Signature</span> <span class="n">signer</span><span class="o">;</span>
+
+    <span class="kd">protected</span> <span class="nf">SimpleSignApplet</span><span class="o">()</span> <span class="o">{</span>
+        <span class="c1">// Generate a fresh 1024-bit RSA key pair the moment the applet is installed.</span>
+        <span class="c1">// The private key never leaves this object, and never leaves the card.</span>
+        <span class="n">keyPair</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">KeyPair</span><span class="o">(</span><span class="nc">KeyPair</span><span class="o">.</span><span class="na">ALG_RSA_CRT</span><span class="o">,</span> <span class="nc">KeyBuilder</span><span class="o">.</span><span class="na">LENGTH_RSA_1024</span><span class="o">);</span>
+        <span class="n">keyPair</span><span class="o">.</span><span class="na">genKeyPair</span><span class="o">();</span>
+
+        <span class="n">signer</span> <span class="o">=</span> <span class="nc">Signature</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="nc">Signature</span><span class="o">.</span><span class="na">ALG_RSA_SHA_PKCS1</span><span class="o">,</span> <span class="kc">false</span><span class="o">);</span>
+        <span class="n">register</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">install</span><span class="o">(</span><span class="kt">byte</span><span class="o">[]</span> <span class="n">bArray</span><span class="o">,</span> <span class="kt">short</span> <span class="n">bOffset</span><span class="o">,</span> <span class="kt">byte</span> <span class="n">bLength</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">new</span> <span class="nf">SimpleSignApplet</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">process</span><span class="o">(</span><span class="no">APDU</span> <span class="n">apdu</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">selectingApplet</span><span class="o">())</span> <span class="o">{</span>
+            <span class="k">return</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="kt">byte</span><span class="o">[]</span> <span class="n">buffer</span> <span class="o">=</span> <span class="n">apdu</span><span class="o">.</span><span class="na">getBuffer</span><span class="o">();</span>
+        <span class="kt">byte</span> <span class="n">instruction</span> <span class="o">=</span> <span class="n">buffer</span><span class="o">[</span><span class="no">ISO7816</span><span class="o">.</span><span class="na">OFFSET_INS</span><span class="o">];</span>
+
+        <span class="k">switch</span> <span class="o">(</span><span class="n">instruction</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">case</span> <span class="nl">INS_GET_PUBLIC_KEY:</span>
+                <span class="n">sendPublicKey</span><span class="o">(</span><span class="n">apdu</span><span class="o">);</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="nl">INS_SIGN:</span>
+                <span class="n">signChallenge</span><span class="o">(</span><span class="n">apdu</span><span class="o">);</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="k">default</span><span class="o">:</span>
+                <span class="nc">ISOException</span><span class="o">.</span><span class="na">throwIt</span><span class="o">(</span><span class="no">ISO7816</span><span class="o">.</span><span class="na">SW_INS_NOT_SUPPORTED</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">sendPublicKey</span><span class="o">(</span><span class="no">APDU</span> <span class="n">apdu</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">byte</span><span class="o">[]</span> <span class="n">buffer</span> <span class="o">=</span> <span class="n">apdu</span><span class="o">.</span><span class="na">getBuffer</span><span class="o">();</span>
+        <span class="nc">RSAPublicKey</span> <span class="n">publicKey</span> <span class="o">=</span> <span class="o">(</span><span class="nc">RSAPublicKey</span><span class="o">)</span> <span class="n">keyPair</span><span class="o">.</span><span class="na">getPublic</span><span class="o">();</span>
+
+        <span class="c1">// buffer[0] holds the exponent length, so the caller knows where the modulus starts.</span>
+        <span class="kt">short</span> <span class="n">exponentLength</span> <span class="o">=</span> <span class="n">publicKey</span><span class="o">.</span><span class="na">getExponent</span><span class="o">(</span><span class="n">buffer</span><span class="o">,</span> <span class="o">(</span><span class="kt">short</span><span class="o">)</span> <span class="mi">1</span><span class="o">);</span>
+        <span class="n">buffer</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="kt">byte</span><span class="o">)</span> <span class="n">exponentLength</span><span class="o">;</span>
+        <span class="kt">short</span> <span class="n">modulusLength</span> <span class="o">=</span> <span class="n">publicKey</span><span class="o">.</span><span class="na">getModulus</span><span class="o">(</span><span class="n">buffer</span><span class="o">,</span> <span class="o">(</span><span class="kt">short</span><span class="o">)</span> <span class="o">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">exponentLength</span><span class="o">));</span>
+
+        <span class="n">apdu</span><span class="o">.</span><span class="na">setOutgoingAndSend</span><span class="o">((</span><span class="kt">short</span><span class="o">)</span> <span class="mi">0</span><span class="o">,</span> <span class="o">(</span><span class="kt">short</span><span class="o">)</span> <span class="o">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">exponentLength</span> <span class="o">+</span> <span class="n">modulusLength</span><span class="o">));</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">signChallenge</span><span class="o">(</span><span class="no">APDU</span> <span class="n">apdu</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">byte</span><span class="o">[]</span> <span class="n">buffer</span> <span class="o">=</span> <span class="n">apdu</span><span class="o">.</span><span class="na">getBuffer</span><span class="o">();</span>
+        <span class="n">apdu</span><span class="o">.</span><span class="na">setIncomingAndReceive</span><span class="o">();</span>
+        <span class="kt">short</span> <span class="n">challengeLength</span> <span class="o">=</span> <span class="n">apdu</span><span class="o">.</span><span class="na">getIncomingLength</span><span class="o">();</span>
+
+        <span class="n">signer</span><span class="o">.</span><span class="na">init</span><span class="o">(</span><span class="n">keyPair</span><span class="o">.</span><span class="na">getPrivate</span><span class="o">(),</span> <span class="nc">Signature</span><span class="o">.</span><span class="na">MODE_SIGN</span><span class="o">);</span>
+        <span class="kt">short</span> <span class="n">signatureLength</span> <span class="o">=</span> <span class="n">signer</span><span class="o">.</span><span class="na">sign</span><span class="o">(</span><span class="n">buffer</span><span class="o">,</span> <span class="no">ISO7816</span><span class="o">.</span><span class="na">OFFSET_CDATA</span><span class="o">,</span> <span class="n">challengeLength</span><span class="o">,</span> <span class="n">buffer</span><span class="o">,</span> <span class="o">(</span><span class="kt">short</span><span class="o">)</span> <span class="mi">0</span><span class="o">);</span>
+
+        <span class="n">apdu</span><span class="o">.</span><span class="na">setOutgoingAndSend</span><span class="o">((</span><span class="kt">short</span><span class="o">)</span> <span class="mi">0</span><span class="o">,</span> <span class="n">signatureLength</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>A couple of things worth calling out for anyone new to this API, since it looks like Java but behaves like embedded C in places:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">install()</code> is a <strong>static factory</strong>, not a constructor you call yourself. The JCRE invokes it when the applet is loaded onto the card, and it’s responsible for constructing the applet instance and calling <code class="language-plaintext highlighter-rouge">register()</code> so the card knows this applet exists and can be selected. Key generation happens right there, once, up front, exactly the way a real token generates its device key the moment it’s provisioned.</li>
+  <li><code class="language-plaintext highlighter-rouge">process()</code> is called for <strong>every single APDU</strong>, including the <code class="language-plaintext highlighter-rouge">SELECT</code> command used to activate the applet before anything else can happen. That’s why the very first thing we do is check <code class="language-plaintext highlighter-rouge">selectingApplet()</code> and return early, we don’t want to fall into our instruction switch for a <code class="language-plaintext highlighter-rouge">SELECT</code>.</li>
+  <li>Everything happens through a <strong>shared APDU buffer</strong> (<code class="language-plaintext highlighter-rouge">apdu.getBuffer()</code>). There’s no heap of objects being passed around, incoming challenge bytes are read straight out of the buffer and the signature is written straight back into it. This is a direct consequence of how little RAM a real smart card chip has.</li>
+  <li>The <code class="language-plaintext highlighter-rouge">RSAPrivateCrtKey</code> half of <code class="language-plaintext highlighter-rouge">keyPair</code> is never read, copied, or sent anywhere in this code. It only ever gets handed to <code class="language-plaintext highlighter-rouge">signer.init(...)</code>, which uses it internally to produce a signature. That’s the whole point: the card proves it holds the key without ever exposing it.</li>
+</ul>
+
+<p>We’re using RSA here rather than the ECDSA over P-256 that real FIDO devices use, mainly because RSA key generation needs nothing beyond a modulus length, while EC key generation on Java Card normally requires setting explicit curve domain parameters first. It keeps this first example short. When we build the real FIDO applet, we’ll switch <code class="language-plaintext highlighter-rouge">KeyPair.ALG_RSA_CRT</code> for <code class="language-plaintext highlighter-rouge">KeyPair.ALG_EC_FP</code> and set up the P-256 domain parameters properly.</p>
+
+<h1 id="5-running-it-in-jcardsim">5. Running it in jCardSim</h1>
+
+<p>Now the payoff: let’s install this applet into a simulated card, ask it for its public key, hand it a challenge to sign, and verify the signature ourselves, all without a physical card or reader.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.mralinp.simplesign</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.licel.jcardsim.smartcardio.CardSimulator</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.licel.jcardsim.utils.AIDUtil</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javacard.framework.AID</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.smartcardio.CommandAPDU</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.smartcardio.ResponseAPDU</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.math.BigInteger</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.security.KeyFactory</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.security.PublicKey</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.security.Signature</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.security.spec.RSAPublicKeySpec</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SimpleSignTest</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="c1">// 1. Create a simulated card and install our applet on it</span>
+        <span class="nc">CardSimulator</span> <span class="n">simulator</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">CardSimulator</span><span class="o">();</span>
+        <span class="no">AID</span> <span class="n">appletAID</span> <span class="o">=</span> <span class="nc">AIDUtil</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="s">"A000000003000002"</span><span class="o">);</span>
+        <span class="n">simulator</span><span class="o">.</span><span class="na">installApplet</span><span class="o">(</span><span class="n">appletAID</span><span class="o">,</span> <span class="nc">SimpleSignApplet</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+        <span class="n">simulator</span><span class="o">.</span><span class="na">selectApplet</span><span class="o">(</span><span class="n">appletAID</span><span class="o">);</span>
+
+        <span class="c1">// 2. Ask the card for the public half of the key it generated at install time</span>
+        <span class="nc">ResponseAPDU</span> <span class="n">pubKeyResponse</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="na">transmitCommand</span><span class="o">(</span><span class="k">new</span> <span class="nc">CommandAPDU</span><span class="o">(</span><span class="mh">0x00</span><span class="o">,</span> <span class="mh">0x02</span><span class="o">,</span> <span class="mh">0x00</span><span class="o">,</span> <span class="mh">0x00</span><span class="o">));</span>
+        <span class="kt">byte</span><span class="o">[]</span> <span class="n">pubKeyBytes</span> <span class="o">=</span> <span class="n">pubKeyResponse</span><span class="o">.</span><span class="na">getData</span><span class="o">();</span>
+
+        <span class="kt">int</span> <span class="n">exponentLength</span> <span class="o">=</span> <span class="n">pubKeyBytes</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">&amp;</span> <span class="mh">0xFF</span><span class="o">;</span>
+        <span class="nc">BigInteger</span> <span class="n">exponent</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BigInteger</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">copyOfRange</span><span class="o">(</span><span class="n">pubKeyBytes</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">exponentLength</span><span class="o">));</span>
+        <span class="nc">BigInteger</span> <span class="n">modulus</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BigInteger</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">copyOfRange</span><span class="o">(</span><span class="n">pubKeyBytes</span><span class="o">,</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">exponentLength</span><span class="o">,</span> <span class="n">pubKeyBytes</span><span class="o">.</span><span class="na">length</span><span class="o">));</span>
+
+        <span class="nc">PublicKey</span> <span class="n">publicKey</span> <span class="o">=</span> <span class="nc">KeyFactory</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="s">"RSA"</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">generatePublic</span><span class="o">(</span><span class="k">new</span> <span class="nc">RSAPublicKeySpec</span><span class="o">(</span><span class="n">modulus</span><span class="o">,</span> <span class="n">exponent</span><span class="o">));</span>
+
+        <span class="c1">// 3. Send a "login challenge" and have the card sign it with its private key</span>
+        <span class="kt">byte</span><span class="o">[]</span> <span class="n">challenge</span> <span class="o">=</span> <span class="s">"login-challenge-42"</span><span class="o">.</span><span class="na">getBytes</span><span class="o">();</span>
+        <span class="nc">ResponseAPDU</span> <span class="n">signResponse</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="na">transmitCommand</span><span class="o">(</span><span class="k">new</span> <span class="nc">CommandAPDU</span><span class="o">(</span><span class="mh">0x00</span><span class="o">,</span> <span class="mh">0x01</span><span class="o">,</span> <span class="mh">0x00</span><span class="o">,</span> <span class="mh">0x00</span><span class="o">,</span> <span class="n">challenge</span><span class="o">));</span>
+        <span class="kt">byte</span><span class="o">[]</span> <span class="n">signature</span> <span class="o">=</span> <span class="n">signResponse</span><span class="o">.</span><span class="na">getData</span><span class="o">();</span>
+
+        <span class="c1">// 4. Verify the signature ourselves, exactly like a server would on the other end</span>
+        <span class="nc">Signature</span> <span class="n">verifier</span> <span class="o">=</span> <span class="nc">Signature</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="s">"SHA1withRSA"</span><span class="o">);</span>
+        <span class="n">verifier</span><span class="o">.</span><span class="na">initVerify</span><span class="o">(</span><span class="n">publicKey</span><span class="o">);</span>
+        <span class="n">verifier</span><span class="o">.</span><span class="na">update</span><span class="o">(</span><span class="n">challenge</span><span class="o">);</span>
+
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Signature valid: "</span> <span class="o">+</span> <span class="n">verifier</span><span class="o">.</span><span class="na">verify</span><span class="o">(</span><span class="n">signature</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Running it prints:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Signature valid: true
+</code></pre></div></div>
+
+<p>Nothing about steps 3 and 4 talked to the card, the private key stayed inside the simulated chip the entire time. We only ever handed the card a challenge and got a signature back, then verified that signature ourselves using nothing but the public key it gave us in step 2. That round trip, hand the token a challenge, get back a signature you can verify against a previously-registered public key, is the actual core of how a FIDO/U2F authentication works.</p>
+
+<h1 id="6-where-this-is-going">6. Where this is going</h1>
+
+<p>This applet is already doing the two things a real security key needs to do: keep a private key that never leaves the chip, and prove possession of it by signing on demand. What’s missing is the FIDO/U2F protocol wrapped around that behaviour, a <code class="language-plaintext highlighter-rouge">REGISTER</code> command that returns a properly formatted attestation, an <code class="language-plaintext highlighter-rouge">AUTHENTICATE</code> command that tracks and increments a usage counter, ECDSA over the P-256 curve instead of RSA, and key handles instead of a single fixed key pair.</p>
+
+<p>In the next post, we’ll build on this same jCardSim setup and start implementing the actual FIDO U2F command set on top of it, one instruction at a time, before ever touching a real card. Stay tuned.</p>]]></content><author><name>Ali N. Parizi</name></author><category term="blog" /><category term="embeded" /><category term="smart-card" /><summary type="html"><![CDATA[0. Recap and the goal]]></summary></entry><entry><title type="html">Bypass The Islamic Republic: V2Ray on Clouds</title><link href="http://localhost:4000/blog/network/vpn/2024/01/23/v2ray-cf-worker.html" rel="alternate" type="text/html" title="Bypass The Islamic Republic: V2Ray on Clouds" /><published>2024-01-23T18:10:23+03:30</published><updated>2024-01-23T18:10:23+03:30</updated><id>http://localhost:4000/blog/network/vpn/2024/01/23/v2ray-cf-worker</id><content type="html" xml:base="http://localhost:4000/blog/network/vpn/2024/01/23/v2ray-cf-worker.html"><![CDATA[<h1 id="0-intro">0. Intro</h1>
 
 <p align="center">
 <img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2KfOnCxEoRIFcSZjL5r6BY/768f898d3af1bb682823bc10e521a8a7/Cloudflare-logo.png" width="50%" />
@@ -15,7 +235,7 @@
 
 <h1 id="3-optional-but-recommended-be-clean-use-a-clean-ip-address">3. (Optional but recommended) Be Clean (Use a clean IP address)</h1>
 
-<h1 id="4-references">4. References</h1>]]></content><author><name>Ali N. Parizi</name></author><category term="blog" /><category term="network" /><category term="vpn" /><summary type="html"><![CDATA[0. Intro]]></summary></entry><entry><title type="html">UNet: One of the most simple networks for segmentation</title><link href="http://0.0.0.0:4000/blog/ai/machine-learning/deep-learning/2023/08/20/unet.html" rel="alternate" type="text/html" title="UNet: One of the most simple networks for segmentation" /><published>2023-08-20T23:02:23+03:30</published><updated>2023-08-20T23:02:23+03:30</updated><id>http://0.0.0.0:4000/blog/ai/machine-learning/deep-learning/2023/08/20/unet</id><content type="html" xml:base="http://0.0.0.0:4000/blog/ai/machine-learning/deep-learning/2023/08/20/unet.html"><![CDATA[<h1 id="1-intro">1. Intro</h1>
+<h1 id="4-references">4. References</h1>]]></content><author><name>Ali N. Parizi</name></author><category term="blog" /><category term="network" /><category term="vpn" /><summary type="html"><![CDATA[0. Intro]]></summary></entry><entry><title type="html">UNet: One of the most simple networks for segmentation</title><link href="http://localhost:4000/blog/ai/machine-learning/deep-learning/2023/08/20/unet.html" rel="alternate" type="text/html" title="UNet: One of the most simple networks for segmentation" /><published>2023-08-20T23:02:23+03:30</published><updated>2023-08-20T23:02:23+03:30</updated><id>http://localhost:4000/blog/ai/machine-learning/deep-learning/2023/08/20/unet</id><content type="html" xml:base="http://localhost:4000/blog/ai/machine-learning/deep-learning/2023/08/20/unet.html"><![CDATA[<h1 id="1-intro">1. Intro</h1>
 <p>The u-net is convolutional network architecture for fast and precise segmentation of images. Up to now it has outperformed the prior best method (a sliding-window convolutional network) on the ISBI challenge for segmentation of neuronal structures in electron microscopic stacks. It has won the Grand Challenge for Computer-Automated Detection of Caries in Bitewing Radiography at ISBI 2015, and it has won the Cell Tracking Challenge at ISBI 2015 on the two most challenging transmitted light microscopy categories (Phase contrast and DIC microscopy) by a large margin.</p>
 
 <p>UNet is a convolutional neural network (CNN) architecture used for image segmentation tasks. It was introduced by researchers Olaf Ronneberger, Philipp Fischer, and Thomas Brox in 2015. The name “UNet” comes from its U-shaped architecture, which consists of a contracting path (left side) and an expansive path (right side), connected by a central bottleneck.</p>
@@ -43,7 +263,8 @@
     <img src="/assets/images/posts/blog/unet/arch.png" />
     <br />
     <span>architecture (example for 32x32 pixels in the lowest resolution). Each blue box corresponds to a multi-channel feature map. The number of channels is denoted on top of the box. The x-y-size is provided at the lower left edge of the box. White boxes represent copied feature maps. The arrows denote the different operations.</span>
-</p>]]></content><author><name>Ali N. Parizi</name></author><category term="blog" /><category term="ai" /><category term="machine-learning" /><category term="deep-learning" /><summary type="html"><![CDATA[1. Intro The u-net is convolutional network architecture for fast and precise segmentation of images. Up to now it has outperformed the prior best method (a sliding-window convolutional network) on the ISBI challenge for segmentation of neuronal structures in electron microscopic stacks. It has won the Grand Challenge for Computer-Automated Detection of Caries in Bitewing Radiography at ISBI 2015, and it has won the Cell Tracking Challenge at ISBI 2015 on the two most challenging transmitted light microscopy categories (Phase contrast and DIC microscopy) by a large margin.]]></summary></entry><entry><title type="html">Smart Card: An Introduction to smart card development</title><link href="http://0.0.0.0:4000/blog/embeded/smart-card/2023/07/19/smart-card-intro.html" rel="alternate" type="text/html" title="Smart Card: An Introduction to smart card development" /><published>2023-07-19T20:50:01+03:30</published><updated>2023-07-19T20:50:01+03:30</updated><id>http://0.0.0.0:4000/blog/embeded/smart-card/2023/07/19/smart-card-intro</id><content type="html" xml:base="http://0.0.0.0:4000/blog/embeded/smart-card/2023/07/19/smart-card-intro.html"><![CDATA[<h1 id="0-introduction">0. Introduction</h1>
+</p>]]></content><author><name>Ali N. Parizi</name></author><category term="blog" /><category term="ai" /><category term="machine-learning" /><category term="deep-learning" /><summary type="html"><![CDATA[1. Intro The u-net is convolutional network architecture for fast and precise segmentation of images. Up to now it has outperformed the prior best method (a sliding-window convolutional network) on the ISBI challenge for segmentation of neuronal structures in electron microscopic stacks. It has won the Grand Challenge for Computer-Automated Detection of Caries in Bitewing Radiography at ISBI 2015, and it has won the Cell Tracking Challenge at ISBI 2015 on the two most challenging transmitted light microscopy categories (Phase contrast and DIC microscopy) by a large margin.]]></summary></entry><entry><title type="html">Smart Card: An Introduction to smart card development (Part II)</title><link href="http://localhost:4000/blog/embeded/smart-card/2023/07/19/smart-card-dev.html" rel="alternate" type="text/html" title="Smart Card: An Introduction to smart card development (Part II)" /><published>2023-07-19T20:50:01+03:30</published><updated>2023-07-19T20:50:01+03:30</updated><id>http://localhost:4000/blog/embeded/smart-card/2023/07/19/smart-card-dev</id><content type="html" xml:base="http://localhost:4000/blog/embeded/smart-card/2023/07/19/smart-card-dev.html"><![CDATA[<h1 id="0-intro">0. Intro</h1>
+<p>Ayo,</p>]]></content><author><name>Ali N. Parizi</name></author><category term="blog" /><category term="embeded" /><category term="smart-card" /><summary type="html"><![CDATA[0. Intro Ayo,]]></summary></entry><entry><title type="html">Smart Card: An Introduction to smart card development</title><link href="http://localhost:4000/blog/embeded/smart-card/2023/07/19/smart-card-intro.html" rel="alternate" type="text/html" title="Smart Card: An Introduction to smart card development" /><published>2023-07-19T20:50:01+03:30</published><updated>2023-07-19T20:50:01+03:30</updated><id>http://localhost:4000/blog/embeded/smart-card/2023/07/19/smart-card-intro</id><content type="html" xml:base="http://localhost:4000/blog/embeded/smart-card/2023/07/19/smart-card-intro.html"><![CDATA[<h1 id="0-introduction">0. Introduction</h1>
 
 <p>Smart cards are small, pocket-sized cards that contain an embedded microprocessor and memory chip. These cards are often made of plastic, and they look similar to traditional credit or debit cards, but they possess advanced technology that sets them apart. Smart cards are designed to securely store and process data, making them a powerful tool for various applications in today’s digital world.</p>
 
@@ -187,8 +408,7 @@ Once the applet is thoroughly tested and verified, it can be deployed on the des
 
 <p>Please note that writing applets for smart cards requires expertise in smart card development and may vary depending on the specific smart card’s capabilities and the programming language supported by its microprocessor. It’s essential to refer to the smart card manufacturer’s documentation and Java Card specifications for detailed guidelines and best practices when developing applets for smart cards.</p>
 
-<p>Next time i prepare an article about developing an applet and playing around with this old technology, stay tuned…</p>]]></content><author><name>Ali N. Parizi</name></author><category term="blog" /><category term="embeded" /><category term="smart-card" /><summary type="html"><![CDATA[0. Introduction]]></summary></entry><entry><title type="html">Smart Card: An Introduction to smart card development (Part II)</title><link href="http://0.0.0.0:4000/blog/embeded/smart-card/2023/07/19/smart-card-dev.html" rel="alternate" type="text/html" title="Smart Card: An Introduction to smart card development (Part II)" /><published>2023-07-19T20:50:01+03:30</published><updated>2023-07-19T20:50:01+03:30</updated><id>http://0.0.0.0:4000/blog/embeded/smart-card/2023/07/19/smart-card-dev</id><content type="html" xml:base="http://0.0.0.0:4000/blog/embeded/smart-card/2023/07/19/smart-card-dev.html"><![CDATA[<h1 id="0-intro">0. Intro</h1>
-<p>Ayo,</p>]]></content><author><name>Ali N. Parizi</name></author><category term="blog" /><category term="embeded" /><category term="smart-card" /><summary type="html"><![CDATA[0. Intro Ayo,]]></summary></entry><entry><title type="html">Git Flow: A reposotery management heirachy</title><link href="http://0.0.0.0:4000/software/git/2023/03/28/git-flow.html" rel="alternate" type="text/html" title="Git Flow: A reposotery management heirachy" /><published>2023-03-28T01:21:12+03:30</published><updated>2023-03-28T01:21:12+03:30</updated><id>http://0.0.0.0:4000/software/git/2023/03/28/git-flow</id><content type="html" xml:base="http://0.0.0.0:4000/software/git/2023/03/28/git-flow.html"><![CDATA[<h1 id="1-intro">1. Intro</h1>
+<p>Next time i prepare an article about developing an applet and playing around with this old technology, stay tuned…</p>]]></content><author><name>Ali N. Parizi</name></author><category term="blog" /><category term="embeded" /><category term="smart-card" /><summary type="html"><![CDATA[0. Introduction]]></summary></entry><entry><title type="html">Git Flow: A reposotery management heirachy</title><link href="http://localhost:4000/software/git/2023/03/28/git-flow.html" rel="alternate" type="text/html" title="Git Flow: A reposotery management heirachy" /><published>2023-03-28T01:21:12+03:30</published><updated>2023-03-28T01:21:12+03:30</updated><id>http://localhost:4000/software/git/2023/03/28/git-flow</id><content type="html" xml:base="http://localhost:4000/software/git/2023/03/28/git-flow.html"><![CDATA[<h1 id="1-intro">1. Intro</h1>
 
 <p>Gitflow is a legacy Git workflow that was originally a disruptive and novel strategy for managing Git branches. Gitflow has fallen in popularity in favor of trunk-based workflows, which are now considered best practices for modern continuous software development and DevOps practices. Gitflow also can be challenging to use with CI/CD. This post details Gitflow for historical purposes.</p>
 
@@ -202,7 +422,7 @@ Once the applet is thoroughly tested and verified, it can be deployed on the des
     <img class="img-light-bg" src="/assets/images/posts/blog/git-flow/git-flow.svg" />
     <br />
     <span>Figure-1: Git flow schema</span>
-</p>]]></content><author><name>Ali N. Parizi</name></author><category term="software" /><category term="git" /><summary type="html"><![CDATA[1. Intro]]></summary></entry><entry><title type="html">PyTorch Tutorial, Part 1: Installation and The basics</title><link href="http://0.0.0.0:4000/project/ai/machine-learning/deep-learning/python/2023/03/27/pytorch-tutorial-1.html" rel="alternate" type="text/html" title="PyTorch Tutorial, Part 1: Installation and The basics" /><published>2023-03-27T17:15:23+03:30</published><updated>2023-03-27T17:15:23+03:30</updated><id>http://0.0.0.0:4000/project/ai/machine-learning/deep-learning/python/2023/03/27/pytorch-tutorial-1</id><content type="html" xml:base="http://0.0.0.0:4000/project/ai/machine-learning/deep-learning/python/2023/03/27/pytorch-tutorial-1.html"><![CDATA[<h1 id="1-intro">1. Intro</h1>
+</p>]]></content><author><name>Ali N. Parizi</name></author><category term="software" /><category term="git" /><summary type="html"><![CDATA[1. Intro]]></summary></entry><entry><title type="html">PyTorch Tutorial, Part 1: Installation and The basics</title><link href="http://localhost:4000/project/ai/machine-learning/deep-learning/python/2023/03/27/pytorch-tutorial-1.html" rel="alternate" type="text/html" title="PyTorch Tutorial, Part 1: Installation and The basics" /><published>2023-03-27T17:15:23+03:30</published><updated>2023-03-27T17:15:23+03:30</updated><id>http://localhost:4000/project/ai/machine-learning/deep-learning/python/2023/03/27/pytorch-tutorial-1</id><content type="html" xml:base="http://localhost:4000/project/ai/machine-learning/deep-learning/python/2023/03/27/pytorch-tutorial-1.html"><![CDATA[<h1 id="1-intro">1. Intro</h1>
 
 <p>PyTorch is a fully featured framework for building deep learning models, which is a type of machine learning that’s commonly used in applications like image recognition and language processing. Written in Python, it’s relatively easy for most machine learning developers to learn and use. PyTorch is distinctive for its excellent support for GPUs and its use of reverse-mode auto-differentiation, which enables computation graphs to be modified on the fly. This makes it a popular choice for fast experimentation and prototyping.</p>
 
@@ -797,7 +1017,7 @@ epoch: 80, loss: 0.276, accuracy: 0.965
 epoch: 90, loss: 0.262, accuracy: 0.965
 </code></pre>
 <h1 id="6-conclusion">6. Conclusion</h1>
-<p>In this section we learned what is PyTorch, Tensors and the computation graph definition. Then, we implemented a simple linear regression from scratch using numpy which helped us to better understanding the problem and how to solve the problem by implementation. After that, we turned the calculations from numpy into PyTorch tensors. Finally, we completed the implementation using built-in PyTorch optimizers and loss functions and some examples.</p>]]></content><author><name>Ali N. Parizi</name></author><category term="project" /><category term="ai" /><category term="machine-learning" /><category term="deep-learning" /><category term="python" /><summary type="html"><![CDATA[1. Intro]]></summary></entry><entry><title type="html">PyTorch Tutorial, Part 2: Datasets and Dataloaders</title><link href="http://0.0.0.0:4000/project/ai/machine-learning/deep-learning/python/2023/03/27/pytorch-tutorial-2.html" rel="alternate" type="text/html" title="PyTorch Tutorial, Part 2: Datasets and Dataloaders" /><published>2023-03-27T17:15:23+03:30</published><updated>2023-03-27T17:15:23+03:30</updated><id>http://0.0.0.0:4000/project/ai/machine-learning/deep-learning/python/2023/03/27/pytorch-tutorial-2</id><content type="html" xml:base="http://0.0.0.0:4000/project/ai/machine-learning/deep-learning/python/2023/03/27/pytorch-tutorial-2.html"><![CDATA[<h1 id="1-intro">1. Intro</h1>
+<p>In this section we learned what is PyTorch, Tensors and the computation graph definition. Then, we implemented a simple linear regression from scratch using numpy which helped us to better understanding the problem and how to solve the problem by implementation. After that, we turned the calculations from numpy into PyTorch tensors. Finally, we completed the implementation using built-in PyTorch optimizers and loss functions and some examples.</p>]]></content><author><name>Ali N. Parizi</name></author><category term="project" /><category term="ai" /><category term="machine-learning" /><category term="deep-learning" /><category term="python" /><summary type="html"><![CDATA[1. Intro]]></summary></entry><entry><title type="html">PyTorch Tutorial, Part 2: Datasets and Dataloaders</title><link href="http://localhost:4000/project/ai/machine-learning/deep-learning/python/2023/03/27/pytorch-tutorial-2.html" rel="alternate" type="text/html" title="PyTorch Tutorial, Part 2: Datasets and Dataloaders" /><published>2023-03-27T17:15:23+03:30</published><updated>2023-03-27T17:15:23+03:30</updated><id>http://localhost:4000/project/ai/machine-learning/deep-learning/python/2023/03/27/pytorch-tutorial-2</id><content type="html" xml:base="http://localhost:4000/project/ai/machine-learning/deep-learning/python/2023/03/27/pytorch-tutorial-2.html"><![CDATA[<h1 id="1-intro">1. Intro</h1>
 
 <p>Almost every machine learning algorithm and model works with Data. Creating a Dataset and managing it with Dataloader keeps your data manageable and helps to simplify your machine learning pipeline. a Dataset stores all your data, and Dataloader is can be used to iterate through the data, manage batches, transform the data, and much more. Let’s begin with a simple example. Assuming the popular Wine dataset as our target dataset, we want to load and use this dataset in pytorch. Before getting started, we have to download the dataset from <a href="https://archive.ics.uci.edu/ml/datasets/wine">UCA machine-learning repository</a>. I usually place my data insied a data directory so the address to this dataset will be <code class="language-plaintext highlighter-rouge">../data/win/wine.data</code>.</p>
 
@@ -941,7 +1161,7 @@ tensor([[1.3740e+01, 1.6700e+00, 2.2500e+00, 1.6400e+01, 1.1800e+02, 2.6000e+00,
 x:tensor([1.4230e+02, 1.7100e+01, 2.4300e+01, 1.5600e+02, 1.2700e+03, 2.8000e+01,
         3.0600e+01, 2.8000e+00, 2.2900e+01, 5.6400e+01, 1.0400e+01, 3.9200e+01,
         1.0650e+04]), y: tensor([1.])
-</code></pre>]]></content><author><name>Ali N. Parizi</name></author><category term="project" /><category term="ai" /><category term="machine-learning" /><category term="deep-learning" /><category term="python" /><summary type="html"><![CDATA[1. Intro]]></summary></entry><entry><title type="html">The Subtle Art of Not Giving a Fuck</title><link href="http://0.0.0.0:4000/book/self-help/focus/study-lessens/2023/03/22/the-art-of-dont-giving-a-fuck.html" rel="alternate" type="text/html" title="The Subtle Art of Not Giving a Fuck" /><published>2023-03-22T13:11:32+03:30</published><updated>2023-03-22T13:11:32+03:30</updated><id>http://0.0.0.0:4000/book/self-help/focus/study-lessens/2023/03/22/the-art-of-dont-giving-a-fuck</id><content type="html" xml:base="http://0.0.0.0:4000/book/self-help/focus/study-lessens/2023/03/22/the-art-of-dont-giving-a-fuck.html"><![CDATA[<h1 id="1-intro">1. Intro</h1>
+</code></pre>]]></content><author><name>Ali N. Parizi</name></author><category term="project" /><category term="ai" /><category term="machine-learning" /><category term="deep-learning" /><category term="python" /><summary type="html"><![CDATA[1. Intro]]></summary></entry><entry><title type="html">The Subtle Art of Not Giving a Fuck</title><link href="http://localhost:4000/book/self-help/focus/study-lessens/2023/03/22/the-art-of-dont-giving-a-fuck.html" rel="alternate" type="text/html" title="The Subtle Art of Not Giving a Fuck" /><published>2023-03-22T13:11:32+03:30</published><updated>2023-03-22T13:11:32+03:30</updated><id>http://localhost:4000/book/self-help/focus/study-lessens/2023/03/22/the-art-of-dont-giving-a-fuck</id><content type="html" xml:base="http://localhost:4000/book/self-help/focus/study-lessens/2023/03/22/the-art-of-dont-giving-a-fuck.html"><![CDATA[<h1 id="1-intro">1. Intro</h1>
 
 <p>There’s nothing subtle about Mark Manson. He’s crude, vulgar and doesn’t give a f*ck.
 But like anything of true value in life, dig a little deeper and you’ll find treasure worthy of any explorer willing to look below the surface.</p>
@@ -990,7 +1210,7 @@ But like anything of true value in life, dig a little deeper and you’ll find t
 
 <p>There are no soft puffy cloud prancing unicorns offering hugs on colorful rainbows, only F-bomb explosions and brutal smack-you-in-the-face reality slaps.</p>
 
-<p>But by the time you finish reading it, you’ll find yourself tingling with promise. The world suddenly seems brighter and lighter. You’ll feel free, and oddly, good, despite the shit sandwiches served throughout the book. And it won’t be the surfacey french fry kind of good that makes your body crave real nourishment, but the kind of home-cooked-goodness good that warms you from deep within, like you’ve just been served a hearty platter of whole, raw, organic, unfiltered truth.</p>]]></content><author><name>Ali N. Parizi</name></author><category term="book" /><category term="self-help" /><category term="focus" /><category term="study-lessens" /><summary type="html"><![CDATA[1. Intro]]></summary></entry><entry><title type="html">Adversarial attacks in deep learning</title><link href="http://0.0.0.0:4000/blog/ai/machine-learning/deep-learning/2023/03/21/adverserial-attack.html" rel="alternate" type="text/html" title="Adversarial attacks in deep learning" /><published>2023-03-21T16:01:02+03:30</published><updated>2023-03-21T16:01:02+03:30</updated><id>http://0.0.0.0:4000/blog/ai/machine-learning/deep-learning/2023/03/21/adverserial-attack</id><content type="html" xml:base="http://0.0.0.0:4000/blog/ai/machine-learning/deep-learning/2023/03/21/adverserial-attack.html"><![CDATA[<h1 id="1-intro">1. Intro</h1>
+<p>But by the time you finish reading it, you’ll find yourself tingling with promise. The world suddenly seems brighter and lighter. You’ll feel free, and oddly, good, despite the shit sandwiches served throughout the book. And it won’t be the surfacey french fry kind of good that makes your body crave real nourishment, but the kind of home-cooked-goodness good that warms you from deep within, like you’ve just been served a hearty platter of whole, raw, organic, unfiltered truth.</p>]]></content><author><name>Ali N. Parizi</name></author><category term="book" /><category term="self-help" /><category term="focus" /><category term="study-lessens" /><summary type="html"><![CDATA[1. Intro]]></summary></entry><entry><title type="html">Adversarial attacks in deep learning</title><link href="http://localhost:4000/blog/ai/machine-learning/deep-learning/2023/03/21/adverserial-attack.html" rel="alternate" type="text/html" title="Adversarial attacks in deep learning" /><published>2023-03-21T16:01:02+03:30</published><updated>2023-03-21T16:01:02+03:30</updated><id>http://localhost:4000/blog/ai/machine-learning/deep-learning/2023/03/21/adverserial-attack</id><content type="html" xml:base="http://localhost:4000/blog/ai/machine-learning/deep-learning/2023/03/21/adverserial-attack.html"><![CDATA[<h1 id="1-intro">1. Intro</h1>
 <p>Big Data powered machine learning and deep learning has yielded impressive advances in many fields. One example is the release of ImageNet consisting of more than 15 million labelled high-resolution images of 22,000 categories which revolutionized the field of computer vision. State-of-the-art models have already achieved a 98% top-five accuracy on the ImageNet dataset, so it seems as though these models are foolproof and that nothing can go wrong.</p>
 
 <p>However, recent advances in adversarial training have found that this is an illusion. A good model misbehaves frequently when faced with adversarial examples. The image below illustrates the problem:</p>
@@ -1012,11 +1232,13 @@ Researchers have found that in general, although untargeted attacks are not as g
 
 <p>Having understood the difference between targeted and untargeted attacks, we now come to the question of how these adversarial attacks are carried out. In a benign machine learning system, the training process seeks to minimize the loss between the target label and the predicted label, formulated mathematically as such:</p>
 
-<!-- Image -->
+\[\theta^{*} = \underset{\theta}{\mathrm{argmin}} \; \frac{1}{N}\sum_{i=1}^{N} L\big(H_{\theta}(x_i), y_i\big)\]
 
-<p>During the testing phase, the learned model is tested to determine how well it can predict the predicted label. Error is then calculated by the sum of the loss between the target label and the predicted label, formulated mathematically as such:
-<!-- Image -->
-In adversarial attacks, the following 2 steps are taken:</p>
+<p>During the testing phase, the learned model is tested to determine how well it can predict the predicted label. Error is then calculated by the sum of the loss between the target label and the predicted label, formulated mathematically as such:</p>
+
+\[\mathrm{Error} = \sum_{i=1}^{N} L\big(H(x_i), y_i\big)\]
+
+<p>In adversarial attacks, the following 2 steps are taken:</p>
 <ol>
   <li>The query input is changed from the benign input x to \(x^\prime\).</li>
   <li>An attack goal is set such that the prediction outcome, \(H(x)\) is no longer \(y\). The loss is changed from \(L(H(x_i), y_i)\) to \(L(H(x_i), y^{\prime}_i)\) where \(y^{\prime}_i  \ne y_i\).</li>
@@ -1041,9 +1263,31 @@ Black box attacks are based on the notion of transferability of adversarial exam
 <p>When the training dataset is unknown however, adversaries can leverage on Membership Inference Attacks, whereby an attack model whose purpose is to distinguish the target model’s behavior on the training inputs from its behavior on the inputs that it did not encounter during training is trained. In essence, this turns into a classification problem to recognize differences in the target model’s predictions on the inputs that it trained on versus the inputs that it did not train on. This enables the adversary to obtain a better sense of the training dataset D which model H was trained on, enabling the attacker to generate a shadow dataset S on the basis of the true training dataset so as to train the surrogate model G. Having trained G on S where G mimics H and S mimics D, black box attacks can then be launched on H.</p>
 
 <h2 id="51-black-box-attacks">5.1 Black Box Attacks</h2>
-<p>Now that we have seen how black box attacks vary from white box attacks in that the target model H is unknown to the adversary, we will cover the various tactics used in black box attacks.</p>
+<p>Now that we have seen how black box attacks vary from white box attacks in that the target model H is unknown to the adversary, we will cover the various tactics used in black box attacks. Beyond the transferability-based approach described above (train a surrogate model and hope the adversarial examples transfer), black box attacks generally fall into two further families:</p>
+
+<ul>
+  <li><strong>Score-based attacks</strong>: the adversary cannot see the model’s weights or gradients, but can query it and observe the output probabilities (the confidence scores). Methods such as ZOO (Zeroth Order Optimization) use these repeated queries to numerically estimate the gradient of the loss with respect to the input, and then craft a perturbation from that estimate, without ever needing the true gradient.</li>
+  <li><strong>Decision-based attacks</strong>: the adversary can only observe the final predicted label — no probabilities at all. Techniques like the Boundary Attack start from a large, obviously adversarial perturbation and iteratively shrink it while walking along the decision boundary, using only the model’s yes/no answer (“is this still misclassified?”) at each step.</li>
+</ul>
+
+<p>Both families trade off query efficiency against attack strength: the less information the attacker can see, the more queries it typically takes to find a good adversarial example, which also makes these attacks easier to detect from unusual query patterns.</p>
 
 <h2 id="52-white-box-attacks">5.2 White Box Attacks</h2>
+
+<p>In a white box setting the adversary has full access to the model — its architecture, its weights, and, critically, its gradients. This is the setting where adversarial perturbations are cheapest to compute, because the attacker can directly ask “in which direction should I nudge each input pixel to increase the loss the most?” and get an exact answer via backpropagation. A few well-known white box attacks:</p>
+
+<ul>
+  <li><strong>FGSM (Fast Gradient Sign Method)</strong>, introduced by Goodfellow et al. in 2014, is the simplest and fastest of the bunch — a one-step attack (see Section 4) that perturbs every pixel by a fixed amount in the direction of the gradient’s sign:</li>
+</ul>
+
+\[x' = x + \epsilon \cdot \mathrm{sign}\big(\nabla_x L(H(x), y)\big)\]
+
+<p>Here \(\epsilon\) controls how large the perturbation is allowed to be. Small \(\epsilon\) keeps the noise imperceptible; large \(\epsilon\) makes the attack more reliable but easier to spot. We implement this exact attack from scratch in the mini project below.</p>
+<ul>
+  <li><strong>PGD (Projected Gradient Descent)</strong>, proposed by Madry et al. in 2017, is essentially FGSM applied iteratively with a small step size, projecting the result back into an \(\epsilon\)-ball around the original image after every step. It is a multi-step attack, so it is slower than FGSM but far more effective, and is widely used as the standard benchmark for evaluating a model’s robustness.</li>
+  <li><strong>JSMA (Jacobian-based Saliency Map Attack)</strong> targets a small number of pixels rather than perturbing the whole image, using the model’s Jacobian to find the pixels whose change most increases the probability of the target class.</li>
+  <li><strong>Carlini &amp; Wagner (C&amp;W) attack</strong> formulates the search for an adversarial example as an optimization problem that directly minimizes the size of the perturbation subject to the example being misclassified, and remains one of the strongest attacks against undefended models.</li>
+</ul>
 
 <h2 id="53-physical-attacks">5.3 Physical Attacks</h2>
 <p>One simple way in which the query input is changed from x to x’ is by simply adding something physically (eg. bright colour) to disturb the model. One example is how researchers at CMU added eyeglasses to a person in an attack against facial recognition models. The image below illustrates the attack:</p>
@@ -1082,145 +1326,145 @@ Black box attacks are based on the notion of transferability of adversarial exam
 
 <p>This remains an open problem because, after all these decisions by the various verifiers, there is still a final decision maker that needs to decide whose opinion to listen to. The final decision maker would need to preserve the diversity present in the ensemble, which is not an easy task to tackle.</p>
 
-<h1 id="8-conclusion">8. Conclusion</h1>
-<p>We have taken a look at various types of adversarial attacks as well as a promising method to defend against these attacks. This is definitely something to keep in mind when we implement machine learning models. Instead of blindly trusting the models to produce the correct results, we need to guard against these adversarial attacks and always think twice before we accept the decisions made by these models.</p>
+<h1 id="8-mini-project-implementing-fgsm-from-scratch">8. Mini Project: Implementing FGSM From Scratch</h1>
+
+<p>Reading about adversarial attacks is one thing, watching a model fall for one is another. In this section, we’ll implement the Fast Gradient Sign Method (FGSM) from Section 5.2 completely from scratch using only NumPy — no TensorFlow or PyTorch — so every line of the attack is visible with nothing hidden behind a library call.</p>
+
+<h2 id="81-the-setup">8.1 The Setup</h2>
+
+<p>To keep the project runnable on a laptop in a few seconds, we’ll train a small multinomial logistic regression classifier (a single linear layer + softmax — essentially a one-layer neural network) on the <a href="https://scikit-learn.org/stable/datasets/toy_dataset.html#optical-recognition-of-handwritten-digits-dataset">scikit-learn <code class="language-plaintext highlighter-rouge">digits</code> dataset</a>: 1,797 grayscale images of handwritten digits (0–9), each only 8×8 pixels.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_digits</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">digits</span> <span class="o">=</span> <span class="n">load_digits</span><span class="p">()</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">digits</span><span class="p">.</span><span class="n">data</span> <span class="o">/</span> <span class="mf">16.0</span>   <span class="c1"># scale pixel values to [0, 1]
+</span><span class="n">y</span> <span class="o">=</span> <span class="n">digits</span><span class="p">.</span><span class="n">target</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span>
+<span class="p">)</span>
+
+<span class="n">n_features</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># 64 (8x8 pixels)
+</span><span class="n">n_classes</span> <span class="o">=</span> <span class="mi">10</span>
+</code></pre></div></div>
+
+<h2 id="82-training-the-classifier">8.2 Training the Classifier</h2>
+
+<p>Even a linear model is a valid attack target — in fact, a model this simple makes it easy to write out the attack’s gradient by hand and check that the implementation matches the math from Section 5.2.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">one_hot</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">n_classes</span><span class="p">):</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">),</span> <span class="n">n_classes</span><span class="p">))</span>
+    <span class="n">out</span><span class="p">[</span><span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">)),</span> <span class="n">labels</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">out</span>
+
+<span class="k">def</span> <span class="nf">softmax</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">z</span> <span class="o">-</span> <span class="n">z</span><span class="p">.</span><span class="nb">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">exp_z</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">exp</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">exp_z</span> <span class="o">/</span> <span class="n">exp_z</span><span class="p">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="n">W</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_features</span><span class="p">,</span> <span class="n">n_classes</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.01</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_classes</span><span class="p">)</span>
+
+<span class="n">Y_train_oh</span> <span class="o">=</span> <span class="n">one_hot</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">n_classes</span><span class="p">)</span>
+<span class="n">lr</span><span class="p">,</span> <span class="n">epochs</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">300</span>
+
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
+    <span class="n">logits</span> <span class="o">=</span> <span class="n">X_train</span> <span class="o">@</span> <span class="n">W</span> <span class="o">+</span> <span class="n">b</span>
+    <span class="n">probs</span> <span class="o">=</span> <span class="n">softmax</span><span class="p">(</span><span class="n">logits</span><span class="p">)</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">Y_train_oh</span> <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="n">probs</span> <span class="o">+</span> <span class="mf">1e-12</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+
+    <span class="n">grad_logits</span> <span class="o">=</span> <span class="p">(</span><span class="n">probs</span> <span class="o">-</span> <span class="n">Y_train_oh</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+    <span class="n">W</span> <span class="o">-=</span> <span class="n">lr</span> <span class="o">*</span> <span class="p">(</span><span class="n">X_train</span><span class="p">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">grad_logits</span><span class="p">)</span>
+    <span class="n">b</span> <span class="o">-=</span> <span class="n">lr</span> <span class="o">*</span> <span class="n">grad_logits</span><span class="p">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="p">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">softmax</span><span class="p">(</span><span class="n">x</span> <span class="o">@</span> <span class="n">W</span> <span class="o">+</span> <span class="n">b</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">clean_acc</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span> <span class="o">==</span> <span class="n">y_test</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Clean test accuracy: </span><span class="si">{</span><span class="n">clean_acc</span><span class="si">:</span><span class="p">.</span><span class="mi">4</span><span class="n">f</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div></div>
+<pre><code class="language-output">Clean test accuracy: 0.9250
+</code></pre>
+
+<p>92.5% test accuracy on clean, unperturbed digits — good enough to make the point.</p>
+
+<h2 id="83-the-attack">8.3 The Attack</h2>
+
+<p>For a softmax classifier with cross-entropy loss, the gradient of the loss with respect to the input has a clean closed form: it’s just the prediction error (predicted probabilities minus the one-hot true label) projected back through the weight matrix. That means we can implement FGSM in three lines, directly mirroring the formula from Section 5.2, \(x' = x + \epsilon \cdot \mathrm{sign}(\nabla_x L)\):</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">fgsm_attack</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y_true</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">):</span>
+    <span class="n">y_true_oh</span> <span class="o">=</span> <span class="n">one_hot</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="n">y_true</span><span class="p">]),</span> <span class="n">n_classes</span><span class="p">)</span>
+    <span class="n">probs</span> <span class="o">=</span> <span class="n">softmax</span><span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">@</span> <span class="n">W</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
+    <span class="n">grad_logits</span> <span class="o">=</span> <span class="n">probs</span> <span class="o">-</span> <span class="n">y_true_oh</span>            <span class="c1"># dL / d(logits)
+</span>    <span class="n">grad_x</span> <span class="o">=</span> <span class="n">grad_logits</span> <span class="o">@</span> <span class="n">W</span><span class="p">.</span><span class="n">T</span>                 <span class="c1"># dL / dx, via the chain rule
+</span>    <span class="n">x_adv</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">epsilon</span> <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="n">sign</span><span class="p">(</span><span class="n">grad_x</span><span class="p">).</span><span class="n">flatten</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">np</span><span class="p">.</span><span class="n">clip</span><span class="p">(</span><span class="n">x_adv</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>             <span class="c1"># keep valid pixel range
+</span></code></pre></div></div>
+
+<p>Note this is an <strong>untargeted white box attack</strong> in the taxonomy of Sections 2 and 5: we have full access to <code class="language-plaintext highlighter-rouge">W</code> and <code class="language-plaintext highlighter-rouge">b</code>, and the only goal is to push the prediction away from the true label, not toward any particular target class.</p>
+
+<h2 id="84-watching-the-model-fail">8.4 Watching the Model Fail</h2>
+
+<p>Let’s run the attack on a handful of test images the model originally classified correctly, using \(\epsilon = 0.15\):</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">epsilon</span> <span class="o">=</span> <span class="mf">0.15</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y_true</span> <span class="o">=</span> <span class="n">X_test</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">y_test</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">x_adv</span> <span class="o">=</span> <span class="n">fgsm_attack</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y_true</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">)</span>
+    <span class="n">pred_clean</span> <span class="o">=</span> <span class="n">predict</span><span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">pred_adv</span> <span class="o">=</span> <span class="n">predict</span><span class="p">(</span><span class="n">x_adv</span><span class="p">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"true=</span><span class="si">{</span><span class="n">y_true</span><span class="si">}</span><span class="s">  clean_pred=</span><span class="si">{</span><span class="n">pred_clean</span><span class="si">}</span><span class="s">  adversarial_pred=</span><span class="si">{</span><span class="n">pred_adv</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div></div>
+<pre><code class="language-output">true=8  clean_pred=8  adversarial_pred=2
+true=8  clean_pred=8  adversarial_pred=3
+true=5  clean_pred=5  adversarial_pred=2
+true=6  clean_pred=6  adversarial_pred=1
+true=6  clean_pred=6  adversarial_pred=1
+</code></pre>
+
+<p>Every single one of these digits, correctly classified moments ago, is now confidently wrong. Plotting the clean and adversarial pairs side by side makes it clearer what’s going on:</p>
+
+<p align="center">
+  <img src="/assets/images/posts/blog/adversarial-attack/fgsm-examples.png" />
+</p>
+
+<p>Because these source images are only 8×8 pixels (rather than a high-resolution photo like the panda from Section 1), the added noise is more visible than it would otherwise be. Even so, the digit is still clearly readable to a human on the bottom row, while the model’s prediction (in red) has been flipped entirely — exactly the property that makes adversarial examples so dangerous: the input still “looks right” to us, but not to the model.</p>
+
+<h2 id="85-how-much-damage-does-epsilon-do">8.5 How Much Damage Does Epsilon Do?</h2>
+
+<p>Finally, let’s sweep \(\epsilon\) from 0 (no attack) up to 0.5 and measure test accuracy across the whole test set at each step, to see how quickly a model degrades as the perturbation budget grows:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">epsilons</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
+<span class="n">accs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">eps</span> <span class="ow">in</span> <span class="n">epsilons</span><span class="p">:</span>
+    <span class="n">X_adv</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="n">fgsm_attack</span><span class="p">(</span><span class="n">X_test</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">y_test</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">eps</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X_test</span><span class="p">))])</span>
+    <span class="n">accs</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">predict</span><span class="p">(</span><span class="n">X_adv</span><span class="p">)</span> <span class="o">==</span> <span class="n">y_test</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p align="center">
+  <img src="/assets/images/posts/blog/adversarial-attack/fgsm-accuracy-vs-epsilon.png" />
+</p>
+
+<p>At \(\epsilon = 0\) the model performs at its clean 92.5% accuracy, as expected. But by \(\epsilon = 0.15\) — still a fairly small perturbation — accuracy has already collapsed to under 50%, and by \(\epsilon = 0.3\) the model is essentially guessing randomly. All of this from a one-line, one-step attack against a model whose gradients we could compute by hand. It’s a small-scale demonstration, but the same idea — nudging every pixel in the direction that most increases the loss — is exactly what breaks state-of-the-art convolutional networks in the panda example from Section 1, just with a deeper network and a costlier gradient computation behind it.</p>
+
+<p>The full script (data loading, training, attack, and both plots) is under 100 lines of NumPy and is a good starting point for experimenting further — try a deeper MLP instead of a linear model, implement PGD by looping FGSM with a small step size, or measure how much a simple defense like the denoising ensembles from Section 7 recovers.</p>
+
+<h1 id="9-conclusion">9. Conclusion</h1>
+<p>We have taken a look at various types of adversarial attacks, seen one of them fool a real classifier hands-on, and covered a promising method to defend against these attacks. This is definitely something to keep in mind when we implement machine learning models. Instead of blindly trusting the models to produce the correct results, we need to guard against these adversarial attacks and always think twice before we accept the decisions made by these models.</p>
 
 <p>A huge thanks to Professor Liu for this enlightening keynote on this pressing problem in machine learning!</p>
 
 <h1 id="references">References</h1>
 <ol>
-  <li><a href="https://arxiv.org/abs/1805.07984">I. J. Goodfellow, J. Shlens, και C. Szegedy, “Explaining and Harnessing Adversarial Examples”. arXiv, 2014.</a></li>
+  <li><a href="https://arxiv.org/abs/1412.6572">I. J. Goodfellow, J. Shlens, and C. Szegedy, “Explaining and Harnessing Adversarial Examples”. arXiv, 2014.</a></li>
   <li><a href="https://www.tensorflow.org/tutorials/generative/adversarial_fgsm">Tensorflow blog tutorials</a></li>
   <li><a href="https://en.wikipedia.org/wiki/Adversarial_machine_learning">Adverserial Machine Learning</a></li>
-  <li><a href="https://openai.com/blog/adversarial-example-research/">Attacking Machine Learning
-with Adversarial Examples</a></li>
+  <li><a href="https://openai.com/blog/adversarial-example-research/">Attacking Machine Learning with Adversarial Examples</a></li>
   <li><a href="https://towardsdatascience.com/breaking-neural-networks-with-adversarial-attacks-f4290a9a45aa">Breaking neural networks with adversarial attacks</a></li>
-</ol>]]></content><author><name>Ali N. Parizi</name></author><category term="blog" /><category term="ai" /><category term="machine-learning" /><category term="deep-learning" /><summary type="html"><![CDATA[1. Intro Big Data powered machine learning and deep learning has yielded impressive advances in many fields. One example is the release of ImageNet consisting of more than 15 million labelled high-resolution images of 22,000 categories which revolutionized the field of computer vision. State-of-the-art models have already achieved a 98% top-five accuracy on the ImageNet dataset, so it seems as though these models are foolproof and that nothing can go wrong.]]></summary></entry><entry><title type="html">Installing Tensorflow with GPU Support</title><link href="http://0.0.0.0:4000/blog/ai/machine-learning/deep-learning/2023/03/19/installing-tensorflow-with-gpu.html" rel="alternate" type="text/html" title="Installing Tensorflow with GPU Support" /><published>2023-03-19T12:19:43+03:30</published><updated>2023-03-19T12:19:43+03:30</updated><id>http://0.0.0.0:4000/blog/ai/machine-learning/deep-learning/2023/03/19/installing-tensorflow-with-gpu</id><content type="html" xml:base="http://0.0.0.0:4000/blog/ai/machine-learning/deep-learning/2023/03/19/installing-tensorflow-with-gpu.html"><![CDATA[<h1 id="1-intro">1. Intro</h1>
-
-<p>The rise to prominence of deep learning over the past decade is spectacular. From dominating in almost every single competition with its innovative and groundbreaking technologies, it has also led to several new types of research and training methods. One of the most popular ways to handle deep learning models to solve complex computational problems is with the help of deep frameworks.</p>
-
-<p>One such popular deep learning library to build and construct models to find solutions to numerous tasks is TensorFlow. TensorFlow is regarded as one of the best libraries to solve almost any question related to neural networks and deep learning. While this library performs effectively with most smaller and simpler datasets to achieve tasks on a CPU, its true power lies in the utilization of the Graphics Processing Unit (GPU).</p>
-
-<p>The GPU improvises the performance of this deep learning framework to reach new heights and peaks. However, one of the most annoying issues that deep learning programmers, developers, and enthusiasts face is the trouble of CUDA errors. This experience is rather frustrating for most individuals because it is a common occurrence while dealing with deep learning models.</p>
-
-<p>In this article, we will explore how to get the latest version of TensorFlow and stay updated with modern technology.</p>
-
-<p>We will use Anacoda because it’s almost the best python environment for machine-learning operations. To get started, let’s install anacoda on your computer. You can skip this step if you already have installed Anacoda on your Ubuntu machine.</p>
-
-<p align="center">
-    <img class="img-light-bg" src="/assets/images/posts/blog/installing-tensorflow-gpu/keras-logo.png" width="40%" />
-</p>
-
-<h1 id="2-anaconda">2. Anaconda</h1>
-<p>Anaconda is a distribution of the Python and R programming languages for scientific computing (data science, machine learning applications, large-scale data processing, predictive analytics, etc.), that aims to simplify package management and deployment. The distribution includes data-science packages suitable for Windows, Linux, and macOS. It is developed and maintained by Anaconda, Inc., which was founded by Peter Wang and Travis Oliphant in 2012. As an Anaconda, Inc. product, it is also known as Anaconda Distribution or Anaconda Individual Edition, while other products from the company are Anaconda Team Edition and Anaconda Enterprise Edition, both of which are not free. For me and probably you and almost 90% of people, the free version is good and does the job well for us. Installing anaconda requires installing For Debian based distros (such as Ubuntu) run the command below:</p>
-
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span><span class="nb">sudo </span>apt <span class="nb">install </span>libgl1-mesa-glx libegl1-mesa libxrandr2 libxrandr2 libxss1 libxcursor1 libxcomposite1 libasound2 libxi6 libxtst6
-</code></pre></div></div>
-<p>For installing Anaconda you can visit its official website <a href="https://www.anaconda.com/products/distribution">anaconda.com</a> and download the latest installer version or Run the command below:</p>
-
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>curl https://repo.anaconda.com/archive/Anaconda3-2022.10-Linux-x86_64.sh | /bin/bash
-</code></pre></div></div>
-
-<p>Then follow the installation process to complete it. Close and re-open your terminal window for the installation to take effect, or enter the command source ~/.bashrc (or ~/.zshrc if you are using zsh) to refresh the terminal.</p>
-
-<blockquote>
-  <p><strong>Note</strong>: The installer prompts you to choose whether to initialize Anaconda Distribution by running <code class="language-plaintext highlighter-rouge">conda init</code>. Anaconda recommends entering “yes”. If you enter “no”, then conda will not modify your shell scripts at all. To initialize after the installation process is done, first run source [PATH TO CONDA]/bin/activate and then run <code class="language-plaintext highlighter-rouge">conda init</code>.</p>
-</blockquote>
-
-<h2 id="21-creating-conda-environment">2.1 Creating Conda Environment</h2>
-
-<p>Create a new conda environment named tf with the following command.</p>
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>conda create <span class="nt">--name</span> tf <span class="nv">python</span><span class="o">=</span>3.9
-</code></pre></div></div>
-<p>You can deactivate and activate it with the following commands.</p>
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>conda deactivate
-<span class="gp">$</span><span class="w"> </span>conda activate tf
-</code></pre></div></div>
-
-<blockquote>
-  <p><strong>Note</strong>: After installing Anaconda, the default conda environment will automatically activated when you open a new terminal. I personally prefer not to activate the environment automatically. You can turn off this feature running <code class="language-plaintext highlighter-rouge">$ conda config --set auto_activate_base False</code>.</p>
-</blockquote>
-
-<h1 id="4-nvidia-driver-cuda-and-cudnn">4. Nvidia Driver, CUDA and cuDNN</h1>
-<p>It is required you to install a proper Nvidia driver on your machine. If you haven’t installed the Nvidia driver on your machine use the command below to install the driver:</p>
-
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span><span class="nb">sudo </span>apt <span class="nb">install </span>nvidia-driver-515
-</code></pre></div></div>
-
-<p>To confirm that it is installed properly run the command bellow:</p>
-
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>nvidia-smi
-</code></pre></div></div>
-
-<pre><code class="language-output">Mon Mar 19 12:19:49 2023       
-+-----------------------------------------------------------------------------+
-| NVIDIA-SMI 515.86.01    Driver Version: 515.86.01    CUDA Version: 11.7     |
-|-------------------------------+----------------------+----------------------+
-| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
-| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
-|                               |                      |               MIG M. |
-|===============================+======================+======================|
-|   0  NVIDIA GeForce ...  Off  | 00000000:65:00.0  On |                  N/A |
-|  0%   47C    P8    44W / 340W |   1325MiB / 10240MiB |      4%      Default |
-|                               |                      |                  N/A |
-+-------------------------------+----------------------+----------------------+
-                                                                               
-+-----------------------------------------------------------------------------+
-| Processes:                                                                  |
-|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
-|        ID   ID                                                   Usage      |
-|=============================================================================|
-|    0   N/A  N/A      1876      G   /usr/lib/xorg/Xorg                940MiB |
-|    0   N/A  N/A      2034      G   /usr/bin/gnome-shell               48MiB |
-|    0   N/A  N/A      3396      G   ...1/usr/lib/firefox/firefox      161MiB |
-|    0   N/A  N/A      4658      G   ...816051303568945556,131072       42MiB |
-|    0   N/A  N/A      4797      G   ...RendererForSitePerProcess      130MiB |
-+-----------------------------------------------------------------------------+
-</code></pre>
-
-<p>Then install CUDA and cuDNN:</p>
-
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">(tf) $</span><span class="w"> </span>conda <span class="nb">install</span> <span class="nt">-c</span> conda-forge <span class="nv">cudatoolkit</span><span class="o">=</span>11.2.2 <span class="nv">cudnn</span><span class="o">=</span>8.1.0
-</code></pre></div></div>
-<p>Configure the system paths. You can do it with the following command every time you start a new terminal after activating your conda environment.</p>
-
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">(tf) $</span><span class="w"> </span><span class="nb">export </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$LD_LIBRARY_PATH</span>:<span class="nv">$CONDA_PREFIX</span>/lib/
-</code></pre></div></div>
-
-<p>For your convenience it is recommended that you automate it with the following commands. The system paths will be automatically configured when you activate this conda environment.</p>
-
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">(tf) $</span><span class="w"> </span><span class="nb">mkdir</span> <span class="nt">-p</span> <span class="nv">$CONDA_PREFIX</span>/etc/conda/activate.d
-<span class="gp">(tf) $</span><span class="w"> </span><span class="nb">echo</span> <span class="s1">'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CONDA_PREFIX/lib/'</span> <span class="o">&gt;</span> <span class="nv">$CONDA_PREFIX</span>/etc/conda/activate.d/env_vars.sh
-</code></pre></div></div>
-
-<p>In Ubuntu 22.04, we have to install NVCC as well:</p>
-
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">#</span><span class="w"> </span>Install NVCC
-<span class="gp">(tf) $</span><span class="w"> </span>conda <span class="nb">install</span> <span class="nt">-c</span> nvidia cuda-nvcc<span class="o">=</span>11.3.58
-<span class="gp">#</span><span class="w"> </span>Configure the XLA cuda directory
-<span class="gp">(tf) $</span><span class="w"> </span><span class="nb">mkdir</span> <span class="nt">-p</span> <span class="nv">$CONDA_PREFIX</span>/etc/conda/activate.d
-<span class="gp">(tf) $</span><span class="w"> </span><span class="nb">printf</span> <span class="s1">'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CONDA_PREFIX/lib/\nexport XLA_FLAGS=--xla_gpu_cuda_data_dir=$CONDA_PREFIX/lib/\n'</span> <span class="o">&gt;</span> <span class="nv">$CONDA_PREFIX</span>/etc/conda/activate.d/env_vars.sh
-<span class="gp">(tf) $</span><span class="w"> </span><span class="nb">source</span> <span class="nv">$CONDA_PREFIX</span>/etc/conda/activate.d/env_vars.sh
-<span class="gp">#</span><span class="w"> </span>Copy libdevice file to the required path
-<span class="gp">(tf) $</span><span class="w"> </span><span class="nb">mkdir</span> <span class="nt">-p</span> <span class="nv">$CONDA_PREFIX</span>/lib/nvvm/libdevice
-<span class="gp">(tf) $</span><span class="w"> </span><span class="nb">cp</span> <span class="nv">$CONDA_PREFIX</span>/lib/libdevice.10.bc <span class="nv">$CONDA_PREFIX</span>/lib/nvvm/libdevice/
-</code></pre></div></div>
-
-<h1 id="5-installing-tensorflow">5. Installing Tensorflow</h1>
-<p>TensorFlow requires a recent version of pip, so upgrade your pip installation to be sure you’re running the latest version.</p>
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">(tf) $</span><span class="w"> </span>pip <span class="nb">install</span> <span class="nt">--upgrade</span> pip
-<span class="gp">(tf) $</span><span class="w"> </span>pip <span class="nb">install </span>tensorflow
-</code></pre></div></div>
-<p>Verify the GPU setup:</p>
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">(tf) $</span><span class="w"> </span>python3 <span class="nt">-c</span> <span class="s2">"import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))"</span>
-</code></pre></div></div>
-<p>If a list of GPU devices is returned, you’ve installed TensorFlow successfully.</p>
-
-<pre><code class="language-output">[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]
-</code></pre>
-
-<h1 id="references">References</h1>
-<ul>
-  <li><a href="https://docs.anaconda.com/anaconda/install/index.html"><em>Installing Anaconda (anaconda.com)</em></a></li>
-  <li><a href="https://www.tensorflow.org/install/pip"><em>Install TensorFlow with pip (tensorflow.org)</em></a></li>
-</ul>]]></content><author><name>Ali N. Parizi</name></author><category term="blog" /><category term="ai" /><category term="machine-learning" /><category term="deep-learning" /><summary type="html"><![CDATA[1. Intro]]></summary></entry></feed>
+  <li><a href="https://arxiv.org/abs/1706.06083">A. Madry, A. Makelov, L. Schmidt, D. Tsipras, and A. Vladu, “Towards Deep Learning Models Resistant to Adversarial Attacks”. arXiv, 2017.</a></li>
+  <li><a href="https://scikit-learn.org/stable/datasets/toy_dataset.html#optical-recognition-of-handwritten-digits-dataset">scikit-learn: Optical recognition of handwritten digits dataset</a></li>
+</ol>]]></content><author><name>Ali N. Parizi</name></author><category term="blog" /><category term="ai" /><category term="machine-learning" /><category term="deep-learning" /><summary type="html"><![CDATA[1. Intro Big Data powered machine learning and deep learning has yielded impressive advances in many fields. One example is the release of ImageNet consisting of more than 15 million labelled high-resolution images of 22,000 categories which revolutionized the field of computer vision. State-of-the-art models have already achieved a 98% top-five accuracy on the ImageNet dataset, so it seems as though these models are foolproof and that nothing can go wrong.]]></summary></entry></feed>

@@ -6,7 +6,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="google-site-verification" content="4-8jdtFeOSWDhx6RjXrSwNrvhvLyFdbACncYtB2Rjzc">
-    <link type="application/atom+xml" rel="alternate" href="http://0.0.0.0:4000/feed.xml" title="mralinp" />
+    <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="mralinp" />
     <title>LeNet-5 from scratch</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,300,0,0&display=swap" rel="stylesheet">
@@ -263,7 +263,7 @@
         <p class="post-kicker">Article Dispatch</p>
         <h1>LeNet-5 from scratch</h1>
         
-        <p class="post-brief">In this article, we perform image classification on the MNIST dataset with custom implemented LeNet-5 neural network architecture.</p>
+        <p class="post-brief">In this article, we perform image classification on the MNIST dataset with a custom-implemented LeNet-5 neural network architecture.</p>
         
         <div class="post-chip-row">
             <span class="post-chip"><i class="fa fa-user-circle-o"></i> Ali N. Parizi</span>
@@ -298,43 +298,42 @@
         
 
         <div class="post-content">
-            <h1 id="1-intro">1. Intro</h1>
-<p>LeNet is a very first deep learning model that introduced in the research paper “Gradient-Based Learning Applied To Document Recognition” in the year 1998 by four legendary researchers, Yann LeCun, Leon Bottou, Yoshua Bengio, and Patrick Haffner. Many of the listed authors of the paper have gone on to provide several significant academic contributions to the field of deep learning.</p>
+            <h1 id="1-introduction">1. Introduction</h1>
+<p>LeNet-5 was one of the earliest deep learning models, introduced in 1998 in the paper “Gradient-Based Learning Applied to Document Recognition” by Yann LeCun, Léon Bottou, Yoshua Bengio, and Patrick Haffner. Several of these authors went on to make major contributions to the field of deep learning.</p>
 <p align="center">
     <img src="/assets/images/posts/blog/lenet5/authors.png" />
     <br />
     <span>From left: Yann LeCun, Leon Bottou, Yoshua Bengio, and Patrick Haffner</span>
 </p>
 <!-- Image -->
-<p>This article will introduce the LeNet-5 CNN architecture as described in the original paper, along with the implementation of the architecture using TensorFlow 2.0. Then conclude with the utilization of the implemented LeNet-5 CNN for the classification of images from the MNIST dataset.</p>
+<p>This article introduces the LeNet-5 CNN architecture as described in the original paper, walks through an implementation using TensorFlow 2.0, and finishes by using that implementation to classify images from the MNIST dataset.</p>
 
 <p align="center">
     <img class="img-light-bg" width="30%" src="/assets/images/posts/blog/lenet5/keras-logo.png" />
 </p>
 
-<p>What to find in this article:</p>
+<p>What you’ll find in this article:</p>
 <ul>
-  <li>Understanding of components within a convolutional neural network</li>
-  <li>Key definitions of terms commonly used in deep learning and machine learning</li>
-  <li>Understanding of LeNet-5 architecture as presented in the original research paper</li>
-  <li>Implementation of a neural network using TensorFlow and Keras</li>
+  <li>An overview of the components that make up a convolutional neural network</li>
+  <li>Definitions of terms commonly used in deep learning and machine learning</li>
+  <li>A walkthrough of the LeNet-5 architecture as presented in the original paper</li>
+  <li>An implementation of the network using TensorFlow and Keras</li>
 </ul>
 
-<p>The content in this article is written for Deep learning and Machine Learning students of all levels. For those who are eager to get coding, scroll down to the <a href="#implementation"><strong>Implementation section</strong></a>.</p>
+<p>This article is written for deep learning and machine learning students of all levels. If you’re eager to get to the code, jump straight to the <a href="#implementation"><strong>Implementation</strong></a> section.</p>
 
 <h1 id="2-convolutional-neural-networks">2. Convolutional Neural Networks</h1>
-<p>Convolutional Neural Networks are a standard form of neural network architecture for solving tasks associated with images. Solutions for tasks such as object detection, face detection, pose estimation and more, usually have CNN architecture variants.</p>
+<p>Convolutional neural networks (CNNs) are the standard architecture for tasks involving images. Object detection, face detection, pose estimation, and many other computer vision tasks are usually solved with some variant of a CNN.</p>
 
-<p>A few characteristics of the CNN architecture makes them more favourable in several computer vision tasks. It would be good if we could introduce each characteristics before we get started on working with the LeNet-5 architecture.</p>
+<p>A handful of characteristics make CNNs particularly well suited to computer vision tasks. Before diving into LeNet-5, it’s worth introducing them:</p>
 
-<p>Some convolutional networks characteristics that we are interested in here:</p>
 <ul>
-  <li>Local respective fields</li>
+  <li>Local receptive fields</li>
   <li>Sub-sampling</li>
   <li>Weight sharing</li>
 </ul>
 
-<p>LeNet-5 CNN architecture is made up of 7 layers. The layer composition consists of 3 convolutional layers, 2 subsampling layers and 2 fully connected layers.</p>
+<p>The LeNet-5 architecture is made up of seven layers: three convolutional layers, two sub-sampling layers, and two fully connected layers.</p>
 
 <p align="center">
     <img src="/assets/images/posts/blog/lenet5/arch.png" />
@@ -342,29 +341,30 @@
     <span>LeNet architecture</span>
 </p>
 
-<p>The diagram above shows a depiction of the LeNet-5 architecture, as illustrated in the original paper.</p>
+<p>The diagram above shows the LeNet-5 architecture as illustrated in the original paper.</p>
 
-<p>The first layer is the input layer — this is generally not considered a layer of the network as nothing is learnt in this layer. The input layer is built to take in 32x32, and these are the dimensions of images that are passed into the next layer. Those who are familiar with the MNIST dataset will be aware that the MNIST dataset images have the dimensions 28x28. To get the MNIST images dimension to the meet the requirements of the input layer, the 28x28 images are padded.</p>
+<p>The first layer is the input layer, which isn’t generally counted as a true layer of the network since nothing is learned there. It’s built to accept 32x32 images. Since MNIST images are 28x28, they’re padded to meet the input layer’s requirements.</p>
 
-<p>The grayscale images used in the research paper had their pixel values normalized from 0 to 255, to values between -0.1 and 1.175. The reason for normalization is to ensure that the batch of images have a mean of 0 and a standard deviation of 1, the benefits of this is seen in the reduction in the amount of training time. In the image classification with LeNet-5 example below, we’ll be normalizing the pixel values of the images to take on values between 0 to 1.</p>
+<p>In the original paper, pixel values were normalized from the 0–255 range to roughly -0.1 to 1.175, giving each batch of images a mean of 0 and a standard deviation of 1 — this speeds up training. In the implementation below, we’ll instead normalize pixel values to the simpler 0–1 range.</p>
 
-<p><strong>The LeNet-5 architecture utilizes two significant types of layer construct: convolutional layers and subsampling layers.</strong></p>
+<p><strong>LeNet-5 relies on two main types of layers: convolutional layers and sub-sampling layers.</strong></p>
 
 <ul>
-  <li>Convolution layers</li>
+  <li>Convolutional layers</li>
   <li>Sub-sampling layers</li>
 </ul>
 
-<p>Within the research paper and the image below, convolutional layers are identified with the ‘Cx’, and subsampling layers are identified with ‘Sx’, where ‘x’ is the sequential position of the layer within the architecture. ‘Fx’ is used to identify fully connected layers. This method of layer identification can be seen in the image above.</p>
+<p>In the paper and in the diagram above, convolutional layers are labeled <code class="language-plaintext highlighter-rouge">Cx</code>, sub-sampling layers <code class="language-plaintext highlighter-rouge">Sx</code>, and fully connected layers <code class="language-plaintext highlighter-rouge">Fx</code>, where <code class="language-plaintext highlighter-rouge">x</code> is the layer’s position within the network.</p>
 
-<p>The official first layer convolutional layer C1 produces as output 6 feature maps, and has a kernel size of 5x5. The kernel/filter is the name given to the window that contains the weight values that are utilized during the convolution of the weight values with the input values. 5x5 is also indicative of the local receptive field size each unit or neuron within a convolutional layer. The dimensions of the six feature maps the first convolution layer produces are 28x28.</p>
+<p>The first convolutional layer, C1, produces 6 feature maps using a 5x5 kernel. The kernel (or filter) is the window of weights convolved with the input; its 5x5 size also defines the local receptive field of each unit in the layer. Given a 32x32 input, the six feature maps produced by C1 are 28x28.</p>
 
-<p>A subsampling layer ‘S2’ follows the ‘C1’ layer’. The ‘S2’ layer halves the dimension of the feature maps it receives from the previous layer; this is known commonly as downsampling.</p>
+<blockquote>
+  <p>Note: for simplicity, the implementation below skips the padding step and feeds the network 28x28 images directly. That’s why the layer dimensions in the table and code further down are slightly smaller than in the original paper — for example, C1 outputs 24x24 feature maps instead of 28x28.</p>
+</blockquote>
 
-<p>The ‘S2’ layer also produces 6 feature maps, each one corresponding to the feature maps passed as input from the previous layer. This link contains more information on subsampling layers.</p>
+<p>A sub-sampling layer, S2, follows C1. S2 halves the dimensions of the feature maps it receives — commonly known as downsampling — and produces 6 feature maps, one for each feature map passed in from the previous layer. <a href="https://en.wikipedia.org/wiki/Convolutional_neural_network#Pooling_layers">This link</a> has more information on sub-sampling (pooling) layers.</p>
 
-<p>More information on the rest of the LeNet-5 layers is covered in the implementation section.
-Below is a table that summarises the key features of each layer:</p>
+<p>The remaining layers are covered in the implementation section below. Here’s a summary of the network we’ll actually build:</p>
 
 <table>
   <thead>
@@ -382,35 +382,35 @@ Below is a table that summarises the key features of each layer:</p>
       <td style="text-align: center">28x28x1</td>
       <td style="text-align: center">None</td>
       <td style="text-align: center">28x28x1</td>
-      <td style="text-align: center">Relu</td>
+      <td style="text-align: center">None</td>
     </tr>
     <tr>
       <td style="text-align: center">Convolution 1</td>
       <td style="text-align: center">28x28x1</td>
       <td style="text-align: center">5x5</td>
       <td style="text-align: center">24x24x6</td>
-      <td style="text-align: center">Relu</td>
+      <td style="text-align: center">ReLU</td>
     </tr>
     <tr>
       <td style="text-align: center">Max pooling 1</td>
       <td style="text-align: center">24x24x6</td>
       <td style="text-align: center">2x2</td>
       <td style="text-align: center">12x12x6</td>
-      <td style="text-align: center">Relu</td>
+      <td style="text-align: center">None</td>
     </tr>
     <tr>
       <td style="text-align: center">Convolution 2</td>
       <td style="text-align: center">12x12x6</td>
       <td style="text-align: center">5x5</td>
       <td style="text-align: center">8x8x16</td>
-      <td style="text-align: center">Relu</td>
+      <td style="text-align: center">ReLU</td>
     </tr>
     <tr>
       <td style="text-align: center">Max pooling 2</td>
       <td style="text-align: center">8x8x16</td>
-      <td style="text-align: center">1x1</td>
+      <td style="text-align: center">2x2</td>
       <td style="text-align: center">4x4x16</td>
-      <td style="text-align: center">Relu</td>
+      <td style="text-align: center">None</td>
     </tr>
     <tr>
       <td style="text-align: center">Flatten</td>
@@ -424,14 +424,14 @@ Below is a table that summarises the key features of each layer:</p>
       <td style="text-align: center">256x1</td>
       <td style="text-align: center">None</td>
       <td style="text-align: center">120x1</td>
-      <td style="text-align: center">Relu</td>
+      <td style="text-align: center">ReLU</td>
     </tr>
     <tr>
       <td style="text-align: center">Dense 2</td>
       <td style="text-align: center">120x1</td>
       <td style="text-align: center">None</td>
       <td style="text-align: center">84x1</td>
-      <td style="text-align: center">Relu</td>
+      <td style="text-align: center">ReLU</td>
     </tr>
     <tr>
       <td style="text-align: center">Dense 3</td>
@@ -443,13 +443,16 @@ Below is a table that summarises the key features of each layer:</p>
   </tbody>
 </table>
 
-<p><br />
-We begin implementation by importing the libraries we will be utilizing:</p>
+<p><br /></p>
+
+<h1 id="implementation">3. Implementation</h1>
+
+<p>We’ll start by importing the libraries we need:</p>
 
 <ul>
-  <li>TensorFlow: An open-source platform for the implementation, training, and deployment of machine learning models.</li>
-  <li>Keras: An open-source library used for the implementation of neural network architectures that run on both CPUs and GPUs.</li>
-  <li>Numpy: A library for numerical computation with n-dimensional arrays.</li>
+  <li>TensorFlow: an open-source platform for building, training, and deploying machine learning models.</li>
+  <li>Keras: TensorFlow’s high-level neural network API, used for defining architectures that run on both CPU and GPU.</li>
+  <li>NumPy: a library for numerical computation with n-dimensional arrays.</li>
 </ul>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">sys</span>
@@ -459,17 +462,21 @@ We begin implementation by importing the libraries we will be utilizing:</p>
 <span class="kn">from</span> <span class="nn">tensorflow.keras.datasets</span> <span class="kn">import</span> <span class="n">mnist</span>
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 </code></pre></div></div>
-<p>Next, we load the MNIST dataset using the Keras library. The Keras library has a suite of datasets readily available for use with easy accessibility.</p>
 
-<p>We are also required to partition the dataset into testing, validation and training. Here are some quick descriptions of each partition category.</p>
+<h2 id="loading-and-preparing-the-data">Loading and preparing the data</h2>
+<p>Next, we load the MNIST dataset through Keras, which ships with a handful of ready-to-use datasets.</p>
+
+<p>We also need to split the data into training, validation, and test sets:</p>
 
 <ul>
-  <li>Training Dataset: This is the group of our dataset used to train the neural network directly. Training data refers to the dataset partition exposed to the neural network during training.</li>
-  <li>Validation Dataset: This group of the dataset is utilized during training to assess the performance of the network at various iterations.</li>
-  <li>Test Dataset: This partition of the dataset evaluates the performance of our network after the completion of the training phase.</li>
+  <li><strong>Training set</strong>: the data the network learns from directly during training.</li>
+  <li><strong>Validation set</strong>: used during training to track how well the network generalizes after each epoch.</li>
+  <li><strong>Test set</strong>: used once training is complete, to evaluate the network on data it has never seen.</li>
 </ul>
 
-<p>It is also required that the pixel intensity of the images within the dataset are normalized from the value range 0–255 to 0–1.</p>
+<p>Pixel intensities also need to be normalized from the 0–255 range down to 0–1 before training.</p>
+
+<p>Below, we load the dataset and visualize a handful of random training samples to get a feel for the data:</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">xTrain</span><span class="p">,</span> <span class="n">yTrain</span><span class="p">),</span> <span class="p">(</span><span class="n">xTest</span><span class="p">,</span> <span class="n">yTest</span><span class="p">)</span> <span class="o">=</span> <span class="n">mnist</span><span class="p">.</span><span class="n">load_data</span><span class="p">()</span>
 
@@ -481,9 +488,9 @@ We begin implementation by importing the libraries we will be utilizing:</p>
     <span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="n">yTrain</span><span class="p">[</span><span class="n">indexes</span><span class="p">[</span><span class="n">i</span><span class="p">]])</span>
 <span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
-<p>In the code snippet above, we expand the dimensions of the training and dataset. The reason we do this is that during the training and evaluation phases, the network expects the images to be presented within batches; the extra dimension is representative of the numbers of images in a batch.</p>
 
-<p>The code below is the main part where we implement the actual LeNet-5 based neural network. Keras provides tools required to implement the classification model. Keras presents a Sequential API for stacking layers of the neural network on top of each other.</p>
+<h2 id="building-the-model">Building the model</h2>
+<p>The code below implements the LeNet-5-inspired network described above, using Keras’s functional API to connect layers:</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">numClasses</span> <span class="o">=</span> <span class="mi">10</span>
 
@@ -507,66 +514,58 @@ We begin implementation by importing the libraries we will be utilizing:</p>
 
 <pre><code class="language-output">Model: "model"
 _________________________________________________________________
-Layer (type)                 Output Shape              Param #   
+Layer (type)                 Output Shape              Param #
 =================================================================
-input_1 (InputLayer)         [(None, 28, 28, 1)]       0         
+input_1 (InputLayer)         [(None, 28, 28, 1)]       0
 _________________________________________________________________
-conv2d (Conv2D)              (None, 24, 24, 6)         156       
+conv2d (Conv2D)              (None, 24, 24, 6)         156
 _________________________________________________________________
-max_pooling2d (MaxPooling2D) (None, 12, 12, 6)         0         
+max_pooling2d (MaxPooling2D) (None, 12, 12, 6)         0
 _________________________________________________________________
-conv2d_1 (Conv2D)            (None, 8, 8, 16)          2416      
+conv2d_1 (Conv2D)            (None, 8, 8, 16)          2416
 _________________________________________________________________
-max_pooling2d_1 (MaxPooling2 (None, 4, 4, 16)          0         
+max_pooling2d_1 (MaxPooling2) (None, 4, 4, 16)          0
 _________________________________________________________________
-flatten (Flatten)            (None, 256)               0         
+flatten (Flatten)            (None, 256)               0
 _________________________________________________________________
-dense (Dense)                (None, 120)               30840     
+dense (Dense)                (None, 120)               30840
 _________________________________________________________________
-dense_1 (Dense)              (None, 84)                10164     
+dense_1 (Dense)              (None, 84)                10164
 _________________________________________________________________
-dense_2 (Dense)              (None, 10)                850       
+dense_2 (Dense)              (None, 10)                850
 =================================================================
 Total params: 44,426
 Trainable params: 44,426
 Non-trainable params: 0
 </code></pre>
 
-<p>We first assign the variable <code class="language-plaintext highlighter-rouge">lenet_5_model</code> to an instance of the tf.keras.Sequential class constructor. Within the class constructor, we then proceed to define the layers within our model.</p>
+<p>We build the network with Keras’s functional API: each layer is called on the output of the previous one, and <code class="language-plaintext highlighter-rouge">keras.Model</code> ties the resulting graph together from <code class="language-plaintext highlighter-rouge">inputs</code> to <code class="language-plaintext highlighter-rouge">outputs</code>.</p>
 
-<p>The C1 layer is defined by the <code class="language-plaintext highlighter-rouge">linekeras.layers.Conv2D(6, kernel_size=5, strides=1, activation='tanh', input_shape=train_x[0].shape, padding='same')</code>. We are using the <code class="language-plaintext highlighter-rouge">tf.keras.layers.Conv2D</code> class to construct the convolutional layers within the network. We pass a couple of arguments which are described here.</p>
-
-<ul>
-  <li>Activation Function: A mathematical operation that transforms the result or signals of neurons into a normalized output. An activation function is a component of a neural network that introduces non-linearity within the network. The inclusion of the activation function enables the neural network to have greater representational power and solve complex functions.</li>
-</ul>
-
-<p>The rest of the convolutional layers follow the same layer definition as C1 with some different values entered for the arguments.</p>
-
-<p>In the original paper where the LeNet-5 architecture was introduced, subsampling layers were utilized. Within the subsampling layer the average of the pixel values that fall within the 2x2 pooling window was taken, after that, the value is multiplied with a coefficient value. A bias is added to the final result, and all this is done before the values are passed through the activation function.</p>
-
-<p>But in our implemented LeNet-5 neural network, we’re utilizing the tf.keras.layers.AveragePooling2D constructor. We don’ t pass any arguments into the constructor as some default values for the required arguments are initialized when the constructor is called. Remember that the pooling layer role within the network is to downsample the feature maps as they move through the network.</p>
-
-<p>There are two more types of layers within the network, the flatten layer and the dense layers.</p>
-
-<p>The flatten layer is created with the class constructor tf.keras.layers.Flatten.</p>
-
-<p>The purpose of this layer is to transform its input to a 1-dimensional array that can be fed into the subsequent dense layers.</p>
-
-<p>The dense layers have a specified number of units or neurons within each layer, F6 has 84, while the output layer has ten units.</p>
-
-<p>The last dense layer has ten units that correspond to the number of classes that are within the MNIST dataset. The activation function for the output layer is a softmax activation function.</p>
+<p>The C1 layer is created with <code class="language-plaintext highlighter-rouge">layers.Conv2D(6, 5, activation="relu")</code>, producing 6 feature maps from a 5x5 kernel with a ReLU activation. The second convolutional layer, C3, follows the same pattern with a different number of filters.</p>
 
 <ul>
-  <li>Softmax: An activation function that is utilized to derive the probability distribution of a set of numbers within an input vector. The output of a softmax activation function is a vector in which its set of values represents the probability of an occurrence of a class/event. The values within the vector all add up to 1.</li>
+  <li><strong>Activation function</strong>: a mathematical operation that transforms the output of a neuron into a normalized signal. Activation functions introduce non-linearity into a network, which gives it the representational power to learn complex functions.</li>
 </ul>
 
-<p>Keras provides the ‘compile’ method through the model object we have instantiated earlier. The compile function enables the actual building of the model we have implemented behind the scene with some additional characteristics such as the loss function, optimizer, and metrics.</p>
+<blockquote>
+  <p>Note: the original paper used the hyperbolic tangent (tanh) activation and average pooling for its sub-sampling layers — averaging the pixel values in each 2x2 window, scaling the result by a learned coefficient, adding a bias, and then applying the activation function. Our implementation uses the simpler and more modern combination of ReLU activations with max pooling (<code class="language-plaintext highlighter-rouge">layers.MaxPool2D()</code>), which trains faster and performs just as well on MNIST.</p>
+</blockquote>
 
-<p>To train the network, we utilize a loss function that calculates the difference between the predicted values provided by the network and actual values of the training data.</p>
+<p>There are two more layer types in the network: the flatten layer and the dense layers.</p>
 
-<p>The loss values accompanied by an optimization algorithm(Adam) facilitates the number of changes made to the weights within the network. Supporting factors such as momentum and learning rate schedule, provide the ideal environment to enable the network training to converge, herby getting the loss values as close to zero as possible.</p>
+<p><code class="language-plaintext highlighter-rouge">layers.Flatten()</code> reshapes its input into a 1-dimensional array so it can be fed into the dense layers that follow.</p>
 
-<p>During training, we’ll also validate our model after every epoch with the valuation dataset partition created earlier</p>
+<p>The dense layers each have a fixed number of units: 120, then 84, then 10 — matching the number of classes in MNIST. The final dense layer outputs logits, which are converted into a probability distribution using a softmax activation.</p>
+
+<ul>
+  <li><strong>Softmax</strong>: an activation function that turns a vector of numbers into a probability distribution. Each value in the output represents the probability of a particular class, and all the values sum to 1.</li>
+</ul>
+
+<p>Keras’s <code class="language-plaintext highlighter-rouge">compile</code> method finalizes the model, attaching the loss function, optimizer, and metrics that will be used during training.</p>
+
+<p>We train with <code class="language-plaintext highlighter-rouge">SparseCategoricalCrossentropy</code> as our loss function, which measures the difference between the network’s predictions and the true labels. The Adam optimizer uses these loss values to update the network’s weights; factors like momentum and learning rate scheduling help training converge, driving the loss toward zero.</p>
+
+<p>During training, we validate the model after every epoch using the test dataset partition created earlier:</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">history</span> <span class="o">=</span> <span class="n">leNet5</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">xTrain</span><span class="p">,</span> <span class="n">yTrain</span><span class="p">,</span> <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">xTest</span><span class="p">,</span><span class="n">yTest</span><span class="p">),</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </code></pre></div></div>
@@ -592,16 +591,17 @@ Epoch 10/10
 938/938 [==============================] - 9s 10ms/step - loss: 0.0265 - accuracy: 0.9913 - val_loss: 0.0729 - val_accuracy: 0.9835
 313/313 [==============================] - 1s 3ms/step - loss: 0.0729 - accuracy: 0.9835
 </code></pre>
-<p>After training, you will notice that your model achieves a validation accuracy of over 90%. But for a more explicit verification of the performance of the model on an unseen dataset, we will evaluate the trained model on the test dataset partition created earlier.</p>
+
+<p>After ten epochs, the model reaches a validation accuracy of around 98%. For a more explicit check of how well it generalizes, we run a final evaluation on the test dataset:</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">leNet5</span><span class="p">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">xTest</span><span class="p">,</span> <span class="n">yTest</span><span class="p">)</span>
 </code></pre></div></div>
 <pre><code class="language-output">[0.07292196899652481, 0.9835000038146973]
 </code></pre>
 
-<p>After training my model, I was able to achieve 98% accuracy on the test dataset, which is quite useful for such a simple network.</p>
+<p>The final model achieves 98.35% accuracy on the test set — a strong result for such a simple network.</p>
 
-<h1 id="analyze-the-model-training-and-performance">Analyze the model training and performance</h1>
+<h1 id="4-analyzing-training-and-performance">4. Analyzing training and performance</h1>
 
 <h2 id="confusion-matrix">Confusion matrix</h2>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">accuracy_score</span>
@@ -617,7 +617,7 @@ Epoch 10/10
 <span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<h2 id="accuracy-and-error-plots">Accuracy and error plots</h2>
+<h2 id="training-and-validation-loss">Training and validation loss</h2>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">loss_train</span> <span class="o">=</span> <span class="n">history</span><span class="p">.</span><span class="n">history</span><span class="p">[</span><span class="s">'loss'</span><span class="p">]</span>
 <span class="n">loss_val</span> <span class="o">=</span> <span class="n">history</span><span class="p">.</span><span class="n">history</span><span class="p">[</span><span class="s">'val_loss'</span><span class="p">]</span>
 <span class="n">epochs</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">11</span><span class="p">)</span>
@@ -630,9 +630,9 @@ Epoch 10/10
 <span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p>You can see the complete project code in my github repo from <a href="https://github.com/mralinp/cnn-networks/tree/main/lenet5"><strong>here</strong></a>.</p>
+<p>You can find the complete project code in my GitHub repository <a href="https://github.com/mralinp/cnn-networks/tree/main/lenet5"><strong>here</strong></a>.</p>
 
-<p>I hope you found the article useful.</p>
+<p>I hope you found this article useful!</p>
 
         </div>
     </section>

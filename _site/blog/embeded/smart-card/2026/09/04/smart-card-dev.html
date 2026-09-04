@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html class="scroll-smooth dark" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="4-8jdtFeOSWDhx6RjXrSwNrvhvLyFdbACncYtB2Rjzc">
+    <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="mralinp" />
+    <title>Smart Card: Building Your First Applet with jCardSim</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,300,0,0&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <script src="https://kit.fontawesome.com/40a6ec6105.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/css/prism.css">
+</head>
+
+<body class="theme-body">
+    <header class="mobile-header">
+        <h1 class="mobile-title">A. N. PARIZI</h1>
+        <button id="mobileMenuToggle" class="mobile-menu-btn" type="button" aria-label="Toggle menu">
+            <span class="material-symbols-outlined">menu</span>
+        </button>
+    </header>
+
+    <div class="site-shell">
+        <nav id="sidebar" class="site-sidebar">
+            <div class="site-brand-block">
+                <h3><a href="/">Ali N. Parizi</a></h3>
+                <p>SYSTEMS ARCHITECTURE</p>
+            </div>
+
+            <ul class="components">
+                <li class="sidebar-item"><a href="/"><span class="material-symbols-outlined">grid_view</span> <span>Home</span></a></li>
+                <li class="sidebar-item"><a href="/blog"><span class="material-symbols-outlined">rss_feed</span> <span>Blog</span></a></li>
+                <li class="sidebar-item"><a href="/projects"><span class="material-symbols-outlined">account_tree</span> <span>Projects</span></a></li>
+                <li class="sidebar-item"><a href="/research"><span class="material-symbols-outlined">science</span> <span>Research</span></a></li>
+                <li class="sidebar-item"><a href="/library"><span class="material-symbols-outlined">folder_open</span> <span>Library</span></a></li>
+                <li class="sidebar-item"><a href="/about"><span class="material-symbols-outlined">sensors</span> <span>About</span></a></li>
+            </ul>
+
+            <ul class="CTAs">
+                <li><a href="https://github.com/mralinp"><i class="fab fa-github"></i> Github profile</a></li>
+                <li><a href="/assets/resume/ali-naderi-parizi-cv.pdf"><i class="fas fa-file"></i> Curriculum vitae</a></li>
+            </ul>
+
+            <footer id="footer">
+                <div class="copyright">© 2026 ALI N. PARIZI</div>
+                <div class="credits">Powered by <a href="https://github.com/">Github</a></div>
+            </footer>
+        </nav>
+
+        <main class="site-main">
+            <header class="topbar">
+                <div class="search-wrap">
+                    <form class="search-form" method="get" action="https://www.google.com/search" target="_blank">
+                        <span class="material-symbols-outlined">search</span>
+                        <input type="hidden" name="sitesearch" value="alinaderiparizi.com">
+                        <input type="text" name="q" maxlength="255" placeholder="INITIATE SEARCH_QUERIES...">
+                    </form>
+                </div>
+                <div class="system-status">
+                    <span>SYSTEM_STATUS</span>
+                    <strong>NOMINAL // 100%</strong>
+                </div>
+            </header>
+
+            <div id="content" class="page-shell">
+                <div class="content-frame">
+                    <style>
+    #content {
+        background-color: #06070f;
+    }
+
+    .post-shell {
+        display: grid;
+        gap: 0.9rem;
+    }
+
+    .post-head {
+        border: 1px solid #1a1a1a;
+        background: rgba(5, 5, 5, 0.78);
+        padding: 1rem;
+    }
+
+    .post-kicker {
+        margin: 0;
+        color: #ff5a00;
+        font: 500 0.66rem/1 "JetBrains Mono", monospace;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+    }
+
+    .post-head h1 {
+        margin: 0.35rem 0 0.5rem;
+        font-size: clamp(1.3rem, 3vw, 2rem);
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+    }
+
+    .post-brief {
+        margin: 0 0 0.7rem;
+        color: #94a3b8;
+        font-size: 0.92rem;
+        line-height: 1.55;
+    }
+
+    .post-chip-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.45rem;
+    }
+
+    .post-chip {
+        border: 1px solid #2b2b2b;
+        background: rgba(0, 0, 0, 0.35);
+        color: #cbd5e1;
+        padding: 0.18rem 0.48rem;
+        font: 500 0.6rem/1.2 "JetBrains Mono", monospace;
+        letter-spacing: 0.11em;
+        text-transform: uppercase;
+    }
+
+    .post-media {
+        border: 1px solid #1a1a1a;
+        background: rgba(5, 5, 5, 0.75);
+        overflow: hidden;
+    }
+
+    .post-media img {
+        width: 100%;
+        display: block;
+    }
+
+    .post-body {
+        border: 1px solid #1a1a1a;
+        background: rgba(5, 5, 5, 0.82);
+        padding: 1rem;
+    }
+
+    .post-content {
+        background: transparent;
+        border: 0;
+        padding: 0;
+        max-width: 100%;
+    }
+
+    .post-nav {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.6rem;
+        margin-bottom: 0.9rem;
+    }
+
+    .post-nav a {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        text-decoration: none;
+        border: 1px solid #2b2b2b;
+        color: #cbd5e1;
+        padding: 0.3rem 0.55rem;
+        font: 600 0.6rem/1 "JetBrains Mono", monospace;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+    }
+
+    .post-nav a:hover {
+        border-color: #ff5a00;
+        color: #ff5a00;
+    }
+
+    .book-panel {
+        margin-bottom: 0.95rem;
+        border: 1px solid #2b2b2b;
+        background: rgba(0, 0, 0, 0.35);
+        padding: 0.8rem;
+    }
+
+    .book-panel h2 {
+        margin: 0 0 0.55rem;
+        color: #f8fafc;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        font-size: 0.76rem;
+    }
+
+    .book-rating {
+        display: flex;
+        align-items: center;
+        gap: 0.18rem;
+        color: #f59e0b;
+        margin-bottom: 0.45rem;
+    }
+
+    .book-rating .book-star-dim {
+        opacity: 0.25;
+    }
+
+    .book-rating .book-rating-value {
+        margin-left: 0.35rem;
+        color: #9ca3af;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        font: 500 0.58rem/1 "JetBrains Mono", monospace;
+    }
+
+    .book-review {
+        margin: 0;
+        color: #cbd5e1;
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+
+    .book-resources {
+        margin: 0;
+        padding-left: 1rem;
+    }
+
+    .book-resources li {
+        margin-bottom: 0.35rem;
+        color: #cbd5e1;
+    }
+
+    .book-resources a {
+        color: #ff8a44;
+    }
+
+    .book-resources a:hover {
+        color: #ff5a00;
+    }
+
+    .post-comments {
+        border: 1px solid #1a1a1a;
+        background: rgba(5, 5, 5, 0.78);
+        padding: 0.9rem;
+    }
+
+    .post-comments h2 {
+        margin: 0 0 0.75rem;
+        color: #f8fafc;
+        font-size: 0.9rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+    }
+
+    @media (max-width: 720px) {
+        .post-head,
+        .post-body,
+        .post-comments {
+            padding: 0.8rem;
+        }
+    }
+</style>
+
+<article class="post-shell">
+    
+    
+    
+
+    <section class="post-head">
+        <p class="post-kicker">Article Dispatch</p>
+        <h1>Smart Card: Building Your First Applet with jCardSim</h1>
+        
+        <p class="post-brief">In the previous post we introduced smart cards and Java Card applets. Now it's time to get our hands dirty: setting up a Java Card project, simulating a real card with jCardSim, and writing our first applet, one that generates a key pair on the card and signs a challenge with it, the same core trick behind a FIDO/U2F security key.</p>
+        
+        <div class="post-chip-row">
+            <span class="post-chip"><i class="fa fa-user-circle-o"></i> Ali N. Parizi</span>
+            <span class="post-chip"><i class="fa fa-calendar-o"></i> 4 Sep 2026</span>
+            
+            <span class="post-chip"><i class="fa fa-tag"></i> blog</span>
+            
+            <span class="post-chip"><i class="fa fa-tag"></i> embeded</span>
+            
+            <span class="post-chip"><i class="fa fa-tag"></i> smart-card</span>
+            
+        </div>
+    </section>
+
+    
+    <div class="post-media">
+        <a class="image-zoom cboxElement" href="/assets/images/posts/blog/smart-card/title-dev.jpg">
+        <img src="/assets/images/posts/blog/smart-card/title-dev.jpg" alt="Smart Card: Building Your First Applet with jCardSim">
+        <div class="image-overlay"></div>
+        </a>
+    </div>
+    
+
+    <section class="post-body">
+        <div class="post-nav">
+            <a href="/blog"><span class="material-symbols-outlined">arrow_back</span> Back to blog</a>
+            <a href="/blog/embeded/smart-card/2026/09/04/smart-card-dev.html">Permalink <span class="material-symbols-outlined">north_east</span></a>
+        </div>
+
+        
+
+        <div class="post-content">
+            <h1 id="0-recap-and-the-goal">0. Recap and the goal</h1>
+
+<p>In the <a href="/blog/embeded/smart-card/2023/07/19/smart-card-intro.html">previous post</a> we talked about what smart cards are, how they work, and what an applet is in the Java Card world: a small, isolated program that runs inside the card’s secure microprocessor and talks to the outside world through APDU commands.</p>
+
+<p>That post ended with a promise: it’s time to actually write one.</p>
+
+<p>But I also want to be upfront about <em>why</em> I’m going down this path. The real target of this series is not “print hello world on a card.” It’s building a hardware security token, a smart card that can act as a <strong>FIDO/U2F security key</strong>. FIDO keys (like a YubiKey) are, under the hood, exactly this kind of device: a secure element running an applet that generates and stores key pairs, signs authentication challenges, and never lets the private key leave the chip. Java Card gives us the same building blocks: isolated applet execution, on-card cryptography, and a well-defined command/response protocol over APDUs.</p>
+
+<p>Before we touch real hardware, cryptography, or the FIDO protocol though, we need to get comfortable with the basics: writing an applet, installing it, and exchanging APDUs with it. And we’re going to do all of that <strong>without a physical smart card or reader</strong>, using a simulator called jCardSim.</p>
+
+<h1 id="1-why-simulate-the-card-first">1. Why simulate the card first</h1>
+
+<p>Real Java Card smart cards are cheap, but the development loop around them is not fun:</p>
+
+<ul>
+  <li>You need a physical card, a compatible reader, and often a card that accepts your own applets (many bank/SIM cards are locked down).</li>
+  <li>Every test cycle means: compile, convert to a <code class="language-plaintext highlighter-rouge">.cap</code> file, load it onto the card over a reader, run it, and if something’s wrong, erase and repeat.</li>
+  <li>Debugging is close to impossible. There’s no breakpoint, no stack trace, just a status word telling you something went wrong.</li>
+</ul>
+
+<p>That’s a painful way to learn a new, restricted dialect of Java. This is exactly the gap <strong>jCardSim</strong> fills.</p>
+
+<h1 id="2-what-is-jcardsim">2. What is jCardSim</h1>
+
+<p><a href="https://github.com/licel/jcardsim">jCardSim</a> is an open source, pure-Java simulator for the Java Card runtime environment (JCRE). It implements enough of the Java Card API (<code class="language-plaintext highlighter-rouge">javacard.framework</code>, <code class="language-plaintext highlighter-rouge">javacard.security</code>, and friends) to load and run real applet code, the same <code class="language-plaintext highlighter-rouge">.class</code> files you’d eventually convert into a <code class="language-plaintext highlighter-rouge">.cap</code> file for a physical card, entirely inside a JVM on your laptop.</p>
+
+<p>A few things that make it genuinely useful, not just a toy:</p>
+
+<ul>
+  <li><strong>No hardware required.</strong> You write an applet, install it into a simulated card object, and start sending it APDUs immediately.</li>
+  <li><strong>It speaks the same language as <code class="language-plaintext highlighter-rouge">javax.smartcardio</code>.</strong> jCardSim exposes a <code class="language-plaintext highlighter-rouge">CardSimulator</code> that you drive with the standard Java smart card I/O API (<code class="language-plaintext highlighter-rouge">CommandAPDU</code> / <code class="language-plaintext highlighter-rouge">ResponseAPDU</code>), the exact same classes you’d use to talk to a real card through a PC/SC reader. That means code you write against the simulator is structurally the same code you’d use against real hardware later.</li>
+  <li><strong>It’s fast enough for real unit testing.</strong> We used it on real projects to write automated tests for applet logic (state machines, PIN verification, data encoding) in a normal CI pipeline, no reader, no lab, no flaky USB drivers.</li>
+  <li><strong>It’s a stepping stone, not a replacement.</strong> The simulator doesn’t emulate every timing quirk or memory constraint of a real chip, so the last mile of testing on actual hardware still matters. But it removes 90% of the friction from the early development loop.</li>
+</ul>
+
+<p>For prototyping something like a FIDO applet, where you’ll be iterating a lot on command parsing, state handling, and cryptographic flows, this is exactly the tool you want before you ever plug in a real card.</p>
+
+<h1 id="3-setting-up-the-project">3. Setting up the project</h1>
+
+<p>A minimal Java Card + jCardSim project needs two sets of dependencies:</p>
+
+<ol>
+  <li>The <strong>Java Card Classic API</strong> (<code class="language-plaintext highlighter-rouge">javacard.framework</code>, etc.), just to compile against the applet interfaces. jCardSim ships an implementation of these on the classpath, so for a simulation-only project you don’t need Oracle/Global Platform’s official Java Card Development Kit at all.</li>
+  <li><strong>jCardSim</strong> itself, to get <code class="language-plaintext highlighter-rouge">CardSimulator</code>, <code class="language-plaintext highlighter-rouge">AIDUtil</code>, and the simulated runtime classes.</li>
+</ol>
+
+<p>With Maven, a <code class="language-plaintext highlighter-rouge">pom.xml</code> for a small sandbox project looks roughly like this:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;dependencies&gt;</span>
+    <span class="nt">&lt;dependency&gt;</span>
+        <span class="nt">&lt;groupId&gt;</span>com.licel<span class="nt">&lt;/groupId&gt;</span>
+        <span class="nt">&lt;artifactId&gt;</span>jcardsim<span class="nt">&lt;/artifactId&gt;</span>
+        <span class="nt">&lt;version&gt;</span>3.0.5-SNAPSHOT<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;/dependency&gt;</span>
+<span class="nt">&lt;/dependencies&gt;</span>
+</code></pre></div></div>
+
+<p>The exact coordinates and available versions have moved around over the years (the project isn’t always on Maven Central), so if that dependency doesn’t resolve, grab the jar directly from the <a href="https://github.com/licel/jcardsim">jCardSim GitHub releases</a> or build it from source with the repo’s own instructions, and install it into your local <code class="language-plaintext highlighter-rouge">.m2</code> repository. Either way, once the jar is on your classpath you’re ready to write the applet itself.</p>
+
+<h1 id="4-our-first-applet-generate-a-key-pair-and-sign-a-challenge">4. Our first applet: generate a key pair and sign a challenge</h1>
+
+<p>A “Hello World” applet wouldn’t really tell us anything about the road ahead, so let’s skip straight to the thing a security key actually does: <strong>generate a key pair on the card, keep the private key locked inside it forever, and sign whatever challenge it’s asked to sign.</strong> That’s the entire trust model behind FIDO/U2F, register a public key once, then prove possession of the matching private key on every login, and it’s a handful of calls into <code class="language-plaintext highlighter-rouge">javacard.security</code>.</p>
+
+<p>Every Java Card applet has the same shape: an <code class="language-plaintext highlighter-rouge">install()</code> factory method the JCRE calls when the applet is loaded, and a <code class="language-plaintext highlighter-rouge">process()</code> method the JCRE calls for every APDU sent to it. Ours generates its key pair once, at install time, and exposes two instructions: one to read back the public key, one to sign a challenge with the private key.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.mralinp.simplesign</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javacard.framework.APDU</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javacard.framework.Applet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javacard.framework.ISO7816</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javacard.framework.ISOException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javacard.security.KeyBuilder</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javacard.security.KeyPair</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javacard.security.RSAPublicKey</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javacard.security.Signature</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SimpleSignApplet</span> <span class="kd">extends</span> <span class="nc">Applet</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">byte</span> <span class="no">INS_SIGN</span> <span class="o">=</span> <span class="o">(</span><span class="kt">byte</span><span class="o">)</span> <span class="mh">0x01</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">byte</span> <span class="no">INS_GET_PUBLIC_KEY</span> <span class="o">=</span> <span class="o">(</span><span class="kt">byte</span><span class="o">)</span> <span class="mh">0x02</span><span class="o">;</span>
+
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">KeyPair</span> <span class="n">keyPair</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">Signature</span> <span class="n">signer</span><span class="o">;</span>
+
+    <span class="kd">protected</span> <span class="nf">SimpleSignApplet</span><span class="o">()</span> <span class="o">{</span>
+        <span class="c1">// Generate a fresh 1024-bit RSA key pair the moment the applet is installed.</span>
+        <span class="c1">// The private key never leaves this object, and never leaves the card.</span>
+        <span class="n">keyPair</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">KeyPair</span><span class="o">(</span><span class="nc">KeyPair</span><span class="o">.</span><span class="na">ALG_RSA_CRT</span><span class="o">,</span> <span class="nc">KeyBuilder</span><span class="o">.</span><span class="na">LENGTH_RSA_1024</span><span class="o">);</span>
+        <span class="n">keyPair</span><span class="o">.</span><span class="na">genKeyPair</span><span class="o">();</span>
+
+        <span class="n">signer</span> <span class="o">=</span> <span class="nc">Signature</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="nc">Signature</span><span class="o">.</span><span class="na">ALG_RSA_SHA_PKCS1</span><span class="o">,</span> <span class="kc">false</span><span class="o">);</span>
+        <span class="n">register</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">install</span><span class="o">(</span><span class="kt">byte</span><span class="o">[]</span> <span class="n">bArray</span><span class="o">,</span> <span class="kt">short</span> <span class="n">bOffset</span><span class="o">,</span> <span class="kt">byte</span> <span class="n">bLength</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">new</span> <span class="nf">SimpleSignApplet</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">process</span><span class="o">(</span><span class="no">APDU</span> <span class="n">apdu</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">selectingApplet</span><span class="o">())</span> <span class="o">{</span>
+            <span class="k">return</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="kt">byte</span><span class="o">[]</span> <span class="n">buffer</span> <span class="o">=</span> <span class="n">apdu</span><span class="o">.</span><span class="na">getBuffer</span><span class="o">();</span>
+        <span class="kt">byte</span> <span class="n">instruction</span> <span class="o">=</span> <span class="n">buffer</span><span class="o">[</span><span class="no">ISO7816</span><span class="o">.</span><span class="na">OFFSET_INS</span><span class="o">];</span>
+
+        <span class="k">switch</span> <span class="o">(</span><span class="n">instruction</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">case</span> <span class="nl">INS_GET_PUBLIC_KEY:</span>
+                <span class="n">sendPublicKey</span><span class="o">(</span><span class="n">apdu</span><span class="o">);</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="nl">INS_SIGN:</span>
+                <span class="n">signChallenge</span><span class="o">(</span><span class="n">apdu</span><span class="o">);</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="k">default</span><span class="o">:</span>
+                <span class="nc">ISOException</span><span class="o">.</span><span class="na">throwIt</span><span class="o">(</span><span class="no">ISO7816</span><span class="o">.</span><span class="na">SW_INS_NOT_SUPPORTED</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">sendPublicKey</span><span class="o">(</span><span class="no">APDU</span> <span class="n">apdu</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">byte</span><span class="o">[]</span> <span class="n">buffer</span> <span class="o">=</span> <span class="n">apdu</span><span class="o">.</span><span class="na">getBuffer</span><span class="o">();</span>
+        <span class="nc">RSAPublicKey</span> <span class="n">publicKey</span> <span class="o">=</span> <span class="o">(</span><span class="nc">RSAPublicKey</span><span class="o">)</span> <span class="n">keyPair</span><span class="o">.</span><span class="na">getPublic</span><span class="o">();</span>
+
+        <span class="c1">// buffer[0] holds the exponent length, so the caller knows where the modulus starts.</span>
+        <span class="kt">short</span> <span class="n">exponentLength</span> <span class="o">=</span> <span class="n">publicKey</span><span class="o">.</span><span class="na">getExponent</span><span class="o">(</span><span class="n">buffer</span><span class="o">,</span> <span class="o">(</span><span class="kt">short</span><span class="o">)</span> <span class="mi">1</span><span class="o">);</span>
+        <span class="n">buffer</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="kt">byte</span><span class="o">)</span> <span class="n">exponentLength</span><span class="o">;</span>
+        <span class="kt">short</span> <span class="n">modulusLength</span> <span class="o">=</span> <span class="n">publicKey</span><span class="o">.</span><span class="na">getModulus</span><span class="o">(</span><span class="n">buffer</span><span class="o">,</span> <span class="o">(</span><span class="kt">short</span><span class="o">)</span> <span class="o">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">exponentLength</span><span class="o">));</span>
+
+        <span class="n">apdu</span><span class="o">.</span><span class="na">setOutgoingAndSend</span><span class="o">((</span><span class="kt">short</span><span class="o">)</span> <span class="mi">0</span><span class="o">,</span> <span class="o">(</span><span class="kt">short</span><span class="o">)</span> <span class="o">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">exponentLength</span> <span class="o">+</span> <span class="n">modulusLength</span><span class="o">));</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">signChallenge</span><span class="o">(</span><span class="no">APDU</span> <span class="n">apdu</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">byte</span><span class="o">[]</span> <span class="n">buffer</span> <span class="o">=</span> <span class="n">apdu</span><span class="o">.</span><span class="na">getBuffer</span><span class="o">();</span>
+        <span class="n">apdu</span><span class="o">.</span><span class="na">setIncomingAndReceive</span><span class="o">();</span>
+        <span class="kt">short</span> <span class="n">challengeLength</span> <span class="o">=</span> <span class="n">apdu</span><span class="o">.</span><span class="na">getIncomingLength</span><span class="o">();</span>
+
+        <span class="n">signer</span><span class="o">.</span><span class="na">init</span><span class="o">(</span><span class="n">keyPair</span><span class="o">.</span><span class="na">getPrivate</span><span class="o">(),</span> <span class="nc">Signature</span><span class="o">.</span><span class="na">MODE_SIGN</span><span class="o">);</span>
+        <span class="kt">short</span> <span class="n">signatureLength</span> <span class="o">=</span> <span class="n">signer</span><span class="o">.</span><span class="na">sign</span><span class="o">(</span><span class="n">buffer</span><span class="o">,</span> <span class="no">ISO7816</span><span class="o">.</span><span class="na">OFFSET_CDATA</span><span class="o">,</span> <span class="n">challengeLength</span><span class="o">,</span> <span class="n">buffer</span><span class="o">,</span> <span class="o">(</span><span class="kt">short</span><span class="o">)</span> <span class="mi">0</span><span class="o">);</span>
+
+        <span class="n">apdu</span><span class="o">.</span><span class="na">setOutgoingAndSend</span><span class="o">((</span><span class="kt">short</span><span class="o">)</span> <span class="mi">0</span><span class="o">,</span> <span class="n">signatureLength</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>A couple of things worth calling out for anyone new to this API, since it looks like Java but behaves like embedded C in places:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">install()</code> is a <strong>static factory</strong>, not a constructor you call yourself. The JCRE invokes it when the applet is loaded onto the card, and it’s responsible for constructing the applet instance and calling <code class="language-plaintext highlighter-rouge">register()</code> so the card knows this applet exists and can be selected. Key generation happens right there, once, up front, exactly the way a real token generates its device key the moment it’s provisioned.</li>
+  <li><code class="language-plaintext highlighter-rouge">process()</code> is called for <strong>every single APDU</strong>, including the <code class="language-plaintext highlighter-rouge">SELECT</code> command used to activate the applet before anything else can happen. That’s why the very first thing we do is check <code class="language-plaintext highlighter-rouge">selectingApplet()</code> and return early, we don’t want to fall into our instruction switch for a <code class="language-plaintext highlighter-rouge">SELECT</code>.</li>
+  <li>Everything happens through a <strong>shared APDU buffer</strong> (<code class="language-plaintext highlighter-rouge">apdu.getBuffer()</code>). There’s no heap of objects being passed around, incoming challenge bytes are read straight out of the buffer and the signature is written straight back into it. This is a direct consequence of how little RAM a real smart card chip has.</li>
+  <li>The <code class="language-plaintext highlighter-rouge">RSAPrivateCrtKey</code> half of <code class="language-plaintext highlighter-rouge">keyPair</code> is never read, copied, or sent anywhere in this code. It only ever gets handed to <code class="language-plaintext highlighter-rouge">signer.init(...)</code>, which uses it internally to produce a signature. That’s the whole point: the card proves it holds the key without ever exposing it.</li>
+</ul>
+
+<p>We’re using RSA here rather than the ECDSA over P-256 that real FIDO devices use, mainly because RSA key generation needs nothing beyond a modulus length, while EC key generation on Java Card normally requires setting explicit curve domain parameters first. It keeps this first example short. When we build the real FIDO applet, we’ll switch <code class="language-plaintext highlighter-rouge">KeyPair.ALG_RSA_CRT</code> for <code class="language-plaintext highlighter-rouge">KeyPair.ALG_EC_FP</code> and set up the P-256 domain parameters properly.</p>
+
+<h1 id="5-running-it-in-jcardsim">5. Running it in jCardSim</h1>
+
+<p>Now the payoff: let’s install this applet into a simulated card, ask it for its public key, hand it a challenge to sign, and verify the signature ourselves, all without a physical card or reader.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.mralinp.simplesign</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.licel.jcardsim.smartcardio.CardSimulator</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.licel.jcardsim.utils.AIDUtil</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javacard.framework.AID</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.smartcardio.CommandAPDU</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.smartcardio.ResponseAPDU</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.math.BigInteger</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.security.KeyFactory</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.security.PublicKey</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.security.Signature</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.security.spec.RSAPublicKeySpec</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SimpleSignTest</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="c1">// 1. Create a simulated card and install our applet on it</span>
+        <span class="nc">CardSimulator</span> <span class="n">simulator</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">CardSimulator</span><span class="o">();</span>
+        <span class="no">AID</span> <span class="n">appletAID</span> <span class="o">=</span> <span class="nc">AIDUtil</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="s">"A000000003000002"</span><span class="o">);</span>
+        <span class="n">simulator</span><span class="o">.</span><span class="na">installApplet</span><span class="o">(</span><span class="n">appletAID</span><span class="o">,</span> <span class="nc">SimpleSignApplet</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+        <span class="n">simulator</span><span class="o">.</span><span class="na">selectApplet</span><span class="o">(</span><span class="n">appletAID</span><span class="o">);</span>
+
+        <span class="c1">// 2. Ask the card for the public half of the key it generated at install time</span>
+        <span class="nc">ResponseAPDU</span> <span class="n">pubKeyResponse</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="na">transmitCommand</span><span class="o">(</span><span class="k">new</span> <span class="nc">CommandAPDU</span><span class="o">(</span><span class="mh">0x00</span><span class="o">,</span> <span class="mh">0x02</span><span class="o">,</span> <span class="mh">0x00</span><span class="o">,</span> <span class="mh">0x00</span><span class="o">));</span>
+        <span class="kt">byte</span><span class="o">[]</span> <span class="n">pubKeyBytes</span> <span class="o">=</span> <span class="n">pubKeyResponse</span><span class="o">.</span><span class="na">getData</span><span class="o">();</span>
+
+        <span class="kt">int</span> <span class="n">exponentLength</span> <span class="o">=</span> <span class="n">pubKeyBytes</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">&amp;</span> <span class="mh">0xFF</span><span class="o">;</span>
+        <span class="nc">BigInteger</span> <span class="n">exponent</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BigInteger</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">copyOfRange</span><span class="o">(</span><span class="n">pubKeyBytes</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">exponentLength</span><span class="o">));</span>
+        <span class="nc">BigInteger</span> <span class="n">modulus</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BigInteger</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">copyOfRange</span><span class="o">(</span><span class="n">pubKeyBytes</span><span class="o">,</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">exponentLength</span><span class="o">,</span> <span class="n">pubKeyBytes</span><span class="o">.</span><span class="na">length</span><span class="o">));</span>
+
+        <span class="nc">PublicKey</span> <span class="n">publicKey</span> <span class="o">=</span> <span class="nc">KeyFactory</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="s">"RSA"</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">generatePublic</span><span class="o">(</span><span class="k">new</span> <span class="nc">RSAPublicKeySpec</span><span class="o">(</span><span class="n">modulus</span><span class="o">,</span> <span class="n">exponent</span><span class="o">));</span>
+
+        <span class="c1">// 3. Send a "login challenge" and have the card sign it with its private key</span>
+        <span class="kt">byte</span><span class="o">[]</span> <span class="n">challenge</span> <span class="o">=</span> <span class="s">"login-challenge-42"</span><span class="o">.</span><span class="na">getBytes</span><span class="o">();</span>
+        <span class="nc">ResponseAPDU</span> <span class="n">signResponse</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="na">transmitCommand</span><span class="o">(</span><span class="k">new</span> <span class="nc">CommandAPDU</span><span class="o">(</span><span class="mh">0x00</span><span class="o">,</span> <span class="mh">0x01</span><span class="o">,</span> <span class="mh">0x00</span><span class="o">,</span> <span class="mh">0x00</span><span class="o">,</span> <span class="n">challenge</span><span class="o">));</span>
+        <span class="kt">byte</span><span class="o">[]</span> <span class="n">signature</span> <span class="o">=</span> <span class="n">signResponse</span><span class="o">.</span><span class="na">getData</span><span class="o">();</span>
+
+        <span class="c1">// 4. Verify the signature ourselves, exactly like a server would on the other end</span>
+        <span class="nc">Signature</span> <span class="n">verifier</span> <span class="o">=</span> <span class="nc">Signature</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="s">"SHA1withRSA"</span><span class="o">);</span>
+        <span class="n">verifier</span><span class="o">.</span><span class="na">initVerify</span><span class="o">(</span><span class="n">publicKey</span><span class="o">);</span>
+        <span class="n">verifier</span><span class="o">.</span><span class="na">update</span><span class="o">(</span><span class="n">challenge</span><span class="o">);</span>
+
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Signature valid: "</span> <span class="o">+</span> <span class="n">verifier</span><span class="o">.</span><span class="na">verify</span><span class="o">(</span><span class="n">signature</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Running it prints:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Signature valid: true
+</code></pre></div></div>
+
+<p>Nothing about steps 3 and 4 talked to the card, the private key stayed inside the simulated chip the entire time. We only ever handed the card a challenge and got a signature back, then verified that signature ourselves using nothing but the public key it gave us in step 2. That round trip, hand the token a challenge, get back a signature you can verify against a previously-registered public key, is the actual core of how a FIDO/U2F authentication works.</p>
+
+<h1 id="6-where-this-is-going">6. Where this is going</h1>
+
+<p>This applet is already doing the two things a real security key needs to do: keep a private key that never leaves the chip, and prove possession of it by signing on demand. What’s missing is the FIDO/U2F protocol wrapped around that behaviour, a <code class="language-plaintext highlighter-rouge">REGISTER</code> command that returns a properly formatted attestation, an <code class="language-plaintext highlighter-rouge">AUTHENTICATE</code> command that tracks and increments a usage counter, ECDSA over the P-256 curve instead of RSA, and key handles instead of a single fixed key pair.</p>
+
+<p>In the next post, we’ll build on this same jCardSim setup and start implementing the actual FIDO U2F command set on top of it, one instruction at a time, before ever touching a real card. Stay tuned.</p>
+
+        </div>
+    </section>
+
+    <section class="post-comments">
+        <h2>Comment Channel</h2>
+        <div class="commentbox"></div>
+    </section>
+</article>
+
+<script src="https://unpkg.com/commentbox.io/dist/commentBox.min.js"></script>
+<script>
+    function arrToHex(arr) {
+        let s = '#';
+        for (let i = 0; i < arr.length; i++) {
+            s += ((arr[i] / 16) | 0).toString(16);
+            s += ((arr[i] % 16) | 0).toString(16);
+        }
+        return s;
+    }
+    var element = document.body;
+    var style;
+    var color = "black";
+    if (window.getComputedStyle) {
+        style = window.getComputedStyle(element);
+    } else {
+        style = element.currentStyle;
+    }
+    if (!style) {
+        // ...seriously old browser...
+    } else {
+        color = style.color;
+    }
+    rgb = color.match(/\d+/g);
+    commentBox('5076933226266624-proj', {
+        textColor: arrToHex(rgb),
+        subtextColor: arrToHex(rgb),
+    })
+</script>
+
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        (function () {
+            var root = document.getElementById("content");
+            if (!root) return;
+
+            var canvas = document.createElement("canvas");
+            canvas.className = "space-webgl-layer";
+            root.insertBefore(canvas, root.firstChild);
+
+            function initFallback2d() {
+                var ctx = canvas.getContext("2d");
+                if (!ctx) return;
+                var dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+                function resize() {
+                    var w = root.clientWidth;
+                    var h = root.clientHeight;
+                    canvas.width = Math.floor(w * dpr);
+                    canvas.height = Math.floor(h * dpr);
+                    canvas.style.width = w + "px";
+                    canvas.style.height = h + "px";
+                    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+                }
+
+                function glow(x, y, r, color, alpha) {
+                    var g = ctx.createRadialGradient(x, y, 0, x, y, r);
+                    g.addColorStop(0, "rgba(" + color + "," + alpha + ")");
+                    g.addColorStop(1, "rgba(" + color + ",0)");
+                    return g;
+                }
+
+                function frame(t) {
+                    var w = root.clientWidth;
+                    var h = root.clientHeight;
+                    var time = (t || 0) * 0.00025;
+                    ctx.clearRect(0, 0, w, h);
+
+                    var x1 = w * (0.22 + 0.05 * Math.sin(time * 1.9));
+                    var y1 = h * (0.2 + 0.06 * Math.cos(time * 1.3));
+                    var x2 = w * (0.78 + 0.06 * Math.cos(time * 1.4));
+                    var y2 = h * (0.28 + 0.04 * Math.sin(time * 1.7));
+                    var x3 = w * (0.5 + 0.07 * Math.sin(time * 0.9));
+                    var y3 = h * (0.78 + 0.05 * Math.cos(time * 1.1));
+
+                    ctx.globalCompositeOperation = "lighter";
+                    ctx.fillStyle = glow(x1, y1, Math.max(w, h) * 0.48, "110,85,255", 0.2);
+                    ctx.fillRect(0, 0, w, h);
+                    ctx.fillStyle = glow(x2, y2, Math.max(w, h) * 0.45, "255,120,80", 0.16);
+                    ctx.fillRect(0, 0, w, h);
+                    ctx.fillStyle = glow(x3, y3, Math.max(w, h) * 0.42, "75,165,255", 0.14);
+                    ctx.fillRect(0, 0, w, h);
+                    ctx.globalCompositeOperation = "source-over";
+
+                    requestAnimationFrame(frame);
+                }
+
+                window.addEventListener("resize", resize);
+                resize();
+                frame();
+            }
+
+            var gl = canvas.getContext("webgl", { antialias: true, alpha: true });
+            if (!gl) {
+                initFallback2d();
+                return;
+            }
+
+            var vertexSrc =
+                "attribute vec2 aPos;" +
+                "void main(){ gl_Position = vec4(aPos, 0.0, 1.0); }";
+
+            var fragSrc =
+                "precision mediump float;" +
+                "uniform vec2 uRes;" +
+                "uniform float uTime;" +
+                "void main(){" +
+                "  vec2 uv = gl_FragCoord.xy / uRes;" +
+                "  vec2 p = uv * 2.0 - 1.0;" +
+                "  float vignette = 1.0 - smoothstep(0.15, 1.15, length(p));" +
+                "  vec3 col = vec3(0.015, 0.02, 0.06) * vignette;" +
+                "  vec2 c1 = vec2(0.22 + 0.05*sin(uTime*0.22), 0.20 + 0.05*cos(uTime*0.16));" +
+                "  vec2 c2 = vec2(0.78 + 0.06*cos(uTime*0.18), 0.30 + 0.04*sin(uTime*0.19));" +
+                "  vec2 c3 = vec2(0.50 + 0.04*sin(uTime*0.12), 0.78 + 0.05*cos(uTime*0.14));" +
+                "  float g1 = smoothstep(0.62, 0.0, length(uv - c1));" +
+                "  float g2 = smoothstep(0.58, 0.0, length(uv - c2));" +
+                "  float g3 = smoothstep(0.70, 0.0, length(uv - c3));" +
+                "  col += vec3(0.30, 0.20, 0.62) * g1 * 0.55;" +
+                "  col += vec3(0.62, 0.30, 0.20) * g2 * 0.42;" +
+                "  col += vec3(0.12, 0.35, 0.65) * g3 * 0.35;" +
+                "  gl_FragColor = vec4(col, 0.9);" +
+                "}";
+
+            function compile(type, source) {
+                var shader = gl.createShader(type);
+                gl.shaderSource(shader, source);
+                gl.compileShader(shader);
+                if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) return null;
+                return shader;
+            }
+
+            var vs = compile(gl.VERTEX_SHADER, vertexSrc);
+            var fs = compile(gl.FRAGMENT_SHADER, fragSrc);
+            if (!vs || !fs) {
+                initFallback2d();
+                return;
+            }
+
+            var prog = gl.createProgram();
+            gl.attachShader(prog, vs);
+            gl.attachShader(prog, fs);
+            gl.linkProgram(prog);
+            if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) {
+                initFallback2d();
+                return;
+            }
+
+            var buffer = gl.createBuffer();
+            gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+            gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([
+                -1, -1,
+                 1, -1,
+                -1,  1,
+                -1,  1,
+                 1, -1,
+                 1,  1
+            ]), gl.STATIC_DRAW);
+
+            var posLoc = gl.getAttribLocation(prog, "aPos");
+            var resLoc = gl.getUniformLocation(prog, "uRes");
+            var timeLoc = gl.getUniformLocation(prog, "uTime");
+            var dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+            function resize() {
+                var w = root.clientWidth;
+                var h = root.clientHeight;
+                canvas.width = Math.floor(w * dpr);
+                canvas.height = Math.floor(h * dpr);
+                canvas.style.width = w + "px";
+                canvas.style.height = h + "px";
+                gl.viewport(0, 0, canvas.width, canvas.height);
+            }
+
+            function render(t) {
+                gl.clearColor(0, 0, 0, 0);
+                gl.clear(gl.COLOR_BUFFER_BIT);
+                gl.useProgram(prog);
+                gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+                gl.enableVertexAttribArray(posLoc);
+                gl.vertexAttribPointer(posLoc, 2, gl.FLOAT, false, 0, 0);
+                gl.uniform2f(resLoc, canvas.width, canvas.height);
+                gl.uniform1f(timeLoc, t * 0.001);
+                gl.drawArrays(gl.TRIANGLES, 0, 6);
+                requestAnimationFrame(render);
+            }
+
+            window.addEventListener("resize", resize);
+            resize();
+            requestAnimationFrame(render);
+        })();
+    </script>
+    <script src="/assets/vendor/typed.js/typed.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML"></script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']], processEscapes: true}, jax: ["input/TeX","input/MathML","input/AsciiMath","output/CommonHTML"], extensions: ["tex2jax.js","mml2jax.js","asciimath2jax.js","MathMenu.js","MathZoom.js","AssistiveMML.js", "[Contrib]/a11y/accessibility-menu.js"], TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"], equationNumbers: { autoNumber: "AMS" } } });
+    </script>
+    <script src="/assets/js/main.js" crossorigin="anonymous"></script>
+    <script src="/assets/js/prism.js" crossorigin="anonymous"></script>
+</body>
+
+</html>

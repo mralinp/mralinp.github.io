@@ -5,63 +5,65 @@ author: "Ali N. Parizi"
 img: "/assets/images/posts/blog/installing-tensorflow-gpu/title.webp"
 date:   2023-03-19 12:19:43 +0330
 categories:  blog ai machine-learning deep-learning
-brief: "The Ultimate Guide To Install The Latest Version Of TensorFlow on your Ubuntu 22.04 With GPU Support."
+brief: "The ultimate guide to installing the latest version of TensorFlow on Ubuntu 22.04 with GPU support."
 ---
 
-# 1. Intro
+# 1. Introduction
 
-The rise to prominence of deep learning over the past decade is spectacular. From dominating in almost every single competition with its innovative and groundbreaking technologies, it has also led to several new types of research and training methods. One of the most popular ways to handle deep learning models to solve complex computational problems is with the help of deep frameworks.
+Deep learning's rise to prominence over the past decade has been remarkable. It has come to dominate nearly every major competition, driven several new lines of research, and given rise to new training methods. One of the most popular ways to handle deep learning models and solve complex computational problems is with the help of a deep learning framework.
 
-One such popular deep learning library to build and construct models to find solutions to numerous tasks is TensorFlow. TensorFlow is regarded as one of the best libraries to solve almost any question related to neural networks and deep learning. While this library performs effectively with most smaller and simpler datasets to achieve tasks on a CPU, its true power lies in the utilization of the Graphics Processing Unit (GPU).
+One of the most popular such libraries is TensorFlow, widely regarded as one of the best tools for tackling almost any problem related to neural networks and deep learning. While it performs well on a CPU for smaller, simpler datasets, its real power comes from running on a Graphics Processing Unit (GPU).
 
-The GPU improvises the performance of this deep learning framework to reach new heights and peaks. However, one of the most annoying issues that deep learning programmers, developers, and enthusiasts face is the trouble of CUDA errors. This experience is rather frustrating for most individuals because it is a common occurrence while dealing with deep learning models.
+Running on a GPU takes this framework's performance to another level entirely. However, one of the most frustrating parts of working with GPUs in deep learning is dealing with CUDA errors — a headache that most developers, researchers, and enthusiasts run into sooner or later.
 
-In this article, we will explore how to get the latest version of TensorFlow and stay updated with modern technology. 
+In this article, we'll walk through how to install the latest version of TensorFlow with full GPU support.
 
-We will use Anacoda because it's almost the best python environment for machine-learning operations. To get started, let's install anacoda on your computer. You can skip this step if you already have installed Anacoda on your Ubuntu machine. 
+We'll use Anaconda, since it's one of the best Python environments for machine learning work. To get started, let's install Anaconda on your computer — you can skip this step if you already have it installed on your Ubuntu machine.
 
 <p align="center">
     <img class="img-light-bg" src="/assets/images/posts/blog/installing-tensorflow-gpu/keras-logo.png" width="40%"/>
 </p>
 
 # 2. Anaconda
-Anaconda is a distribution of the Python and R programming languages for scientific computing (data science, machine learning applications, large-scale data processing, predictive analytics, etc.), that aims to simplify package management and deployment. The distribution includes data-science packages suitable for Windows, Linux, and macOS. It is developed and maintained by Anaconda, Inc., which was founded by Peter Wang and Travis Oliphant in 2012. As an Anaconda, Inc. product, it is also known as Anaconda Distribution or Anaconda Individual Edition, while other products from the company are Anaconda Team Edition and Anaconda Enterprise Edition, both of which are not free. For me and probably you and almost 90% of people, the free version is good and does the job well for us. Installing anaconda requires installing For Debian based distros (such as Ubuntu) run the command below:
+Anaconda is a distribution of the Python and R programming languages for scientific computing (data science, machine learning, large-scale data processing, predictive analytics, and so on) that aims to simplify package management and deployment. The distribution includes data-science packages for Windows, Linux, and macOS, and is developed and maintained by Anaconda, Inc., founded by Peter Wang and Travis Oliphant in 2012. As an Anaconda, Inc. product it's also known as Anaconda Distribution or Anaconda Individual Edition, while the company's paid offerings are Anaconda Team Edition and Anaconda Enterprise Edition. For me, and probably for you and the vast majority of people, the free version does the job just fine.
+
+On Debian-based distros (such as Ubuntu), start by installing a few required system libraries:
 
 ```console
 $ sudo apt install libgl1-mesa-glx libegl1-mesa libxrandr2 libxrandr2 libxss1 libxcursor1 libxcomposite1 libasound2 libxi6 libxtst6
 ```
-For installing Anaconda you can visit its official website [anaconda.com](https://www.anaconda.com/products/distribution) and download the latest installer version or Run the command below:
+To install Anaconda, visit its official website [anaconda.com](https://www.anaconda.com/products/distribution) and download the latest installer, or run the command below:
 
 ```console
 $ curl https://repo.anaconda.com/archive/Anaconda3-2022.10-Linux-x86_64.sh | /bin/bash
 ```
 
-Then follow the installation process to complete it. Close and re-open your terminal window for the installation to take effect, or enter the command source ~/.bashrc (or ~/.zshrc if you are using zsh) to refresh the terminal.
+Then follow the installer's prompts to complete the installation. Close and reopen your terminal window for the installation to take effect, or run `source ~/.bashrc` (or `~/.zshrc` if you're using zsh) to refresh the current one.
 
-> **Note**: The installer prompts you to choose whether to initialize Anaconda Distribution by running `conda init`. Anaconda recommends entering “yes”. If you enter “no”, then conda will not modify your shell scripts at all. To initialize after the installation process is done, first run source [PATH TO CONDA]/bin/activate and then run `conda init`.
+> **Note**: The installer will ask whether to initialize Anaconda Distribution by running `conda init`. Anaconda recommends answering "yes" — if you answer "no", conda won't modify your shell scripts at all. To initialize later, first run `source [PATH TO CONDA]/bin/activate` and then run `conda init`.
 
-## 2.1 Creating Conda Environment
+## 2.1 Creating a Conda Environment
 
-Create a new conda environment named tf with the following command.
+Create a new conda environment named `tf` with the following command:
 ```console
 $ conda create --name tf python=3.9
 ```
-You can deactivate and activate it with the following commands.
+You can deactivate and activate it with the following commands:
 ```console
 $ conda deactivate
 $ conda activate tf
 ```
 
-> **Note**: After installing Anaconda, the default conda environment will automatically activated when you open a new terminal. I personally prefer not to activate the environment automatically. You can turn off this feature running ```$ conda config --set auto_activate_base False```.
+> **Note**: After installing Anaconda, the default conda environment activates automatically whenever you open a new terminal. I personally prefer not to activate it automatically — you can turn this off by running `$ conda config --set auto_activate_base False`.
 
-# 4. Nvidia Driver, CUDA and cuDNN
-It is required you to install a proper Nvidia driver on your machine. If you haven't installed the Nvidia driver on your machine use the command below to install the driver:
+# 3. Nvidia Driver, CUDA, and cuDNN
+You'll need a proper Nvidia driver installed on your machine. If you haven't installed one yet, use the command below:
 
 ```console
 $ sudo apt install nvidia-driver-515
 ```
 
-To confirm that it is installed properly run the command bellow:
+To confirm it's installed properly, run the command below:
 
 ```console
 $ nvidia-smi
@@ -94,25 +96,25 @@ Mon Mar 19 12:19:49 2023
 +-----------------------------------------------------------------------------+
 ```
 
-Then install CUDA and cuDNN:
+Now install CUDA and cuDNN:
 
 ```console
 (tf) $ conda install -c conda-forge cudatoolkit=11.2.2 cudnn=8.1.0
 ```
-Configure the system paths. You can do it with the following command every time you start a new terminal after activating your conda environment.
+Next, configure the system paths. You'll need to run the following command every time you start a new terminal, after activating your conda environment:
 
 ```console
 (tf) $ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CONDA_PREFIX/lib/
 ```
 
-For your convenience it is recommended that you automate it with the following commands. The system paths will be automatically configured when you activate this conda environment.
+For convenience, it's recommended that you automate this instead, so the paths are configured automatically whenever you activate the environment:
 
 ```console
 (tf) $ mkdir -p $CONDA_PREFIX/etc/conda/activate.d
 (tf) $ echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CONDA_PREFIX/lib/' > $CONDA_PREFIX/etc/conda/activate.d/env_vars.sh
 ```
 
-In Ubuntu 22.04, we have to install NVCC as well:
+On Ubuntu 22.04, you'll also need to install NVCC:
 
 ```console
 # Install NVCC
@@ -126,17 +128,17 @@ In Ubuntu 22.04, we have to install NVCC as well:
 (tf) $ cp $CONDA_PREFIX/lib/libdevice.10.bc $CONDA_PREFIX/lib/nvvm/libdevice/
 ```
 
-# 5. Installing Tensorflow
-TensorFlow requires a recent version of pip, so upgrade your pip installation to be sure you're running the latest version.
+# 4. Installing TensorFlow
+TensorFlow requires a recent version of pip, so upgrade pip first before installing TensorFlow itself:
 ```console
 (tf) $ pip install --upgrade pip
 (tf) $ pip install tensorflow
 ```
-Verify the GPU setup:
+Now verify the GPU setup:
 ```console
 (tf) $ python3 -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))"
-````
-If a list of GPU devices is returned, you've installed TensorFlow successfully.
+```
+If a list of GPU devices is returned, TensorFlow has been installed successfully with GPU support.
 
 ```output
 [PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]

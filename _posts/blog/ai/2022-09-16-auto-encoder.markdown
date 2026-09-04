@@ -9,9 +9,9 @@ brief: "One of the most popular deep architectures is the variety of AutoEncoder
 ---
 
 # 1. Intro
-AutoEncoder is an unsupervised artificial neural network that learns how to efficiently compress and encode data then learns how to reconstruct the data back from the reduced encoded representation to a representation that is as close to the original input as possible.
-AutoEncoder, by design, reduces data dimensions by learning how to ignore the noise in the data.
-Here is an example of the input/output image from the MNIST dataset to an AutoEncoder. 
+An autoencoder is an unsupervised artificial neural network that learns to compress and encode data efficiently, then learns to reconstruct that data from the reduced, encoded representation into something as close to the original input as possible.
+By design, an autoencoder reduces the dimensionality of data by learning to ignore the noise in it.
+Here is an example of an input/output pair from the MNIST dataset passed through an autoencoder.
 
 <p align="center">
   <img src="/assets/images/posts/blog/auto-encoder/ae-arch.jpeg" />
@@ -19,35 +19,39 @@ Here is an example of the input/output image from the MNIST dataset to an AutoEn
     <span>a simple AutoEncoder</span>
 </p>
 
-## 1.1 AutoEncoder Components:
-Autoencoders consists of 4 main parts:
-1. **Encoder**: In which the model learns how to reduce the input dimensions and compress the input data into an encoded representation.
+## 1.1 AutoEncoder Components
 
-2. **Bottleneck**: which is the layer that contains the compressed representation of the input data. This is the lowest possible dimensions of the input data.
+An autoencoder consists of four main parts:
 
-3. **Decoder**: In which the model learns how to reconstruct the data from the encoded representation to be as close to the original input as possible.
+1. **Encoder**: learns how to reduce the input's dimensionality and compress it into an encoded representation.
 
-4. **Reconstruction Loss**: This is the method that measures measure how well the decoder is performing and how close the output is to the original input.
+2. **Bottleneck**: the layer that holds the compressed representation of the input data. This is the lowest-dimensional representation the network produces.
 
-The training then involves using back propagation in order to minimize the network’s reconstruction loss. You must be wondering why would I train a neural network just to output an image or data that is exactly the same as the input! This article will cover the most common use cases for Autoencoder. Let’s get started:
+3. **Decoder**: learns how to reconstruct the data from the encoded representation, aiming to get as close to the original input as possible.
+
+4. **Reconstruction Loss**: the metric that measures how well the decoder is performing, i.e. how close the output is to the original input.
+
+Training then uses backpropagation to minimize the network's reconstruction loss. At this point you're probably wondering why you'd train a neural network just to reproduce its own input. This article walks through the most common use cases for autoencoders. Let's get started:
 
 
 $$ Loss = \lVert X - \hat{X} \rVert_{2}^{2} $$
 
 
-## 1.2 Problem statement:
-The network architecture for AutoEncoders can vary between a simple FeedForward network, LSTM network or Convolutional Neural Network depending on the use case. This article will use CNN networks to solve a simple problem. The problem is to remove an annoying text from the given picture. You might have seen that many photographic websites or some famous photographers use some texts as a sign or a signature on their images. That would prevent other people from stealing their valuable artistic photos, paintings, etc. 
+## 1.2 Problem Statement
 
-For example here is a sample photo taken by my psychologist friend Reza Parizi ([reza__parizi](https://www.instagram.com/reza__parizi/)):
+The network architecture for an autoencoder can vary — a simple feedforward network, an LSTM, or a convolutional neural network — depending on the use case. This article uses a CNN to solve a simple problem: removing an intrusive piece of text from a picture. You've probably noticed that many photography websites and photographers stamp a signature or watermark onto their images, which keeps other people from lifting their photos, paintings, and other artwork without credit.
+
+For example, here's a sample photo taken by my psychologist friend Reza Parizi ([reza__parizi](https://www.instagram.com/reza__parizi/)):
 
 <p align="center">
   <img width="70%" src="/assets/images/posts/blog/auto-encoder/reza-parizi.jpg" />
 </p>
 
-We can consider these kinds of texts which may be known by the name [**watermark**](https://en.wikipedia.org/wiki/Watermark) as static noise in pictures. We can try to find a way or a set of filters to be applied to that image in order to remove that artifact. One of the main use cases of AutoEncoders is denoising, so let's solve this problem using AutoEncoders.
+We can treat this kind of text — commonly known as a [**watermark**](https://en.wikipedia.org/wiki/Watermark) — as static noise added to the picture, and look for a filter (or set of filters) that removes it. Denoising is one of the main use cases for autoencoders, so let's put one to work on this problem.
 
-# 2. Preparing the data:
-As you know for deep learning models the first thing we need is the data. For this problem, I used the popular [**Stanford cars**](https://ai.stanford.edu/~jkrause/cars/car_dataset.html) dataset and I added the static text "Hot-Tube" to the images as the signature of the image. Let's say that the data is stored in a directory named `datasets/car` and the training data is located inside another directory called `train`. First, we import all required modules:
+# 2. Preparing the Data
+
+As with any deep learning model, the first thing we need is data. For this problem I used the popular [**Stanford Cars**](https://ai.stanford.edu/~jkrause/cars/car_dataset.html) dataset and stamped the static text "Hot-Tube" onto each image as a synthetic watermark. Say the dataset lives in a directory named `datasets/car`, with the training images inside a subdirectory called `train`. First, we import the required modules:
 
 ```python
 import tensorflow as tf
@@ -59,20 +63,22 @@ import matplotlib.pyplot as plt
 import cv2
 ```
 
-Then we have to load the dataset:
+Next, we load the dataset:
 
 ```python
 path_to_train_imgs = './datasets/cars/train'
 train_imgs_list = os.listdir(path_to_train_imgs)
 train_imgs_list = [f"{path_to_train_imgs}/{path}" for path in train_imgs_list]
 ```
-These images are the original images which considered the ground truth. To generate the input data we have 2 ways:
-1. load all data into the memory and loop throw them adding the signature text.
-2. Write a DataGenerator which adds the signature to each image while creating the batch.
 
-The first method is not always a good option, especially while working with images. because image data volumes are regularly high, loading this amount of data into the memory will cause the Out of memory problem and lead your programs to crash.
+These are the original, unmodified images, which we'll treat as ground truth. To generate the corresponding inputs, we have two options:
 
-DataGenerators will load only that part of the data which is needed for the training on each period of time and it prevents the out-of-memory problem. After knowing the need for DataGenerators let's write a DataGenerator for our program.
+1. Load all the data into memory up front and loop over it, adding the watermark text to each image.
+2. Write a `DataGenerator` that adds the watermark to each image on the fly, while assembling a batch.
+
+The first approach isn't a great option, especially with images: image datasets tend to be large, and loading that much data into memory at once risks running out of memory and crashing the program.
+
+A data generator instead loads only the slice of data needed for the current batch, which avoids that problem entirely. With that motivation out of the way, let's write one for our use case.
 
 ```python
 class DataGenerator(keras.utils.Sequence):
@@ -108,7 +114,8 @@ class DataGenerator(keras.utils.Sequence):
         
         return np.array(X)/255, np.array(Y)/255
 ```
-Let's see how it works:
+
+Let's see it in action:
 
 ```python
 def plt_img(img: np, title: str = None):
@@ -140,9 +147,9 @@ plt.show()
   <img width="70%" src="/assets/images/posts/blog/auto-encoder/sample_data.png" />
 </p>
 
-# 3. Building the model
+# 3. Building the Model
 
-Let’s say that we have trained an autoencoder on the Cars dataset. Using a simple FeedForward neural network, we can achieve this by building a simple 9 layers network as below:
+We'll train a convolutional autoencoder on the cars dataset. Here's a simple nine-layer network that does the job:
 
 ```python
 inputs = keras.layers.Input((256,256,3))
@@ -193,12 +200,13 @@ Non-trainable params: 0
 _________________________________________________________________
 ```
 
-I used mean squared error (MSE) loss to train my model. Because I wanted the model's output to be the same as the original image. MSE should do the job for us perfectly but, we could use a different loss function that would compare the images from a regional point of view and would be better for high-resolution images and more general datasets. But, we are good with MSE on this task.
+I used mean squared error (MSE) as the loss, since the goal is simply for the model's output to match the original image as closely as possible. MSE does the job well here, though a loss that compares images region by region would likely work better for higher-resolution images or more general datasets. For this task, though, MSE is enough.
 
-## 3.1 Tensorboard
-To see how the training process is going on and monitor the training process, there is a useful option called Tensorboard developed by the TensorFlow team. Tensorboard is a background process that looks inside a directory (usually named "logs") and visualizes the training process logs such as training and validation accuracy and loss for us. It also is capable to display images that can be generated during the training process such as model predictions at the end of each epoch. It would be so handy to store the model prediction during the training process. It could help us to find out when to terminate the training process in an experimental way.
+## 3.1 TensorBoard
 
-To do so, we have to define a custom callback class to store model prediction on each epoch ended.
+To monitor training as it runs, we can use TensorBoard, a visualization tool built by the TensorFlow team. TensorBoard watches a directory (conventionally named `logs`) and renders the training logs it finds there — things like training and validation loss and accuracy — as live charts. It can also display images generated during training, such as the model's predictions at the end of each epoch, which is handy for judging by eye when the model has converged enough to stop training.
+
+To capture those predictions, we define a custom callback that writes an image summary at the end of every epoch.
 
 ```python
 class TensorBoardImageCallBack(keras.callbacks.Callback):
@@ -233,8 +241,9 @@ tensorboard_callback_loss = tf.keras.callbacks.TensorBoard(log_dir="./logs")
 
 ```
 
-## 3.2 Training the model
-Now, it's time to start training our model. I just hangup training the model after 25 epochs but, in code, I've defined the number of epochs to be 100. I hope continuing the training till 100 epochs will tend to a great convergence of the model.
+## 3.2 Training the Model
+
+Now it's time to train the model. The code below is configured for 100 epochs, though I stopped training early, after 25, once the results looked good enough. Running the full 100 would likely push the model to a noticeably better convergence.
 
 ```python
 history = model.fit(
@@ -250,13 +259,13 @@ history = model.fit(
 502/502 [==============================] - 86s 171ms/step - loss: 6.6057e-04 - accuracy: 0.8184 - val_loss: 5.3678e-04 - val_accuracy: 0.8163
 ```
 
-As you can see in the output, which is the results of training for about 25 epochs, the last reconstruction loss/error for the validation set is 5.3678e-04 which is great but it can be better if you run this code for about 100 epochs. Now, if I pass a new image from the test dataset, the reconstruction loss will be very low BUT if I tried to pass any other different image (outlier or anomaly), we will get a high reconstruction loss value because the network failed to reconstruct the image/input that is considered an anomaly, which is another use case of autoencoders to detect outlier data points.
+As the output above shows, after roughly 25 epochs the validation reconstruction loss is down to 5.3678e-04, which is already solid, and would likely improve further with the full 100 epochs. If we now feed the trained model a new image from the test set, the reconstruction loss stays low. But if we feed it something quite different from what it was trained on — an outlier or anomaly — the reconstruction loss spikes, because the network simply doesn't know how to reproduce it. That behavior is itself another common use case for autoencoders: anomaly detection.
 
 <p align="center">
   <img width="70%" src="/assets/images/posts/blog/auto-encoder/sample_prediction.png" />
 </p>
 
-Notice in the code above, you can use only the encoder part to compress some data or images and you can also only use the decoder part to decompress the data by loading the decoder layers. As you can see, we reduced the input image dimensions from $$256 \times 256 \times 3$$ to $$128 \times 128 \times 8$$ which is accessible in the bottle-neck layer's output. storing the features of this layer instead of the original images lowers the space needed to store the images by a factor of 1.5. If it was a video of size 900MB, using this technique would lead the size of the video to be 600MB which is more efficient for data storage.
+One more thing worth noting: nothing stops you from using the encoder and decoder halves independently — the encoder alone to compress data, or the decoder alone to reconstruct it from a stored encoding. Here, we reduced the input image from $$256 \times 256 \times 3$$ down to $$128 \times 128 \times 8$$ at the bottleneck layer. Storing that compressed representation instead of the raw image shrinks the storage footprint by a factor of 1.5. Scaled up, a 900MB video would come down to about 600MB — a meaningful saving for storage-constrained applications.
 
 
 $$\frac{256 \times 256 \times 3}{128 \times 128 \times 8} = 1.5$$
@@ -267,14 +276,14 @@ $$\frac{256 \times 256 \times 3}{128 \times 128 \times 8} = 1.5$$
   <span>Model loss per epoch</span>
 </p>
 
-> Note: In the figure above, red is validation loss and the blue one is training loss per epoch.
+> Note: in the figure above, the red line is validation loss and the blue line is training loss, per epoch.
 
-Another use case of AutoEncoders is learning a data representation in lower dimensions which tends to data compression. Another cool use case is to enhance the quality of the picture which is called super-resolution which we can't see on our model but I'll do an experiment to implement super-resolution using AutoEncoders in another article.
+Beyond denoising and anomaly detection, autoencoders are also widely used for learning compact, lower-dimensional data representations, and for super-resolution — enhancing an image's quality beyond its original resolution. We won't cover super-resolution here, but it's a natural follow-up experiment for a future article.
 
-Finally, we removed a static noise from the input data which is another use case of auto encoders we were follow.
-I hope you enjoyed reading my article. Stay tuned!
+In this article, we used an autoencoder to remove a static watermark from a set of images — one of many practical use cases for the architecture. I hope you enjoyed the walkthrough. Stay tuned for more!
 
 # References
+
 1. [*G. E. Hinton, & R. R. Salakhutdinov (2006). Reducing the Dimensionality of Data with Neural Networks. Science, 313(5786), 504-507.*](https://paperswithcode.com/method/autoencoder)
 
 
