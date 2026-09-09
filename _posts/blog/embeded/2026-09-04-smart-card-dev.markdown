@@ -222,6 +222,6 @@ Nothing about steps 3 and 4 talked to the card, the private key stayed inside th
 
 # 6. Where this is going
 
-This applet is already doing the two things a real security key needs to do: keep a private key that never leaves the chip, and prove possession of it by signing on demand. What's missing is the FIDO/U2F protocol wrapped around that behaviour, a `REGISTER` command that returns a properly formatted attestation, an `AUTHENTICATE` command that tracks and increments a usage counter, ECDSA over the P-256 curve instead of RSA, and key handles instead of a single fixed key pair.
+This applet is already doing the two things a real security key needs to do: keep a private key that never leaves the chip, and prove possession of it by signing on demand. What's missing is the FIDO/U2F protocol wrapped around that behavior, a `REGISTER` command that returns a properly formatted attestation, an `AUTHENTICATE` command that tracks and increments a usage counter, ECDSA over the P-256 curve instead of RSA, and key handles instead of a single fixed key pair.
 
 In the next post, we'll build on this same jCardSim setup and start implementing the actual FIDO U2F command set on top of it, one instruction at a time, before ever touching a real card. Stay tuned.

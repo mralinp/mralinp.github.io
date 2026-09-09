@@ -11,12 +11,12 @@ brief:      "An introduction to virtual private networks(VPN), tunnels, proxies,
 
 # 1. Intro
 
-Some days, we hear some stories around the world that governments argue with people about some wrong laws, opaque decisions, bad economic environment, financial corruption, and many other reasons. To control the situation, one of their solutions is to disconnect people from the world by forcing ISPs and top-tier provider companies to shut down their internet connections. Some of these countries are China, North Korea, And the Islamic Republic Of Iran. The people living in these countries may do their jobs with the internet and in other words, their life has a direct relation with the connectivity to online services. In this situation, some necessary jobs that are in scathe are Developers, online shops, reporters, and many more. As a developer, I can’t live without the internet and my professional life is mixed with this technology. So I have to solve this problem by myself and in this case, I can’t accept the government’s politics. Let’s begin.
+Every so often, we hear stories from around the world of governments clashing with their own people — over unjust laws, opaque decisions, a struggling economy, financial corruption, and no shortage of other reasons. One of their favorite ways to regain control is to cut people off from the world, forcing ISPs and top-tier providers to shut down internet connections. Some of these countries are China, North Korea, and the Islamic Republic of Iran. People living in these countries often do their jobs through the internet, so their livelihood is directly tied to staying connected to online services. In this situation, some of the jobs most at risk are developers, online shop owners, reporters, and many more. As a developer, I can't live without the internet — my professional life is intertwined with this technology. So I have to solve this problem myself, because I refuse to accept the government's politics on this. Let's begin.
 
 # 2. What is the solution
-How can we access the outside world? to access the outside world, we need to access a machine that is connected to the internet. We can access the world through that machine. In these situations, governments wouldn't disconnect data centers from the internet because some bad things can happen to their servers and their companies will be at huge risk, especially in terms of security. So we can conclude that data centers that are inside the country are still connected to the internet and can access the outside world.
+How can we access the outside world? We need a machine that's already connected to the internet, and from there, we can reach the rest of the world. In these situations, governments generally won't disconnect data centers from the internet, since doing so puts their own servers and companies at serious risk, especially from a security standpoint. So we can conclude that data centers inside the country stay connected to the internet and can still reach the outside world.
 
-If we could successfully be connected to the world via a machine in the local data center, there still would be a problem for our freedom, **cruel sanctions of the united states**, which prevent these poor people to access services and contents which is accessible by other people in the world. To tackle this problem, we need a second machine which is in another country and is accessible through the internet. We have to send our packets using that second machine to be fully free. To do so, we need to make a **virtual private network**(VPN).
+Even if we could connect to the world through a machine in a local data center, there's still a problem for our freedom: the **cruel sanctions imposed by the United States**, which prevent these people from accessing services and content that's freely available to everyone else in the world. To tackle this problem, we need a second machine, one that's in another country and accessible through the internet. We route our packets through that second machine to be fully free. To do so, we need to build a **virtual private network** (VPN).
 
 ## 2.1 Virtual Private Network (VPN)
 A virtual private network extends a private network across a public network and enables users to send and receive data across shared or public networks as if their computing devices were directly connected to the private network. The benefits of a VPN include increases in functionality, security, and management of the private network. 
@@ -35,7 +35,7 @@ WireGuard is a communication protocol and free and open-source software that imp
     <img width="50%" src="/assets/images/posts/blog/vpn-setup/wg-logo.png"/>
 </div>
 
-For this tutorial, I choose Wireguard as the VPN protocol of this article. Installation and configuration of the Wireguard VPN server are quite simple and easy to understand for those who are not familiar with some concepts of networking in Linux in comparison with other protocols such as OpenVPN. 
+For this tutorial, I chose WireGuard as the VPN protocol for this article. Installing and configuring a WireGuard VPN server is quite simple and easy to understand, even for those who aren't familiar with some Linux networking concepts, especially in comparison with other protocols such as OpenVPN.
 
 To get started, you need a Virtual Machine(VM) accessible through the internet via SSH in outside world. Let's assume my VM IP address is `77.222.67.140`, I can connect to it using SSH as below:
 
@@ -60,7 +60,7 @@ $ apt install wireguard --yes
 $ apt install wireguard-tools --yes
 ```
 
-This should install the Wireguard kernel module and the necessary tools for running our VPN server. If you would like to route your WireGuard Peer’s Internet traffic through the WireGuard Server then you will need to configure IP forwarding. To configure forwarding, open the `/etc/sysctl.conf` file using vim or your preferred editor:
+This should install the WireGuard kernel module and the necessary tools for running our VPN server. If you would like to route your WireGuard Peer’s Internet traffic through the WireGuard Server then you will need to configure IP forwarding. To configure forwarding, open the `/etc/sysctl.conf` file using vim or your preferred editor:
 
 ```console
 $ vim /etc/sysctl.conf 
@@ -81,8 +81,8 @@ Now your WireGuard Server will be able to forward incoming traffic from the virt
 
 However, before traffic can be routed via your server correctly, you will need to configure some firewall rules. These rules will ensure that traffic to and from your WireGuard Server and Peers flows properly.
 
-## 3.1 Wireguard UI
-[**Wireguard UI**](https://github.com/ngoduykhanh/wireguard-ui) is a web-based config generator for wireguard server. If you've seen the DigitalOcean tutorial for running WireGurad server on ubuntu 20.04 which i pasted some parts of their tutorial here(Or other popular tutorials), they use the command line to generate configurations for clients which is called **adding peers** for wireguard server. Using command line interface and using wireguard-tool is quite hard to manage clients if you are making a network for your co-workers, family or friends. Wireguard-ui is a web-based interface for generating and managing client profiles and it's written with go-lang which means that if you use its binary files which are available on their [**releases page**](https://github.com/ngoduykhanh/wireguard-ui/releases), You don't have to worry about running the application and it should work without any problems. 
+## 3.1 WireGuard UI
+[**WireGuard UI**](https://github.com/ngoduykhanh/wireguard-ui) is a web-based config generator for the WireGuard server. If you've seen the DigitalOcean tutorial for running a WireGuard server on Ubuntu 20.04, from which I borrowed some parts of this tutorial (or other popular tutorials), you'll know they use the command line to generate client configurations, a process called **adding peers**, for the WireGuard server. Using the command line interface and `wg` directly is quite hard to manage if you're building a network for your co-workers, family, or friends. Wireguard-ui is a web-based interface for generating and managing client profiles, and it's written in Go, which means that if you use the binary files available on their [**releases page**](https://github.com/ngoduykhanh/wireguard-ui/releases), you don't have to worry about building the application, and it should work without any problems.
 
 To start using wireguard-ui, you need to download the binary files first:
 
@@ -127,7 +127,7 @@ Login to the panel and make as many client as you want, then download the config
 
 > Note: Before making user clients, I recommend you to first change the server's default port (then press `apply config`) and then begin creating profiles.
 
-Wireguard-ui should generate a configuration file and place it inside `/etc/wireguard/wg0.conf`. After terminating wireguard-ui, no further configurations are needed for adding clients and you can give the downloaded config files to your clients. To run the server there are two more steps to go with. One is configuring the server's firewall and the other one is running wireguard server as a background service which is available in the next sections. 
+Wireguard-ui should generate a configuration file and place it inside `/etc/wireguard/wg0.conf`. After terminating wireguard-ui, no further configurations are needed for adding clients and you can give the downloaded config files to your clients. To run the server, there are two more steps to go: configuring the server's firewall, and running the WireGuard server as a background service, both covered in the next sections.
 
 
 ## 3.2 Configuring the WireGuard Server’s Firewall
@@ -179,7 +179,7 @@ Conversely, if you are only using IPv6, then edit the configuration to only incl
 
 The last part of configuring the firewall on your WireGuard Server is to allow traffic to and from the WireGuard UDP port itself. If you did not change the port in the server’s `/etc/wireguard/wg0.conf` file, the port that you will open is 51820. If you chose a different port when editing the configuration be sure to substitute it in the following UFW command.
 
-> Note: In my experience data centers might close irregular ports such as the default Wireguard port `51820` and I suggest you to choose a popular service port for your VPN connection. I usually prefer using database ports or streaming services ports that are working with data and high network traffic on these ports seems less suspicious. (i.e. MongoDB default port 27017)
+> Note: In my experience, data centers might close irregular ports such as the default WireGuard port `51820`, so I suggest choosing a popular service port for your VPN connection instead. I usually prefer database or streaming-service ports, since heavy data traffic on those ports looks less suspicious. (i.e. MongoDB's default port, 27017)
 
 In case you forgot to open the SSH port when following the prerequisite tutorial, add it here too:
 
@@ -257,12 +257,12 @@ Aug 25 15:24:14 wg0 systemd[1]: Finished WireGuard via wg-quick(8) for wg0.
 
 The output shows the ip commands that are used to create the virtual wg0 device and assign it the IPv4 and IPv6 addresses that you added to the configuration file. You can use these rules to troubleshoot the tunnel, or with the wg command itself if you would like to try manually configuring the VPN interface.
 
-With the server configured and running, the next step is to configure your client machine as a WireGuard Peer and connect to the WireGuard Server. Wireguard clients are available for almost every popular operating system such as Windows, Linux, Android, IOS, Mac OS, and many more. You can simply download the proper client and pass the client configuration file which you downloaded from wireguard-ui and connect to the server. ([**Download wireguard client**](https://www.wireguard.com/install/))
+With the server configured and running, the next step is to configure your client machine as a WireGuard Peer and connect to the WireGuard Server. WireGuard clients are available for almost every popular operating system, such as Windows, Linux, Android, iOS, macOS, and many more. You can simply download the proper client, load the configuration file you downloaded from wireguard-ui, and connect to the server. ([**Download the WireGuard client**](https://www.wireguard.com/install/))
 
 > Note: when ever you want to add more clients to the server, just run wireguard-ui and add your clients. After terminating the wireguard-ui, you have to restart the wireguard service using `systemctl restart wg-quick@wg0`. If you didn't add Post and Pre Scripts to the wireguard config file like the previous section, you have to run iptables MASQUERADE rules again.
 
-# 5. Revers Proxy
-Congratulations, till now, you have configured a Virtual private network for your self but you might not be able to connect to the network directly in situations the government restricts users from connecting to the outside world as regards your outer VPN server is out there. To make your clients escape from the local intranet, you need a second machine inside a local data-centers which is connected to the public internet. That machine would be your middle server or the bridge to connect to the VPN server that you have configured previously. One simple solution to use this middle server as a bridge is setting a proxy on that middle server which redirects our requests to the target VPN server. In computer networking, a proxy server is a server application that acts as an intermediary between a client requesting a resource and the server providing that resource([Wikipedia](https://en.wikipedia.org/wiki/Proxy_server)).
+# 5. Reverse Proxy
+Congratulations, by now you've configured a virtual private network for yourself. But you might still not be able to connect to it directly, since the government restricts users from connecting to the outside world, and your VPN server sits squarely outside it. To let your clients escape the local intranet, you need a second machine, one inside a local data center that's connected to the public internet. That machine becomes your middle server, the bridge to the VPN server you configured previously. The simplest way to use it as a bridge is to set up a proxy on that middle server which redirects requests to the target VPN server. In computer networking, a proxy server is a server application that acts as an intermediary between a client requesting a resource and the server providing that resource ([Wikipedia](https://en.wikipedia.org/wiki/Proxy_server)).
 
 ## 5.1 Nginx Reverse Proxy
 Nginx is a popular web-server application that is used to deploy various web applications and it has so many capabilities. One of the configurations that you can set for Nginx is to redirect incoming requests to a specific address by setting proxy routes. As we know that WireGuard traffic is a stream of data and its UDP. So, we have to set a stream proxy route for our purpose.
@@ -340,18 +340,18 @@ PersistentKeepalive = 15
 ```
 
 ## 5.2 Nginx on docker
-As the Nginx docker image is available on the docker hub, you can use the Nginx container instead of installing Nginx on a separate VM. You can run your proxy server on the cloud which is cheaper cost beneficial than renting a virtual machine. Also, some proxy managers are available on docker-hub with a web-based interface such as the popular [**nginx-proxy-manager**](https://nginxproxymanager.com/guide/#project-goal).
+Since an Nginx Docker image is available on Docker Hub, you can use the Nginx container instead of installing Nginx on a separate VM. Running your proxy server this way is cheaper than renting a whole virtual machine for it. There are also proxy managers on Docker Hub with a web-based interface, such as the popular [**nginx-proxy-manager**](https://nginxproxymanager.com/guide/#project-goal).
 <div align=center>
     <img width="50%" src="/assets/images/posts/blog/vpn-setup/docker-logo.png"/>
 </div>
 <br>
 
 # 6. WireGuard Over TCP (Optional)
-Wireguard itself is working only on UDP because it aims to be as fast as possible but, some providers may block UDP packets using their firewalls. This will make us some problems and prevents WireGuard to work properly. To tackle this issue, we have to convert UDP packets into TCP packets and transfer them through the network after delivering the packets to the VPN server, revert the TCP packets into UDP and pass them to the WireGuard service. This goal can be reached using [**udptunnel**](http://www1.cs.columbia.edu/~lennox/udptunnel/). ([**udp2raw**]() is another popular UDP to TCP converter)
+WireGuard itself only works over UDP, since it aims to be as fast as possible, but some providers may block UDP packets with their firewalls. This causes problems and prevents WireGuard from working properly. To tackle this issue, we have to convert UDP packets into TCP packets and transfer them through the network after delivering the packets to the VPN server, revert the TCP packets into UDP and pass them to the WireGuard service. This goal can be reached using [**udptunnel**](http://www1.cs.columbia.edu/~lennox/udptunnel/). ([**udp2raw**]() is another popular UDP to TCP converter)
 
 > Note: Udptunnel does not support IPv6.
 
-Udptunnel is a simple application written in c and It should be run on two endpoints. On one end, it listens to incoming UDP packets on a specific port and converts them to TCP packets, then it transfers the TCP packet to the destination address which is running a udptunnel server on the other endpoint. In our case, the first endpoint is our middle server which is the local server inside the local intranet. Obviously, the second endpoint is our machine inside the outer world.
+Udptunnel is a simple application written in C, and it needs to run on both endpoints. On one end, it listens for incoming UDP packets on a specific port and converts them to TCP packets, then transfers those TCP packets to the destination address, where a udptunnel server on the other endpoint is running. In our case, the first endpoint is our middle server, the local server inside the local intranet. The second endpoint, obviously, is our machine out in the open world.
 
 <div align=center>
     <img src="/assets/images/posts/blog/vpn-setup/udp2raw.svg"/>
@@ -486,13 +486,13 @@ And remember using WireGuard over TCP will affect your connection speed/bandwidt
 </p>
 
 # 7. Final words
-Some of you might have trouble using my solution for making your private network because of port choosing filtered port numbers. If things were not working change the chosen port numbers and try again. In some cases, government firewalls might block UDP packets and you need to do the solution on [part 6](#6-wireguard-over-tcp-(optional)). 
+Some of you might run into trouble with this solution because your government filters specific ports. If things aren't working, try changing the chosen port numbers and try again. In some cases, government firewalls might block UDP packets entirely, in which case you'll need the solution from [part 6](#6-wireguard-over-tcp-(optional)).
 
-The reverse proxy could be done using some simple firewall (iptables) rules but I chose Nginx to not be confused with iptables complexities and concepts.
+The reverse proxy could also be done with some simple firewall (iptables) rules, but I chose Nginx so as not to get bogged down in iptables' complexities.
 
-WireGuard VPN server is the newest and best VPN protocol in the world till now, it is secure, fast, and easy to configure, and that's why I chose this protocol to go within this article, but in extreme cases, it can be detected and your servers could be blocked. 
+WireGuard is, as of writing, the newest and best VPN protocol out there: secure, fast, and easy to configure, which is exactly why I chose it for this article. But in extreme cases it can still be detected, and your servers could get blocked.
 
-To tackle this, keep the number of your clients as low as possible to prevent high network traffic from going through these servers. Also, you can use other VPN protocols using this abstract solution and find the one which works for you (such as [**Shadowsocks**](https://shadowsocks.org/), [**Google Outline**](https://getoutline.org/), [**OpenVPN**](https://openvpn.net/), [**Softether**](https://www.softether.org/), [**V2ray**](https://www.v2ray.com/), etc.). If you have problems with this article reading the article's references and a little search on DuckDuckGo (Or google) might help you to find the solution. I hope you find this article useful.
+To reduce that risk, keep the number of your clients as low as possible, to limit the network traffic flowing through these servers. You can also apply this same abstract solution to other VPN protocols and find the one that works best for you (such as [**Shadowsocks**](https://shadowsocks.org/), [**Google Outline**](https://getoutline.org/), [**OpenVPN**](https://openvpn.net/), [**Softether**](https://www.softether.org/), [**V2Ray**](https://www.v2ray.com/), etc.). If you run into trouble with this article, reading through the references below and doing a bit of searching on DuckDuckGo (or Google) should help you find a solution. I hope you found this article useful.
 
 for a better world,<br>
 Regards

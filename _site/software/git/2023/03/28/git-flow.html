@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,300,0,0&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/components.css">
     <script src="https://kit.fontawesome.com/40a6ec6105.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/assets/css/prism.css">
 </head>
@@ -68,193 +69,7 @@
 
             <div id="content" class="page-shell">
                 <div class="content-frame">
-                    <style>
-    #content {
-        background-color: #06070f;
-    }
-
-    .post-shell {
-        display: grid;
-        gap: 0.9rem;
-    }
-
-    .post-head {
-        border: 1px solid #1a1a1a;
-        background: rgba(5, 5, 5, 0.78);
-        padding: 1rem;
-    }
-
-    .post-kicker {
-        margin: 0;
-        color: #ff5a00;
-        font: 500 0.66rem/1 "JetBrains Mono", monospace;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-    }
-
-    .post-head h1 {
-        margin: 0.35rem 0 0.5rem;
-        font-size: clamp(1.3rem, 3vw, 2rem);
-        letter-spacing: 0.03em;
-        text-transform: uppercase;
-    }
-
-    .post-brief {
-        margin: 0 0 0.7rem;
-        color: #94a3b8;
-        font-size: 0.92rem;
-        line-height: 1.55;
-    }
-
-    .post-chip-row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.45rem;
-    }
-
-    .post-chip {
-        border: 1px solid #2b2b2b;
-        background: rgba(0, 0, 0, 0.35);
-        color: #cbd5e1;
-        padding: 0.18rem 0.48rem;
-        font: 500 0.6rem/1.2 "JetBrains Mono", monospace;
-        letter-spacing: 0.11em;
-        text-transform: uppercase;
-    }
-
-    .post-media {
-        border: 1px solid #1a1a1a;
-        background: rgba(5, 5, 5, 0.75);
-        overflow: hidden;
-    }
-
-    .post-media img {
-        width: 100%;
-        display: block;
-    }
-
-    .post-body {
-        border: 1px solid #1a1a1a;
-        background: rgba(5, 5, 5, 0.82);
-        padding: 1rem;
-    }
-
-    .post-content {
-        background: transparent;
-        border: 0;
-        padding: 0;
-        max-width: 100%;
-    }
-
-    .post-nav {
-        display: flex;
-        justify-content: space-between;
-        gap: 0.6rem;
-        margin-bottom: 0.9rem;
-    }
-
-    .post-nav a {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.35rem;
-        text-decoration: none;
-        border: 1px solid #2b2b2b;
-        color: #cbd5e1;
-        padding: 0.3rem 0.55rem;
-        font: 600 0.6rem/1 "JetBrains Mono", monospace;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-    }
-
-    .post-nav a:hover {
-        border-color: #ff5a00;
-        color: #ff5a00;
-    }
-
-    .book-panel {
-        margin-bottom: 0.95rem;
-        border: 1px solid #2b2b2b;
-        background: rgba(0, 0, 0, 0.35);
-        padding: 0.8rem;
-    }
-
-    .book-panel h2 {
-        margin: 0 0 0.55rem;
-        color: #f8fafc;
-        text-transform: uppercase;
-        letter-spacing: 0.12em;
-        font-size: 0.76rem;
-    }
-
-    .book-rating {
-        display: flex;
-        align-items: center;
-        gap: 0.18rem;
-        color: #f59e0b;
-        margin-bottom: 0.45rem;
-    }
-
-    .book-rating .book-star-dim {
-        opacity: 0.25;
-    }
-
-    .book-rating .book-rating-value {
-        margin-left: 0.35rem;
-        color: #9ca3af;
-        text-transform: uppercase;
-        letter-spacing: 0.12em;
-        font: 500 0.58rem/1 "JetBrains Mono", monospace;
-    }
-
-    .book-review {
-        margin: 0;
-        color: #cbd5e1;
-        font-size: 0.9rem;
-        line-height: 1.6;
-    }
-
-    .book-resources {
-        margin: 0;
-        padding-left: 1rem;
-    }
-
-    .book-resources li {
-        margin-bottom: 0.35rem;
-        color: #cbd5e1;
-    }
-
-    .book-resources a {
-        color: #ff8a44;
-    }
-
-    .book-resources a:hover {
-        color: #ff5a00;
-    }
-
-    .post-comments {
-        border: 1px solid #1a1a1a;
-        background: rgba(5, 5, 5, 0.78);
-        padding: 0.9rem;
-    }
-
-    .post-comments h2 {
-        margin: 0 0 0.75rem;
-        color: #f8fafc;
-        font-size: 0.9rem;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-    }
-
-    @media (max-width: 720px) {
-        .post-head,
-        .post-body,
-        .post-comments {
-            padding: 0.8rem;
-        }
-    }
-</style>
-
-<article class="post-shell">
+                    <article class="post-shell">
     
     
     
@@ -292,6 +107,7 @@
         </div>
 
         
+
 
         <div class="post-content">
             <h1 id="1-intro">1. Intro</h1>
@@ -520,6 +336,8 @@
         MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']], processEscapes: true}, jax: ["input/TeX","input/MathML","input/AsciiMath","output/CommonHTML"], extensions: ["tex2jax.js","mml2jax.js","asciimath2jax.js","MathMenu.js","MathZoom.js","AssistiveMML.js", "[Contrib]/a11y/accessibility-menu.js"], TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"], equationNumbers: { autoNumber: "AMS" } } });
     </script>
     <script src="/assets/js/main.js" crossorigin="anonymous"></script>
+    <script src="/assets/js/pager.js" crossorigin="anonymous"></script>
+    <script src="/assets/js/github-metrics.js" crossorigin="anonymous"></script>
     <script src="/assets/js/prism.js" crossorigin="anonymous"></script>
 </body>
 

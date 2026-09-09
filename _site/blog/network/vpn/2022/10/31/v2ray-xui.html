@@ -7,11 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="google-site-verification" content="4-8jdtFeOSWDhx6RjXrSwNrvhvLyFdbACncYtB2Rjzc">
     <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="mralinp" />
-    <title>Bypass The Islamic Republic Again: Installing V2ray + XUI</title>
+    <title>Bypass The Islamic Republic Again: Installing V2Ray + X-UI</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,300,0,0&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/components.css">
     <script src="https://kit.fontawesome.com/40a6ec6105.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/assets/css/prism.css">
 </head>
@@ -68,200 +69,14 @@
 
             <div id="content" class="page-shell">
                 <div class="content-frame">
-                    <style>
-    #content {
-        background-color: #06070f;
-    }
-
-    .post-shell {
-        display: grid;
-        gap: 0.9rem;
-    }
-
-    .post-head {
-        border: 1px solid #1a1a1a;
-        background: rgba(5, 5, 5, 0.78);
-        padding: 1rem;
-    }
-
-    .post-kicker {
-        margin: 0;
-        color: #ff5a00;
-        font: 500 0.66rem/1 "JetBrains Mono", monospace;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-    }
-
-    .post-head h1 {
-        margin: 0.35rem 0 0.5rem;
-        font-size: clamp(1.3rem, 3vw, 2rem);
-        letter-spacing: 0.03em;
-        text-transform: uppercase;
-    }
-
-    .post-brief {
-        margin: 0 0 0.7rem;
-        color: #94a3b8;
-        font-size: 0.92rem;
-        line-height: 1.55;
-    }
-
-    .post-chip-row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.45rem;
-    }
-
-    .post-chip {
-        border: 1px solid #2b2b2b;
-        background: rgba(0, 0, 0, 0.35);
-        color: #cbd5e1;
-        padding: 0.18rem 0.48rem;
-        font: 500 0.6rem/1.2 "JetBrains Mono", monospace;
-        letter-spacing: 0.11em;
-        text-transform: uppercase;
-    }
-
-    .post-media {
-        border: 1px solid #1a1a1a;
-        background: rgba(5, 5, 5, 0.75);
-        overflow: hidden;
-    }
-
-    .post-media img {
-        width: 100%;
-        display: block;
-    }
-
-    .post-body {
-        border: 1px solid #1a1a1a;
-        background: rgba(5, 5, 5, 0.82);
-        padding: 1rem;
-    }
-
-    .post-content {
-        background: transparent;
-        border: 0;
-        padding: 0;
-        max-width: 100%;
-    }
-
-    .post-nav {
-        display: flex;
-        justify-content: space-between;
-        gap: 0.6rem;
-        margin-bottom: 0.9rem;
-    }
-
-    .post-nav a {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.35rem;
-        text-decoration: none;
-        border: 1px solid #2b2b2b;
-        color: #cbd5e1;
-        padding: 0.3rem 0.55rem;
-        font: 600 0.6rem/1 "JetBrains Mono", monospace;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-    }
-
-    .post-nav a:hover {
-        border-color: #ff5a00;
-        color: #ff5a00;
-    }
-
-    .book-panel {
-        margin-bottom: 0.95rem;
-        border: 1px solid #2b2b2b;
-        background: rgba(0, 0, 0, 0.35);
-        padding: 0.8rem;
-    }
-
-    .book-panel h2 {
-        margin: 0 0 0.55rem;
-        color: #f8fafc;
-        text-transform: uppercase;
-        letter-spacing: 0.12em;
-        font-size: 0.76rem;
-    }
-
-    .book-rating {
-        display: flex;
-        align-items: center;
-        gap: 0.18rem;
-        color: #f59e0b;
-        margin-bottom: 0.45rem;
-    }
-
-    .book-rating .book-star-dim {
-        opacity: 0.25;
-    }
-
-    .book-rating .book-rating-value {
-        margin-left: 0.35rem;
-        color: #9ca3af;
-        text-transform: uppercase;
-        letter-spacing: 0.12em;
-        font: 500 0.58rem/1 "JetBrains Mono", monospace;
-    }
-
-    .book-review {
-        margin: 0;
-        color: #cbd5e1;
-        font-size: 0.9rem;
-        line-height: 1.6;
-    }
-
-    .book-resources {
-        margin: 0;
-        padding-left: 1rem;
-    }
-
-    .book-resources li {
-        margin-bottom: 0.35rem;
-        color: #cbd5e1;
-    }
-
-    .book-resources a {
-        color: #ff8a44;
-    }
-
-    .book-resources a:hover {
-        color: #ff5a00;
-    }
-
-    .post-comments {
-        border: 1px solid #1a1a1a;
-        background: rgba(5, 5, 5, 0.78);
-        padding: 0.9rem;
-    }
-
-    .post-comments h2 {
-        margin: 0 0 0.75rem;
-        color: #f8fafc;
-        font-size: 0.9rem;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-    }
-
-    @media (max-width: 720px) {
-        .post-head,
-        .post-body,
-        .post-comments {
-            padding: 0.8rem;
-        }
-    }
-</style>
-
-<article class="post-shell">
+                    <article class="post-shell">
     
     
     
 
     <section class="post-head">
         <p class="post-kicker">Article Dispatch</p>
-        <h1>Bypass The Islamic Republic Again: Installing V2ray + XUI</h1>
+        <h1>Bypass The Islamic Republic Again: Installing V2Ray + X-UI</h1>
         
         <p class="post-brief">When the situation is challenging, UDP-based VPN protocols might not work and we have to use something else to be able to bypass this madness. This tutorial is about installing and configuring the popular Chinese VPN protocol V2Ray on a ubuntu server using a web-based control panel called X-UI.</p>
         
@@ -281,7 +96,7 @@
     
     <div class="post-media">
         <a class="image-zoom cboxElement" href="/assets/images/posts/blog/v2ray/title.png">
-        <img src="/assets/images/posts/blog/v2ray/title.png" alt="Bypass The Islamic Republic Again: Installing V2ray + XUI">
+        <img src="/assets/images/posts/blog/v2ray/title.png" alt="Bypass The Islamic Republic Again: Installing V2Ray + X-UI">
         <div class="image-overlay"></div>
         </a>
     </div>
@@ -294,6 +109,7 @@
         </div>
 
         
+
 
         <div class="post-content">
             <h1 id="1-intro">1. Intro</h1>
@@ -313,7 +129,7 @@
 <span class="gp">$</span><span class="w"> </span><span class="nb">sudo </span>apt <span class="nb">install </span>cockpit <span class="nt">--yes</span>
 </code></pre></div></div>
 
-<p>This should install the cockpit and dose all the configurations for you. The cockpit is a web-based control panel and it will run on port 9090 of the server so, you have to allow connecting this port if your firewall is enabled:</p>
+<p>This should install the cockpit and does all the configuration for you. The cockpit is a web-based control panel and it will run on port 9090 of the server so, you have to allow connecting this port if your firewall is enabled:</p>
 
 <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span><span class="nb">sudo </span>ufw allow 9090
 <span class="gp">$</span><span class="w"> </span><span class="nb">sudo </span>ufw disable
@@ -358,7 +174,7 @@ password: admin
     <img width="80%" src="/assets/images/posts/blog/v2ray/xui.png" />
 </p>
 
-<p>Default language of x-ui is chaines, i use Google chrome and Google translate to translate its contexts to english and i recommend you to do so.</p>
+<p>Default language of x-ui is Chinese, I use Google Chrome and Google Translate to translate its content to English, and I recommend you do the same.</p>
 
 <p>After login, you have to go and change the default username and password of the panel (You can change the default port as well). From the sidebar panel select the third option, then select the second tab. Now type the old username and password on first two fields the new ones on the next two. Press <code class="language-plaintext highlighter-rouge">Revise</code> to save the changes.</p>
 
@@ -366,7 +182,7 @@ password: admin
     <img width="80%" src="/assets/images/posts/blog/v2ray/x-ui-1.png" />
 </p>
 
-<p>Now go to inbound list from the sidebar and press add for creating a new VPN configuration. For example you can select VMess or VLess protocol under Websocket(ws) as you can see on the picture below. If you choose VLess be aware of that VLess has no encryption and VMess is a better choice.</p>
+<p>Now go to inbound list from the sidebar and press add for creating a new VPN configuration. For example you can select the VMess or VLess protocol under Websocket (ws), as you can see in the picture below. If you choose VLess, be aware that it has no encryption of its own, so VMess is the better choice.</p>
 
 <blockquote>
   <p>Note: You can go and search for other V2Ray configurations but VMess is good enough for our article.</p>
@@ -402,17 +218,87 @@ password: admin
 
 <p>TLS was proposed by the Internet Engineering Task Force (IETF), an international standards organization, and the first version of the protocol was published in 1999. The most recent version is TLS 1.3, which was published in 2018.</p>
 
-<h1 id="42-buy-a-domain">4.2 Buy a domain</h1>
+<h2 id="42-buy-a-domain">4.2 Buy a domain</h2>
 
-<h1 id="43-generating-a-new-certificate-using-cert-bot">4.3 Generating a new certificate using <code class="language-plaintext highlighter-rouge">cert-bot</code></h1>
+<p>TLS certificates are issued for domain names, not bare IP addresses, so the first thing you need is a domain. Any registrar works, <a href="https://www.namecheap.com/"><strong>Namecheap</strong></a>, <a href="https://www.cloudflare.com/products/registrar/"><strong>Cloudflare Registrar</strong></a>, or a local one, it makes no difference here. Pick something cheap, you don’t need anything fancy for a personal VPN endpoint.</p>
 
-<h1 id="45-activating-cdn-optional-but-recommended">4.5 Activating CDN (Optional but recommended)</h1>
+<p>Once you own the domain, go to its DNS settings and add an <code class="language-plaintext highlighter-rouge">A</code> record pointing to your server’s IP:</p>
+
+<pre><code class="language-txt">Type: A
+Name: vpn (or @ for the root domain)
+Value: 77.222.67.140   # your server's IP
+TTL: Auto
+</code></pre>
+
+<p>Give it a few minutes to propagate, then confirm it resolves:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>dig +short vpn.yourdomain.com
+<span class="go">77.222.67.140
+</span></code></pre></div></div>
+
+<p>If that prints your server’s IP, you’re ready for a certificate.</p>
+
+<h2 id="43-generating-a-new-certificate-using-certbot">4.3 Generating a new certificate using <code class="language-plaintext highlighter-rouge">certbot</code></h2>
+
+<p><a href="https://certbot.eff.org/"><strong>Certbot</strong></a> is the standard tool for getting free certificates from <a href="https://letsencrypt.org/"><strong>Let’s Encrypt</strong></a>. Install it with snap, which is the method Certbot’s own docs recommend these days:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span><span class="nb">sudo </span>apt <span class="nb">install </span>snapd <span class="nt">--yes</span>
+<span class="gp">$</span><span class="w"> </span><span class="nb">sudo </span>snap <span class="nb">install </span>core<span class="p">;</span> <span class="nb">sudo </span>snap refresh core
+<span class="gp">$</span><span class="w"> </span><span class="nb">sudo </span>snap <span class="nb">install</span> <span class="nt">--classic</span> certbot
+<span class="gp">$</span><span class="w"> </span><span class="nb">sudo ln</span> <span class="nt">-s</span> /snap/bin/certbot /usr/bin/certbot
+</code></pre></div></div>
+
+<p>Certbot needs to answer a challenge on port 80 to prove you control the domain, and since x-ui isn’t listening there, the standalone method is the simplest option:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span><span class="nb">sudo </span>certbot certonly <span class="nt">--standalone</span> <span class="nt">-d</span> vpn.yourdomain.com
+</code></pre></div></div>
+
+<p>Follow the prompts (email address, agree to the terms), and if the <code class="language-plaintext highlighter-rouge">A</code> record from the previous step is correct, Certbot will drop your certificate here:</p>
+
+<pre><code class="language-txt">/etc/letsencrypt/live/vpn.yourdomain.com/fullchain.pem   # certificate
+/etc/letsencrypt/live/vpn.yourdomain.com/privkey.pem     # private key
+</code></pre>
+
+<p>Let’s Encrypt certificates expire after 90 days, so set up auto-renewal instead of babysitting this by hand. The snap install already ships a systemd timer that runs twice a day and only renews when a certificate is close to expiring, you can confirm it’s active with:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span><span class="nb">sudo </span>systemctl list-timers | <span class="nb">grep </span>certbot
+</code></pre></div></div>
+
+<h2 id="44-enabling-tls-on-the-x-ui-inbound">4.4 Enabling TLS on the X-UI inbound</h2>
+
+<p>Now point x-ui at the certificate you just generated. Open the panel, edit your existing inbound (or create a new one), and turn on the <strong>TLS</strong> switch. It’ll ask for two file paths, point both at the files Certbot just created:</p>
+
+<pre><code class="language-txt">Public key (certificate): /etc/letsencrypt/live/vpn.yourdomain.com/fullchain.pem
+Private key:               /etc/letsencrypt/live/vpn.yourdomain.com/privkey.pem
+</code></pre>
+
+<p>Save the inbound, then update the client’s share link or QR code, it now needs <code class="language-plaintext highlighter-rouge">tls</code> as the security setting and the domain name instead of the bare IP, so the client actually validates against <code class="language-plaintext highlighter-rouge">vpn.yourdomain.com</code>. Since the private key file is only readable by root, make sure x-ui itself is running as root (which, by default, it is) or the service will fail to start after this change.</p>
+
+<p>That’s it, your traffic is now wrapped in real TLS, on top of V2Ray’s own obfuscation, which makes it look even more like ordinary HTTPS browsing to anything inspecting the connection.</p>
+
+<h2 id="45-activating-cdn-optional-but-recommended">4.5 Activating CDN (Optional but recommended)</h2>
+
+<p>Putting your server behind a CDN like <a href="https://www.cloudflare.com/"><strong>Cloudflare</strong></a> hides its real IP behind Cloudflare’s edge network. Even if your domain gets fingerprinted and blocked, your actual VM’s IP stays usable for other domains, and blocking it directly would mean blocking a chunk of Cloudflare’s shared IP range, which is much less appealing to a censor than blocking one server.</p>
+
+<p>There’s a catch: Cloudflare’s free proxy only forwards HTTP/HTTPS traffic (ports 80/443) and only understands WebSocket for anything that isn’t plain HTTP. Which is exactly why we set up the inbound with the Websocket(ws) transport back in <a href="#2-installing-v2ray-using-x-ui">Section 2</a>, this whole setup was built to be CDN-compatible from the start.</p>
+
+<p>To turn it on:</p>
+
+<ol>
+  <li>Add your domain to Cloudflare and update your registrar’s nameservers to the ones Cloudflare gives you.</li>
+  <li>In the DNS tab, make sure the <code class="language-plaintext highlighter-rouge">A</code> record for <code class="language-plaintext highlighter-rouge">vpn.yourdomain.com</code> has the proxy status set to <strong>Proxied</strong> (the orange cloud, not the grey one).</li>
+  <li>Under SSL/TLS settings, set the encryption mode to <strong>Full (strict)</strong>. This makes Cloudflare validate the certificate your origin server presents, which is exactly the Let’s Encrypt certificate from Section 4.3, so don’t skip that step.</li>
+  <li>On your V2Ray client, leave the port at <code class="language-plaintext highlighter-rouge">443</code> and the host/SNI as your domain, that traffic now goes client → Cloudflare edge → your server, encrypted the whole way.</li>
+</ol>
+
+<blockquote>
+  <p>Note: routing VPN traffic through a CDN sits in a grey area of most providers’ terms of service. Keep the client count low, don’t advertise it, and be ready to fall back to the direct IP if the domain ever gets flagged.</p>
+</blockquote>
 
 <h1 id="references">References</h1>
 <ul>
   <li><a href="https://seakfind.github.io/2021/10/10/X-UI/">https://seakfind.github.io/2021/10/10/X-UI/</a></li>
 </ul>
-
 
         </div>
     </section>
@@ -624,6 +510,8 @@ password: admin
         MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']], processEscapes: true}, jax: ["input/TeX","input/MathML","input/AsciiMath","output/CommonHTML"], extensions: ["tex2jax.js","mml2jax.js","asciimath2jax.js","MathMenu.js","MathZoom.js","AssistiveMML.js", "[Contrib]/a11y/accessibility-menu.js"], TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"], equationNumbers: { autoNumber: "AMS" } } });
     </script>
     <script src="/assets/js/main.js" crossorigin="anonymous"></script>
+    <script src="/assets/js/pager.js" crossorigin="anonymous"></script>
+    <script src="/assets/js/github-metrics.js" crossorigin="anonymous"></script>
     <script src="/assets/js/prism.js" crossorigin="anonymous"></script>
 </body>
 

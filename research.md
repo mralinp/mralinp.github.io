@@ -2,261 +2,9 @@
 title: Research
 layout: main
 ---
-<style>
-    #content {
-        height: 100%;
-    }
 
-    .blog-matrix-head {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: end;
-        justify-content: space-between;
-        gap: 0.8rem;
-        border-bottom: 1px solid #1a1a1a;
-        padding-bottom: 0.6rem;
-        margin-bottom: 1rem;
-    }
-
-    .blog-matrix-head p {
-        margin: 0;
-        color: #ff5a00;
-        font: 500 0.66rem/1 "JetBrains Mono", monospace;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-    }
-
-    .blog-matrix-head h2 {
-        margin: 0.2rem 0 0;
-        text-transform: uppercase;
-        letter-spacing: 0.03em;
-        font-size: clamp(1.2rem, 2.2vw, 1.8rem);
-    }
-
-    .blog-matrix-status {
-        color: #9ca3af;
-        font: 500 0.62rem/1 "JetBrains Mono", monospace;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-    }
-
-    .research-subtitle {
-        color: #cbd5e1;
-        font-size: 0.9rem;
-        margin: 0 0 1.1rem;
-    }
-
-    .research-subtitle a {
-        color: #ff8a44;
-    }
-
-    .profile-links {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        margin-bottom: 1.1rem;
-    }
-
-    .profile-link {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.4rem;
-        border: 1px solid #2b2b2b;
-        background: rgba(0, 0, 0, 0.35);
-        color: #cbd5e1;
-        padding: 0.32rem 0.65rem;
-        font: 600 0.64rem/1 "JetBrains Mono", monospace;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        text-decoration: none;
-    }
-
-    .profile-link:hover {
-        border-color: #ff5a00;
-        color: #ff5a00;
-    }
-
-    .pub-stats {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 0.65rem;
-        margin-bottom: 1.1rem;
-    }
-
-    .pub-stat {
-        border: 1px solid #2b2b2b;
-        background: rgba(5, 5, 5, 0.65);
-        padding: 0.8rem;
-    }
-
-    .pub-stat .value {
-        margin: 0;
-        font-size: 1.45rem;
-        line-height: 1.1;
-        font-weight: 700;
-        font-family: "JetBrains Mono", monospace;
-    }
-
-    .pub-stat .value a {
-        color: inherit;
-        text-decoration: none;
-    }
-
-    .pub-stat .value a:hover {
-        color: #ff5a00;
-    }
-
-    .pub-stat .label {
-        margin: 0.3rem 0 0;
-        font-size: 0.63rem;
-        text-transform: uppercase;
-        letter-spacing: 0.13em;
-        color: #9ca3af;
-        font-family: "JetBrains Mono", monospace;
-    }
-
-    .stat-source {
-        margin: 0.3rem 0 0;
-        font-size: 0.56rem;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        color: #6b7280;
-        font-family: "JetBrains Mono", monospace;
-    }
-
-    .paper-list {
-        border: 1px solid #2b2b2b;
-        background: rgba(5, 5, 5, 0.72);
-        padding: 0.8rem;
-    }
-
-    .paper-item {
-        border: 1px solid #222;
-        background: rgba(0, 0, 0, 0.35);
-        padding: 0.8rem;
-        margin-bottom: 0.55rem;
-    }
-
-    .paper-item:last-child {
-        margin-bottom: 0;
-    }
-
-    .paper-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        gap: 0.7rem;
-        margin-bottom: 0.4rem;
-    }
-
-    .paper-title {
-        margin: 0;
-        font-size: 0.9rem;
-        line-height: 1.4;
-        color: #f3f4f6;
-    }
-
-    .paper-title a {
-        color: inherit;
-        text-decoration: none;
-        border-bottom: 1px solid rgba(255, 138, 68, 0.35);
-    }
-
-    .paper-title a:hover {
-        color: #ff8a44;
-        border-bottom-color: rgba(255, 90, 0, 0.75);
-    }
-
-    .paper-badge {
-        font-family: "JetBrains Mono", monospace;
-        font-size: 0.58rem;
-        letter-spacing: 0.12em;
-        color: #111;
-        text-transform: uppercase;
-        background: #ff5a00;
-        padding: 0.15rem 0.35rem;
-        white-space: nowrap;
-    }
-
-    .paper-meta {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        gap: 0.6rem;
-        font-family: "JetBrains Mono", monospace;
-        font-size: 0.62rem;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        color: #9ca3af;
-    }
-
-    .journal-rank {
-        display: inline-block;
-        margin-top: 0.5rem;
-        font: 600 0.6rem/1 "JetBrains Mono", monospace;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        padding: 0.18rem 0.4rem;
-        border: 1px solid;
-    }
-
-    .journal-rank.q1 {
-        color: #4ade80;
-        border-color: rgba(74, 222, 128, 0.4);
-        background: rgba(74, 222, 128, 0.1);
-    }
-
-    .journal-rank.q2 {
-        color: #60a5fa;
-        border-color: rgba(96, 165, 250, 0.4);
-        background: rgba(96, 165, 250, 0.1);
-    }
-
-    .journal-rank.q3 {
-        color: #f59e0b;
-        border-color: rgba(245, 158, 11, 0.4);
-        background: rgba(245, 158, 11, 0.1);
-    }
-
-    .journal-rank.q4 {
-        color: #9ca3af;
-        border-color: rgba(156, 163, 175, 0.4);
-        background: rgba(156, 163, 175, 0.1);
-    }
-
-    .research-loading,
-    .research-empty {
-        color: #9ca3af;
-        font-size: 0.85rem;
-        margin: 0;
-        padding: 0.4rem;
-    }
-
-    @media (max-width: 780px) {
-        .pub-stats {
-            grid-template-columns: repeat(2, 1fr);
-        }
-    }
-
-    @media (max-width: 480px) {
-        .pub-stats {
-            grid-template-columns: 1fr;
-        }
-
-        .paper-header {
-            flex-direction: column;
-        }
-    }
-</style>
-
-<section>
-    <div class="blog-matrix-head">
-        <div>
-            <p>Academic Impact</p>
-            <h2>Research &amp; Publications</h2>
-        </div>
-        <span class="blog-matrix-status" id="researchStatus">Feed status: syncing...</span>
-    </div>
+<section class="research-page">
+    {% include page-header.html kicker="Academic Impact" title="Research & Publications" status="Feed status: syncing..." status_id="researchStatus" %}
     <p class="research-subtitle">H-Index and citations per Google Scholar; publication record pulled live from ORCID.</p>
 
     <div class="profile-links">
@@ -315,10 +63,6 @@ layout: main
             "report": "Report"
         };
 
-        // Journal-level facts (quartile, impact factor) are not available from any
-        // free live API - Clarivate JCR is paywalled. Keyed by lowercased journal
-        // name so any future paper in the same venue picks it up automatically.
-        // Source: Scimago Journal Rank / Clarivate JCR, checked manually.
         var JOURNAL_METRICS = {
             "expert systems with applications": { quartile: "Q1", impactFactor: 10.48 }
         };
@@ -347,7 +91,6 @@ layout: main
             }
             listEl.innerHTML = "";
             works.forEach(function (w) {
-                // for now I have 1 cite on this paper 
                 var cites = w.doi && citationsByDoi[w.doi] !== undefined ? citationsByDoi[w.doi] : 1;
                 var titleHtml = w.url
                     ? '<a href="' + w.url + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(w.title) + '</a>'
@@ -379,7 +122,7 @@ layout: main
             citationsEl.textContent = "Semantic Scholar: 0";
             papersEl.textContent = "1";
             renderPapers([{
-                title: "Breast mass classification in 3D ABUS based on Laplace-Beltrami spectra and dual path CNN",
+                title: "Breast mass classification in 3D ABUS based on Laplace-Beltrami spectra and Dual Path CNN",
                 venue: "Expert Systems with Applications",
                 year: 2025,
                 type: "journal-article",

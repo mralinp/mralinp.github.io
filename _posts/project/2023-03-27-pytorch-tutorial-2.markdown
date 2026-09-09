@@ -10,9 +10,9 @@ brief: "In this part we will learn how to make custom Datasets and use DataLoade
 
 # 1. Intro
 
-Almost every machine learning algorithm and model works with Data. Creating a Dataset and managing it with Dataloader keeps your data manageable and helps to simplify your machine learning pipeline. a Dataset stores all your data, and Dataloader is can be used to iterate through the data, manage batches, transform the data, and much more. Let's begin with a simple example. Assuming the popular Wine dataset as our target dataset, we want to load and use this dataset in pytorch. Before getting started, we have to download the dataset from [UCA machine-learning repository](https://archive.ics.uci.edu/ml/datasets/wine). I usually place my data insied a data directory so the address to this dataset will be `../data/win/wine.data`.
+Almost every machine learning algorithm and model works with data. Creating a Dataset and managing it with a Dataloader keeps your data manageable and helps simplify your machine learning pipeline. A Dataset stores all your data, and a Dataloader can be used to iterate through the data, manage batches, transform the data, and much more. Let's begin with a simple example. Assuming the popular Wine dataset as our target dataset, we want to load and use this dataset in PyTorch. Before getting started, we have to download the dataset from the [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/wine). I usually place my data inside a data directory, so the path to this dataset will be `../data/wine/wine.data`.
 
-In pytorch we have a Dataset class which each dataset should inherit from this base class. For datasets we have to implement at least to methods which are `__getitem__` and`__len__` which return the iten with the given index from the dataset and the length of the dataset respectively.
+In PyTorch we have a Dataset class which every dataset should inherit from. For a dataset we have to implement at least two methods, `__getitem__` and `__len__`, which return the item at the given index and the length of the dataset, respectively.
 
 ```python
 
@@ -52,10 +52,10 @@ x:tensor([1.4230e+01, 1.7100e+00, 2.4300e+00, 1.5600e+01, 1.2700e+02, 2.8000e+00
         1.0650e+03]), y: tensor([1.])
 ```
 
-Thats it, it lookes easy, doesn't it?
+That's it, it looks easy, doesn't it?
 
 # 2. Dataloader
-To manage the dataset we can use pytorch dataloader to prepare the dataset for the training process. For example it's responsible for creating batches and shuffling them in in training process.
+To manage the dataset we can use PyTorch's Dataloader to prepare it for the training process. For example, it's responsible for creating batches and shuffling them during training.
 
 ```python
 dataloader = torch.utils.data.DataLoader(dataset=dataset, batch_size=16, shuffle=True, num_workers=2)
@@ -101,7 +101,7 @@ tensor([[1.3740e+01, 1.6700e+00, 2.2500e+00, 1.6400e+01, 1.1800e+02, 2.6000e+00,
 
 # 3. Transformers
 
-Some times we need to make some changes on the raw data before using them. For example, in data augmentation technique, we make some changes to the original data before using them in training epochs. This will make our model more robust and more prone to overfitting. We can modify our dataset class to be able to use some transformer functions by defining an optional input in the constructor function (`__init__`). Then when ever we want to read a data from the dataset, the transformer functions will automatically execute on the data before returning the results. This will be so useful during our implementation. We will see more examples in the next parts of these series. 
+Sometimes we need to make changes to the raw data before using it. For example, with the data augmentation technique, we make small changes to the original data before using it in each training epoch. This makes our model more robust and less prone to overfitting. We can modify our dataset class to support transformer functions by defining an optional input in the constructor (`__init__`). Then, whenever we want to read an item from the dataset, the transformer functions will automatically run on the data before the result is returned. This will be very useful in our implementation, and we'll see more examples of it in the next parts of this series.
 
 Here is the modified dataset class:
 
@@ -146,7 +146,7 @@ class MultiplierTransformer:
         return x, y
 ```
 
-To use these transformers we can easily pass them through the constructor while creating the dataset object, Then they will be applied to the data on after another in the order of their placement in the array.
+To use these transformers, we can easily pass them through the constructor while creating the dataset object. They'll then be applied to the data one after another, in the order they appear in the array.
 
 ```python
 dataset = WineDataset(transforms=[ToTensorTransformer(), MultiplierTransformer(10)])

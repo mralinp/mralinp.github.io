@@ -5,7 +5,7 @@ author: "Ali N. Parizi"
 img: "/assets/images/posts/projects/pytorch-tutorial/part-1/title.png"
 date:   2023-03-27 17:15:23 +0330
 categories:  project ai machine-learning deep-learning python
-brief: "PyTorch is the most popular deep-learning framework which is used by many researchers on the field of machine learning and deep learning. I thing any body on this field should know this framework and use it on their implementations."
+brief: "PyTorch is the most popular deep-learning framework, used by many researchers in the field of machine learning and deep learning. I think anybody in this field should know this framework and use it in their projects."
 ---
 # 1. Intro
 
@@ -17,7 +17,7 @@ PyTorch is a fully featured framework for building deep learning models, which i
 
 PyTorch is a machine learning framework based on the Torch library, used for applications such as computer vision and natural language processing, originally developed by Meta AI and now part of the Linux Foundation umbrella. It is free and open-source software released under the modified BSD license.
 
-PyTorch is the work of developers at Facebook AI Research and several other labs. The framework combines the efficient and flexible GPU-accelerated backend libraries from Torch with an intuitive Python frontend that focuses on rapid prototyping, readable code, and support for the widest possible variety of deep learning models. Pytorch lets developers use the familiar imperative programming approach, but still output to graphs.  It was released to open source in 2017, and its Python roots have made it a favorite with machine learning developers.
+PyTorch is the work of developers at Facebook AI Research and several other labs. The framework combines the efficient and flexible GPU-accelerated backend libraries from Torch with an intuitive Python frontend that focuses on rapid prototyping, readable code, and support for the widest possible variety of deep learning models. PyTorch lets developers use the familiar imperative programming approach, but still output to graphs. It was released to open source in 2017, and its Python roots have made it a favorite with machine learning developers.
 
 Significantly, PyTorch adopted a Chainer innovation called reverse-mode automatic differentiation. Essentially, it’s like a tape recorder that records completed operations and then replays backward to compute gradients. This makes PyTorch relatively simple to debug and well-adapted to certain applications such as dynamic neural networks. It’s popular for prototyping because every iteration can be different.
 
@@ -29,7 +29,7 @@ Facebook developers have been working hard to improve PyTorch’s productive app
 
 # 2. Installing PyTorch
 
-You can follow this tutorial using some online platforms such as [Google Colab](https://colab.research.google.com) or [Kaggle](https://kaggle.com) which give you a python environment via a jupyter note book and a proper GPU to meet your needs during learning process and even doing small projects and homeworks. If you prefer using these platforms you can skip this section but if you want to use pytorch on your local machine and use your own GPU, here are the installation steps you should follow. 
+You can follow this tutorial using an online platform such as [Google Colab](https://colab.research.google.com) or [Kaggle](https://kaggle.com), which give you a Python environment through a Jupyter notebook and a proper GPU, more than enough for learning and even small projects or homework. If you'd rather use one of these platforms you can skip this section, but if you want to use PyTorch on your local machine with your own GPU, here are the installation steps to follow.
 
 ## 2.1 Installing PyTorch
 
@@ -53,9 +53,9 @@ Then use pip to install PyTorch:
 $ pip install torch torchvision torchaudio
 ```
 
-It will take some time but will install pytorch and all gpu requirements on your machine.
+It will take some time, but it will install PyTorch and all the GPU requirements on your machine.
 
-to test that if gpu is supported, open a python file and run the code below:
+To test whether GPU is supported, open a Python file and run the code below:
 
 ```python
 import torch
@@ -69,17 +69,17 @@ Is GPU supported? Yes
 Well done, you have installed PyTorch on your computer and ready to go through this tutorial.
 
 # 3. Tensor basics
-The very basic class in PyTorch library is the tensor class. almost Every variable and operation in PyTorch is represented by a tensor. You can look at the tensor as just like a numpy array or a multi-dimensional python list.
-Because of the mathematical nature of Machine Learning operations which are performed on linear-algebra, we need such a class to implement and use the calculations in python.
+The most basic class in the PyTorch library is the tensor class. Almost every variable and operation in PyTorch is represented by a tensor. You can think of a tensor as similar to a numpy array or a multi-dimensional Python list.
+Because machine learning operations are fundamentally linear-algebra operations, we need a class like this to implement and use those calculations in Python.
 
-Tensor can be used in CPU or GPU. Using GPU makes the calculations so much faster. To move the tensor to GPU, you have to use  `tensor.to('cuda')` or `tensor.to(device)` function.
+Tensors can live on the CPU or the GPU. Using the GPU makes the calculations much faster. To move a tensor to the GPU, you use the `tensor.to('cuda')` or `tensor.to(device)` function.
 
 Creating tensors:
 
 ```python
 import torch
 
-# Createing a tensor
+# Creating a tensor
 sample_tensor   = torch.tensor([2, 2])
 random_tensor   = torch.randn(2, 2)
 zero_tensor     = torch.zeros(2, 2)
@@ -90,15 +90,15 @@ one_tensor      = torch.ones(2, 2)
 Moving tensors to GPU:
 
 ```python
-device = torch.cuda.getDevice('cuda')
+device = torch.device('cuda')
 
 sample_tensor = torch.tensor([2, 2])
 
 # Send tensor to GPU
-sample_tensor.to(device)
+sample_tensor = sample_tensor.to(device)
 ```
 
-You can reshape the tensors using the `view` function. This function as very similar to the `reshape` function in numpy.
+You can reshape tensors using the `view` function. This function is very similar to the `reshape` function in numpy.
 
 ```python
 sample_tensor = torch.tensor([[1,  2,   3,   4 ], 
@@ -119,20 +119,20 @@ In PyTorch every calculation is represented by a computation graph. For example,
 <span>Figure-1: Computational graph for Y = X + 2</span>
 </p>
 
-This is due to the ace of the gradient calculation. The gradients are required for optimization of the model weights. This computation graphs used for computing the gradients based on the chain rule and Jacobian matrix method. The gradient calculation can be automatically done using the `backward` function. If you want to compute the gradient of a tensor, you have to set the `require_gradients` parameter to true while defining the tensor.
+This is what makes gradient calculation possible. Gradients are required to optimize the model's weights, and this computation graph is what PyTorch walks backward over to compute them, using the chain rule and the Jacobian matrix method. The gradient calculation can be done automatically using the `backward` function. If you want to compute the gradient of a tensor, you have to set the `requires_grad` parameter to `True` while defining the tensor.
 
 ```python
-x = torch.tensor([1,2,3,4])
-w = torch.randn(1, require_gradients=True)
-y = (x*y).sum()
+x = torch.tensor([1., 2., 3., 4.])
+w = torch.randn(1, requires_grad=True)
+y = (x*w).sum()
 
 y.backward()
 
-print(f"dy/dx: {y.grad()}")
+print(f"dy/dw: {w.grad}")
 ```
 
 # 4. Linear regression
-Learning by doing a real project is a perfect way to gain some kinds of skills specially programming. To understand the basics of using the framework, it's recommended to implement a simple mini project step by step from scratch. We choose linear regression as the training example and will go through the implementations from scratch and with out using pytorch. Then we will convert the code into using PyTorch and advanced functions.
+Learning by doing a real project is a great way to build skills, especially with programming. To understand the basics of using the framework, it's recommended to implement a simple mini project step by step from scratch. We'll use linear regression as our training example, working through the implementation from scratch and without PyTorch first, then converting the code to use PyTorch and its more advanced functions.
 
 ## 4.1 Problem statement
 
@@ -201,7 +201,7 @@ The network will have a single node that has a single parameter $w$ which is ran
 w = np.random.rand()
 ```
 
-In PyTorch the forward pass in calculating the layer output is done by calling the forward function which, represents the forward pass of the network. In conclusion, we will call the model output function, the forward function.
+We'll structure this from-scratch implementation the same way PyTorch structures its own models: with a `forward` function that computes the network's output from its input and weights. It's a small bit of extra ceremony here, but it means the switch to actual PyTorch in [Section 4.2](#42-including-pytorch) will feel completely familiar.
 
 ```python
 # Forward pass:
@@ -218,9 +218,9 @@ Then we have to define the loss function of the network which is the MSE loss fu
 def mse(y,y_pred):
     return np.mean(np.square(y-y_pred))
 
-print (f'prediction before training f({x_test}): {forward(x_test, weights)}')    
+print (f'prediction before training f({x_test}): {forward(x_test, w)}')
 ```
-Finally, we will need a function to calculate the gradient of the network coefficients, which in pytorch is called the backward function.
+Finally, we will need a function to calculate the gradient of the network coefficients, which in PyTorch is called the backward function.
 
 ```python
 # Calculating gradients: 
@@ -250,9 +250,8 @@ for epoch in range(num_epochs):
     w = w - learning_rate * dw
     if (epoch) % 10 == 0:
         print(f"Epoch: {epoch} loss={loss:0.3f}, weights={[w]}")
-        
-print (f"Model prediction for x=6 is: {forward(x_test, weights):.3f})
 
+print(f"Model prediction for x=6 is: {forward(x_test, w)}")
 ```
 
 ```output
@@ -285,7 +284,7 @@ Y = torch.tensor([2,4,6,8,10], dtype=torch.float32)
 x_test = torch.tensor([6], dtype=torch.float32)
 y_test = torch.tensor([12], dtype=torch.float32)
 
-# Weights: A single nuron
+# Weights: A single neuron
 w = torch.randn(1, requires_grad=True, dtype=torch.float32)
 ```
 
@@ -314,18 +313,18 @@ learning_rate = 0.01
 num_epochs = 100
 
 for epoch in range(num_epochs):
-    y_pred = forward(X, weights)
+    y_pred = forward(X, w)
     loss = mse(Y, y_pred)
     loss.backward()
     with torch.no_grad():
         w -= learning_rate * w.grad
     # You have to zero the gradients before calling the backward function in the next step
     w.grad.zero_()
-    
+
     if (epoch) % 10 == 0:
         print(f"Epoch: {epoch} loss={loss:0.3f}, weights={w}")
-        
-print (f"Model prediction for x=6 is: {forward(x_test, w):.3f})
+
+print(f"Model prediction for x=6 is: {forward(x_test, w)}")
 ```
 ```output
 Epoch: 0 loss=49.172, weights=tensor([0.9472], requires_grad=True)
@@ -344,7 +343,7 @@ Model prediction for x=6 is: tensor([12.0000], grad_fn=<MulBackward0>)
 ## 4.3 More including PyTorch
 Now, let's use the built-in PyTorch optimizer and loss function as well as the built-in forward function. First change that we should make is to remove the loss function that we where using and use the built-in MSELoss instead. Then, instead of manually updating the model parameters, we can use the built-in optimizers such as **S**tochastic **G**radient **D**escent (SGD), Adam or etc.
 
-As we know, this model is a single linear nuron which can be represented by `torch.nn.linear(input_size, output_size)`. This layer has its own parameters which means it's not required to define the weights parameter $$w$$ any more.
+As we know, this model is a single linear neuron which can be represented by `torch.nn.Linear(input_size, output_size)`. This layer has its own parameters which means it's not required to define the weights parameter $$w$$ any more.
 
 While using optimizers, calling `optimizer.step()` will automatically update the model parameters and `optimizer.zero_grad()` will automatically free the gradients memory.
 
@@ -366,7 +365,7 @@ output_size = n_features
 
 model = torch.nn.Linear(input_size, output_size)
 
-print (f'prediction before training f({x_test}): {model(x_test).item():.3f}')    
+print (f'prediction before training f({x_test}): {model(x_test).item():.3f}')
 
 learning_rate = 0.01
 num_epochs = 2000
@@ -382,18 +381,18 @@ for epoch in range(num_epochs):
     l.backward()
     optimizer.step()
     optimizer.zero_grad()
-    
-    if (epoch) % 500 == 0:
-        print(f"Epoch: {epoch} loss={l.item():0.5f}, weights={weights[0].item():0.5f}")
 
-print (f"{model(x_test).item():0.3f}") 
+    if (epoch) % 500 == 0:
+        print(f"Epoch: {epoch} loss={l.item():0.5f}, weight={model.weight.item():0.5f}")
+
+print(f"{model(x_test).item():0.3f}")
 ```
 ```output
 prediction before training f(tensor([6.])): 0.314
-Epoch: 0 loss=45.60832, weights=0.29675
-Epoch: 500 loss=0.00051, weights=0.29675
-Epoch: 1000 loss=0.00002, weights=0.29675
-Epoch: 1500 loss=0.00000, weights=0.29675
+Epoch: 0 loss=45.60832, weight=0.29675
+Epoch: 500 loss=0.00051, weight=1.98523
+Epoch: 1000 loss=0.00002, weight=1.99979
+Epoch: 1500 loss=0.00000, weight=1.99999
 12.000
 ```
 
@@ -415,8 +414,7 @@ class Model(torch.nn.Module):
 Now we can instantiate and use this model instead of defining a single fully connected layer as our model.
 
 ```python
-
-mport torch
+import torch
 
 # Training Data
 X = torch.tensor([[1],[2],[3],[4],[5]], dtype=torch.float32)
@@ -442,7 +440,7 @@ class Model(torch.nn.Module):
 
 model = Model(input_size, output_size)
 
-print (f'prediction before training f({x_test}): {model(x_test).item():.3f}')    
+print (f'prediction before training f({x_test}): {model(x_test).item():.3f}')
 
 learning_rate = 0.01
 num_epochs = 2000
@@ -458,15 +456,15 @@ for epoch in range(num_epochs):
     l.backward()
     optimizer.step()
     optimizer.zero_grad()
-    
-    if (epoch) % 500 == 0:
-        print(f"Epoch: {epoch} loss={l.item():0.5f}, weights={weights[0].item():0.5f}")
 
-print (f"{model(x_test).item():0.3f}")
+    if (epoch) % 500 == 0:
+        print(f"Epoch: {epoch} loss={l.item():0.5f}, weight={model.ll_1.weight.item():0.5f}")
+
+print(f"{model(x_test).item():0.3f}")
 ```
 
-# 4.5 More realistic example
-Now lets use a more realistic data and plot the results with matplotlib.
+## 4.5 More realistic example
+Now let's use some more realistic data and plot the results with matplotlib.
 
 ```python
 import torch
@@ -481,15 +479,12 @@ Y = Y.view(Y.shape[0], 1)
 n_samples, n_features = X.shape
 
 class Model(torch.nn.Module):
-    def __init__(self):
-        super(Model, self, input_size, output_size).__init__()
-        self.ll_1 = torch.nn.Linear(1, 1)
-        
+    def __init__(self, input_size, output_size):
+        super(Model, self).__init__()
+        self.ll_1 = torch.nn.Linear(input_size, output_size)
+
     def forward(self, x):
         return self.ll_1(x)
-    
-    def parameters(self):
-        return self.ll_1.parameters()
 
 model = Model(n_features, n_features)
 
@@ -523,23 +518,24 @@ plt.plot(X.detach().numpy(), prediction, 'b')
 
 # 5. Logistic regression
 
-Here is a classification example using the breast cancer dataset from scikit-learn library. To recap, the problem statement is, we want to classify patients into two classes, having and not having the breast cancer using a single nuron as the previous examples.
+Here is a classification example using the breast cancer dataset from the scikit-learn library. To recap, the problem statement is that we want to classify patients into two classes, having breast cancer and not having it, using a single neuron, just like in the previous examples.
 
 ```python
 import torch
-import sklearn
 import matplotlib.pyplot as plt
 import numpy as np
+from sklearn.datasets import load_breast_cancer
 from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
 
-dataset = sklearn.datasets.load_breast_cancer()
+dataset = load_breast_cancer()
 X, y = dataset.data, dataset.target
 
 n_samples, n_features = X.shape
 
 x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-scaler = sklearn.preprocessing.StandardScaler()
+scaler = StandardScaler()
 
 x_train = scaler.fit_transform(x_train)
 x_test = scaler.transform(x_test)
@@ -582,7 +578,7 @@ for epoch in range(100):
             print(f'epoch: {epoch}, loss: {loss.item():.03f}, accuracy: {accuracy:.03f}')    
 ```
 
-As you can see, in the code, when we want to compute the accuracy of the model, we dont need to to keep track of calculated gradients of the calculation. To prevent this to affect our training and calculations, we have to turn this tracking off. This can be done by calling `torch.no_grad()` in a `with` block or making a detached copy of the variables directly by calling the `tensor.detach()` function of that tensor which returns a detached copy of that tensor and work with the returned value instead of the main tensor.
+As you can see in the code, when we want to compute the accuracy of the model, we don't need to keep track of the calculation's gradients. To prevent this from affecting our training and calculations, we have to turn this tracking off. This can be done by calling `torch.no_grad()` in a `with` block, or by making a detached copy of the tensor directly with its `tensor.detach()` function, which returns a detached copy you can work with instead of the original tensor.
 
 ```python
 a = torch.tensor([1,2,3])
@@ -603,6 +599,4 @@ epoch: 80, loss: 0.276, accuracy: 0.965
 epoch: 90, loss: 0.262, accuracy: 0.965
 ```
 # 6. Conclusion
-In this section we learned what is PyTorch, Tensors and the computation graph definition. Then, we implemented a simple linear regression from scratch using numpy which helped us to better understanding the problem and how to solve the problem by implementation. After that, we turned the calculations from numpy into PyTorch tensors. Finally, we completed the implementation using built-in PyTorch optimizers and loss functions and some examples.
-
- 
+In this article we learned what PyTorch is, what tensors are, and how the computation graph is defined. Then, we implemented a simple linear regression from scratch using numpy, which helped us understand the problem and how to solve it through implementation. After that, we turned the calculations from numpy into PyTorch tensors. Finally, we completed the implementation using PyTorch's built-in optimizers, loss functions, and a couple of worked examples.

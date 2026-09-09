@@ -9,14 +9,14 @@ brief: 'A straightforward walk-through of a useful statistical concept, "The Poi
 ---
 
 # 1. Intro
-Knowing statistics for a computer engineer, a data scientist, or a machine-learning engineer is a unique need in their professional career. We learn about statistics in most universities more like learning differential equations or calculus instead. We know so many mathematical basics for statistics that we will never use in the future. That prevents us from seeing the use of statistics and what we can do with these concepts in the real world.
+Statistics is an essential skill for a computer engineer, a data scientist, or a machine-learning engineer to have in their professional career. In most universities, though, we learn statistics the same way we learn differential equations or calculus: a long list of formulas with little connection to real-world use. We memorize plenty of mathematical basics we'll never actually use, which gets in the way of seeing what statistics can really do for us in the real world.
 
 In this article, we are about to learn two crucial statistics concepts, The Poisson Distribution and The Poisson Process, through solving a common problem in the concept of online website hosting.
 
 # 2. What Poisson Distribution or Poisson Process is about?
-Before we get started, let's first ask our selves a simple question, "Why do we need Poisson?"
+Before we get started, let's first ask ourselves a simple question: "Why do we need Poisson?"
 
-The Poisson distribution helps us to o predict the probability of a given number of events occurring in a fixed interval of time, or just simply, to predict the number of events in the future.
+The Poisson distribution helps us predict the probability of a given number of events occurring in a fixed interval of time, or, more simply, to predict the number of events in the future.
 
 For example, 
 - How many visitors do you get on your website in a day?
@@ -24,14 +24,14 @@ For example,
 - How many phone calls do you get during your shift?
 - How many people will die from covid-19 next year?
 
-Every week, on average, 17 people react to my blog posts via sending me emails. I’d like to predict the number of people who react to my blog posts next week because I have to consider some free time to answer them properly and planning is so critical for me.
+Every week, on average, 17 people react to my blog posts by emailing me. I'd like to predict how many people will react to my posts next week, so I can set aside enough free time to answer them properly, planning ahead matters a lot to me.
 
 What is the probability that exactly 20 people (or 10, 30, 40, etc.) will react to my posts next week?
 
-To answer this question, if we knew some statistics, it would comes my our minds that we should be able to solve this problem using **the Binomial distribution**. Let's first, look at the concept of Binomial distribution and solve the problem using it.
+To answer this question, if we knew some statistics, it would come to our minds that we should be able to solve this problem using **the Binomial distribution**. Let's first look at the concept of the Binomial distribution and solve the problem using it.
 
 # 3. Binomial distribution
-One way to solve this should be to start with the number of reads. Each person who reads the blog has some probability that they will really have a question or found some thing interesting to share with me. 
+One way to solve this is to start with the number of reads. Each person who reads the blog has some probability of actually having a question or finding something interesting enough to share with me.
 
 A binomial random variable is the number of successes $$x$$ in $$n$$ repeated trials. And we assume the probability of success $$p$$ is constant over each trial. The Binomial distribution formula is:
 \begin{equation}
@@ -39,15 +39,15 @@ P[X=x] = \binom{n}{x}p^x(1-p)^{n-x}
 \end{equation}
 
 
-However here, we are given only one piece of information, $$17 \frac{emails}{week}$$, which is a rate. we don’t know any thing about the probability of receiving an email by an individual reader p, nor the number of blog visitors n. So, we use google analytics to retrieve this data from our blog history.
+However, here we are given only one piece of information, $$17 \frac{emails}{week}$$, which is a rate. We don't know anything about the probability that an individual reader sends an email, $$p$$, nor the number of blog visitors, $$n$$. So, we use Google Analytics to retrieve this data from our blog history.
 
-<p align="center"> <img src="/assets/images/posts/blog/poisson/website-stats.png"/><br><span>Stats from google</span></p>
+<p align="center"> <img src="/assets/images/posts/blog/poisson/website-stats.png"/><br><span>Stats from Google</span></p>
 
-By looking to the stats we can say, in one year, A total of $$59k$$ people read my blog. Out of $$59k$$ people, $$888$$ of them liked my post. Therefore, the number of people who read my blog per week ($$n$$) is $$\frac{59k}{52}=1134$$. The number of people who liked my posts per week ($$x$$) is $$\frac{888}{52}=17$$. So, the success probability p would be $$\frac{888}{59k} = 0.015$$ or $$1.5\%$$.
+By looking at the stats we can say that, in one year, a total of $$59k$$ people read my blog. Out of those $$59k$$ people, $$888$$ of them liked my post. Therefore, the number of people who read my blog per week ($$n$$) is $$\frac{59k}{52}=1134$$. The number of people who liked my posts per week ($$x$$) is $$\frac{888}{52}=17$$. So, the success probability $$p$$ would be $$\frac{888}{59k} = 0.015$$ or $$1.5\%$$.
 
 Now Using Binomial PMF, we should be able to calculate the probability of getting 20 emails for next week as below:
 
-$$P[X=20] = \binom{1134}{20}(0.015)^{20}(1-0.015)^{n-x} = 0.06962$$
+$$P[X=20] = \binom{1134}{20}(0.015)^{20}(1-0.015)^{1134-20} = 0.06962$$
 
 We can use python or any other programming language to calculate the probability of getting emails with different values.
 
@@ -75,7 +75,7 @@ x	Binomial P(x, n, p)
 40:	6.815731666708672e-07
 ```
 
-As you can see, by using binomial distribution the probability of getting, 10, 17, 20, 30 and 40 emails per week would be as follows:
+As you can see, by using the binomial distribution, the probability of getting 10, 17, 20, 30, and 40 emails per week is as follows:
 
 | x  |  Binomial P(X=x)  |
 |----|:-----------------:|
@@ -89,19 +89,19 @@ As you can see, by using binomial distribution the probability of getting, 10, 1
 
 # 4. Shortcomings of the Binomial Distribution
 
-The very first problem with a binomial random variable is, "**it being assumed to be binary (0 or 1)**". In the previous example, we have $$17 \frac{emails}{week}$$. This means $$\frac{17}{7}=2.4$$ people will send me emails per day, and $$\frac{17}{7*24}$$ = 0.1 people send me email per hour.
-If we model the success probability by hour (0.1 email/hr) using binomial random variable, this means most of the hours get zero emails but some hours will get exactly 1 email. However, it is also very possible that certain hours will get more that 1 email (2,3,5 emails, etc.)
-The problem with binomial is that it cannot contain more than 1 event in the unit of time (in this case, 1 hr is the unit time). The unit of time can only have 0 or 1 event.
+The very first problem with a binomial random variable is that "**it's assumed to be binary (0 or 1)**". In the previous example, we have $$17 \frac{emails}{week}$$. This means $$\frac{17}{7}=2.4$$ people will send me emails per day, and $$\frac{17}{7 \times 24} = 0.1$$ people send me an email per hour.
+If we model the success probability by hour (0.1 email/hr) using a binomial random variable, this means most hours get zero emails, but some hours get exactly one. However, it's also entirely possible that a given hour gets more than one email (2, 3, 5, etc.).
+The problem with binomial is that it can't contain more than one event per unit of time (in this case, one hour is the unit of time). The unit of time can only have 0 or 1 event.
 
-How about dividing 1 hour into 60 minutes, and make unit time smaller, for example, a minute? If that so, then 1 hour can contain multiple events (Still, one minute will contain exactly one or zero events.). What if, during that one minute, we got multiple emails? (i.e someone shared your my blog post on Twitter and the traffic spiked at that minute.) Then what? We can divide a minute into seconds. then our time unit becomes a second and again a minute can contain multiple events. But this binary container problem will always exist for ever-smaller time units. The idea is, we can make the binomial random variable handle multiple events by dividing a unit time into smaller units. By using smaller divisions, we can make the original unit time contain more than one event. Mathematically, this means $$n$$ goes to infinity. Since we assumed the rate is fixed, $$p$$ must goes to zero. Because, when $n$ grows up to infinity,the number of intervals between the period becomes grows as $n$ and the probability of getting an email at each interval tends to be merely zero. In the other words, If $n$ goes to infinity, $$p$$ should become zero, Other wise, $$np$$, which is the number of events will blow up.
+How about dividing that one hour into 60 minutes, making the unit of time smaller? If we do that, one hour can now contain multiple events (though a single minute will still contain exactly zero or one). But what if, during that one minute, we get multiple emails, say, someone shares my blog post on Twitter and traffic spikes at that exact minute? Then what? We can divide a minute into seconds, making a second our new unit of time, and again a minute can contain multiple events. But this binary-container problem persists no matter how small we make the unit of time. The idea is that we can make the binomial random variable handle multiple events by dividing the unit of time into ever-smaller pieces. By doing that, we let the original unit of time contain more than one event. Mathematically, this means $$n$$ goes to infinity. Since we've assumed the rate is fixed, $$p$$ must go to zero: as $$n$$ grows toward infinity, the number of intervals grows along with it, and the probability of getting an email in any single interval shrinks toward zero. In other words, if $$n$$ goes to infinity, $$p$$ must go to zero, otherwise $$np$$, which is the expected number of events, would blow up.
 
-The second problem with the binomial random variable is, "**when we want to use the binomial distribution, the number of trails, $$n$$, and the probability of success, $$p$$, should be known**".
-If you use Binomial, you cannot calculate the success probability only with the rate (i.e $$17\frac{emails}{week}$$). You need more information $$n$$ and $$p$$, in order to use the binomial PMF.
-The Poisson Distribution, on the other hand, doesn’t require you to know $$n$$ or $$p$$. We are assuming $$n$$ is infinitely large ($$n\rightarrow\infty$$) and $$p$$ is infinitesimal ($$p\rightarrow 0$$).
+The second problem with the binomial random variable is that "**to use the binomial distribution, the number of trials, $$n$$, and the probability of success, $$p$$, must be known**".
+If you use Binomial, you cannot calculate the success probability with just the rate (i.e. $$17\frac{emails}{week}$$). You need the additional information $$n$$ and $$p$$ in order to use the binomial PMF.
+The Poisson Distribution, on the other hand, doesn't require you to know $$n$$ or $$p$$. We are assuming $$n$$ is infinitely large ($$n\rightarrow\infty$$) and $$p$$ is infinitesimal ($$p\rightarrow 0$$).
 The only parameter of the Poisson distribution is the rate $$\lambda$$. (In real life only knowing the rate is much more common than knowing both $$n$$ and $$p$$)
 
 # 5. Derive the poisson formula mathematically
-Now, let's deep dive into the binomial distribution formula with the assumption that we reached from the ideas of the previous section ([Section 4](#4-shortcomings-of-the-binomial-distribution)). We find out that to solve the deal with the binary nature of the binomial random variable, we should increase the number of time units in our one week interval. Mathematically it means $$n\rightarrow\infty$$:
+Now let's dive into the binomial distribution formula, starting from the conclusion we reached in the previous section ([Section 4](#4-shortcomings-of-the-binomial-distribution)): to deal with the binary nature of the binomial random variable, we should increase the number of time units in our one-week interval. Mathematically, this means $$n\rightarrow\infty$$:
 
 $$P[X=x] = lim_{n\rightarrow\infty}\binom{n}{x}p^x(1-p)^{n-x}$$
 
@@ -134,7 +134,7 @@ Which is actually the Poisson random distribution formula.
 
 # 6. Probability of events for a Poisson distribution
 
-An event can occur 0, 1, 2, … times in an interval. The average number of events in an interval is designated λ. λ is the event rate. also called the rate parameter. The probability of observing k events in an interval is given by the equation:
+An event can occur 0, 1, 2, … times in an interval. The average number of events in an interval is designated λ. λ is the event rate, also called the rate parameter. The probability of observing k events in an interval is given by the equation:
 
 
 $$P[k\ events\ in\ interval] = e^{-λ}\frac{λ^{k}}{k!}$$
@@ -172,21 +172,21 @@ x	Poisson P(x, lambda)
 40:	8.381188233781985e-07
 ```
 
-As it can be observed, using the calculated probabilities using Poisson formula is very close to the values calculated using Binomial distribution formula, so we can conclude that the Poisson distribution in this situation is a really good approximation for our problem. Because of the simpler formula and lower and easy to obtain parameter of the poisson distribution, it would be come very useful to use this distribution to solve the problems of this kind.
+As you can see, the probabilities calculated using the Poisson formula are very close to the values from the Binomial distribution formula, so we can conclude that the Poisson distribution is a really good approximation for our problem in this case. Because of its simpler formula and its single, easy-to-obtain parameter, the Poisson distribution is very useful for solving problems of this kind.
 
 
 | x  |  Binomial P(X=x)  | Poisson P(X=x;lambda=17)  |
 |----|:-----------------:|:-------------------------:|
-| 10 | 0.02250           | 0.2300                    |
+| 10 | 0.02250           | 0.02300                   |
 | 17 | 0.09701           | 0.09628                   |
-| 20 | 0.06962           | 0.07595                   |
-| 30 | 0.00121           | 0.00340                   |
+| 20 | 0.06962           | 0.06916                   |
+| 30 | 0.00121           | 0.00128                   |
 | 40 | < 0.000001        | < 0.000001                |
 
 <br>
 
 # 7. Some notes on Poisson random variable
-Even though the Poisson distribution models are rare events, the rate $$\lambda$$ can me any number. It doesn’t always have to be small. The Poisson Distribution is asymmetric, it is always skewed toward the right. Because it is inhibited by the zero occurrence barrier (there is no such thing as minus one email) on the left and it is unlimited on the other side. As $$\lambda$$ becomes bigger, the graph looks more like a normal distribution.
+Even though the Poisson distribution is often used to model rare events, the rate $$\lambda$$ can be any number, it doesn't always have to be small. The Poisson Distribution is asymmetric, always skewed toward the right, because it's bounded by the zero-occurrence barrier (there's no such thing as minus one email) on the left, while it's unbounded on the right. As $$\lambda$$ becomes bigger, the graph looks more like a normal distribution.
 
 ```python
 from scipy.stats import poisson
@@ -214,10 +214,7 @@ plt.show()
 
 <p align="center"><img src="/assets/images/posts/blog/poisson/different-lambda.png"/><br><span>Poisson distribution with different lambda's for our problem.</span></p>
 
-**The average rate of events per unit time in poisson distribution is constant**. This means the number of people who visit my blog per hour might not follow a Poisson Distribution, because the hourly rate is not constant (higher rate during the daytime, lower rate during the night-time). Using monthly rate for consumer/biological data would be just an approximation as well, since the seasonality effect is non-trivial in that domain.
+**The average rate of events per unit time in a Poisson distribution is constant**. This means the number of people who visit my blog per hour might not follow a Poisson Distribution, because the hourly rate is not constant (higher during the daytime, lower during the night). Using a monthly rate for consumer or biological data would also be just an approximation, since seasonality effects are non-trivial in that domain.
 
-**In poisson random variable, Events are independent**. The arrival of my blog visitors might not always be independent. For example, sometimes a large number of visitors come in a group because someone popular mentioned my blog, or my blog got featured on Medium’s first page, etc. the number of earthquakes per year in a country also might not follow a Poisson Distribution in one large earthquake increases the probability of aftershocks.
-
-
-
+**In a Poisson random variable, events are independent**. The arrival of my blog's visitors might not always be independent. For example, sometimes a large number of visitors arrive together because someone popular mentioned my blog, or my blog got featured on Medium's front page, etc. Similarly, the number of earthquakes per year in a country might not follow a Poisson Distribution either, since one large earthquake increases the probability of aftershocks.
 

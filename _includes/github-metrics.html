@@ -1,0 +1,43 @@
+<section class="metrics-panel" data-metrics-root data-username="{{ include.username | default: 'mralinp' }}">
+    <span class="material-symbols-outlined metrics-bg-icon">analytics</span>
+    <div class="metrics-shell">
+        <div>
+            <p class="metrics-kicker">{{ include.kicker | default: "Operational Metrics" }}</p>
+            <h2 class="metrics-title">{{ include.title | default: "Open Source Impact" }}</h2>
+            <p class="metrics-subtitle">{{ include.subtitle | default: "Systematic monitoring of repository deployment and community engagement vectors across global networks." }}</p>
+            <div class="metrics-grid">
+                <article class="metric-tile">
+                    <p class="value" data-metric="repos">--</p>
+                    <p class="label">Repos</p>
+                </article>
+                <article class="metric-tile">
+                    <p class="value" data-metric="stars">--</p>
+                    <p class="label">Stars</p>
+                </article>
+                <article class="metric-tile">
+                    <p class="value accent" data-metric="commits">--</p>
+                    <p class="label">Commits (1Y)</p>
+                </article>
+            </div>
+        </div>
+        <div>
+            <div class="metrics-grid-header">
+                <span>Global Contribution Grid</span>
+                <strong data-metric="status">Syncing...</strong>
+            </div>
+            <div class="contrib-card">
+                <div class="contrib-grid" data-metric="grid"></div>
+                <div class="contrib-axis">
+                    <span>Jan</span>
+                    <span>Apr</span>
+                    <span>Jul</span>
+                    <span>Oct</span>
+                </div>
+                <div class="contrib-ref">
+                    Source:
+                    <a href="https://github.com/{{ include.username | default: 'mralinp' }}" target="_blank" rel="noopener noreferrer">github.com/{{ include.username | default: 'mralinp' }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

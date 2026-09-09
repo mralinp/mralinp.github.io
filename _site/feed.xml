@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2026-09-04T07:59:16+03:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">mralinp</title><subtitle>My awesome blog</subtitle><entry><title type="html">Smart Card: Building Your First Applet with jCardSim</title><link href="http://localhost:4000/blog/embeded/smart-card/2026/09/04/smart-card-dev.html" rel="alternate" type="text/html" title="Smart Card: Building Your First Applet with jCardSim" /><published>2026-09-04T07:50:01+03:30</published><updated>2026-09-04T07:50:01+03:30</updated><id>http://localhost:4000/blog/embeded/smart-card/2026/09/04/smart-card-dev</id><content type="html" xml:base="http://localhost:4000/blog/embeded/smart-card/2026/09/04/smart-card-dev.html"><![CDATA[<h1 id="0-recap-and-the-goal">0. Recap and the goal</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2026-09-09T13:10:31+03:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">mralinp</title><subtitle>My awesome blog</subtitle><entry><title type="html">Smart Card: Building Your First Applet with jCardSim</title><link href="http://localhost:4000/blog/embeded/smart-card/2026/09/04/smart-card-dev.html" rel="alternate" type="text/html" title="Smart Card: Building Your First Applet with jCardSim" /><published>2026-09-04T07:50:01+03:30</published><updated>2026-09-04T07:50:01+03:30</updated><id>http://localhost:4000/blog/embeded/smart-card/2026/09/04/smart-card-dev</id><content type="html" xml:base="http://localhost:4000/blog/embeded/smart-card/2026/09/04/smart-card-dev.html"><![CDATA[<h1 id="0-recap-and-the-goal">0. Recap and the goal</h1>
 
 <p>In the <a href="/blog/embeded/smart-card/2023/07/19/smart-card-intro.html">previous post</a> we talked about what smart cards are, how they work, and what an applet is in the Java Card world: a small, isolated program that runs inside the card’s secure microprocessor and talks to the outside world through APDU commands.</p>
 
@@ -216,7 +216,7 @@
 
 <h1 id="6-where-this-is-going">6. Where this is going</h1>
 
-<p>This applet is already doing the two things a real security key needs to do: keep a private key that never leaves the chip, and prove possession of it by signing on demand. What’s missing is the FIDO/U2F protocol wrapped around that behaviour, a <code class="language-plaintext highlighter-rouge">REGISTER</code> command that returns a properly formatted attestation, an <code class="language-plaintext highlighter-rouge">AUTHENTICATE</code> command that tracks and increments a usage counter, ECDSA over the P-256 curve instead of RSA, and key handles instead of a single fixed key pair.</p>
+<p>This applet is already doing the two things a real security key needs to do: keep a private key that never leaves the chip, and prove possession of it by signing on demand. What’s missing is the FIDO/U2F protocol wrapped around that behavior, a <code class="language-plaintext highlighter-rouge">REGISTER</code> command that returns a properly formatted attestation, an <code class="language-plaintext highlighter-rouge">AUTHENTICATE</code> command that tracks and increments a usage counter, ECDSA over the P-256 curve instead of RSA, and key handles instead of a single fixed key pair.</p>
 
 <p>In the next post, we’ll build on this same jCardSim setup and start implementing the actual FIDO U2F command set on top of it, one instruction at a time, before ever touching a real card. Stay tuned.</p>]]></content><author><name>Ali N. Parizi</name></author><category term="blog" /><category term="embeded" /><category term="smart-card" /><summary type="html"><![CDATA[0. Recap and the goal]]></summary></entry><entry><title type="html">Bypass The Islamic Republic: V2Ray on Clouds</title><link href="http://localhost:4000/blog/network/vpn/2024/01/23/v2ray-cf-worker.html" rel="alternate" type="text/html" title="Bypass The Islamic Republic: V2Ray on Clouds" /><published>2024-01-23T18:10:23+03:30</published><updated>2024-01-23T18:10:23+03:30</updated><id>http://localhost:4000/blog/network/vpn/2024/01/23/v2ray-cf-worker</id><content type="html" xml:base="http://localhost:4000/blog/network/vpn/2024/01/23/v2ray-cf-worker.html"><![CDATA[<h1 id="0-intro">0. Intro</h1>
 
@@ -408,7 +408,7 @@ Once the applet is thoroughly tested and verified, it can be deployed on the des
 
 <p>Please note that writing applets for smart cards requires expertise in smart card development and may vary depending on the specific smart card’s capabilities and the programming language supported by its microprocessor. It’s essential to refer to the smart card manufacturer’s documentation and Java Card specifications for detailed guidelines and best practices when developing applets for smart cards.</p>
 
-<p>Next time i prepare an article about developing an applet and playing around with this old technology, stay tuned…</p>]]></content><author><name>Ali N. Parizi</name></author><category term="blog" /><category term="embeded" /><category term="smart-card" /><summary type="html"><![CDATA[0. Introduction]]></summary></entry><entry><title type="html">Git Flow: A reposotery management heirachy</title><link href="http://localhost:4000/software/git/2023/03/28/git-flow.html" rel="alternate" type="text/html" title="Git Flow: A reposotery management heirachy" /><published>2023-03-28T01:21:12+03:30</published><updated>2023-03-28T01:21:12+03:30</updated><id>http://localhost:4000/software/git/2023/03/28/git-flow</id><content type="html" xml:base="http://localhost:4000/software/git/2023/03/28/git-flow.html"><![CDATA[<h1 id="1-intro">1. Intro</h1>
+<p>Next time, I’ll prepare an article about developing an applet and playing around with this old technology. Stay tuned…</p>]]></content><author><name>Ali N. Parizi</name></author><category term="blog" /><category term="embeded" /><category term="smart-card" /><summary type="html"><![CDATA[0. Introduction]]></summary></entry><entry><title type="html">Git Flow: A reposotery management heirachy</title><link href="http://localhost:4000/software/git/2023/03/28/git-flow.html" rel="alternate" type="text/html" title="Git Flow: A reposotery management heirachy" /><published>2023-03-28T01:21:12+03:30</published><updated>2023-03-28T01:21:12+03:30</updated><id>http://localhost:4000/software/git/2023/03/28/git-flow</id><content type="html" xml:base="http://localhost:4000/software/git/2023/03/28/git-flow.html"><![CDATA[<h1 id="1-intro">1. Intro</h1>
 
 <p>Gitflow is a legacy Git workflow that was originally a disruptive and novel strategy for managing Git branches. Gitflow has fallen in popularity in favor of trunk-based workflows, which are now considered best practices for modern continuous software development and DevOps practices. Gitflow also can be challenging to use with CI/CD. This post details Gitflow for historical purposes.</p>
 
@@ -432,7 +432,7 @@ Once the applet is thoroughly tested and verified, it can be deployed on the des
 
 <p>PyTorch is a machine learning framework based on the Torch library, used for applications such as computer vision and natural language processing, originally developed by Meta AI and now part of the Linux Foundation umbrella. It is free and open-source software released under the modified BSD license.</p>
 
-<p>PyTorch is the work of developers at Facebook AI Research and several other labs. The framework combines the efficient and flexible GPU-accelerated backend libraries from Torch with an intuitive Python frontend that focuses on rapid prototyping, readable code, and support for the widest possible variety of deep learning models. Pytorch lets developers use the familiar imperative programming approach, but still output to graphs.  It was released to open source in 2017, and its Python roots have made it a favorite with machine learning developers.</p>
+<p>PyTorch is the work of developers at Facebook AI Research and several other labs. The framework combines the efficient and flexible GPU-accelerated backend libraries from Torch with an intuitive Python frontend that focuses on rapid prototyping, readable code, and support for the widest possible variety of deep learning models. PyTorch lets developers use the familiar imperative programming approach, but still output to graphs. It was released to open source in 2017, and its Python roots have made it a favorite with machine learning developers.</p>
 
 <p>Significantly, PyTorch adopted a Chainer innovation called reverse-mode automatic differentiation. Essentially, it’s like a tape recorder that records completed operations and then replays backward to compute gradients. This makes PyTorch relatively simple to debug and well-adapted to certain applications such as dynamic neural networks. It’s popular for prototyping because every iteration can be different.</p>
 
@@ -444,7 +444,7 @@ Once the applet is thoroughly tested and verified, it can be deployed on the des
 
 <h1 id="2-installing-pytorch">2. Installing PyTorch</h1>
 
-<p>You can follow this tutorial using some online platforms such as <a href="https://colab.research.google.com">Google Colab</a> or <a href="https://kaggle.com">Kaggle</a> which give you a python environment via a jupyter note book and a proper GPU to meet your needs during learning process and even doing small projects and homeworks. If you prefer using these platforms you can skip this section but if you want to use pytorch on your local machine and use your own GPU, here are the installation steps you should follow.</p>
+<p>You can follow this tutorial using an online platform such as <a href="https://colab.research.google.com">Google Colab</a> or <a href="https://kaggle.com">Kaggle</a>, which give you a Python environment through a Jupyter notebook and a proper GPU, more than enough for learning and even small projects or homework. If you’d rather use one of these platforms you can skip this section, but if you want to use PyTorch on your local machine with your own GPU, here are the installation steps to follow.</p>
 
 <h2 id="21-installing-pytorch">2.1 Installing PyTorch</h2>
 
@@ -465,9 +465,9 @@ Once the applet is thoroughly tested and verified, it can be deployed on the des
 <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>pip <span class="nb">install </span>torch torchvision torchaudio
 </code></pre></div></div>
 
-<p>It will take some time but will install pytorch and all gpu requirements on your machine.</p>
+<p>It will take some time, but it will install PyTorch and all the GPU requirements on your machine.</p>
 
-<p>to test that if gpu is supported, open a python file and run the code below:</p>
+<p>To test whether GPU is supported, open a Python file and run the code below:</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
 <span class="k">print</span> <span class="p">(</span><span class="sa">f</span><span class="s">"Is GPU supported? </span><span class="si">{</span><span class="s">'Yes'</span> <span class="k">if</span> <span class="n">torch</span><span class="p">.</span><span class="n">cuda</span><span class="p">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s">'No'</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
@@ -479,16 +479,16 @@ Once the applet is thoroughly tested and verified, it can be deployed on the des
 <p>Well done, you have installed PyTorch on your computer and ready to go through this tutorial.</p>
 
 <h1 id="3-tensor-basics">3. Tensor basics</h1>
-<p>The very basic class in PyTorch library is the tensor class. almost Every variable and operation in PyTorch is represented by a tensor. You can look at the tensor as just like a numpy array or a multi-dimensional python list.
-Because of the mathematical nature of Machine Learning operations which are performed on linear-algebra, we need such a class to implement and use the calculations in python.</p>
+<p>The most basic class in the PyTorch library is the tensor class. Almost every variable and operation in PyTorch is represented by a tensor. You can think of a tensor as similar to a numpy array or a multi-dimensional Python list.
+Because machine learning operations are fundamentally linear-algebra operations, we need a class like this to implement and use those calculations in Python.</p>
 
-<p>Tensor can be used in CPU or GPU. Using GPU makes the calculations so much faster. To move the tensor to GPU, you have to use  <code class="language-plaintext highlighter-rouge">tensor.to('cuda')</code> or <code class="language-plaintext highlighter-rouge">tensor.to(device)</code> function.</p>
+<p>Tensors can live on the CPU or the GPU. Using the GPU makes the calculations much faster. To move a tensor to the GPU, you use the <code class="language-plaintext highlighter-rouge">tensor.to('cuda')</code> or <code class="language-plaintext highlighter-rouge">tensor.to(device)</code> function.</p>
 
 <p>Creating tensors:</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
 
-<span class="c1"># Createing a tensor
+<span class="c1"># Creating a tensor
 </span><span class="n">sample_tensor</span>   <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
 <span class="n">random_tensor</span>   <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="n">zero_tensor</span>     <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
@@ -498,15 +498,15 @@ Because of the mathematical nature of Machine Learning operations which are perf
 
 <p>Moving tensors to GPU:</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">cuda</span><span class="p">.</span><span class="n">getDevice</span><span class="p">(</span><span class="s">'cuda'</span><span class="p">)</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">device</span><span class="p">(</span><span class="s">'cuda'</span><span class="p">)</span>
 
 <span class="n">sample_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
 
 <span class="c1"># Send tensor to GPU
-</span><span class="n">sample_tensor</span><span class="p">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+</span><span class="n">sample_tensor</span> <span class="o">=</span> <span class="n">sample_tensor</span><span class="p">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>You can reshape the tensors using the <code class="language-plaintext highlighter-rouge">view</code> function. This function as very similar to the <code class="language-plaintext highlighter-rouge">reshape</code> function in numpy.</p>
+<p>You can reshape tensors using the <code class="language-plaintext highlighter-rouge">view</code> function. This function is very similar to the <code class="language-plaintext highlighter-rouge">reshape</code> function in numpy.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sample_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>   <span class="mi">3</span><span class="p">,</span>   <span class="mi">4</span> <span class="p">],</span> 
                               <span class="p">[</span><span class="mi">5</span><span class="p">,</span>  <span class="mi">6</span><span class="p">,</span>   <span class="mi">7</span><span class="p">,</span>   <span class="mi">8</span> <span class="p">],</span> 
@@ -525,19 +525,19 @@ Because of the mathematical nature of Machine Learning operations which are perf
 <span>Figure-1: Computational graph for Y = X + 2</span>
 </p>
 
-<p>This is due to the ace of the gradient calculation. The gradients are required for optimization of the model weights. This computation graphs used for computing the gradients based on the chain rule and Jacobian matrix method. The gradient calculation can be automatically done using the <code class="language-plaintext highlighter-rouge">backward</code> function. If you want to compute the gradient of a tensor, you have to set the <code class="language-plaintext highlighter-rouge">require_gradients</code> parameter to true while defining the tensor.</p>
+<p>This is what makes gradient calculation possible. Gradients are required to optimize the model’s weights, and this computation graph is what PyTorch walks backward over to compute them, using the chain rule and the Jacobian matrix method. The gradient calculation can be done automatically using the <code class="language-plaintext highlighter-rouge">backward</code> function. If you want to compute the gradient of a tensor, you have to set the <code class="language-plaintext highlighter-rouge">requires_grad</code> parameter to <code class="language-plaintext highlighter-rouge">True</code> while defining the tensor.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
-<span class="n">w</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">require_gradients</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="p">).</span><span class="nb">sum</span><span class="p">()</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="mf">3.</span><span class="p">,</span> <span class="mf">4.</span><span class="p">])</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">w</span><span class="p">).</span><span class="nb">sum</span><span class="p">()</span>
 
 <span class="n">y</span><span class="p">.</span><span class="n">backward</span><span class="p">()</span>
 
-<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"dy/dx: </span><span class="si">{</span><span class="n">y</span><span class="p">.</span><span class="n">grad</span><span class="p">()</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"dy/dw: </span><span class="si">{</span><span class="n">w</span><span class="p">.</span><span class="n">grad</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
 </code></pre></div></div>
 
 <h1 id="4-linear-regression">4. Linear regression</h1>
-<p>Learning by doing a real project is a perfect way to gain some kinds of skills specially programming. To understand the basics of using the framework, it’s recommended to implement a simple mini project step by step from scratch. We choose linear regression as the training example and will go through the implementations from scratch and with out using pytorch. Then we will convert the code into using PyTorch and advanced functions.</p>
+<p>Learning by doing a real project is a great way to build skills, especially with programming. To understand the basics of using the framework, it’s recommended to implement a simple mini project step by step from scratch. We’ll use linear regression as our training example, working through the implementation from scratch and without PyTorch first, then converting the code to use PyTorch and its more advanced functions.</p>
 
 <h2 id="41-problem-statement">4.1 Problem statement</h2>
 
@@ -632,7 +632,7 @@ Because of the mathematical nature of Machine Learning operations which are perf
 </span><span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">rand</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p>In PyTorch the forward pass in calculating the layer output is done by calling the forward function which, represents the forward pass of the network. In conclusion, we will call the model output function, the forward function.</p>
+<p>We’ll structure this from-scratch implementation the same way PyTorch structures its own models: with a <code class="language-plaintext highlighter-rouge">forward</code> function that computes the network’s output from its input and weights. It’s a small bit of extra ceremony here, but it means the switch to actual PyTorch in <a href="#42-including-pytorch">Section 4.2</a> will feel completely familiar.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Forward pass:
 # Predict the output of the network on the input data.
@@ -647,9 +647,9 @@ Because of the mathematical nature of Machine Learning operations which are perf
 </span><span class="k">def</span> <span class="nf">mse</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">y_pred</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">square</span><span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="n">y_pred</span><span class="p">))</span>
 
-<span class="k">print</span> <span class="p">(</span><span class="sa">f</span><span class="s">'prediction before training f(</span><span class="si">{</span><span class="n">x_test</span><span class="si">}</span><span class="s">): </span><span class="si">{</span><span class="n">forward</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">weights</span><span class="p">)</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>    
+<span class="k">print</span> <span class="p">(</span><span class="sa">f</span><span class="s">'prediction before training f(</span><span class="si">{</span><span class="n">x_test</span><span class="si">}</span><span class="s">): </span><span class="si">{</span><span class="n">forward</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
 </code></pre></div></div>
-<p>Finally, we will need a function to calculate the gradient of the network coefficients, which in pytorch is called the backward function.</p>
+<p>Finally, we will need a function to calculate the gradient of the network coefficients, which in PyTorch is called the backward function.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Calculating gradients: 
 # dJ/dw = 1/N * 2x *(w*x-y) // w*x = y_pred
@@ -677,10 +677,9 @@ Because of the mathematical nature of Machine Learning operations which are perf
 </span>    <span class="n">w</span> <span class="o">=</span> <span class="n">w</span> <span class="o">-</span> <span class="n">learning_rate</span> <span class="o">*</span> <span class="n">dw</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">epoch</span><span class="p">)</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Epoch: </span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s"> loss=</span><span class="si">{</span><span class="n">loss</span><span class="si">:</span><span class="mf">0.3</span><span class="n">f</span><span class="si">}</span><span class="s">, weights=</span><span class="si">{</span><span class="p">[</span><span class="n">w</span><span class="p">]</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
-        
-<span class="k">print</span> <span class="p">(</span><span class="sa">f</span><span class="s">"Model prediction for x=6 is: </span><span class="si">{</span><span class="n">forward</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">weights</span><span class="p">)</span><span class="si">:</span><span class="p">.</span><span class="mi">3</span><span class="n">f</span><span class="si">}</span><span class="s">)
 
-</span></code></pre></div></div>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Model prediction for x=6 is: </span><span class="si">{</span><span class="n">forward</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div></div>
 
 <pre><code class="language-output">Epoch: 0 loss=24.130, weights=[2.14810945503594]
 Epoch: 10 loss=0.000, weights=[2.0000000976789147]
@@ -710,7 +709,7 @@ Model prediction for x=6 is: [12.]
 </span><span class="n">x_test</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">6</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">float32</span><span class="p">)</span>
 <span class="n">y_test</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">12</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">float32</span><span class="p">)</span>
 
-<span class="c1"># Weights: A single nuron
+<span class="c1"># Weights: A single neuron
 </span><span class="n">w</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">float32</span><span class="p">)</span>
 </code></pre></div></div>
 
@@ -737,19 +736,19 @@ Model prediction for x=6 is: [12.]
 <span class="n">num_epochs</span> <span class="o">=</span> <span class="mi">100</span>
 
 <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">):</span>
-    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">forward</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">weights</span><span class="p">)</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">forward</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
     <span class="n">loss</span> <span class="o">=</span> <span class="n">mse</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
     <span class="n">loss</span><span class="p">.</span><span class="n">backward</span><span class="p">()</span>
     <span class="k">with</span> <span class="n">torch</span><span class="p">.</span><span class="n">no_grad</span><span class="p">():</span>
         <span class="n">w</span> <span class="o">-=</span> <span class="n">learning_rate</span> <span class="o">*</span> <span class="n">w</span><span class="p">.</span><span class="n">grad</span>
     <span class="c1"># You have to zero the gradients before calling the backward function in the next step
 </span>    <span class="n">w</span><span class="p">.</span><span class="n">grad</span><span class="p">.</span><span class="n">zero_</span><span class="p">()</span>
-    
+
     <span class="k">if</span> <span class="p">(</span><span class="n">epoch</span><span class="p">)</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Epoch: </span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s"> loss=</span><span class="si">{</span><span class="n">loss</span><span class="si">:</span><span class="mf">0.3</span><span class="n">f</span><span class="si">}</span><span class="s">, weights=</span><span class="si">{</span><span class="n">w</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
-        
-<span class="k">print</span> <span class="p">(</span><span class="sa">f</span><span class="s">"Model prediction for x=6 is: </span><span class="si">{</span><span class="n">forward</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span><span class="si">:</span><span class="p">.</span><span class="mi">3</span><span class="n">f</span><span class="si">}</span><span class="s">)
-</span></code></pre></div></div>
+
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Model prediction for x=6 is: </span><span class="si">{</span><span class="n">forward</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div></div>
 <pre><code class="language-output">Epoch: 0 loss=49.172, weights=tensor([0.9472], requires_grad=True)
 Epoch: 10 loss=0.139, weights=tensor([1.9122], requires_grad=True)
 Epoch: 20 loss=0.001, weights=tensor([1.9927], requires_grad=True)
@@ -766,7 +765,7 @@ Model prediction for x=6 is: tensor([12.0000], grad_fn=&lt;MulBackward0&gt;)
 <h2 id="43-more-including-pytorch">4.3 More including PyTorch</h2>
 <p>Now, let’s use the built-in PyTorch optimizer and loss function as well as the built-in forward function. First change that we should make is to remove the loss function that we where using and use the built-in MSELoss instead. Then, instead of manually updating the model parameters, we can use the built-in optimizers such as <strong>S</strong>tochastic <strong>G</strong>radient <strong>D</strong>escent (SGD), Adam or etc.</p>
 
-<p>As we know, this model is a single linear nuron which can be represented by <code class="language-plaintext highlighter-rouge">torch.nn.linear(input_size, output_size)</code>. This layer has its own parameters which means it’s not required to define the weights parameter \(w\) any more.</p>
+<p>As we know, this model is a single linear neuron which can be represented by <code class="language-plaintext highlighter-rouge">torch.nn.Linear(input_size, output_size)</code>. This layer has its own parameters which means it’s not required to define the weights parameter \(w\) any more.</p>
 
 <p>While using optimizers, calling <code class="language-plaintext highlighter-rouge">optimizer.step()</code> will automatically update the model parameters and <code class="language-plaintext highlighter-rouge">optimizer.zero_grad()</code> will automatically free the gradients memory.</p>
 
@@ -787,7 +786,7 @@ Model prediction for x=6 is: tensor([12.0000], grad_fn=&lt;MulBackward0&gt;)
 
 <span class="n">model</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">input_size</span><span class="p">,</span> <span class="n">output_size</span><span class="p">)</span>
 
-<span class="k">print</span> <span class="p">(</span><span class="sa">f</span><span class="s">'prediction before training f(</span><span class="si">{</span><span class="n">x_test</span><span class="si">}</span><span class="s">): </span><span class="si">{</span><span class="n">model</span><span class="p">(</span><span class="n">x_test</span><span class="p">).</span><span class="n">item</span><span class="p">()</span><span class="si">:</span><span class="p">.</span><span class="mi">3</span><span class="n">f</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>    
+<span class="k">print</span> <span class="p">(</span><span class="sa">f</span><span class="s">'prediction before training f(</span><span class="si">{</span><span class="n">x_test</span><span class="si">}</span><span class="s">): </span><span class="si">{</span><span class="n">model</span><span class="p">(</span><span class="n">x_test</span><span class="p">).</span><span class="n">item</span><span class="p">()</span><span class="si">:</span><span class="p">.</span><span class="mi">3</span><span class="n">f</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
 
 <span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.01</span>
 <span class="n">num_epochs</span> <span class="o">=</span> <span class="mi">2000</span>
@@ -803,17 +802,17 @@ Model prediction for x=6 is: tensor([12.0000], grad_fn=&lt;MulBackward0&gt;)
     <span class="n">l</span><span class="p">.</span><span class="n">backward</span><span class="p">()</span>
     <span class="n">optimizer</span><span class="p">.</span><span class="n">step</span><span class="p">()</span>
     <span class="n">optimizer</span><span class="p">.</span><span class="n">zero_grad</span><span class="p">()</span>
-    
-    <span class="k">if</span> <span class="p">(</span><span class="n">epoch</span><span class="p">)</span> <span class="o">%</span> <span class="mi">500</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Epoch: </span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s"> loss=</span><span class="si">{</span><span class="n">l</span><span class="p">.</span><span class="n">item</span><span class="p">()</span><span class="si">:</span><span class="mf">0.5</span><span class="n">f</span><span class="si">}</span><span class="s">, weights=</span><span class="si">{</span><span class="n">weights</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">item</span><span class="p">()</span><span class="si">:</span><span class="mf">0.5</span><span class="n">f</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
 
-<span class="k">print</span> <span class="p">(</span><span class="sa">f</span><span class="s">"</span><span class="si">{</span><span class="n">model</span><span class="p">(</span><span class="n">x_test</span><span class="p">).</span><span class="n">item</span><span class="p">()</span><span class="si">:</span><span class="mf">0.3</span><span class="n">f</span><span class="si">}</span><span class="s">"</span><span class="p">)</span> 
+    <span class="k">if</span> <span class="p">(</span><span class="n">epoch</span><span class="p">)</span> <span class="o">%</span> <span class="mi">500</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Epoch: </span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s"> loss=</span><span class="si">{</span><span class="n">l</span><span class="p">.</span><span class="n">item</span><span class="p">()</span><span class="si">:</span><span class="mf">0.5</span><span class="n">f</span><span class="si">}</span><span class="s">, weight=</span><span class="si">{</span><span class="n">model</span><span class="p">.</span><span class="n">weight</span><span class="p">.</span><span class="n">item</span><span class="p">()</span><span class="si">:</span><span class="mf">0.5</span><span class="n">f</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"</span><span class="si">{</span><span class="n">model</span><span class="p">(</span><span class="n">x_test</span><span class="p">).</span><span class="n">item</span><span class="p">()</span><span class="si">:</span><span class="mf">0.3</span><span class="n">f</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
 </code></pre></div></div>
 <pre><code class="language-output">prediction before training f(tensor([6.])): 0.314
-Epoch: 0 loss=45.60832, weights=0.29675
-Epoch: 500 loss=0.00051, weights=0.29675
-Epoch: 1000 loss=0.00002, weights=0.29675
-Epoch: 1500 loss=0.00000, weights=0.29675
+Epoch: 0 loss=45.60832, weight=0.29675
+Epoch: 500 loss=0.00051, weight=1.98523
+Epoch: 1000 loss=0.00002, weight=1.99979
+Epoch: 1500 loss=0.00000, weight=1.99999
 12.000
 </code></pre>
 
@@ -833,8 +832,7 @@ Epoch: 1500 loss=0.00000, weights=0.29675
 
 <p>Now we can instantiate and use this model instead of defining a single fully connected layer as our model.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="n">mport</span> <span class="n">torch</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
 
 <span class="c1"># Training Data
 </span><span class="n">X</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">],[</span><span class="mi">2</span><span class="p">],[</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">],[</span><span class="mi">5</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">float32</span><span class="p">)</span>
@@ -860,7 +858,7 @@ Epoch: 1500 loss=0.00000, weights=0.29675
 
 <span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="n">input_size</span><span class="p">,</span> <span class="n">output_size</span><span class="p">)</span>
 
-<span class="k">print</span> <span class="p">(</span><span class="sa">f</span><span class="s">'prediction before training f(</span><span class="si">{</span><span class="n">x_test</span><span class="si">}</span><span class="s">): </span><span class="si">{</span><span class="n">model</span><span class="p">(</span><span class="n">x_test</span><span class="p">).</span><span class="n">item</span><span class="p">()</span><span class="si">:</span><span class="p">.</span><span class="mi">3</span><span class="n">f</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>    
+<span class="k">print</span> <span class="p">(</span><span class="sa">f</span><span class="s">'prediction before training f(</span><span class="si">{</span><span class="n">x_test</span><span class="si">}</span><span class="s">): </span><span class="si">{</span><span class="n">model</span><span class="p">(</span><span class="n">x_test</span><span class="p">).</span><span class="n">item</span><span class="p">()</span><span class="si">:</span><span class="p">.</span><span class="mi">3</span><span class="n">f</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
 
 <span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.01</span>
 <span class="n">num_epochs</span> <span class="o">=</span> <span class="mi">2000</span>
@@ -876,15 +874,15 @@ Epoch: 1500 loss=0.00000, weights=0.29675
     <span class="n">l</span><span class="p">.</span><span class="n">backward</span><span class="p">()</span>
     <span class="n">optimizer</span><span class="p">.</span><span class="n">step</span><span class="p">()</span>
     <span class="n">optimizer</span><span class="p">.</span><span class="n">zero_grad</span><span class="p">()</span>
-    
-    <span class="k">if</span> <span class="p">(</span><span class="n">epoch</span><span class="p">)</span> <span class="o">%</span> <span class="mi">500</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Epoch: </span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s"> loss=</span><span class="si">{</span><span class="n">l</span><span class="p">.</span><span class="n">item</span><span class="p">()</span><span class="si">:</span><span class="mf">0.5</span><span class="n">f</span><span class="si">}</span><span class="s">, weights=</span><span class="si">{</span><span class="n">weights</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">item</span><span class="p">()</span><span class="si">:</span><span class="mf">0.5</span><span class="n">f</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
 
-<span class="k">print</span> <span class="p">(</span><span class="sa">f</span><span class="s">"</span><span class="si">{</span><span class="n">model</span><span class="p">(</span><span class="n">x_test</span><span class="p">).</span><span class="n">item</span><span class="p">()</span><span class="si">:</span><span class="mf">0.3</span><span class="n">f</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">epoch</span><span class="p">)</span> <span class="o">%</span> <span class="mi">500</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Epoch: </span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s"> loss=</span><span class="si">{</span><span class="n">l</span><span class="p">.</span><span class="n">item</span><span class="p">()</span><span class="si">:</span><span class="mf">0.5</span><span class="n">f</span><span class="si">}</span><span class="s">, weight=</span><span class="si">{</span><span class="n">model</span><span class="p">.</span><span class="n">ll_1</span><span class="p">.</span><span class="n">weight</span><span class="p">.</span><span class="n">item</span><span class="p">()</span><span class="si">:</span><span class="mf">0.5</span><span class="n">f</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"</span><span class="si">{</span><span class="n">model</span><span class="p">(</span><span class="n">x_test</span><span class="p">).</span><span class="n">item</span><span class="p">()</span><span class="si">:</span><span class="mf">0.3</span><span class="n">f</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
 </code></pre></div></div>
 
-<h1 id="45-more-realistic-example">4.5 More realistic example</h1>
-<p>Now lets use a more realistic data and plot the results with matplotlib.</p>
+<h2 id="45-more-realistic-example">4.5 More realistic example</h2>
+<p>Now let’s use some more realistic data and plot the results with matplotlib.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
@@ -898,15 +896,12 @@ Epoch: 1500 loss=0.00000, weights=0.29675
 <span class="n">n_samples</span><span class="p">,</span> <span class="n">n_features</span> <span class="o">=</span> <span class="n">X</span><span class="p">.</span><span class="n">shape</span>
 
 <span class="k">class</span> <span class="nc">Model</span><span class="p">(</span><span class="n">torch</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">Model</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="n">input_size</span><span class="p">,</span> <span class="n">output_size</span><span class="p">).</span><span class="n">__init__</span><span class="p">()</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">ll_1</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-        
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_size</span><span class="p">,</span> <span class="n">output_size</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Model</span><span class="p">,</span> <span class="bp">self</span><span class="p">).</span><span class="n">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">ll_1</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">input_size</span><span class="p">,</span> <span class="n">output_size</span><span class="p">)</span>
+
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">ll_1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    
-    <span class="k">def</span> <span class="nf">parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">ll_1</span><span class="p">.</span><span class="n">parameters</span><span class="p">()</span>
 
 <span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="n">n_features</span><span class="p">,</span> <span class="n">n_features</span><span class="p">)</span>
 
@@ -940,22 +935,23 @@ Epoch: 1500 loss=0.00000, weights=0.29675
 
 <h1 id="5-logistic-regression">5. Logistic regression</h1>
 
-<p>Here is a classification example using the breast cancer dataset from scikit-learn library. To recap, the problem statement is, we want to classify patients into two classes, having and not having the breast cancer using a single nuron as the previous examples.</p>
+<p>Here is a classification example using the breast cancer dataset from the scikit-learn library. To recap, the problem statement is that we want to classify patients into two classes, having breast cancer and not having it, using a single neuron, just like in the previous examples.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
-<span class="kn">import</span> <span class="nn">sklearn</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_breast_cancer</span>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">sklearn</span><span class="p">.</span><span class="n">datasets</span><span class="p">.</span><span class="n">load_breast_cancer</span><span class="p">()</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">load_breast_cancer</span><span class="p">()</span>
 <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">.</span><span class="n">data</span><span class="p">,</span> <span class="n">dataset</span><span class="p">.</span><span class="n">target</span>
 
 <span class="n">n_samples</span><span class="p">,</span> <span class="n">n_features</span> <span class="o">=</span> <span class="n">X</span><span class="p">.</span><span class="n">shape</span>
 
 <span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 
-<span class="n">scaler</span> <span class="o">=</span> <span class="n">sklearn</span><span class="p">.</span><span class="n">preprocessing</span><span class="p">.</span><span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
 
 <span class="n">x_train</span> <span class="o">=</span> <span class="n">scaler</span><span class="p">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">x_train</span><span class="p">)</span>
 <span class="n">x_test</span> <span class="o">=</span> <span class="n">scaler</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
@@ -998,7 +994,7 @@ Epoch: 1500 loss=0.00000, weights=0.29675
             <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'epoch: </span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s">, loss: </span><span class="si">{</span><span class="n">loss</span><span class="p">.</span><span class="n">item</span><span class="p">()</span><span class="si">:</span><span class="p">.</span><span class="mi">03</span><span class="n">f</span><span class="si">}</span><span class="s">, accuracy: </span><span class="si">{</span><span class="n">accuracy</span><span class="si">:</span><span class="p">.</span><span class="mi">03</span><span class="n">f</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>    
 </code></pre></div></div>
 
-<p>As you can see, in the code, when we want to compute the accuracy of the model, we dont need to to keep track of calculated gradients of the calculation. To prevent this to affect our training and calculations, we have to turn this tracking off. This can be done by calling <code class="language-plaintext highlighter-rouge">torch.no_grad()</code> in a <code class="language-plaintext highlighter-rouge">with</code> block or making a detached copy of the variables directly by calling the <code class="language-plaintext highlighter-rouge">tensor.detach()</code> function of that tensor which returns a detached copy of that tensor and work with the returned value instead of the main tensor.</p>
+<p>As you can see in the code, when we want to compute the accuracy of the model, we don’t need to keep track of the calculation’s gradients. To prevent this from affecting our training and calculations, we have to turn this tracking off. This can be done by calling <code class="language-plaintext highlighter-rouge">torch.no_grad()</code> in a <code class="language-plaintext highlighter-rouge">with</code> block, or by making a detached copy of the tensor directly with its <code class="language-plaintext highlighter-rouge">tensor.detach()</code> function, which returns a detached copy you can work with instead of the original tensor.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
 <span class="n">a_copy</span> <span class="o">=</span> <span class="n">a</span><span class="p">.</span><span class="n">detach</span><span class="p">()</span>
@@ -1017,11 +1013,11 @@ epoch: 80, loss: 0.276, accuracy: 0.965
 epoch: 90, loss: 0.262, accuracy: 0.965
 </code></pre>
 <h1 id="6-conclusion">6. Conclusion</h1>
-<p>In this section we learned what is PyTorch, Tensors and the computation graph definition. Then, we implemented a simple linear regression from scratch using numpy which helped us to better understanding the problem and how to solve the problem by implementation. After that, we turned the calculations from numpy into PyTorch tensors. Finally, we completed the implementation using built-in PyTorch optimizers and loss functions and some examples.</p>]]></content><author><name>Ali N. Parizi</name></author><category term="project" /><category term="ai" /><category term="machine-learning" /><category term="deep-learning" /><category term="python" /><summary type="html"><![CDATA[1. Intro]]></summary></entry><entry><title type="html">PyTorch Tutorial, Part 2: Datasets and Dataloaders</title><link href="http://localhost:4000/project/ai/machine-learning/deep-learning/python/2023/03/27/pytorch-tutorial-2.html" rel="alternate" type="text/html" title="PyTorch Tutorial, Part 2: Datasets and Dataloaders" /><published>2023-03-27T17:15:23+03:30</published><updated>2023-03-27T17:15:23+03:30</updated><id>http://localhost:4000/project/ai/machine-learning/deep-learning/python/2023/03/27/pytorch-tutorial-2</id><content type="html" xml:base="http://localhost:4000/project/ai/machine-learning/deep-learning/python/2023/03/27/pytorch-tutorial-2.html"><![CDATA[<h1 id="1-intro">1. Intro</h1>
+<p>In this article we learned what PyTorch is, what tensors are, and how the computation graph is defined. Then, we implemented a simple linear regression from scratch using numpy, which helped us understand the problem and how to solve it through implementation. After that, we turned the calculations from numpy into PyTorch tensors. Finally, we completed the implementation using PyTorch’s built-in optimizers, loss functions, and a couple of worked examples.</p>]]></content><author><name>Ali N. Parizi</name></author><category term="project" /><category term="ai" /><category term="machine-learning" /><category term="deep-learning" /><category term="python" /><summary type="html"><![CDATA[1. Intro]]></summary></entry><entry><title type="html">PyTorch Tutorial, Part 2: Datasets and Dataloaders</title><link href="http://localhost:4000/project/ai/machine-learning/deep-learning/python/2023/03/27/pytorch-tutorial-2.html" rel="alternate" type="text/html" title="PyTorch Tutorial, Part 2: Datasets and Dataloaders" /><published>2023-03-27T17:15:23+03:30</published><updated>2023-03-27T17:15:23+03:30</updated><id>http://localhost:4000/project/ai/machine-learning/deep-learning/python/2023/03/27/pytorch-tutorial-2</id><content type="html" xml:base="http://localhost:4000/project/ai/machine-learning/deep-learning/python/2023/03/27/pytorch-tutorial-2.html"><![CDATA[<h1 id="1-intro">1. Intro</h1>
 
-<p>Almost every machine learning algorithm and model works with Data. Creating a Dataset and managing it with Dataloader keeps your data manageable and helps to simplify your machine learning pipeline. a Dataset stores all your data, and Dataloader is can be used to iterate through the data, manage batches, transform the data, and much more. Let’s begin with a simple example. Assuming the popular Wine dataset as our target dataset, we want to load and use this dataset in pytorch. Before getting started, we have to download the dataset from <a href="https://archive.ics.uci.edu/ml/datasets/wine">UCA machine-learning repository</a>. I usually place my data insied a data directory so the address to this dataset will be <code class="language-plaintext highlighter-rouge">../data/win/wine.data</code>.</p>
+<p>Almost every machine learning algorithm and model works with data. Creating a Dataset and managing it with a Dataloader keeps your data manageable and helps simplify your machine learning pipeline. A Dataset stores all your data, and a Dataloader can be used to iterate through the data, manage batches, transform the data, and much more. Let’s begin with a simple example. Assuming the popular Wine dataset as our target dataset, we want to load and use this dataset in PyTorch. Before getting started, we have to download the dataset from the <a href="https://archive.ics.uci.edu/ml/datasets/wine">UCI Machine Learning Repository</a>. I usually place my data inside a data directory, so the path to this dataset will be <code class="language-plaintext highlighter-rouge">../data/wine/wine.data</code>.</p>
 
-<p>In pytorch we have a Dataset class which each dataset should inherit from this base class. For datasets we have to implement at least to methods which are <code class="language-plaintext highlighter-rouge">__getitem__</code> and<code class="language-plaintext highlighter-rouge">__len__</code> which return the iten with the given index from the dataset and the length of the dataset respectively.</p>
+<p>In PyTorch we have a Dataset class which every dataset should inherit from. For a dataset we have to implement at least two methods, <code class="language-plaintext highlighter-rouge">__getitem__</code> and <code class="language-plaintext highlighter-rouge">__len__</code>, which return the item at the given index and the length of the dataset, respectively.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 <span class="kn">import</span> <span class="nn">torch</span>
@@ -1058,10 +1054,10 @@ epoch: 90, loss: 0.262, accuracy: 0.965
         1.0650e+03]), y: tensor([1.])
 </code></pre>
 
-<p>Thats it, it lookes easy, doesn’t it?</p>
+<p>That’s it, it looks easy, doesn’t it?</p>
 
 <h1 id="2-dataloader">2. Dataloader</h1>
-<p>To manage the dataset we can use pytorch dataloader to prepare the dataset for the training process. For example it’s responsible for creating batches and shuffling them in in training process.</p>
+<p>To manage the dataset we can use PyTorch’s Dataloader to prepare it for the training process. For example, it’s responsible for creating batches and shuffling them during training.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dataloader</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">utils</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">dataiter</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">dataloader</span><span class="p">)</span>
@@ -1105,7 +1101,7 @@ tensor([[1.3740e+01, 1.6700e+00, 2.2500e+00, 1.6400e+01, 1.1800e+02, 2.6000e+00,
 
 <h1 id="3-transformers">3. Transformers</h1>
 
-<p>Some times we need to make some changes on the raw data before using them. For example, in data augmentation technique, we make some changes to the original data before using them in training epochs. This will make our model more robust and more prone to overfitting. We can modify our dataset class to be able to use some transformer functions by defining an optional input in the constructor function (<code class="language-plaintext highlighter-rouge">__init__</code>). Then when ever we want to read a data from the dataset, the transformer functions will automatically execute on the data before returning the results. This will be so useful during our implementation. We will see more examples in the next parts of these series.</p>
+<p>Sometimes we need to make changes to the raw data before using it. For example, with the data augmentation technique, we make small changes to the original data before using it in each training epoch. This makes our model more robust and less prone to overfitting. We can modify our dataset class to support transformer functions by defining an optional input in the constructor (<code class="language-plaintext highlighter-rouge">__init__</code>). Then, whenever we want to read an item from the dataset, the transformer functions will automatically run on the data before the result is returned. This will be very useful in our implementation, and we’ll see more examples of it in the next parts of this series.</p>
 
 <p>Here is the modified dataset class:</p>
 
@@ -1148,7 +1144,7 @@ tensor([[1.3740e+01, 1.6700e+00, 2.2500e+00, 1.6400e+01, 1.1800e+02, 2.6000e+00,
         <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
 </code></pre></div></div>
 
-<p>To use these transformers we can easily pass them through the constructor while creating the dataset object, Then they will be applied to the data on after another in the order of their placement in the array.</p>
+<p>To use these transformers, we can easily pass them through the constructor while creating the dataset object. They’ll then be applied to the data one after another, in the order they appear in the array.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dataset</span> <span class="o">=</span> <span class="n">WineDataset</span><span class="p">(</span><span class="n">transforms</span><span class="o">=</span><span class="p">[</span><span class="n">ToTensorTransformer</span><span class="p">(),</span> <span class="n">MultiplierTransformer</span><span class="p">(</span><span class="mi">10</span><span class="p">)])</span>
 <span class="n">x_sample</span><span class="p">,</span> <span class="n">y_sample</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -1211,15 +1207,15 @@ But like anything of true value in life, dig a little deeper and you’ll find t
 <p>There are no soft puffy cloud prancing unicorns offering hugs on colorful rainbows, only F-bomb explosions and brutal smack-you-in-the-face reality slaps.</p>
 
 <p>But by the time you finish reading it, you’ll find yourself tingling with promise. The world suddenly seems brighter and lighter. You’ll feel free, and oddly, good, despite the shit sandwiches served throughout the book. And it won’t be the surfacey french fry kind of good that makes your body crave real nourishment, but the kind of home-cooked-goodness good that warms you from deep within, like you’ve just been served a hearty platter of whole, raw, organic, unfiltered truth.</p>]]></content><author><name>Ali N. Parizi</name></author><category term="book" /><category term="self-help" /><category term="focus" /><category term="study-lessens" /><summary type="html"><![CDATA[1. Intro]]></summary></entry><entry><title type="html">Adversarial attacks in deep learning</title><link href="http://localhost:4000/blog/ai/machine-learning/deep-learning/2023/03/21/adverserial-attack.html" rel="alternate" type="text/html" title="Adversarial attacks in deep learning" /><published>2023-03-21T16:01:02+03:30</published><updated>2023-03-21T16:01:02+03:30</updated><id>http://localhost:4000/blog/ai/machine-learning/deep-learning/2023/03/21/adverserial-attack</id><content type="html" xml:base="http://localhost:4000/blog/ai/machine-learning/deep-learning/2023/03/21/adverserial-attack.html"><![CDATA[<h1 id="1-intro">1. Intro</h1>
-<p>Big Data powered machine learning and deep learning has yielded impressive advances in many fields. One example is the release of ImageNet consisting of more than 15 million labelled high-resolution images of 22,000 categories which revolutionized the field of computer vision. State-of-the-art models have already achieved a 98% top-five accuracy on the ImageNet dataset, so it seems as though these models are foolproof and that nothing can go wrong.</p>
+<p>Big Data powered machine learning and deep learning has yielded impressive advances in many fields. One example is the release of ImageNet, consisting of more than 15 million labeled, high-resolution images across 22,000 categories, which revolutionized the field of computer vision. State-of-the-art models have already achieved 98% top-five accuracy on the ImageNet dataset, so it seems as though these models are foolproof and that nothing can go wrong.</p>
 
 <p>However, recent advances in adversarial training have found that this is an illusion. A good model misbehaves frequently when faced with adversarial examples. The image below illustrates the problem:</p>
 <p align="center">
  <img src="/assets/images/posts/blog/adversarial-attack/1.png" />
 </p>
-<p>The model initially classifies the panda picture correctly, but when some noise, imperceptible to human beings, is injected into the picture, the resulting prediction of the model is changed to another animal, gibbon, even with such a high confidence. To us, it appears as if the initial and altered images are the same, although it is radically different to the model. This illustrates the threat these adversarial attacks pose — we may not perceive the difference so we cannot tell an adversarial attack as happened. Hence, although the output of the model may be altered, we cannot tell if the output is correct or incorrect.</p>
+<p>The model initially classifies the panda picture correctly, but when some noise, imperceptible to human beings, is injected into the picture, the resulting prediction of the model changes to another animal, gibbon, with even higher confidence than before. To us, it appears as if the initial and altered images are the same, although they are radically different to the model. This illustrates the threat these adversarial attacks pose — we may not perceive the difference, so we cannot tell that an adversarial attack has happened. Hence, although the output of the model may be altered, we cannot tell if the output is correct or incorrect.</p>
 
-<p>This formed the motivation behind the talk for Professor Ling Liu’s keynote speech at the 2019 IEEE Big Data Conference, where she touched on types of adversarial attacks, how adversarial examples are generated, and how to combat against these attacks. Without further ado, I will get into the contents of her speech.</p>
+<p>This formed the motivation behind Professor Ling Liu’s keynote speech at the 2019 IEEE Big Data Conference, where she touched on types of adversarial attacks, how adversarial examples are generated, and how to defend against these attacks. Without further ado, I will get into the contents of her speech.</p>
 
 <h1 id="2-types-of-adversarial-attacks">2. Types of adversarial attacks</h1>
 
@@ -1260,7 +1256,7 @@ Black box attacks are based on the notion of transferability of adversarial exam
 
 <p>This attack can be launched either with the training dataset being known or unknown. In the case where the dataset is known to the adversary, the model G can be trained on the same dataset as model H to mimic H.</p>
 
-<p>When the training dataset is unknown however, adversaries can leverage on Membership Inference Attacks, whereby an attack model whose purpose is to distinguish the target model’s behavior on the training inputs from its behavior on the inputs that it did not encounter during training is trained. In essence, this turns into a classification problem to recognize differences in the target model’s predictions on the inputs that it trained on versus the inputs that it did not train on. This enables the adversary to obtain a better sense of the training dataset D which model H was trained on, enabling the attacker to generate a shadow dataset S on the basis of the true training dataset so as to train the surrogate model G. Having trained G on S where G mimics H and S mimics D, black box attacks can then be launched on H.</p>
+<p>When the training dataset is unknown, however, adversaries can leverage Membership Inference Attacks, whereby an attack model whose purpose is to distinguish the target model’s behavior on the training inputs from its behavior on the inputs it did not encounter during training is trained. In essence, this turns into a classification problem to recognize differences in the target model’s predictions on the inputs that it trained on versus the inputs that it did not train on. This enables the adversary to obtain a better sense of the training dataset D which model H was trained on, enabling the attacker to generate a shadow dataset S on the basis of the true training dataset so as to train the surrogate model G. Having trained G on S where G mimics H and S mimics D, black box attacks can then be launched on H.</p>
 
 <h2 id="51-black-box-attacks">5.1 Black Box Attacks</h2>
 <p>Now that we have seen how black box attacks vary from white box attacks in that the target model H is unknown to the adversary, we will cover the various tactics used in black box attacks. Beyond the transferability-based approach described above (train a surrogate model and hope the adversarial examples transfer), black box attacks generally fall into two further families:</p>
@@ -1290,11 +1286,11 @@ Black box attacks are based on the notion of transferability of adversarial exam
 </ul>
 
 <h2 id="53-physical-attacks">5.3 Physical Attacks</h2>
-<p>One simple way in which the query input is changed from x to x’ is by simply adding something physically (eg. bright colour) to disturb the model. One example is how researchers at CMU added eyeglasses to a person in an attack against facial recognition models. The image below illustrates the attack:</p>
+<p>One simple way in which the query input is changed from x to x’ is by physically adding something (e.g., a bright color or pattern) to disturb the model. One example is how researchers at CMU added eyeglasses to a person in an attack against facial recognition models. The image below illustrates the attack:</p>
 
 <p><img src="/assets/images/posts/blog/adversarial-attack/2.png" alt="image" /></p>
 
-<p>The first row of images correspond to the original image modified by adding the eyeglasses, and the second row of images correspond to the impersonation targets, which are the intended misclassification targets. Just by adding the eyeglasses onto the original image, the facial recognition model was tricked into classifying the images on the top row as the images in the bottom row.</p>
+<p>The first row of images corresponds to the original image modified by adding the eyeglasses, and the second row corresponds to the impersonation targets, which are the intended misclassification targets. Just by adding the eyeglasses onto the original image, the facial recognition model was tricked into classifying the images on the top row as the images in the bottom row.</p>
 
 <p>Another example comes from researchers at Google who added stickers to the input image to change the classification of the image, as illustrated by the image below:
 <img src="/assets/images/posts/blog/adversarial-attack/3.png" alt="image" /></p>
@@ -1307,7 +1303,7 @@ Black box attacks are based on the notion of transferability of adversarial exam
 <h1 id="6-how-can-we-trust-machine-learning">6. How Can We Trust Machine Learning?</h1>
 <p>Now that we have taken a look at the various types of adversarial attacks, a natural question then comes — how can we trust our machine learning models if they are so susceptible to adversarial attacks?</p>
 
-<p>One possible approach has been proposed by Chow et al. in 2019 in the paper titled “Denoising and Verification Cross-Layer Ensemble Against Black-box Adversarial Attacks”. The approach is centred around enabling machine learning systems to automatically detect adversarial attacks and then automatically repair them through the use of denoising and verification ensembles.</p>
+<p>One possible approach has been proposed by Chow et al. in 2019 in the paper titled “Denoising and Verification Cross-Layer Ensemble Against Black-box Adversarial Attacks”. The approach is centered around enabling machine learning systems to automatically detect adversarial attacks and then automatically repair them through the use of denoising and verification ensembles.</p>
 
 <h1 id="7-denoising-ensembles">7. Denoising Ensembles</h1>
 <p>First, input images have to pass through denoising ensembles that attempt different methods to remove any added noise to the image, for example adding Gaussian noise. Since the specific noise added to the image by the adversary is unknown to the defender, there is a need for an ensemble of denoisers to each attempt to remove each type of noise.</p>
@@ -1322,7 +1318,7 @@ Black box attacks are based on the notion of transferability of adversarial exam
 <p>After the images have been denoised, they then go through a verification ensemble which reviews every denoised image produced by each denoiser and then classifies the denoised image. Each classifier in the verification ensemble classifies each denoised image, and the ensemble then votes to determine the final category the image belongs to. This means that although some images may not have been denoised the correct way in the denoising step, the verification ensemble votes on all the denoised images, thereby increasing the likelihood of making a more accurate prediction.</p>
 
 <h2 id="72-diversity">7.2 Diversity</h2>
-<p>Diversity of the denoisers and verifiers have found to be very important because firstly, adversarial attackers will get better at altering images so there is a need for a diverse group of denoisers that can handle a variety of corrupted images. Following this, there is also a need for verifiers to be diverse so they can generate a variety of classifications so that it would be difficult adversarial attackers to manipulate them just as how they have managed to manipulate normal classifiers that we trust and use so frequently in machine learning.</p>
+<p>Diversity of the denoisers and verifiers has been found to be very important. Firstly, because adversarial attackers will keep getting better at altering images, there is a need for a diverse group of denoisers that can handle a variety of corrupted images. Following this, there is also a need for verifiers to be diverse, so they can generate a variety of classifications, making it difficult for adversarial attackers to manipulate them, just as they have managed to manipulate the normal classifiers that we trust and use so frequently in machine learning.</p>
 
 <p>This remains an open problem because, after all these decisions by the various verifiers, there is still a final decision maker that needs to decide whose opinion to listen to. The final decision maker would need to preserve the diversity present in the ensemble, which is not an easy task to tackle.</p>
 
@@ -1467,4 +1463,4 @@ true=6  clean_pred=6  adversarial_pred=1
   <li><a href="https://towardsdatascience.com/breaking-neural-networks-with-adversarial-attacks-f4290a9a45aa">Breaking neural networks with adversarial attacks</a></li>
   <li><a href="https://arxiv.org/abs/1706.06083">A. Madry, A. Makelov, L. Schmidt, D. Tsipras, and A. Vladu, “Towards Deep Learning Models Resistant to Adversarial Attacks”. arXiv, 2017.</a></li>
   <li><a href="https://scikit-learn.org/stable/datasets/toy_dataset.html#optical-recognition-of-handwritten-digits-dataset">scikit-learn: Optical recognition of handwritten digits dataset</a></li>
-</ol>]]></content><author><name>Ali N. Parizi</name></author><category term="blog" /><category term="ai" /><category term="machine-learning" /><category term="deep-learning" /><summary type="html"><![CDATA[1. Intro Big Data powered machine learning and deep learning has yielded impressive advances in many fields. One example is the release of ImageNet consisting of more than 15 million labelled high-resolution images of 22,000 categories which revolutionized the field of computer vision. State-of-the-art models have already achieved a 98% top-five accuracy on the ImageNet dataset, so it seems as though these models are foolproof and that nothing can go wrong.]]></summary></entry></feed>
+</ol>]]></content><author><name>Ali N. Parizi</name></author><category term="blog" /><category term="ai" /><category term="machine-learning" /><category term="deep-learning" /><summary type="html"><![CDATA[1. Intro Big Data powered machine learning and deep learning has yielded impressive advances in many fields. One example is the release of ImageNet, consisting of more than 15 million labeled, high-resolution images across 22,000 categories, which revolutionized the field of computer vision. State-of-the-art models have already achieved 98% top-five accuracy on the ImageNet dataset, so it seems as though these models are foolproof and that nothing can go wrong.]]></summary></entry></feed>

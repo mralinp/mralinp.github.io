@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Bypass The Islamic Republic Again: Installing V2ray + XUI"
+title: "Bypass The Islamic Republic Again: Installing V2Ray + X-UI"
 author: "Ali N. Parizi"
 img: "/assets/images/posts/blog/v2ray/title.png"
 cover-img: "/assets/images/posts/blog/v2ray/cover.jpeg"
@@ -27,7 +27,7 @@ $ sudo apt upgrade --yes
 $ sudo apt install cockpit --yes
 ```
 
-This should install the cockpit and dose all the configurations for you. The cockpit is a web-based control panel and it will run on port 9090 of the server so, you have to allow connecting this port if your firewall is enabled:
+This should install the cockpit and does all the configuration for you. The cockpit is a web-based control panel and it will run on port 9090 of the server so, you have to allow connecting this port if your firewall is enabled:
 
 ```console
 $ sudo ufw allow 9090
@@ -78,7 +78,7 @@ password: admin
     <img width="80%" src="/assets/images/posts/blog/v2ray/xui.png">
 </p>
 
-Default language of x-ui is chaines, i use Google chrome and Google translate to translate its contexts to english and i recommend you to do so.
+Default language of x-ui is Chinese, I use Google Chrome and Google Translate to translate its content to English, and I recommend you do the same.
 
 After login, you have to go and change the default username and password of the panel (You can change the default port as well). From the sidebar panel select the third option, then select the second tab. Now type the old username and password on first two fields the new ones on the next two. Press `Revise` to save the changes.
 
@@ -86,7 +86,7 @@ After login, you have to go and change the default username and password of the 
     <img width="80%" src="/assets/images/posts/blog/v2ray/x-ui-1.png">
 </p>
 
-Now go to inbound list from the sidebar and press add for creating a new VPN configuration. For example you can select VMess or VLess protocol under Websocket(ws) as you can see on the picture below. If you choose VLess be aware of that VLess has no encryption and VMess is a better choice.
+Now go to inbound list from the sidebar and press add for creating a new VPN configuration. For example you can select the VMess or VLess protocol under Websocket (ws), as you can see in the picture below. If you choose VLess, be aware that it has no encryption of its own, so VMess is the better choice.
 
 > Note: You can go and search for other V2Ray configurations but VMess is good enough for our article.
 
@@ -118,19 +118,85 @@ Transport Layer Security, or TLS, is a widely adopted security protocol designed
 
 TLS was proposed by the Internet Engineering Task Force (IETF), an international standards organization, and the first version of the protocol was published in 1999. The most recent version is TLS 1.3, which was published in 2018.
 
-# 4.2 Buy a domain
+## 4.2 Buy a domain
 
+TLS certificates are issued for domain names, not bare IP addresses, so the first thing you need is a domain. Any registrar works, [**Namecheap**](https://www.namecheap.com/), [**Cloudflare Registrar**](https://www.cloudflare.com/products/registrar/), or a local one, it makes no difference here. Pick something cheap, you don't need anything fancy for a personal VPN endpoint.
 
-# 4.3 Generating a new certificate using `cert-bot`
+Once you own the domain, go to its DNS settings and add an `A` record pointing to your server's IP:
 
-# 4.5 Activating CDN (Optional but recommended) 
+```txt
+Type: A
+Name: vpn (or @ for the root domain)
+Value: 77.222.67.140   # your server's IP
+TTL: Auto
+```
 
+Give it a few minutes to propagate, then confirm it resolves:
 
+```console
+$ dig +short vpn.yourdomain.com
+77.222.67.140
+```
 
+If that prints your server's IP, you're ready for a certificate.
+
+## 4.3 Generating a new certificate using `certbot`
+
+[**Certbot**](https://certbot.eff.org/) is the standard tool for getting free certificates from [**Let's Encrypt**](https://letsencrypt.org/). Install it with snap, which is the method Certbot's own docs recommend these days:
+
+```console
+$ sudo apt install snapd --yes
+$ sudo snap install core; sudo snap refresh core
+$ sudo snap install --classic certbot
+$ sudo ln -s /snap/bin/certbot /usr/bin/certbot
+```
+
+Certbot needs to answer a challenge on port 80 to prove you control the domain, and since x-ui isn't listening there, the standalone method is the simplest option:
+
+```console
+$ sudo certbot certonly --standalone -d vpn.yourdomain.com
+```
+
+Follow the prompts (email address, agree to the terms), and if the `A` record from the previous step is correct, Certbot will drop your certificate here:
+
+```txt
+/etc/letsencrypt/live/vpn.yourdomain.com/fullchain.pem   # certificate
+/etc/letsencrypt/live/vpn.yourdomain.com/privkey.pem     # private key
+```
+
+Let's Encrypt certificates expire after 90 days, so set up auto-renewal instead of babysitting this by hand. The snap install already ships a systemd timer that runs twice a day and only renews when a certificate is close to expiring, you can confirm it's active with:
+
+```console
+$ sudo systemctl list-timers | grep certbot
+```
+
+## 4.4 Enabling TLS on the X-UI inbound
+
+Now point x-ui at the certificate you just generated. Open the panel, edit your existing inbound (or create a new one), and turn on the **TLS** switch. It'll ask for two file paths, point both at the files Certbot just created:
+
+```txt
+Public key (certificate): /etc/letsencrypt/live/vpn.yourdomain.com/fullchain.pem
+Private key:               /etc/letsencrypt/live/vpn.yourdomain.com/privkey.pem
+```
+
+Save the inbound, then update the client's share link or QR code, it now needs `tls` as the security setting and the domain name instead of the bare IP, so the client actually validates against `vpn.yourdomain.com`. Since the private key file is only readable by root, make sure x-ui itself is running as root (which, by default, it is) or the service will fail to start after this change.
+
+That's it, your traffic is now wrapped in real TLS, on top of V2Ray's own obfuscation, which makes it look even more like ordinary HTTPS browsing to anything inspecting the connection.
+
+## 4.5 Activating CDN (Optional but recommended)
+
+Putting your server behind a CDN like [**Cloudflare**](https://www.cloudflare.com/) hides its real IP behind Cloudflare's edge network. Even if your domain gets fingerprinted and blocked, your actual VM's IP stays usable for other domains, and blocking it directly would mean blocking a chunk of Cloudflare's shared IP range, which is much less appealing to a censor than blocking one server.
+
+There's a catch: Cloudflare's free proxy only forwards HTTP/HTTPS traffic (ports 80/443) and only understands WebSocket for anything that isn't plain HTTP. Which is exactly why we set up the inbound with the Websocket(ws) transport back in [Section 2](#2-installing-v2ray-using-x-ui), this whole setup was built to be CDN-compatible from the start.
+
+To turn it on:
+
+1. Add your domain to Cloudflare and update your registrar's nameservers to the ones Cloudflare gives you.
+2. In the DNS tab, make sure the `A` record for `vpn.yourdomain.com` has the proxy status set to **Proxied** (the orange cloud, not the grey one).
+3. Under SSL/TLS settings, set the encryption mode to **Full (strict)**. This makes Cloudflare validate the certificate your origin server presents, which is exactly the Let's Encrypt certificate from Section 4.3, so don't skip that step.
+4. On your V2Ray client, leave the port at `443` and the host/SNI as your domain, that traffic now goes client → Cloudflare edge → your server, encrypted the whole way.
+
+> Note: routing VPN traffic through a CDN sits in a grey area of most providers' terms of service. Keep the client count low, don't advertise it, and be ready to fall back to the direct IP if the domain ever gets flagged.
 
 # References
 - [https://seakfind.github.io/2021/10/10/X-UI/](https://seakfind.github.io/2021/10/10/X-UI/)
-
-
-
- 

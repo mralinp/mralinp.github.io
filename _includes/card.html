@@ -1,0 +1,60 @@
+{% assign variant = include.variant | default: "blog" %}
+<article class="blog-card">
+    <div class="blog-card-media">
+        <a href="{{ include.post.url }}">
+            {% if include.post.img %}
+            <img src="{{ include.post.img }}" alt="{{ include.post.title | escape }}">
+            {% else %}
+            <div class="blog-card-fallback"></div>
+            {% endif %}
+        </a>
+        {% if variant == "project" %}
+        <span class="blog-card-badge accent">{{ include.post.categories[0] | default: "Project" | upcase }}</span>
+        {% elsif variant == "book" %}
+        <span class="blog-card-badge">{{ include.post.categories[0] | default: "Book" | upcase }}</span>
+        {% else %}
+        <span class="blog-card-badge">{{ include.post.categories[0] | default: "Blog" | upcase }}</span>
+        {% endif %}
+        <span class="blog-card-open material-symbols-outlined">north_east</span>
+        <span class="blog-card-date">{{ include.post.date | date: "%b %Y" }}</span>
+    </div>
+    <div class="blog-card-content">
+        <div class="blog-card-top">
+            <h3 class="blog-card-title"><a href="{{ include.post.url }}" title="{{ include.post.title }}">{{ include.post.title | strip_html | truncate: 62 }}</a></h3>
+        </div>
+        {% if variant == "book" %}
+        {% assign rating = include.post.book_rating | default: 0 | plus: 0 %}
+        <div class="book-rating" aria-label="Book rating">
+            {% for i in (1..5) %}
+            <i class="fa fa-star{% if i > rating %} book-star-dim{% endif %}"></i>
+            {% endfor %}
+            <span class="book-rating-value">{{ rating }}/5</span>
+        </div>
+        <p class="book-review-snippet">{{ include.post.book_review | default: include.post.brief | default: include.post.excerpt | strip_html | truncate: 130 }}</p>
+        {% else %}
+        <p>{{ include.post.brief | default: include.post.excerpt | strip_html | truncate: 130 }}</p>
+        {% endif %}
+        <div class="blog-card-tags">
+            {% for category in include.post.categories limit: 3 %}
+            <span>{{ category }}</span>
+            {% endfor %}
+            {% if variant == "book" and include.post.book_resources %}
+            <span>resources: {{ include.post.book_resources | size }}</span>
+            {% endif %}
+        </div>
+        {% if variant == "project" %}
+        <div class="blog-card-actions split">
+            <a href="{{ include.post.url }}" class="blog-card-btn">Read more</a>
+            <a href="{{ include.post.github | default: 'https://github.com/mralinp' }}" target="_blank" rel="noopener noreferrer" class="blog-card-btn ghost"><i class="fab fa-github"></i> View in GitHub</a>
+        </div>
+        {% elsif variant == "book" %}
+        <div class="blog-card-actions">
+            <a href="{{ include.post.url }}" class="blog-card-btn">Read review</a>
+        </div>
+        {% else %}
+        <div class="blog-card-actions">
+            <a href="{{ include.post.url }}" class="blog-card-btn">Read more</a>
+        </div>
+        {% endif %}
+    </div>
+</article>

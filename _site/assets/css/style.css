@@ -1,5 +1,7 @@
 :root {
     --primary: #ff5a00;
+    --primary-hover: #d84b00;
+    --primary-soft: #ff8a44;
     --bg: #000;
     --surface: #0a0a0a;
     --surface-soft: #111;
@@ -7,6 +9,9 @@
     --border-bright: #333;
     --text: #f8fafc;
     --text-soft: #94a3b8;
+    --text-muted: #9ca3af;
+    --accent-green: #22c55e;
+    --accent-star: #f59e0b;
 }
 
 * {

@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,300,0,0&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/components.css">
     <script src="https://kit.fontawesome.com/40a6ec6105.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/assets/css/prism.css">
 </head>
@@ -68,193 +69,7 @@
 
             <div id="content" class="page-shell">
                 <div class="content-frame">
-                    <style>
-    #content {
-        background-color: #06070f;
-    }
-
-    .post-shell {
-        display: grid;
-        gap: 0.9rem;
-    }
-
-    .post-head {
-        border: 1px solid #1a1a1a;
-        background: rgba(5, 5, 5, 0.78);
-        padding: 1rem;
-    }
-
-    .post-kicker {
-        margin: 0;
-        color: #ff5a00;
-        font: 500 0.66rem/1 "JetBrains Mono", monospace;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-    }
-
-    .post-head h1 {
-        margin: 0.35rem 0 0.5rem;
-        font-size: clamp(1.3rem, 3vw, 2rem);
-        letter-spacing: 0.03em;
-        text-transform: uppercase;
-    }
-
-    .post-brief {
-        margin: 0 0 0.7rem;
-        color: #94a3b8;
-        font-size: 0.92rem;
-        line-height: 1.55;
-    }
-
-    .post-chip-row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.45rem;
-    }
-
-    .post-chip {
-        border: 1px solid #2b2b2b;
-        background: rgba(0, 0, 0, 0.35);
-        color: #cbd5e1;
-        padding: 0.18rem 0.48rem;
-        font: 500 0.6rem/1.2 "JetBrains Mono", monospace;
-        letter-spacing: 0.11em;
-        text-transform: uppercase;
-    }
-
-    .post-media {
-        border: 1px solid #1a1a1a;
-        background: rgba(5, 5, 5, 0.75);
-        overflow: hidden;
-    }
-
-    .post-media img {
-        width: 100%;
-        display: block;
-    }
-
-    .post-body {
-        border: 1px solid #1a1a1a;
-        background: rgba(5, 5, 5, 0.82);
-        padding: 1rem;
-    }
-
-    .post-content {
-        background: transparent;
-        border: 0;
-        padding: 0;
-        max-width: 100%;
-    }
-
-    .post-nav {
-        display: flex;
-        justify-content: space-between;
-        gap: 0.6rem;
-        margin-bottom: 0.9rem;
-    }
-
-    .post-nav a {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.35rem;
-        text-decoration: none;
-        border: 1px solid #2b2b2b;
-        color: #cbd5e1;
-        padding: 0.3rem 0.55rem;
-        font: 600 0.6rem/1 "JetBrains Mono", monospace;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-    }
-
-    .post-nav a:hover {
-        border-color: #ff5a00;
-        color: #ff5a00;
-    }
-
-    .book-panel {
-        margin-bottom: 0.95rem;
-        border: 1px solid #2b2b2b;
-        background: rgba(0, 0, 0, 0.35);
-        padding: 0.8rem;
-    }
-
-    .book-panel h2 {
-        margin: 0 0 0.55rem;
-        color: #f8fafc;
-        text-transform: uppercase;
-        letter-spacing: 0.12em;
-        font-size: 0.76rem;
-    }
-
-    .book-rating {
-        display: flex;
-        align-items: center;
-        gap: 0.18rem;
-        color: #f59e0b;
-        margin-bottom: 0.45rem;
-    }
-
-    .book-rating .book-star-dim {
-        opacity: 0.25;
-    }
-
-    .book-rating .book-rating-value {
-        margin-left: 0.35rem;
-        color: #9ca3af;
-        text-transform: uppercase;
-        letter-spacing: 0.12em;
-        font: 500 0.58rem/1 "JetBrains Mono", monospace;
-    }
-
-    .book-review {
-        margin: 0;
-        color: #cbd5e1;
-        font-size: 0.9rem;
-        line-height: 1.6;
-    }
-
-    .book-resources {
-        margin: 0;
-        padding-left: 1rem;
-    }
-
-    .book-resources li {
-        margin-bottom: 0.35rem;
-        color: #cbd5e1;
-    }
-
-    .book-resources a {
-        color: #ff8a44;
-    }
-
-    .book-resources a:hover {
-        color: #ff5a00;
-    }
-
-    .post-comments {
-        border: 1px solid #1a1a1a;
-        background: rgba(5, 5, 5, 0.78);
-        padding: 0.9rem;
-    }
-
-    .post-comments h2 {
-        margin: 0 0 0.75rem;
-        color: #f8fafc;
-        font-size: 0.9rem;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-    }
-
-    @media (max-width: 720px) {
-        .post-head,
-        .post-body,
-        .post-comments {
-            padding: 0.8rem;
-        }
-    }
-</style>
-
-<article class="post-shell">
+                    <article class="post-shell">
     
     
     
@@ -299,12 +114,13 @@
 
         
 
+
         <div class="post-content">
             <h1 id="1-intro">1. Intro</h1>
 
-<p>Almost every machine learning algorithm and model works with Data. Creating a Dataset and managing it with Dataloader keeps your data manageable and helps to simplify your machine learning pipeline. a Dataset stores all your data, and Dataloader is can be used to iterate through the data, manage batches, transform the data, and much more. Let’s begin with a simple example. Assuming the popular Wine dataset as our target dataset, we want to load and use this dataset in pytorch. Before getting started, we have to download the dataset from <a href="https://archive.ics.uci.edu/ml/datasets/wine">UCA machine-learning repository</a>. I usually place my data insied a data directory so the address to this dataset will be <code class="language-plaintext highlighter-rouge">../data/win/wine.data</code>.</p>
+<p>Almost every machine learning algorithm and model works with data. Creating a Dataset and managing it with a Dataloader keeps your data manageable and helps simplify your machine learning pipeline. A Dataset stores all your data, and a Dataloader can be used to iterate through the data, manage batches, transform the data, and much more. Let’s begin with a simple example. Assuming the popular Wine dataset as our target dataset, we want to load and use this dataset in PyTorch. Before getting started, we have to download the dataset from the <a href="https://archive.ics.uci.edu/ml/datasets/wine">UCI Machine Learning Repository</a>. I usually place my data inside a data directory, so the path to this dataset will be <code class="language-plaintext highlighter-rouge">../data/wine/wine.data</code>.</p>
 
-<p>In pytorch we have a Dataset class which each dataset should inherit from this base class. For datasets we have to implement at least to methods which are <code class="language-plaintext highlighter-rouge">__getitem__</code> and<code class="language-plaintext highlighter-rouge">__len__</code> which return the iten with the given index from the dataset and the length of the dataset respectively.</p>
+<p>In PyTorch we have a Dataset class which every dataset should inherit from. For a dataset we have to implement at least two methods, <code class="language-plaintext highlighter-rouge">__getitem__</code> and <code class="language-plaintext highlighter-rouge">__len__</code>, which return the item at the given index and the length of the dataset, respectively.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 <span class="kn">import</span> <span class="nn">torch</span>
@@ -341,10 +157,10 @@
         1.0650e+03]), y: tensor([1.])
 </code></pre>
 
-<p>Thats it, it lookes easy, doesn’t it?</p>
+<p>That’s it, it looks easy, doesn’t it?</p>
 
 <h1 id="2-dataloader">2. Dataloader</h1>
-<p>To manage the dataset we can use pytorch dataloader to prepare the dataset for the training process. For example it’s responsible for creating batches and shuffling them in in training process.</p>
+<p>To manage the dataset we can use PyTorch’s Dataloader to prepare it for the training process. For example, it’s responsible for creating batches and shuffling them during training.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dataloader</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">utils</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">dataiter</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">dataloader</span><span class="p">)</span>
@@ -388,7 +204,7 @@ tensor([[1.3740e+01, 1.6700e+00, 2.2500e+00, 1.6400e+01, 1.1800e+02, 2.6000e+00,
 
 <h1 id="3-transformers">3. Transformers</h1>
 
-<p>Some times we need to make some changes on the raw data before using them. For example, in data augmentation technique, we make some changes to the original data before using them in training epochs. This will make our model more robust and more prone to overfitting. We can modify our dataset class to be able to use some transformer functions by defining an optional input in the constructor function (<code class="language-plaintext highlighter-rouge">__init__</code>). Then when ever we want to read a data from the dataset, the transformer functions will automatically execute on the data before returning the results. This will be so useful during our implementation. We will see more examples in the next parts of these series.</p>
+<p>Sometimes we need to make changes to the raw data before using it. For example, with the data augmentation technique, we make small changes to the original data before using it in each training epoch. This makes our model more robust and less prone to overfitting. We can modify our dataset class to support transformer functions by defining an optional input in the constructor (<code class="language-plaintext highlighter-rouge">__init__</code>). Then, whenever we want to read an item from the dataset, the transformer functions will automatically run on the data before the result is returned. This will be very useful in our implementation, and we’ll see more examples of it in the next parts of this series.</p>
 
 <p>Here is the modified dataset class:</p>
 
@@ -431,7 +247,7 @@ tensor([[1.3740e+01, 1.6700e+00, 2.2500e+00, 1.6400e+01, 1.1800e+02, 2.6000e+00,
         <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
 </code></pre></div></div>
 
-<p>To use these transformers we can easily pass them through the constructor while creating the dataset object, Then they will be applied to the data on after another in the order of their placement in the array.</p>
+<p>To use these transformers, we can easily pass them through the constructor while creating the dataset object. They’ll then be applied to the data one after another, in the order they appear in the array.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dataset</span> <span class="o">=</span> <span class="n">WineDataset</span><span class="p">(</span><span class="n">transforms</span><span class="o">=</span><span class="p">[</span><span class="n">ToTensorTransformer</span><span class="p">(),</span> <span class="n">MultiplierTransformer</span><span class="p">(</span><span class="mi">10</span><span class="p">)])</span>
 <span class="n">x_sample</span><span class="p">,</span> <span class="n">y_sample</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -656,6 +472,8 @@ x:tensor([1.4230e+02, 1.7100e+01, 2.4300e+01, 1.5600e+02, 1.2700e+03, 2.8000e+01
         MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']], processEscapes: true}, jax: ["input/TeX","input/MathML","input/AsciiMath","output/CommonHTML"], extensions: ["tex2jax.js","mml2jax.js","asciimath2jax.js","MathMenu.js","MathZoom.js","AssistiveMML.js", "[Contrib]/a11y/accessibility-menu.js"], TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"], equationNumbers: { autoNumber: "AMS" } } });
     </script>
     <script src="/assets/js/main.js" crossorigin="anonymous"></script>
+    <script src="/assets/js/pager.js" crossorigin="anonymous"></script>
+    <script src="/assets/js/github-metrics.js" crossorigin="anonymous"></script>
     <script src="/assets/js/prism.js" crossorigin="anonymous"></script>
 </body>
 

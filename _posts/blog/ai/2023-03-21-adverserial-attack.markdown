@@ -8,15 +8,15 @@ categories:  blog ai machine-learning deep-learning
 brief: "Are the machine learning models we use intrinsically flawed?"
 ---
 # 1. Intro
-Big Data powered machine learning and deep learning has yielded impressive advances in many fields. One example is the release of ImageNet consisting of more than 15 million labelled high-resolution images of 22,000 categories which revolutionized the field of computer vision. State-of-the-art models have already achieved a 98% top-five accuracy on the ImageNet dataset, so it seems as though these models are foolproof and that nothing can go wrong.
+Big Data powered machine learning and deep learning has yielded impressive advances in many fields. One example is the release of ImageNet, consisting of more than 15 million labeled, high-resolution images across 22,000 categories, which revolutionized the field of computer vision. State-of-the-art models have already achieved 98% top-five accuracy on the ImageNet dataset, so it seems as though these models are foolproof and that nothing can go wrong.
 
 However, recent advances in adversarial training have found that this is an illusion. A good model misbehaves frequently when faced with adversarial examples. The image below illustrates the problem:
 <p align="center">
  <img src="/assets/images/posts/blog/adversarial-attack/1.png"/>
 </p>
-The model initially classifies the panda picture correctly, but when some noise, imperceptible to human beings, is injected into the picture, the resulting prediction of the model is changed to another animal, gibbon, even with such a high confidence. To us, it appears as if the initial and altered images are the same, although it is radically different to the model. This illustrates the threat these adversarial attacks pose — we may not perceive the difference so we cannot tell an adversarial attack as happened. Hence, although the output of the model may be altered, we cannot tell if the output is correct or incorrect.
+The model initially classifies the panda picture correctly, but when some noise, imperceptible to human beings, is injected into the picture, the resulting prediction of the model changes to another animal, gibbon, with even higher confidence than before. To us, it appears as if the initial and altered images are the same, although they are radically different to the model. This illustrates the threat these adversarial attacks pose — we may not perceive the difference, so we cannot tell that an adversarial attack has happened. Hence, although the output of the model may be altered, we cannot tell if the output is correct or incorrect.
 
-This formed the motivation behind the talk for Professor Ling Liu’s keynote speech at the 2019 IEEE Big Data Conference, where she touched on types of adversarial attacks, how adversarial examples are generated, and how to combat against these attacks. Without further ado, I will get into the contents of her speech.
+This formed the motivation behind Professor Ling Liu's keynote speech at the 2019 IEEE Big Data Conference, where she touched on types of adversarial attacks, how adversarial examples are generated, and how to defend against these attacks. Without further ado, I will get into the contents of her speech.
 
 # 2. Types of adversarial attacks
 
@@ -53,7 +53,7 @@ Black box attacks are based on the notion of transferability of adversarial exam
 
 This attack can be launched either with the training dataset being known or unknown. In the case where the dataset is known to the adversary, the model G can be trained on the same dataset as model H to mimic H.
 
-When the training dataset is unknown however, adversaries can leverage on Membership Inference Attacks, whereby an attack model whose purpose is to distinguish the target model’s behavior on the training inputs from its behavior on the inputs that it did not encounter during training is trained. In essence, this turns into a classification problem to recognize differences in the target model’s predictions on the inputs that it trained on versus the inputs that it did not train on. This enables the adversary to obtain a better sense of the training dataset D which model H was trained on, enabling the attacker to generate a shadow dataset S on the basis of the true training dataset so as to train the surrogate model G. Having trained G on S where G mimics H and S mimics D, black box attacks can then be launched on H.
+When the training dataset is unknown, however, adversaries can leverage Membership Inference Attacks, whereby an attack model whose purpose is to distinguish the target model’s behavior on the training inputs from its behavior on the inputs it did not encounter during training is trained. In essence, this turns into a classification problem to recognize differences in the target model’s predictions on the inputs that it trained on versus the inputs that it did not train on. This enables the adversary to obtain a better sense of the training dataset D which model H was trained on, enabling the attacker to generate a shadow dataset S on the basis of the true training dataset so as to train the surrogate model G. Having trained G on S where G mimics H and S mimics D, black box attacks can then be launched on H.
 
 ## 5.1 Black Box Attacks
 Now that we have seen how black box attacks vary from white box attacks in that the target model H is unknown to the adversary, we will cover the various tactics used in black box attacks. Beyond the transferability-based approach described above (train a surrogate model and hope the adversarial examples transfer), black box attacks generally fall into two further families:
@@ -77,11 +77,11 @@ $$ x' = x + \epsilon \cdot \mathrm{sign}\big(\nabla_x L(H(x), y)\big) $$
 - **Carlini & Wagner (C&W) attack** formulates the search for an adversarial example as an optimization problem that directly minimizes the size of the perturbation subject to the example being misclassified, and remains one of the strongest attacks against undefended models.
 
 ## 5.3 Physical Attacks
-One simple way in which the query input is changed from x to x’ is by simply adding something physically (eg. bright colour) to disturb the model. One example is how researchers at CMU added eyeglasses to a person in an attack against facial recognition models. The image below illustrates the attack:
+One simple way in which the query input is changed from x to x’ is by physically adding something (e.g., a bright color or pattern) to disturb the model. One example is how researchers at CMU added eyeglasses to a person in an attack against facial recognition models. The image below illustrates the attack:
 
 ![image](/assets/images/posts/blog/adversarial-attack/2.png)
 
-The first row of images correspond to the original image modified by adding the eyeglasses, and the second row of images correspond to the impersonation targets, which are the intended misclassification targets. Just by adding the eyeglasses onto the original image, the facial recognition model was tricked into classifying the images on the top row as the images in the bottom row.
+The first row of images corresponds to the original image modified by adding the eyeglasses, and the second row corresponds to the impersonation targets, which are the intended misclassification targets. Just by adding the eyeglasses onto the original image, the facial recognition model was tricked into classifying the images on the top row as the images in the bottom row.
 
 Another example comes from researchers at Google who added stickers to the input image to change the classification of the image, as illustrated by the image below:
 ![image](/assets/images/posts/blog/adversarial-attack/3.png)
@@ -94,7 +94,7 @@ Another way in which black box attacks are carried out is through out-of-distrib
 # 6. How Can We Trust Machine Learning?
 Now that we have taken a look at the various types of adversarial attacks, a natural question then comes — how can we trust our machine learning models if they are so susceptible to adversarial attacks?
 
-One possible approach has been proposed by Chow et al. in 2019 in the paper titled “Denoising and Verification Cross-Layer Ensemble Against Black-box Adversarial Attacks”. The approach is centred around enabling machine learning systems to automatically detect adversarial attacks and then automatically repair them through the use of denoising and verification ensembles.
+One possible approach has been proposed by Chow et al. in 2019 in the paper titled “Denoising and Verification Cross-Layer Ensemble Against Black-box Adversarial Attacks”. The approach is centered around enabling machine learning systems to automatically detect adversarial attacks and then automatically repair them through the use of denoising and verification ensembles.
 
 # 7. Denoising Ensembles
 First, input images have to pass through denoising ensembles that attempt different methods to remove any added noise to the image, for example adding Gaussian noise. Since the specific noise added to the image by the adversary is unknown to the defender, there is a need for an ensemble of denoisers to each attempt to remove each type of noise.
@@ -109,7 +109,7 @@ By developing an ensemble of these autoencoders each trained to remove a specifi
 After the images have been denoised, they then go through a verification ensemble which reviews every denoised image produced by each denoiser and then classifies the denoised image. Each classifier in the verification ensemble classifies each denoised image, and the ensemble then votes to determine the final category the image belongs to. This means that although some images may not have been denoised the correct way in the denoising step, the verification ensemble votes on all the denoised images, thereby increasing the likelihood of making a more accurate prediction.
 
 ## 7.2 Diversity
-Diversity of the denoisers and verifiers have found to be very important because firstly, adversarial attackers will get better at altering images so there is a need for a diverse group of denoisers that can handle a variety of corrupted images. Following this, there is also a need for verifiers to be diverse so they can generate a variety of classifications so that it would be difficult adversarial attackers to manipulate them just as how they have managed to manipulate normal classifiers that we trust and use so frequently in machine learning.
+Diversity of the denoisers and verifiers has been found to be very important. Firstly, because adversarial attackers will keep getting better at altering images, there is a need for a diverse group of denoisers that can handle a variety of corrupted images. Following this, there is also a need for verifiers to be diverse, so they can generate a variety of classifications, making it difficult for adversarial attackers to manipulate them, just as they have managed to manipulate the normal classifiers that we trust and use so frequently in machine learning.
 
 This remains an open problem because, after all these decisions by the various verifiers, there is still a final decision maker that needs to decide whose opinion to listen to. The final decision maker would need to preserve the diversity present in the ensemble, which is not an easy task to tackle.
 

@@ -1,0 +1,11 @@
+{% assign card_variant = include.variant %}
+<div class="row" id="{{ include.grid_id }}" data-pager-grid data-per-page="{{ include.per_page | default: 6 }}">
+    {% for post in include.posts %}
+    <div class="col-lg-4 col-md-6 mb-4 js-page-item">
+        {% include card.html post=post variant=card_variant %}
+    </div>
+    {% endfor %}
+</div>
+<nav aria-label="Page navigation" id="PageNav">
+    <ul class="pagination justify-content-center" data-pager-for="{{ include.grid_id }}"></ul>
+</nav>

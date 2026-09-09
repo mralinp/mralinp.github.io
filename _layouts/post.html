@@ -1,0 +1,87 @@
+---
+layout: main
+---
+
+<article class="post-shell">
+    {% assign back_url = "/blog" %}
+    {% assign back_label = "Back to blog" %}
+    {% if page.categories contains "book" %}
+        {% assign back_url = "/library" %}
+        {% assign back_label = "Back to library" %}
+    {% elsif page.categories contains "project" %}
+        {% assign back_url = "/projects" %}
+        {% assign back_label = "Back to projects" %}
+    {% endif %}
+
+    <section class="post-head">
+        <p class="post-kicker">Article Dispatch</p>
+        <h1>{{ page.title }}</h1>
+        {% if page.brief %}
+        <p class="post-brief">{{ page.brief }}</p>
+        {% endif %}
+        <div class="post-chip-row">
+            <span class="post-chip"><i class="fa fa-user-circle-o"></i> {{ page.author }}</span>
+            <span class="post-chip"><i class="fa fa-calendar-o"></i> {{ page.date | date: "%-d %b %Y" }}</span>
+            {% for cat in page.categories %}
+            <span class="post-chip"><i class="fa fa-tag"></i> {{ cat }}</span>
+            {% endfor %}
+        </div>
+    </section>
+
+    {% if page.img %}
+    <div class="post-media">
+        <a class="image-zoom cboxElement" href="{{ page.img }}">
+        <img src="{{ page.img }}" alt="{{ page.title | escape }}">
+        <div class="image-overlay"></div>
+        </a>
+    </div>
+    {% endif %}
+
+    <section class="post-body">
+        <div class="post-nav">
+            <a href="{{ back_url }}"><span class="material-symbols-outlined">arrow_back</span> {{ back_label }}</a>
+            <a href="{{ page.url }}">Permalink <span class="material-symbols-outlined">north_east</span></a>
+        </div>
+
+        {% include book-panel.html %}
+
+        <div class="post-content">
+            {{ page.content }}
+        </div>
+    </section>
+
+    <section class="post-comments">
+        <h2>Comment Channel</h2>
+        <div class="commentbox"></div>
+    </section>
+</article>
+
+<script src="https://unpkg.com/commentbox.io/dist/commentBox.min.js"></script>
+<script>
+    function arrToHex(arr) {
+        let s = '#';
+        for (let i = 0; i < arr.length; i++) {
+            s += ((arr[i] / 16) | 0).toString(16);
+            s += ((arr[i] % 16) | 0).toString(16);
+        }
+        return s;
+    }
+    var element = document.body;
+    var style;
+    var color = "black";
+    if (window.getComputedStyle) {
+        style = window.getComputedStyle(element);
+    } else {
+        style = element.currentStyle;
+    }
+    if (!style) {
+        // ...seriously old browser...
+    } else {
+        color = style.color;
+    }
+    rgb = color.match(/\d+/g);
+    commentBox('5076933226266624-proj', {
+        textColor: arrToHex(rgb),
+        subtextColor: arrToHex(rgb),
+    })
+</script>

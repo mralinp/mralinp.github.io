@@ -1,0 +1,31 @@
+{% if page.categories contains "book" %}
+<div class="book-panel">
+    <h2>Book Review Snapshot</h2>
+    {% assign rating = page.book_rating | default: 0 | plus: 0 %}
+    <div class="book-rating" aria-label="Book rating">
+        {% for i in (1..5) %}
+        <i class="fa fa-star{% if i > rating %} book-star-dim{% endif %}"></i>
+        {% endfor %}
+        <span class="book-rating-value">{{ rating }}/5</span>
+    </div>
+    {% if page.book_review %}
+    <p class="book-review">{{ page.book_review }}</p>
+    {% else %}
+    <p class="book-review">{{ page.brief }}</p>
+    {% endif %}
+</div>
+
+{% if page.book_resources %}
+<div class="book-panel">
+    <h2>Related Files and Notes</h2>
+    <ul class="book-resources">
+        {% for resource in page.book_resources %}
+        <li>
+            <a href="{{ resource.url }}" target="_blank" rel="noopener noreferrer">{{ resource.title }}</a>
+            {% if resource.type %} <span class="text-secondary">({{ resource.type }})</span>{% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+{% endif %}

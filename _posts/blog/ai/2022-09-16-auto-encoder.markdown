@@ -153,8 +153,6 @@ We'll train a convolutional autoencoder on the cars dataset. Here's a simple nin
 
 ```python
 inputs = keras.layers.Input((256,256,3))
-x = keras.layers.Conv2D(128, 3, padding='same', activation="relu")(inputs)
-x = keras.layers.Conv2D(64, 3, padding='same', activation="relu")(inputs)
 x = keras.layers.Conv2D(32, 3, padding='same', activation="relu")(inputs)
 x = keras.layers.MaxPool2D()(x) # 128x128
 x = keras.layers.Conv2D(8, 3, padding='same', activation="relu", name="bottle-neck")(x) # 128*128

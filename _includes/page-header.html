@@ -1,0 +1,11 @@
+<div class="page-header">
+    <div>
+        <p>{{ include.kicker }}</p>
+        <h2>{{ include.title }}</h2>
+    </div>
+    {% if include.status_id %}
+    <span class="page-header-status" id="{{ include.status_id }}">{{ include.status | default: "Feed status: live" }}</span>
+    {% else %}
+    <span class="page-header-status">{{ include.status | default: "Feed status: live" }}</span>
+    {% endif %}
+</div>
