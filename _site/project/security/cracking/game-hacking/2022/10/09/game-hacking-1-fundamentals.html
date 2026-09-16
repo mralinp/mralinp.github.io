@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html class="scroll-smooth dark" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="4-8jdtFeOSWDhx6RjXrSwNrvhvLyFdbACncYtB2Rjzc">
+    <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="mralinp" />
+    <title>Game Hacking, Part 1: Anti-Cheats, Engines, and How Cheats Actually Work</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,300,0,0&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/components.css">
+    <script src="https://kit.fontawesome.com/40a6ec6105.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/css/prism.css">
+</head>
+
+<body class="theme-body">
+    <header class="mobile-header">
+        <h1 class="mobile-title">A. N. PARIZI</h1>
+        <button id="mobileMenuToggle" class="mobile-menu-btn" type="button" aria-label="Toggle menu">
+            <span class="material-symbols-outlined">menu</span>
+        </button>
+    </header>
+
+    <div class="site-shell">
+        <nav id="sidebar" class="site-sidebar">
+            <div class="site-brand-block">
+                <h3><a href="/">Ali N. Parizi</a></h3>
+                <p>SYSTEMS ARCHITECTURE</p>
+            </div>
+
+            <ul class="components">
+                <li class="sidebar-item"><a href="/"><span class="material-symbols-outlined">grid_view</span> <span>Home</span></a></li>
+                <li class="sidebar-item"><a href="/blog"><span class="material-symbols-outlined">rss_feed</span> <span>Blog</span></a></li>
+                <li class="sidebar-item"><a href="/projects"><span class="material-symbols-outlined">account_tree</span> <span>Projects</span></a></li>
+                <li class="sidebar-item"><a href="/research"><span class="material-symbols-outlined">science</span> <span>Research</span></a></li>
+                <li class="sidebar-item"><a href="/library"><span class="material-symbols-outlined">folder_open</span> <span>Library</span></a></li>
+                <li class="sidebar-item"><a href="/about"><span class="material-symbols-outlined">sensors</span> <span>About</span></a></li>
+            </ul>
+
+            <ul class="CTAs">
+                <li><a href="https://github.com/mralinp"><i class="fab fa-github"></i> Github profile</a></li>
+                <li><a href="/assets/resume/ali-naderi-parizi-cv.pdf"><i class="fas fa-file"></i> Curriculum vitae</a></li>
+            </ul>
+
+            <footer id="footer">
+                <div class="copyright">© 2026 ALI N. PARIZI</div>
+                <div class="credits">Powered by <a href="https://github.com/">Github</a></div>
+            </footer>
+        </nav>
+
+        <main class="site-main">
+            <header class="topbar">
+                <div class="search-wrap">
+                    <form class="search-form" method="get" action="https://www.google.com/search" target="_blank">
+                        <span class="material-symbols-outlined">search</span>
+                        <input type="hidden" name="sitesearch" value="alinaderiparizi.com">
+                        <input type="text" name="q" maxlength="255" placeholder="INITIATE SEARCH_QUERIES...">
+                    </form>
+                </div>
+                <div class="system-status">
+                    <span>SYSTEM_STATUS</span>
+                    <strong>NOMINAL // 100%</strong>
+                </div>
+            </header>
+
+            <div id="content" class="page-shell">
+                <div class="content-frame">
+                    <article class="post-shell">
+    
+    
+    
+
+    <section class="post-head">
+        <p class="post-kicker">Article Dispatch</p>
+        <h1>Game Hacking, Part 1: Anti-Cheats, Engines, and How Cheats Actually Work</h1>
+        
+        <p class="post-brief">Anti-cheat, game engines, internal vs. external cheats, injection, and memory reading and writing — the concepts behind every game cheat, before we build one.</p>
+        
+        <div class="post-chip-row">
+            <span class="post-chip"><i class="fa fa-user-circle-o"></i> Ali N. Parizi</span>
+            <span class="post-chip"><i class="fa fa-calendar-o"></i> 9 Oct 2022</span>
+            
+            <span class="post-chip"><i class="fa fa-tag"></i> project</span>
+            
+            <span class="post-chip"><i class="fa fa-tag"></i> security</span>
+            
+            <span class="post-chip"><i class="fa fa-tag"></i> cracking</span>
+            
+            <span class="post-chip"><i class="fa fa-tag"></i> game-hacking</span>
+            
+        </div>
+    </section>
+
+    
+    <div class="post-media">
+        <a class="image-zoom cboxElement" href="/assets/images/posts/projects/csgo-cheat/csgo-logo-d.jpg">
+        <img src="/assets/images/posts/projects/csgo-cheat/csgo-logo-d.jpg" alt="Game Hacking, Part 1: Anti-Cheats, Engines, and How Cheats Actually Work">
+        <div class="image-overlay"></div>
+        </a>
+    </div>
+    
+
+    <section class="post-body">
+        <div class="post-nav">
+            <a href="/projects"><span class="material-symbols-outlined">arrow_back</span> Back to projects</a>
+            <a href="/project/security/cracking/game-hacking/2022/10/09/game-hacking-1-fundamentals.html">Permalink <span class="material-symbols-outlined">north_east</span></a>
+        </div>
+
+        
+
+
+        <div class="post-content">
+            <p>This is the first of two posts. This one is background: the concepts behind how game cheats and anti-cheats actually work. The second is a report on <a href="https://github.com/mralinp/khiar-ware">khiar-ware</a>, a CS:GO cheat I built to learn this material hands-on.</p>
+
+<p><strong>This project and these posts are for educational purposes only</strong>, to understand game security from the offense side — the same way people study exploit development to understand defense. Cheating in an online game against real opponents ruins the game for them and gets accounts banned (Valve’s VAC, in particular, does not forgive). Everything demonstrated in the next post was run offline, against bots, with the game’s anti-cheat explicitly disabled for testing. If you build on this, do the same.</p>
+
+<h1 id="1-what-a-cheat-actually-needs">1. What a cheat actually needs</h1>
+
+<p>Strip away the specifics of any given game, and a cheat needs exactly two things: <strong>information</strong> the game has and isn’t showing you (where the enemies are, whether they’re behind a wall, how much ammo they have), and <strong>influence</strong> over what happens next (aim precisely, fire exactly on target, jump at the perfect frame). Nearly everything that gets called a “cheat” is one or both of those: an ESP/wallhack is pure information — read the enemy’s position and draw it, or make the game itself render it through walls. An aimbot or triggerbot is information plus influence — read where an enemy is, then move the mouse or fire a shot for you. A speedhack or bunnyhop bot is closer to pure influence — nudge a value or a timed input the game wasn’t expecting.</p>
+
+<p>Both of those — information and influence — come from the same place: the game process’s memory. A running game is, from the operating system’s point of view, just a process with a big chunk of memory holding the current state of the world: player positions, health, view angles, weapon state. If you can read that memory, you have information. If you can write to it, or feed the game inputs at the right moment, you have influence.</p>
+
+<h1 id="2-what-a-game-engine-keeps-in-memory-roughly">2. What a game engine keeps in memory (roughly)</h1>
+
+<p>You don’t need the source code to guess the shape of what’s in there, because most game engines solve the same problem the same way. There’s typically an <strong>entity list</strong> — an array or table of every object in the current scene, players and bots included, each with a class identifying what it is. Each entity has fields for the things you’d expect: position, view angles, health, team, current weapon, animation state. There’s usually a single pointer somewhere to “the local player” — you, specifically, distinguished from everyone else because the client needs to know whose input to read and whose camera to render from.</p>
+
+<p>For a first-person multiplayer game specifically, there’s also a client-server split to know about: the server is authoritative over what actually happened, but the client predicts and interpolates so the game feels responsive despite network latency, and receives corrections when its prediction was wrong. That matters for cheating in one specific way — anything you fake purely on the client (a position, a hitbox) can be overruled or flagged by the server the moment it disagrees strongly enough with what the server itself is tracking. That’s part of <em>why</em> certain cheats (aim precision, extra information) are harder for a server to catch than others (speed, teleportation): the server already has strong opinions about speed and position, and weaker ones about where you chose to aim.</p>
+
+<h1 id="3-how-anti-cheat-actually-catches-things">3. How anti-cheat actually catches things</h1>
+
+<p>It’s worth being concrete about this, because “anti-cheat” isn’t one mechanism — it’s several, usually layered:</p>
+
+<ul>
+  <li><strong>Signature scanning.</strong> The anti-cheat has a library of known cheats’ code, byte patterns, or file hashes, and periodically scans the game’s own process memory and loaded modules for a match. This catches popular, unmodified public cheats extremely well and custom, never-distributed ones almost not at all — there’s nothing to match a signature against.</li>
+  <li><strong>Integrity checking.</strong> The anti-cheat hashes or otherwise verifies chunks of the game’s own code and critical data structures at intervals, so that a hook (redirecting a function to run your code first) or a patched instruction shows up as a mismatch against what should be there.</li>
+  <li><strong>Behavioral / statistical analysis.</strong> Rather than looking for cheat code at all, this looks at what the player <em>did</em>: aim that snaps onto targets with inhuman consistency, reaction times below what any human demonstrably achieves, trigger timing that’s suspiciously exact. This is the hardest category to build (a great player is also an outlier) and the hardest for a cheat to fully hide from, because it doesn’t care how the advantage was obtained.</li>
+  <li><strong>Delayed, server-side, wave-ban systems.</strong> Valve’s VAC is the canonical example: it doesn’t act in real time. Suspected violations are queued and reviewed, then bans go out in batches, sometimes weeks later, deliberately so that a cheat developer can’t immediately correlate “I changed X” with “I got banned” and patch around the specific trigger.</li>
+  <li><strong>Kernel-mode monitoring.</strong> The heaviest tier: rather than watching from inside the game’s own process (usermode, same privilege level as the game and any external cheat reading it), the anti-cheat loads its own driver into the OS kernel, which can see essentially everything happening on the machine, at a privilege level no ordinary cheat process runs at. This is what modern anti-cheats like FACEIT AC, EAC, BattlEye, and Vanguard actually do, and it’s significant enough that Part 2 of this series gives it its own section.</li>
+</ul>
+
+<p>Most real anti-cheat deployments run several of these at once specifically because each one has different blind spots, and a technique that defeats one usually does nothing against the others.</p>
+
+<h1 id="4-internal-vs-external">4. Internal vs. external</h1>
+
+<p>Once you know what you want to read or change, there are two fundamentally different ways to reach it.</p>
+
+<p>An <strong>internal</strong> cheat runs <em>inside</em> the game’s own process — typically a DLL that gets loaded or injected into it. Once your code is running in that address space, reading and writing the game’s memory is just reading and writing your own memory: no special permissions, no cross-process API calls, and — because you’re in-process — you can hook the game’s own functions directly (intercept its rendering calls to draw your own overlay through the game’s own renderer, intercept its input handling, even call the game’s own internal functions instead of reimplementing them). That last point matters more than it sounds: an internal aimbot can call the engine’s own “set view angle” function directly, producing movement indistinguishable in principle from a real mouse turn, where an external one has to fake a mouse turn from outside and hope it looks the same. The cost is exposure: your code is now literally part of the process an anti-cheat is scanning, so it has to actively evade being noticed — unusual loaded modules, hooked functions, suspicious memory regions.</p>
+
+<p>An <strong>external</strong> cheat runs as a <em>separate</em> process and reaches into the game’s memory from outside, through operating-system APIs meant for exactly this (debuggers use the same calls). Nothing of yours ever executes inside the game’s process, which sidesteps a whole category of in-process detection. The cost is capability: you can’t hook the game’s own rendering to draw through it, so anything you want to <em>see</em> — a radar, ESP boxes — needs its own overlay window layered on top, or has to be smuggled through a rendering mechanism the game already has (more on that trick specifically in Part 2). Anything you want to <em>do</em> beyond reading and writing raw values has to be done from outside too — simulating mouse and keyboard input, rather than calling the game’s own “fire weapon” function directly.</p>
+
+<p>Neither is strictly safer in general — it depends entirely on what the specific anti-cheat is watching for — but they’re a genuinely different engineering problem, and it’s worth deciding which one you’re building before writing any code.</p>
+
+<h1 id="5-injection-getting-code-into-someone-elses-process">5. Injection: getting code into someone else’s process</h1>
+
+<p>Injection is specifically the internal cheat’s problem: how do you get your DLL loaded into a process you didn’t start? The classic technique is almost boringly simple once you see it: <code class="language-plaintext highlighter-rouge">OpenProcess</code> to get a handle to the target, <code class="language-plaintext highlighter-rouge">VirtualAllocEx</code> to reserve some memory inside it, <code class="language-plaintext highlighter-rouge">WriteProcessMemory</code> to copy the path of your DLL into that memory, then <code class="language-plaintext highlighter-rouge">CreateRemoteThread</code> pointed at <code class="language-plaintext highlighter-rouge">LoadLibraryA</code> with that path as its argument. You’ve just made the target process call its own <code class="language-plaintext highlighter-rouge">LoadLibrary</code> on your DLL, from a thread you created, as if it had asked to load it itself — and Windows dutifully runs your <code class="language-plaintext highlighter-rouge">DllMain</code> inside their address space.</p>
+
+<p>That specific sequence is also extremely well known, which is exactly why more evasive techniques exist. <strong>Manual mapping</strong> is the main one: instead of asking the loader to do the work, you do the loader’s job yourself, from your injector process — parse your DLL’s PE headers, allocate memory in the target for its sections, copy each section to its correct relative address, walk the import table and resolve every function your DLL calls against the target’s already-loaded modules, apply base relocations if the memory didn’t land at the DLL’s preferred address, and finally call the entry point manually. It’s considerably more code than the four-API-call version above, but the payoff is specific: because you never called <code class="language-plaintext highlighter-rouge">LoadLibrary</code>, your DLL never gets added to the target’s module list, and any check that walks that list looking for unrecognized modules — which is a very common, very cheap first-line check — simply doesn’t see it.</p>
+
+<p>I’m not going to walk through manual mapping’s implementation line by line here; the point isn’t the recipe, it’s understanding that “injection” is really just “make the target process do something it normally does — load and run some code — but on your behalf,” and every detection method is really a way of noticing that something caused that to happen unexpectedly.</p>
+
+<h1 id="6-reading-and-writing-memory-for-real">6. Reading and writing memory, for real</h1>
+
+<p>For an external cheat this is the entire toolkit, and it’s a small one. <code class="language-plaintext highlighter-rouge">OpenProcess</code> gets you a <code class="language-plaintext highlighter-rouge">HANDLE</code> to the target, gated by exactly the access rights you request and the OS’s own permission checks (you can’t touch a process you don’t have rights to, admin or not, if it’s sufficiently protected). <code class="language-plaintext highlighter-rouge">ReadProcessMemory</code> and <code class="language-plaintext highlighter-rouge">WriteProcessMemory</code> then do exactly what they say, given that handle, an address, and a size — they’re the same primitives a debugger uses to let you inspect a program you’re stepping through.</p>
+
+<p>The catch is that “an address” isn’t something you know in advance. A game restarts with its memory laid out differently every time — address space layout randomization sees to that at the module level, and the loader picks its own base address for the executable and its DLLs on each run. What <em>is</em> stable, module-restart to module-restart, is the <strong>offset</strong> from a module’s base address to a piece of data you care about, and the offset from the start of an object (a player entity, say) to one of its fields — because the compiler laid those out the same way every time it built that version of the game. So the actual workflow is: find the game process, find the base address of the module you care about right now (<code class="language-plaintext highlighter-rouge">client.dll</code> typically holds the interesting state in a Source-engine game), and add a previously-discovered offset to get today’s real address. Those offsets have two flavors in most cheat codebases: ones relative to a module’s base (often called <strong>signatures</strong>, because they’re originally found by scanning the module’s bytes for a unique instruction pattern) and ones relative to an object instance’s own start (often called <strong>netvars</strong>, because in Source-engine games specifically they frequently match names the engine’s own networking code uses internally, like <code class="language-plaintext highlighter-rouge">m_iHealth</code> or <code class="language-plaintext highlighter-rouge">m_vecOrigin</code>).</p>
+
+<p>Very often you need to chase more than one offset in sequence — read a pointer at <code class="language-plaintext highlighter-rouge">base + offset_a</code> to get some manager object’s address, then read again at <code class="language-plaintext highlighter-rouge">that_address + offset_b</code> to get the actual value you want. That’s a <strong>pointer chain</strong>, and it’s the norm rather than the exception: an entity list is usually a pointer to an array of pointers, so getting to a specific player’s health is typically “read the entity-list pointer, read the pointer at that player’s slot, then read the health field at a fixed offset from that entity’s own address” — three memory operations for one number, every single refresh.</p>
+
+<p>Every time the game updates, the compiler can lay memory out differently, and every offset can silently go stale — which is the single biggest maintenance burden in this whole exercise, and it’s why offset lists are usually generated by a separate scanning tool rather than typed in by hand once and left alone.</p>
+
+<h1 id="7-the-toolbox">7. The toolbox</h1>
+
+<p>A short list of what actually gets used, beyond a C or C++ compiler and the Windows API headers:</p>
+
+<ul>
+  <li><strong>Cheat Engine</strong> — a memory scanner built exactly for this: point it at a running process, search for a value (your health, say), change the value in-game, search again for what changed, and repeat until one address is left. It’s the fastest way to find a single offset by hand without touching a disassembler.</li>
+  <li><strong>A disassembler/decompiler</strong> (IDA, Ghidra, x64dbg) — for finding <em>why</em> an address holds what it holds, following a function to understand a data structure’s layout, or writing the byte-pattern signature that finds a given piece of code reliably across game versions.</li>
+  <li><strong>A DLL injector</strong> — for internal cheats, a small utility implementing the injection sequence from section 5 (or a manual mapper), so you’re not rewriting it into every project.</li>
+  <li><strong>An immediate-mode UI library, usually Dear ImGui</strong> — the standard choice for cheat overlays specifically because it can be hooked into an existing renderer’s present/frame call with very little glue code, which suits an internal cheat’s “draw through the game’s own renderer” approach well.</li>
+  <li><strong>Public offset dumpers</strong> — community-maintained tools and repositories that do the signature-scanning work in section 6 continuously, so individual projects can pull a fresh, current offset list instead of re-deriving it after every game patch.</li>
+</ul>
+
+<h1 id="8-where-people-actually-learn-this">8. Where people actually learn this</h1>
+
+<p>Almost none of the above is secret, and almost none of it was worked out from scratch by me — it’s a small, well-documented field with an active community and a genuine on-ramp for beginners:</p>
+
+<ul>
+  <li><strong><a href="https://www.unknowncheats.me">UnknownCheats</a></strong> is the oldest and largest forum for this specifically. It’s organized by game, with entire sub-forums of source-available cheats, offset dumps kept current by the community, and long-running technical threads on injection, hooking, and anti-cheat internals — genuinely the first place to search when a specific game or technique is stuck.</li>
+  <li><strong><a href="https://guidedhacking.com">Guided Hacking</a></strong> is the more structured alternative: a forum plus a large library of tutorials (many free, some paid) that walk through exactly the fundamentals in this post — injection, pattern scanning, hooking — as sequential lessons rather than scattered threads, which makes it a better starting point if you’ve never done any of this before.</li>
+  <li><strong>Nick Cano’s <em>Game Hacking: Developing Autonomous Bots for Online Games</em></strong> (No Starch Press, 2016) [1] is the closest thing this field has to a textbook — it covers pattern scanning, code injection, DLL and code caves, and building an actual bot end to end, in book form rather than forum-thread form.</li>
+</ul>
+
+<p>That last community reference is exactly where khiar-ware’s own offset supply comes from, which is where the next post picks up: khiar-ware doesn’t do its own signature scanning at all — it pulls a community-maintained offset dump on demand, and the interesting engineering is entirely in what it does with those offsets afterward.</p>
+
+<h1 id="references">References</h1>
+
+<ol>
+  <li>N. Cano. <em>Game Hacking: Developing Autonomous Bots for Online Games.</em> No Starch Press, 2016. <a href="https://nostarch.com/gamehacking">nostarch.com/gamehacking</a></li>
+  <li>Microsoft. ReadProcessMemory function. Microsoft Learn. <a href="https://learn.microsoft.com/en-us/windows/win32/api/memoryapi/nf-memoryapi-readprocessmemory">learn.microsoft.com/…/nf-memoryapi-readprocessmemory</a></li>
+  <li>Microsoft. WriteProcessMemory function. Microsoft Learn. <a href="https://learn.microsoft.com/en-us/windows/win32/api/memoryapi/nf-memoryapi-writeprocessmemory">learn.microsoft.com/…/nf-memoryapi-writeprocessmemory</a></li>
+  <li>Microsoft. CreateRemoteThread function. Microsoft Learn. <a href="https://learn.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-createremotethread">learn.microsoft.com/…/nf-processthreadsapi-createremotethread</a></li>
+  <li>Microsoft. LoadLibraryA function. Microsoft Learn. <a href="https://learn.microsoft.com/en-us/windows/win32/api/libloaderapi/nf-libloaderapi-loadlibrarya">learn.microsoft.com/…/nf-libloaderapi-loadlibrarya</a></li>
+  <li>UnknownCheats. <a href="https://www.unknowncheats.me">unknowncheats.me</a></li>
+  <li>Guided Hacking. <a href="https://guidedhacking.com">guidedhacking.com</a></li>
+</ol>
+
+        </div>
+    </section>
+
+    <section class="post-comments">
+        <h2>Comment Channel</h2>
+        <div class="commentbox"></div>
+    </section>
+</article>
+
+<script src="https://unpkg.com/commentbox.io/dist/commentBox.min.js"></script>
+<script>
+    function arrToHex(arr) {
+        let s = '#';
+        for (let i = 0; i < arr.length; i++) {
+            s += ((arr[i] / 16) | 0).toString(16);
+            s += ((arr[i] % 16) | 0).toString(16);
+        }
+        return s;
+    }
+    var element = document.body;
+    var style;
+    var color = "black";
+    if (window.getComputedStyle) {
+        style = window.getComputedStyle(element);
+    } else {
+        style = element.currentStyle;
+    }
+    if (!style) {
+        // ...seriously old browser...
+    } else {
+        color = style.color;
+    }
+    rgb = color.match(/\d+/g);
+    commentBox('5076933226266624-proj', {
+        textColor: arrToHex(rgb),
+        subtextColor: arrToHex(rgb),
+    })
+</script>
+
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        (function () {
+            var root = document.getElementById("content");
+            if (!root) return;
+
+            var canvas = document.createElement("canvas");
+            canvas.className = "space-webgl-layer";
+            root.insertBefore(canvas, root.firstChild);
+
+            function initFallback2d() {
+                var ctx = canvas.getContext("2d");
+                if (!ctx) return;
+                var dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+                function resize() {
+                    var w = root.clientWidth;
+                    var h = root.clientHeight;
+                    canvas.width = Math.floor(w * dpr);
+                    canvas.height = Math.floor(h * dpr);
+                    canvas.style.width = w + "px";
+                    canvas.style.height = h + "px";
+                    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+                }
+
+                function glow(x, y, r, color, alpha) {
+                    var g = ctx.createRadialGradient(x, y, 0, x, y, r);
+                    g.addColorStop(0, "rgba(" + color + "," + alpha + ")");
+                    g.addColorStop(1, "rgba(" + color + ",0)");
+                    return g;
+                }
+
+                function frame(t) {
+                    var w = root.clientWidth;
+                    var h = root.clientHeight;
+                    var time = (t || 0) * 0.00025;
+                    ctx.clearRect(0, 0, w, h);
+
+                    var x1 = w * (0.22 + 0.05 * Math.sin(time * 1.9));
+                    var y1 = h * (0.2 + 0.06 * Math.cos(time * 1.3));
+                    var x2 = w * (0.78 + 0.06 * Math.cos(time * 1.4));
+                    var y2 = h * (0.28 + 0.04 * Math.sin(time * 1.7));
+                    var x3 = w * (0.5 + 0.07 * Math.sin(time * 0.9));
+                    var y3 = h * (0.78 + 0.05 * Math.cos(time * 1.1));
+
+                    ctx.globalCompositeOperation = "lighter";
+                    ctx.fillStyle = glow(x1, y1, Math.max(w, h) * 0.48, "110,85,255", 0.2);
+                    ctx.fillRect(0, 0, w, h);
+                    ctx.fillStyle = glow(x2, y2, Math.max(w, h) * 0.45, "255,120,80", 0.16);
+                    ctx.fillRect(0, 0, w, h);
+                    ctx.fillStyle = glow(x3, y3, Math.max(w, h) * 0.42, "75,165,255", 0.14);
+                    ctx.fillRect(0, 0, w, h);
+                    ctx.globalCompositeOperation = "source-over";
+
+                    requestAnimationFrame(frame);
+                }
+
+                window.addEventListener("resize", resize);
+                resize();
+                frame();
+            }
+
+            var gl = canvas.getContext("webgl", { antialias: true, alpha: true });
+            if (!gl) {
+                initFallback2d();
+                return;
+            }
+
+            var vertexSrc =
+                "attribute vec2 aPos;" +
+                "void main(){ gl_Position = vec4(aPos, 0.0, 1.0); }";
+
+            var fragSrc =
+                "precision mediump float;" +
+                "uniform vec2 uRes;" +
+                "uniform float uTime;" +
+                "void main(){" +
+                "  vec2 uv = gl_FragCoord.xy / uRes;" +
+                "  vec2 p = uv * 2.0 - 1.0;" +
+                "  float vignette = 1.0 - smoothstep(0.15, 1.15, length(p));" +
+                "  vec3 col = vec3(0.015, 0.02, 0.06) * vignette;" +
+                "  vec2 c1 = vec2(0.22 + 0.05*sin(uTime*0.22), 0.20 + 0.05*cos(uTime*0.16));" +
+                "  vec2 c2 = vec2(0.78 + 0.06*cos(uTime*0.18), 0.30 + 0.04*sin(uTime*0.19));" +
+                "  vec2 c3 = vec2(0.50 + 0.04*sin(uTime*0.12), 0.78 + 0.05*cos(uTime*0.14));" +
+                "  float g1 = smoothstep(0.62, 0.0, length(uv - c1));" +
+                "  float g2 = smoothstep(0.58, 0.0, length(uv - c2));" +
+                "  float g3 = smoothstep(0.70, 0.0, length(uv - c3));" +
+                "  col += vec3(0.30, 0.20, 0.62) * g1 * 0.55;" +
+                "  col += vec3(0.62, 0.30, 0.20) * g2 * 0.42;" +
+                "  col += vec3(0.12, 0.35, 0.65) * g3 * 0.35;" +
+                "  gl_FragColor = vec4(col, 0.9);" +
+                "}";
+
+            function compile(type, source) {
+                var shader = gl.createShader(type);
+                gl.shaderSource(shader, source);
+                gl.compileShader(shader);
+                if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) return null;
+                return shader;
+            }
+
+            var vs = compile(gl.VERTEX_SHADER, vertexSrc);
+            var fs = compile(gl.FRAGMENT_SHADER, fragSrc);
+            if (!vs || !fs) {
+                initFallback2d();
+                return;
+            }
+
+            var prog = gl.createProgram();
+            gl.attachShader(prog, vs);
+            gl.attachShader(prog, fs);
+            gl.linkProgram(prog);
+            if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) {
+                initFallback2d();
+                return;
+            }
+
+            var buffer = gl.createBuffer();
+            gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+            gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([
+                -1, -1,
+                 1, -1,
+                -1,  1,
+                -1,  1,
+                 1, -1,
+                 1,  1
+            ]), gl.STATIC_DRAW);
+
+            var posLoc = gl.getAttribLocation(prog, "aPos");
+            var resLoc = gl.getUniformLocation(prog, "uRes");
+            var timeLoc = gl.getUniformLocation(prog, "uTime");
+            var dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+            function resize() {
+                var w = root.clientWidth;
+                var h = root.clientHeight;
+                canvas.width = Math.floor(w * dpr);
+                canvas.height = Math.floor(h * dpr);
+                canvas.style.width = w + "px";
+                canvas.style.height = h + "px";
+                gl.viewport(0, 0, canvas.width, canvas.height);
+            }
+
+            function render(t) {
+                gl.clearColor(0, 0, 0, 0);
+                gl.clear(gl.COLOR_BUFFER_BIT);
+                gl.useProgram(prog);
+                gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+                gl.enableVertexAttribArray(posLoc);
+                gl.vertexAttribPointer(posLoc, 2, gl.FLOAT, false, 0, 0);
+                gl.uniform2f(resLoc, canvas.width, canvas.height);
+                gl.uniform1f(timeLoc, t * 0.001);
+                gl.drawArrays(gl.TRIANGLES, 0, 6);
+                requestAnimationFrame(render);
+            }
+
+            window.addEventListener("resize", resize);
+            resize();
+            requestAnimationFrame(render);
+        })();
+    </script>
+    <script src="/assets/vendor/typed.js/typed.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML"></script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']], processEscapes: true}, jax: ["input/TeX","input/MathML","input/AsciiMath","output/CommonHTML"], extensions: ["tex2jax.js","mml2jax.js","asciimath2jax.js","MathMenu.js","MathZoom.js","AssistiveMML.js", "[Contrib]/a11y/accessibility-menu.js"], TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"], equationNumbers: { autoNumber: "AMS" } } });
+    </script>
+    <script src="/assets/js/main.js" crossorigin="anonymous"></script>
+    <script src="/assets/js/pager.js" crossorigin="anonymous"></script>
+    <script src="/assets/js/github-metrics.js" crossorigin="anonymous"></script>
+    <script src="/assets/js/prism.js" crossorigin="anonymous"></script>
+</body>
+
+</html>

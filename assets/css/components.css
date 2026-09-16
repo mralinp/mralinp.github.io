@@ -714,6 +714,14 @@
     display: block;
 }
 
+.post-content img {
+    box-sizing: border-box;
+    background: #ffffff;
+    border: 1px solid var(--border-bright);
+    border-radius: 2px;
+    padding: 0.85rem;
+}
+
 .post-body {
     border: 1px solid var(--border-dim);
     background: rgba(5, 5, 5, 0.82);

@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html class="scroll-smooth dark" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="4-8jdtFeOSWDhx6RjXrSwNrvhvLyFdbACncYtB2Rjzc">
+    <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="mralinp" />
+    <title>PyTorch Tutorial, Part 2: Datasets and DataLoaders</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,300,0,0&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/components.css">
+    <script src="https://kit.fontawesome.com/40a6ec6105.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/css/prism.css">
+</head>
+
+<body class="theme-body">
+    <header class="mobile-header">
+        <h1 class="mobile-title">A. N. PARIZI</h1>
+        <button id="mobileMenuToggle" class="mobile-menu-btn" type="button" aria-label="Toggle menu">
+            <span class="material-symbols-outlined">menu</span>
+        </button>
+    </header>
+
+    <div class="site-shell">
+        <nav id="sidebar" class="site-sidebar">
+            <div class="site-brand-block">
+                <h3><a href="/">Ali N. Parizi</a></h3>
+                <p>SYSTEMS ARCHITECTURE</p>
+            </div>
+
+            <ul class="components">
+                <li class="sidebar-item"><a href="/"><span class="material-symbols-outlined">grid_view</span> <span>Home</span></a></li>
+                <li class="sidebar-item"><a href="/blog"><span class="material-symbols-outlined">rss_feed</span> <span>Blog</span></a></li>
+                <li class="sidebar-item"><a href="/projects"><span class="material-symbols-outlined">account_tree</span> <span>Projects</span></a></li>
+                <li class="sidebar-item"><a href="/research"><span class="material-symbols-outlined">science</span> <span>Research</span></a></li>
+                <li class="sidebar-item"><a href="/library"><span class="material-symbols-outlined">folder_open</span> <span>Library</span></a></li>
+                <li class="sidebar-item"><a href="/about"><span class="material-symbols-outlined">sensors</span> <span>About</span></a></li>
+            </ul>
+
+            <ul class="CTAs">
+                <li><a href="https://github.com/mralinp"><i class="fab fa-github"></i> Github profile</a></li>
+                <li><a href="/assets/resume/ali-naderi-parizi-cv.pdf"><i class="fas fa-file"></i> Curriculum vitae</a></li>
+            </ul>
+
+            <footer id="footer">
+                <div class="copyright">© 2026 ALI N. PARIZI</div>
+                <div class="credits">Powered by <a href="https://github.com/">Github</a></div>
+            </footer>
+        </nav>
+
+        <main class="site-main">
+            <header class="topbar">
+                <div class="search-wrap">
+                    <form class="search-form" method="get" action="https://www.google.com/search" target="_blank">
+                        <span class="material-symbols-outlined">search</span>
+                        <input type="hidden" name="sitesearch" value="alinaderiparizi.com">
+                        <input type="text" name="q" maxlength="255" placeholder="INITIATE SEARCH_QUERIES...">
+                    </form>
+                </div>
+                <div class="system-status">
+                    <span>SYSTEM_STATUS</span>
+                    <strong>NOMINAL // 100%</strong>
+                </div>
+            </header>
+
+            <div id="content" class="page-shell">
+                <div class="content-frame">
+                    <article class="post-shell">
+    
+    
+    
+
+    <section class="post-head">
+        <p class="post-kicker">Article Dispatch</p>
+        <h1>PyTorch Tutorial, Part 2: Datasets and DataLoaders</h1>
+        
+        <p class="post-brief">PyTorch's Dataset and DataLoader classes, built up from a custom dataset to a full training loop, classifying real wine samples with a small neural network.</p>
+        
+        <div class="post-chip-row">
+            <span class="post-chip"><i class="fa fa-user-circle-o"></i> Ali N. Parizi</span>
+            <span class="post-chip"><i class="fa fa-calendar-o"></i> 27 Mar 2023</span>
+            
+            <span class="post-chip"><i class="fa fa-tag"></i> blog</span>
+            
+            <span class="post-chip"><i class="fa fa-tag"></i> ai</span>
+            
+            <span class="post-chip"><i class="fa fa-tag"></i> machine-learning</span>
+            
+            <span class="post-chip"><i class="fa fa-tag"></i> deep-learning</span>
+            
+            <span class="post-chip"><i class="fa fa-tag"></i> python</span>
+            
+            <span class="post-chip"><i class="fa fa-tag"></i> pytorch</span>
+            
+        </div>
+    </section>
+
+    
+    <div class="post-media">
+        <a class="image-zoom cboxElement" href="/assets/images/posts/blog/pytorch-tutorial/part-2/title.png">
+        <img src="/assets/images/posts/blog/pytorch-tutorial/part-2/title.png" alt="PyTorch Tutorial, Part 2: Datasets and DataLoaders">
+        <div class="image-overlay"></div>
+        </a>
+    </div>
+    
+
+    <section class="post-body">
+        <div class="post-nav">
+            <a href="/blog"><span class="material-symbols-outlined">arrow_back</span> Back to blog</a>
+            <a href="/blog/ai/machine-learning/deep-learning/python/pytorch/2023/03/27/pytorch-tutorial-2.html">Permalink <span class="material-symbols-outlined">north_east</span></a>
+        </div>
+
+        
+
+
+        <div class="post-content">
+            <p><a href="/blog/ai/machine-learning/deep-learning/python/pytorch/2023/03/22/pytorch-tutorial-1.html">Part 1</a> trained on data that lived entirely in a few lines of Python — five numbers, or a scikit-learn dataset that loads fully into memory in one call. Real datasets are rarely that convenient: they’re too large to hold in memory at once, they need shuffling and batching so the model doesn’t just memorize the order they’re stored in, and loading and preprocessing them shouldn’t block the GPU from training while it waits. PyTorch’s <code class="language-plaintext highlighter-rouge">Dataset</code> and <code class="language-plaintext highlighter-rouge">DataLoader</code> classes exist specifically to solve that, by cleanly separating two concerns that are easy to tangle together: <em>what</em> your data is and how to fetch one example of it (<code class="language-plaintext highlighter-rouge">Dataset</code>), and <em>how</em> to turn a stream of individual examples into shuffled, batched tensors ready for a training loop (<code class="language-plaintext highlighter-rouge">DataLoader</code>). This post builds both up from scratch, then — unlike a lot of tutorials that stop at “here’s how to load data” — actually trains a real classifier with what we build, tying it back to Part 1’s training loop.</p>
+
+<h1 id="1-a-custom-dataset">1. A custom Dataset</h1>
+
+<p>We’ll use the classic <a href="https://archive.ics.uci.edu/dataset/109/wine">Wine dataset</a> from the UCI Machine Learning Repository [1]: 178 wine samples, each with 13 chemical measurements (alcohol content, malic acid, ash, and so on) and a label — which of three cultivars the wine came from. It’s a genuinely nice dataset to learn on: small enough to inspect by eye, real enough to have actual measurement noise, and a multi-class (not just binary) classification problem, which we didn’t cover in Part 1. Download <code class="language-plaintext highlighter-rouge">wine.data</code> from the repository page and place it somewhere like <code class="language-plaintext highlighter-rouge">../data/wine/wine.data</code> relative to your script (I keep a <code class="language-plaintext highlighter-rouge">data/</code> directory alongside my code for exactly this).</p>
+
+<p>Every PyTorch <code class="language-plaintext highlighter-rouge">Dataset</code> is a class inheriting from <code class="language-plaintext highlighter-rouge">torch.utils.data.Dataset</code> that implements exactly two methods: <code class="language-plaintext highlighter-rouge">__getitem__(self, index)</code>, returning the sample at that index, and <code class="language-plaintext highlighter-rouge">__len__(self)</code>, returning the total number of samples. That’s the entire contract — PyTorch doesn’t care <em>how</em> you fetch a sample (from a NumPy array already in memory, from a file you open lazily on each call, from a network request), only that these two methods work.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+
+<span class="n">PATH_TO_DATASET</span> <span class="o">=</span> <span class="s">'../data/wine/wine.data'</span>
+
+<span class="k">class</span> <span class="nc">WineDataset</span><span class="p">(</span><span class="n">torch</span><span class="p">.</span><span class="n">utils</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">Dataset</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="c1"># The file is one row per sample, comma-separated, label in column 0
+</span>        <span class="c1"># and the 13 features in the remaining columns.
+</span>        <span class="n">raw_data</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">PATH_TO_DATASET</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s">','</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="p">.</span><span class="n">float32</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">raw_data</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:])</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">raw_data</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">n_samples</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">x</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">n_features</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">x</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">x</span><span class="p">[</span><span class="n">index</span><span class="p">],</span> <span class="bp">self</span><span class="p">.</span><span class="n">y</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">n_samples</span>
+</code></pre></div></div>
+
+<p>Now we can use it like any indexable, sized Python object:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dataset</span> <span class="o">=</span> <span class="n">WineDataset</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span><span class="si">}</span><span class="s"> samples, </span><span class="si">{</span><span class="n">dataset</span><span class="p">.</span><span class="n">n_features</span><span class="si">}</span><span class="s"> features each"</span><span class="p">)</span>
+<span class="n">x_sample</span><span class="p">,</span> <span class="n">y_sample</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"x: </span><span class="si">{</span><span class="n">x_sample</span><span class="si">}</span><span class="s">, y: </span><span class="si">{</span><span class="n">y_sample</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<pre><code class="language-txt">178 samples, 13 features each
+x: tensor([1.4230e+01, 1.7100e+00, 2.4300e+00, 1.5600e+01, 1.2700e+02, 2.8000e+00,
+        3.0600e+00, 2.8000e-01, 2.2900e+00, 5.6400e+00, 1.0400e+00, 3.9200e+00,
+        1.0650e+03]), y: tensor([1.])
+</code></pre>
+
+<p><strong>If you’d rather skip the manual download</strong> while learning, scikit-learn ships this exact dataset built in — <code class="language-plaintext highlighter-rouge">sklearn.datasets.load_wine()</code> returns the same 178-sample, 13-feature data without touching the filesystem. Either source is fine for this post; we’ll stick with the custom-file version above because loading your <em>own</em> CSV or data file, not a bundled toy dataset, is the far more common real-world need this section is actually teaching.</p>
+
+<p>That’s it — it looks almost too simple, and that’s the point. The class does nothing exotic; it just gives PyTorch a uniform interface so everything downstream (batching, shuffling, parallel loading) can be written once, generically, for <em>any</em> dataset that implements these two methods.</p>
+
+<h1 id="2-dataloader">2. DataLoader</h1>
+
+<p>A <code class="language-plaintext highlighter-rouge">Dataset</code> alone only gets you one sample at a time. <code class="language-plaintext highlighter-rouge">torch.utils.data.DataLoader</code> wraps a <code class="language-plaintext highlighter-rouge">Dataset</code> and handles everything you actually want during training: grouping samples into batches, shuffling their order every epoch, and optionally loading them in parallel.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dataloader</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">utils</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Each argument is doing a specific, named job worth understanding rather than copy-pasting:</p>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">batch_size</code></strong> — how many samples to group into one tensor per training step. Training on one sample at a time is slow (poor use of GPU parallelism) and noisy (each update is based on very little information); training on the <em>entire</em> dataset at once (<code class="language-plaintext highlighter-rouge">batch_size = len(dataset)</code>) is the other extreme — one very stable but very infrequent and memory-hungry update per epoch. Something in between — commonly 16, 32, 64, … — is the usual sweet spot, and it’s a hyperparameter worth experimenting with rather than treating as fixed.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">shuffle=True</code></strong> — reshuffles the dataset’s order at the start of every epoch. Without this, a model can pick up on spurious patterns tied to <em>storage order</em> (e.g., if all of one class happens to be grouped at the end of the file) rather than the actual features — always shuffle your training data unless you have a specific reason not to (sequential data like time series is the usual exception).</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">num_workers</code></strong> — how many separate OS processes load and preprocess batches in the background, in parallel with the GPU training on the <em>previous</em> batch, so the GPU spends less time idle waiting for data. <code class="language-plaintext highlighter-rouge">0</code> (the default) loads data in the main process, which is simplest and fine for small in-memory datasets like this one; it starts mattering once loading involves real work (decoding images, reading from disk). One Windows/macOS-specific gotcha: with <code class="language-plaintext highlighter-rouge">num_workers &gt; 0</code>, your training script needs its DataLoader-using code inside an <code class="language-plaintext highlighter-rouge">if __name__ == '__main__':</code> guard, because those platforms re-import your script in each worker process, and without the guard you get infinite recursive process spawning.</li>
+</ul>
+
+<p>You can iterate a <code class="language-plaintext highlighter-rouge">DataLoader</code> directly, and it hands you one batch at a time:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">batch_x</span><span class="p">,</span> <span class="n">batch_y</span> <span class="ow">in</span> <span class="n">dataloader</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">batch_x</span><span class="p">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">batch_y</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>   <span class="c1"># torch.Size([16, 13]) torch.Size([16, 1])
+</span>    <span class="k">break</span>  <span class="c1"># just peek at the first batch
+</span></code></pre></div></div>
+
+<p>Or, if you want a single batch without a loop (useful for quick inspection in a notebook), wrap it in <code class="language-plaintext highlighter-rouge">iter()</code> and call <code class="language-plaintext highlighter-rouge">next()</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dataiter</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">dataloader</span><span class="p">)</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">dataiter</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</code></pre></div></div>
+
+<pre><code class="language-txt">tensor([[1.3740e+01, 1.6700e+00, 2.2500e+00,  ..., 9.2000e-01, 3.2000e+00, 1.0600e+03],
+        [1.1660e+01, 1.8800e+00, 1.9200e+00,  ..., 1.2300e+00, 2.1400e+00, 4.2800e+02],
+        ...
+        [1.3500e+01, 1.8100e+00, 2.6100e+00,  ..., ...              ]])
+tensor([[1.], [2.], [1.], ...])
+</code></pre>
+
+<p>In real training loops you’ll almost always use the <code class="language-plaintext highlighter-rouge">for batch_x, batch_y in dataloader:</code> form directly (we’ll do exactly that in Section 4) — <code class="language-plaintext highlighter-rouge">iter()</code>/<code class="language-plaintext highlighter-rouge">next()</code> is mainly useful for debugging or peeking at a batch’s shape and content interactively.</p>
+
+<h2 id="21-splitting-into-train-and-test-sets">2.1 Splitting into train and test sets</h2>
+
+<p><code class="language-plaintext highlighter-rouge">WineDataset</code> above loads the whole file as one dataset, but we need separate train and test splits, the same way <code class="language-plaintext highlighter-rouge">train_test_split</code> did in Part 1. <code class="language-plaintext highlighter-rouge">torch.utils.data.random_split</code> does the same job directly on a <code class="language-plaintext highlighter-rouge">Dataset</code> object, without pulling everything into NumPy first:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">train_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">0.8</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">))</span>
+<span class="n">test_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span> <span class="o">-</span> <span class="n">train_size</span>
+<span class="n">train_dataset</span><span class="p">,</span> <span class="n">test_dataset</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">utils</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">random_split</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="p">[</span><span class="n">train_size</span><span class="p">,</span> <span class="n">test_size</span><span class="p">])</span>
+
+<span class="n">train_loader</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">utils</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">test_loader</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">utils</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">test_dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Shuffling the test loader isn’t necessary (we’re not training on it, and order doesn’t affect evaluation), so it’s conventional to leave <code class="language-plaintext highlighter-rouge">shuffle=False</code> there — it’s one less source of non-determinism when you’re comparing runs.</p>
+
+<h1 id="3-transforms">3. Transforms</h1>
+
+<p>Sometimes you need to modify raw data before using it — normalizing values to a consistent scale (Part 1’s <code class="language-plaintext highlighter-rouge">StandardScaler</code> did this for the breast cancer features), converting types, or, for images specifically, data augmentation: randomly cropping, flipping, or color-jittering each image slightly differently on every epoch, so the model sees a slightly different version of the “same” example each time and generalizes better instead of memorizing exact pixels. We can support this in our own <code class="language-plaintext highlighter-rouge">Dataset</code> by accepting an optional list of transform functions in the constructor, and applying them in order inside <code class="language-plaintext highlighter-rouge">__getitem__</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">WineDataset</span><span class="p">(</span><span class="n">torch</span><span class="p">.</span><span class="n">utils</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">Dataset</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">transforms</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">raw_data</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">PATH_TO_DATASET</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s">','</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="p">.</span><span class="n">float32</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">raw_data</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">raw_data</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">n_samples</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">x</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">n_features</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">x</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">transforms</span> <span class="o">=</span> <span class="n">transforms</span> <span class="ow">or</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="nf">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+        <span class="n">sample</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">x</span><span class="p">[</span><span class="n">index</span><span class="p">],</span> <span class="bp">self</span><span class="p">.</span><span class="n">y</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
+        <span class="k">for</span> <span class="n">transform</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">.</span><span class="n">transforms</span><span class="p">:</span>
+            <span class="n">sample</span> <span class="o">=</span> <span class="n">transform</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">sample</span>
+
+    <span class="k">def</span> <span class="nf">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">n_samples</span>
+</code></pre></div></div>
+
+<p>A transform can be any callable, but the idiomatic PyTorch pattern is a class implementing <code class="language-plaintext highlighter-rouge">__call__</code>, so a transform can carry its own configuration (like the scale factor below) as ordinary attributes:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">ToTensorTransformer</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sample</span><span class="p">):</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sample</span>
+        <span class="k">return</span> <span class="n">torch</span><span class="p">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">torch</span><span class="p">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">MultiplierTransformer</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">factor</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">factor</span> <span class="o">=</span> <span class="n">factor</span>
+
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sample</span><span class="p">):</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sample</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="bp">self</span><span class="p">.</span><span class="n">factor</span>
+        <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
+</code></pre></div></div>
+
+<p>Pass a list of transforms to the constructor, and they’re applied in order, each one’s output feeding the next:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dataset</span> <span class="o">=</span> <span class="n">WineDataset</span><span class="p">(</span><span class="n">transforms</span><span class="o">=</span><span class="p">[</span><span class="n">ToTensorTransformer</span><span class="p">(),</span> <span class="n">MultiplierTransformer</span><span class="p">(</span><span class="mi">10</span><span class="p">)])</span>
+<span class="n">x_sample</span><span class="p">,</span> <span class="n">y_sample</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"x: </span><span class="si">{</span><span class="n">x_sample</span><span class="si">}</span><span class="s">, y: </span><span class="si">{</span><span class="n">y_sample</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<pre><code class="language-txt">x: tensor([1.4230e+02, 1.7100e+01, 2.4300e+01, 1.5600e+02, 1.2700e+03, 2.8000e+01,
+        3.0600e+01, 2.8000e+00, 2.2900e+01, 5.6400e+01, 1.0400e+01, 3.9200e+01,
+        1.0650e+04]), y: tensor([1.])
+</code></pre>
+
+<p>This hand-rolled pattern is worth building once to understand it, but for real work — especially with images — reach for <code class="language-plaintext highlighter-rouge">torchvision.transforms.Compose</code> instead of writing your own list-and-loop logic: it’s the same idea (a sequence of callables, applied in order) with a large library of ready-made, well-tested transforms (resizing, cropping, normalization, augmentation) already implemented [2].</p>
+
+<h1 id="4-putting-it-together-training-a-real-classifier">4. Putting it together: training a real classifier</h1>
+
+<p>Everything so far has been plumbing. Let’s use it: a small neural network, trained on <code class="language-plaintext highlighter-rouge">WineDataset</code> through a <code class="language-plaintext highlighter-rouge">DataLoader</code>, classifying wine samples into one of three cultivars — combining this post’s data pipeline with Part 1’s training loop.</p>
+
+<p>Two wrinkles specific to multi-class classification, worth flagging before the code: the Wine dataset’s labels are <code class="language-plaintext highlighter-rouge">1</code>, <code class="language-plaintext highlighter-rouge">2</code>, <code class="language-plaintext highlighter-rouge">3</code>, but PyTorch’s multi-class loss function expects <code class="language-plaintext highlighter-rouge">0</code>-indexed integer class labels, so we subtract 1; and instead of Part 1’s single output neuron plus sigmoid (built for <em>binary</em> classification — one probability), we now need <strong>one output per class</strong>, interpreted as that class’s un-normalized score, and PyTorch’s <code class="language-plaintext highlighter-rouge">CrossEntropyLoss</code> — which combines a softmax (turning raw scores into a probability distribution over classes) and negative-log-likelihood loss into one numerically stable operation — expects exactly that: raw scores in, integer class index out, no manual softmax needed.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+
+<span class="k">class</span> <span class="nc">WineDataset</span><span class="p">(</span><span class="n">torch</span><span class="p">.</span><span class="n">utils</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">Dataset</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">raw_data</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">PATH_TO_DATASET</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s">','</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="p">.</span><span class="n">float32</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">raw_data</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:])</span>
+        <span class="c1"># Labels are 1/2/3 in the file; CrossEntropyLoss wants 0-indexed classes.
+</span>        <span class="bp">self</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">raw_data</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">).</span><span class="nb">long</span><span class="p">()</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">n_samples</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">x</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">n_features</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">x</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">x</span><span class="p">[</span><span class="n">index</span><span class="p">],</span> <span class="bp">self</span><span class="p">.</span><span class="n">y</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">n_samples</span>
+
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">WineDataset</span><span class="p">()</span>
+<span class="n">train_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">0.8</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">))</span>
+<span class="n">test_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span> <span class="o">-</span> <span class="n">train_size</span>
+<span class="n">train_dataset</span><span class="p">,</span> <span class="n">test_dataset</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">utils</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">random_split</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="p">[</span><span class="n">train_size</span><span class="p">,</span> <span class="n">test_size</span><span class="p">])</span>
+
+<span class="n">train_loader</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">utils</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">test_loader</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">utils</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">test_dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">WineClassifier</span><span class="p">(</span><span class="n">torch</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_features</span><span class="p">,</span> <span class="n">n_classes</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">().</span><span class="n">__init__</span><span class="p">()</span>
+        <span class="c1"># One hidden layer with a ReLU activation: without a nonlinearity between
+</span>        <span class="c1"># layers, stacking two Linear layers would collapse into one big Linear
+</span>        <span class="c1"># layer mathematically, gaining nothing over Part 1's single neuron.
+</span>        <span class="bp">self</span><span class="p">.</span><span class="n">net</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">torch</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">n_features</span><span class="p">,</span> <span class="mi">16</span><span class="p">),</span>
+            <span class="n">torch</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="n">ReLU</span><span class="p">(),</span>
+            <span class="n">torch</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">n_classes</span><span class="p">),</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">net</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">WineClassifier</span><span class="p">(</span><span class="n">dataset</span><span class="p">.</span><span class="n">n_features</span><span class="p">,</span> <span class="n">n_classes</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">criterion</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">optim</span><span class="p">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="p">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+
+<span class="n">num_epochs</span> <span class="o">=</span> <span class="mi">50</span>
+
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">):</span>
+    <span class="n">model</span><span class="p">.</span><span class="n">train</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">batch_x</span><span class="p">,</span> <span class="n">batch_y</span> <span class="ow">in</span> <span class="n">train_loader</span><span class="p">:</span>
+        <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">batch_x</span><span class="p">)</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">batch_y</span><span class="p">)</span>
+        <span class="n">loss</span><span class="p">.</span><span class="n">backward</span><span class="p">()</span>
+        <span class="n">optimizer</span><span class="p">.</span><span class="n">step</span><span class="p">()</span>
+        <span class="n">optimizer</span><span class="p">.</span><span class="n">zero_grad</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">epoch</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">model</span><span class="p">.</span><span class="nb">eval</span><span class="p">()</span>
+        <span class="n">correct</span><span class="p">,</span> <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+        <span class="k">with</span> <span class="n">torch</span><span class="p">.</span><span class="n">no_grad</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">batch_x</span><span class="p">,</span> <span class="n">batch_y</span> <span class="ow">in</span> <span class="n">test_loader</span><span class="p">:</span>
+                <span class="n">predicted_class</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">batch_x</span><span class="p">).</span><span class="n">argmax</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+                <span class="n">correct</span> <span class="o">+=</span> <span class="p">(</span><span class="n">predicted_class</span> <span class="o">==</span> <span class="n">batch_y</span><span class="p">).</span><span class="nb">sum</span><span class="p">().</span><span class="n">item</span><span class="p">()</span>
+                <span class="n">total</span> <span class="o">+=</span> <span class="n">batch_y</span><span class="p">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"epoch: </span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s">, loss: </span><span class="si">{</span><span class="n">loss</span><span class="p">.</span><span class="n">item</span><span class="p">()</span><span class="si">:</span><span class="p">.</span><span class="mi">3</span><span class="n">f</span><span class="si">}</span><span class="s">, test accuracy: </span><span class="si">{</span><span class="n">correct</span><span class="o">/</span><span class="n">total</span><span class="si">:</span><span class="p">.</span><span class="mi">3</span><span class="n">f</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<pre><code class="language-output">epoch: 0, loss: 0.812, test accuracy: 0.639
+epoch: 5, loss: 0.213, test accuracy: 0.917
+epoch: 10, loss: 0.084, test accuracy: 0.972
+epoch: 15, loss: 0.031, test accuracy: 0.972
+epoch: 20, loss: 0.014, test accuracy: 1.000
+epoch: 25, loss: 0.028, test accuracy: 1.000
+epoch: 30, loss: 0.006, test accuracy: 1.000
+epoch: 35, loss: 0.040, test accuracy: 1.000
+epoch: 40, loss: 0.045, test accuracy: 1.000
+epoch: 45, loss: 0.003, test accuracy: 1.000
+</code></pre>
+
+<p>(Exact numbers will vary run to run — weight initialization and the train/test split from <code class="language-plaintext highlighter-rouge">random_split</code> are both randomized — but convergence to high accuracy within a few dozen epochs is expected on this dataset.)</p>
+
+<p>Two small but easy-to-miss details in that loop: <code class="language-plaintext highlighter-rouge">model.train()</code> and <code class="language-plaintext highlighter-rouge">model.eval()</code> don’t do any computation themselves — they just flip an internal flag that layers like dropout and batch normalization check to behave differently at train vs. test time (this network doesn’t use either, so it’s a no-op here, but it’s the kind of habit worth building now rather than debugging silently-wrong eval-mode behavior later). And <code class="language-plaintext highlighter-rouge">.argmax(dim=1)</code> is how you go from <code class="language-plaintext highlighter-rouge">CrossEntropyLoss</code>’s raw per-class scores back to an actual predicted class: the index of the largest score, per sample.</p>
+
+<p>This is the first genuinely complete pipeline in this series — data on disk, to a <code class="language-plaintext highlighter-rouge">Dataset</code>, to shuffled batches via a <code class="language-plaintext highlighter-rouge">DataLoader</code>, through a real (if small) multi-layer network, trained and evaluated with a proper train/test split. Every larger model you build afterward is this same shape, with a bigger network in the middle.</p>
+
+<h1 id="5-conclusion">5. Conclusion</h1>
+
+<p>We built a custom <code class="language-plaintext highlighter-rouge">Dataset</code> around a real file on disk, wrapped it in a <code class="language-plaintext highlighter-rouge">DataLoader</code> for batching and shuffling, added support for transforms, and — tying it back to Part 1 — trained an actual small neural network end to end on that pipeline, with a proper train/test split and multi-class classification. That combination (<code class="language-plaintext highlighter-rouge">Dataset</code> + <code class="language-plaintext highlighter-rouge">DataLoader</code> + an <code class="language-plaintext highlighter-rouge">nn.Module</code> + a loss + an optimizer) is the complete skeleton of virtually every PyTorch project you’ll build from here on; later posts in this series put bigger, more specialized pieces into that same skeleton rather than changing its shape.</p>
+
+<h1 id="references">References</h1>
+
+<ol>
+  <li>S. Aeberhard, M. Forina. Wine [Dataset]. UCI Machine Learning Repository, 1992. <a href="https://doi.org/10.24432/C5PC7J">doi.org/10.24432/C5PC7J</a></li>
+  <li>PyTorch. <code class="language-plaintext highlighter-rouge">torchvision.transforms</code> documentation. <a href="https://pytorch.org/vision/stable/transforms.html">pytorch.org/vision/stable/transforms.html</a></li>
+  <li>PyTorch. <code class="language-plaintext highlighter-rouge">torch.utils.data</code> documentation (Dataset, DataLoader, random_split). <a href="https://pytorch.org/docs/stable/data.html">pytorch.org/docs/stable/data.html</a></li>
+  <li>PyTorch. Datasets &amp; DataLoaders tutorial. <a href="https://pytorch.org/tutorials/beginner/basics/data_tutorial.html">pytorch.org/tutorials/beginner/basics/data_tutorial.html</a></li>
+</ol>
+
+        </div>
+    </section>
+
+    <section class="post-comments">
+        <h2>Comment Channel</h2>
+        <div class="commentbox"></div>
+    </section>
+</article>
+
+<script src="https://unpkg.com/commentbox.io/dist/commentBox.min.js"></script>
+<script>
+    function arrToHex(arr) {
+        let s = '#';
+        for (let i = 0; i < arr.length; i++) {
+            s += ((arr[i] / 16) | 0).toString(16);
+            s += ((arr[i] % 16) | 0).toString(16);
+        }
+        return s;
+    }
+    var element = document.body;
+    var style;
+    var color = "black";
+    if (window.getComputedStyle) {
+        style = window.getComputedStyle(element);
+    } else {
+        style = element.currentStyle;
+    }
+    if (!style) {
+        // ...seriously old browser...
+    } else {
+        color = style.color;
+    }
+    rgb = color.match(/\d+/g);
+    commentBox('5076933226266624-proj', {
+        textColor: arrToHex(rgb),
+        subtextColor: arrToHex(rgb),
+    })
+</script>
+
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        (function () {
+            var root = document.getElementById("content");
+            if (!root) return;
+
+            var canvas = document.createElement("canvas");
+            canvas.className = "space-webgl-layer";
+            root.insertBefore(canvas, root.firstChild);
+
+            function initFallback2d() {
+                var ctx = canvas.getContext("2d");
+                if (!ctx) return;
+                var dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+                function resize() {
+                    var w = root.clientWidth;
+                    var h = root.clientHeight;
+                    canvas.width = Math.floor(w * dpr);
+                    canvas.height = Math.floor(h * dpr);
+                    canvas.style.width = w + "px";
+                    canvas.style.height = h + "px";
+                    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+                }
+
+                function glow(x, y, r, color, alpha) {
+                    var g = ctx.createRadialGradient(x, y, 0, x, y, r);
+                    g.addColorStop(0, "rgba(" + color + "," + alpha + ")");
+                    g.addColorStop(1, "rgba(" + color + ",0)");
+                    return g;
+                }
+
+                function frame(t) {
+                    var w = root.clientWidth;
+                    var h = root.clientHeight;
+                    var time = (t || 0) * 0.00025;
+                    ctx.clearRect(0, 0, w, h);
+
+                    var x1 = w * (0.22 + 0.05 * Math.sin(time * 1.9));
+                    var y1 = h * (0.2 + 0.06 * Math.cos(time * 1.3));
+                    var x2 = w * (0.78 + 0.06 * Math.cos(time * 1.4));
+                    var y2 = h * (0.28 + 0.04 * Math.sin(time * 1.7));
+                    var x3 = w * (0.5 + 0.07 * Math.sin(time * 0.9));
+                    var y3 = h * (0.78 + 0.05 * Math.cos(time * 1.1));
+
+                    ctx.globalCompositeOperation = "lighter";
+                    ctx.fillStyle = glow(x1, y1, Math.max(w, h) * 0.48, "110,85,255", 0.2);
+                    ctx.fillRect(0, 0, w, h);
+                    ctx.fillStyle = glow(x2, y2, Math.max(w, h) * 0.45, "255,120,80", 0.16);
+                    ctx.fillRect(0, 0, w, h);
+                    ctx.fillStyle = glow(x3, y3, Math.max(w, h) * 0.42, "75,165,255", 0.14);
+                    ctx.fillRect(0, 0, w, h);
+                    ctx.globalCompositeOperation = "source-over";
+
+                    requestAnimationFrame(frame);
+                }
+
+                window.addEventListener("resize", resize);
+                resize();
+                frame();
+            }
+
+            var gl = canvas.getContext("webgl", { antialias: true, alpha: true });
+            if (!gl) {
+                initFallback2d();
+                return;
+            }
+
+            var vertexSrc =
+                "attribute vec2 aPos;" +
+                "void main(){ gl_Position = vec4(aPos, 0.0, 1.0); }";
+
+            var fragSrc =
+                "precision mediump float;" +
+                "uniform vec2 uRes;" +
+                "uniform float uTime;" +
+                "void main(){" +
+                "  vec2 uv = gl_FragCoord.xy / uRes;" +
+                "  vec2 p = uv * 2.0 - 1.0;" +
+                "  float vignette = 1.0 - smoothstep(0.15, 1.15, length(p));" +
+                "  vec3 col = vec3(0.015, 0.02, 0.06) * vignette;" +
+                "  vec2 c1 = vec2(0.22 + 0.05*sin(uTime*0.22), 0.20 + 0.05*cos(uTime*0.16));" +
+                "  vec2 c2 = vec2(0.78 + 0.06*cos(uTime*0.18), 0.30 + 0.04*sin(uTime*0.19));" +
+                "  vec2 c3 = vec2(0.50 + 0.04*sin(uTime*0.12), 0.78 + 0.05*cos(uTime*0.14));" +
+                "  float g1 = smoothstep(0.62, 0.0, length(uv - c1));" +
+                "  float g2 = smoothstep(0.58, 0.0, length(uv - c2));" +
+                "  float g3 = smoothstep(0.70, 0.0, length(uv - c3));" +
+                "  col += vec3(0.30, 0.20, 0.62) * g1 * 0.55;" +
+                "  col += vec3(0.62, 0.30, 0.20) * g2 * 0.42;" +
+                "  col += vec3(0.12, 0.35, 0.65) * g3 * 0.35;" +
+                "  gl_FragColor = vec4(col, 0.9);" +
+                "}";
+
+            function compile(type, source) {
+                var shader = gl.createShader(type);
+                gl.shaderSource(shader, source);
+                gl.compileShader(shader);
+                if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) return null;
+                return shader;
+            }
+
+            var vs = compile(gl.VERTEX_SHADER, vertexSrc);
+            var fs = compile(gl.FRAGMENT_SHADER, fragSrc);
+            if (!vs || !fs) {
+                initFallback2d();
+                return;
+            }
+
+            var prog = gl.createProgram();
+            gl.attachShader(prog, vs);
+            gl.attachShader(prog, fs);
+            gl.linkProgram(prog);
+            if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) {
+                initFallback2d();
+                return;
+            }
+
+            var buffer = gl.createBuffer();
+            gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+            gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([
+                -1, -1,
+                 1, -1,
+                -1,  1,
+                -1,  1,
+                 1, -1,
+                 1,  1
+            ]), gl.STATIC_DRAW);
+
+            var posLoc = gl.getAttribLocation(prog, "aPos");
+            var resLoc = gl.getUniformLocation(prog, "uRes");
+            var timeLoc = gl.getUniformLocation(prog, "uTime");
+            var dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+            function resize() {
+                var w = root.clientWidth;
+                var h = root.clientHeight;
+                canvas.width = Math.floor(w * dpr);
+                canvas.height = Math.floor(h * dpr);
+                canvas.style.width = w + "px";
+                canvas.style.height = h + "px";
+                gl.viewport(0, 0, canvas.width, canvas.height);
+            }
+
+            function render(t) {
+                gl.clearColor(0, 0, 0, 0);
+                gl.clear(gl.COLOR_BUFFER_BIT);
+                gl.useProgram(prog);
+                gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+                gl.enableVertexAttribArray(posLoc);
+                gl.vertexAttribPointer(posLoc, 2, gl.FLOAT, false, 0, 0);
+                gl.uniform2f(resLoc, canvas.width, canvas.height);
+                gl.uniform1f(timeLoc, t * 0.001);
+                gl.drawArrays(gl.TRIANGLES, 0, 6);
+                requestAnimationFrame(render);
+            }
+
+            window.addEventListener("resize", resize);
+            resize();
+            requestAnimationFrame(render);
+        })();
+    </script>
+    <script src="/assets/vendor/typed.js/typed.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML"></script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']], processEscapes: true}, jax: ["input/TeX","input/MathML","input/AsciiMath","output/CommonHTML"], extensions: ["tex2jax.js","mml2jax.js","asciimath2jax.js","MathMenu.js","MathZoom.js","AssistiveMML.js", "[Contrib]/a11y/accessibility-menu.js"], TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"], equationNumbers: { autoNumber: "AMS" } } });
+    </script>
+    <script src="/assets/js/main.js" crossorigin="anonymous"></script>
+    <script src="/assets/js/pager.js" crossorigin="anonymous"></script>
+    <script src="/assets/js/github-metrics.js" crossorigin="anonymous"></script>
+    <script src="/assets/js/prism.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
