@@ -116,19 +116,6 @@
     .paper-title { color: var(--text); }
     .profile-link { background: var(--surface-soft); color: var(--text-soft); }
 
-    /* thumbnail photos: the dark theme dims/desaturates them until hover, which
-       reads as washed-out gray on a light background, so show them at full
-       color/opacity here instead */
-    .fill img,
-    .blog-card-media img {
-        filter: none;
-        opacity: 0.92;
-    }
-    .card-style2:hover .fill img,
-    .blog-card:hover .blog-card-media img {
-        opacity: 1;
-    }
-
     .blog-card { background: #ffffff; }
     .blog-card-media { background: var(--surface-soft); }
     .blog-card-fallback {
