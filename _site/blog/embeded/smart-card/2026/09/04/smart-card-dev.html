@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="stylesheet" href="/assets/css/components.css">
+    <link rel="stylesheet" href="/assets/css/theme-light.css">
     <script src="https://kit.fontawesome.com/40a6ec6105.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/assets/css/prism.css">
 </head>
@@ -333,6 +334,15 @@
 <p>This applet is already doing the two things a real security key needs to do: keep a private key that never leaves the chip, and prove possession of it by signing on demand. What’s missing is the FIDO/U2F protocol wrapped around that behavior, a <code class="language-plaintext highlighter-rouge">REGISTER</code> command that returns a properly formatted attestation, an <code class="language-plaintext highlighter-rouge">AUTHENTICATE</code> command that tracks and increments a usage counter, ECDSA over the P-256 curve instead of RSA, and key handles instead of a single fixed key pair.</p>
 
 <p>In the next post, we’ll build on this same jCardSim setup and start implementing the actual FIDO U2F command set on top of it, one instruction at a time, before ever touching a real card. Stay tuned.</p>
+
+<h1 id="references">References</h1>
+
+<ol>
+  <li>Licel. jCardSim — Java Card simulator. GitHub. <a href="https://github.com/licel/jcardsim">github.com/licel/jcardsim</a></li>
+  <li>Oracle. Java Card Classic Platform API Specification (<code class="language-plaintext highlighter-rouge">javacard.framework</code>, <code class="language-plaintext highlighter-rouge">javacard.security</code>). <a href="https://docs.oracle.com/javacard/">docs.oracle.com/javacard</a></li>
+  <li>ISO/IEC 7816-4. Identification cards — Integrated circuit cards — Part 4: Organization, security and commands for interchange (APDU structure).</li>
+  <li>FIDO Alliance. Universal 2nd Factor (U2F) Overview. <a href="https://fidoalliance.org/specs/u2f-specs-master/fido-u2f-overview.html">fidoalliance.org/specs/u2f-specs-master/fido-u2f-overview.html</a></li>
+</ol>
 
         </div>
     </section>

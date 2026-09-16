@@ -199,4 +199,7 @@ To turn it on:
 > Note: routing VPN traffic through a CDN sits in a grey area of most providers' terms of service. Keep the client count low, don't advertise it, and be ready to fall back to the direct IP if the domain ever gets flagged.
 
 # References
-- [https://seakfind.github.io/2021/10/10/X-UI/](https://seakfind.github.io/2021/10/10/X-UI/)
+- [X-UI documentation (seakfind)](https://seakfind.github.io/2021/10/10/X-UI/)
+- [V2Ray project](https://www.v2ray.com/)
+- [Certbot](https://certbot.eff.org/) / [Let's Encrypt](https://letsencrypt.org/)
+- [Cloudflare SSL/TLS encryption modes](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/)

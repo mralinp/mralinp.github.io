@@ -115,3 +115,9 @@ Once the applet is thoroughly tested and verified, it can be deployed on the des
 Please note that writing applets for smart cards requires expertise in smart card development and may vary depending on the specific smart card's capabilities and the programming language supported by its microprocessor. It's essential to refer to the smart card manufacturer's documentation and Java Card specifications for detailed guidelines and best practices when developing applets for smart cards.
 
 Next time, I'll prepare an article about developing an applet and playing around with this old technology. Stay tuned...
+
+# References
+
+1. ISO/IEC 7816 (all parts). Identification cards — Integrated circuit cards. International Organization for Standardization.
+2. GlobalPlatform. Card Specification. [globalplatform.org/specs-library](https://globalplatform.org/specs-library/)
+3. Oracle. Java Card Technology. [oracle.com/java/technologies/java-card-tech.html](https://www.oracle.com/java/technologies/java-card-tech.html)

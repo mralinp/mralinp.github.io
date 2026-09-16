@@ -270,3 +270,10 @@ plt.show()
 You can find the complete project code in my GitHub repository [**here**](https://github.com/mralinp/cnn-networks/tree/main/lenet5).
 
 I hope you found this article useful!
+
+# References
+
+1. Y. LeCun, L. Bottou, Y. Bengio, P. Haffner. Gradient-based learning applied to document recognition. *Proceedings of the IEEE* 86(11):2278–2324, 1998. [doi:10.1109/5.726791](https://doi.org/10.1109/5.726791)
+2. Y. LeCun, C. Cortes, C. J. C. Burges. The MNIST Database of Handwritten Digits. [yann.lecun.com/exdb/mnist](http://yann.lecun.com/exdb/mnist/)
+3. TensorFlow. `tf.keras.layers.Conv2D` / functional API guide. [tensorflow.org/guide/keras/functional](https://www.tensorflow.org/guide/keras/functional)
+4. Wikipedia. Convolutional neural network — pooling layers. [en.wikipedia.org/wiki/Convolutional_neural_network#Pooling_layers](https://en.wikipedia.org/wiki/Convolutional_neural_network#Pooling_layers)

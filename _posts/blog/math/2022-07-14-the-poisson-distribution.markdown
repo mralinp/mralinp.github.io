@@ -218,3 +218,9 @@ plt.show()
 
 **In a Poisson random variable, events are independent**. The arrival of my blog's visitors might not always be independent. For example, sometimes a large number of visitors arrive together because someone popular mentioned my blog, or my blog got featured on Medium's front page, etc. Similarly, the number of earthquakes per year in a country might not follow a Poisson Distribution either, since one large earthquake increases the probability of aftershocks.
 
+# References
+
+1. S. M. Ross. *A First Course in Probability*. Pearson. (Binomial-to-Poisson limit derivation, Poisson process.)
+2. SciPy. `scipy.stats.poisson`. [docs.scipy.org/.../scipy.stats.poisson.html](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.poisson.html)
+3. SciPy. `scipy.stats.binom`. [docs.scipy.org/.../scipy.stats.binom.html](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.binom.html)
+

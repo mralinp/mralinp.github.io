@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="stylesheet" href="/assets/css/components.css">
+    <link rel="stylesheet" href="/assets/css/theme-light.css">
     <script src="https://kit.fontawesome.com/40a6ec6105.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/assets/css/prism.css">
 </head>
@@ -369,6 +370,14 @@ P[X=x] = e^{-λ}\frac{λ^{x}}{x!}
 <p><strong>The average rate of events per unit time in a Poisson distribution is constant</strong>. This means the number of people who visit my blog per hour might not follow a Poisson Distribution, because the hourly rate is not constant (higher during the daytime, lower during the night). Using a monthly rate for consumer or biological data would also be just an approximation, since seasonality effects are non-trivial in that domain.</p>
 
 <p><strong>In a Poisson random variable, events are independent</strong>. The arrival of my blog’s visitors might not always be independent. For example, sometimes a large number of visitors arrive together because someone popular mentioned my blog, or my blog got featured on Medium’s front page, etc. Similarly, the number of earthquakes per year in a country might not follow a Poisson Distribution either, since one large earthquake increases the probability of aftershocks.</p>
+
+<h1 id="references">References</h1>
+
+<ol>
+  <li>S. M. Ross. <em>A First Course in Probability</em>. Pearson. (Binomial-to-Poisson limit derivation, Poisson process.)</li>
+  <li>SciPy. <code class="language-plaintext highlighter-rouge">scipy.stats.poisson</code>. <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.poisson.html">docs.scipy.org/…/scipy.stats.poisson.html</a></li>
+  <li>SciPy. <code class="language-plaintext highlighter-rouge">scipy.stats.binom</code>. <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.binom.html">docs.scipy.org/…/scipy.stats.binom.html</a></li>
+</ol>
 
 
         </div>

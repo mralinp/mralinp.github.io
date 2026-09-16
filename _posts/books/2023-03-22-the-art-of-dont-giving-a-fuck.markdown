@@ -66,3 +66,7 @@ The Subtle Art of Not Giving a F*ck: A Counterintuitive Approach to Living a Goo
 There are no soft puffy cloud prancing unicorns offering hugs on colorful rainbows, only F-bomb explosions and brutal smack-you-in-the-face reality slaps.
 
 But by the time you finish reading it, you'll find yourself tingling with promise. The world suddenly seems brighter and lighter. You'll feel free, and oddly, good, despite the shit sandwiches served throughout the book. And it won't be the surfacey french fry kind of good that makes your body crave real nourishment, but the kind of home-cooked-goodness good that warms you from deep within, like you've just been served a hearty platter of whole, raw, organic, unfiltered truth.
+
+# References
+
+1. M. Manson. *The Subtle Art of Not Giving a F\*ck: A Counterintuitive Approach to Living a Good Life*. HarperOne, 2016. ISBN 978-0-06-245771-4. [Official book page](https://markmanson.net/books/subtle-art)

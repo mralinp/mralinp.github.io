@@ -1,0 +1,164 @@
+/*
+ * Light theme, activated automatically when the OS/browser reports
+ * prefers-color-scheme: light. Dark stays the default (style.css /
+ * components.css), unchanged, for everyone else. This file only overrides
+ * declarations that hardcode dark-specific colors instead of using the
+ * --tokens in style.css's :root, since those tokens already re-theme
+ * themselves below.
+ */
+@media (prefers-color-scheme: light) {
+
+    :root {
+        --primary: #ff5a00;
+        --primary-hover: #d84b00;
+        --primary-soft: #c94000;
+        --bg: #f6f6f4;
+        --surface: #ffffff;
+        --surface-soft: #f0f0ee;
+        --border-dim: #e3e3df;
+        --border-bright: #c7c7c2;
+        --text: #16161c;
+        --text-soft: #4b4b55;
+        --text-muted: #6b6b76;
+        --accent-green: #15803d;
+        --accent-star: #b45309;
+    }
+
+    /* base */
+    a:hover { color: var(--primary-hover); }
+    ::selection { background: var(--primary); color: #fff; }
+    p { color: var(--text-soft); }
+
+    /* sidebar */
+    .mobile-header { background: rgba(255, 255, 255, 0.92); }
+    .site-sidebar { background: var(--surface); }
+    .site-brand-block h3 a { color: var(--text); }
+    .components .sidebar-item a { color: #6b7280; }
+    .components .sidebar-item a:hover,
+    .components .sidebar-item.active a {
+        color: var(--text);
+        background: rgba(0, 0, 0, 0.04);
+    }
+    .CTAs a { color: var(--text); }
+    .CTAs li:first-child a {
+        color: #fff;
+        background: var(--text);
+        border-color: var(--text);
+    }
+    .CTAs li:first-child a:hover { background: #000; }
+    #footer { color: #6b7280; }
+
+    /* topbar */
+    .topbar { background: rgba(255, 255, 255, 0.88); }
+    .search-form input[type="text"] { color: var(--text); }
+    .search-form span { color: #6b7280; }
+    .system-status strong { color: #059669; }
+
+    /* page backdrop + decorative canvas */
+    #content.page-shell {
+        background:
+            radial-gradient(circle at 20% 15%, rgba(106, 76, 255, 0.07), transparent 34%),
+            radial-gradient(circle at 80% 20%, rgba(255, 90, 0, 0.06), transparent 32%),
+            radial-gradient(circle at 50% 85%, rgba(32, 156, 238, 0.05), transparent 38%),
+            linear-gradient(180deg, #fbfbfa 0%, #f5f5f3 48%, #f1f1ee 100%);
+    }
+    .space-webgl-layer { opacity: 0.18; }
+    .content-frame { background: rgba(255, 255, 255, 0.8); }
+    #content:has(.post-shell) { background-color: #fbfbfa; }
+
+    /* post content typography */
+    .post-content { background: rgba(0, 0, 0, 0.03); }
+    .post-content h1,
+    .post-content h2,
+    .post-content h3,
+    .post-content h4,
+    .post-content h5,
+    .post-content h6,
+    .container h1,
+    .container h2,
+    .container h3,
+    .container h4 { color: var(--text); }
+    .post-meta,
+    .post-meta li { color: #6b7280; }
+    .category {
+        background: rgba(255, 90, 0, 0.1);
+        border: 1px solid rgba(255, 90, 0, 0.4);
+        color: #b23d00;
+    }
+    blockquote { background: rgba(0, 0, 0, 0.035); }
+    p code {
+        color: #a3320a !important;
+        background: rgba(100, 116, 139, 0.14) !important;
+    }
+
+    /* code blocks stay on a dark panel intentionally, for contrast and
+       consistency with the syntax theme — just tune the surrounding chrome */
+    #content article table th {
+        color: var(--text);
+        background: var(--surface-soft);
+    }
+
+    /* cards */
+    .metrics-panel,
+    .publication-monitor,
+    .metrics-panel { background: #ffffff; border-color: var(--border-bright); }
+    .metrics-bg-icon { color: rgba(0, 0, 0, 0.05); }
+    .metrics-subtitle,
+    .pub-subtitle,
+    .research-subtitle { color: var(--text-soft); }
+    .metric-tile,
+    .pub-stat { background: var(--surface-soft); border-color: var(--border-bright); }
+    .contrib-card { background: #ffffff; border-color: var(--border-bright); }
+    .contribution-cell { border: 1px solid rgba(0, 0, 0, 0.06); }
+    .contrib-l0 { background: #e2e4e8; }
+    .paper-list { background: #ffffff; border-color: var(--border-bright); }
+    .paper-item { border-color: var(--border-dim); background: var(--surface-soft); }
+    .paper-title { color: var(--text); }
+    .profile-link { background: var(--surface-soft); color: var(--text-soft); }
+
+    /* thumbnail photos: the dark theme dims/desaturates them until hover, which
+       reads as washed-out gray on a light background, so show them at full
+       color/opacity here instead */
+    .fill img,
+    .blog-card-media img {
+        filter: none;
+        opacity: 0.92;
+    }
+    .card-style2:hover .fill img,
+    .blog-card:hover .blog-card-media img {
+        opacity: 1;
+    }
+
+    .blog-card { background: #ffffff; }
+    .blog-card-media { background: var(--surface-soft); }
+    .blog-card-fallback {
+        background:
+            radial-gradient(circle at 25% 22%, rgba(106, 76, 255, 0.14), transparent 38%),
+            radial-gradient(circle at 74% 68%, rgba(255, 90, 0, 0.12), transparent 40%),
+            linear-gradient(160deg, #f2f2f0 0%, #ececea 42%, #e6e6e3 100%);
+    }
+    .card-body h3 a { color: var(--text); }
+    .card-body p { color: var(--text-soft); }
+    .blog-card-btn.ghost:hover { background: rgba(0, 0, 0, 0.04); }
+
+    #PageNav .page-link { color: var(--text-soft); }
+    .list-group-item { color: var(--text-soft); }
+    .info-span { color: var(--text); }
+    .progress { background: var(--surface-soft); }
+
+    #hero { background: rgba(255, 255, 255, 0.65); }
+    #hero p { color: var(--text-soft); }
+
+    ::-webkit-scrollbar-track { background: var(--surface-soft); }
+
+    /* single post page */
+    .post-head { background: rgba(255, 255, 255, 0.78); }
+    .post-chip { background: rgba(0, 0, 0, 0.03); color: var(--text-soft); }
+    .post-media { background: rgba(0, 0, 0, 0.03); }
+    .post-body { background: rgba(255, 255, 255, 0.82); }
+    .post-nav a { color: var(--text-soft); }
+    .book-panel { background: rgba(0, 0, 0, 0.03); }
+    .book-review,
+    .book-resources li { color: var(--text-soft); }
+    .post-comments { background: rgba(255, 255, 255, 0.78); }
+}

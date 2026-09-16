@@ -81,7 +81,7 @@ title: Home
                 var item = document.createElement("article");
                 item.className = "paper-item";
                 item.innerHTML =
-                    '<div class="paper-header"><h3 class="paper-title" style="color:#f3f4f6;">' + titleHtml + "</h3></div>" +
+                    '<div class="paper-header"><h3 class="paper-title">' + titleHtml + "</h3></div>" +
                     '<div class="paper-meta"><span>' + meta + "</span></div>";
                 listEl.appendChild(item);
             });
