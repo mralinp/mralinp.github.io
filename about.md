@@ -19,7 +19,7 @@ profile:
 contact:
   - label: "Email"
     icon: "fa fa-at"
-    value: "alinaderiparizi@gmail.com"
+    value: "me@alinaderiparizi.com"
   - label: "Website"
     icon: "fas fa-globe"
     value: "alinaderiparizi.com"
@@ -83,12 +83,10 @@ projects:
     detail: "Computer vision system to detect optimal saffron flower cutting points."
 
 publications:
-  - title: "Spherical Shape-Based Features for Classification of Breast Tumors in 3D-ABUS Images"
-    detail: "A. Naderiparizi, S. Barekat, E. Kozegar, M. Soryani — IEEE Transactions in Medical Imaging (not-published yet), 2026."
-  - title: "Breast Mass Classification in 3D ABUS based on Laplace-Beltrami Spectra and Dual Path CNN"
-    detail: "S. Barekat, A. Naderiparizi, E. Kozegar, M. Soryani — Expert Systems with Applications, 2025."
   - title: "Peer Reviewer — Journal of Imaging Informatics in Medicine"
-    detail: "2026 | Reviewed a manuscript on breast tumor classification with feedback on methodology and evaluation."
+    detail: "2026 | Verified review, logged via Springer Nature's Editorial Manager on ORCID."
   - title: "Judge — AI Research Challenge (SID and IranDoc)"
     detail: "2026 | Evaluated ML systems for scientific literature analysis, knowledge graphs, topic clustering, and key-term extraction."
+  - title: "Breast Mass Classification in 3D ABUS based on Laplace-Beltrami Spectra and Dual Path CNN"
+    detail: "S. Barekat, A. Naderiparizi, E. Kozegar, M. Soryani — Expert Systems with Applications, 2025."
 ---
