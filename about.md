@@ -111,7 +111,7 @@ permalink: /about
                     <div class="card-body">
                         <h6 class="d-flex align-items-center mb-3"><i class="material-icons mr-2">Experiences</i></h6>
                         <div class="col">
-                            Iran Tech Innovation Hub, Tehran, Iran — Chief Technology Officer (AI)
+                            SciNext. , Tehran, Iran — Chief Technology Officer (AI)
                             <br>
                             <small>2025 - Present</small>
                             <br>
