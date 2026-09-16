@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "UNet: One of the most simple networks for segmentation"
-author: "Ali N. Parizi"
+author: "Ali Naderi"
 img: "/assets/images/posts/blog/unet/brain.png"
 date:   2023-08-20 23:02:23 +0330
 categories: blog ai machine-learning deep-learning

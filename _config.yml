@@ -17,13 +17,13 @@ defaults:
       type: "posts"
     values:
       layout: post
-      author: "Ali N. Parizi"
+      author: "Ali Naderi"
   - scope:
       path: ""
       type: "notes"
     values:
       layout: post
-      author: "Ali N. Parizi"
+      author: "Ali Naderi"
 
 # Build settings
 plugins:

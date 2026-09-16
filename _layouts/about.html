@@ -1,0 +1,156 @@
+---
+layout: main
+---
+
+<div class="container">
+    <div class="main-body">
+        <div class="row gutters-sm">
+            <div class="col-md-4 mb-3">
+                <!-- Profile -->
+                <div class="card first-block">
+                    <div class="card-body">
+                        <div class="d-flex flex-column align-items-center text-center">
+                            <img src="{{ page.profile.image }}" alt="{{ page.profile.name }}" class="about-me-img rounded"/>
+                            <div class="mt-3">
+                                <h4>{{ page.profile.name }}</h4>
+                                <p class="text-secondary mb-1">{{ page.profile.role }}</p>
+                                <p class="text-muted font-size-sm">{{ page.profile.location }}</p>
+                                {% for link in page.profile.links %}
+                                <a class="btn btn-outline-primary" style="margin: 2px" href="{{ link.url }}"><i class="{{ link.icon }}"></i> {{ link.label }}</a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End profile -->
+
+                <!-- Contact -->
+                <div class="card mt-3">
+                    <ul class="list-group list-group-flush">
+                        {% for item in page.contact %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                            <h6 class="mb-0"><i class="{{ item.icon }}"></i> {{ item.label }}</h6>
+                            <span class="info-span">{{ item.value }}</span>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <!-- End contact -->
+
+                <!-- Skill stack -->
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <h6 class="d-flex align-items-center mb-3"><i class="material-icons mr-2">Skills stack</i></h6>
+                        {% for group in page.skills %}
+                        <small class="d-block mb-2">{{ group.group }}</small>
+                        <div class="{% unless forloop.last %}mb-3{% endunless %}">
+                            {% for item in group.items %}
+                            <span class="category d-inline-block mr-1 mb-1">{{ item }}</span>
+                            {% endfor %}
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <!-- End skill stack -->
+
+                <!-- Languages and other -->
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <h6 class="d-flex align-items-center mb-3"><i class="material-icons mr-2">Languages and other</i></h6>
+                        {% for group in page.languages_and_focus %}
+                        <small class="d-block mb-2">{{ group.group }}</small>
+                        <div class="{% unless forloop.last %}mb-3{% endunless %}">
+                            {% for item in group.items %}
+                            <span class="category d-inline-block mr-1 mb-1">{{ item }}</span>
+                            {% endfor %}
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <!-- End languages and other -->
+            </div>
+
+            <div class="col-md-8">
+                <!-- Experience -->
+                <div class="card md-3">
+                    <div class="card-body">
+                        <h6 class="d-flex align-items-center mb-3"><i class="material-icons mr-2">Experiences</i></h6>
+                        {% for job in page.experience %}
+                        <div class="col">
+                            {{ job.org }} — {{ job.role }}
+                            <br>
+                            <small>{{ job.period }}</small>
+                            <br>
+                        </div>
+                        {% unless forloop.last %}<hr>{% endunless %}
+                        {% endfor %}
+                    </div>
+                </div>
+                <!-- End experience -->
+                <br>
+
+                <!-- Education -->
+                <div class="card md-3">
+                    <div class="card-body">
+                        <h6 class="d-flex align-items-center mb-3"><i class="material-icons mr-2">Education</i></h6>
+                        {% for edu in page.education %}
+                        <div class="col">
+                            {{ edu.school }} — {{ edu.degree }}
+                            <br>
+                            <small>{{ edu.period }}{% if edu.detail %} | {{ edu.detail }}{% endif %}</small>
+                            <br>
+                        </div>
+                        {% unless forloop.last %}<hr>{% endunless %}
+                        {% endfor %}
+                    </div>
+                </div>
+                <!-- End education -->
+                <br>
+
+                <!-- Research projects -->
+                <div class="card md-3">
+                    <div class="card-body">
+                        <h6 class="d-flex align-items-center mb-3"><i class="material-icons mr-2">Research Projects</i></h6>
+                        {% for proj in page.projects %}
+                        <div class="col">
+                            {{ proj.title }}
+                            <br>
+                            <small>{{ proj.period }} | {{ proj.detail }}</small>
+                            <br>
+                        </div>
+                        {% unless forloop.last %}<hr>{% endunless %}
+                        {% endfor %}
+                    </div>
+                </div>
+                <!-- End research projects -->
+                <br>
+
+                <!-- Publications and academic service -->
+                <div class="card md-3">
+                    <div class="card-body">
+                        <h6 class="d-flex align-items-center mb-3"><i class="material-icons mr-2">Publications and Academic Service</i></h6>
+                        {% for pub in page.publications %}
+                        <div class="col">
+                            {{ pub.title }}
+                            <br>
+                            <small>{{ pub.detail }}</small>
+                            <br>
+                        </div>
+                        {% unless forloop.last %}<hr>{% endunless %}
+                        {% endfor %}
+                    </div>
+                </div>
+                <!-- End publications -->
+
+                {% if content and content.strip.size > 0 %}
+                <br>
+                <div class="card md-3">
+                    <div class="card-body">
+                        {{ content }}
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

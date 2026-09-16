@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Saffron cutting machine"
-author: "Ali N. Parizi"
+author: "Ali Naderi"
 img:    "/assets/images/posts/projects/saffron-cut/saffron.png"
 date:   2022-07-02  17:50:22 +0330
 categories: project ai computer-vision deep-learning 

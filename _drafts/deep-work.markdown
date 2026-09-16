@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Deep work: Rules for focused success in a distracted world"
-author: "Ali N. Parizi"
+author: "Ali Naderi"
 img: "/assets/images/posts/books/deep-work/title.png"
 date:   2022-10-07 13:11:32 +0330
 categories: book self-help focus study-lessens

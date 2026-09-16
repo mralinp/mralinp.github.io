@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "PyTorch Tutorial, Part 2: Datasets and DataLoaders"
-author: "Ali N. Parizi"
+author: "Ali Naderi"
 img: "/assets/images/posts/blog/pytorch-tutorial/part-2/title.png"
 date:   2023-03-27 17:15:23 +0330
 categories:  blog ai machine-learning deep-learning python pytorch

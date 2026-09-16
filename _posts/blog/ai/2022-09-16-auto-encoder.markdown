@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "What is an AutoEncoder?"
-author: "Ali N. Parizi"
+author: "Ali Naderi"
 img: "/assets/images/posts/blog/auto-encoder/title.png"
 date:   2022-09-16 12:21:13 +0330
 categories: blog ai machine-learning deep-learning

@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Adversarial attacks in deep learning"
-author: "Ali N. Parizi"
+author: "Ali Naderi"
 img: "/assets/images/posts/blog/adversarial-attack/title.png"
 date:   2023-03-21 16:01:02 +0330
 categories:  blog ai machine-learning deep-learning

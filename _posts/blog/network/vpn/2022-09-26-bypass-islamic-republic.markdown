@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "How to bypass the 'Islamic Republic' internet filtering?"
-author:     "Ali N. Parizi"
+author:     "Ali Naderi"
 img:        "/assets/images/posts/blog/vpn-setup/title.png"
 cover-img: "/assets/images/posts/blog/vpn-setup/azadi.jpg"
 date:       2022-09-26  17:50:22 +0330

@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Game Hacking, Part 2: khiar-ware, an External CS:GO Cheat"
-author: "Ali N. Parizi"
+author: "Ali Naderi"
 img: "/assets/images/posts/projects/khiar-ware/demo.png"
 date:   2022-10-16 12:21:13 +0330
 categories:  project security cracking game-hacking

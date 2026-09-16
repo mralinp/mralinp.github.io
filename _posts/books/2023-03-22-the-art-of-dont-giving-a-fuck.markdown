@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "The Subtle Art of Not Giving a Fuck"
-author: "Ali N. Parizi"
+author: "Ali Naderi"
 img: "/assets/images/posts/books/the-art-of-dont-give-a-fuck/title.png"
 date:   2023-03-22 13:11:32 +0330
 categories: book self-help focus study-lessens

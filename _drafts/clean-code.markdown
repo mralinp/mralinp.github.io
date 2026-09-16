@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Clean code: A handbook of agile software craftsmanship"
-author: "Ali N. Parizi"
+author: "Ali Naderi"
 img: "/assets/images/posts/books/clean-code/title.png"
 date:   2022-10-09 02:22:17 +0330
 categories: book programming engineering management ethical-engineering

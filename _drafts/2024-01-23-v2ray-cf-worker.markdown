@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Bypass The Islamic Republic: V2Ray on Clouds"
-author: "Ali N. Parizi"
+author: "Ali Naderi"
 img: "/assets/images/posts/blog/v2ray/title.png"
 cover-img: "/assets/images/posts/blog/v2ray/cover.jpeg"
 date:   2024-1-23 18:10:23 +0330

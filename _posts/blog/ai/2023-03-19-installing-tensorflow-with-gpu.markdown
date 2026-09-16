@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Installing Tensorflow with GPU Support"
-author: "Ali N. Parizi"
+author: "Ali Naderi"
 img: "/assets/images/posts/blog/installing-tensorflow-gpu/title.webp"
 date:   2023-03-19 12:19:43 +0330
 categories:  blog ai machine-learning deep-learning

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Bypass The Islamic Republic Again: Installing V2Ray + X-UI"
-author: "Ali N. Parizi"
+author: "Ali Naderi"
 img: "/assets/images/posts/blog/v2ray/title.png"
 cover-img: "/assets/images/posts/blog/v2ray/cover.jpeg"
 date:   2022-10-31 13:10:23 +0330

@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Snake game"
-author: "Ali N. Parizi"
+author: "Ali Naderi"
 img:    "/assets/images/posts/projects/snake-game/snake-game.jpeg"
 cover-img: "/assets/images/posts/projects/snake-game/cover.png"
 date:   2022-03-21  18:15:32 +0330

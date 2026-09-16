@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Design patterns: Building Extensible and Maintainable Object-Oriented Software"
-author: "Ali N. Parizi"
+author: "Ali Naderi"
 img: "/assets/images/posts/books/design-patterns/title.png"
 date:   2022-10-09 03:21:13 +0330
 categories: book programming design design-pattern

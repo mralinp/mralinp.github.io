@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "The Poisson Distribution"
-author: "Ali N. Parizi"
+author: "Ali Naderi"
 img: "/assets/images/posts/blog/poisson/title.png"
 date:   2022-07-14 11:32:35 +0330
 categories: blog math statistics random-process

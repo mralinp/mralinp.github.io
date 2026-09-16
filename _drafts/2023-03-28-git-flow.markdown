@@ -2,7 +2,7 @@
 layout: post
 type: blog
 title: "Git Flow: A reposotery management heirachy"
-author: "Ali N. Parizi"
+author: "Ali Naderi"
 img: "/assets/images/posts/blog/git-flow/title.jpeg"
 cover-img: "/assets/images/posts/blog/git-flow/cover.jpeg"
 date:   2023-03-28 01:21:12 +0330

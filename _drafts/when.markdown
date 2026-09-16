@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "When: The scientific secrets of perfect timing"
-author: "Ali N. Parizi"
+author: "Ali Naderi"
 img: "/assets/images/posts/books/when/title.png"
 date:   2022-10-09 01:21:12 +0330
 categories: book self-help focus study-lessens

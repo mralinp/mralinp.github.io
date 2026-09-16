@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Variational AutoEncoders: An Introduction"
-author: "Ali N. Parizi"
+author: "Ali Naderi"
 img: "/assets/images/posts/blog/vae/title.png"
 date: 2022-10-11 8:24:05 +0330
 categories: blog ai machine-learning deep-learning

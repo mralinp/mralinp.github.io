@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Game Hacking, Part 1: Anti-Cheats, Engines, and How Cheats Actually Work"
-author: "Ali N. Parizi"
+author: "Ali Naderi"
 img: "/assets/images/posts/projects/csgo-cheat/csgo-logo-d.jpg"
 date:   2022-10-09 12:21:13 +0330
 categories:  project security cracking game-hacking

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Smart Card: Building Your First Applet with jCardSim"
-author: "Ali N. Parizi"
+author: "Ali Naderi"
 img: "/assets/images/posts/blog/smart-card/title-dev.jpg"
 date:   2026-09-04 07:50:01 +0330
 categories: blog embeded smart-card

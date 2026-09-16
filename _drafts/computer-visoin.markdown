@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Computer vision: Algorithms and applications"
-author: "Ali N. Parizi"
+author: "Ali Naderi"
 img: "/assets/images/posts/books/computer-vision-algorithms-and-applications/title.png"
 date:   2022-09-24 12:21:13 +0330
 categories: book programming engineering management ethical

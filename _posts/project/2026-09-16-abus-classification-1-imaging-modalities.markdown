@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "ABUS Classification, Part 1: Mammography, Ultrasound, and Why 3D"
-author: "Ali N. Parizi"
+author: "Ali Naderi"
 img: "/assets/images/posts/projects/abus-classification/sample-tumors-transversal.png"
 date:   2026-09-16 10:00:00 +0330
 categories:  project abus-classification medical-imaging ultrasound mammography breast-cancer
