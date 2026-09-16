@@ -12,7 +12,7 @@ permalink: /about
                 <div class="card first-block">
                     <div class="card-body">
                         <div class="d-flex flex-column align-items-center text-center">
-                            <img src="/assets/images/me-space.png" alt="Admin" class="about-me-img rounded"/>
+                            <img src="/assets/images/me.jpeg" alt="Admin" class="about-me-img rounded"/>
                             <div class="mt-3">
                                 <h4>Ali N. Parizi</h4>
                                 <p class="text-secondary mb-1">Machine Learning Researcher</p>
