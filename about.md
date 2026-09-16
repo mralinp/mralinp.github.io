@@ -54,9 +54,12 @@ experience:
   - org: "IDmelon Technologies Inc, Vancouver, Canada"
     role: "Software Engineer"
     period: "2022 - 2024"
-  - org: "Dadeh Afzar Arman, Tehran, Iran"
+  - org: "DataWare, Tehran, Iran"
     role: "Software Engineer (Backend)"
     period: "2020 - 2022"
+  - org: "Sico Systems Intelligizer, Shiraz, Iran"
+    role: "R&D Intern → Junior Embedded Engineer"
+    period: "2017 - 2019"
 
 education:
   - school: "Iran University of Science and Technology (IUST), Tehran, Iran"
