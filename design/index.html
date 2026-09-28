@@ -9,26 +9,33 @@
 @font-face { font-family: Inter; src: url(../assets/fonts/inter-latin.woff2) format("woff2"); font-weight: 100 900; font-display: swap; }
 @font-face { font-family: "JetBrains Mono"; src: url(../assets/fonts/jetbrains-mono-latin.woff2) format("woff2"); font-display: swap; }
 
-/* ---- tokens ---- */
+/* ---- tokens: DeFi palette (violet → cyan → mint), dark first ---- */
 :root {
-  --bg: #ffffff; --surface: #f6f7f9; --border: #e4e7ec;
-  --text: #1a1d23; --muted: #5b6472;
-  --accent: #d9480f; --accent-soft: #fff1e8; --on-accent: #ffffff;
-  --read: 68ch; --wide: 1120px; --r: 8px;
+  --bg: #f7f8fc; --surface: #ffffff; --border: #e3e6f3; --glass: rgba(255,255,255,.72);
+  --text: #0d1030; --muted: #555d80;
+  --accent: #6d28d9; --accent-2: #0891b2; --accent-soft: #f1ebff; --on-accent: #ffffff;
+  --grad: linear-gradient(115deg, #7c3aed 0%, #0891b2 60%, #059669 100%);
+  --glow-a: rgba(139,92,246,.10); --glow-b: rgba(34,211,238,.08);
+  --read: 68ch; --wide: 1120px; --r: 16px;
+  --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
   color-scheme: light;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #0f1115; --surface: #171a21; --border: #2a2f3a;
-    --text: #e6e8ec; --muted: #9aa3b2;
-    --accent: #ff8a4c; --accent-soft: #2a1a12; --on-accent: #1a0d05;
+    --bg: #05060d; --surface: #0c0f1f; --border: rgba(148,163,255,.14); --glass: rgba(22,26,52,.58);
+    --text: #eef1ff; --muted: #a3acd6;
+    --accent: #a78bfa; --accent-2: #22d3ee; --accent-soft: rgba(139,92,246,.16); --on-accent: #05060d;
+    --grad: linear-gradient(115deg, #8b5cf6 0%, #22d3ee 55%, #34d399 100%);
+    --glow-a: rgba(139,92,246,.28); --glow-b: rgba(34,211,238,.16);
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --bg: #0f1115; --surface: #171a21; --border: #2a2f3a;
-  --text: #e6e8ec; --muted: #9aa3b2;
-  --accent: #ff8a4c; --accent-soft: #2a1a12; --on-accent: #1a0d05;
+  --bg: #05060d; --surface: #0c0f1f; --border: rgba(148,163,255,.14); --glass: rgba(22,26,52,.58);
+  --text: #eef1ff; --muted: #a3acd6;
+  --accent: #a78bfa; --accent-2: #22d3ee; --accent-soft: rgba(139,92,246,.16); --on-accent: #05060d;
+  --grad: linear-gradient(115deg, #8b5cf6 0%, #22d3ee 55%, #34d399 100%);
+  --glow-a: rgba(139,92,246,.28); --glow-b: rgba(34,211,238,.16);
   color-scheme: dark;
 }
 
@@ -195,6 +202,45 @@ footer a { color: var(--muted); }
 .panel-foot { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-top: 14px; font-size: 13px; color: var(--muted); }
 .panel-foot .latest { color: var(--text); font-size: 14px; }
 
+
+/* ---- DeFi layer: static glows, glass, gradient accents ---- */
+body { background:
+    radial-gradient(900px 620px at 92% -8%, var(--glow-a), transparent 62%),
+    radial-gradient(760px 540px at -6% 40%, var(--glow-b), transparent 62%),
+    var(--bg);
+  background-attachment: fixed; }
+.nav { background: color-mix(in srgb, var(--bg) 70%, transparent); }
+.brand { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; letter-spacing: -.01em; }
+.hero h1 span { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hero img { box-shadow: 0 0 0 3px var(--bg), 0 0 0 5px transparent; background: var(--grad); padding: 3px; }
+.btn { border-radius: 12px; background: var(--glass); backdrop-filter: blur(10px); }
+.btn.primary { background: var(--grad); border: 0; color: var(--on-accent); box-shadow: 0 8px 30px -10px var(--glow-a); }
+.btn.primary:hover { background: var(--grad); filter: brightness(1.1); }
+.chip { border-radius: 999px; }
+.filter .chip[aria-pressed="true"] { background: var(--grad); border-color: transparent; color: var(--on-accent); }
+.card, .panel, .pager a { background: var(--glass); backdrop-filter: blur(14px); border: 1px solid var(--border); border-radius: var(--r); }
+.card:hover, .pager a:hover { border-color: color-mix(in srgb, var(--accent) 60%, transparent); box-shadow: 0 10px 40px -18px var(--glow-a); }
+.panel { position: relative; overflow: hidden; }
+.panel::before { content: ""; position: absolute; inset: 0 0 auto; height: 2px; background: var(--grad); }
+.tile { background: color-mix(in srgb, var(--surface) 70%, transparent); border-radius: 12px; }
+.tile b { font-family: var(--mono); font-weight: 600; letter-spacing: -.02em; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.tile span, .panel-foot, .row .date, .meta, .year { font-family: var(--mono); font-size: 12px; letter-spacing: .04em; text-transform: uppercase; }
+.tile small { color: var(--accent-2); font-family: var(--mono); }
+.graph-grid i[data-l="1"] { background: color-mix(in srgb, #8b5cf6 35%, var(--border)); }
+.graph-grid i[data-l="2"] { background: color-mix(in srgb, #8b5cf6 70%, var(--border)); }
+.graph-grid i[data-l="3"] { background: #6aa8f0; }
+.graph-grid i[data-l="4"] { background: #22d3ee; }
+.thumb { border-radius: 12px; }
+.row h3 a:hover, .card h3 a:hover { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; text-decoration: none; }
+.section-head h2 { display: flex; align-items: center; gap: 10px; }
+.section-head h2::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--grad); box-shadow: 0 0 12px var(--accent-2); }
+.post-hero { border-radius: var(--r); box-shadow: 0 30px 80px -40px var(--glow-a); }
+.prose pre { background: var(--surface); border-radius: 12px; }
+.callout { background: var(--accent-soft); border-left: 3px solid; border-image: var(--grad) 1; border-radius: 0; }
+.toc a.on { border-left-color: var(--accent-2); }
+.timeline .when { font-family: var(--mono); font-size: 12px; letter-spacing: .04em; }
+.about-top img { border-radius: var(--r); }
+
 /* mockup only: page switcher */
 .page { display: none; }
 .page.on { display: block; }
@@ -241,7 +287,7 @@ footer a { color: var(--muted); }
     <div class="hero">
       <img src="../assets/images/me.jpeg" alt="Ali Naderi">
       <div>
-        <h1>Hi, I'm Ali Naderi.</h1>
+        <h1>Hi, I'm <span>Ali Naderi</span>.</h1>
         <p>Machine learning researcher and software engineer in Tehran. CTO (AI) at SciNext. I write about deep learning, medical imaging, networks, and the software I build.</p>
         <div class="actions">
           <a class="btn primary" href="#blog">Read the blog</a>

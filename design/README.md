@@ -61,21 +61,36 @@ Home ─┬─ Blog ──────── post
 
 ## 4. Design tokens
 
+The look is **DeFi, kept professional**: a deep navy-black canvas with soft violet and cyan
+glows, glass cards, and one violet → cyan → mint gradient used sparingly as the signature. It's the
+same palette as the Nunya deck. Dark is the primary theme; light is a clean, equal alternative.
+The gradient is for *accents only* (brand, primary button, stat numbers, a 2px top line on panels,
+active filter): body text is always solid, and the reading column has no glass or glow behind it.
+
 All colors are CSS custom properties on `:root`, redefined for dark mode. Nothing outside the token
 block uses a raw color.
 
 | Token | Light | Dark | Use |
 | --- | --- | --- | --- |
-| `--bg` | `#ffffff` | `#0f1115` | page |
-| `--surface` | `#f6f7f9` | `#171a21` | cards, code blocks |
-| `--border` | `#e4e7ec` | `#2a2f3a` | dividers, card borders |
-| `--text` | `#1a1d23` | `#e6e8ec` | body |
-| `--muted` | `#5b6472` | `#9aa3b2` | meta, captions |
-| `--accent` | `#d9480f` | `#ff8a4c` | links, focus, active nav |
-| `--accent-soft` | `#fff1e8` | `#2a1a12` | tag chips, highlights |
-| `--on-accent` | `#ffffff` | `#1a0d05` | text on accent buttons |
+| `--bg` | `#f7f8fc` | `#05060d` | page |
+| `--surface` | `#ffffff` | `#0c0f1f` | code blocks, tiles |
+| `--glass` | `rgba(255,255,255,.72)` | `rgba(22,26,52,.58)` | cards, panels, buttons (with `backdrop-filter: blur`) |
+| `--border` | `#e3e6f3` | `rgba(148,163,255,.14)` | dividers, card borders |
+| `--text` | `#0d1030` | `#eef1ff` | body |
+| `--muted` | `#555d80` | `#a3acd6` | meta, captions |
+| `--accent` | `#6d28d9` | `#a78bfa` | links, focus, active nav |
+| `--accent-2` | `#0891b2` | `#22d3ee` | secondary highlight, deltas, TOC marker |
+| `--accent-soft` | `#f1ebff` | `rgba(139,92,246,.16)` | tag chips, callouts |
+| `--on-accent` | `#ffffff` | `#05060d` | text on the gradient button |
+| `--grad` | `#7c3aed → #0891b2 → #059669` | `#8b5cf6 → #22d3ee → #34d399` | the signature gradient, 115° |
+| `--glow-a`, `--glow-b` | 10% / 8% | 28% / 16% | two static radial glows behind the page |
 
-The accent keeps the current site's orange, so the redesign still feels like the same site.
+The glows are fixed CSS gradients, not the current WebGL animation: same atmosphere, no CPU cost.
+
+**DeFi details, all small:** numbers (stats, dates, meta labels) in JetBrains Mono, uppercase with
+slight letter-spacing, like a dashboard; stat values in gradient text; pill-shaped chips; 16px card
+radius and 12px for buttons and tiles; a gradient dot before each section title; cards lift with a
+soft violet glow on hover.
 
 | Type | Size / line height | Weight |
 | --- | --- | --- |
@@ -87,8 +102,8 @@ The accent keeps the current site's orange, so the redesign still feels like the
 | Meta, captions | 14 / 1.5 | 400–500 |
 | Code | 15 / 1.6, JetBrains Mono | 400 |
 
-Spacing is a 4px scale (`4 8 12 16 24 32 48 64 96`). Radius is `8px` for cards and `6px` for chips
-and buttons. Content widths: `68ch` for reading, `1120px` for grids.
+Spacing is a 4px scale (`4 8 12 16 24 32 48 64 96`). Radius is `16px` for cards and panels, `12px` for
+buttons, tiles and thumbnails, and fully round for chips. Content widths: `68ch` for reading, `1120px` for grids.
 
 ## 5. Components
 
@@ -103,8 +118,8 @@ and buttons. Content widths: `68ch` for reading, `1120px` for grids.
 - **Project card**: image (16:9, `object-fit: cover`), title, brief, tech chips, links to post and repo.
 - **Book card**: cover (2:3), title, author, one-line takeaway.
 - **Publication row**: authors (Ali in bold), title, venue and year, links (PDF · DOI · code).
-- **Tag chip**: `--accent-soft` background, sentence case, links to the tag's filtered list.
-- **Callout** in posts: note / warning, left border in the accent.
+- **Tag chip**: pill, `--accent-soft` background, sentence case, links to the tag's filtered list.
+- **Callout** in posts: note / warning, `--accent-soft` background, gradient left border.
 - **Code block**: `--surface` background, copy button, language label.
 
 ## 6. Pages
