@@ -211,7 +211,27 @@ let the gradient and glass carry the DeFi feel on their own. Content widths: `68
 - **Publication row**: authors (Ali in bold), title, venue and year, links (PDF · DOI · code).
 - **Tag chip**: square, `--accent-soft` background, sentence case, links to the tag's filtered list.
 - **Callout** in posts: note / warning, `--accent-soft` background, gradient left border.
-- **Code block**: `--surface` background, copy button, language label.
+- **Code block, with syntax highlighting.** Jekyll's built-in **Rouge** already tokenises every
+  fenced block at build time (` ```python ` → `<span class="k">` …), so highlighting needs **no
+  JavaScript highlighter**: `Prism.js` is removed and the site only ships a Rouge colour theme,
+  built from the palette via `--hl-*` tokens (light / dark):
+
+  | Token | Rouge classes | Light | Dark |
+  | --- | --- | --- | --- |
+  | keyword | `k kd kn kr kc ow` (bold) | `#6d28d9` | `#a78bfa` |
+  | string | `s s1 s2 sa sd …` | `#0f766e` | `#5eead4` |
+  | number | `m mi mf mh …` | `#be123c` | `#fda4af` |
+  | function | `nf fm` | `#a21caf` | `#e879f9` |
+  | class, type | `nc nn kt ne` | `#86198f` | `#f0abfc` |
+  | builtin, constant | `nb bp no nv` | `#1d4ed8` | `#93c5fd` |
+  | decorator, interpolation | `nd na si se cp` | `#db2777` | `#f472b6` |
+  | comment | `c c1 cm …` (italic) | `#6b7280` | `#6b7394` |
+  | operator, punctuation | `o p` | `#475069` | `#b8bdd8` |
+
+  The block: `--surface` background, 1px border, a 2px gradient line on top, the language in mono
+  small caps top-left (from the `language-*` class, CSS only), and a **Copy** button top-right (a
+  few lines of JS; the only script a post needs besides MathJax on math posts). Long lines scroll
+  inside the block, never the page.
 
 ## 6. Pages
 
@@ -283,4 +303,4 @@ slow or filtered network. Instead, the numbers are fetched once per build and wr
 3. Stats: `scripts/fetch-stats.mjs`, `_data/stats.yml`, the daily schedule, and the two panels.
 4. Projects, Library, About, Research (with `_data/publications.yml`).
 5. Delete what nothing uses any more: Bootstrap, the extra icon sets, `assets/vendor/*`, the font
-   zips, the WebGL background, `github-metrics.js`, `pager.js`.
+   zips, the WebGL background, `github-metrics.js`, `pager.js`, `prism.js` and `prism.css`.
