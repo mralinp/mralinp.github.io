@@ -110,8 +110,9 @@ and buttons. Content widths: `68ch` for reading, `1120px` for grids.
 
 **Home.** A short intro (photo, name, one sentence: "Machine learning researcher and software
 engineer in Tehran. I write about deep learning, medical imaging, networks and the software I
-build."), two buttons (Read the blog · About me), then *Recent posts* (5 rows), *Featured projects*
-(3 cards), *At a glance* (the stats panels, below) and *Selected publications* (2–3 rows).
+build."), two buttons (Read the blog · About me), then *At a glance* (the stats panels, below)
+right under the intro, then *Recent posts* (5 rows), *Featured projects* (3 cards) and *Selected
+publications* (2–3 rows).
 
 **At a glance** is two panels side by side (stacked on phones):
 
