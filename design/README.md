@@ -95,8 +95,12 @@ violet → crimson gradient (`#4c1d95 → #86198f → #991b1b`), so the white ba
 the face keeps its detail; a grain layer and a 3px gradient bar along the bottom edge; square
 crop. Hovering shows the original photo.
 
-**Mugshot.** Behind the photo sits a police-lineup **height chart**: white lines every 5 cm, cm
-labels on both edges (200 down to 130), one inline SVG layered over the gradient. Because the photo
+**Mugshot.** Behind the photo sits a police-lineup **height chart**: drawn to Ali's real height,
+**191 cm**. The chart is scaled to the photo: the hair top sits 4.4% from the top of the frame and
+the chin at 56%, and an average head (≈23.5 cm) gives ~0.455 cm per percent, so the frame spans
+≈193 cm at the top to ≈148 cm at the bottom. Full lines and labels every 5 cm, edge ticks every
+1 cm, and a crimson line labelled **191** at the top of his head. One inline SVG over the gradient;
+if the photo changes, re-measure hair and chin and regenerate it. Because the photo
 is multiplied onto it, the lines show through where the white studio wall was and vanish behind
 the suit, like a real booking photo. On About, a **booking placard** hangs under it:
 `NADERI, A.` in Anton, `TEHRAN · 2026`, and the booking number `#GPL-0003` in crimson (the joke:
