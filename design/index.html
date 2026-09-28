@@ -404,7 +404,7 @@ footer .free a { color: var(--accent); }
       <figure class="portrait"><img class="cut" src="../assets/images/me-cutout.png" alt="Ali Naderi"></figure>
       <div>
         <h1><span>Ali Naderi</span>.</h1>
-        <p class="kicker">ML researcher · Engineer · CTO (AI) at SciNext</p>
+        <p class="kicker">ML researcher · Engineer · Tehran</p>
         <blockquote class="epigraph" id="epigraph" title="Click for the next one"><p><span class="slashes">//</span> <span class="q">Free software is a matter of liberty, not price.</span></p><cite>Richard Stallman</cite></blockquote>
         <div class="actions">
           <a class="btn primary" href="#blog">Read the work</a>
@@ -459,34 +459,32 @@ footer .free a { color: var(--accent); }
   <div class="wrap">
     <div class="read">
       <div class="crumb"><a href="#projects">Projects</a> <span class="muted">/</span></div>
-      <h1 class="post-title">Nunya: Building an Honest, Open-Source VPN Client</h1>
-      <div class="meta">28 September 2026 · 9 min read · <a href="#">GitHub repo</a></div>
-      <div class="chips" style="margin-top:12px"><span class="chip">Project</span><span class="chip">VPN</span><span class="chip">Rust</span><span class="chip">Tauri</span></div>
+      <h1 class="post-title">tdsc-abus2023-pytorch: A PyTorch Dataset for 3D Breast Ultrasound</h1>
+      <div class="meta">23 September 2026 · 7 min read · <a href="#">GitHub repo</a></div>
+      <div class="chips" style="margin-top:12px"><span class="chip">Project</span><span class="chip">Medical imaging</span><span class="chip">PyTorch</span></div>
     </div>
-    <img class="post-hero" src="../assets/images/posts/projects/nunya/main.png" alt="Nunya's main window">
+    <img class="post-hero" src="../assets/images/posts/projects/tdsc-abus2023-pytorch/sample_case.png" alt="A 3D breast ultrasound case with its tumor mask">
     <div class="post-layout">
       <article class="prose">
-        <p><a href="#">Nunya</a> is a desktop VPN client for macOS, Windows and Linux. You give it the servers you already have, and it connects you through them. It's free, it's GPL-3.0, and it has no account and no telemetry.</p>
-        <h2 id="s1">1. The idea</h2>
-        <p>If you live somewhere with a filtered internet, a VPN client isn't a nice-to-have, it's how you reach half the web. Most clients say more than they know: a green "Connected" usually means a process started, not that your traffic gets through.</p>
-        <div class="callout"><strong>Rule:</strong> the app never claims more than it can prove.</div>
-        <h2 id="s2">2. How it's built</h2>
-        <p>The app and the engine talk over two tiny frames on a unix socket:</p>
-<pre><span class="lang">text</span><code>request   [u32 id][u16 method_len][method][u32 payload_len][protobuf]
-response  [u32 id][u8  status    ][u32 payload_len][protobuf or error text]</code></pre>
-        <p>Both ends verify each other, so no local process can pretend to be the core and report a healthy tunnel that doesn't exist.</p>
-        <h2 id="s3">3. Building it like a real project</h2>
-        <p>Every merge to <code>main</code> is a release. The PR title decides the version bump, and CI builds for all three platforms.</p>
+        <p><a href="#">tdsc-abus2023-pytorch</a> is a PyTorch Dataset for the TDSC-ABUS 2023 challenge: 200 automated 3D breast ultrasound volumes, each with a tumor mask, a bounding box and a label.</p>
+        <h2 id="s1">1. Why a package at all</h2>
+        <p>Every project that uses the data ends up writing the same glue: download, unzip, parse the CSVs, read the NRRD volumes.</p>
+        <div class="callout"><strong>Rule:</strong> load the data correctly, load it fast, and get out of the way.</div>
+        <h2 id="s2">2. A memory-mapped cache</h2>
+<pre><span class="lang">python</span><code>return np.load(npy_path, mmap_mode="r")</code></pre>
+        <p>Workers share the OS page cache, so four workers don't mean four copies of a volume in RAM.</p>
+        <h2 id="s3">3. Shipping it</h2>
+        <p>CI bumps the version and publishes to PyPI on every push to <code>main</code>.</p>
         <div class="pager">
-          <a href="#post"><small>← Previous</small>latex-academic-template</a>
-          <a class="next" href="#post"><small>Next →</small>Snake game</a>
+          <a href="#post"><small>← Previous</small>ABUS Classification, Part 1</a>
+          <a class="next" href="#post"><small>Next →</small>latex-academic-template</a>
         </div>
       </article>
       <nav class="toc" aria-label="On this page">
         <p>On this page</p>
-        <a href="#s1" class="on">1. The idea</a>
-        <a href="#s2">2. How it's built</a>
-        <a href="#s3">3. Building it like a real project</a>
+        <a href="#s1" class="on">1. Why a package at all</a>
+        <a href="#s2">2. A memory-mapped cache</a>
+        <a href="#s3">3. Shipping it</a>
       </nav>
     </div>
   </div>
@@ -539,7 +537,7 @@ response  [u32 id][u8  status    ][u32 payload_len][protobuf or error text]</cod
       <div>
         <h1 style="font-size:40px">Ali Naderi</h1>
         <p class="muted" style="margin:4px 0 16px">Machine learning researcher · Tehran, Iran</p>
-        <p style="margin:0 0 20px">CTO (AI) at SciNext. MSc in Artificial Intelligence and Robotics, IUST. Research: deep learning for 3D breast ultrasound.</p>
+        <p style="margin:0 0 20px">Graduated from IUST, one of Iran's toughest universities.</p>
         <div class="actions" style="display:flex; gap:12px; flex-wrap:wrap">
           <a class="btn primary" href="../assets/resume/ali-naderi-parizi-cv.pdf">Download CV</a>
           <a class="btn" href="mailto:me@alinaderiparizi.com">Contact</a>
@@ -592,11 +590,11 @@ response  [u32 id][u8  status    ][u32 payload_len][protobuf or error text]</cod
 <script>
 // Mockup plumbing only: page switching, theme toggle, mobile menu, filter chips.
 var projects = [
-  ["Nunya: an honest, open-source VPN client", "Free VPN client for macOS, Windows and Linux that only says what it can prove.", "nunya/main.png", ["Rust", "Tauri", "Go"]],
   ["latex-academic-template", "create-react-app for LaTeX: scaffold, build in Docker, done.", "latex-academic-template/gallery.png", ["LaTeX", "Docker"]],
   ["tdsc-abus2023-pytorch", "A PyTorch Dataset for 3D breast ultrasound, on PyPI.", "tdsc-abus2023-pytorch/sample_case.png", ["PyTorch", "Medical imaging"]],
   ["ABUS classification", "Classifying breast lesions in automated 3D ultrasound.", "abus-classification/sample-tumors-transversal.png", ["Research"]],
   ["khiar-ware", "An external CS:GO cheat, and how anti-cheats catch them.", "khiar-ware/demo.png", ["C++", "Security"]],
+  ["Smart card applets", "Java Card applets built and tested on a laptop with jCardSim.", "../blog/smart-card/title-dev.jpg", ["Java", "Embedded"]],
   ["Snake game", "My first project: a terminal snake game in Python, no game libraries.", "snake-game/gameplay.png", ["Python"]]
 ];
 document.querySelectorAll("[data-cards]").forEach(function (g) {
@@ -610,7 +608,6 @@ document.querySelectorAll("[data-cards]").forEach(function (g) {
 
 var I = "../assets/images/posts/";
 var posts = [
-  ["2026-09-28", "Nunya: Building an Honest, Open-Source VPN Client", "The idea behind a free VPN client for macOS, Windows and Linux, how it's built, and taking it from a fork to a released product.", "projects/nunya/main.png", ["Project", "Rust"]],
   ["2026-09-24", "latex-academic-template: create-react-app for LaTeX", "Scaffold a thesis or paper in one command, build it in Docker, and stop fighting TeX installs.", "projects/latex-academic-template/gallery.png", ["Project", "LaTeX"]],
   ["2026-09-23", "tdsc-abus2023-pytorch: A PyTorch Dataset for 3D Breast Ultrasound", "A pip-installable Dataset for TDSC-ABUS 2023, the bugs it had, and a memory-mapped cache.", "projects/tdsc-abus2023-pytorch/sample_case.png", ["Medical imaging", "PyTorch"]],
   ["2026-09-16", "ABUS Classification, Part 1: Mammography, Ultrasound, and Why 3D", "Imaging modalities for breast cancer screening, and what automated 3D ultrasound adds.", "projects/abus-classification/sample-tumors-transversal.png", ["Medical imaging"]],
@@ -657,7 +654,7 @@ document.querySelectorAll("[data-panel]").forEach(function (d) { d.innerHTML = p
 
 
 // Load the real, full post from the local Jekyll build so the Post page shows a whole article.
-var FULL = "../_site/project/nunya/vpn/open-source/rust/tauri/2026/09/28/nunya-vpn-client.html";
+var FULL = "../_site/project/abus-classification/medical-imaging/pytorch/python/2026/09/23/tdsc-abus2023-pytorch.html";
 fetch(FULL).then(function (r) { return r.ok ? r.text() : null; }).then(function (html) {
   if (!html) return;  // no local build: keep the sample
   var src = new DOMParser().parseFromString(html, "text/html").querySelector(".post-content");
