@@ -331,6 +331,18 @@ footer .free a { color: var(--accent); }
 .placard b { font: 400 18px/1.1 var(--display); letter-spacing: .06em; }
 .placard span:last-child { color: #f87171; }
 
+
+/* ---- closing quote replaces the footer ---- */
+.closing { margin: 120px 0 0; padding: 96px 24px 120px; border-top: 1px solid var(--border); text-align: center; position: relative; overflow: hidden; }
+.closing::before { content: "\201C"; position: absolute; left: 50%; top: 10px; transform: translateX(-50%); font: 400 260px/1 var(--display); color: var(--accent); opacity: .08; pointer-events: none; }
+.closing blockquote { margin: 0 auto; max-width: 1000px; position: relative; }
+.closing p { font: 400 64px/1.02 var(--display); text-transform: uppercase; letter-spacing: .01em; margin: 0;
+  background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.closing cite { display: block; margin-top: 24px; font: 500 13px var(--mono); font-style: normal; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.closing cite::before { content: "— "; color: var(--accent-2); }
+.closing cite i { font-style: normal; }
+@media (max-width: 640px) { .closing { padding: 64px 16px 80px; } .closing p { font-size: 38px; } .closing::before { font-size: 180px; } }
+
 /* mockup only: page switcher */
 .page { display: none; }
 .page.on { display: block; }
@@ -541,6 +553,7 @@ response  [u32 id][u8  status    ][u32 payload_len][protobuf or error text]</cod
       <h2 style="font-size:22px; margin-bottom:12px">Skills</h2>
       <div class="chips"><span class="chip">Python</span><span class="chip">C/C++</span><span class="chip">PyTorch</span><span class="chip">TensorFlow</span><span class="chip">HuggingFace</span><span class="chip">Rust</span><span class="chip">TypeScript</span><span class="chip">Docker</span><span class="chip">Linux</span><span class="chip">PostgreSQL</span></div>
     </section>
+    <p class="meta" style="margin-top:48px">This site is free software: code under <a href="#">GPL-3.0</a>, writing under <a href="#">CC BY-SA 4.0</a>. No trackers, no ads, no cookies.</p>
   </div>
 </div>
 
@@ -555,16 +568,12 @@ response  [u32 id][u8  status    ][u32 payload_len][protobuf or error text]</cod
 </div>
 </main>
 
-<footer>
-  <div class="motto" aria-label="Freedom, humanity, truth"><span>Freedom</span><i></i><span>Humanity</span><i></i><span>Truth</span></div>
-  <div class="wrap">
-    <div>
-      <div>© 2026 Ali Naderi</div>
-      <div class="free">Free software: code under <a href="#">GPL-3.0</a>, words under <a href="#">CC BY-SA 4.0</a>. No trackers, no ads, no cookies. <a href="https://www.gnu.org/philosophy/free-sw.html">Why?</a></div>
-    </div>
-    <nav><a href="https://github.com/mralinp">GitHub</a><a href="#">LinkedIn</a><a href="https://twitter.com/alinaderiparizi">X</a><a href="mailto:me@alinaderiparizi.com">Email</a><a href="/feed.xml">RSS</a></nav>
-  </div>
-</footer>
+<section class="closing" aria-label="Closing quote">
+  <blockquote>
+    <p>Freedom is the freedom to say that two plus two make&nbsp;four.</p>
+    <cite>George Orwell, <i>Nineteen Eighty-Four</i></cite>
+  </blockquote>
+</section>
 
 <script>
 // Mockup plumbing only: page switching, theme toggle, mobile menu, filter chips.

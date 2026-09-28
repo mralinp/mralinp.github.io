@@ -40,7 +40,7 @@ two things visitors come for: **reading a post** and **finding out who Ali is**.
    page depends on a third-party API answering in their browser (see *Stats* below).
 6. **Small.** One stylesheet; Inter for text, Anton for display, JetBrains Mono for code (all self-hosted);
    one icon set (inline SVG), no CSS framework. MathJax and Prism load only on posts that need them.
-7. **Standard patterns.** Top navigation, a footer with links, breadcrumbs back from a post, prev/next
+7. **Standard patterns.** Top navigation, breadcrumbs back from a post, prev/next
    at the end. Nothing a visitor has to learn.
 
 ## 3. Information architecture
@@ -56,7 +56,10 @@ Home ─┬─ Blog ──────── post
 - **Top nav**: name on the left; Home · Blog · Projects · Research · Library · About on the right; then
   search and the theme toggle. The current page's item is highlighted (Home included). On phones
   it collapses into a menu button.
-- **Footer**: GitHub · LinkedIn · Twitter/X · Email · RSS · CV, and © year.
+- **No footer.** Every page ends on the **closing quote**: Orwell's *"Freedom is the freedom to say
+  that two plus two make four."* in Anton at 64px (38px on phones), in the gradient, with a faint
+  oversized quotation mark behind it and the attribution in mono small caps. Links (GitHub, email,
+  CV) live in the nav and on About; RSS is advertised in `<head>` for feed readers.
 - Notes join the nav under Blog once there is more than one.
 
 ## 4. Design tokens
@@ -109,12 +112,11 @@ Ali follows GNU and the free software movement, and cares about freedom, humanit
 site *shows* those values instead of claiming them:
 
 - **The site is free software.** Code under **GPL-3.0**, writing under **CC BY-SA 4.0**, with a
-  `LICENSE` file in the repo (there is none today). The footer says so in one line and links the
-  GNU free software definition.
+  `LICENSE` file in the repo (there is none today). One line at the end of About says so.
 - **No trackers, no ads, no cookies**, and no third-party requests at page load (fonts
-  self-hosted, search client-side, stats baked at build time). The footer states it plainly.
-- **The motto band.** Above the footer: `FREEDOM ◆ HUMANITY ◆ TRUTH` in Anton, steel in dark mode
-  and gradient in light, like a band's motto on the back of a record.
+  self-hosted, search client-side, stats baked at build time), stated in the same About line.
+- **The closing quote** (see *Information architecture*) carries freedom and truth at the end of
+  every page.
 - **Epigraphs lead with freedom.** The hero quote list in `_config.yml` starts with Stallman
   (*"Free software is a matter of liberty, not price."*), followed by Torvalds, Dijkstra, Kay and
   Knuth. The first is rendered at build time; clicking it cycles through the rest.
