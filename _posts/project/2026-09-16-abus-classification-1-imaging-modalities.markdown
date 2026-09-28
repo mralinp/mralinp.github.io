@@ -5,6 +5,7 @@ author: "Ali Naderi"
 img: "/assets/images/posts/projects/abus-classification/sample-tumors-transversal.png"
 date:   2026-09-16 10:00:00 +0330
 categories:  project abus-classification medical-imaging ultrasound mammography breast-cancer
+featured: true
 brief: "Before any classifier: what a breast tumor is, how mammography and ultrasound actually see it, and why this project works with 3D automated breast ultrasound instead of either alone."
 github: "https://github.com/mralinp/abus-classification"
 ---

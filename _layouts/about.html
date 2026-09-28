@@ -7,7 +7,7 @@ layout: main
     {% include portrait.html placard=true %}
     <div>
       <h1>Ali Naderi</h1>
-      <p class="muted" style="margin:4px 0 16px">Machine learning researcher · Tehran, Iran</p>
+      <p class="muted" style="margin:4px 0 16px">{{ site.positioning }} · Tehran, Iran</p>
       <div class="origin">{{ content }}</div>
       <div class="actions" style="display:flex; gap:12px; flex-wrap:wrap">
         <a class="btn primary" href="{{ site.data.profiles.cv }}">Download CV</a>
@@ -15,6 +15,16 @@ layout: main
       </div>
     </div>
   </div>
+
+  <section class="cv">
+    <h2>Path</h2>
+    <ol class="path">
+      {%- for p in cv.path %}
+      <li><span class="y">{{ p.year }}</span><b>{{ p.title }}</b><span class="w">{{ p.where }}</span></li>
+      {%- endfor %}
+    </ol>
+    <p class="path-research">{{ cv.path_research }}</p>
+  </section>
 
   {%- assign sections = "experience:Experience,projects:Research projects,publications:Publications,service:Academic service,teaching:Teaching,education:Education" | split: "," %}
   {%- for s in sections %}
@@ -35,9 +45,13 @@ layout: main
       <li><span class="when">{{ e.when }}</span><div>
         <div class="what">{{ e.what }}</div>
         <div class="where">{{ e.where }}{% if e.site %} <a class="site" href="{{ e.site.url }}" target="_blank" rel="noopener">{{ e.site.label }} ↗</a>{% endif %}</div>
-        {%- if e.bullets %}<ul class="bullets">{% for b in e.bullets %}<li>{{ b }}</li>{% endfor %}</ul>{% endif %}
+        {%- if e.summary %}<p class="summary">{{ e.summary }}</p>{% endif %}
+        {%- assign shown = e.highlights | default: e.bullets %}
+        {%- if shown %}<ul class="bullets">{% for b in shown %}<li>{{ b }}</li>{% endfor %}</ul>{% endif %}
+        {%- if e.more %}<details class="more-details"><summary>More</summary><ul class="bullets">{% for b in e.more %}<li>{{ b }}</li>{% endfor %}</ul></details>{% endif %}
         {%- if e.tags %}<div class="chips">{% for t in e.tags %}<span class="chip">{{ t }}</span>{% endfor %}</div>{% endif %}
         {%- if e.link %}<a class="more" href="{{ e.link.url }}">{{ e.link.label }} →</a>{% endif %}
+        {%- if e.case_study %}<a class="case-link" href="{{ e.case_study.url }}">{{ e.case_study.label }} →</a>{% endif %}
       </div></li>
       {%- endfor %}
     {%- endif %}
@@ -47,7 +61,11 @@ layout: main
 
   <section class="cv">
     <h2>Skills</h2>
-    <dl class="skills">{% for s in cv.skills %}<dt>{{ s.group }}</dt><dd>{{ s.items }}</dd>{% endfor %}</dl>
+    <table class="skills-table">
+      <thead><tr><th>Area</th><th>Tools</th><th>Where I used them</th></tr></thead>
+      <tbody>{% for s in cv.skills %}<tr><th scope="row">{{ s.area }}</th><td>{{ s.tools }}</td><td>{{ s.where }}</td></tr>{% endfor %}</tbody>
+    </table>
+    <p class="meta" style="margin-top:12px">{{ cv.skills_also }}</p>
   </section>
 
   <section class="cv">

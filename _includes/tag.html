@@ -1,5 +1,5 @@
 {%- comment -%} A category slug as a readable label: "medical-imaging" → "Medical imaging", "ai" → "AI". {%- endcomment -%}
 {%- assign t = include.t -%}
 {%- case t -%}
-{%- when "ai" %}AI{% when "embeded" %}Embedded{% when "pytorch" %}PyTorch{% when "gpu" %}GPU{% when "fpga" %}FPGA{% when "abus-classification" %}ABUS classification{% when "csgo" %}CS:GO{% when "latex" %}LaTeX{% when "devtools" %}Dev tools{% when "cli" %}CLI
+{%- when "ai" %}AI{% when "embeded" %}Embedded{% when "pytorch" %}PyTorch{% when "gpu" %}GPU{% when "fpga" %}FPGA{% when "abus-classification" %}ABUS classification{% when "csgo" %}CS:GO{% when "latex" %}LaTeX{% when "devtools" %}Dev tools{% when "cli" %}CLI{% when "fido2" %}FIDO2
 {%- else %}{{ t | replace: "-", " " | capitalize }}{% endcase -%}

@@ -129,7 +129,7 @@
 
         \vspace{0.15 cm}
         \normalsize
-        Machine Learning Researcher | Generative Models | Medical Imaging
+        AI/ML Engineer \& Systems Architect | Authentication Systems | 3D Medical Imaging Research
 
         \vspace{0.3 cm}
 
@@ -172,16 +172,16 @@
     \end{threecolentry}
 
     \section{Publications}
-    \begin{twocolentry}{2026}
+    \begin{twocolentry}{Ongoing}
         \textbf{Spherical Shape-Based Features for Classification of Breast Tumors in 3D-ABUS Images} \\
-        A. Naderiparizi, S. Barekat, E. Kozegar, M. Soryani \\
-        \textit{IEEE Transactions in Medical Imaging (not-published yet)}
+        \textbf{A. Naderiparizi}, S. Barekat, E. Kozegar, M. Soryani \\
+        \textit{Current work} \hfill \href{https://alinaderiparizi.com/abus-classification/}{project page and code}
     \end{twocolentry}
 
     \begin{twocolentry}{2025}
         \textbf{Breast Mass Classification in 3D ABUS based on Laplace-Beltrami Spectra and Dual Path CNN} \\
-        S. Barekat, A. Naderiparizi, E. Kozegar, M. Soryani \\
-        \textit{Expert Systems with Applications}
+        S. Barekat, \textbf{A. Naderiparizi}, E. Kozegar, M. Soryani \\
+        \textit{Expert Systems with Applications} \hfill \href{https://doi.org/10.1016/j.eswa.2025.129973}{doi:10.1016/j.eswa.2025.129973}
     \end{twocolentry}
 
     \section{Academic Service}
@@ -266,14 +266,27 @@
         \textbf{Robotic Vision for Agricultural Automation}
         \begin{highlights}
             \item Designed a computer vision system to detect optimal cutting points of saffron flowers for automated harvesting.
+            \item The system became the vision of a robotic saffron processing machine that cuts each flower where the model points. Video: \href{https://www.youtube.com/watch?v=WaYx6MPUO_E}{youtube.com/watch?v=WaYx6MPUO\_E}
         \end{highlights}
     \end{twocolentry}
 
     \section{Professional Experience}
     \begin{twocolentry}{Tehran, Iran \\ 2025--Present}
-        \textbf{Iran Tech Innovation Hub}, Chief Technology Officer (AI)
+        \textbf{SciNext}, Chief Technology Officer (AI)
         \begin{highlights}
-            \item Providing technical evaluation and mentorship for early-stage AI startups. Supporting development of machine learning systems and AI-based products.
+            \item Designed and built the company's production platform single-handedly in about a month: self-service GitOps on Kubernetes (k3s) with Argo CD, Gitea Actions and a private container registry. A push to \texttt{main} is built, deployed and rolled out with no manual step; new services onboard themselves from a template.
+            \item Unified observability for every service: Prometheus, Grafana, Loki, Tempo and Alloy, with metrics, logs and traces in one place.
+            \item Security by design: a write-only CI identity for application secrets, per-organization namespaces and RBAC, and per-application database and object-storage credentials (PostgreSQL, MongoDB, MinIO).
+            \item The platform runs the company's production services across 5 project organizations; bringing a newly acquired GPU cluster onto it for model training and inference.
+            \item Technical evaluation and mentorship for early-stage AI startups.
+        \end{highlights}
+    \end{twocolentry}
+
+    \begin{twocolentry}{Remote \\ 2026}
+        \textbf{Symmio} (\href{https://symm.io}{symm.io}), Backend Software Engineer
+        \begin{highlights}
+            \item Improved the behaviour of the platform's microservices: reliability and performance under real load.
+            \item Worked on the anomaly detection stack, built on performance metrics and observability tooling, to catch misbehaving services before users do.
         \end{highlights}
     \end{twocolentry}
 
@@ -285,22 +298,34 @@
     \end{twocolentry}
 
     \begin{twocolentry}{Vancouver, Canada \\ 2022--2024}
-        \textbf{IDmelon Technologies Inc}, Software Engineer
+        \textbf{IDmelon Technologies Inc} (\href{https://idmelon.com}{idmelon.com}), Software Engineer, then engineering lead
         \begin{highlights}
-            \item Designed secure authentication systems and distributed cloud services. Worked on system-level development, data processing pipelines, and API architectures.
+            \item Passwordless authentication on the FIDO2 standard (IDmelon later joined HID). Worked on the product from its earliest stage: initial R\&D, prototypes and demonstrations, the first production version, and iteration in production.
+            \item Designed and built Windows sign-in with FIDO2 security keys for local accounts, then supported by Windows only for business accounts: a C++ credential provider, a background authentication service and a local FIDO server.
+            \item Led the engineering team: designed and implemented major components, helped evolve the architecture, trained and mentored junior engineers, and worked with QC to reproduce, diagnose and fix production bugs.
+            \item Designed secure authentication systems and distributed cloud services; system-level development, data processing pipelines and API architecture. Case study: \href{https://alinaderiparizi.com/project/authentication/fido2/security/windows/2026/09/28/idmelon-passwordless-authentication.html}{alinaderiparizi.com}
         \end{highlights}
     \end{twocolentry}
 
     \begin{twocolentry}{Tehran, Iran \\ 2020--2022}
-        \textbf{Dadeh Afzar Arman}, Software Engineer (Backend)
+        \textbf{DataWare (Dadeh Afzar Arman)}, Software Engineer (Backend)
         \begin{highlights}
             \item Developed scalable backend services and microservice architectures for large-scale data processing systems.
         \end{highlights}
     \end{twocolentry}
 
+    \begin{twocolentry}{Shiraz, Iran \\ 2017--2019}
+        \textbf{Sico Systems Intelligizer}, R\&D Intern $\rightarrow$ Junior Embedded Engineer
+        \begin{highlights}
+            \item R\&D across FPGAs, microcontrollers and embedded hardware.
+            \item Built a hardware DTMF detector, then a GSM/GPRS device around it that answers calls, plays voice prompts and takes commands and access codes from the caller's keypad; selected and integrated the chips and ensured signal quality.
+            \item Evaluated Chinese SoC chipsets and built a Linux-based system-on-board on the Allwinner F1C100S (Lichee Pi Nano class) with added analog video input and on-board image processing, such as Laplacian filtering for motion detection.
+        \end{highlights}
+    \end{twocolentry}
+
     \section{Skills \& Technologies}
     \begin{onecolentry}
-        \textbf{Programming:} Python, C/C++, Java, C\#, JavaScript/TypeScript
+        \textbf{Programming:} Python, C/C++, Rust, Java, C\#, JavaScript/TypeScript
     \end{onecolentry}
     \begin{onecolentry}
         \textbf{Machine Learning:} PyTorch, TensorFlow, PyTorch Lightning, HuggingFace Transformers, YOLO
@@ -309,7 +334,13 @@
         \textbf{Scientific Computing:} NumPy, SciPy, Linux
     \end{onecolentry}
     \begin{onecolentry}
-        \textbf{Data Systems:} MongoDB, PostgreSQL, MySQL, Docker
+        \textbf{Data Systems:} MongoDB, PostgreSQL, MySQL, MinIO (S3)
+    \end{onecolentry}
+    \begin{onecolentry}
+        \textbf{Platform \& Infrastructure:} Kubernetes (k3s), Argo CD, GitOps, Gitea Actions, Docker, Prometheus, Grafana, Loki, Tempo, OpenTelemetry, nginx, WireGuard, Proxmox
+    \end{onecolentry}
+    \begin{onecolentry}
+        \textbf{Embedded:} FPGA, microcontrollers, embedded Linux, Allwinner SoCs
     \end{onecolentry}
 
     \section{References}

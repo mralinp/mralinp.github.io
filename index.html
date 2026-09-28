@@ -8,7 +8,7 @@ title: Home
     {% include portrait.html %}
     <div>
       <h1><span>Ali Naderi</span>.</h1>
-      <p class="kicker">ML researcher · Engineer · Tehran</p>
+      <p class="kicker">{{ site.positioning }} · 3D medical imaging research</p>
       <blockquote class="epigraph" id="epigraph" title="Click for the next one" data-quotes='{{ site.epigraphs | jsonify | escape }}'>
         <p><span class="slashes">//</span> <span class="q">{{ q.text }}</span></p><cite>{{ q.by }}</cite>
       </blockquote>
@@ -34,9 +34,9 @@ title: Home
   </section>
 
   <section>
-    <div class="section-head"><h2>Featured projects</h2><a href="/projects/">All projects →</a></div>
+    <div class="section-head"><h2>Selected work</h2><a href="/projects/">All projects →</a></div>
     <div class="grid">
-      {%- assign projects = site.posts | where_exp: "p", "p.categories.first == 'project'" %}
+      {%- assign projects = site.posts | where_exp: "p", "p.categories.first == 'project'" | where: "featured", true %}
       {%- for p in projects limit: 3 %}{% include card.html post=p %}{% endfor %}
     </div>
   </section>

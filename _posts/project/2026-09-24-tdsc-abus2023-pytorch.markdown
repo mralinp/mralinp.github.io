@@ -5,6 +5,7 @@ author: "Ali Naderi"
 img: "/assets/images/posts/projects/tdsc-abus2023-pytorch/sample_case.png"
 date:   2026-09-23 10:00:00 +0330
 categories:  project abus-classification medical-imaging pytorch python
+featured: true
 brief: "A small pip-installable PyTorch Dataset for the TDSC-ABUS 2023 challenge: what it gives you, the bugs it used to have, and how a memory-mapped cache takes the pain out of loading 200 MB gzip volumes."
 github: "https://github.com/mralinp/tdsc-abus2023-pytorch"
 ---

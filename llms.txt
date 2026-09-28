@@ -6,7 +6,7 @@ sitemap: false
 {%- assign base = site.url -%}
 # Ali Naderi
 
-> Machine learning researcher and software engineer from Iran. Works on deep learning for 3D medical imaging (automated breast ultrasound), and builds backend, embedded and open-source software. MSc in Artificial Intelligence and Robotics, Iran University of Science and Technology (IUST).
+> AI/ML engineer and systems architect from Iran. Built FIDO2 passwordless authentication at IDmelon from R&D and prototypes to production, and led its engineering team; designs and builds production platforms; researches deep learning for 3D automated breast ultrasound. MSc in Artificial Intelligence and Robotics, Iran University of Science and Technology (IUST).
 
 This is the personal site of Ali Naderi (Ali Naderi Parizi; GitHub: mralinp). It holds a blog, project write-ups, research, book reviews and a CV. Everything is written by Ali unless a post says otherwise. The full text of every page is in [llms-full.txt]({{ base }}/llms-full.txt).
 
@@ -18,6 +18,8 @@ This is the personal site of Ali Naderi (Ali Naderi Parizi; GitHub: mralinp). It
 
 - [About and CV]({{ base }}/about/): where Ali comes from, experience, research projects, publications, teaching, education, skills
 - [Research]({{ base }}/research/): publications, current work and academic service
+- [3D-ABUS research project]({{ base }}/abus-classification/): the current research project, with results and code
+- [Case study: passwordless authentication at IDmelon]({{ base }}/project/authentication/fido2/security/windows/2026/09/28/idmelon-passwordless-authentication.html)
 - [CV (PDF)]({{ base }}{{ site.data.profiles.cv }})
 
 ## Projects

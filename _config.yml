@@ -1,6 +1,6 @@
 title: mralinp
 email: alinaderiparizi@gmail.com
-description: "Ali Naderi: machine learning, medical imaging, embedded systems and the software around them."
+description: "Ali Naderi: AI/ML engineer and systems architect. Production platforms, authentication systems, and research on 3D breast ultrasound."
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://alinaderiparizi.com" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: alinaderiparizi
@@ -43,6 +43,8 @@ exclude:
 
 # ---- redesign (see design/README.md) ----
 author_name: "Ali Naderi"
+# How the site introduces Ali (About subtitle, home kicker, llms.txt).
+positioning: "AI/ML engineer & systems architect"
 # Portrait style on Home and About: "mugshot" (height chart + booking placard) or "plain".
 portrait: mugshot
 # Hero epigraphs: the first is rendered; clicking cycles through the rest.

@@ -519,4 +519,45 @@ span.thumb { display: block; aspect-ratio: 16/9; background: var(--grad); opacit
 .section-head a { white-space: nowrap; flex: none; }
 @media (max-width: 480px) { .section-head h2 { font-size: 13px; letter-spacing: .1em; } }
 
+/* ---- About: career path strip, evidence-first entries, skills by evidence ---- */
+.path { list-style: none; margin: 8px 0 12px; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0; border-top: 2px solid; border-image: var(--grad) 1; }
+.path li { padding: 12px 12px 0 0; display: flex; flex-direction: column; gap: 2px; position: relative; }
+.path li::before { content: ""; position: absolute; top: -7px; left: 0; width: 10px; height: 10px; background: var(--accent-2); }
+.path .y { font: 600 12px var(--mono); letter-spacing: .08em; color: var(--accent-2); margin-top: 4px; }
+.path b { font-size: 15px; line-height: 1.3; }
+.path .w { font-size: 13px; color: var(--muted); }
+.path-research { font-size: 15px; color: var(--muted); margin: 8px 0 0; }
+@media (max-width: 720px) {
+  .path { grid-template-columns: 1fr; border-top: 0; border-left: 2px solid; border-image: var(--grad) 1; padding-left: 16px; }
+  .path li { padding: 0 0 12px; }
+  .path li::before { top: 8px; left: -22px; }
+}
+.cv .summary { margin: 6px 0 0; font-size: 15px; color: var(--muted); font-style: italic; }
+.more-details { margin-top: 6px; font-size: 15px; }
+.more-details > summary { cursor: pointer; font: 600 12px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); list-style: none; }
+.more-details > summary::-webkit-details-marker { display: none; }
+.more-details > summary::before { content: "+ "; color: var(--accent-2); }
+.more-details[open] > summary::before { content: "− "; }
+.case-link { display: inline-block; margin-top: 10px; font: 600 13px var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--on-accent); background: var(--grad); padding: 6px 12px; }
+.case-link:hover { filter: brightness(1.1); text-decoration: none; }
+.skills-table { width: 100%; border-collapse: collapse; font-size: 15px; margin-top: 8px; }
+.skills-table th, .skills-table td { text-align: left; vertical-align: top; padding: 10px 12px 10px 0; border-bottom: 1px solid var(--border); }
+.skills-table thead th { font: 600 11px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.skills-table tbody th { font-weight: 600; white-space: nowrap; }
+.skills-table td:last-child { color: var(--muted); }
+@media (max-width: 640px) {
+  .skills-table thead { display: none; }
+  .skills-table tr { display: block; padding: 10px 0; border-bottom: 1px solid var(--border); }
+  .skills-table th, .skills-table td { display: block; border: 0; padding: 2px 0; white-space: normal; }
+}
+
+/* ---- Research: the research → paper → code chain ---- */
+.program { margin: 40px 0 16px; }
+.program-title { font-size: 22px; margin: 0 0 8px; }
+.program p { font-size: 16px; }
+.chain { list-style: none; counter-reset: step; margin: 16px 0; padding: 0 0 0 18px; border-left: 2px solid; border-image: var(--grad) 1; }
+.chain li { counter-increment: step; position: relative; padding: 0 0 14px 18px; font-size: 16px; line-height: 1.6; }
+.chain li::before { content: counter(step, decimal-leading-zero); position: absolute; left: -40px; top: 2px; width: 34px; text-align: right; font: 600 12px var(--mono); color: var(--accent-2); }
+@media (max-width: 480px) { .chain li::before { position: static; display: block; text-align: left; } .chain { padding-left: 12px; } .chain li { padding-left: 8px; } }
+
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }

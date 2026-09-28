@@ -1,50 +1,72 @@
-# The CV on /about/. Each entry: when, what (role or title), where, optional site, bullets, tags, link.
-# Bullets are HTML-safe Markdown-free strings. Private details (phone, references' emails) stay in the PDF.
+# The CV on /about/. Experience entries: when, what (role), where, optional site; `summary` is the
+# system or problem in one line; `highlights` (2–4, always shown) are the evidence; `more` sits behind
+# a "More" toggle; `case_study` links a write-up. Strings may contain HTML. Private details (phone,
+# references' emails) stay in the PDF. Never add a number here that Ali hasn't confirmed.
+
+# The career path strip above Experience.
+path:
+  - { year: "2017", title: "Embedded R&D", where: "Sico Systems" }
+  - { year: "2020", title: "Backend systems", where: "DataWare" }
+  - { year: "2022", title: "Security & authentication", where: "IDmelon" }
+  - { year: "2024", title: "AI engineering", where: "CyberDesign" }
+  - { year: "2025", title: "Technical leadership", where: "SciNext" }
+path_research: "In parallel since 2020: ML research on 3D breast ultrasound, from the MSc at IUST to the Iran Image Processing Lab."
 
 experience:
   - when: "2025 – now"
     what: "Chief Technology Officer (AI)"
     where: "SciNext · Tehran"
-    bullets:
+    summary: "Technical lead of an early-stage AI company: platform, infrastructure and engineering practice."
+    highlights:
+      - "Designed and built the company's production platform on my own, in about a month: self-service GitOps on Kubernetes (k3s) with Argo CD, Gitea Actions and a private container registry. A push to <code>main</code> is built and rolled out with no manual step; new services onboard themselves from a template."
+      - "Made observability and isolation part of the platform, not per-app work: Prometheus, Grafana, Loki and Tempo for every service; a write-only CI identity for secrets; per-organization namespaces and RBAC; per-application database and object-storage credentials."
+      - "The platform runs the company's production services across 5 project organizations. A newly acquired GPU cluster is being brought onto it for training and inference."
+    more:
       - "Technical evaluation and mentorship for early-stage AI startups."
-      - "Supports the design and build of their machine learning systems and AI-based products."
+    tags: [Kubernetes, Argo CD, GitOps, Gitea Actions, Prometheus, Grafana, Loki, Tempo, PostgreSQL, MinIO]
   - when: "2026"
     what: "Backend Software Engineer"
     where: "Symmio · DeFi protocol · Remote"
     site: { label: "symm.io", url: "https://symm.io" }
-    bullets:
+    highlights:
       - "Improved the behaviour of the platform's microservices: reliability and performance under real load."
-      - "Worked on the anomaly detection stack, built on performance metrics and observability tooling, to catch services misbehaving before users do."
-    tags: [Microservices, Anomaly detection, Observability, DeFi]
+      - "Worked on the anomaly detection stack, built on performance metrics and observability tooling, to catch misbehaving services before users do."
+    tags: [Microservices, Anomaly detection, Observability]
   - when: "2024 – 2025"
     what: "Software Engineer (AI)"
     where: "CyberDesign Nordic AB · Stockholm, Sweden"
-    bullets:
-      - "Built machine learning systems for indoor positioning from mobile sensor data."
+    summary: "Indoor positioning from mobile sensor data."
+    highlights:
+      - "Built the machine learning systems that estimate indoor position from mobile sensor data."
       - "Built the backend APIs and data pipelines behind model training and deployment."
     tags: [Python, PyTorch, Sensor data, APIs]
   - when: "2022 – 2024"
-    what: "Software Engineer"
+    what: "Software Engineer, then engineering lead"
     where: "IDmelon Technologies · Vancouver, Canada"
     site: { label: "idmelon.com", url: "https://idmelon.com" }
-    bullets:
-      - "Designed secure authentication systems and distributed cloud services."
-      - "System-level development, data processing pipelines and API architecture."
-    tags: [Authentication, Cloud, Distributed systems]
+    summary: "Passwordless authentication built on the FIDO2 standard. IDmelon later joined HID."
+    highlights:
+      - "Worked on the product from its earliest stage: did the initial R&amp;D, built and demonstrated the prototypes, built the first production version, then kept improving it in production."
+      - "Designed and built Windows sign-in with FIDO2 security keys for local accounts, which Windows then supported only for business accounts: a C++ credential provider, a background authentication service and a local FIDO server. The first working version took about a week."
+      - "Led the engineering team as the product matured: designed and implemented major components, helped evolve the architecture, trained and mentored junior engineers, and worked with QC to reproduce, diagnose and fix production bugs."
+    more:
+      - "Designed secure authentication systems and distributed cloud services; system-level development, data processing pipelines and API architecture."
+    tags: [FIDO2, Passwordless authentication, Windows credential provider, C++, Python]
+    case_study: { label: "Read the technical case study", url: "/project/authentication/fido2/security/windows/2026/09/28/idmelon-passwordless-authentication.html" }
   - when: "2020 – 2022"
     what: "Software Engineer (Backend)"
     where: "DataWare · Tehran"
-    bullets:
+    highlights:
       - "Built scalable backend services and microservice architectures for large-scale data processing."
     tags: [Microservices, Backend]
   - when: "2017 – 2019"
-    what: "R&D Intern → Junior Embedded Engineer"
+    what: "R&amp;D Intern → Junior Embedded Engineer"
     where: "Sico Systems Intelligizer · Shiraz"
-    bullets:
-      - "R&D across FPGAs, microcontrollers and embedded hardware."
-      - "Built a DTMF detector in hardware, then a GSM/GPRS device around it: it answers incoming calls, plays voice prompts and takes commands and access codes from the caller's keypad (<em>\"press 1 for…\"</em>, <em>\"enter your code\"</em>). Chose and integrated the chips and made sure the signal quality held up."
-      - "Researched system-on-board designs, evaluated Chinese SoC chipsets, and built a Linux-based SoB on the Allwinner F1C100S (the Lichee Pi Nano's chip) with added analog video input and on-board image processing, such as Laplacian filtering for motion detection."
-    tags: [FPGA, Microcontrollers, DTMF, GSM/GPRS, Embedded Linux, Allwinner F1C100S, Video processing]
+    summary: "Hardware R&amp;D: FPGAs, microcontrollers and embedded Linux."
+    highlights:
+      - "Built a DTMF detector in hardware, then a GSM/GPRS device around it: it answers incoming calls, plays voice prompts and takes commands and access codes from the caller's keypad. Chose and integrated the chips and made sure the signal quality held up."
+      - "Evaluated Chinese SoC chipsets and built a Linux-based system-on-board on the Allwinner F1C100S (the Lichee Pi Nano's chip) with analog video input and on-board image processing, such as Laplacian filtering for motion detection."
+    tags: [FPGA, Microcontrollers, GSM/GPRS, Embedded Linux, Allwinner F1C100S]
 
 projects:
   - when: "2026"
@@ -122,8 +144,11 @@ education:
     bullets:
       - "<strong>Project:</strong> designed and built a System-on-Board that runs the Linux kernel and processes analog video for embedded vision."
 
+# Skills grouped by area, each tied to where it was used. `also` = used, not a strength to lead with.
 skills:
-  - { group: "Research", items: "Generative models · probabilistic ML · 3D medical image analysis · representation learning · computational biology" }
-  - { group: "Languages", items: "Python · C/C++ · Rust · TypeScript/JavaScript · Java · C#" }
-  - { group: "Machine learning", items: "PyTorch · PyTorch Lightning · TensorFlow · HuggingFace Transformers · YOLO · NumPy · SciPy" }
-  - { group: "Systems", items: "Linux · Docker · PostgreSQL · MongoDB · MySQL · embedded Linux" }
+  - { area: "ML and research", tools: "PyTorch, PyTorch Lightning, HuggingFace Transformers, NumPy, SciPy", where: "3D-ABUS research, Persian TTS, CyberDesign" }
+  - { area: "Backend and APIs", tools: "Python, microservices, PostgreSQL, MongoDB", where: "DataWare, IDmelon, CyberDesign, Symmio" }
+  - { area: "Platform and operations", tools: "Kubernetes (k3s), Argo CD, Gitea Actions, Docker, Prometheus, Grafana, Loki, Tempo", where: "SciNext platform" }
+  - { area: "Security and authentication", tools: "FIDO2, Windows credential providers, Java Card", where: "IDmelon, smart-card series" }
+  - { area: "Systems and embedded", tools: "C/C++, FPGA, microcontrollers, embedded Linux", where: "Sico Systems, IDmelon" }
+skills_also: "Also used: Java, C#, TypeScript, Rust, TensorFlow, YOLO, MySQL."

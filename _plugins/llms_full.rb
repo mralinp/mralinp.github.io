@@ -2,13 +2,15 @@
 # /llms.txt is the index; this is the text behind it. A generator, because generators run before
 # rendering, so `post.content` is still the author's Markdown, not HTML. Drafts are never in
 # site.posts on a normal build, so unpublished posts never leak into it.
+require "cgi"
+
 module LlmsFull
   class Generator < Jekyll::Generator
     safe true
     priority :lowest
 
     def generate(site)
-      base = site.config["url"].to_s.chomp("/")
+      base = @base = site.config["url"].to_s.chomp("/")
       data = site.data
       out = []
 
@@ -35,7 +37,8 @@ module LlmsFull
       end
 
       if cv["skills"]
-        out << "## Skills\n\n" + cv["skills"].map { |s| "- #{s['group']}: #{s['items']}" }.join("\n")
+        out << "## Skills\n\n" + cv["skills"].map { |s| "- #{s['area']}: #{s['tools']} (used at: #{s['where']})" }.join("\n") +
+               (cv["skills_also"] ? "\n\n#{cv['skills_also']}" : "")
       end
 
       site.posts.docs.reverse_each do |post|
@@ -64,14 +67,17 @@ module LlmsFull
     def cv_entry(e)
       s = "### #{e['what']} (#{e['when']})\n#{e['where']}"
       s += " · #{e['site']['url']}" if e["site"]
-      s += "\n" + e["bullets"].map { |b| "- #{strip_tags(b)}" }.join("\n") if e["bullets"]
+      s += "\n#{strip_tags(e['summary'])}" if e["summary"]
+      items = (e["highlights"] || e["bullets"] || []) + (e["more"] || [])
+      s += "\n" + items.map { |b| "- #{strip_tags(b)}" }.join("\n") unless items.empty?
       s += "\nTags: #{e['tags'].join(', ')}" if e["tags"]
       s += "\n#{e['link']['label']}: #{e['link']['url']}" if e["link"]
+      s += "\nCase study: #{@base}#{e['case_study']['url']}" if e["case_study"]
       s
     end
 
     def strip_tags(html)
-      html.to_s.gsub(/<[^>]+>/, "")
+      CGI.unescapeHTML(html.to_s.gsub(/<[^>]+>/, ""))
     end
 
     # root-relative links and images become absolute, so they still work outside the site
