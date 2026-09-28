@@ -243,7 +243,8 @@ let the gradient and glass carry the DeFi feel on their own. Content widths: `68
 right under the intro, then *Recent posts* (5 rows), *Featured projects* (3 cards) and *Selected
 publications* (2–3 rows).
 
-**At a glance** is two panels side by side (stacked on phones):
+**At a glance** is two panels, stacked full width (the year-long contribution graph is ~690px, too
+wide for half the 1120px column):
 
 - **Open source**: public repos · stars · contributions in the last year · followers, the
   contribution graph, and "Most active in: Python, Rust, TypeScript" from repo languages. Links to
@@ -307,6 +308,10 @@ slow or filtered network. Instead, the numbers are fetched once per build and wr
   sits beside them for anyone who wants that count.
 
 ## 8. Behavior and accessibility
+
+- **No horizontal page scroll at any width.** Wide things (tables, code, the contribution graph)
+  scroll inside their own box; grid and flex children that hold them get `min-width: 0` so they
+  can shrink. Checked on every page at 375, 768, 1280 and 1440px.
 
 - Visible focus ring (`2px` accent outline) on every interactive element; a skip-to-content link.
 - Respect `prefers-reduced-motion`: no animations then (and there are very few anyway).

@@ -220,8 +220,11 @@ footer a { color: var(--muted); }
 @media (max-width: 640px) { .row { grid-template-columns: 96px 1fr; gap: 14px; } .thumb { aspect-ratio: 1; } .row p { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; } }
 
 /* ---- stats ---- */
-.panels { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-@media (max-width: 900px) { .panels { grid-template-columns: 1fr; } }
+/* stacked: the 53-week graph (~690px) never fits in half of the 1120px column. Grid items must
+   be allowed to shrink (min-width: 0), or on narrow screens the graph widens the column and the
+   whole page scrolls sideways; the graph scrolls inside its panel instead. */
+.panels { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; }
+.panel, .panels > * { min-width: 0; }
 .panel { border: 1px solid var(--border); border-radius: var(--r); padding: 20px; background: var(--surface); }
 .panel-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 16px; }
 .panel-head h3 { font-size: 17px; }
@@ -232,7 +235,7 @@ footer a { color: var(--muted); }
 .tile b { display: block; font-size: 26px; line-height: 1.2; font-variant-numeric: tabular-nums; }
 .tile span { font-size: 13px; color: var(--muted); }
 .tile small { display: block; font-size: 12px; color: var(--accent); }
-.graph { margin-top: 16px; overflow-x: auto; }
+.graph { margin-top: 16px; overflow-x: auto; max-width: 100%; }
 .graph-grid { display: grid; grid-template-rows: repeat(7, 10px); grid-auto-flow: column; grid-auto-columns: 10px; gap: 3px; }
 .graph-grid i { border-radius: 0; background: var(--border); }
 .graph-grid i[data-l="1"] { background: color-mix(in srgb, var(--accent) 30%, var(--border)); }
