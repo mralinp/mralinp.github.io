@@ -452,6 +452,10 @@ dialog.search kbd { font: 11px var(--mono); color: var(--muted); border: 1px sol
 .search-foot kbd { margin-right: 3px; }
 @media (max-width: 640px) { dialog.search { margin-top: 16px; } .search-foot { display: none; } }
 
+
+.search-close { background: none; border: 0; padding: 0; margin: 0; color: var(--muted); font: inherit; cursor: pointer; display: inline-flex; align-items: center; gap: 3px; }
+.search-close:hover, .search-close:hover kbd { color: var(--text); border-color: var(--accent); }
+
 /* mockup only: page switcher */
 .page { display: none; }
 .page.on { display: block; }
@@ -496,10 +500,10 @@ dialog.search kbd { font: 11px var(--mono); color: var(--muted); border: 1px sol
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
     <input id="q" type="search" placeholder="Search posts, projects, tags…" autocomplete="off" spellcheck="false"
       role="combobox" aria-expanded="true" aria-controls="hits" aria-autocomplete="list">
-    <kbd>Esc</kbd>
+    <button class="search-close" type="button" data-close aria-label="Close search"><kbd>Esc</kbd></button>
   </form>
   <ul class="hits" id="hits" role="listbox"></ul>
-  <div class="search-foot"><span><kbd>↑</kbd><kbd>↓</kbd> move</span><span><kbd>↵</kbd> open</span><span><kbd>Esc</kbd> close</span></div>
+  <div class="search-foot"><span><kbd>↑</kbd><kbd>↓</kbd> move</span><span><kbd>↵</kbd> open</span><button class="search-close" type="button" data-close aria-label="Close search"><kbd>Esc</kbd> close</button></div>
 </dialog>
 
 <main id="main">
@@ -893,7 +897,9 @@ q.addEventListener("keydown", function (e) {
   else if (e.key === "Enter") { e.preventDefault(); if (shown[sel]) { dlg.close(); location.hash = shown[sel].href; } }
 });
 hits.addEventListener("click", function (e) { if (e.target.closest("a")) dlg.close(); });
-dlg.addEventListener("click", function (e) { if (e.target === dlg) dlg.close(); });  // click on the backdrop
+dlg.addEventListener("click", function (e) {
+  if (e.target === dlg || e.target.closest("[data-close]")) dlg.close();  // backdrop, or an Esc button
+});
 addEventListener("keydown", function (e) {
   var typing = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName) || document.activeElement.isContentEditable;
   if ((e.key === "/" && !typing) || (e.key.toLowerCase() === "k" && (e.metaKey || e.ctrlKey))) { e.preventDefault(); openSearch(); }
