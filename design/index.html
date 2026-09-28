@@ -475,6 +475,9 @@ dialog.search kbd { font: 11px var(--mono); color: var(--muted); border: 1px sol
 .skills dd { margin: 0; }
 @media (max-width: 640px) { .skills { grid-template-columns: 1fr; gap: 2px; } .skills dd { margin-bottom: 12px; } }
 
+
+.ongoing { font: 600 11px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent-2); border: 1px solid currentColor; padding: 1px 6px; }
+
 /* mockup only: page switcher */
 .page { display: none; }
 .page.on { display: block; }
@@ -637,11 +640,11 @@ dialog.search kbd { font: 11px var(--mono); color: var(--muted); border: 1px sol
     <h1 style="font-size:40px; margin:64px 0 8px">Research</h1>
     <p class="muted" style="margin:0 0 8px">Medical image analysis, 3D ultrasound, and representation learning.</p>
     <div data-panel="ac" style="margin:24px 0 16px"></div>
-    <div class="year">2026</div>
+    <div class="year">Current work</div>
     <div class="pub">
       <div class="title">Spherical Shape-Based Features for Classification of Breast Tumors in 3D-ABUS Images</div>
       <div class="authors"><strong>A. Naderiparizi</strong>, S. Barekat, E. Kozegar, M. Soryani</div>
-      <div class="venue">IEEE Transactions on Medical Imaging · not yet published</div>
+      <div class="venue"><span class="ongoing">Ongoing</span></div>
     </div>
     <div class="year">2025</div>
     <div class="pub">
@@ -696,7 +699,7 @@ dialog.search kbd { font: 11px var(--mono); color: var(--muted); border: 1px sol
     <section class="cv">
       <h2>Publications</h2>
       <ul class="timeline">
-        <li><span class="when">2026</span><div><div class="what">Spherical Shape-Based Features for Classification of Breast Tumors in 3D-ABUS Images</div><div class="where"><strong>A. Naderiparizi</strong>, S. Barekat, E. Kozegar, M. Soryani · IEEE Transactions on Medical Imaging · <em>not yet published</em></div></div></li><li><span class="when">2025</span><div><div class="what">Breast Mass Classification in 3D ABUS based on Laplace-Beltrami Spectra and Dual Path CNN</div><div class="where">S. Barekat, <strong>A. Naderiparizi</strong>, E. Kozegar, M. Soryani · Expert Systems with Applications</div></div></li>
+        <li><span class="when">Current</span><div><div class="what">Spherical Shape-Based Features for Classification of Breast Tumors in 3D-ABUS Images</div><div class="where"><strong>A. Naderiparizi</strong>, S. Barekat, E. Kozegar, M. Soryani · <span class="ongoing">Ongoing</span></div></div></li><li><span class="when">2025</span><div><div class="what">Breast Mass Classification in 3D ABUS based on Laplace-Beltrami Spectra and Dual Path CNN</div><div class="where">S. Barekat, <strong>A. Naderiparizi</strong>, E. Kozegar, M. Soryani · Expert Systems with Applications</div></div></li>
       </ul>
     </section>
     <section class="cv">
