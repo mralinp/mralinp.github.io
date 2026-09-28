@@ -38,7 +38,7 @@ two things visitors come for: **reading a post** and **finding out who Ali is**.
 5. **Numbers are always there.** GitHub and academic stats are fetched at *build* time and baked
    into the page, and the site rebuilds daily, so a visitor never sees `--` or "Loading…" and no
    page depends on a third-party API answering in their browser (see *Stats* below).
-6. **Small.** One stylesheet, one font family (Inter, already bundled) plus JetBrains Mono for code,
+6. **Small.** One stylesheet; Inter for text, Anton for display, JetBrains Mono for code (all self-hosted);
    one icon set (inline SVG), no CSS framework. MathJax and Prism load only on posts that need them.
 7. **Standard patterns.** Top navigation, a footer with links, breadcrumbs back from a post, prev/next
    at the end. Nothing a visitor has to learn.
@@ -80,6 +80,23 @@ Ali is serious and direct, a fighter in how he works, and the site says so.
   text or large fills.
 - **Still readable.** Long posts keep a calm, solid 18px column; the intensity lives in the frame,
   not the prose.
+
+### Rock and metal
+
+Ali loves rock and metal, and the frame of the site borrows from album art and gig posters,
+tastefully: no skulls, flames or novelty fonts.
+
+- **Poster type.** Page titles, post titles, the hero name and stat numbers are set in **Anton**
+  (SIL OFL, self-hosted in `assets/fonts/`), uppercase, tight leading. The hero name runs 104px
+  (64px on phones) in the gradient. Body, UI and code stay in Inter and JetBrains Mono.
+- **Tracklist numbering.** Section titles read `01 — AT A GLANCE`, `02 — RECENT POSTS`; post rows
+  lead with `01 / 28 SEPT 2026`. Numbers in crimson, via CSS counters (no markup).
+- **Brushed steel.** In dark mode stat numbers are filled with a chrome gradient (`--steel`); in
+  light mode they keep the brand gradient.
+- **Grain.** A fixed SVG noise layer at 6% opacity over the page gives print-poster grit. It's one
+  static data URI, `pointer-events: none`, no animation.
+- **The slash.** A 3px gradient bar with an angled end closes the hero, like a band logo's
+  underline.
 
 All colors are CSS custom properties on `:root`, redefined for dark mode. Nothing outside the token
 block uses a raw color.

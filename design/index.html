@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Site redesign · mockup</title>
 <!-- Mockup of design/README.md. Open from disk; images come from ../assets. -->
+<!-- Anton: condensed poster face (SIL OFL). The real site self-hosts it in assets/fonts. -->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&display=swap">
 <style>
 @font-face { font-family: Inter; src: url(../assets/fonts/inter-latin.woff2) format("woff2"); font-weight: 100 900; font-display: swap; }
 @font-face { font-family: "JetBrains Mono"; src: url(../assets/fonts/jetbrains-mono-latin.woff2) format("woff2"); font-display: swap; }
@@ -18,6 +21,8 @@
   --glow-a: rgba(139,92,246,.10); --glow-b: rgba(220,38,38,.06);
   --read: 68ch; --wide: 1120px; --r: 0;
   --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --display: Anton, "Arial Narrow", Impact, sans-serif;
+  --steel: linear-gradient(180deg, #ffffff 0%, #b9bdd0 48%, #6b7090 52%, #d8dbea 100%);
   color-scheme: light;
 }
 @media (prefers-color-scheme: dark) {
@@ -254,6 +259,31 @@ h1, h2, .post-title { font-weight: 800; letter-spacing: -0.025em; }
 .tile b { font-size: 32px; font-weight: 700; }
 .card:hover, .pager a:hover { transform: translateY(-2px); }
 .card, .pager a { transition: border-color .15s, transform .15s, box-shadow .15s; }
+
+
+/* ---- rock & metal: poster type, grain, tracklist, steel ---- */
+body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 50; opacity: .06; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.hero h1 { font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: 104px; line-height: .9; letter-spacing: .01em; }
+.hero h1 span { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+@media (max-width: 640px) { .hero h1 { font-size: 64px; } }
+.page > .wrap > h1, .read > h1, .about-top h1 { font-family: var(--display); font-weight: 400 !important; text-transform: uppercase; letter-spacing: .01em; font-size: 64px !important; line-height: .95; }
+.post-title { font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: 56px; line-height: 1; letter-spacing: .01em; }
+@media (max-width: 640px) { .post-title, .page > .wrap > h1, .read > h1, .about-top h1 { font-size: 40px !important; } }
+/* section heads read like a tracklist: 01 — AT A GLANCE */
+main { counter-reset: track; }
+.page .section-head h2::before { counter-increment: track; content: counter(track, decimal-leading-zero) " —"; width: auto; height: auto; background: none; box-shadow: none; color: var(--accent-2); }
+/* post rows get track numbers too */
+.rows { counter-reset: row; }
+.row { position: relative; }
+.row .date::before { counter-increment: row; content: counter(row, decimal-leading-zero) "  /  "; color: var(--accent-2); }
+/* brushed steel on stat numbers in dark mode; gradient stays in light */
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .tile b { background: var(--steel); -webkit-background-clip: text; background-clip: text; } }
+:root[data-theme="dark"] .tile b { background: var(--steel); -webkit-background-clip: text; background-clip: text; }
+.tile b { font-family: var(--display); font-weight: 400; font-size: 40px; letter-spacing: .02em; }
+/* a hard crimson slash under the hero */
+.hero + section { position: relative; }
+.hero::after { content: ""; grid-column: 1 / -1; height: 3px; background: var(--grad); clip-path: polygon(0 0, 100% 0, 97% 100%, 0 100%); margin-top: 8px; }
 
 /* mockup only: page switcher */
 .page { display: none; }
