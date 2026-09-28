@@ -48,7 +48,7 @@ module LlmsFull
                 "- Topics: #{d['categories'].drop(1).join(', ')}"]
         head << "- Code: #{d['github']}" if d["github"]
         head << "- Summary: #{d['brief']}" if d["brief"]
-        out << head.join("\n") + "\n\n" + absolute(post.content.strip, base)
+        out << head.join("\n") + "\n\n" + absolute(uncomment(post.content).strip, base)
       end
 
       page = Jekyll::PageWithoutAFile.new(site, site.source, "", "llms-full.txt")
@@ -75,6 +75,11 @@ module LlmsFull
     end
 
     # root-relative links and images become absolute, so they still work outside the site
+    # author notes (HTML and Liquid comments) are not part of the text
+    def uncomment(md)
+      md.gsub(/<!--.*?-->/m, "").gsub(/\{%-?\s*comment\s*-?%\}.*?\{%-?\s*endcomment\s*-?%\}/m, "")
+    end
+
     def absolute(md, base)
       md.gsub(/\]\(\//, "](#{base}/").gsub(/(src|href)="\//, "\\1=\"#{base}/")
     end
