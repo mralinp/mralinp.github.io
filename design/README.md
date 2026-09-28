@@ -73,9 +73,12 @@ Ali is serious and direct, a fighter in how he works, and the site says so.
 
 - **Type is heavy.** Headings at weight 800 with tight tracking; the name in the hero at 56px.
   Section labels in uppercase mono with wide tracking; buttons uppercase and bold.
-- **Copy is short and declarative.** No "Hi, I'm…", no hedging. Hero: the name, a one-line role
-  kicker (`ML researcher · Engineer · CTO (AI) at SciNext`), then one sentence of what he builds.
-  Buttons say *Read the work*, *Contact*, *Download CV*.
+- **Copy is short and declarative, and never self-praise.** No "Hi, I'm…", no "I build / I ship /
+  I do" sentences. The work speaks; the hero carries an **epigraph** instead: a sharp line from a
+  great engineer or thinker, set as a code comment (`// Talk is cheap. Show me the code.` —
+  Linus Torvalds) in JetBrains Mono, with the attribution under it in small caps. The quote can be
+  swapped in `_config.yml` without touching templates. Buttons say *Read the work*, *Contact*,
+  *Download CV*.
 - **Crimson is the edge**, used for kickers, deltas and the end of the gradient, never for body
   text or large fills.
 - **Still readable.** Long posts keep a calm, solid 18px column; the intensity lives in the frame,
@@ -156,9 +159,7 @@ let the gradient and glass carry the DeFi feel on their own. Content widths: `68
 
 ## 6. Pages
 
-**Home.** The intro (photo, name, role kicker, one sentence: "I build systems that work under
-pressure: medical imaging models, VPN clients, embedded hardware. I ship them, and I write down
-exactly how."), three buttons (Read the work · Contact · Download CV), then *At a glance* (the stats panels, below)
+**Home.** The intro (photo, name, role kicker, and the epigraph), three buttons (Read the work · Contact · Download CV), then *At a glance* (the stats panels, below)
 right under the intro, then *Recent posts* (5 rows), *Featured projects* (3 cards) and *Selected
 publications* (2–3 rows).
 

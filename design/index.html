@@ -285,6 +285,15 @@ main { counter-reset: track; }
 .hero + section { position: relative; }
 .hero::after { content: ""; grid-column: 1 / -1; height: 3px; background: var(--grad); clip-path: polygon(0 0, 100% 0, 97% 100%, 0 100%); margin-top: 8px; }
 
+
+/* ---- hero epigraph: a quote set as a code comment, not a self-description ---- */
+.epigraph { margin: 6px 0 22px; padding: 0; }
+.epigraph p { font: 500 22px/1.4 var(--mono); color: var(--text); margin: 0; letter-spacing: -.01em; }
+.epigraph .slashes { color: var(--accent-2); margin-right: 6px; }
+.epigraph cite { display: block; font: 500 12px var(--mono); font-style: normal; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-top: 8px; }
+.epigraph cite::before { content: "— "; }
+@media (max-width: 640px) { .epigraph p { font-size: 18px; } }
+
 /* mockup only: page switcher */
 .page { display: none; }
 .page.on { display: block; }
@@ -333,7 +342,7 @@ main { counter-reset: track; }
       <div>
         <h1><span>Ali Naderi</span>.</h1>
         <p class="kicker">ML researcher · Engineer · CTO (AI) at SciNext</p>
-        <p>I build systems that work under pressure: medical imaging models, VPN clients, embedded hardware. I ship them, and I write down exactly how.</p>
+        <blockquote class="epigraph"><p><span class="slashes">//</span> Talk is cheap. Show me the code.</p><cite>Linus Torvalds</cite></blockquote>
         <div class="actions">
           <a class="btn primary" href="#blog">Read the work</a>
           <a class="btn" href="mailto:me@alinaderiparizi.com">Contact</a>
