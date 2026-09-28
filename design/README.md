@@ -19,7 +19,7 @@ two things visitors come for: **reading a post** and **finding out who Ali is**.
 | Jargon labels | "SYSTEM_STATUS NOMINAL // 100%", "INITIATE SEARCH_QUERIES…", "Blog deployments", "Article dispatch", "Feed status live", "Library modules", "Systems architecture" | A visitor has to decode the UI before using it. None of it carries information. |
 | ALL-CAPS titles | page and post titles, card titles | Caps are ~10–15% slower to read, and long post titles become walls of shouting. |
 | Home is a dashboard | GitHub metrics, "Publication impact monitor", typed-text hero | The first screen shows loading dashes and "Loading publications…" instead of who you are and what you wrote. |
-| Live widgets that can fail | GitHub metrics, ORCID fetch on Home, Projects and Research | On a slow or filtered network they stay empty (`--`, "Syncing…"). Research is almost blank until ORCID answers. |
+| Live widgets that fail in the browser | GitHub metrics, ORCID fetch on Home, Projects and Research | On a slow or filtered network they stay empty (`--`, "Syncing…"). Research is almost blank until ORCID answers. |
 | Hard-to-read posts | post layout | Lines run ~150 characters, body text is small grey on near-black, and the animated background sits behind the text. |
 | Animated WebGL background | every page | Costs battery and CPU on every page for decoration, and lowers text contrast. |
 | Dark only | `<html class="dark">` | Ignores the visitor's system setting; long reads in daylight are tiring. |
@@ -35,8 +35,9 @@ two things visitors come for: **reading a post** and **finding out who Ali is**.
 3. **Readable by default.** A 68-character reading column, 18px body text, 1.7 line height,
    sentence-case headings, real contrast (WCAG AA at minimum).
 4. **Light and dark, following the system**, with a toggle that remembers the choice.
-5. **Static beats live.** Publication and project data live in `_data/*.yml` and are rendered at
-   build time. Nothing on a page depends on a third-party API answering.
+5. **Numbers are always there.** GitHub and academic stats are fetched at *build* time and baked
+   into the page, and the site rebuilds daily, so a visitor never sees `--` or "Loading…" and no
+   page depends on a third-party API answering in their browser (see *Stats* below).
 6. **Small.** One stylesheet, one font family (Inter, already bundled) plus JetBrains Mono for code,
    one icon set (inline SVG), no CSS framework. MathJax and Prism load only on posts that need them.
 7. **Standard patterns.** Top navigation, a footer with links, breadcrumbs back from a post, prev/next
@@ -90,8 +91,14 @@ and buttons. Content widths: `68ch` for reading, `1120px` for grids.
 
 ## 5. Components
 
-- **Post row**: date · title · one-line brief · tags. Used on Home and Blog. No image, so a list of
-  twenty is still scannable.
+- **Post row**: thumbnail (the post's `img`, 16:9, 200px wide; 96px square-cropped on phones) ·
+  date · title · one-line brief · tags. Used on Home and Blog. The thumbnail sits on the left so
+  titles still line up and a long list stays scannable. A post without `img` gets a tinted
+  placeholder with its first tag, so rows never jump.
+- **Stat tile**: big number, label under it, optional small delta ("+12 this year"). Tiles sit in a
+  row of 4 (2 on phones) inside a bordered panel with a title and a "source" link.
+- **Contribution graph**: GitHub's last-year contribution grid as 53×7 small squares in 5 accent
+  steps, with month labels; scrolls horizontally on phones instead of shrinking.
 - **Project card**: image (16:9, `object-fit: cover`), title, brief, tech chips, links to post and repo.
 - **Book card**: cover (2:3), title, author, one-line takeaway.
 - **Publication row**: authors (Ali in bold), title, venue and year, links (PDF · DOI · code).
@@ -104,8 +111,15 @@ and buttons. Content widths: `68ch` for reading, `1120px` for grids.
 **Home.** A short intro (photo, name, one sentence: "Machine learning researcher and software
 engineer in Tehran. I write about deep learning, medical imaging, networks and the software I
 build."), two buttons (Read the blog · About me), then *Recent posts* (5 rows), *Featured projects*
-(3 cards) and *Selected publications* (2–3 rows). The GitHub numbers, if kept, become one quiet line
-under the intro, rendered at build time.
+(3 cards), *At a glance* (the stats panels, below) and *Selected publications* (2–3 rows).
+
+**At a glance** is two panels side by side (stacked on phones):
+
+- **Open source**: public repos · stars · contributions in the last year · followers, the
+  contribution graph, and "Most active in: Python, Rust, TypeScript" from repo languages. Links to
+  the GitHub profile.
+- **Academic**: publications · citations · h-index · peer reviews, then the latest publication as
+  one line. Links to Google Scholar and ORCID.
 
 **Blog.** Title, a tag filter row (All · AI · Embedded · Network · Math …), and posts grouped by year
 as post rows. Filtering is client-side on data attributes; with JavaScript off, all posts show.
@@ -114,17 +128,39 @@ as post rows. Filtering is client-side on data attributes; with JavaScript off, 
 image, then the 68ch body. A sticky table of contents sits in the right margin on wide screens for
 posts with 4+ headings. At the end: GitHub link if the post has one, prev/next, and back to the list.
 
-**Projects.** Grid of project cards (3 / 2 / 1 columns), newest first.
+**Projects.** The Open source panel on top, then the grid of project cards (3 / 2 / 1 columns),
+newest first.
 
-**Research.** Publications from `_data/publications.yml`, grouped by year, with links to Google
-Scholar and ORCID at the top. No live counters.
+**Research.** The Academic panel on top, then publications from `_data/publications.yml`,
+grouped by year, then Service (reviewing, judging).
 
 **Library.** Grid of book cards.
 
 **About.** Photo and short bio, then Experience and Education as simple timelines, skills as
 chips, and a prominent "Download CV" button. Contact links in one row.
 
-## 7. Behavior and accessibility
+## 7. Stats: where the numbers come from
+
+Today the browser fetches GitHub and ORCID on every visit, which is why the panels show `--` on a
+slow or filtered network. Instead, the numbers are fetched once per build and written to
+`_data/stats.yml`, which the templates read like any other data:
+
+| Number | Source | Fetched by |
+| --- | --- | --- |
+| repos, stars, followers, languages | GitHub REST API (`/users/mralinp`, `/users/mralinp/repos`) | build script |
+| contributions + graph | GitHub GraphQL `contributionsCollection` (the workflow's `GITHUB_TOKEN`) | build script |
+| publications | ORCID public API (`/v3.0/<orcid>/works`) | build script |
+| citations, h-index | Semantic Scholar API (author id); Google Scholar has no API | build script |
+| peer reviews | ORCID `peer-reviews` | build script |
+
+- A small script (`scripts/fetch-stats.mjs`, Node, no dependencies) runs in the Pages workflow
+  before `jekyll build`. The workflow gains a daily `schedule`, so numbers are at most a day old.
+- **If a source fails, the build keeps the last committed values** in `_data/stats.yml` rather
+  than failing or showing zeros. Each panel shows "Updated 28 Sep 2026" from the file.
+- Citations are shown as Semantic Scholar reports them, labelled as such; the Google Scholar link
+  sits beside them for anyone who wants that count.
+
+## 8. Behavior and accessibility
 
 - Visible focus ring (`2px` accent outline) on every interactive element; a skip-to-content link.
 - Respect `prefers-reduced-motion`: no animations then (and there are very few anyway).
@@ -133,10 +169,11 @@ chips, and a prominent "Download CV" button. Contact links in one row.
   its `brief`, plus Open Graph tags so shared links get a preview card.
 - Search: client-side over a build-time JSON index (title, brief, tags). No external service.
 
-## 8. Rollout
+## 9. Rollout
 
 1. Tokens, base styles and the new `main`/`post` layouts. Posts keep their front matter unchanged.
 2. Home, Blog and Post (the pages most people see).
-3. Projects, Library, About, Research (with `_data/publications.yml`).
-4. Delete what nothing uses any more: Bootstrap, the extra icon sets, `assets/vendor/*`, the font
+3. Stats: `scripts/fetch-stats.mjs`, `_data/stats.yml`, the daily schedule, and the two panels.
+4. Projects, Library, About, Research (with `_data/publications.yml`).
+5. Delete what nothing uses any more: Bootstrap, the extra icon sets, `assets/vendor/*`, the font
    zips, the WebGL background, `github-metrics.js`, `pager.js`.

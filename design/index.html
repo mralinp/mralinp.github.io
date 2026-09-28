@@ -160,6 +160,36 @@ footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; g
 footer nav { display: flex; gap: 18px; flex-wrap: wrap; }
 footer a { color: var(--muted); }
 
+
+/* ---- post rows with thumbnails ---- */
+.row { grid-template-columns: 200px 1fr; align-items: start; }
+.thumb { aspect-ratio: 16/9; width: 100%; object-fit: cover; border-radius: 6px; border: 1px solid var(--border); background: var(--surface); }
+.row .date { font-size: 14px; color: var(--muted); font-variant-numeric: tabular-nums; }
+@media (max-width: 640px) { .row { grid-template-columns: 96px 1fr; gap: 14px; } .thumb { aspect-ratio: 1; } .row p { display: none; } }
+
+/* ---- stats ---- */
+.panels { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+@media (max-width: 900px) { .panels { grid-template-columns: 1fr; } }
+.panel { border: 1px solid var(--border); border-radius: var(--r); padding: 20px; background: var(--surface); }
+.panel-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 16px; }
+.panel-head h3 { font-size: 17px; }
+.panel-head a { font-size: 14px; }
+.tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+@media (max-width: 480px) { .tiles { grid-template-columns: repeat(2, 1fr); } }
+.tile { background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 12px 14px; }
+.tile b { display: block; font-size: 26px; line-height: 1.2; font-variant-numeric: tabular-nums; }
+.tile span { font-size: 13px; color: var(--muted); }
+.tile small { display: block; font-size: 12px; color: var(--accent); }
+.graph { margin-top: 16px; overflow-x: auto; }
+.graph-grid { display: grid; grid-template-rows: repeat(7, 10px); grid-auto-flow: column; grid-auto-columns: 10px; gap: 3px; }
+.graph-grid i { border-radius: 2px; background: var(--border); }
+.graph-grid i[data-l="1"] { background: color-mix(in srgb, var(--accent) 30%, var(--border)); }
+.graph-grid i[data-l="2"] { background: color-mix(in srgb, var(--accent) 55%, var(--border)); }
+.graph-grid i[data-l="3"] { background: color-mix(in srgb, var(--accent) 80%, var(--border)); }
+.graph-grid i[data-l="4"] { background: var(--accent); }
+.panel-foot { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-top: 14px; font-size: 13px; color: var(--muted); }
+.panel-foot .latest { color: var(--text); font-size: 14px; }
+
 /* mockup only: page switcher */
 .page { display: none; }
 .page.on { display: block; }
@@ -212,24 +242,22 @@ footer a { color: var(--muted); }
           <a class="btn" href="#about">About me</a>
           <a class="btn" href="../assets/resume/ali-naderi-parizi-cv.pdf">Download CV</a>
         </div>
-        <div class="stats-line">57 open-source repositories · 1 journal paper · MSc in AI, IUST</div>
-      </div>
+              </div>
     </div>
 
     <section>
       <div class="section-head"><h2>Recent posts</h2><a href="#blog">All posts →</a></div>
-      <ul class="rows">
-        <li class="row"><time>28 Sep 2026</time><div><h3><a href="#post">Nunya: Building an Honest, Open-Source VPN Client</a></h3><p>The idea behind a free VPN client for macOS, Windows and Linux, how it's built, and taking it from a fork to a released product.</p><div class="chips"><span class="chip">Project</span><span class="chip">Rust</span><span class="chip">Open source</span></div></div></li>
-        <li class="row"><time>24 Sep 2026</time><div><h3><a href="#post">latex-academic-template: create-react-app for LaTeX</a></h3><p>Scaffold a thesis or paper in one command, build it in Docker, and stop fighting TeX installs.</p><div class="chips"><span class="chip">Project</span><span class="chip">LaTeX</span></div></div></li>
-        <li class="row"><time>23 Sep 2026</time><div><h3><a href="#post">tdsc-abus2023-pytorch: A PyTorch Dataset for 3D Breast Ultrasound</a></h3><p>A pip-installable Dataset for TDSC-ABUS 2023, the bugs it had, and a memory-mapped cache.</p><div class="chips"><span class="chip">Medical imaging</span><span class="chip">PyTorch</span></div></div></li>
-        <li class="row"><time>16 Sep 2026</time><div><h3><a href="#post">ABUS Classification, Part 1: Mammography, Ultrasound, and Why 3D</a></h3><p>Imaging modalities for breast cancer screening, and what automated 3D ultrasound adds.</p><div class="chips"><span class="chip">Medical imaging</span></div></div></li>
-        <li class="row"><time>4 Sep 2026</time><div><h3><a href="#post">Smart Card: Building Your First Applet with jCardSim</a></h3><p>From zero to a working Java Card applet, simulated on your laptop.</p><div class="chips"><span class="chip">Embedded</span></div></div></li>
-      </ul>
+      <ul class="rows" data-posts="home"></ul>
     </section>
 
     <section>
       <div class="section-head"><h2>Featured projects</h2><a href="#projects">All projects →</a></div>
       <div class="grid" data-cards></div>
+    </section>
+
+    <section>
+      <div class="section-head"><h2>At a glance</h2></div>
+      <div class="panels"><div data-panel="gh"></div><div data-panel="ac"></div></div>
     </section>
 
     <section>
@@ -252,23 +280,7 @@ footer a { color: var(--muted); }
     <div class="chips filter" role="group" aria-label="Filter by topic">
       <button class="chip" aria-pressed="true">All</button><button class="chip" aria-pressed="false">AI</button><button class="chip" aria-pressed="false">Medical imaging</button><button class="chip" aria-pressed="false">Embedded</button><button class="chip" aria-pressed="false">Network</button><button class="chip" aria-pressed="false">Math</button>
     </div>
-    <div class="year">2026</div>
-    <ul class="rows">
-      <li class="row"><time>4 Sep</time><div><h3><a href="#post">Smart Card: Building Your First Applet with jCardSim</a></h3><p>From zero to a working Java Card applet, simulated on your laptop.</p></div></li>
-    </ul>
-    <div class="year">2023</div>
-    <ul class="rows">
-      <li class="row"><time>19 Jul</time><div><h3><a href="#post">Smart Card: An Introduction to smart card development</a></h3><p>What smart cards are, and how they run code.</p></div></li>
-      <li class="row"><time>27 Mar</time><div><h3><a href="#post">PyTorch Tutorial, Part 2: Datasets and DataLoaders</a></h3><p>A custom Dataset, a DataLoader, and a full training loop.</p></div></li>
-      <li class="row"><time>22 Mar</time><div><h3><a href="#post">PyTorch Tutorial, Part 1: Installation and The Basics</a></h3><p>Tensors, autograd and your first model.</p></div></li>
-      <li class="row"><time>21 Mar</time><div><h3><a href="#post">Adversarial attacks in deep learning</a></h3><p>How a few pixels fool a classifier.</p></div></li>
-    </ul>
-    <div class="year">2022</div>
-    <ul class="rows">
-      <li class="row"><time>16 Sep</time><div><h3><a href="#post">What is an AutoEncoder?</a></h3><p>Compressing and reconstructing data with neural networks.</p></div></li>
-      <li class="row"><time>14 Jul</time><div><h3><a href="#post">The Poisson Distribution</a></h3><p>Where it comes from and why it shows up everywhere.</p></div></li>
-      <li class="row"><time>20 Jun</time><div><h3><a href="#post">LeNet-5 from scratch</a></h3><p>The classic CNN, rebuilt and trained on MNIST.</p></div></li>
-    </ul>
+    <div data-posts="blog"></div>
   </div>
 </div>
 
@@ -315,6 +327,7 @@ response  [u32 id][u8  status    ][u32 payload_len][protobuf or error text]</cod
   <div class="wrap">
     <h1 style="font-size:40px; margin:64px 0 8px">Projects</h1>
     <p class="muted" style="margin:0 0 32px">Things I've built, with write-ups of how and why.</p>
+    <div data-panel="gh" style="margin-bottom:40px"></div>
     <div class="grid" data-cards="all"></div>
   </div>
 </div>
@@ -324,7 +337,7 @@ response  [u32 id][u8  status    ][u32 payload_len][protobuf or error text]</cod
   <div class="wrap read" style="max-width: 820px">
     <h1 style="font-size:40px; margin:64px 0 8px">Research</h1>
     <p class="muted" style="margin:0 0 8px">Medical image analysis, 3D ultrasound, and representation learning.</p>
-    <p class="meta" style="margin:0 0 32px"><a href="#">Google Scholar</a> · <a href="#">ORCID</a> · <a href="#">Semantic Scholar</a></p>
+    <div data-panel="ac" style="margin:24px 0 16px"></div>
     <div class="year">2025</div>
     <div class="pub">
       <div class="title">Breast Mass Classification in 3D ABUS based on Laplace-Beltrami Spectra and Dual Path CNN</div>
@@ -414,6 +427,54 @@ document.querySelectorAll("[data-cards]").forEach(function (g) {
       p[3].map(function (t) { return '<span class="chip">' + t + '</span>'; }).join("") + '</div></div></article>');
   });
 });
+
+var I = "../assets/images/posts/";
+var posts = [
+  ["2026-09-28", "Nunya: Building an Honest, Open-Source VPN Client", "The idea behind a free VPN client for macOS, Windows and Linux, how it's built, and taking it from a fork to a released product.", "projects/nunya/main.png", ["Project", "Rust"]],
+  ["2026-09-24", "latex-academic-template: create-react-app for LaTeX", "Scaffold a thesis or paper in one command, build it in Docker, and stop fighting TeX installs.", "projects/latex-academic-template/gallery.png", ["Project", "LaTeX"]],
+  ["2026-09-23", "tdsc-abus2023-pytorch: A PyTorch Dataset for 3D Breast Ultrasound", "A pip-installable Dataset for TDSC-ABUS 2023, the bugs it had, and a memory-mapped cache.", "projects/tdsc-abus2023-pytorch/sample_case.png", ["Medical imaging", "PyTorch"]],
+  ["2026-09-16", "ABUS Classification, Part 1: Mammography, Ultrasound, and Why 3D", "Imaging modalities for breast cancer screening, and what automated 3D ultrasound adds.", "projects/abus-classification/sample-tumors-transversal.png", ["Medical imaging"]],
+  ["2026-09-04", "Smart Card: Building Your First Applet with jCardSim", "From zero to a working Java Card applet, simulated on your laptop.", "blog/smart-card/title-dev.jpg", ["Embedded"]],
+  ["2023-07-19", "Smart Card: An Introduction to smart card development", "What smart cards are, and how they run code.", "blog/smart-card/title.png", ["Embedded"]],
+  ["2023-03-27", "PyTorch Tutorial, Part 2: Datasets and DataLoaders", "A custom Dataset, a DataLoader, and a full training loop.", "blog/pytorch-tutorial/part-2/title.png", ["AI", "PyTorch"]],
+  ["2023-03-21", "Adversarial attacks in deep learning", "How a few pixels fool a classifier.", "blog/adversarial-attack/title.png", ["AI"]],
+  ["2022-09-16", "What is an AutoEncoder?", "Compressing and reconstructing data with neural networks.", "blog/auto-encoder/title.png", ["AI"]],
+  ["2022-07-14", "The Poisson Distribution", "Where it comes from and why it shows up everywhere.", "blog/poisson/title.png", ["Math"]]
+];
+function fmt(d, year) { return new Date(d).toLocaleDateString("en-GB", year ? { day: "numeric", month: "short", year: "numeric" } : { day: "numeric", month: "short" }); }
+function row(p, year) {
+  return '<li class="row"><img class="thumb" loading="lazy" src="' + I + p[3] + '" alt=""><div><div class="date">' + fmt(p[0], year) + '</div>' +
+    '<h3><a href="#post">' + p[1] + '</a></h3><p>' + p[2] + '</p><div class="chips">' +
+    p[4].map(function (t) { return '<span class="chip">' + t + '</span>'; }).join("") + '</div></div></li>';
+}
+document.querySelectorAll('[data-posts="home"]').forEach(function (u) { u.innerHTML = posts.slice(0, 5).map(function (p) { return row(p, true); }).join(""); });
+document.querySelectorAll('[data-posts="blog"]').forEach(function (b) {
+  var html = "", y = "";
+  posts.forEach(function (p) {
+    if (p[0].slice(0, 4) !== y) { if (y) html += "</ul>"; y = p[0].slice(0, 4); html += '<div class="year">' + y + '</div><ul class="rows">'; }
+    html += row(p, false);
+  });
+  b.innerHTML = html + "</ul>";
+});
+
+// Stats panels. In the real site these values come from _data/stats.yml, written at build time.
+var stats = { repos: 57, stars: 37, contributions: 234, followers: 37, langs: "Python, Rust, TypeScript",
+              pubs: 1, citations: 1, hindex: 1, reviews: 1, updated: "28 Sep 2026",
+              latest: "Breast Mass Classification in 3D ABUS … (Expert Systems with Applications, 2025)" };
+function tile(n, label, note) { return '<div class="tile"><b>' + n + '</b><span>' + label + '</span>' + (note ? '<small>' + note + '</small>' : '') + '</div>'; }
+var cells = "";
+for (var i = 0; i < 53 * 7; i++) { var r = Math.sin(i * 12.9898) * 43758.5453; r = r - Math.floor(r); cells += '<i data-l="' + (r < .55 ? 0 : r < .75 ? 1 : r < .87 ? 2 : r < .95 ? 3 : 4) + '"></i>'; }
+var panels = {
+  gh: '<div class="panel"><div class="panel-head"><h3>Open source</h3><a href="https://github.com/mralinp">GitHub →</a></div><div class="tiles">' +
+      tile(stats.repos, "Repositories") + tile(stats.stars, "Stars") + tile(stats.contributions, "Contributions", "last 12 months") + tile(stats.followers, "Followers") +
+      '</div><div class="graph" aria-label="Contribution graph, last 12 months"><div class="graph-grid">' + cells + '</div></div>' +
+      '<div class="panel-foot"><span>Most active in ' + stats.langs + '</span><span>Updated ' + stats.updated + '</span></div></div>',
+  ac: '<div class="panel"><div class="panel-head"><h3>Academic</h3><span style="font-size:14px"><a href="#">Scholar</a> · <a href="#">ORCID</a></span></div><div class="tiles">' +
+      tile(stats.pubs, "Publications") + tile(stats.citations, "Citations") + tile(stats.hindex, "h-index") + tile(stats.reviews, "Peer reviews") +
+      '</div><div class="panel-foot" style="margin-top:18px"><span class="latest">Latest: ' + stats.latest + '</span><span>Updated ' + stats.updated + '</span></div></div>'
+};
+document.querySelectorAll("[data-panel]").forEach(function (d) { d.innerHTML = panels[d.dataset.panel]; });
+
 function show() {
   var id = (location.hash || "#home").slice(1);
   if (!document.getElementById("p-" + id)) id = "home";
