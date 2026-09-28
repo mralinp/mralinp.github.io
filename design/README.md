@@ -53,8 +53,9 @@ Home ─┬─ Blog ──────── post
       └─ About             (bio, experience, education, CV download)
 ```
 
-- **Top nav**: name on the left; Blog · Projects · Research · Library · About on the right; then
-  search and the theme toggle. On phones it collapses into a menu button.
+- **Top nav**: name on the left; Home · Blog · Projects · Research · Library · About on the right; then
+  search and the theme toggle. The current page's item is highlighted (Home included). On phones
+  it collapses into a menu button.
 - **Footer**: GitHub · LinkedIn · Twitter/X · Email · RSS · CV, and © year.
 - Notes join the nav under Blog once there is more than one.
 
