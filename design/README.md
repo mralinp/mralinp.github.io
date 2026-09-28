@@ -89,26 +89,26 @@ Ali is serious and direct, a fighter in how he works, and the site says so.
 
 ### Portrait
 
-The current photo (suit, white studio background) clashes with a dark poster design, so it gets an
-**album-cover duotone** in CSS, no image editing: grayscale, contrast up, multiplied onto a dark
-violet → crimson gradient (`#4c1d95 → #86198f → #991b1b`), so the white background turns deep and
-the face keeps its detail; a grain layer and a 3px gradient bar along the bottom edge; square
-crop. Hovering shows the original photo.
+The current photo (suit, white studio background) clashes with a dark poster design, so it
+becomes a **booking photo**. `design/tools/cutout.py` cuts Ali out of the plain studio wall
+(flood fill from the frame edges, no segmentation model; pure-white collar excluded so the fill
+can't leak through it; mask feathered) into `assets/images/me-cutout.png`. The portrait then stacks:
+violet → crimson wall, height chart, a vignette that fades the wall into the corners, and Ali in
+black and white **in front of** the chart with a flash shadow on the wall; grain and a 3px gradient
+bar on top. The chart never crosses the face. Square crop; hovering shows the photo in colour.
 
 **Mugshot.** Behind the photo sits a police-lineup **height chart**: drawn to Ali's real height,
 **191 cm**. The chart is scaled to the photo: the hair top sits 4.4% from the top of the frame and
 the chin at 56%, and an average head (≈23.5 cm) gives ~0.455 cm per percent, so the frame spans
 ≈193 cm at the top to ≈148 cm at the bottom. Full lines and labels every 5 cm, edge ticks every
 1 cm, and a crimson line labelled **191** at the top of his head. One inline SVG over the gradient;
-if the photo changes, re-measure hair and chin and regenerate it. Because the photo
-is multiplied onto it, the lines show through where the white studio wall was and vanish behind
-the suit, like a real booking photo. On About, a **booking placard** hangs under it:
+if the photo changes, re-measure hair and chin and regenerate it. On About, a **booking placard** hangs under it:
 `NADERI, A.` in Anton, `TEHRAN · 2026`, and the booking number `#GPL-0003` in crimson (the joke:
 booked under the GPL, version 3).
 
 Better still, a new photo shot for this design: black-and-white or low-key, dark background, side
-or hard light, casual (a dark tee or jacket), looking at the camera or three-quarter. The same
-duotone then makes it look deliberate rather than rescued.
+or hard light, casual (a dark tee or jacket), looking at the camera or three-quarter, against a
+plain wall so `cutout.py` still works.
 
 ### Freedom, humanity, truth
 
