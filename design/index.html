@@ -461,6 +461,20 @@ dialog.search kbd { font: 11px var(--mono); color: var(--muted); border: 1px sol
 .origin b { font-family: var(--display); font-weight: 400; text-transform: uppercase; letter-spacing: .04em; font-size: 22px;
   background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
 
+
+/* ---- About as a CV: every entry = when | role, place, what was done, tech ---- */
+.cv h2 { font: 400 30px var(--display); text-transform: uppercase; letter-spacing: .02em; margin: 0 0 8px; }
+.cv .timeline li { padding: 18px 0; }
+.cv .bullets { margin: 8px 0 0; padding-left: 18px; font-size: 16px; line-height: 1.6; color: var(--text); }
+.cv .bullets li { display: list-item; padding: 0; border: 0; margin: 0 0 4px; grid-template-columns: none; }
+.cv .bullets li::marker { color: var(--accent-2); }
+.cv .chips { margin-top: 10px; }
+.cv .more { display: inline-block; margin-top: 8px; font: 600 12px var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+.skills { display: grid; grid-template-columns: 160px 1fr; gap: 10px 24px; margin: 8px 0 0; font-size: 16px; }
+.skills dt { font: 600 12px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); padding-top: 3px; }
+.skills dd { margin: 0; }
+@media (max-width: 640px) { .skills { grid-template-columns: 1fr; gap: 2px; } .skills dd { margin-bottom: 12px; } }
+
 /* mockup only: page switcher */
 .page { display: none; }
 .page.on { display: block; }
@@ -623,6 +637,12 @@ dialog.search kbd { font: 11px var(--mono); color: var(--muted); border: 1px sol
     <h1 style="font-size:40px; margin:64px 0 8px">Research</h1>
     <p class="muted" style="margin:0 0 8px">Medical image analysis, 3D ultrasound, and representation learning.</p>
     <div data-panel="ac" style="margin:24px 0 16px"></div>
+    <div class="year">2026</div>
+    <div class="pub">
+      <div class="title">Spherical Shape-Based Features for Classification of Breast Tumors in 3D-ABUS Images</div>
+      <div class="authors"><strong>A. Naderiparizi</strong>, S. Barekat, E. Kozegar, M. Soryani</div>
+      <div class="venue">IEEE Transactions on Medical Imaging · not yet published</div>
+    </div>
     <div class="year">2025</div>
     <div class="pub">
       <div class="title">Breast Mass Classification in 3D ABUS based on Laplace-Beltrami Spectra and Dual Path CNN</div>
@@ -661,26 +681,50 @@ dialog.search kbd { font: 11px var(--mono); color: var(--muted); border: 1px sol
         </div>
       </div>
     </div>
-    <section>
-      <h2 style="font-size:22px; margin-bottom:8px">Experience</h2>
+    <section class="cv">
+      <h2>Experience</h2>
       <ul class="timeline">
-        <li><span class="when">2025 – now</span><div><div class="what">Chief Technology Officer (AI)</div><div class="where">SciNext, Tehran</div></div></li>
-        <li><span class="when">2024 – 2025</span><div><div class="what">Software Engineer (AI)</div><div class="where">CyberDesign Nordic AB, Stockholm</div></div></li>
-        <li><span class="when">2022 – 2024</span><div><div class="what">Software Engineer</div><div class="where">IDmelon Technologies, Vancouver</div></div></li>
-        <li><span class="when">2020 – 2022</span><div><div class="what">Software Engineer (Backend)</div><div class="where">DataWare, Tehran</div></div></li>
-        <li><span class="when">2017 – 2019</span><div><div class="what">R&amp;D Intern → Junior Embedded Engineer</div><div class="where">Sico Systems Intelligizer, Shiraz</div></div></li>
+        <li><span class="when">2025 – now</span><div><div class="what">Chief Technology Officer (AI)</div><div class="where">SciNext · Tehran</div><ul class="bullets"><li>Technical evaluation and mentorship for early-stage AI startups.</li><li>Supports the design and build of their machine learning systems and AI-based products.</li></ul></div></li><li><span class="when">2024 – 2025</span><div><div class="what">Software Engineer (AI)</div><div class="where">CyberDesign Nordic AB · Stockholm, Sweden</div><ul class="bullets"><li>Built machine learning systems for indoor positioning from mobile sensor data.</li><li>Built the backend APIs and data pipelines behind model training and deployment.</li></ul><div class="chips"><span class="chip">Python</span><span class="chip">PyTorch</span><span class="chip">Sensor data</span><span class="chip">APIs</span></div></div></li><li><span class="when">2022 – 2024</span><div><div class="what">Software Engineer</div><div class="where">IDmelon Technologies · Vancouver, Canada</div><ul class="bullets"><li>Designed secure authentication systems and distributed cloud services.</li><li>System-level development, data processing pipelines and API architecture.</li></ul><div class="chips"><span class="chip">Authentication</span><span class="chip">Cloud</span><span class="chip">Distributed systems</span></div></div></li><li><span class="when">2020 – 2022</span><div><div class="what">Software Engineer (Backend)</div><div class="where">DataWare · Tehran</div><ul class="bullets"><li>Built scalable backend services and microservice architectures for large-scale data processing.</li></ul><div class="chips"><span class="chip">Microservices</span><span class="chip">Backend</span></div></div></li><li><span class="when">2017 – 2019</span><div><div class="what">R&amp;D Intern → Junior Embedded Engineer</div><div class="where">Sico Systems Intelligizer · Shiraz</div></div></li>
       </ul>
     </section>
-    <section>
-      <h2 style="font-size:22px; margin-bottom:8px">Education</h2>
+    <section class="cv">
+      <h2>Research projects</h2>
       <ul class="timeline">
-        <li><span class="when">2020 – 2023</span><div><div class="what">MSc, Artificial Intelligence and Robotics</div><div class="where">Iran University of Science and Technology · Thesis: Classification of breast cancer lesions in 3D ABUS images</div></div></li>
-        <li><span class="when">2015 – 2020</span><div><div class="what">BSc, Computer Engineering</div><div class="where">Shiraz University</div></div></li>
+        <li><span class="when">2026</span><div><div class="what">Persian text-to-speech with single-shot voice cloning</div><div class="where">Generative speech</div><ul class="bullets"><li>Transformer-based TTS that speaks fluent Persian and clones a voice from a single sample.</li><li>Adapted modern neural TTS to Persian: dataset construction, large-scale cleaning, linguistic preprocessing.</li><li>Built the training and fine-tuning pipelines, plus pre- and post-processing that improve pronunciation and fluency.</li></ul><div class="chips"><span class="chip">Transformers</span><span class="chip">TTS</span><span class="chip">Persian</span></div><a class="more" href="https://tts.jome-farmer.ir">Live demo →</a></div></li><li><span class="when">2025</span><div><div class="what">Ez-Crawl: agentic web crawler</div><div class="where">LLM tooling</div><ul class="bullets"><li>LLM-driven crawler that pulls structured data out of raw HTML with prompt-guided extraction.</li><li>Runs on local or cloud LLMs, with automated browsing pipelines.</li></ul><div class="chips"><span class="chip">LLMs</span><span class="chip">Agents</span><span class="chip">Scraping</span></div></div></li><li><span class="when">2024</span><div><div class="what">TDSC-ABUS2023 PyTorch dataset toolkit</div><div class="where">Open source · medical imaging</div><ul class="bullets"><li>Open-source toolkit for the TDSC 2023 Grand Challenge on 3D automated breast ultrasound.</li><li>Standard loaders, preprocessing and training interfaces for classification and segmentation of volumetric data.</li><li>Published on GitHub and PyPI.</li></ul><div class="chips"><span class="chip">PyTorch</span><span class="chip">3D ultrasound</span><span class="chip">PyPI</span></div><a class="more" href="#post">Read the write-up →</a></div></li><li><span class="when">2020</span><div><div class="what">Robotic vision for agricultural automation</div><div class="where">Computer vision</div><ul class="bullets"><li>Vision system that finds the optimal cutting point on saffron flowers for automated harvesting.</li></ul><div class="chips"><span class="chip">Computer vision</span><span class="chip">Robotics</span></div></div></li>
       </ul>
     </section>
-    <section>
-      <h2 style="font-size:22px; margin-bottom:12px">Skills</h2>
-      <div class="chips"><span class="chip">Python</span><span class="chip">C/C++</span><span class="chip">PyTorch</span><span class="chip">TensorFlow</span><span class="chip">HuggingFace</span><span class="chip">Rust</span><span class="chip">TypeScript</span><span class="chip">Docker</span><span class="chip">Linux</span><span class="chip">PostgreSQL</span></div>
+    <section class="cv">
+      <h2>Publications</h2>
+      <ul class="timeline">
+        <li><span class="when">2026</span><div><div class="what">Spherical Shape-Based Features for Classification of Breast Tumors in 3D-ABUS Images</div><div class="where"><strong>A. Naderiparizi</strong>, S. Barekat, E. Kozegar, M. Soryani · IEEE Transactions on Medical Imaging · <em>not yet published</em></div></div></li><li><span class="when">2025</span><div><div class="what">Breast Mass Classification in 3D ABUS based on Laplace-Beltrami Spectra and Dual Path CNN</div><div class="where">S. Barekat, <strong>A. Naderiparizi</strong>, E. Kozegar, M. Soryani · Expert Systems with Applications</div></div></li>
+      </ul>
+    </section>
+    <section class="cv">
+      <h2>Academic service</h2>
+      <ul class="timeline">
+        <li><span class="when">2026</span><div><div class="what">Peer reviewer</div><div class="where">Journal of Imaging Informatics in Medicine</div><ul class="bullets"><li>Reviewed a manuscript on breast tumor classification: experimental design, model evaluation, methodology.</li></ul></div></li><li><span class="when">2026</span><div><div class="what">Judge, national AI research challenge</div><div class="where">Scientific Information Database (SID) and IranDoc</div><ul class="bullets"><li>Judged ML systems for scientific literature analysis: knowledge graphs from papers, reference and narrative-structure extraction, hierarchical topic clustering, research-trend detection, and Persian/English key-term extraction with semantic equivalence.</li></ul></div></li>
+      </ul>
+    </section>
+    <section class="cv">
+      <h2>Teaching</h2>
+      <ul class="timeline">
+        <li><span class="when">2022</span><div><div class="what">Teaching assistant, Computer Vision</div><div class="where">IUST · Dr. Mohsen Soryani</div><ul class="bullets"><li>Supervised graduate lab sessions.</li><li>Designed a 3D tumor classification project from the MSc thesis: students built 3D meshes from tumor segmentations and refined them to capture spiculations and narrow protrusions, the surface details that signal malignancy.</li></ul></div></li><li><span class="when">2017</span><div><div class="what">Teaching assistant, Data Structures and Algorithm Design</div><div class="where">Shiraz University · Dr. Korush Zyarati</div><ul class="bullets"><li>Ran quizzes, set and graded homework, designed the midterm and final projects.</li></ul></div></li><li><span class="when">2016 – 2017</span><div><div class="what">ACM ICPC representative</div><div class="where">Shiraz University</div><ul class="bullets"><li>Elected to lead the university's ICPC association: organised contests, taught problem-solving courses, mentored university and high-school competitors.</li></ul></div></li><li><span class="when">2016</span><div><div class="what">Teaching assistant, Competitive Programming</div><div class="where">Shiraz University · Dr. Mohammad Taheri</div><ul class="bullets"><li>Ran problem-solving sessions and coached students for ACM ICPC.</li></ul></div></li><li><span class="when">2016</span><div><div class="what">Instructor, Olympiad in Informatics preparation</div><div class="where">Dastgheyb High School (Sampad) · Shiraz</div><ul class="bullets"><li>Taught high-school students algorithm design and competitive programming for the national and international olympiads.</li></ul></div></li>
+      </ul>
+    </section>
+    <section class="cv">
+      <h2>Education</h2>
+      <ul class="timeline">
+        <li><span class="when">2020 – 2023</span><div><div class="what">MSc, Artificial Intelligence and Robotics</div><div class="where">Iran University of Science and Technology (IUST) · Tehran</div><ul class="bullets"><li><strong>Thesis:</strong> Classification of human breast cancer lesions in 3D automated breast ultrasound (3D-ABUS) images. Advisors: Dr. Mohsen Soryani, Dr. Ehsan Kozegar.</li><li>Coursework: machine learning, deep learning, computer vision, image processing, stochastic processes.</li></ul></div></li><li><span class="when">2015 – 2020</span><div><div class="what">BSc, Computer Engineering</div><div class="where">Shiraz University</div><ul class="bullets"><li><strong>Project:</strong> designed and built a System-on-Board that runs the Linux kernel and processes analog video for embedded vision.</li></ul></div></li>
+      </ul>
+    </section>
+    <section class="cv">
+      <h2>Skills</h2>
+      <dl class="skills">
+        <dt>Research</dt><dd>Generative models · probabilistic ML · 3D medical image analysis · representation learning · computational biology</dd>
+        <dt>Languages</dt><dd>Python · C/C++ · Rust · TypeScript/JavaScript · Java · C#</dd>
+        <dt>Machine learning</dt><dd>PyTorch · PyTorch Lightning · TensorFlow · HuggingFace Transformers · YOLO · NumPy · SciPy</dd>
+        <dt>Systems</dt><dd>Linux · Docker · PostgreSQL · MongoDB · MySQL · embedded Linux</dd>
+      </dl>
     </section>
     <p class="meta" style="margin-top:48px">This site is free software: code under <a href="#">GPL-3.0</a>, writing under <a href="#">CC BY-SA 4.0</a>. No trackers, no ads, no cookies.</p>
   </div>

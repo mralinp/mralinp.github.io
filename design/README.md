@@ -289,6 +289,15 @@ Anton, in the gradient.) IUST lives in the Education timeline.
 No current role or employer there (the CV timeline below carries the history), then Experience and Education as simple timelines, skills as
 chips, and a prominent "Download CV" button. Contact links in one row.
 
+The rest of About is the **CV**, in full detail, generated from `_data/cv.yml` (the single source
+for this page and the PDF CV). Sections, each a timeline of *when | role or title, place, what was
+done (2–3 bullets), tech chips, optional link*: **Experience**, **Research projects** (with the TTS
+demo and the TDSC write-up linked), **Publications** (Ali in bold, unpublished work marked),
+**Academic service**, **Teaching** (TA roles, ICPC representative, olympiad instructor),
+**Education** (thesis, advisors, coursework, BSc project) and **Skills** as a short definition
+list. Section titles in Anton. Contact details that don't belong on a public page (phone number,
+references' emails) stay in the PDF only.
+
 ## 7. Stats: where the numbers come from
 
 Today the browser fetches GitHub and ORCID on every visit, which is why the panels show `--` on a
