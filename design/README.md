@@ -61,35 +61,49 @@ Home ─┬─ Blog ──────── post
 
 ## 4. Design tokens
 
-The look is **DeFi, kept professional**: a deep navy-black canvas with soft violet and cyan
-glows, glass cards, and one violet → cyan → mint gradient used sparingly as the signature. It's the
-same palette as the Nunya deck. Dark is the primary theme; light is a clean, equal alternative.
-The gradient is for *accents only* (brand, primary button, stat numbers, a 2px top line on panels,
-active filter): body text is always solid, and the reading column has no glass or glow behind it.
+The look is **DeFi, kept professional, with an edge**: a near-black canvas with violet and
+crimson glows, glass cards, sharp corners, and one violet → magenta → crimson gradient as the
+signature. Dark is the primary theme; light is a clean, equal alternative. The gradient is for
+*accents only* (brand, primary button, stat numbers, a 3px top line on panels, active filter):
+body text is always solid, and the reading column has no glass or glow behind it.
+
+### Voice
+
+Ali is serious and direct, a fighter in how he works, and the site says so.
+
+- **Type is heavy.** Headings at weight 800 with tight tracking; the name in the hero at 56px.
+  Section labels in uppercase mono with wide tracking; buttons uppercase and bold.
+- **Copy is short and declarative.** No "Hi, I'm…", no hedging. Hero: the name, a one-line role
+  kicker (`ML researcher · Engineer · CTO (AI) at SciNext`), then one sentence of what he builds.
+  Buttons say *Read the work*, *Contact*, *Download CV*.
+- **Crimson is the edge**, used for kickers, deltas and the end of the gradient, never for body
+  text or large fills.
+- **Still readable.** Long posts keep a calm, solid 18px column; the intensity lives in the frame,
+  not the prose.
 
 All colors are CSS custom properties on `:root`, redefined for dark mode. Nothing outside the token
 block uses a raw color.
 
 | Token | Light | Dark | Use |
 | --- | --- | --- | --- |
-| `--bg` | `#f7f8fc` | `#05060d` | page |
-| `--surface` | `#ffffff` | `#0c0f1f` | code blocks, tiles |
+| `--bg` | `#f7f8fc` | `#040409` | page |
+| `--surface` | `#ffffff` | `#0b0c16` | code blocks, tiles |
 | `--glass` | `rgba(255,255,255,.72)` | `rgba(22,26,52,.58)` | cards, panels, buttons (with `backdrop-filter: blur`) |
 | `--border` | `#e3e6f3` | `rgba(148,163,255,.14)` | dividers, card borders |
-| `--text` | `#0d1030` | `#eef1ff` | body |
-| `--muted` | `#555d80` | `#a3acd6` | meta, captions |
+| `--text` | `#0d1030` | `#f5f6ff` | body |
+| `--muted` | `#555d80` | `#a7abc7` | meta, captions |
 | `--accent` | `#6d28d9` | `#a78bfa` | links, focus, active nav |
-| `--accent-2` | `#0891b2` | `#22d3ee` | secondary highlight, deltas, TOC marker |
+| `--accent-2` | `#dc2626` | `#f87171` | the edge: kickers, deltas, TOC marker |
 | `--accent-soft` | `#f1ebff` | `rgba(139,92,246,.16)` | tag chips, callouts |
 | `--on-accent` | `#ffffff` | `#05060d` | text on the gradient button |
-| `--grad` | `#7c3aed → #0891b2 → #059669` | `#8b5cf6 → #22d3ee → #34d399` | the signature gradient, 115° |
+| `--grad` | `#6d28d9 → #c026d3 → #dc2626` | `#8b5cf6 → #e879f9 → #ef4444` | the signature gradient, 115° |
 | `--glow-a`, `--glow-b` | 10% / 8% | 28% / 16% | two static radial glows behind the page |
 
 The glows are fixed CSS gradients, not the current WebGL animation: same atmosphere, no CPU cost.
 
 **DeFi details, all small:** numbers (stats, dates, meta labels) in JetBrains Mono, uppercase with
-slight letter-spacing, like a dashboard; stat values in gradient text; pill-shaped chips; 16px card
-radius and 12px for buttons and tiles; a gradient dot before each section title; cards lift with a
+slight letter-spacing, like a dashboard; stat values in gradient text; square chips and sharp corners
+throughout; a gradient dot before each section title; cards lift with a
 soft violet glow on hover.
 
 | Type | Size / line height | Weight |
@@ -102,8 +116,9 @@ soft violet glow on hover.
 | Meta, captions | 14 / 1.5 | 400–500 |
 | Code | 15 / 1.6, JetBrains Mono | 400 |
 
-Spacing is a 4px scale (`4 8 12 16 24 32 48 64 96`). Radius is `16px` for cards and panels, `12px` for
-buttons, tiles and thumbnails, and fully round for chips. Content widths: `68ch` for reading, `1120px` for grids.
+Spacing is a 4px scale (`4 8 12 16 24 32 48 64 96`). **Edges are sharp everywhere**: `border-radius: 0` on cards, panels, buttons, tiles, chips,
+thumbnails, the profile photo and code blocks. Square corners read as precise and technical, and
+let the gradient and glass carry the DeFi feel on their own. Content widths: `68ch` for reading, `1120px` for grids.
 
 ## 5. Components
 
@@ -118,15 +133,15 @@ buttons, tiles and thumbnails, and fully round for chips. Content widths: `68ch`
 - **Project card**: image (16:9, `object-fit: cover`), title, brief, tech chips, links to post and repo.
 - **Book card**: cover (2:3), title, author, one-line takeaway.
 - **Publication row**: authors (Ali in bold), title, venue and year, links (PDF · DOI · code).
-- **Tag chip**: pill, `--accent-soft` background, sentence case, links to the tag's filtered list.
+- **Tag chip**: square, `--accent-soft` background, sentence case, links to the tag's filtered list.
 - **Callout** in posts: note / warning, `--accent-soft` background, gradient left border.
 - **Code block**: `--surface` background, copy button, language label.
 
 ## 6. Pages
 
-**Home.** A short intro (photo, name, one sentence: "Machine learning researcher and software
-engineer in Tehran. I write about deep learning, medical imaging, networks and the software I
-build."), two buttons (Read the blog · About me), then *At a glance* (the stats panels, below)
+**Home.** The intro (photo, name, role kicker, one sentence: "I build systems that work under
+pressure: medical imaging models, VPN clients, embedded hardware. I ship them, and I write down
+exactly how."), three buttons (Read the work · Contact · Download CV), then *At a glance* (the stats panels, below)
 right under the intro, then *Recent posts* (5 rows), *Featured projects* (3 cards) and *Selected
 publications* (2–3 rows).
 
