@@ -294,6 +294,23 @@ main { counter-reset: track; }
 .epigraph cite::before { content: "— "; }
 @media (max-width: 640px) { .epigraph p { font-size: 18px; } }
 
+
+/* ---- freedom / humanity / truth ---- */
+.epigraph { cursor: pointer; }
+.epigraph p .q { transition: opacity .2s; }
+footer { padding-top: 0; }
+.motto { display: flex; justify-content: center; align-items: center; gap: 22px; padding: 28px 16px; margin-bottom: 28px; border-bottom: 1px solid var(--border);
+  font: 400 30px var(--display); text-transform: uppercase; letter-spacing: .08em; }
+.motto span { background: var(--steel); -webkit-background-clip: text; background-clip: text; color: transparent; }
+:root[data-theme="light"] .motto span { background: var(--grad); -webkit-background-clip: text; background-clip: text; }
+@media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) .motto span { background: var(--grad); -webkit-background-clip: text; background-clip: text; } }
+.motto i { width: 8px; height: 8px; background: var(--accent-2); transform: rotate(45deg); }
+@media (max-width: 480px) { .motto { font-size: 20px; gap: 12px; } }
+footer .free { margin-top: 6px; max-width: 60ch; }
+footer .free a { color: var(--accent); }
+.big404 { font: 400 180px/1 var(--display); background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+@media (max-width: 480px) { .big404 { font-size: 120px; } }
+
 /* mockup only: page switcher */
 .page { display: none; }
 .page.on { display: block; }
@@ -304,7 +321,7 @@ main { counter-reset: track; }
 </head>
 <body>
 <div class="mock-bar">Mockup · pages:
-  <a href="#home">Home</a><a href="#blog">Blog</a><a href="#post">Post</a><a href="#projects">Projects</a><a href="#research">Research</a><a href="#about">About</a>
+  <a href="#home">Home</a><a href="#blog">Blog</a><a href="#post">Post</a><a href="#projects">Projects</a><a href="#research">Research</a><a href="#about">About</a><a href="#404">404</a>
 </div>
 <a class="skip" href="#main">Skip to content</a>
 
@@ -342,7 +359,7 @@ main { counter-reset: track; }
       <div>
         <h1><span>Ali Naderi</span>.</h1>
         <p class="kicker">ML researcher · Engineer · CTO (AI) at SciNext</p>
-        <blockquote class="epigraph"><p><span class="slashes">//</span> Talk is cheap. Show me the code.</p><cite>Linus Torvalds</cite></blockquote>
+        <blockquote class="epigraph" id="epigraph" title="Click for the next one"><p><span class="slashes">//</span> <span class="q">Free software is a matter of liberty, not price.</span></p><cite>Richard Stallman</cite></blockquote>
         <div class="actions">
           <a class="btn primary" href="#blog">Read the work</a>
           <a class="btn" href="mailto:me@alinaderiparizi.com">Contact</a>
@@ -507,11 +524,24 @@ response  [u32 id][u8  status    ][u32 payload_len][protobuf or error text]</cod
   </div>
 </div>
 
+<!-- ================= 404 ================= -->
+<div class="page" id="p-404">
+  <div class="wrap read" style="text-align:center; padding: 96px 0">
+    <div class="big404">404</div>
+    <h1 style="font-family:var(--display); font-weight:400; text-transform:uppercase; font-size:48px; margin:8px 0">This page went solo.</h1>
+    <p class="muted">It left the band and never came back. The rest of the tracklist is still here.</p>
+    <p style="margin-top:28px"><a class="btn primary" href="#home">Back to the setlist</a></p>
+  </div>
+</div>
 </main>
 
 <footer>
+  <div class="motto" aria-label="Freedom, humanity, truth"><span>Freedom</span><i></i><span>Humanity</span><i></i><span>Truth</span></div>
   <div class="wrap">
-    <span>© 2026 Ali Naderi</span>
+    <div>
+      <div>© 2026 Ali Naderi</div>
+      <div class="free">Free software: code under <a href="#">GPL-3.0</a>, words under <a href="#">CC BY-SA 4.0</a>. No trackers, no ads, no cookies. <a href="https://www.gnu.org/philosophy/free-sw.html">Why?</a></div>
+    </div>
     <nav><a href="https://github.com/mralinp">GitHub</a><a href="#">LinkedIn</a><a href="https://twitter.com/alinaderiparizi">X</a><a href="mailto:me@alinaderiparizi.com">Email</a><a href="/feed.xml">RSS</a></nav>
   </div>
 </footer>
@@ -601,6 +631,25 @@ fetch(FULL).then(function (r) { return r.ok ? r.text() : null; }).then(function 
   });
   toc.onclick = function (e) { var t = e.target.dataset.to; if (t) { e.preventDefault(); document.getElementById(t).scrollIntoView(); } };
 });
+
+
+// Epigraphs: freedom first. Click to cycle (a small joke for the curious). In the real site the
+// list lives in _config.yml and the first one is rendered at build time, so it works without JS.
+var quotes = [
+  ["Free software is a matter of liberty, not price.", "Richard Stallman"],
+  ["Talk is cheap. Show me the code.", "Linus Torvalds"],
+  ["Simplicity is prerequisite for reliability.", "Edsger W. Dijkstra"],
+  ["The best way to predict the future is to invent it.", "Alan Kay"],
+  ["Premature optimization is the root of all evil.", "Donald Knuth"]
+];
+var qi = 0, ep = document.getElementById("epigraph");
+ep.onclick = function () {
+  qi = (qi + 1) % quotes.length;
+  ep.querySelector(".q").textContent = quotes[qi][0];
+  ep.querySelector("cite").textContent = quotes[qi][1];
+};
+console.log("%c// Reading the source? Good.\n// It's free software. Take it, change it, share it.\n// github.com/mralinp/mralinp.github.io",
+  "font: 14px monospace; color: #e879f9");
 
 function show() {
   var id = (location.hash || "#home").slice(1);

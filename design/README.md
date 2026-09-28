@@ -84,6 +84,37 @@ Ali is serious and direct, a fighter in how he works, and the site says so.
 - **Still readable.** Long posts keep a calm, solid 18px column; the intensity lives in the frame,
   not the prose.
 
+### Freedom, humanity, truth
+
+Ali follows GNU and the free software movement, and cares about freedom, humanity and truth. The
+site *shows* those values instead of claiming them:
+
+- **The site is free software.** Code under **GPL-3.0**, writing under **CC BY-SA 4.0**, with a
+  `LICENSE` file in the repo (there is none today). The footer says so in one line and links the
+  GNU free software definition.
+- **No trackers, no ads, no cookies**, and no third-party requests at page load (fonts
+  self-hosted, search client-side, stats baked at build time). The footer states it plainly.
+- **The motto band.** Above the footer: `FREEDOM ◆ HUMANITY ◆ TRUTH` in Anton, steel in dark mode
+  and gradient in light, like a band's motto on the back of a record.
+- **Epigraphs lead with freedom.** The hero quote list in `_config.yml` starts with Stallman
+  (*"Free software is a matter of liberty, not price."*), followed by Torvalds, Dijkstra, Kay and
+  Knuth. The first is rendered at build time; clicking it cycles through the rest.
+
+### Humor
+
+Ali is funny, and the humor lives in the corners, never in the way of the work:
+
+- **404: "This page went solo."** *It left the band and never came back. The rest of the tracklist
+  is still here.* Button: *Back to the setlist*.
+- **The quote cycles on click**, a small reward for the curious.
+- **A note in the browser console** for anyone reading the source: `// Reading the source? Good.
+  It's free software. Take it, change it, share it.` with the repo link.
+
+### Athletic
+
+About gets an **Off the keyboard** section: the sports Ali trains, as short lines with a stat
+each where there is one (e.g. distance, years, grade). Content to come from Ali.
+
 ### Rock and metal
 
 Ali loves rock and metal, and the frame of the site borrows from album art and gig posters,
