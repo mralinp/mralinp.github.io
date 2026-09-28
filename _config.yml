@@ -30,8 +30,9 @@ plugins:
   - jekyll-feed
   - jekyll-sitemap
 
-# Unpublished for now (drafts in _drafts/); publish again later.
 exclude:
+  - design
+  # Unpublished for now (drafts in _drafts/); publish again later.
   - assets/images/posts/blog/v2ray
   - assets/images/posts/blog/vpn-setup
   - assets/images/posts/projects/nunya
