@@ -92,6 +92,13 @@ violet → crimson gradient (`#4c1d95 → #86198f → #991b1b`), so the white ba
 the face keeps its detail; a grain layer and a 3px gradient bar along the bottom edge; square
 crop. Hovering shows the original photo.
 
+**Mugshot.** Behind the photo sits a police-lineup **height chart**: white lines every 5 cm, cm
+labels on both edges (200 down to 130), one inline SVG layered over the gradient. Because the photo
+is multiplied onto it, the lines show through where the white studio wall was and vanish behind
+the suit, like a real booking photo. On About, a **booking placard** hangs under it:
+`NADERI, A.` in Anton, `TEHRAN · 2026`, and the booking number `#GPL-0003` in crimson (the joke:
+booked under the GPL, version 3).
+
 Better still, a new photo shot for this design: black-and-white or low-key, dark background, side
 or hard light, casual (a dark tee or jacket), looking at the camera or three-quarter. The same
 duotone then makes it look deliberate rather than rescued.
