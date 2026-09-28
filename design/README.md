@@ -282,7 +282,10 @@ grouped by year, then Service (reviewing, judging).
 
 **Library.** Grid of book cards.
 
-**About.** Portrait and a one-line bio: *"Graduated from IUST, one of Iran's toughest universities."*
+**About.** Portrait and a short origin story, where he comes from, nothing more: *"Born in
+**Pariz**, a village high in the mountains. My father was a mechanic; today he grows pistachios on
+our family's land. I still love that land: farming, gardening, hands in the dirt."* (Pariz set in
+Anton, in the gradient.) IUST lives in the Education timeline.
 No current role or employer there (the CV timeline below carries the history), then Experience and Education as simple timelines, skills as
 chips, and a prominent "Download CV" button. Contact links in one row.
 

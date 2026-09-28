@@ -456,6 +456,11 @@ dialog.search kbd { font: 11px var(--mono); color: var(--muted); border: 1px sol
 .search-close { background: none; border: 0; padding: 0; margin: 0; color: var(--muted); font: inherit; cursor: pointer; display: inline-flex; align-items: center; gap: 3px; }
 .search-close:hover, .search-close:hover kbd { color: var(--text); border-color: var(--accent); }
 
+
+.origin { margin: 0 0 20px; font-size: 19px; line-height: 1.65; max-width: 52ch; }
+.origin b { font-family: var(--display); font-weight: 400; text-transform: uppercase; letter-spacing: .04em; font-size: 22px;
+  background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
 /* mockup only: page switcher */
 .page { display: none; }
 .page.on { display: block; }
@@ -649,7 +654,7 @@ dialog.search kbd { font: 11px var(--mono); color: var(--muted); border: 1px sol
       <div>
         <h1 style="font-size:40px">Ali Naderi</h1>
         <p class="muted" style="margin:4px 0 16px">Machine learning researcher · Tehran, Iran</p>
-        <p style="margin:0 0 20px">Graduated from IUST, one of Iran's toughest universities.</p>
+        <p class="origin">Born in <b>Pariz</b>, a village high in the mountains. My father was a mechanic; today he grows pistachios on our family's land. I still love that land: farming, gardening, hands in the dirt.</p>
         <div class="actions" style="display:flex; gap:12px; flex-wrap:wrap">
           <a class="btn primary" href="../assets/resume/ali-naderi-parizi-cv.pdf">Download CV</a>
           <a class="btn" href="mailto:me@alinaderiparizi.com">Contact</a>
