@@ -84,6 +84,18 @@ Ali is serious and direct, a fighter in how he works, and the site says so.
 - **Still readable.** Long posts keep a calm, solid 18px column; the intensity lives in the frame,
   not the prose.
 
+### Portrait
+
+The current photo (suit, white studio background) clashes with a dark poster design, so it gets an
+**album-cover duotone** in CSS, no image editing: grayscale, contrast up, multiplied onto a dark
+violet → crimson gradient (`#4c1d95 → #86198f → #991b1b`), so the white background turns deep and
+the face keeps its detail; a grain layer and a 3px gradient bar along the bottom edge; square
+crop. Hovering shows the original photo.
+
+Better still, a new photo shot for this design: black-and-white or low-key, dark background, side
+or hard light, casual (a dark tee or jacket), looking at the camera or three-quarter. The same
+duotone then makes it look deliberate rather than rescued.
+
 ### Freedom, humanity, truth
 
 Ali follows GNU and the free software movement, and cares about freedom, humanity and truth. The
@@ -217,7 +229,7 @@ grouped by year, then Service (reviewing, judging).
 
 **Library.** Grid of book cards.
 
-**About.** Photo and short bio, then Experience and Education as simple timelines, skills as
+**About.** Portrait and a short factual bio (role, degree, research; no self-description), then Experience and Education as simple timelines, skills as
 chips, and a prominent "Download CV" button. Contact links in one row.
 
 ## 7. Stats: where the numbers come from

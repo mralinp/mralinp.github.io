@@ -217,7 +217,6 @@ body { background:
 .nav { background: color-mix(in srgb, var(--bg) 70%, transparent); }
 .brand { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; letter-spacing: -.01em; }
 .hero h1 span { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
-.hero img { box-shadow: 0 0 0 3px var(--bg), 0 0 0 5px transparent; background: var(--grad); padding: 3px; }
 .btn { border-radius: 0; background: var(--glass); backdrop-filter: blur(10px); }
 .btn.primary { background: var(--grad); border: 0; color: var(--on-accent); box-shadow: 0 8px 30px -10px var(--glow-a); }
 .btn.primary:hover { background: var(--grad); filter: brightness(1.1); }
@@ -311,6 +310,21 @@ footer .free a { color: var(--accent); }
 .big404 { font: 400 180px/1 var(--display); background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
 @media (max-width: 480px) { .big404 { font-size: 120px; } }
 
+
+/* ---- portrait: album-cover duotone. The photo is multiplied onto a dark violet→crimson
+   gradient, so its white studio background turns deep and the face keeps its detail. Hover shows
+   the original. ---- */
+.portrait { margin: 0; position: relative; overflow: hidden; width: 120px; height: 120px; flex: none;
+  background: linear-gradient(135deg, #4c1d95 0%, #86198f 55%, #991b1b 100%); border: 1px solid var(--border); }
+.about-top .portrait { width: 180px; height: 180px; }
+.portrait img { width: 100% !important; height: 100% !important; object-fit: cover; object-position: 50% 20%; padding: 0 !important; background: none !important;
+  filter: grayscale(1) contrast(1.35) brightness(1.08); mix-blend-mode: multiply; transition: filter .3s, mix-blend-mode .3s; }
+.portrait::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .18; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.portrait::before { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: var(--grad); z-index: 1; }
+.portrait:hover img { filter: none; mix-blend-mode: normal; }
+@media (max-width: 640px) { .hero .portrait { width: 96px; height: 96px; } }
+
 /* mockup only: page switcher */
 .page { display: none; }
 .page.on { display: block; }
@@ -355,7 +369,7 @@ footer .free a { color: var(--accent); }
 <div class="page" id="p-home">
   <div class="wrap">
     <div class="hero">
-      <img src="../assets/images/me.jpeg" alt="Ali Naderi">
+      <figure class="portrait"><img src="../assets/images/me.jpeg" alt="Ali Naderi"></figure>
       <div>
         <h1><span>Ali Naderi</span>.</h1>
         <p class="kicker">ML researcher · Engineer · CTO (AI) at SciNext</p>
@@ -489,11 +503,11 @@ response  [u32 id][u8  status    ][u32 payload_len][protobuf or error text]</cod
 <div class="page" id="p-about">
   <div class="wrap read" style="max-width: 820px">
     <div class="about-top">
-      <img src="../assets/images/me.jpeg" alt="Ali Naderi">
+      <figure class="portrait"><img src="../assets/images/me.jpeg" alt="Ali Naderi"></figure>
       <div>
         <h1 style="font-size:40px">Ali Naderi</h1>
         <p class="muted" style="margin:4px 0 16px">Machine learning researcher · Tehran, Iran</p>
-        <p style="margin:0 0 20px">I build deep learning for medical imaging, 3D breast ultrasound first, and the software that puts it to work. CTO (AI) at SciNext. I say what I think and I finish what I start.</p>
+        <p style="margin:0 0 20px">CTO (AI) at SciNext. MSc in Artificial Intelligence and Robotics, IUST. Research: deep learning for 3D breast ultrasound.</p>
         <div class="actions" style="display:flex; gap:12px; flex-wrap:wrap">
           <a class="btn primary" href="../assets/resume/ali-naderi-parizi-cv.pdf">Download CV</a>
           <a class="btn" href="mailto:me@alinaderiparizi.com">Contact</a>
