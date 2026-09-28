@@ -21,10 +21,10 @@ The model became the vision system of a robotic saffron processing machine: the 
 > **TODO:** how the machine works (feeding, camera, cutter), what you built vs. the team, throughput.
 
 <div class="video">
-  <iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID" title="The robotic saffron processing machine" loading="lazy"
+  <iframe style="width:100%;aspect-ratio:16/9;border:0" src="https://www.youtube-nocookie.com/embed/WaYx6MPUO_E" title="The robotic saffron processing machine" loading="lazy"
     allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
-<!-- TODO: replace VIDEO_ID with the YouTube video id -->
+<p align="center"><em>The machine at work. <a href="https://www.youtube.com/watch?v=WaYx6MPUO_E">Watch on YouTube</a>.</em></p>
 
 # 3. What's next
 
