@@ -144,7 +144,10 @@ section { margin: 64px 0; }
 .prose h1, .prose h2 { font-size: 26px; margin: 48px 0 12px; }
 .prose h3 { font-size: 20px; margin: 32px 0 8px; }
 .prose img { border-radius: 0; margin: 0 auto; height: auto; }
-.prose table { border-collapse: collapse; width: 100%; font-size: 16px; margin: 0 0 20px; display: block; overflow-x: auto; }
+/* tables sit centred at their natural width; a table wider than the column scrolls inside itself */
+.prose table { border-collapse: collapse; font-size: 16px; display: block; width: max-content; max-width: 100%; margin: 8px auto 28px; overflow-x: auto; border-top: 2px solid; border-image: var(--grad) 1; }
+.prose thead th { font: 600 12px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); border-bottom: 1px solid var(--border); }
+.prose tbody tr:hover td { background: var(--accent-soft); }
 .prose th, .prose td { border-bottom: 1px solid var(--border); padding: 8px 10px; text-align: left; }
 .prose li { margin-bottom: 6px; }
 .prose p { margin: 0 0 20px; }

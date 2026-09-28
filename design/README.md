@@ -210,6 +210,10 @@ let the gradient and glass carry the DeFi feel on their own. Content widths: `68
 - **Book card**: cover (2:3), title, author, one-line takeaway.
 - **Publication row**: authors (Ali in bold), title, venue and year, links (PDF · DOI · code).
 - **Tag chip**: square, `--accent-soft` background, sentence case, links to the tag's filtered list.
+- **Table** in posts: **centred** in the reading column at its natural width (not stretched), a
+  2px gradient line on top, headers in mono small caps, 1px row dividers, a soft highlight on the
+  hovered row. Column alignment from Markdown (`---:`) is kept. A table wider than the column
+  scrolls inside itself.
 - **Callout** in posts: note / warning, `--accent-soft` background, gradient left border.
 - **Code block, with syntax highlighting.** Jekyll's built-in **Rouge** already tokenises every
   fenced block at build time (` ```python ` → `<span class="k">` …), so highlighting needs **no
