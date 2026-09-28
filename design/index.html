@@ -142,6 +142,8 @@ section { margin: 64px 0; }
 .post-title { font-size: 36px; margin-bottom: 12px; }
 .post-hero { border-radius: var(--r); border: 1px solid var(--border); margin: 32px auto; max-width: min(900px, 100%); }
 .prose h1, .prose h2 { font-size: 26px; margin: 48px 0 12px; }
+.prose h1, .prose h2, .prose h3 { scroll-margin-top: 96px; }
+@media (max-width: 1100px) { .prose h1, .prose h2, .prose h3 { scroll-margin-top: 124px; } }
 .prose h3 { font-size: 20px; margin: 32px 0 8px; }
 .prose img { border-radius: 0; margin: 0 auto; height: auto; }
 /* tables sit centred at their natural width; a table wider than the column scrolls inside itself */
@@ -157,13 +159,36 @@ section { margin: 64px 0; }
 .prose pre .lang { position: absolute; top: 8px; right: 12px; font-size: 12px; color: var(--muted); }
 .prose figcaption { font-size: 14px; color: var(--muted); text-align: center; margin-top: 8px; }
 .callout { border-left: 3px solid var(--accent); background: var(--accent-soft); padding: 12px 16px; border-radius: 0; font-size: 16px; margin: 0 0 20px; }
-.post-layout { display: grid; grid-template-columns: 1fr minmax(0, var(--read)) 1fr; gap: 48px; }
+.post-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, var(--read)) minmax(220px, 1fr); gap: 48px; }
 .post-layout > .prose { grid-column: 2; }
-.toc { grid-column: 3; position: sticky; top: 96px; align-self: start; font-size: 14px; max-width: 220px; }
-.toc p { font-weight: 600; margin: 0 0 8px; }
-.toc a { display: block; color: var(--muted); padding: 3px 0 3px 12px; border-left: 2px solid var(--border); }
-.toc a.on { color: var(--text); border-left-color: var(--accent); }
-@media (max-width: 1200px) { .post-layout { display: block; } .toc { display: none; } }
+/* On this page: a sticky rail on wide screens, a sticky bar under the nav on narrow ones. Both
+   highlight the section being read. */
+.toc { grid-column: 3; position: sticky; top: 88px; align-self: start; font-size: 14px; width: 240px;
+  max-height: calc(100vh - 120px); overflow-y: auto; padding: 16px 0 16px 0; }
+.toc p { font: 600 11px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin: 0 0 10px; }
+.toc a { display: block; color: var(--muted); padding: 5px 0 5px 14px; border-left: 2px solid var(--border); line-height: 1.4; transition: color .15s, border-color .15s; }
+.toc a:hover { color: var(--text); text-decoration: none; }
+.toc a.sub { padding-left: 26px; font-size: 13px; }
+.toc a.on { color: var(--text); font-weight: 600; border-left-color: var(--accent-2); background: linear-gradient(90deg, var(--accent-soft), transparent); }
+.toc .progress { height: 2px; background: var(--border); margin: 0 0 14px; }
+.toc .progress i { display: block; height: 100%; width: 0; background: var(--grad); }
+.toc-bar { display: none; }
+@media (max-width: 1100px) {
+  .post-layout { display: block; } .toc { display: none; }
+  .toc-bar { display: block; position: sticky; top: 64px; z-index: 4; margin: 0 -24px 24px; padding: 0 24px;
+    background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+  .toc-bar summary { list-style: none; cursor: pointer; display: flex; gap: 10px; align-items: center; height: 44px; font-size: 14px; }
+  .toc-bar summary::-webkit-details-marker { display: none; }
+  .toc-bar summary b { font: 600 11px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--accent-2); flex: none; }
+  .toc-bar summary span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .toc-bar summary::after { content: "▾"; margin-left: auto; color: var(--muted); }
+  .toc-bar[open] summary::after { content: "▴"; }
+  .toc-bar .links { padding: 4px 0 14px; max-height: 60vh; overflow-y: auto; }
+  .toc-bar .links a { display: block; padding: 6px 0 6px 12px; color: var(--muted); border-left: 2px solid var(--border); font-size: 14px; }
+  .toc-bar .links a.on { color: var(--text); font-weight: 600; border-left-color: var(--accent-2); }
+  .toc-bar .progress { position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; }
+  .toc-bar .progress i { display: block; height: 100%; width: 0; background: var(--grad); }
+}
 .pager { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 48px 0; }
 .pager a { border: 1px solid var(--border); border-radius: var(--r); padding: 14px 18px; color: var(--text); }
 .pager a:hover { border-color: var(--accent); text-decoration: none; }
@@ -251,7 +276,6 @@ body { background:
 .post-hero { border-radius: var(--r); box-shadow: 0 30px 80px -40px var(--glow-a); }
 .prose pre { background: var(--surface); border-radius: 0; }
 .callout { background: var(--accent-soft); border-left: 3px solid; border-image: var(--grad) 1; border-radius: 0; }
-.toc a.on { border-left-color: var(--accent-2); }
 .timeline .when { font-family: var(--mono); font-size: 12px; letter-spacing: .04em; }
 .about-top img { border-radius: var(--r); }
 
@@ -505,6 +529,7 @@ code.language-plaintext::before, code.highlighter-rouge::before { content: none;
       <div class="chips" style="margin-top:12px"><span class="chip">Project</span><span class="chip">Medical imaging</span><span class="chip">PyTorch</span></div>
     </div>
     <img class="post-hero" src="../assets/images/posts/projects/tdsc-abus2023-pytorch/sample_case.png" alt="A 3D breast ultrasound case with its tumor mask">
+    <details class="toc-bar"><summary><b>On this page</b><span class="cur"></span></summary><div class="links"></div><div class="progress"><i></i></div></details>
     <div class="post-layout">
       <article class="prose">
         <p><a href="#">tdsc-abus2023-pytorch</a> is a PyTorch Dataset for the TDSC-ABUS 2023 challenge: 200 automated 3D breast ultrasound volumes, each with a tumor mask, a bounding box and a label.</p>
@@ -701,7 +726,8 @@ fetch(FULL).then(function (r) { return r.ok ? r.text() : null; }).then(function 
   var src = new DOMParser().parseFromString(html, "text/html").querySelector(".post-content");
   if (!src) return;
   src.querySelectorAll("[src^='/assets']").forEach(function (e) { e.setAttribute("src", ".." + e.getAttribute("src")); });
-  src.querySelectorAll("img").forEach(function (e) { e.removeAttribute("width"); e.style.maxWidth = "100%"; e.loading = "lazy"; });
+  // post images load eagerly: lazy images grow the page mid-scroll and make TOC jumps land short
+  src.querySelectorAll("img").forEach(function (e) { e.removeAttribute("width"); e.style.maxWidth = "100%"; });
   var art = document.querySelector("#p-post .prose"), pager = art.querySelector(".pager");
   art.innerHTML = src.innerHTML; art.appendChild(pager);
 
@@ -714,13 +740,7 @@ fetch(FULL).then(function (r) { return r.ok ? r.text() : null; }).then(function 
     };
     b.appendChild(btn);
   });
-  var toc = document.querySelector("#p-post .toc");
-  toc.innerHTML = "<p>On this page</p>";
-  art.querySelectorAll("h1, h2").forEach(function (h, i) {
-    h.id = h.id || "s" + i;
-    toc.insertAdjacentHTML("beforeend", '<a href="#post" data-to="' + h.id + '">' + h.textContent + '</a>');
-  });
-  toc.onclick = function (e) { var t = e.target.dataset.to; if (t) { e.preventDefault(); document.getElementById(t).scrollIntoView(); } };
+  buildToc(art);
 });
 
 
@@ -741,6 +761,43 @@ ep.onclick = function () {
 };
 console.log("%c// Reading the source? Good.\n// It's free software. Take it, change it, share it.\n// github.com/mralinp/mralinp.github.io",
   "font: 14px monospace; color: #e879f9");
+
+
+// On this page: both navs are built from the article's headings; the section being read is the
+// last heading scrolled past the top ~quarter of the viewport. One scroll listener, rAF-throttled.
+function buildToc(art) {
+  var rail = document.querySelector("#p-post .toc"), bar = document.querySelector("#p-post .toc-bar");
+  var heads = [].slice.call(art.querySelectorAll("h1, h2, h3"));
+  var links = heads.map(function (h, i) {
+    h.id = h.id || "s" + i;
+    return '<a href="#post" data-to="' + h.id + '"' + (h.tagName === "H3" ? ' class="sub"' : "") + '>' + h.textContent + '</a>';
+  }).join("");
+  rail.innerHTML = '<p>On this page</p><div class="progress"><i></i></div>' + links;
+  bar.querySelector(".links").innerHTML = links;
+  function go(e) {
+    var t = e.target.closest("a") && e.target.closest("a").dataset.to;
+    if (!t) return;
+    e.preventDefault(); bar.open = false;
+    document.getElementById(t).scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+  }
+  rail.onclick = go; bar.onclick = function (e) { if (e.target.closest(".links")) go(e); };
+  var ticking = false;
+  function spy() {
+    if (!document.getElementById("p-post").classList.contains("on")) return;
+    var line = innerHeight * 0.25, cur = heads[0];
+    heads.forEach(function (h) { if (h.getBoundingClientRect().top < line) cur = h; });
+    document.querySelectorAll("#p-post [data-to]").forEach(function (a) { a.classList.toggle("on", a.dataset.to === cur.id); });
+    bar.querySelector(".cur").textContent = cur.textContent;
+    var r = art.getBoundingClientRect(), pct = Math.min(1, Math.max(0, (innerHeight * 0.25 - r.top) / r.height));
+    document.querySelectorAll("#p-post .progress i").forEach(function (i) { i.style.width = (pct * 100) + "%"; });
+    var on = rail.querySelector("a.on"); if (on && rail.scrollHeight > rail.clientHeight) on.scrollIntoView({ block: "nearest" });
+  }
+  // built twice (sample, then the full post): keep one listener and swap the handler it calls
+  if (!window.__spy) addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(function () { ticking = false; window.__spy(); }); } }, { passive: true });
+  window.__spy = spy;
+  spy();
+}
+buildToc(document.querySelector("#p-post .prose"));
 
 function show() {
   var id = (location.hash || "#home").slice(1);

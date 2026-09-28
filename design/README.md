@@ -255,8 +255,23 @@ publications* (2–3 rows).
 as post rows. Filtering is client-side on data attributes; with JavaScript off, all posts show.
 
 **Post.** Breadcrumb (Blog / Projects), title, meta line (date · reading time · tags), optional hero
-image, then the 68ch body. A sticky table of contents sits in the right margin on wide screens for
-posts with 4+ headings. At the end: GitHub link if the post has one, prev/next, and back to the list.
+image, then the 68ch body.
+
+**On this page** (posts with 3+ headings), always visible and always showing where you are:
+
+- **Wide screens (> 1100px):** a 240px rail in the right margin, `position: sticky` 88px from the
+  top, so it stays in view for the whole post; it scrolls on its own if a post has many headings.
+  A gradient **progress line** under its title fills as you read.
+- **Narrow screens:** a bar pinned under the nav: `ON THIS PAGE` + the current section's name, with
+  the progress line along its bottom edge. Tapping it drops down the full list; picking a section
+  jumps there and closes it.
+- **Current section highlighted** in both: the last heading scrolled past the top quarter of the
+  viewport is the current one; its link turns bold and bright with a crimson left border and a
+  soft gradient wash. One passive scroll listener, throttled with `requestAnimationFrame`.
+- Links jump with `scrollIntoView` and `scroll-margin-top` on headings (96px, 124px on phones), so
+  a heading never lands under the nav or the bar; smooth unless `prefers-reduced-motion`. Post
+  images load eagerly so the page doesn't grow mid-jump.
+- H3s appear indented under their H2. At the end: GitHub link if the post has one, prev/next, and back to the list.
 
 **Projects.** The Open source panel on top, then the grid of project cards (3 / 2 / 1 columns),
 newest first.
