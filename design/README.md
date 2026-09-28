@@ -354,6 +354,16 @@ slow or filtered network. Instead, the numbers are fetched once per build and wr
 
     Drafts aren't in `site.posts`, so unpublished posts never appear in search.
 
+### For language models
+
+`/llms.txt` ([llmstxt.org](https://llmstxt.org)) is generated from the site on every build: a
+summary of who Ali is, then every page and post as a link with its one-line brief (books under
+*Optional*). `/llms-full.txt` is the whole site as one Markdown file (About, the CV from
+`_data/cv.yml`, publications, then every post's source Markdown with root-relative links made
+absolute), written by `_plugins/llms_full.rb` because only a generator sees posts before they are
+rendered to HTML. Drafts are never included. Every page links it with `<link rel="alternate"
+type="text/markdown">`, and About ends with a short *For language models* section.
+
 ## 9. Rollout
 
 1. Tokens, base styles and the new `main`/`post` layouts. Posts keep their front matter unchanged.

@@ -50,5 +50,10 @@ layout: main
     <dl class="skills">{% for s in cv.skills %}<dt>{{ s.group }}</dt><dd>{{ s.items }}</dd>{% endfor %}</dl>
   </section>
 
+  <section class="cv">
+    <h2>For language models</h2>
+    <p style="margin:0 0 8px">This site is written to be easy to read by machines too. <a href="/llms.txt">/llms.txt</a> is the index: who Ali is, and every page and post with a one-line summary. <a href="/llms-full.txt">/llms-full.txt</a> is the whole site, this CV included, as one Markdown file.</p>
+  </section>
+
   <p class="meta" style="margin-top:48px">This site is free software: code under <a href="https://github.com/{{ site.github_username }}/mralinp.github.io/blob/main/LICENSE">GPL-3.0</a>, writing under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. No trackers, no ads, no cookies.</p>
 </div>
