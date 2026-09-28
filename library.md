@@ -1,10 +1,12 @@
 ---
-title: Books library
 layout: main
+title: Library
+permalink: /library/
+brief: "Books read, and what stuck."
 ---
-
-<section>
-    {% include page-header.html kicker="Reading Archive" title="Library Modules" %}
-    {% assign books = site.posts | where_exp: "post", "post.categories.first == 'book'" %}
-    {% include card-grid.html posts=books variant="book" grid_id="libraryGrid" %}
-</section>
+{%- assign books = site.posts | where_exp: "p", "p.categories.first == 'book'" -%}
+<div class="wrap">
+  <h1 class="page-title">Library</h1>
+  <p class="page-lede">Books read, and what stuck.</p>
+  <div class="grid books">{% for p in books %}{% include card.html post=p %}{% endfor %}</div>
+</div>

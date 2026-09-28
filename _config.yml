@@ -1,8 +1,8 @@
 title: mralinp
 email: alinaderiparizi@gmail.com
-description: My awesome blog
+description: "Ali Naderi: machine learning, medical imaging, embedded systems and the software around them."
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://alinaderiparizi.ir" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://alinaderiparizi.com" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: alinaderiparizi
 github_username:  mralinp
 
@@ -32,7 +32,27 @@ plugins:
 
 exclude:
   - design
+  - scripts
+  - sample.html
+  - README.md
+  - makefile
   # Unpublished for now (drafts in _drafts/); publish again later.
   - assets/images/posts/blog/v2ray
   - assets/images/posts/blog/vpn-setup
   - assets/images/posts/projects/nunya
+
+# ---- redesign (see design/README.md) ----
+author_name: "Ali Naderi"
+# Portrait style on Home and About: "mugshot" (height chart + booking placard) or "plain".
+portrait: mugshot
+# Hero epigraphs: the first is rendered; clicking cycles through the rest.
+epigraphs:
+  - { text: "Free software is a matter of liberty, not price.", by: "Richard Stallman" }
+  - { text: "Talk is cheap. Show me the code.", by: "Linus Torvalds" }
+  - { text: "Simplicity is prerequisite for reliability.", by: "Edsger W. Dijkstra" }
+  - { text: "The best way to predict the future is to invent it.", by: "Alan Kay" }
+  - { text: "Premature optimization is the root of all evil.", by: "Donald Knuth" }
+closing_quote: { text: "Freedom is the freedom to say that two plus two make four.", by: "George Orwell", source: "Nineteen Eighty-Four" }
+commentbox_project: "5076933226266624-proj"
+kramdown:
+  syntax_highlighter: rouge

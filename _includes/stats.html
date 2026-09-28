@@ -1,0 +1,35 @@
+{%- comment -%} "At a glance" panels. Numbers come from _data/stats.yml, written at build time by
+scripts/fetch-stats.mjs; `include.only` = "github" or "academic" shows one panel. {%- endcomment -%}
+{%- assign s = site.data.stats -%}
+<div class="panels">
+  {%- unless include.only == "academic" %}
+  <div class="panel">
+    <div class="panel-head"><h3>Open source</h3><a href="https://github.com/{{ site.github_username }}">GitHub →</a></div>
+    <div class="tiles">
+      <div class="tile"><b>{{ s.github.repos }}</b><span>Repositories</span></div>
+      <div class="tile"><b>{{ s.github.stars }}</b><span>Stars</span></div>
+      <div class="tile"><b>{{ s.github.contributions }}</b><span>Contributions</span><small>last 12 months</small></div>
+      <div class="tile"><b>{{ s.github.followers }}</b><span>Followers</span></div>
+    </div>
+    {%- if s.github.calendar %}
+    <div class="graph" aria-label="Contribution graph, last 12 months"><div class="graph-grid">
+      {%- for l in s.github.calendar %}<i data-l="{{ l }}"></i>{% endfor -%}
+    </div></div>
+    {%- endif %}
+    <div class="panel-foot"><span>{% if s.github.languages %}Most active in {{ s.github.languages | join: ", " }}{% endif %}</span><span>Updated {{ s.updated | date: "%-d %b %Y" }}</span></div>
+  </div>
+  {%- endunless %}
+  {%- unless include.only == "github" %}
+  <div class="panel">
+    <div class="panel-head"><h3>Academic</h3><span style="font-size:14px"><a href="{{ site.data.profiles.scholar }}">Scholar</a> · <a href="{{ site.data.profiles.orcid }}">ORCID</a></span></div>
+    <div class="tiles">
+      <div class="tile"><b>{{ s.academic.publications }}</b><span>Publications</span></div>
+      <div class="tile"><b>{{ s.academic.citations }}</b><span>Citations</span></div>
+      <div class="tile"><b>{{ s.academic.h_index }}</b><span>h-index</span></div>
+      <div class="tile"><b>{{ s.academic.reviews }}</b><span>Peer reviews</span></div>
+    </div>
+    {%- assign latest = site.data.publications | where_exp: "p", "p.status != 'ongoing'" | first %}
+    <div class="panel-foot" style="margin-top:18px"><span class="latest">{% if latest %}Latest: {{ latest.title | truncate: 60 }} ({{ latest.venue }}, {{ latest.year }}){% endif %}</span><span>Updated {{ s.updated | date: "%-d %b %Y" }}</span></div>
+  </div>
+  {%- endunless %}
+</div>

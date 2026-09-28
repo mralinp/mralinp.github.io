@@ -1,87 +1,49 @@
 ---
 layout: main
 ---
-
-<article class="post-shell">
-    {% assign back_url = "/blog" %}
-    {% assign back_label = "Back to blog" %}
-    {% if page.categories contains "book" %}
-        {% assign back_url = "/library" %}
-        {% assign back_label = "Back to library" %}
-    {% elsif page.categories contains "project" %}
-        {% assign back_url = "/projects" %}
-        {% assign back_label = "Back to projects" %}
-    {% endif %}
-
-    <section class="post-head">
-        <p class="post-kicker">Article Dispatch</p>
-        <h1>{{ page.title }}</h1>
-        {% if page.brief %}
-        <p class="post-brief">{{ page.brief }}</p>
-        {% endif %}
-        <div class="post-chip-row">
-            <span class="post-chip"><i class="fa fa-user-circle-o"></i> {{ page.author }}</span>
-            <span class="post-chip"><i class="fa fa-calendar-o"></i> {{ page.date | date: "%-d %b %Y" }}</span>
-            {% for cat in page.categories %}
-            <span class="post-chip"><i class="fa fa-tag"></i> {{ cat }}</span>
-            {% endfor %}
-        </div>
-    </section>
-
-    {% if page.img %}
-    <div class="post-media">
-        <a class="image-zoom cboxElement" href="{{ page.img }}">
-        <img src="{{ page.img }}" alt="{{ page.title | escape }}">
-        <div class="image-overlay"></div>
-        </a>
-    </div>
-    {% endif %}
-
-    <section class="post-body">
-        <div class="post-nav">
-            <a href="{{ back_url }}"><span class="material-symbols-outlined">arrow_back</span> {{ back_label }}</a>
-            <a href="{{ page.url }}">Permalink <span class="material-symbols-outlined">north_east</span></a>
-        </div>
-
-        {% include book-panel.html %}
-
-        <div class="post-content">
-            {{ page.content }}
-        </div>
-    </section>
-
-    <section class="post-comments">
-        <h2>Comment Channel</h2>
+{%- assign kind = page.categories.first -%}
+{%- if kind == "project" %}{% assign back = "/projects/" %}{% assign back_label = "Projects" %}
+{%- elsif kind == "book" %}{% assign back = "/library/" %}{% assign back_label = "Library" %}
+{%- else %}{% assign back = "/blog/" %}{% assign back_label = "Blog" %}{% endif -%}
+{%- assign words = content | strip_html | number_of_words -%}
+{%- assign minutes = words | divided_by: 220 | at_least: 1 -%}
+<div class="wrap">
+  <div class="read">
+    <div class="crumb"><a href="{{ back }}">{{ back_label }}</a> <span class="muted">/</span></div>
+    <h1 class="post-title">{{ page.title }}</h1>
+    <div class="meta">{{ page.date | date: "%-d %B %Y" }} · {{ minutes }} min read{% if page.github %} · <a href="{{ page.github }}">GitHub repo</a>{% endif %}</div>
+    <div class="chips" style="margin-top:12px">{% for t in page.categories offset: 1 %}<span class="chip">{% include tag.html t=t %}</span>{% endfor %}</div>
+  </div>
+  {%- if page.img and page.hero != false %}
+  <img class="post-hero" src="{{ page.img }}" alt="{{ page.title | escape }}">
+  {%- endif %}
+  <details class="toc-bar"><summary><b>On this page</b><span class="cur"></span></summary><div class="links"></div><div class="progress"><i></i></div></details>
+  <div class="post-layout">
+    <article class="prose">
+      {%- if kind == "book" %}
+      <div class="book-panel">
+        <h2>Verdict</h2>
+        {%- assign rating = page.book_rating | default: 0 | plus: 0 %}
+        <div class="stars" aria-label="{{ rating }} out of 5">{% for i in (1..5) %}{% if i <= rating %}★{% else %}<span class="dim">★</span>{% endif %}{% endfor %}</div>
+        <p style="margin:6px 0 0">{{ page.book_review | default: page.brief }}</p>
+        {%- if page.book_resources %}
+        <ul>{% for r in page.book_resources %}<li><a href="{{ r.url }}">{{ r.title }}</a></li>{% endfor %}</ul>
+        {%- endif %}
+      </div>
+      {%- endif %}
+      {{ content }}
+      <div class="pager">
+        {%- if page.previous %}<a href="{{ page.previous.url }}"><small>← Previous</small>{{ page.previous.title }}</a>{% else %}<span></span>{% endif %}
+        {%- if page.next %}<a class="next" href="{{ page.next.url }}"><small>Next →</small>{{ page.next.title }}</a>{% endif %}
+      </div>
+      {%- if site.commentbox_project and page.comments != false %}
+      <div class="comments">
+        <button class="btn" id="loadComments" type="button" data-project="{{ site.commentbox_project }}">Show comments</button>
+        <p>Comments are hosted by commentbox.io and only load when you ask for them.</p>
         <div class="commentbox"></div>
-    </section>
-</article>
-
-<script src="https://unpkg.com/commentbox.io/dist/commentBox.min.js"></script>
-<script>
-    function arrToHex(arr) {
-        let s = '#';
-        for (let i = 0; i < arr.length; i++) {
-            s += ((arr[i] / 16) | 0).toString(16);
-            s += ((arr[i] % 16) | 0).toString(16);
-        }
-        return s;
-    }
-    var element = document.body;
-    var style;
-    var color = "black";
-    if (window.getComputedStyle) {
-        style = window.getComputedStyle(element);
-    } else {
-        style = element.currentStyle;
-    }
-    if (!style) {
-        // ...seriously old browser...
-    } else {
-        color = style.color;
-    }
-    rgb = color.match(/\d+/g);
-    commentBox('5076933226266624-proj', {
-        textColor: arrToHex(rgb),
-        subtextColor: arrToHex(rgb),
-    })
-</script>
+      </div>
+      {%- endif %}
+    </article>
+    <nav class="toc" aria-label="On this page"></nav>
+  </div>
+</div>

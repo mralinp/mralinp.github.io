@@ -1,0 +1,5 @@
+{%- comment -%} The portrait: the cut-out photo in front of the violet wall. With `portrait: mugshot` in
+_config.yml the wall carries the height chart (scaled to 191 cm) and, on About, the booking placard. {%- endcomment -%}
+{%- if include.placard and site.portrait == "mugshot" %}<div class="booked">{% endif %}
+<figure class="portrait{% if site.portrait != 'mugshot' %} plain{% endif %}"><img class="cut" src="/assets/images/me-cutout.png" alt="Ali Naderi"></figure>
+{%- if include.placard and site.portrait == "mugshot" %}<div class="placard"><b>NADERI, A.</b><span>TEHRAN · 2026</span><span>#GPL-0003</span></div></div>{% endif %}

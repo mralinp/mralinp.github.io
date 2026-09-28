@@ -1,0 +1,49 @@
+---
+layout: main
+title: Home
+---
+{%- assign q = site.epigraphs | first -%}
+<div class="wrap">
+  <div class="hero">
+    {% include portrait.html %}
+    <div>
+      <h1><span>Ali Naderi</span>.</h1>
+      <p class="kicker">ML researcher · Engineer · Tehran</p>
+      <blockquote class="epigraph" id="epigraph" title="Click for the next one" data-quotes='{{ site.epigraphs | jsonify | escape }}'>
+        <p><span class="slashes">//</span> <span class="q">{{ q.text }}</span></p><cite>{{ q.by }}</cite>
+      </blockquote>
+      <div class="actions">
+        <a class="btn primary" href="/blog/">Read the work</a>
+        <a class="btn" href="mailto:{{ site.data.profiles.email }}">Contact</a>
+        <a class="btn" href="{{ site.data.profiles.cv }}">Download CV</a>
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <div class="section-head"><h2>At a glance</h2></div>
+    {% include stats.html %}
+  </section>
+
+  <section>
+    <div class="section-head"><h2>Recent posts</h2><a href="/blog/">All posts →</a></div>
+    <ul class="rows">
+      {%- assign recent = site.posts | where_exp: "p", "p.categories.first != 'book'" %}
+      {%- for p in recent limit: 5 %}{% include post-row.html post=p year=true %}{% endfor %}
+    </ul>
+  </section>
+
+  <section>
+    <div class="section-head"><h2>Featured projects</h2><a href="/projects/">All projects →</a></div>
+    <div class="grid">
+      {%- assign projects = site.posts | where_exp: "p", "p.categories.first == 'project'" %}
+      {%- for p in projects limit: 3 %}{% include card.html post=p %}{% endfor %}
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head"><h2>Selected publications</h2><a href="/research/">Research →</a></div>
+    {%- assign pubs = site.data.publications | where_exp: "p", "p.status != 'ongoing'" %}
+    {%- for p in pubs limit: 3 %}{% include publication.html pub=p %}{% endfor %}
+  </section>
+</div>

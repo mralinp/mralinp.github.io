@@ -2,9 +2,22 @@
 layout: main
 title: Blog
 ---
-
-<section>
-    {% include page-header.html kicker="Knowledge Stream" title="Blog Deployments" %}
-    {% assign blog_posts = site.posts | where_exp: "post", "post.categories.first == 'blog'" %}
-    {% include card-grid.html posts=blog_posts variant="blog" grid_id="blogGrid" %}
-</section>
+{%- assign posts = site.posts | where_exp: "p", "p.categories.first == 'blog'" -%}
+{%- assign topics = "" | split: "" -%}
+{%- for p in posts %}{% assign topics = topics | push: p.categories[1] %}{% endfor -%}
+{%- assign topics = topics | uniq | sort -%}
+<div class="wrap narrow">
+  <h1 class="page-title">Blog</h1>
+  <p class="page-lede">Deep learning, medical imaging, embedded systems, networks. What worked, what broke, and why.</p>
+  <div class="chips filter" role="group" aria-label="Filter by topic">
+    <button class="chip" type="button" data-tag="all" aria-pressed="true">All</button>
+    {%- for t in topics %}<button class="chip" type="button" data-tag="{{ t }}" aria-pressed="false">{% include tag.html t=t %}</button>{% endfor %}
+  </div>
+  {%- assign by_year = posts | group_by_exp: "p", "p.date | date: '%Y'" %}
+  {%- for y in by_year %}
+  <div class="year-group">
+    <div class="year">{{ y.name }}</div>
+    <ul class="rows">{% for p in y.items %}{% include post-row.html post=p %}{% endfor %}</ul>
+  </div>
+  {%- endfor %}
+</div>

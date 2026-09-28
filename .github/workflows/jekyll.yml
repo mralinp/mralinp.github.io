@@ -11,6 +11,10 @@ on:
   push:
     branches: ["main"]
 
+  # Rebuild daily so the GitHub and academic numbers on Home stay fresh (scripts/fetch-stats.mjs)
+  schedule:
+    - cron: "17 3 * * *"
+
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -42,6 +46,11 @@ jobs:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
+      - name: Fetch stats for the At-a-glance panels
+        # Keeps the committed _data/stats.json for any source that fails, so this never breaks a deploy.
+        run: node scripts/fetch-stats.mjs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Build with Jekyll
         # Outputs to the './_site' directory by default
         run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"

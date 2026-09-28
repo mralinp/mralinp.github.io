@@ -1,0 +1,10 @@
+# Newest first. status: ongoing → listed under "Current work" with no venue.
+- title: "Spherical Shape-Based Features for Classification of Breast Tumors in 3D-ABUS Images"
+  authors: ["A. Naderiparizi", "S. Barekat", "E. Kozegar", "M. Soryani"]
+  status: ongoing
+- title: "Breast Mass Classification in 3D ABUS based on Laplace-Beltrami Spectra and Dual Path CNN"
+  authors: ["S. Barekat", "A. Naderiparizi", "E. Kozegar", "M. Soryani"]
+  venue: "Expert Systems with Applications"
+  year: 2025
+  links:
+    - { label: "DOI", url: "https://doi.org/10.1016/j.eswa.2025.129973" }

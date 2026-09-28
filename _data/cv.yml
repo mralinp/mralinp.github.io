@@ -1,0 +1,129 @@
+# The CV on /about/. Each entry: when, what (role or title), where, optional site, bullets, tags, link.
+# Bullets are HTML-safe Markdown-free strings. Private details (phone, references' emails) stay in the PDF.
+
+experience:
+  - when: "2025 – now"
+    what: "Chief Technology Officer (AI)"
+    where: "SciNext · Tehran"
+    bullets:
+      - "Technical evaluation and mentorship for early-stage AI startups."
+      - "Supports the design and build of their machine learning systems and AI-based products."
+  - when: "2026"
+    what: "Backend Software Engineer"
+    where: "Symmio · DeFi protocol · Remote"
+    site: { label: "symm.io", url: "https://symm.io" }
+    bullets:
+      - "Improved the behaviour of the platform's microservices: reliability and performance under real load."
+      - "Worked on the anomaly detection stack, built on performance metrics and observability tooling, to catch services misbehaving before users do."
+    tags: [Microservices, Anomaly detection, Observability, DeFi]
+  - when: "2024 – 2025"
+    what: "Software Engineer (AI)"
+    where: "CyberDesign Nordic AB · Stockholm, Sweden"
+    bullets:
+      - "Built machine learning systems for indoor positioning from mobile sensor data."
+      - "Built the backend APIs and data pipelines behind model training and deployment."
+    tags: [Python, PyTorch, Sensor data, APIs]
+  - when: "2022 – 2024"
+    what: "Software Engineer"
+    where: "IDmelon Technologies · Vancouver, Canada"
+    site: { label: "idmelon.com", url: "https://idmelon.com" }
+    bullets:
+      - "Designed secure authentication systems and distributed cloud services."
+      - "System-level development, data processing pipelines and API architecture."
+    tags: [Authentication, Cloud, Distributed systems]
+  - when: "2020 – 2022"
+    what: "Software Engineer (Backend)"
+    where: "DataWare · Tehran"
+    bullets:
+      - "Built scalable backend services and microservice architectures for large-scale data processing."
+    tags: [Microservices, Backend]
+  - when: "2017 – 2019"
+    what: "R&D Intern → Junior Embedded Engineer"
+    where: "Sico Systems Intelligizer · Shiraz"
+    bullets:
+      - "R&D across FPGAs, microcontrollers and embedded hardware."
+      - "Built a DTMF detector in hardware, then a GSM/GPRS device around it: it answers incoming calls, plays voice prompts and takes commands and access codes from the caller's keypad (<em>\"press 1 for…\"</em>, <em>\"enter your code\"</em>). Chose and integrated the chips and made sure the signal quality held up."
+      - "Researched system-on-board designs, evaluated Chinese SoC chipsets, and built a Linux-based SoB on the Allwinner F1C100S (the Lichee Pi Nano's chip) with added analog video input and on-board image processing, such as Laplacian filtering for motion detection."
+    tags: [FPGA, Microcontrollers, DTMF, GSM/GPRS, Embedded Linux, Allwinner F1C100S, Video processing]
+
+projects:
+  - when: "2026"
+    what: "Persian text-to-speech with single-shot voice cloning"
+    where: "Generative speech"
+    bullets:
+      - "Transformer-based TTS that speaks fluent Persian and clones a voice from a single sample."
+      - "Adapted modern neural TTS to Persian: dataset construction, large-scale cleaning, linguistic preprocessing."
+      - "Built the training and fine-tuning pipelines, plus pre- and post-processing that improve pronunciation and fluency."
+    tags: [Transformers, TTS, Persian]
+    link: { label: "Live demo", url: "https://tts.jome-farmer.ir" }
+  - when: "2025"
+    what: "Ez-Crawl: agentic web crawler"
+    where: "LLM tooling"
+    bullets:
+      - "LLM-driven crawler that pulls structured data out of raw HTML with prompt-guided extraction."
+      - "Runs on local or cloud LLMs, with automated browsing pipelines."
+    tags: [LLMs, Agents, Scraping]
+  - when: "2024"
+    what: "TDSC-ABUS2023 PyTorch dataset toolkit"
+    where: "Open source · medical imaging"
+    bullets:
+      - "Open-source toolkit for the TDSC 2023 Grand Challenge on 3D automated breast ultrasound."
+      - "Standard loaders, preprocessing and training interfaces for classification and segmentation of volumetric data."
+      - "Published on GitHub and PyPI."
+    tags: [PyTorch, 3D ultrasound, PyPI]
+    link: { label: "Read the write-up", url: "/project/abus-classification/medical-imaging/pytorch/python/2026/09/23/tdsc-abus2023-pytorch.html" }
+  - when: "2020"
+    what: "Robotic vision for agricultural automation"
+    where: "Computer vision"
+    bullets:
+      - "Vision system that finds the optimal cutting point on each saffron flower."
+      - "It became the eyes of a robotic saffron processing machine that cuts the flowers where the model points."
+    tags: [Computer vision, Robotics]
+    link: { label: "Watch the machine", url: "https://www.youtube.com/watch?v=WaYx6MPUO_E" }
+
+teaching:
+  - when: "2022"
+    what: "Teaching assistant, Computer Vision"
+    where: "IUST · Dr. Mohsen Soryani"
+    bullets:
+      - "Supervised graduate lab sessions."
+      - "Designed a 3D tumor classification project from the MSc thesis: students built 3D meshes from tumor segmentations and refined them to capture spiculations and narrow protrusions, the surface details that signal malignancy."
+  - when: "2017"
+    what: "Teaching assistant, Data Structures and Algorithm Design"
+    where: "Shiraz University · Dr. Korush Zyarati"
+    bullets:
+      - "Ran quizzes, set and graded homework, designed the midterm and final projects."
+  - when: "2016 – 2017"
+    what: "ACM ICPC representative"
+    where: "Shiraz University"
+    bullets:
+      - "Elected to lead the university's ICPC association: organised contests, taught problem-solving courses, mentored university and high-school competitors."
+  - when: "2016"
+    what: "Teaching assistant, Competitive Programming"
+    where: "Shiraz University · Dr. Mohammad Taheri"
+    bullets:
+      - "Ran problem-solving sessions and coached students for ACM ICPC."
+  - when: "2016"
+    what: "Instructor, Olympiad in Informatics preparation"
+    where: "Dastgheyb High School (Sampad) · Shiraz"
+    bullets:
+      - "Taught high-school students algorithm design and competitive programming for the national and international olympiads."
+
+education:
+  - when: "2020 – 2023"
+    what: "MSc, Artificial Intelligence and Robotics"
+    where: "Iran University of Science and Technology (IUST) · Tehran"
+    bullets:
+      - "<strong>Thesis:</strong> Classification of human breast cancer lesions in 3D automated breast ultrasound (3D-ABUS) images. Advisors: Dr. Mohsen Soryani, Dr. Ehsan Kozegar."
+      - "Coursework: machine learning, deep learning, computer vision, image processing, stochastic processes."
+  - when: "2015 – 2020"
+    what: "BSc, Computer Engineering"
+    where: "Shiraz University"
+    bullets:
+      - "<strong>Project:</strong> designed and built a System-on-Board that runs the Linux kernel and processes analog video for embedded vision."
+
+skills:
+  - { group: "Research", items: "Generative models · probabilistic ML · 3D medical image analysis · representation learning · computational biology" }
+  - { group: "Languages", items: "Python · C/C++ · Rust · TypeScript/JavaScript · Java · C#" }
+  - { group: "Machine learning", items: "PyTorch · PyTorch Lightning · TensorFlow · HuggingFace Transformers · YOLO · NumPy · SciPy" }
+  - { group: "Systems", items: "Linux · Docker · PostgreSQL · MongoDB · MySQL · embedded Linux" }

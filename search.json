@@ -1,0 +1,8 @@
+---
+layout: null
+permalink: /search.json
+---
+[{% for p in site.posts %}{% assign kind = "Post" %}{% if p.categories.first == "project" %}{% assign kind = "Project" %}{% elsif p.categories.first == "book" %}{% assign kind = "Book" %}{% endif %}{"t":{{ p.title | jsonify }},"d":{{ p.brief | strip_html | truncate: 160 | jsonify }},"u":{{ p.url | relative_url | jsonify }},"img":{{ p.img | jsonify }},"date":{{ p.date | date: "%F" | jsonify }},"kind":{{ kind | jsonify }},"tags":{{ p.categories | join: " " | jsonify }}},{% endfor %}
+{"t":"Research","d":"Publications, current work and academic service.","u":"/research/","kind":"Page","tags":"research publications papers scholar orcid"},
+{"t":"About","d":"Where I come from, and the full CV.","u":"/about/","kind":"Page","tags":"about cv resume experience education iust contact"},
+{"t":"Projects","d":"Everything built, with write-ups.","u":"/projects/","kind":"Page","tags":"projects portfolio github"}]

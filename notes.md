@@ -4,19 +4,9 @@ title: Notes
 permalink: /notes/
 published: false
 ---
-
-Short notes and personal knowledge base.
-
-{% assign sorted_notes = site.notes | sort: "date" | reverse %}
-{% if sorted_notes.size > 0 %}
-{% for note in sorted_notes %}
-
-- [{{ note.title }}]({{ note.url }}) - {{ note.date | date: "%-d %B %Y" }}
-{% if note.brief %}
-{{ note.brief }}
-{% endif %}
-
-{% endfor %}
-{% else %}
-No notes published yet.
-{% endif %}
+{%- assign notes = site.notes | sort: "date" | reverse -%}
+<div class="wrap narrow">
+  <h1 class="page-title">Notes</h1>
+  <p class="page-lede">Short notes and a personal knowledge base.</p>
+  <ul class="rows notes-list">{% for n in notes %}{% include post-row.html post=n year=true %}{% endfor %}</ul>
+</div>

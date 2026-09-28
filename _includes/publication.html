@@ -1,0 +1,7 @@
+{%- assign p = include.pub -%}
+<div class="pub">
+  <div class="title">{{ p.title }}</div>
+  <div class="authors">{% for a in p.authors %}{% if a contains "Naderiparizi" %}<strong>{{ a }}</strong>{% else %}{{ a }}{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}</div>
+  <div class="venue">{% if p.status == "ongoing" %}<span class="ongoing">Ongoing</span>{% else %}{{ p.venue }}{% if p.year %}, {{ p.year }}{% endif %}{% endif %}</div>
+  {%- if p.links %}<div class="links">{% for l in p.links %}<a href="{{ l.url }}">{{ l.label }}</a>{% endfor %}</div>{% endif %}
+</div>

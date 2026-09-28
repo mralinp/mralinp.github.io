@@ -1,0 +1,7 @@
+# Top navigation. `id` is matched against the first URL segment (or the post's kind) to mark the current page.
+- { id: home,     title: Home,     url: / }
+- { id: blog,     title: Blog,     url: /blog/ }
+- { id: projects, title: Projects, url: /projects/ }
+- { id: research, title: Research, url: /research/ }
+- { id: library,  title: Library,  url: /library/ }
+- { id: about,    title: About,    url: /about/ }
