@@ -7,7 +7,7 @@ brief: "Medical image analysis, 3D ultrasound and representation learning: publi
 {%- assign pubs = site.data.publications -%}
 <div class="wrap narrow">
   <h1 class="page-title">Research</h1>
-  <p class="page-lede">Medical image analysis, 3D ultrasound, and representation learning.</p>
+  <p class="page-lede">If we knew what it was we were doing, it would not be called research. — Albert Einstein</p>
   <div style="margin:24px 0 16px">{% include stats.html only="academic" %}</div>
   <section class="program">
     <h2 class="program-title">3D breast ultrasound: telling malignant lesions from benign</h2>

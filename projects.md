@@ -9,7 +9,7 @@ brief: "Case studies and projects: authentication systems, production platforms,
 {%- assign others = projects | where_exp: "p", "p.featured != true" -%}
 <div class="wrap">
   <h1 class="page-title">Projects</h1>
-  <p class="page-lede">What I built, how it works, and the evidence.</p>
+  <p class="page-lede">Talk is cheap. Show me the code. — Linus Torvalds</p>
   <section>
     <div class="section-head"><h2>Open source</h2></div>
     {% include stats.html only="github" %}
