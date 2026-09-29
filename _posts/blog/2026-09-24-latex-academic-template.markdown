@@ -4,8 +4,7 @@ title:  "latex-academic-template: create-react-app for LaTeX"
 author: "Ali Naderi"
 img: "/assets/images/posts/projects/latex-academic-template/gallery.png"
 date:   2026-09-24 01:42:37 +0330
-categories:  project latex docker devtools cli
-featured: true
+categories:  blog latex docker devtools cli
 brief: "A Dockerized LaTeX template gallery with a create-react-app-style scaffolding wizard: pick a template, import an Overleaf .zip or git URL, and get a ready-to-build project in one command. No local LaTeX install, ever."
 github: "https://github.com/mralinp/latex-academic-template"
 ---
