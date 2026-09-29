@@ -561,3 +561,5 @@ span.thumb { display: block; aspect-ratio: 16/9; background: var(--grad); opacit
 @media (max-width: 480px) { .chain li::before { position: static; display: block; text-align: left; } .chain { padding-left: 12px; } .chain li { padding-left: 8px; } }
 
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+.btn.open { height: 36px; font-size: 13px; align-self: flex-start; margin-top: 4px; }
+.row > a:first-child { display: block; }

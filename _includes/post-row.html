@@ -2,11 +2,12 @@
 {%- assign p = include.post -%}
 {%- assign tags = p.categories | slice: 1, 3 -%}
 <li class="row" data-tags="{{ p.categories | join: ' ' }}">
-  {%- if p.img %}<img class="thumb" loading="lazy" src="{{ p.img }}" alt="">{% else %}<span class="thumb"></span>{% endif %}
+  <a href="{{ p.url }}" tabindex="-1" aria-hidden="true">{%- if p.img %}<img class="thumb" loading="lazy" src="{{ p.img }}" alt="">{% else %}<span class="thumb"></span>{% endif %}</a>
   <div>
     <div class="date">{% if include.year %}{{ p.date | date: "%-d %b %Y" }}{% else %}{{ p.date | date: "%-d %b" }}{% endif %}</div>
     <h3><a href="{{ p.url }}">{{ p.title }}</a></h3>
     {%- if p.brief %}<p>{{ p.brief | strip_html | truncate: 170 }}</p>{% endif %}
     <div class="chips">{% for t in tags %}<span class="chip">{% include tag.html t=t %}</span>{% endfor %}</div>
+    <a class="btn open" href="{{ p.url }}">Open →</a>
   </div>
 </li>
