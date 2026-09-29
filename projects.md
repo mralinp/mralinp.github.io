@@ -10,12 +10,12 @@ brief: "Case studies and projects: authentication systems, production platforms,
 <div class="wrap">
   <h1 class="page-title">Projects</h1>
   <p class="page-lede">What I built, how it works, and the evidence.</p>
-  <div class="section-head"><h2>Selected work</h2></div>
-  <div class="grid">{% for p in selected %}{% include card.html post=p %}{% endfor %}</div>
   <section>
     <div class="section-head"><h2>Open source</h2></div>
     {% include stats.html only="github" %}
   </section>
+  <div class="section-head"><h2>Selected work</h2></div>
+  <div class="grid">{% for p in selected %}{% include card.html post=p %}{% endfor %}</div>
   <section>
     <div class="section-head"><h2>More projects</h2></div>
     <div class="grid">{% for p in others %}{% include card.html post=p %}{% endfor %}</div>
