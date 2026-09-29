@@ -93,7 +93,7 @@ projects:
       - "Standard loaders, preprocessing and training interfaces for classification and segmentation of volumetric data."
       - "Published on GitHub and PyPI."
     tags: [PyTorch, 3D ultrasound, PyPI]
-    link: { label: "Read the write-up", url: "/project/abus-classification/medical-imaging/pytorch/python/2026/09/23/tdsc-abus2023-pytorch.html" }
+    link: { label: "Read the write-up", url: "/blog/abus-classification/medical-imaging/pytorch/python/2026/09/23/tdsc-abus2023-pytorch.html" }
   - when: "2020"
     what: "Robotic vision for agricultural automation"
     where: "Computer vision"
