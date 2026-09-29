@@ -52,7 +52,7 @@ experience:
     more:
       - "Designed secure authentication systems and distributed cloud services; system-level development, data processing pipelines and API architecture."
     tags: [FIDO2, Passwordless authentication, Windows credential provider, C++, Python]
-    case_study: { label: "Read the technical case study", url: "/project/authentication/fido2/security/windows/2026/09/28/idmelon-passwordless-authentication.html" }
+    case_study: { label: "Read the technical case study", url: "/blog/authentication/fido2/security/windows/2026/09/28/idmelon-passwordless-authentication.html" }
   - when: "2020 – 2022"
     what: "Software Engineer (Backend)"
     where: "DataWare · Tehran"

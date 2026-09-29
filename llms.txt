@@ -19,7 +19,7 @@ This is the personal site of Ali Naderi (Ali Naderi Parizi; GitHub: mralinp). It
 - [About and CV]({{ base }}/about/): where Ali comes from, experience, research projects, publications, teaching, education, skills
 - [Research]({{ base }}/research/): publications, current work and academic service
 - [3D-ABUS research project]({{ base }}/abus-classification/): the current research project, with results and code
-- [Case study: passwordless authentication at IDmelon]({{ base }}/project/authentication/fido2/security/windows/2026/09/28/idmelon-passwordless-authentication.html)
+- [Case study: passwordless authentication at IDmelon]({{ base }}/blog/authentication/fido2/security/windows/2026/09/28/idmelon-passwordless-authentication.html)
 - [CV (PDF)]({{ base }}{{ site.data.profiles.cv }})
 
 ## Projects

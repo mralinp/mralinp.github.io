@@ -5,8 +5,7 @@ author: "Ali Naderi"
 img: "/assets/images/posts/projects/idmelon/windows-signin.svg"
 hero: false
 date:   2026-09-28 20:00:00 +0330
-categories:  project authentication fido2 security windows
-featured: true
+categories:  blog authentication fido2 security windows
 brief: "Two years building FIDO2 passwordless authentication at IDmelon, from R&D and prototypes to the first production release, and then leading the engineering team. With one component in depth: Windows sign-in with a security key for local accounts."
 ---
 {% comment %}
