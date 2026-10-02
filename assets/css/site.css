@@ -133,7 +133,7 @@ section { margin: 64px 0; }
 /* ---- post ---- */
 .crumb { font-size: 14px; margin: 48px 0 16px; }
 .post-title { font-size: 36px; margin-bottom: 12px; }
-.post-hero { border-radius: var(--r); border: 1px solid var(--border); margin: 32px auto; max-width: min(900px, 100%); max-height: 420px; width: auto; object-fit: contain; }
+.post-hero { border-radius: var(--r); border: 1px solid var(--border); margin: 32px auto; max-width: min(900px, 100%); max-height: 420px; width: auto; object-fit: contain; object-position: center; }
 .prose h1, .prose h2 { font-size: 26px; margin: 48px 0 12px; }
 .prose h1, .prose h2, .prose h3 { scroll-margin-top: 96px; }
 @media (max-width: 1100px) { .prose h1, .prose h2, .prose h3 { scroll-margin-top: 124px; } }
