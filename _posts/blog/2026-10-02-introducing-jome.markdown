@@ -3,7 +3,7 @@ layout: post
 title: "Introducing JoME: Building a Smart Irrigation System"
 date: 2026-10-02 06:00:00 +0330
 permalink: /blog/introducing-jome/
-img: "/assets/images/posts/blog/jome/controller-concept.jpg"
+img: "/assets/images/posts/blog/jome/controller-concept.png"
 hero: false
 categories: blog embedded iot irrigation
 github: "https://github.com/jome-farmer"
@@ -19,7 +19,7 @@ This is a progress report as of **2 October 2026**. JoME is in development, with
 Visit the [JoME landing page](https://jome-farmer.ir/) or explore the [web app](https://app.jome-farmer.ir/) using **Try the demo**.
 
 <figure>
-  <img src="/assets/images/posts/blog/jome/controller-concept.jpg" alt="Concept render of a JoME irrigation controller mounted beside greenhouse piping, with a display, antennas, and cable connections" width="1536" height="1024">
+  <img src="/assets/images/posts/blog/jome/controller-concept.png" alt="Concept render of a JoME irrigation controller mounted beside greenhouse piping, with a display, antennas, and cable connections" width="1536" height="1024">
   <figcaption>Controller and enclosure concept. This render illustrates the intended direction; the current firmware targets an ESP32 development board.</figcaption>
 </figure>
 
