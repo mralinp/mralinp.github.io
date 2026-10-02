@@ -3,8 +3,7 @@ layout: post
 title: "Introducing JoME: Building a Smart Irrigation System"
 date: 2026-10-02 06:00:00 +0330
 permalink: /blog/introducing-jome/
-img: "/assets/images/posts/blog/jome/controller-concept.png"
-hero: false
+img: "/assets/images/posts/blog/jome/board-concept.jpg"
 categories: blog embedded iot irrigation
 github: "https://github.com/jome-farmer"
 brief: "Inside JoME: an ESP32 irrigation controller, a mobile app, a Python backend, and a shared device protocol. What works today, how it is built, and what comes next."
@@ -95,11 +94,6 @@ Shared application state lives in Redux Toolkit: account state, connection state
 ## Inside the controller
 
 The current firmware runs on an **ESP32 development board**. A **PCF8575 I²C expander** provides up to 16 relay channels for valves and pumps. The prototype also includes an **SSD1306 OLED**, an **LM35 temperature sensor**, and a **YF-B6 flow sensor**. A SIM900 modem has been brought up for boot-time SMS notifications; full cellular connectivity is still future work.
-
-<figure>
-  <img src="/assets/images/posts/blog/jome/board-concept.jpg" alt="Concept render of a custom irrigation controller circuit board inside an enclosure, with terminal blocks, radio modules, and power circuitry" width="1536" height="1024" loading="lazy">
-  <figcaption>Custom-board concept, not a manufactured PCB or a verified schematic. The hardware described in this post is the ESP32 prototype.</figcaption>
-</figure>
 
 The firmware separates hardware drivers from irrigation logic. The application works with interfaces for relays, storage, displays, and sensors; the ESP32-specific drivers sit underneath. This lets me test irrigation decisions on a computer and gives a future custom board a clear place to connect.
 
