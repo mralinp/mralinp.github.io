@@ -1,0 +1,7 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    { "name": "jekyll", "runtimeExecutable": "bundle", "runtimeArgs": ["exec", "jekyll", "serve", "--port", "4000"], "port": 4000 },
+    { "name": "design", "runtimeExecutable": "python3", "runtimeArgs": ["-m", "http.server", "4001"], "port": 4001 }
+  ]
+}

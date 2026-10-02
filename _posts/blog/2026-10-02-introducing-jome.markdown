@@ -3,7 +3,7 @@ layout: post
 title: "Introducing JoME: Building a Smart Irrigation System"
 date: 2026-10-02 06:00:00 +0330
 permalink: /blog/introducing-jome/
-img: "/assets/images/posts/blog/jome/board-concept.jpg"
+img: "/assets/images/posts/blog/jome/controller-concept.png"
 categories: blog embedded iot irrigation
 github: "https://github.com/jome-farmer"
 brief: "Inside JoME: an ESP32 irrigation controller, a mobile app, a Python backend, and a shared device protocol. What works today, how it is built, and what comes next."
