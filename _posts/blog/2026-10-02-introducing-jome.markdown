@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Introducing JoME: Building a Smart Irrigation System"
-date: 2026-10-02 12:00:00 +0330
+date: 2026-10-02 06:00:00 +0330
 permalink: /blog/introducing-jome/
 img: "/assets/images/posts/blog/jome/controller-concept.jpg"
 hero: false
