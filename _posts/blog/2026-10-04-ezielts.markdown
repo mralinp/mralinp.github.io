@@ -1,9 +1,10 @@
 ---
 layout: post
 title: "EzIELTS: The Idea, the AI Tutor, and the Plan"
+permalink: /blog/introducing-ezielts/
 author: "Ali Naderi"
 date: 2026-10-04 00:01:00 +0330
-categories: project ezielts ai education
+categories: blog ezielts ai education
 brief: "Introducing EzIELTS: an IELTS preparation project built around an AI tutor, useful feedback, and regular practice. Here is the proposed roadmap, why we will use the OpenAI API, and what we are considering for voice conversations."
 ---
 We are working on **EzIELTS**, an IELTS preparation project with an AI tutor at its center. The idea is to make regular practice easier to keep up with: give learners a place to work, ask questions, receive feedback, and decide what to practice next.
