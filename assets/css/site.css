@@ -555,10 +555,18 @@ span.thumb { display: block; aspect-ratio: 16/9; background: var(--grad); opacit
 .program { margin: 40px 0 16px; }
 .program-title { font-size: 22px; margin: 0 0 8px; }
 .program p { font-size: 16px; }
-.chain { list-style: none; counter-reset: step; margin: 16px 0; padding: 0 0 0 18px; border-left: 2px solid; border-image: var(--grad) 1; }
-.chain li { counter-increment: step; position: relative; padding: 0 0 14px 18px; font-size: 16px; line-height: 1.6; }
-.chain li::before { content: counter(step, decimal-leading-zero); position: absolute; left: -40px; top: 2px; width: 34px; text-align: right; font: 600 12px var(--mono); color: var(--accent-2); }
-@media (max-width: 480px) { .chain li::before { position: static; display: block; text-align: left; } .chain { padding-left: 12px; } .chain li { padding-left: 8px; } }
+.chain { list-style: none; counter-reset: step; margin: 22px 0; padding: 0 0 0 46px; border-left: 2px solid; border-image: var(--grad) 1; }
+.chain li { counter-increment: step; position: relative; padding: 0 0 24px 24px; font-size: 16px; line-height: 1.65; }
+.chain li:last-child { padding-bottom: 0; }
+.chain li::before { content: counter(step, decimal-leading-zero); position: absolute; left: -54px; top: 0; width: 38px; text-align: right; font: 600 12px var(--mono); letter-spacing: .08em; color: var(--accent-2); }
+.chain li::after { content: ""; position: absolute; left: -30px; top: 7px; width: 9px; height: 9px; background: var(--bg); border: 2px solid var(--accent-2); }
+.chain b { display: block; margin-bottom: 2px; font-size: 17px; color: var(--text); }
+@media (max-width: 480px) {
+  .chain { padding-left: 20px; }
+  .chain li { padding-left: 18px; }
+  .chain li::before { position: static; display: block; width: auto; margin-bottom: 2px; text-align: left; }
+  .chain li::after { left: -25px; top: 26px; }
+}
 
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
 .btn.open { height: 36px; font-size: 13px; align-self: flex-start; margin-top: 4px; }

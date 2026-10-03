@@ -3,3 +3,4 @@
 .bundle_home
 vendor/bundle
 _site
+.DS_Store
