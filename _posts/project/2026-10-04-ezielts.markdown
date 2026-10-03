@@ -1,0 +1,88 @@
+---
+layout: post
+title: "EzIELTS: The Idea, the AI Tutor, and the Plan"
+author: "Ali Naderi"
+date: 2026-10-04 00:01:00 +0330
+categories: project ezielts ai education
+brief: "Introducing EzIELTS: an IELTS preparation project built around an AI tutor, useful feedback, and regular practice. Here is the proposed roadmap, why we will use the OpenAI API, and what we are considering for voice conversations."
+---
+We are working on **EzIELTS**, an IELTS preparation project with an AI tutor at its center. The idea is to make regular practice easier to keep up with: give learners a place to work, ask questions, receive feedback, and decide what to practice next.
+
+This is an introduction to the project and the direction we want to take it. The features below describe the proposed plan, rather than a list of things that have already shipped.
+
+## Why we want to build it
+
+Studying can leave you with a very practical question: *what should I work on next?* You can write an essay or record an answer, but identifying the useful next step takes more than collecting another exercise.
+
+That is the experience we want EzIELTS to support. A learner should be able to finish a practice session with something specific to improve, an explanation they understand, and a chance to try again.
+
+For example, feedback on an essay could point to a paragraph whose main idea is unclear, explain why it is difficult to follow, and ask the learner to rewrite it. The value is in that second attempt and what the learner takes away from it.
+
+## What EzIELTS is
+
+The proposed product is an IELTS study companion built around a simple loop:
+
+**Practice, get feedback, work on a weakness, and try again.**
+
+We want that loop to connect several parts of the learning experience:
+
+- **An AI tutor** for questions, explanations, and guided exercises.
+- **Writing practice** with feedback tied to the learner's own answer and opportunities to revise it.
+- **Speaking practice** through conversations with a voice assistant.
+- **A study plan** shaped by the learner's goals and the areas they need to work on.
+- **Progress tracking** that lets learners revisit earlier attempts and see what has changed.
+
+Reading and listening practice could extend the same experience later. The first version should give us enough focus to learn whether the tutoring and feedback actually help.
+
+## The AI tutor: OpenAI API
+
+We will use the **OpenAI API** to power the AI tutor. We want learners to be able to ask follow-up questions, request a simpler explanation, and work through an exercise rather than receive one answer and move on.
+
+The tutor should use the relevant context from a practice session. If a learner is revising an essay, it should be able to discuss that essay and the feedback already given. If the same mistake keeps appearing, it should help the learner practice that particular skill.
+
+The engineering work will include deciding what context to send, structuring the feedback, and evaluating whether the explanations are accurate and useful. We have not selected a specific model yet; that choice will depend on the quality, response time, and cost we see in our own tests.
+
+We also want to be careful about assessment. Any score estimate we introduce should be clearly presented as practice feedback, with an explanation of its limits. It should help someone study, without promising an exam result.
+
+## The voice assistant: ElevenLabs or OpenAI
+
+Speaking practice is one of the parts I am most interested in. The goal is a conversation where the learner can answer aloud, respond to follow-up questions, and review feedback afterward.
+
+We are considering **ElevenLabs or OpenAI** for the voice assistant. The provider is still an open decision.
+
+[OpenAI's Realtime API](https://developers.openai.com/api/docs/guides/realtime) supports speech-to-speech interactions. [ElevenLabs' conversational agent platform](https://elevenlabs.io/docs/eleven-agents/build/overview) offers tools for building voice agents. We will prototype the options against the speaking experience we want to deliver.
+
+The comparison needs to cover more than how pleasant a voice sounds. We need to test response delays, interruptions, how well the system understands learners, and the cost of a complete practice session. A speaking tutor also needs to give someone time to think and finish an answer.
+
+## The technology plan
+
+The technology decisions currently look like this:
+
+| Part | Current plan |
+| --- | --- |
+| AI tutor | OpenAI API |
+| Voice conversations | Evaluate ElevenLabs and OpenAI |
+| User interface | Platform and frontend stack still to be selected |
+| Application backend | Stack still to be selected; will manage sessions and AI integrations |
+| Persistent storage | Database still to be selected for goals, practice history, and feedback |
+| Deployment | Hosting still to be selected |
+
+The application will need to manage provider credentials securely, control API usage, and make clear what information is sent to the AI services. Essays, conversation transcripts, and recordings also need deliberate decisions about storage and deletion.
+
+We will choose the remaining stack as the first version becomes more concrete. At this stage, the important technical commitment is the OpenAI-powered tutor, with a voice integration to follow once we have tested the alternatives.
+
+## The proposed roadmap
+
+**First, build a useful tutoring loop.** Start with text conversations and writing practice: submit an answer, receive feedback, ask questions, and revise. This gives us a manageable way to test the quality of the tutoring experience.
+
+**Then, add speaking practice.** Prototype the voice providers, choose an approach, and connect spoken practice to feedback and review. We should test it with learners before expanding the feature set.
+
+**Next, connect sessions into a study plan.** Use practice history to help learners choose their next exercise and revisit areas that still need work. Progress tracking should make those decisions easier.
+
+**Finally, broaden the preparation experience.** Add more practice material and consider reading, listening, and longer mock sessions as we learn what users need. There is no announced launch date yet.
+
+## What we want to get right
+
+The question we will keep returning to is simple: after using EzIELTS, does the learner know what to practice next, and can they put the feedback into action?
+
+That is the project we want to build. An AI tutor gives us a starting point; useful exercises, thoughtful feedback, and regular practice will determine whether EzIELTS earns a place in someone's study routine.
