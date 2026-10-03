@@ -3,6 +3,7 @@ email: alinaderiparizi@gmail.com
 description: "Ali Naderi: AI/ML engineer and systems architect. Production platforms, authentication systems, and research on 3D breast ultrasound."
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://alinaderiparizi.com" # the base hostname & protocol for your site, e.g. http://example.com
+timezone: Asia/Tehran
 twitter_username: alinaderiparizi
 github_username:  mralinp
 
