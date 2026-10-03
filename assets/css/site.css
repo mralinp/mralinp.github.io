@@ -558,7 +558,7 @@ span.thumb { display: block; aspect-ratio: 16/9; background: var(--grad); opacit
 .chain { list-style: none; counter-reset: step; margin: 22px 0; padding: 0 0 0 46px; border-left: 2px solid; border-image: var(--grad) 1; }
 .chain li { counter-increment: step; position: relative; padding: 0 0 24px 24px; font-size: 16px; line-height: 1.65; }
 .chain li:last-child { padding-bottom: 0; }
-.chain li::before { content: counter(step, decimal-leading-zero); position: absolute; left: -54px; top: 0; width: 38px; text-align: right; font: 600 12px var(--mono); letter-spacing: .08em; color: var(--accent-2); }
+.chain li::before { content: counter(step, decimal-leading-zero); position: absolute; left: -8px; top: 0; width: 24px; text-align: left; font: 600 12px var(--mono); letter-spacing: .08em; color: var(--accent-2); }
 .chain li::after { content: ""; position: absolute; left: -30px; top: 7px; width: 9px; height: 9px; background: var(--bg); border: 2px solid var(--accent-2); }
 .chain b { display: block; margin-bottom: 2px; font-size: 17px; color: var(--text); }
 @media (max-width: 480px) {
