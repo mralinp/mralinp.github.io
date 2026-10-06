@@ -35,26 +35,12 @@ My rule from day one: **take a snapshot before you touch anything.** Upgrades, m
 
 The most important design decision was the network. The server has a handful of public addresses, and teammates sometimes need their own machines with their own public address. Internal services (databases, admin panels, monitoring) must never be reachable from those machines or from the internet.
 
-So the network has two zones:
+So the network has two zones, and a small number of doors between them:
 
-```text
-            Internet
-               │
-        ┌──────┴───────────────┐
-        │  one reverse proxy   │──► public web apps (git, chat, files, ...)
-        └──────┬───────────────┘
-               │
-   ┌───────────┴────────────┐          ┌──────────────────────┐
-   │   internal network     │◄─ VPN ───┤ teammate's laptop    │
-   │ (services, databases,  │          └──────────────────────┘
-   │  admin tools, logs)    │
-   └───────────┬────────────┘
-        no route ✕ ▲
-   ┌────────────────┴──────────┐
-   │ public VMs (own address,  │
-   │ isolated from internal)   │
-   └───────────────────────────┘
-```
+<p align="center">
+    <img width="95%" src="/assets/images/posts/blog/startup-server/network.png" alt="Network overview: the Internet reaches public VMs directly and the internal network only through the reverse proxy; teammates reach internal tools through the VPN; public VMs have no route to the internal network."/>
+</p>
+<p align="center"><em>The two zones. Public VMs live in their own isolated zone, the internal network is reachable only through the reverse proxy (published apps) or the VPN (people), and the public VMs have no route into it.</em></p>
 
 - **Internal network.** Everything private lives here. It reaches the internet through the server, but nothing from outside can reach it directly.
 - **Public bridge.** Machines that need their own public address live here, and the firewall treats them as untrusted guests: they cannot see the internal network or the host.
