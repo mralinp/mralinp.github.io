@@ -2,6 +2,7 @@
 layout: post
 title: "Running a Startup on One Rented Server: What I Learned as Co-founder and CTO"
 author: "Ali Naderi"
+img: "/assets/images/posts/blog/startup-server/title.png"
 date: 2026-10-06 12:00:00 +0330
 categories: blog devops infrastructure self-hosting
 brief: "We rented one dedicated server, and I built everything our startup runs on it: Git, chat, files, tasks, meetings, a VPN, single sign-on, monitoring and logs. This is the story: the design, the services, how they are deployed, what went wrong, and what I would do again."
