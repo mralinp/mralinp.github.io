@@ -3,6 +3,7 @@ layout: post
 title: "ez-crawl: A Year on a Crawler That Finally Works"
 permalink: /blog/ez-crawl/
 author: "Ali Naderi"
+img: "/assets/images/posts/blog/ez-crawl/banner.svg"
 date: 2026-10-12 00:01:00 +0330
 categories: blog ez-crawl ai startup
 brief: "ez-crawl turns websites into structured data with pipelines you draw on a canvas. A year of work, and where it stands now: early, live, and not finished."
