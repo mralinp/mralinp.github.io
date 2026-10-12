@@ -1,0 +1,100 @@
+---
+layout: post
+title: "ez-crawl: A Year on a Crawler That Finally Works"
+permalink: /blog/ez-crawl/
+author: "Ali Naderi"
+date: 2026-10-12 00:01:00 +0330
+categories: blog ez-crawl ai startup
+brief: "ez-crawl turns websites into structured data with pipelines you draw on a canvas. A year of work, and where it stands now: early, live, and not finished."
+---
+**ez-crawl** reads websites and gives you back tidy records. You draw the route on a canvas, press run, and get a table you can search, sort and download.
+
+I have been working on it for a year. It works now. It is not a finished product. It is an early-stage startup, and this is the honest picture of where it stands.
+
+## The problem
+
+Every team that needs data from the web ends up in the same place. Someone writes a scraper. The site changes a class name. The scraper breaks. Someone patches it. Repeat.
+
+Selectors are a bet on how a page is built today. Language models read pages the way a person does: by what they say. That is the whole idea behind ez-crawl. Describe the record you want, and let a model pull it out of the page.
+
+## Where it started
+
+The first version was a Streamlit script. A URL in, a JSON blob out, saved to a table. It proved the idea and nothing else. It had no accounts, no retries, no way to follow links in a controlled way, and no way to see what went wrong.
+
+The script taught me what the product is not. It is not a prompt box. A single prompt cannot crawl a directory of ten thousand companies, follow each link, and extract one clean record per page. That takes a pipeline.
+
+## How it works
+
+Every job is a graph of nodes joined by lines. Here is one on the canvas, mid-run: three lanes crawl a shop catalog, a quotes API and an exchange feed, then merge into one daily brief. Each node shows its state and keeps its output.
+
+![Three parallel pipelines merging into one brief, mid-run on the ez-crawl canvas](/assets/images/posts/blog/ez-crawl/flow.png)
+
+The simplest useful shape has four steps:
+
+1. **Fetch.** Say where to start, how deep to follow links, and which links count.
+2. **Convert.** Each page becomes clean text.
+3. **Extract.** List the fields you want. A model returns one record per page.
+4. **Keep and show.** Records go to your own database and into a table you can read at once.
+
+Settings are in plain language: pages to read, how many levels of links to follow, which link patterns to keep, a pause between requests, and a field list instead of a schema. Results land in a table you can search, sort and download as CSV or JSON.
+
+![The results table: search, sort, chips for lists, CSV download](/assets/images/posts/blog/ez-crawl/data.png)
+
+That is the starting point, not the limit. The engine runs any valid graph: branches, joins, several entry nodes, the same node type used many times. A query node can read what an earlier run stored and feed those URLs into a new fetcher. Nodes transform HTML, select from JSON, store artifacts, answer questions from evidence, and draw charts. Complex flows are the point. A site worth crawling is rarely one list and one detail page.
+
+The sites that matter are also the hard ones: pages built by JavaScript, content behind scrolling and clicks, protection that treats an automated reader as a threat. Getting reliable data from those is where the engine is headed. Each one is a flow to design, test on a handful of pages, and then scale.
+
+## The architecture
+
+Three services, each with one job.
+
+- **The app.** A React and TypeScript canvas. It holds no secrets and talks to one backend.
+- **The API.** The only public backend. Accounts, workspaces, versioned workflows, teams, run history, and your own model and storage connections, with encrypted secrets.
+- **The engine.** Internal only. It validates the graph, runs the nodes in order, drives the browser, calls the model, and writes to storage.
+
+The engine knows nothing about users. The API sends it everything a run needs, and it keeps no settings of its own. That split keeps the pieces clean.
+
+The engine works with local models through Ollama, and with OpenAI-compatible endpoints, OpenAI, Anthropic and Gemini. Results can go to your own database and storage.
+
+## Agents can build pipelines
+
+This is the part I like most.
+
+ez-crawl exposes an MCP endpoint. Connect Claude Code or Codex, ask for a pipeline in plain words, and the agent builds it node by node, validates it, runs it, and checks its own output. You watch it appear on the canvas in real time.
+
+I used that to test the product. The agent studies a site, builds a small run, reads the first records, finds the mistake, and fixes it before the big run starts. It also hit the same traps a person hits, and those traps are now written into the guide it reads. Prune filters that turn a list page into thirty characters. Links followed without limits. Fields that run together.
+
+A product that an agent can drive is a product with a clear contract. That discipline paid for itself.
+
+## Where it stands
+
+Live and working on the real backend:
+
+- Sign-in with admin approval, workspaces, saved workflows, run history, teams.
+- Your own model endpoints and databases as resources.
+- Per-node settings in plain language, per-node output, and a data viewer with CSV and JSON export. Right-to-left text works.
+
+Not done yet:
+
+- The database and file browsers still show mock data until the backend routes ship.
+- Usage and storage allowances are placeholders.
+- Errors need to be readable by a person, not only by me.
+- Cancelling a running job, and warnings on a node that got almost no input.
+
+I am listing the gaps because a launch post that hides them is worthless. The core loop is real. The edges are not polished.
+
+## What the year taught me
+
+**Start with the contract.** The service boundaries and the API shape were decided on paper before they were coded. Every change since has been cheaper for it.
+
+**Test small, then big.** A model run over thousands of pages shows you nothing until it ends. Eight pages first. Read the records. Then scale.
+
+**The cheap model is a trap on messy pages.** Compare two models on a sample before you commit to a crawl.
+
+**Be polite to the sites you read.** Delays between requests, limits on pages, respect for terms. A crawler that behaves badly gets blocked, and deserves to be.
+
+## What comes next
+
+Real database and file browsers. Usage and plans. Better errors. Cancel and warnings. Then more people on the product, and their sites breaking it in ways I have not seen yet.
+
+The idea is sound and it runs. Now it has to be made excellent. That is the work.
