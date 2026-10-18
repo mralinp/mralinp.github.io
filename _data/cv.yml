@@ -16,13 +16,16 @@ experience:
   - when: "2025 – now"
     what: "Chief Technology Officer (AI)"
     where: "SciNext · Tehran"
-    summary: "Technical lead of an early-stage AI company: platform, infrastructure and engineering practice."
+    summary: "Technical lead of an early-stage AI company. I own the systems end to end: architecture, infrastructure, the AI products on top, and the engineering practice around them."
     highlights:
       - "Designed and built the company's production platform on my own, in about a month: self-service GitOps on Kubernetes (k3s) with Argo CD, Gitea Actions and a private container registry. A push to <code>main</code> is built and rolled out with no manual step; new services onboard themselves from a template."
       - "Made observability and isolation part of the platform, not per-app work: Prometheus, Grafana, Loki and Tempo for every service; a write-only CI identity for secrets; per-organization namespaces and RBAC; per-application database and object-storage credentials."
-      - "The platform runs the company's production services across 5 project organizations. A newly acquired GPU cluster is being brought onto it for training and inference."
+      - "Turn a business problem into a working system: the products range from a Persian-first chemical compound database with a RAG assistant to data-extraction pipelines and developer tooling, each taken from idea to production."
+      - "Build with AI as part of the engineering loop. I set the architecture and the constraints, AI agents do the volume, and I review, test and own what ships. One engineer covers ground that used to need a team."
     more:
+      - "The platform runs the company's production services across 5 project organizations. A newly acquired GPU cluster is being brought onto it for training and inference."
       - "Technical evaluation and mentorship for early-stage AI startups."
+    case_study: { label: "Read how the infrastructure is built", url: "/blog/devops/infrastructure/self-hosting/2026/10/06/running-a-startup-on-one-server.html" }
     tags: [Kubernetes, Argo CD, GitOps, Gitea Actions, Prometheus, Grafana, Loki, Tempo, PostgreSQL, MinIO]
   - when: "2026"
     what: "Backend Software Engineer"
@@ -148,6 +151,7 @@ education:
 skills:
   - { area: "ML and research", tools: "PyTorch, PyTorch Lightning, HuggingFace Transformers, NumPy, SciPy", where: "3D-ABUS research, Persian TTS, CyberDesign" }
   - { area: "Backend and APIs", tools: "Python, microservices, PostgreSQL, MongoDB", where: "DataWare, IDmelon, CyberDesign, Symmio" }
+  - { area: "AI-assisted engineering", tools: "LLM agents, RAG, prompt and evaluation design, Claude Code", where: "SciNext products" }
   - { area: "Platform and operations", tools: "Kubernetes (k3s), Argo CD, Gitea Actions, Docker, Prometheus, Grafana, Loki, Tempo", where: "SciNext platform" }
   - { area: "Security and authentication", tools: "FIDO2, Windows credential providers, Java Card", where: "IDmelon, smart-card series" }
   - { area: "Systems and embedded", tools: "C/C++, FPGA, microcontrollers, embedded Linux", where: "Sico Systems, IDmelon" }
