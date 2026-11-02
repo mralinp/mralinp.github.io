@@ -9,7 +9,7 @@ featured: true
 brief: "Before any classifier: what a breast tumor is, how mammography and ultrasound actually see it, and why this project works with 3D automated breast ultrasound instead of either alone."
 github: "https://github.com/mralinp/abus-classification"
 ---
-This is the first post of a series following [abus-classification](https://alinaderiparizi.com/abus-classification/), a project classifying malignant and benign breast lesions in 3D automated breast ultrasound (ABUS). I'll add one post per phase of the project — this one is background, with no results yet: what a breast tumor is, how it gets imaged, and why this project uses 3D ultrasound specifically. The next post covers the classical radiology features we reproduce as a baseline; the one after that covers the deep-learning approaches.
+This is the first post of a series following [abus-classification](https://alinaderiparizi.com/abus-classification/), a project classifying malignant and benign breast lesions in 3D automated breast ultrasound (ABUS). I'll add one post per phase of the project — this one is background, with no results yet: what a breast tumor is, how it gets imaged, and why this project uses 3D ultrasound specifically. [Part 2]({% post_url project/2026-11-03-abus-classification-2-reproducing-results %}) covers the classical baselines and hybrid-model reproduction results. [Part 3]({% post_url project/2026-11-03-abus-classification-3-laplace-beltrami %}) introduces Laplace–Beltrami geometry and investigates what the spectral features actually capture.
 
 # 1. What we're actually looking for
 
