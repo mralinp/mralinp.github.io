@@ -73,6 +73,16 @@ experience:
 
 projects:
   - when: "2026"
+    what: "Native OpenWrt for the ZLT X28 5G router"
+    where: "Open source · embedded Linux"
+    bullets:
+      - "Took a reverse-engineering idea from zero to a stable open-source project: exploratory R&amp;D, experiments, a working prototype, and a native OpenWrt port for a locked-down MediaTek-based 5G router."
+      - "Integrated the vendor kernel and modem stack with OpenWrt, built recovery and guarded flashing tools, and preserved fallback to stock firmware through A/B boot handling."
+      - "Recorded the full development history in the repository: documentation, experiments and findings, technical reports, and changelogs."
+      - "Earned recognition among fellow developers for the project."
+    tags: [OpenWrt, Embedded Linux, Reverse engineering, 5G]
+    link: { label: "View the project", url: "https://github.com/mralinp/zlt-x28-openwrt" }
+  - when: "2026"
     what: "Persian text-to-speech with single-shot voice cloning"
     where: "Generative speech"
     bullets:
